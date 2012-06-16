@@ -16,12 +16,27 @@
  */
 
 class Killbill_Invoice extends Killbill_Resource {
-    protected $bundleId;
+    protected $amount;
+    protected $invoiceId;
+    protected $invoiceDate;
+    protected $targetDate;
+    protected $invoiceNumber;
+    protected $credit;
+    protected $balance;
     protected $accountId;
-    protected $externalKey;
+
+    public function get() {
+        $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId);
+        return $this->_getFromBody(Killbill_Invoice, $response);
+    }
 
     public function getForAccount($accountId) {
         $response = $this->_get(Killbill_Client::PATH_INVOICES . '?account_id=' . $accountId);
         return $this->_getFromBody(Killbill_Invoice, $response);
+    }
+
+    public function getInvoiceAsHTML() {
+        $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId . '/html');
+        return $response->body;
     }
 }

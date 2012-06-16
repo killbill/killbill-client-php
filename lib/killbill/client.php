@@ -64,7 +64,7 @@ class Killbill_Client {
         // Default headers
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json; charset=utf-8',
-            'Accept: application/json',
+            'Accept: application/json, text/html',
             'X-Killbill-Reason: ' . $reason,
             'X-Killbill-CreatedBy: ' . $user,
             'X-Killbill-Comment: ' . $comment,
