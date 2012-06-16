@@ -83,6 +83,9 @@ abstract class Killbill_Resource { // implements JsonSerializable {
     protected function _getFromBody($class, $response) {
         $data = $response->body;
         $dataJson = json_decode($data);
+        if ($dataJson == null) {
+            return null;
+        }
 
         return $this->fromJson($class, $dataJson);
     }
@@ -106,7 +109,7 @@ abstract class Killbill_Resource { // implements JsonSerializable {
     private function fromJsonArray($class, $json) {
         $objects = array();
         foreach ($json as $object) {
-            $objects [] = $this->fromJsonObject($class, $json);
+            $objects [] = $this->fromJsonObject($class, $object);
         }
         return $objects;
     }
