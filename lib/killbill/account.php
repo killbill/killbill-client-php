@@ -41,4 +41,9 @@ class Killbill_Account extends Killbill_Resource {
         $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment);
         return $this->_getFromResponse(Killbill_Account, $response);
     }
+
+    public function update($user, $reason, $comment) {
+        $response = $this->_update(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment);
+        return $this->_getFromBody(Killbill_Account, $response);
+    }
 }

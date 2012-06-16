@@ -46,6 +46,21 @@ abstract class Killbill_Resource { // implements JsonSerializable {
     }
 
     /**
+     * Issue a PUT request to killbill
+     *
+     * @param  $uri relative or absolute killbill url
+     * @param  $user user requesting the creation
+     * @param  $reason reason for the creation
+     * @param  $comment any addition comment
+     * @return a response object
+     */
+    protected function _update($uri, $user, $reason, $comment) {
+        $this->initClientIfNeeded();
+
+        return $this->_client->request(Killbill_Client::PUT, $uri, $this->jsonSerialize($this), $user, $reason, $comment);
+    }
+
+    /**
      * Given a response object, lookup the resource in killbill via
      * the location header
      *
