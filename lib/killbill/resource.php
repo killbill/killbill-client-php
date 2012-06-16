@@ -49,8 +49,8 @@ abstract class Killbill_Resource { // implements JsonSerializable {
      * Issue a PUT request to killbill
      *
      * @param  $uri relative or absolute killbill url
-     * @param  $user user requesting the creation
-     * @param  $reason reason for the creation
+     * @param  $user user requesting the update
+     * @param  $reason reason for the update
      * @param  $comment any addition comment
      * @return a response object
      */
@@ -58,6 +58,21 @@ abstract class Killbill_Resource { // implements JsonSerializable {
         $this->initClientIfNeeded();
 
         return $this->_client->request(Killbill_Client::PUT, $uri, $this->jsonSerialize($this), $user, $reason, $comment);
+    }
+
+    /**
+     * Issue a DELETE request to killbill
+     *
+     * @param  $uri relative or absolute killbill url
+     * @param  $user user requesting the deletion
+     * @param  $reason reason for the deletion
+     * @param  $comment any addition comment
+     * @return a response object
+     */
+    protected function _delete($uri, $user, $reason, $comment) {
+        $this->initClientIfNeeded();
+
+        return $this->_client->request(Killbill_Client::DELETE, $uri, $this->jsonSerialize($this), $user, $reason, $comment);
     }
 
     /**
@@ -130,6 +145,10 @@ abstract class Killbill_Resource { // implements JsonSerializable {
     }
 
     private function fromJsonObject($class, $json) {
+        if (is_string($json)) {
+            return $json;
+        }
+
         $object = new $class();
 
         foreach ($json as $key => $value) {

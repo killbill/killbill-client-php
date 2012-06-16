@@ -15,14 +15,6 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/killbill/resource.php');
-require_once(dirname(__FILE__) . '/killbill/response.php');
-require_once(dirname(__FILE__) . '/killbill/client.php');
-
-require_once(dirname(__FILE__) . '/killbill/account.php');
-require_once(dirname(__FILE__) . '/killbill/bundle.php');
-require_once(dirname(__FILE__) . '/killbill/catalog.php');
-require_once(dirname(__FILE__) . '/killbill/invoice.php');
-require_once(dirname(__FILE__) . '/killbill/subscription.php');
-require_once(dirname(__FILE__) . '/killbill/tag.php');
-require_once(dirname(__FILE__) . '/killbill/tag_definition.php');
+class Killbill_Tag extends Killbill_Resource {
+    protected $name;
+}

@@ -52,3 +52,26 @@ $account = $account->get();
  */
 $account->name = "My awesome new name";
 $account = $account->update("pierre", "PHP_TEST", "Test for " . $externalAccountId);
+
+/*
+ * Create the tag definitions
+ */
+$tag1 = new Killbill_TagDefinition();
+$tag1->name = uniqid();
+$tag1->description = "This is tag1";
+$tag1 = $tag1->create("pierre", "PHP_TEST", "Test for " . $externalAccountId);
+
+$tag2 = new Killbill_TagDefinition();
+$tag2->name = uniqid();
+$tag2->description = "This is tag2";
+$tag2 = $tag2->create("pierre", "PHP_TEST", "Test for " . $externalAccountId);
+
+/*
+ * Add tags
+ */
+$accountTags = $account->addTags(array($tag1->name, $tag2->name), "pierre", "PHP_TEST", "Test for " . $externalAccountId);
+
+/*
+ * Verify we can retrieve them
+ */
+$tags = $account->getTags();

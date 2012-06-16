@@ -53,9 +53,17 @@ $bundle = $bundleData->create("pierre", "PHP_TEST", "Test for " . $externalBundl
 /*
  * Retrieve bundles for this account
  */
-
 $bundles = $account->getBundles();
-var_dump($bundles);
+
+/*
+ * Retrieve the bundle by bundleId
+ */
+$bundleById = $bundle->get();
+
+/*
+ * Retrieve the bundle by externalKey
+ */
+$bundleByKey = $bundle->get();
 
 /*
  * Create a subscription for this bundle
@@ -72,7 +80,28 @@ $subscriptionData->chargedThroughDate = "2012-05-25T00:05:58.000Z";
 $subscription = $subscriptionData->create("pierre", "PHP_TEST", "Test for " . $externalBundleId);
 
 /*
+ * Update the subscription
+ */
+$subscription->productName = "Plus";
+$subscription = $subscription->update("pierre", "PHP_TEST", "Test for " . $externalBundleId);
+
+/*
+ * Retrieve subscriptions by bundle
+ */
+$bundleSubscriptions = $bundle->getSubscriptions();
+
+/*
  * Retrieve invoices for this account
  */
 $invoiceData = new Killbill_Invoice();
 $invoices = $invoiceData->getForAccount($account->accountId);
+
+/*
+ * Cancel the subscription
+ */
+$subscription->cancel("pierre", "PHP_TEST", "Test for " . $externalBundleId);
+
+/*
+ * Uncancel it
+ */
+$subscription->reinstate("pierre", "PHP_TEST", "Test for " . $externalBundleId);

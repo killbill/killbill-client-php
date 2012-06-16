@@ -30,8 +30,11 @@ class Killbill_Client {
 
     const PATH_ACCOUNTS = '/accounts';
     const PATH_BUNDLES = '/bundles';
+    const PATH_CATALOG = '/catalog';
     const PATH_INVOICES = '/invoices';
     const PATH_SUBSCRIPTIONS = '/subscriptions';
+    const PATH_TAGS = '/tags';
+    const PATH_TAGDEFINITIONS = '/tagDefinitions';
 
     public function request($method, $uri, $data = null, $user = null, $reason = null, $comment = null) {
         return $this->_sendRequest($method, $uri, $data, $user, $reason, $comment);

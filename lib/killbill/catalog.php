@@ -15,14 +15,11 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/killbill/resource.php');
-require_once(dirname(__FILE__) . '/killbill/response.php');
-require_once(dirname(__FILE__) . '/killbill/client.php');
+class Killbill_Catalog extends Killbill_Resource {
+    private $fullCatalog;
 
-require_once(dirname(__FILE__) . '/killbill/account.php');
-require_once(dirname(__FILE__) . '/killbill/bundle.php');
-require_once(dirname(__FILE__) . '/killbill/catalog.php');
-require_once(dirname(__FILE__) . '/killbill/invoice.php');
-require_once(dirname(__FILE__) . '/killbill/subscription.php');
-require_once(dirname(__FILE__) . '/killbill/tag.php');
-require_once(dirname(__FILE__) . '/killbill/tag_definition.php');
+    public function initialize() {
+        $response = $this->_get(Killbill_Client::PATH_CATALOG);
+        $this->fullCatalog = json_decode($response->body);
+    }
+}
