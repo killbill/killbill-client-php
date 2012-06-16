@@ -31,7 +31,11 @@ class Killbill_Subscription extends Killbill_Resource {
     }
 
     public function create($user, $reason, $comment) {
-        $response = $this->_create(Killbill_Client::PATH_SUBSCRIPTIONS, $user, $reason, $comment);
+        return $this->createAndWait(false, $user, $reason, $comment);
+    }
+
+    public function createAndWait($wait, $user, $reason, $comment) {
+        $response = $this->_create(Killbill_Client::PATH_SUBSCRIPTIONS . '?call_completion=' . ($wait ? 'true' : 'false'), $user, $reason, $comment);
         return $this->_getFromResponse(Killbill_Subscription, $response);
     }
 
