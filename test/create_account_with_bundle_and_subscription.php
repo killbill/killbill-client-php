@@ -51,6 +51,13 @@ $bundleData->externalKey = $externalBundleId;
 $bundle = $bundleData->create("pierre", "PHP_TEST", "Test for " . $externalBundleId);
 
 /*
+ * Retrieve bundles for this account
+ */
+
+$bundles = $account->getBundles();
+var_dump($bundles);
+
+/*
  * Create a subscription for this bundle
  */
 $subscriptionData = new Killbill_Subscription();

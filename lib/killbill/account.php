@@ -37,6 +37,11 @@ class Killbill_Account extends Killbill_Resource {
         return $this->_getFromBody(Killbill_Account, $response);
     }
 
+    public function getBundles() {
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/bundles');
+        return $this->_getFromBody(Killbill_Bundle, $response);
+    }
+
     public function create($user, $reason, $comment) {
         $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment);
         return $this->_getFromResponse(Killbill_Account, $response);
