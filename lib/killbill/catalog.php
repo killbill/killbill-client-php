@@ -19,7 +19,33 @@ class Killbill_Catalog extends Killbill_Resource {
     private $fullCatalog;
 
     public function initialize() {
-        $response = $this->_get(Killbill_Client::PATH_CATALOG);
+        $response = $this->_get(Killbill_Client::PATH_CATALOG . '/simpleCatalog');
         $this->fullCatalog = json_decode($response->body);
+    }
+
+    public function getFullCatalog() {
+        return $this->fullCatalog;
+    }
+
+    public function getBaseProducts() {
+        $baseProducts = array();
+        foreach ($this->fullCatalog->products as $product) {
+            if ($product->type == 'BASE') {
+                $baseProducts [] = $product;
+            }
+        }
+
+        return $baseProducts;
+    }
+
+    public function getAddons() {
+        $addons = array();
+        foreach ($this->fullCatalog->products as $addon) {
+            if ($addon->type == 'ADD_ON') {
+                $addons [] = $addon;
+            }
+        }
+
+        return $addons;
     }
 }

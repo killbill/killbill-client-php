@@ -22,3 +22,12 @@ require_once(dirname(__FILE__) . '/../lib/killbill.php');
  */
 $catalog = new Killbill_Catalog();
 $catalog->initialize();
+//var_dump($catalog->getFullCatalog());
+
+foreach ($catalog->getBaseProducts() as $product) {
+    //var_dump($product);
+}
+
+foreach ($catalog->getAddons() as $addon) {
+    //var_dump($addon);
+}
