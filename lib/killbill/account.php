@@ -32,6 +32,11 @@ class Killbill_Account extends Killbill_Resource {
     protected $billCycleDay;
     protected $timeZone;
 
+    public function get() {
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId);
+        return $this->_getFromBody(Killbill_Account, $response);
+    }
+
     public function create($user, $reason, $comment) {
         $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment);
         return $this->_getFromResponse(Killbill_Account, $response);
