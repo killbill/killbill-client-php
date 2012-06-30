@@ -33,7 +33,11 @@ class Killbill_Account extends Killbill_Resource {
     protected $timeZone;
 
     public function get() {
-        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId);
+        if ($this->accountId) {
+            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId);
+        } else {
+            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '?external_key=' . $this->externalKey);
+        }
         return $this->_getFromBody(Killbill_Account, $response);
     }
 
