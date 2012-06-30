@@ -38,23 +38,23 @@ class Killbill_Account extends Killbill_Resource {
         } else {
             $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '?external_key=' . $this->externalKey);
         }
-        return $this->_getFromBody(Killbill_Account, $response);
+        return $this->_getFromBody('Killbill_Account', $response);
     }
 
     public function getBundles() {
         $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/bundles');
-        return $this->_getFromBody(Killbill_Bundle, $response);
+        return $this->_getFromBody('Killbill_Bundle', $response);
     }
 
     public function getTags() {
         // TODO This will change
         $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . Killbill_Client::PATH_TAGS . '/' . $this->accountId);
-        return $this->_getFromBody(Killbill_Tag, $response);
+        return $this->_getFromBody('Killbill_Tag', $response);
     }
 
     public function create($user, $reason, $comment) {
         $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment);
-        return $this->_getFromResponse(Killbill_Account, $response);
+        return $this->_getFromResponse('Killbill_Account', $response);
     }
 
     public function addTags($tags, $user, $reason, $comment) {

@@ -21,16 +21,16 @@ class Killbill_TagDefinition extends Killbill_Resource {
 
     public function get() {
         $response = $this->_get(Killbill_Client::PATH_TAGDEFINITIONS . '/' . $this->accountId);
-        return $this->_getFromBody(Killbill_TagDefinition, $response);
+        return $this->_getFromBody('Killbill_TagDefinition', $response);
     }
 
     public function create($user, $reason, $comment) {
         $response = $this->_create(Killbill_Client::PATH_TAGDEFINITIONS, $user, $reason, $comment);
-        return $this->_getFromResponse(Killbill_TagDefinition, $response);
+        return $this->_getFromResponse('Killbill_TagDefinition', $response);
     }
 
     public function delete($user, $reason, $comment) {
         $response = $this->_delete(Killbill_Client::PATH_TAGDEFINITIONS . '/' . $this->name, $user, $reason, $comment);
-        return $this->_getFromBody(Killbill_TagDefinition, $response);
+        return $this->_getFromBody('Killbill_TagDefinition', $response);
     }
 }
