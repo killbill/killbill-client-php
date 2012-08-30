@@ -20,6 +20,7 @@ require_once(dirname(__FILE__) . '/killbill/response.php');
 require_once(dirname(__FILE__) . '/killbill/client.php');
 
 require_once(dirname(__FILE__) . '/killbill/account.php');
+require_once(dirname(__FILE__) . '/killbill/account_email.php');
 require_once(dirname(__FILE__) . '/killbill/bundle.php');
 require_once(dirname(__FILE__) . '/killbill/catalog.php');
 require_once(dirname(__FILE__) . '/killbill/invoice.php');

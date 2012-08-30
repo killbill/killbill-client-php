@@ -106,11 +106,20 @@ abstract class Killbill_Resource { // implements JsonSerializable {
     /**
      * Given a response object, decode the body
      *
-     * @param  $class resource class
+     * @param  $class resource class (optional)
      * @param  $response response object
      * @return an instance or collection of resources
      */
-    protected function _getFromBody($class, $response) {
+    public function _getFromBody() {
+        $args = func_get_args();
+        if (func_num_args() == 1) {
+            $class = get_class($this);
+            $response = $args[0];
+        } else {
+            $class = $args[0];
+            $response = $args[1];
+        }
+
         $data = $response->body;
         $dataJson = json_decode($data);
         if ($dataJson == null) {
