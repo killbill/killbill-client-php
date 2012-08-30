@@ -15,18 +15,16 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/../vendor/simpletest-1.1.0/autorun.php');
-require_once(dirname(__FILE__) . '/mock_response.php');
-require_once(dirname(__FILE__) . '/../lib/killbill.php');
+require_once(dirname(__FILE__) . '/../KillbillTest.php');
 
-class TestAccountEmail extends UnitTestCase {
+class Killbill_AccountEmailTest extends KillbillTest {
 
     function testCanDeserializeFromJson() {
         $response = new MockResponse('{"accountId":"a9762b3b-d9fa-4a5b-8f3a-5c48eaf35585","email":"29af35f9-73aa-470b-a061@391054e98a65.com"}');
 
         $accountEmail = new Killbill_AccountEmail();
         $accountEmail = $accountEmail->_getFromBody($response);
-        $this->assertEqual($accountEmail->accountId, 'a9762b3b-d9fa-4a5b-8f3a-5c48eaf35585');
-        $this->assertEqual($accountEmail->email, '29af35f9-73aa-470b-a061@391054e98a65.com');
+        $this->assertEquals('a9762b3b-d9fa-4a5b-8f3a-5c48eaf35585', $accountEmail->accountId);
+        $this->assertEquals('29af35f9-73aa-470b-a061@391054e98a65.com', $accountEmail->email);
     }
 }
