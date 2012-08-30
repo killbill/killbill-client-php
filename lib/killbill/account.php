@@ -24,13 +24,18 @@ class Killbill_Account extends Killbill_Resource {
     protected $paymentMethodId;
     protected $address1;
     protected $address2;
+    protected $postalCode;
     protected $company;
+    protected $city;
     protected $state;
     protected $country;
+    protected $locale;
     protected $phone;
     protected $length;
     protected $billCycleDay;
     protected $timeZone;
+    protected $isMigrated;
+    protected $isNotifiedForInvoices;
 
     public function get() {
         if ($this->accountId) {
