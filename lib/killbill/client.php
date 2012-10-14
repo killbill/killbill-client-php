@@ -144,12 +144,12 @@ class Killbill_Client {
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:
             case CURLE_OPERATION_TIMEOUTED:
-                throw new Exception("Failed to connect to Killbill");
+                throw new Exception("Failed to connect to Killbill: " . $message);
             case CURLE_SSL_CACERT:
             case CURLE_SSL_PEER_CERTIFICATE:
-                throw new Exception("Could not verify Killbill's SSL certificate");
+                throw new Exception("Could not verify Killbill's SSL certificate: " . $message);
             default:
-                throw new Exception("An unexpected error occurred connecting with Killbill");
+                throw new Exception("An unexpected error occurred connecting with Killbill: " . $message);
         }
     }
 }
