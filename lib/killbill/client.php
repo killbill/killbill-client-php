@@ -18,6 +18,8 @@
 class Killbill_Client {
     public static $serverUrl = 'http://127.0.0.1:8080';
     public static $apiVersion = '1.0';
+    public static $apiKey = NULL;
+    public static $apiSecret = NULL;
 
     const API_CLIENT_VERSION = '1.0.0';
     const DEFAULT_ENCODING = 'UTF-8';
@@ -71,6 +73,11 @@ class Killbill_Client {
             self::__userAgent()
         ));
 
+        if (self::__apiKey() != NULL && self::__apiSecret() != NULL) {
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC ) ;
+            curl_setopt($ch, CURLOPT_USERPWD, self::__apiKey() . ":" . self::__apiSecret());
+        }
+
         if ('POST' == $method) {
             curl_setopt($ch, CURLOPT_POST, TRUE);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -105,6 +112,14 @@ class Killbill_Client {
 
     private static function __apiUrl() {
         return Killbill_Client::$serverUrl . '/' . Killbill_Client::$apiVersion . '/kb';
+    }
+
+    private static function __apiKey() {
+        return Killbill_Client::$apiKey;
+    }
+
+    private static function __apiSecret() {
+        return Killbill_Client::$apiSecret;
     }
 
     private static function __userAgent() {
