@@ -53,6 +53,8 @@ class Killbill_Client {
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $uri);
+        // Add default user/password
+        curl_setopt($ch, CURLOPT_USERPWD, 'admin:password');
         // Don't follow the Location header
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);
         // Include the header in the output
