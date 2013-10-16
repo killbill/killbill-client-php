@@ -15,7 +15,9 @@
  * under the License.
  */
 
-class Killbill_Catalog extends Killbill_Resource {
+require_once(dirname(__FILE__) . '/gen/killbill_catalog_attributes_simple.php');
+
+class Killbill_Catalog extends Killbill_CatalogAttributesSimple {
     private $fullCatalog;
 
     public function initialize() {

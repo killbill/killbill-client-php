@@ -15,10 +15,9 @@
  * under the License.
  */
 
-class Killbill_Bundle extends Killbill_Resource {
-    protected $bundleId;
-    protected $accountId;
-    protected $externalKey;
+require_once(dirname(__FILE__) . '/gen/killbill_bundle_attributes.php');
+
+class Killbill_Bundle extends Killbill_BundleAttributes {
 
     public function get() {
         $response = $this->_get(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId);

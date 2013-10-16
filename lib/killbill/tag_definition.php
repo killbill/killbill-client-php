@@ -15,9 +15,9 @@
  * under the License.
  */
 
-class Killbill_TagDefinition extends Killbill_Resource {
-    protected $name;
-    protected $description;
+require_once(dirname(__FILE__) . '/gen/killbill_tag_definition_attributes.php');
+
+class Killbill_TagDefinition extends Killbill_TagDefinitionAttributes {
 
     public function get() {
         $response = $this->_get(Killbill_Client::PATH_TAGDEFINITIONS . '/' . $this->accountId);

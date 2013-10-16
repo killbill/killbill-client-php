@@ -15,15 +15,9 @@
  * under the License.
  */
 
-class Killbill_Subscription extends Killbill_Resource {
-    protected $subscriptionId;
-    protected $bundleId;
-    protected $startDate;
-    protected $productName;
-    protected $productCategory;
-    protected $billingPeriod;
-    protected $priceList;
-    protected $chargedThroughDate;
+require_once(dirname(__FILE__) . '/gen/killbill_subscription_attributes.php');
+
+class Killbill_Subscription extends Killbill_SubscriptionAttributes {
 
     public function get() {
         $response = $this->_get(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId);

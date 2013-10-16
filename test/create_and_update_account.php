@@ -69,7 +69,7 @@ $tag2 = $tag2->create("pierre", "PHP_TEST", "Test for " . $externalAccountId);
 /*
  * Add tags
  */
-$accountTags = $account->addTags(array($tag1->name, $tag2->name), "pierre", "PHP_TEST", "Test for " . $externalAccountId);
+$accountTags = $account->addTags(array($tag1->id, $tag2->id), "pierre", "PHP_TEST", "Test for " . $externalAccountId);
 
 /*
  * Verify we can retrieve them

@@ -15,6 +15,7 @@
  * under the License.
  */
 
-class Killbill_Tag extends Killbill_Resource {
-    protected $name;
+require_once(dirname(__FILE__) . '/gen/killbill_tag_attributes.php');
+
+class Killbill_Tag extends Killbill_TagAttributes {
 }

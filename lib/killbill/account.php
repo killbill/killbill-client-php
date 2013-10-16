@@ -15,27 +15,9 @@
  * under the License.
  */
 
-class Killbill_Account extends Killbill_Resource {
-    protected $accountId;
-    protected $name;
-    protected $externalKey;
-    protected $email;
-    protected $currency;
-    protected $paymentMethodId;
-    protected $address1;
-    protected $address2;
-    protected $postalCode;
-    protected $company;
-    protected $city;
-    protected $state;
-    protected $country;
-    protected $locale;
-    protected $phone;
-    protected $length;
-    protected $billCycleDay;
-    protected $timeZone;
-    protected $isMigrated;
-    protected $isNotifiedForInvoices;
+require_once(dirname(__FILE__) . '/gen/killbill_account_attributes.php');
+
+class Killbill_Account extends Killbill_AccountAttributes {
 
     public function get() {
         if ($this->accountId) {
@@ -52,8 +34,7 @@ class Killbill_Account extends Killbill_Resource {
     }
 
     public function getTags() {
-        // TODO This will change
-        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . Killbill_Client::PATH_TAGS . '/' . $this->accountId);
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS);
         return $this->_getFromBody('Killbill_Tag', $response);
     }
 
@@ -63,14 +44,13 @@ class Killbill_Account extends Killbill_Resource {
     }
 
     public function addTags($tags, $user, $reason, $comment) {
-        // TODO This will change
-        $response = $this->_create(Killbill_Client::PATH_ACCOUNTS . Killbill_Client::PATH_TAGS . '/' . $this->accountId . '?tag_list=' . join(',', $tags),
+        $response = $this->_create(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
             $user, $reason, $comment);
-        return $this->_getFromResponse(Killbill_Tag, $response);
+        return $this->_getFromResponse('Killbill_Tag', $response);
     }
 
     public function update($user, $reason, $comment) {
         $response = $this->_update(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment);
-        return $this->_getFromBody(Killbill_Account, $response);
+        return $this->_getFromBody('Killbill_Account', $response);
     }
 }

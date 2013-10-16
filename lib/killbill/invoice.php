@@ -15,15 +15,10 @@
  * under the License.
  */
 
-class Killbill_Invoice extends Killbill_Resource {
-    protected $amount;
-    protected $invoiceId;
-    protected $invoiceDate;
-    protected $targetDate;
-    protected $invoiceNumber;
-    protected $credit;
-    protected $balance;
-    protected $accountId;
+require_once(dirname(__FILE__) . '/gen/killbill_invoice_attributes.php');
+
+
+class Killbill_Invoice extends Killbill_InvoiceAttributes {
 
     public function get() {
         $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId);
