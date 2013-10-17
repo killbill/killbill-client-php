@@ -16,10 +16,11 @@
  */
 
 class Killbill_Client {
-    public static $serverUrl = 'http://127.0.0.1:8080';
+
+    public static $serverUrl = 'http://192.168.1.111:8080';
     public static $apiVersion = '1.0';
-    public static $apiKey = NULL;
-    public static $apiSecret = NULL;
+    public static $apiKey = 'admin';
+    public static $apiSecret = 'password';
 
     const API_CLIENT_VERSION = '1.0.0';
     const DEFAULT_ENCODING = 'UTF-8';
@@ -37,12 +38,14 @@ class Killbill_Client {
     const PATH_SUBSCRIPTIONS = '/subscriptions';
     const PATH_TAGS = '/tags';
     const PATH_TAGDEFINITIONS = '/tagDefinitions';
+    const PATH_TENANTS = '/tenants';
 
-    public function request($method, $uri, $data = null, $user = null, $reason = null, $comment = null) {
-        return $this->_sendRequest($method, $uri, $data, $user, $reason, $comment);
+    public function request($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additional_headers = null) {
+        return $this->_sendRequest($method, $uri, $data, $user, $reason, $comment, $additional_headers);
     }
 
-    private function _sendRequest($method, $uri, $data = null, $user = null, $reason = null, $comment = null) {
+    private function _sendRequest($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additional_headers = null) {
+
         if (function_exists('mb_internal_encoding')) {
             mb_internal_encoding(self::DEFAULT_ENCODING);
         }
@@ -53,8 +56,6 @@ class Killbill_Client {
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $uri);
-        // Add default user/password
-        curl_setopt($ch, CURLOPT_USERPWD, 'admin:password');
         // Don't follow the Location header
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);
         // Include the header in the output
@@ -65,15 +66,20 @@ class Killbill_Client {
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         // The maximum number of seconds to allow cURL functions to execute
         curl_setopt($ch, CURLOPT_TIMEOUT, 45);
-        // Default headers
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        // Default http headers
+        $http_headers = array(
             'Content-Type: application/json; charset=utf-8',
             'Accept: application/json, text/html',
             'X-Killbill-Reason: ' . $reason,
             'X-Killbill-CreatedBy: ' . $user,
             'X-Killbill-Comment: ' . $comment,
             self::__userAgent()
-        ));
+        );
+        if ($additional_headers) {
+            $http_headers = array_merge($http_headers, $additional_headers);
+        }
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $http_headers);
 
         if (self::__apiKey() != NULL && self::__apiSecret() != NULL) {
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC ) ;

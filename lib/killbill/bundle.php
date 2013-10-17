@@ -19,36 +19,36 @@ require_once(dirname(__FILE__) . '/gen/killbill_bundle_attributes.php');
 
 class Killbill_Bundle extends Killbill_BundleAttributes {
 
-    public function get() {
-        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId);
+    public function get($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId, $headers);
         return $this->_getFromBody('Killbill_Bundle', $response);
     }
 
-    public function getByExternalKey() {
-        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '?external_key=' . $this->externalKey);
+    public function getByExternalKey($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '?external_key=' . $this->externalKey, $headers);
         return $this->_getFromBody('Killbill_Bundle', $response);
     }
 
-    public function getSubscriptions() {
-        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId . '/subscriptions');
+    public function getSubscriptions($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId . '/subscriptions', $headers);
         return $this->_getFromBody('Killbill_Subscription', $response);
     }
 
-    public function getTags() {
+    public function getTags($headers = null) {
         // TODO This will change
-        $response = $this->_get(Killbill_Client::PATH_BUNDLES . Killbill_Client::PATH_TAGS . '/' . $this->bundleId);
+        $response = $this->_get(Killbill_Client::PATH_BUNDLES . Killbill_Client::PATH_TAGS . '/' . $this->bundleId, $headers);
         return $this->_getFromBody('Killbill_Tag', $response);
     }
 
-    public function create($user, $reason, $comment) {
-        $response = $this->_create(Killbill_Client::PATH_BUNDLES, $user, $reason, $comment);
-        return $this->_getFromResponse('Killbill_Bundle', $response);
+    public function create($user, $reason, $comment, $headers = null) {
+        $response = $this->_create(Killbill_Client::PATH_BUNDLES, $user, $reason, $comment, $headers);
+        return $this->_getFromResponse('Killbill_Bundle', $response, $headers);
     }
 
-    public function addTags($tags, $user, $reason, $comment) {
+    public function addTags($tags, $user, $reason, $comment, $headers = null) {
         // TODO This will change
-        $response = $this->_create(Killbill_Client::PATH_BUNDLES . Killbill_Client::PATH_TAGS . '/' . $this->accountId . '?tag_list=' . join(',', $tags),
+        $response = $this->_create(Killbill_Client::PATH_BUNDLES . Killbill_Client::PATH_TAGS . '/' . $this->accountId . '?tag_list=' . join(',', $tags, $headers),
             $user, $reason, $comment);
-        return $this->_getFromResponse('Killbill_Tag', $response);
+        return $this->_getFromResponse('Killbill_Tag', $response, $headers);
     }
 }

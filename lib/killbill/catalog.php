@@ -20,8 +20,8 @@ require_once(dirname(__FILE__) . '/gen/killbill_catalog_attributes_simple.php');
 class Killbill_Catalog extends Killbill_CatalogAttributesSimple {
     private $fullCatalog;
 
-    public function initialize() {
-        $response = $this->_get(Killbill_Client::PATH_CATALOG . '/simpleCatalog');
+    public function initialize($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_CATALOG . '/simpleCatalog', $headers);
         $this->fullCatalog = json_decode($response->body);
     }
 

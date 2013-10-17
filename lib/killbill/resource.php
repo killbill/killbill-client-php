@@ -16,6 +16,7 @@
  */
 
 abstract class Killbill_Resource { // implements JsonSerializable {
+
     protected $_client;
 
     /**
@@ -24,10 +25,10 @@ abstract class Killbill_Resource { // implements JsonSerializable {
      * @param  $uri relative or absolute killbill url
      * @return a response object
      */
-    protected function _get($uri) {
+    protected function _get($uri, $headers = null) {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Killbill_Client::GET, $uri, null, null, null);
+        return $this->_client->request(Killbill_Client::GET, $uri, null, null, null, null, $headers);
     }
 
     /**
@@ -39,10 +40,10 @@ abstract class Killbill_Resource { // implements JsonSerializable {
      * @param  $comment any addition comment
      * @return a response object
      */
-    protected function _create($uri, $user, $reason, $comment) {
+    protected function _create($uri, $user, $reason, $comment, $headers = null) {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Killbill_Client::POST, $uri, $this->jsonSerialize($this), $user, $reason, $comment);
+        return $this->_client->request(Killbill_Client::POST, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -54,10 +55,10 @@ abstract class Killbill_Resource { // implements JsonSerializable {
      * @param  $comment any addition comment
      * @return a response object
      */
-    protected function _update($uri, $user, $reason, $comment) {
+    protected function _update($uri, $user, $reason, $comment, $headers = null) {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Killbill_Client::PUT, $uri, $this->jsonSerialize($this), $user, $reason, $comment);
+        return $this->_client->request(Killbill_Client::PUT, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -69,10 +70,10 @@ abstract class Killbill_Resource { // implements JsonSerializable {
      * @param  $comment any addition comment
      * @return a response object
      */
-    protected function _delete($uri, $user, $reason, $comment) {
+    protected function _delete($uri, $user, $reason, $comment, $headers = null) {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Killbill_Client::DELETE, $uri, $this->jsonSerialize($this), $user, $reason, $comment);
+        return $this->_client->request(Killbill_Client::DELETE, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -83,19 +84,19 @@ abstract class Killbill_Resource { // implements JsonSerializable {
      * @param  $response response object
      * @return an instance or collection of resources
      */
-    protected function _getFromResponse($class, $response) {
+    protected function _getFromResponse($class, $response, $headers = null) {
         if ($response == NULL) {
             return null;
         }
 
-        $headers = $response->headers;
-        if ($headers == NULL || $headers['Location'] == NULL) {
+        $reponseHeaders = $response->headers;
+        if ($reponseHeaders == NULL || $reponseHeaders['Location'] == NULL) {
             return null;
         }
 
         $this->initClientIfNeeded();
 
-        $getResonse = $this->_get($headers['Location']);
+        $getResonse = $this->_get($reponseHeaders['Location'], $headers);
         if ($getResonse == NULL || $getResonse->body == NULL) {
             return null;
         }

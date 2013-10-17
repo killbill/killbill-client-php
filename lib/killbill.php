@@ -19,6 +19,7 @@ require_once(dirname(__FILE__) . '/killbill/resource.php');
 require_once(dirname(__FILE__) . '/killbill/response.php');
 require_once(dirname(__FILE__) . '/killbill/client.php');
 
+require_once(dirname(__FILE__) . '/killbill/tenant.php');
 require_once(dirname(__FILE__) . '/killbill/account.php');
 require_once(dirname(__FILE__) . '/killbill/account_email.php');
 require_once(dirname(__FILE__) . '/killbill/bundle.php');

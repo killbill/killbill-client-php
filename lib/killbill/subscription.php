@@ -19,32 +19,32 @@ require_once(dirname(__FILE__) . '/gen/killbill_subscription_attributes.php');
 
 class Killbill_Subscription extends Killbill_SubscriptionAttributes {
 
-    public function get() {
+    public function get($headers = null) {
         $response = $this->_get(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId);
+        return $this->_getFromBody('Killbill_Subscription', $response, $headers);
+    }
+
+    public function create($user, $reason, $comment, $headers = null) {
+        return $this->createAndWait(false, $user, $reason, $comment, $headers);
+    }
+
+    public function createAndWait($wait, $user, $reason, $comment, $headers = null) {
+        $response = $this->_create(Killbill_Client::PATH_SUBSCRIPTIONS . '?call_completion=' . ($wait ? 'true' : 'false'), $user, $reason, $comment, $headers);
+        return $this->_getFromResponse('Killbill_Subscription', $response, $headers);
+    }
+
+    public function update($user, $reason, $comment, $headers = null) {
+        $response = $this->_update(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $user, $reason, $comment, $headers);
         return $this->_getFromBody('Killbill_Subscription', $response);
     }
 
-    public function create($user, $reason, $comment) {
-        return $this->createAndWait(false, $user, $reason, $comment);
-    }
-
-    public function createAndWait($wait, $user, $reason, $comment) {
-        $response = $this->_create(Killbill_Client::PATH_SUBSCRIPTIONS . '?call_completion=' . ($wait ? 'true' : 'false'), $user, $reason, $comment);
-        return $this->_getFromResponse('Killbill_Subscription', $response);
-    }
-
-    public function update($user, $reason, $comment) {
-        $response = $this->_update(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $user, $reason, $comment);
+    public function reinstate($user, $reason, $comment, $headers = null) {
+        $response = $this->_update(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId . '/uncancel', $user, $reason, $comment, $headers);
         return $this->_getFromBody('Killbill_Subscription', $response);
     }
 
-    public function reinstate($user, $reason, $comment) {
-        $response = $this->_update(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId . '/uncancel', $user, $reason, $comment);
-        return $this->_getFromBody('Killbill_Subscription', $response);
-    }
-
-    public function cancel($user, $reason, $comment) {
-        $response = $this->_delete(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $user, $reason, $comment);
+    public function cancel($user, $reason, $comment, $headers = null) {
+        $response = $this->_delete(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $user, $reason, $comment, $headers);
         return $this->_getFromBody('Killbill_Subscription', $response);
     }
 }

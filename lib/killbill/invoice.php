@@ -20,18 +20,18 @@ require_once(dirname(__FILE__) . '/gen/killbill_invoice_attributes.php');
 
 class Killbill_Invoice extends Killbill_InvoiceAttributes {
 
-    public function get() {
-        $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId);
+    public function get($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId, $headers);
         return $this->_getFromBody('Killbill_Invoice', $response);
     }
 
-    public function getForAccount($accountId) {
-        $response = $this->_get(Killbill_Client::PATH_INVOICES . '?account_id=' . $accountId);
+    public function getForAccount($accountId, $headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_INVOICES . '?account_id=' . $accountId, $headers);
         return $this->_getFromBody('Killbill_Invoice', $response);
     }
 
-    public function getInvoiceAsHTML() {
-        $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId . '/html');
+    public function getInvoiceAsHTML($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId . '/html', $headers);
         return $response->body;
     }
 }

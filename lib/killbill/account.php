@@ -19,38 +19,38 @@ require_once(dirname(__FILE__) . '/gen/killbill_account_attributes.php');
 
 class Killbill_Account extends Killbill_AccountAttributes {
 
-    public function get() {
+    public function get($headers = null) {
         if ($this->accountId) {
-            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId);
+            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $headers);
         } else {
-            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '?external_key=' . $this->externalKey);
+            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '?external_key=' . $this->externalKey, $headers);
         }
         return $this->_getFromBody('Killbill_Account', $response);
     }
 
-    public function getBundles() {
-        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/bundles');
+    public function getBundles($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/bundles', $headers);
         return $this->_getFromBody('Killbill_Bundle', $response);
     }
 
-    public function getTags() {
-        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS);
+    public function getTags($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS, $headers);
         return $this->_getFromBody('Killbill_Tag', $response);
     }
 
-    public function create($user, $reason, $comment) {
-        $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment);
-        return $this->_getFromResponse('Killbill_Account', $response);
+    public function create($user, $reason, $comment, $headers = null) {
+        $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment, $headers);
+        return $this->_getFromResponse('Killbill_Account', $response, $headers);
     }
 
-    public function addTags($tags, $user, $reason, $comment) {
+    public function addTags($tags, $user, $reason, $comment, $headers = null) {
         $response = $this->_create(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
-            $user, $reason, $comment);
-        return $this->_getFromResponse('Killbill_Tag', $response);
+            $user, $reason, $comment, $headers);
+        return $this->_getFromResponse('Killbill_Tag', $response, $headers);
     }
 
-    public function update($user, $reason, $comment) {
-        $response = $this->_update(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment);
+    public function update($user, $reason, $comment, $headers = null) {
+        $response = $this->_update(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment, $headers);
         return $this->_getFromBody('Killbill_Account', $response);
     }
 }
