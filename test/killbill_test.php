@@ -15,7 +15,7 @@
  * under the License.
  */
 
-
+require_once ('PHPUnit/Framework/TestCase.php');
 require_once(dirname(__FILE__) . '/../lib/killbill.php');
 
 class KillbillTest extends PHPUnit_Framework_TestCase {

@@ -16,10 +16,7 @@
  */
 
 
-
-require_once(dirname(__FILE__) . '/../lib/killbill.php');
-
-require_once(dirname(__FILE__) . '/KillbillTest.php');
+require_once(dirname(__FILE__) . '/Killbill_test.php');
 
 class Killbill_Server_SubscriptionTest extends KillbillTest
 {

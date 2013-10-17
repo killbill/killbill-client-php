@@ -15,9 +15,7 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/../lib/killbill.php');
-
-require_once(dirname(__FILE__) . '/KillbillTest.php');
+require_once(dirname(__FILE__) . '/killbill_test.php');
 
 class Killbill_Server_AccountTest extends KillbillTest
 {
