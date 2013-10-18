@@ -17,6 +17,7 @@
 
 require_once ('PHPUnit/Framework/TestCase.php');
 require_once(dirname(__FILE__) . '/../lib/killbill.php');
+require_once(dirname(__FILE__) . '/killbill_server_clock_mock.php');
 
 class KillbillTest extends PHPUnit_Framework_TestCase {
 
@@ -26,12 +27,17 @@ class KillbillTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
+
         $tenant = new Killbill_Tenant();
         $tenant->externalKey = uniqid();
         $tenant->apiKey = 'test-php-api-key-' . $tenant->externalKey;
         $tenant->apiSecret = 'test-php-api-secret-' . $tenant->externalKey;
         $this->tenant = $tenant->create($this->user, $this->reason, $this->comment);
         $this->tenant->apiSecret = $tenant->apiSecret;
+
+        $this->clock = new killbill_ServerClockMock();
+        // Reset clock to now
+        $this->clock->setClock(null, $this->tenant->getTenantHeaders());
 
         $this->externalAccountId = uniqid();
         $this->accountData = new Killbill_Account();
@@ -56,5 +62,6 @@ class KillbillTest extends PHPUnit_Framework_TestCase {
         unset($this->externalAccountId);
         unset($this->accountData);
         unset($this->tenant);
+        unset($this->clock);
     }
 }

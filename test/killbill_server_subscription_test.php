@@ -16,7 +16,7 @@
  */
 
 
-require_once(dirname(__FILE__) . '/Killbill_test.php');
+require_once(dirname(__FILE__) . '/killbill_test.php');
 
 class Killbill_Server_SubscriptionTest extends KillbillTest
 {
@@ -26,6 +26,15 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         parent::setUp();
         $this->externalBundleId = uniqid();
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+
+        $paymentMethod = new Killbill_PaymentMethod();
+        $paymentMethod->accountId = $this->account->accountId;
+        $paymentMethod->isDefault = true;
+        $paymentMethod->pluginName = '__EXTERNAL_PAYMENT__';
+        $paymentMethod->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+
+        $this->account = $this->account->get($this->tenant->getTenantHeaders());
+        $this->assertNotEmpty($this->account->paymentMethodId);
     }
 
     function tearDown()
@@ -52,5 +61,20 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         $this->assertEquals($subscription->productCategory, $subscriptionData->productCategory);
         $this->assertEquals($subscription->billingPeriod, $subscriptionData->billingPeriod);
         $this->assertEquals($subscription->externalKey, $subscriptionData->externalKey);
+
+        # Move by a few days -- still in trial -- and change product
+        $this->clock->addDays(3, $this->tenant->getTenantHeaders());
+        $subscription->productName = 'Super';
+        $subscriptionRes = $subscription->changePlan($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $this->assertEquals($subscriptionRes->productName, 'Super');
+        $subscription = $subscriptionRes;
+
+        # Move by a few days -- still in trial -- and execute a cancellation
+        $this->clock->addDays(3, $this->tenant->getTenantHeaders());
+        $this->assertEmpty($subscription->cancelledDate);
+        $subscription->cancel($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+
+        $subscriptionRes = $subscription->get($this->tenant->getTenantHeaders());
+        $this->assertNotEmpty($subscriptionRes->cancelledDate);
     }
 }

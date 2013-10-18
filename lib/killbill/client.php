@@ -35,6 +35,7 @@ class Killbill_Client {
     const PATH_BUNDLES = '/bundles';
     const PATH_CATALOG = '/catalog';
     const PATH_INVOICES = '/invoices';
+    const PATH_PAYMENT_METHODS = '/paymentMethods';
     const PATH_SUBSCRIPTIONS = '/subscriptions';
     const PATH_TAGS = '/tags';
     const PATH_TAGDEFINITIONS = '/tagDefinitions';

@@ -20,7 +20,7 @@ require_once(dirname(__FILE__) . '/gen/killbill_subscription_attributes.php');
 class Killbill_Subscription extends Killbill_SubscriptionAttributes {
 
     public function get($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId);
+        $response = $this->_get(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $headers);
         return $this->_getFromBody('Killbill_Subscription', $response, $headers);
     }
 
@@ -33,7 +33,7 @@ class Killbill_Subscription extends Killbill_SubscriptionAttributes {
         return $this->_getFromResponse('Killbill_Subscription', $response, $headers);
     }
 
-    public function update($user, $reason, $comment, $headers = null) {
+    public function changePlan($user, $reason, $comment, $headers = null) {
         $response = $this->_update(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $user, $reason, $comment, $headers);
         return $this->_getFromBody('Killbill_Subscription', $response);
     }
