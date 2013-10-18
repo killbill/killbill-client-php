@@ -65,14 +65,14 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         # Move by a few days -- still in trial -- and change product
         $this->clock->addDays(3, $this->tenant->getTenantHeaders());
         $subscription->productName = 'Super';
-        $subscriptionRes = $subscription->changePlan($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $subscriptionRes = $subscription->changePlan(null, null, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->assertEquals($subscriptionRes->productName, 'Super');
         $subscription = $subscriptionRes;
 
         # Move by a few days -- still in trial -- and execute a cancellation
         $this->clock->addDays(3, $this->tenant->getTenantHeaders());
         $this->assertEmpty($subscription->cancelledDate);
-        $subscription->cancel($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $subscription->cancel(null, null, null, null, false, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $subscriptionRes = $subscription->get($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($subscriptionRes->cancelledDate);

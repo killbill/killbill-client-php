@@ -33,8 +33,22 @@ class Killbill_Subscription extends Killbill_SubscriptionAttributes {
         return $this->_getFromResponse('Killbill_Subscription', $response, $headers);
     }
 
-    public function changePlan($user, $reason, $comment, $headers = null) {
-        $response = $this->_update(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $user, $reason, $comment, $headers);
+    public function changePlan($requestedDate, $billingPolicy,  $callCompletion, $user, $reason, $comment, $headers = null) {
+        $uri = Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId;
+        $first = true;
+        if ($requestedDate) {
+            $uri = $uri . ($first ? '?' : '&') . 'requestedDate=' . $requestedDate;
+            $first = false;
+        }
+        if ($billingPolicy) {
+            $uri = $uri . ($first ? '?' : '&') . 'billingPolicy=' . $billingPolicy;
+            $first = false;
+        }
+        if ($callCompletion) {
+            $uri = $uri . ($first ? '?' : '&') . 'callCompletion=' . $callCompletion;
+            $first = false;
+        }
+        $response = $this->_update($uri, $user, $reason, $comment, $headers);
         return $this->_getFromBody('Killbill_Subscription', $response);
     }
 
@@ -43,8 +57,30 @@ class Killbill_Subscription extends Killbill_SubscriptionAttributes {
         return $this->_getFromBody('Killbill_Subscription', $response);
     }
 
-    public function cancel($user, $reason, $comment, $headers = null) {
-        $response = $this->_delete(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $user, $reason, $comment, $headers);
+    public function cancel($requestedDate, $entitlementPolicy, $billingPolicy, $useRequestedDateForBilling, $callCompletion, $user, $reason, $comment, $headers = null) {
+        $uri = Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId;
+        $first = true;
+        if ($requestedDate) {
+            $uri = $uri . ($first ? '?' : '&') . 'requestedDate=' . $requestedDate;
+            $first = false;
+        }
+        if ($entitlementPolicy) {
+            $uri = $uri . ($first ? '?' : '&') . 'entitlementPolicy=' . $entitlementPolicy;
+            $first = false;
+        }
+        if ($billingPolicy) {
+            $uri = $uri . ($first ? '?' : '&') . 'billingPolicy=' . $billingPolicy;
+            $first = false;
+        }
+        if ($useRequestedDateForBilling) {
+            $uri = $uri . ($first ? '?' : '&') . 'useRequestedDateForBilling=' . $useRequestedDateForBilling;
+            $first = false;
+        }
+        if ($callCompletion) {
+            $uri = $uri . ($first ? '?' : '&') . 'callCompletion=' . $callCompletion;
+            $first = false;
+        }
+        $response = $this->_delete($uri, $user, $reason, $comment, $headers);
         return $this->_getFromBody('Killbill_Subscription', $response);
     }
 }
