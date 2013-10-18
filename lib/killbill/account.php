@@ -28,6 +28,16 @@ class Killbill_Account extends Killbill_AccountAttributes {
         return $this->_getFromBody('Killbill_Account', $response);
     }
 
+    public function create($user, $reason, $comment, $headers = null) {
+        $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment, $headers);
+        return $this->_getFromResponse('Killbill_Account', $response, $headers);
+    }
+
+    public function update($user, $reason, $comment, $headers = null) {
+        $response = $this->_update(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment, $headers);
+        return $this->_getFromBody('Killbill_Account', $response);
+    }
+
     public function getBundles($headers = null) {
         $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/bundles', $headers);
         return $this->_getFromBody('Killbill_Bundle', $response);
@@ -42,14 +52,9 @@ class Killbill_Account extends Killbill_AccountAttributes {
         return $this->_getFromBody('Killbill_Invoice', $response);
     }
 
-    public function create($user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Killbill_Account', $response, $headers);
-    }
-
-    public function update($user, $reason, $comment, $headers = null) {
-        $response = $this->_update(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Killbill_Account', $response);
+    public function getPaymentMethods($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/paymentMethods', $headers);
+        return $this->_getFromBody('Killbill_PaymentMethod', $response);
     }
 
     public function getTags($headers = null) {
