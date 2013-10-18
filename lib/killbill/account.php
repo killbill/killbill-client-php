@@ -42,24 +42,24 @@ class Killbill_Account extends Killbill_AccountAttributes {
         return $this->_getFromBody('Killbill_Invoice', $response);
     }
 
-    public function getTags($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS, $headers);
-        return $this->_getFromBody('Killbill_Tag', $response);
-    }
-
     public function create($user, $reason, $comment, $headers = null) {
         $response = $this->_create(Killbill_Client::PATH_ACCOUNTS, $user, $reason, $comment, $headers);
         return $this->_getFromResponse('Killbill_Account', $response, $headers);
+    }
+
+    public function update($user, $reason, $comment, $headers = null) {
+        $response = $this->_update(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment, $headers);
+        return $this->_getFromBody('Killbill_Account', $response);
+    }
+
+    public function getTags($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS, $headers);
+        return $this->_getFromBody('Killbill_Tag', $response);
     }
 
     public function addTags($tags, $user, $reason, $comment, $headers = null) {
         $response = $this->_create(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
             $user, $reason, $comment, $headers);
         return $this->_getFromResponse('Killbill_Tag', $response, $headers);
-    }
-
-    public function update($user, $reason, $comment, $headers = null) {
-        $response = $this->_update(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Killbill_Account', $response);
     }
 }

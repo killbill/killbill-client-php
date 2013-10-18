@@ -25,30 +25,12 @@ class Killbill_Bundle extends Killbill_BundleAttributes {
     }
 
     public function getByExternalKey($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '?external_key=' . $this->externalKey, $headers);
+        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '?externalKey=' . $this->externalKey, $headers);
         return $this->_getFromBody('Killbill_Bundle', $response);
     }
 
     public function getSubscriptions($headers = null) {
         $response = $this->_get(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId . '/subscriptions', $headers);
         return $this->_getFromBody('Killbill_Subscription', $response);
-    }
-
-    public function getTags($headers = null) {
-        // TODO This will change
-        $response = $this->_get(Killbill_Client::PATH_BUNDLES . Killbill_Client::PATH_TAGS . '/' . $this->bundleId, $headers);
-        return $this->_getFromBody('Killbill_Tag', $response);
-    }
-
-    public function create($user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Killbill_Client::PATH_BUNDLES, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Killbill_Bundle', $response, $headers);
-    }
-
-    public function addTags($tags, $user, $reason, $comment, $headers = null) {
-        // TODO This will change
-        $response = $this->_create(Killbill_Client::PATH_BUNDLES . Killbill_Client::PATH_TAGS . '/' . $this->accountId . '?tag_list=' . join(',', $tags, $headers),
-            $user, $reason, $comment);
-        return $this->_getFromResponse('Killbill_Tag', $response, $headers);
     }
 }

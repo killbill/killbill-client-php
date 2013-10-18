@@ -77,4 +77,68 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         $subscriptionRes = $subscription->get($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($subscriptionRes->cancelledDate);
     }
+
+    public function testBundleWithAO() {
+
+
+        $subscriptionData = new Killbill_Subscription();
+        $subscriptionData->accountId =  $this->account->accountId;
+        $subscriptionData->productName = "Super";
+        $subscriptionData->productCategory = "BASE";
+        $subscriptionData->billingPeriod = "MONTHLY";
+        $subscriptionData->priceList = "DEFAULT";
+        $subscriptionData->externalKey = $this->externalBundleId;
+
+        $subscriptionBase = $subscriptionData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $this->assertEquals($subscriptionBase->accountId, $subscriptionData->accountId);
+        $this->assertEquals($subscriptionBase->productName, $subscriptionData->productName);
+        $this->assertEquals($subscriptionBase->productCategory, $subscriptionData->productCategory);
+        $this->assertEquals($subscriptionBase->billingPeriod, $subscriptionData->billingPeriod);
+        $this->assertEquals($subscriptionBase->externalKey, $subscriptionData->externalKey);
+
+        $this->clock->addDays(3, $this->tenant->getTenantHeaders());
+
+        $subscriptionData2 = new Killbill_Subscription();
+        $subscriptionData2->accountId =  $this->account->accountId;
+        $subscriptionData2->productName = "RemoteControl";
+        $subscriptionData2->productCategory = "ADD_ON";
+        $subscriptionData2->billingPeriod = "MONTHLY";
+        $subscriptionData2->priceList = "DEFAULT";
+        $subscriptionData2->externalKey = $this->externalBundleId;
+        $subscriptionData2->bundleId = $subscriptionBase->bundleId;
+
+        $subscriptionAO = $subscriptionData2->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $this->assertEquals($subscriptionAO->accountId, $this->account->accountId);
+        $this->assertEquals($subscriptionAO->productName, $subscriptionData2->productName);
+        $this->assertEquals($subscriptionAO->productCategory, $subscriptionData2->productCategory);
+        $this->assertEquals($subscriptionAO->billingPeriod, $subscriptionData2->billingPeriod);
+        $this->assertEquals($subscriptionAO->priceList, $subscriptionData2->priceList);
+        $this->assertEquals($subscriptionAO->externalKey, $this->externalBundleId);
+
+        $bundle = new Killbill_Bundle();
+        $bundle->bundleId = $subscriptionBase->bundleId;
+        $bundle = $bundle->get($this->tenant->getTenantHeaders());
+        $this->assertNotEmpty($bundle);
+        $this->assertEquals($bundle->accountId, $this->account->accountId);
+        $this->assertEquals($bundle->externalKey, $this->externalBundleId);
+        $this->assertEquals(count($bundle->subscriptions), 2);
+
+        unset($bundle);
+        $bundle = new Killbill_Bundle();
+        $bundle->externalKey = $this->externalBundleId;
+        $bundle = $bundle->getByExternalKey($this->tenant->getTenantHeaders());
+        $this->assertNotEmpty($bundle);
+        $this->assertEquals($bundle->accountId, $this->account->accountId);
+        $this->assertEquals($bundle->externalKey, $this->externalBundleId);
+        $this->assertEquals(count($bundle->subscriptions), 2);
+
+        unset($bundle);
+        $bundle = new Killbill_Bundle();
+        $bundle->bundleId = $subscriptionBase->bundleId;
+        $subscriptions = $bundle->getSubscriptions($this->tenant->getTenantHeaders());
+        $this->assertEquals(count($subscriptions), 2);
+
+        $this->assertEquals($subscriptions[0]->productCategory, 'BASE');
+        $this->assertEquals($subscriptions[1]->productCategory, 'ADD_ON');
+    }
 }
