@@ -18,7 +18,7 @@
 
 require_once(dirname(__FILE__) . '/killbill_test.php');
 
-class Killbill_Server_SubscriptionTest extends KillbillTest
+class Killbill_Server_PaymentMethodTest extends KillbillTest
 {
 
     function setUp()

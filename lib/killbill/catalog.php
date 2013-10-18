@@ -36,7 +36,6 @@ class Killbill_Catalog extends Killbill_CatalogAttributesSimple {
                 $baseProducts [] = $product;
             }
         }
-
         return $baseProducts;
     }
 
@@ -47,7 +46,6 @@ class Killbill_Catalog extends Killbill_CatalogAttributesSimple {
                 $addons [] = $addon;
             }
         }
-
         return $addons;
     }
 }
