@@ -33,6 +33,15 @@ class Killbill_Account extends Killbill_AccountAttributes {
         return $this->_getFromBody('Killbill_Bundle', $response);
     }
 
+    public function getInvoices($withItems, $headers = null) {
+        $uri = Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/invoices';
+        if ($withItems) {
+            $uri = $uri . '?withItems=true';
+        }
+        $response = $this->_get($uri, $headers);
+        return $this->_getFromBody('Killbill_Invoice', $response);
+    }
+
     public function getTags($headers = null) {
         $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS, $headers);
         return $this->_getFromBody('Killbill_Tag', $response);

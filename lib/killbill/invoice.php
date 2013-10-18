@@ -20,13 +20,12 @@ require_once(dirname(__FILE__) . '/gen/killbill_invoice_attributes.php');
 
 class Killbill_Invoice extends Killbill_InvoiceAttributes {
 
-    public function get($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId, $headers);
-        return $this->_getFromBody('Killbill_Invoice', $response);
-    }
-
-    public function getForAccount($accountId, $headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_INVOICES . '?account_id=' . $accountId, $headers);
+    public function get($withItems, $headers = null) {
+        $uri = Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId;
+        if ($withItems) {
+           $uri = $uri . '?withItems=true';
+        }
+        $response = $this->_get($uri, $headers);
         return $this->_getFromBody('Killbill_Invoice', $response);
     }
 
