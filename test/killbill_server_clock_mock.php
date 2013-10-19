@@ -48,6 +48,6 @@ class killbill_ServerClockMock extends Killbill_Resource
         }
         $this->_update($uri, null, null, null, $headers);
         // For precaution
-        usleep(2000000);
+        usleep(3000000);
     }
 }
