@@ -17,7 +17,8 @@
 
 class Killbill_Client {
 
-    public static $serverUrl = 'http://192.168.1.111:8080';
+    //public static $serverUrl = 'http://192.168.1.111:8080';
+    public static $serverUrl = 'http://127.0.0.1:8080';
     public static $apiVersion = '1.0';
     public static $apiKey = 'admin';
     public static $apiSecret = 'password';
