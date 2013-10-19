@@ -1,3 +1,5 @@
+<?php
+
 /*
  * Copyright 2011-2013 Ning, Inc.
  *
@@ -13,7 +15,6 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-<?php
 require_once(dirname(__FILE__) . '/../resource.php');
 
 
