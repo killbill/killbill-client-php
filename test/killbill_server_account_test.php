@@ -65,6 +65,14 @@ class Killbill_Server_AccountTest extends KillbillTest
         $this->assertEquals("My awesome new name", $updatedAccount->name);
     }
 
+    function testOverdueState() {
+
+        $account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+
+        $state = $account->getOverdueState($this->tenant->getTenantHeaders());
+        $this->assertEquals($state->name, '__KILLBILL__CLEAR__OVERDUE_STATE__');
+    }
+
     function testTags()
     {
         $account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());

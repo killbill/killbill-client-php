@@ -65,6 +65,10 @@ class Killbill_Account extends Killbill_AccountAttributes {
         return null;
     }
 
+    public function getOverdueState($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/overdue', $headers);
+        return $this->_getFromBody('Killbill_Overdue', $response);
+    }
 
     public function getPaymentMethods($headers = null) {
         $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/paymentMethods', $headers);
