@@ -29,8 +29,20 @@ class Killbill_Bundle extends Killbill_BundleAttributes {
         return $this->_getFromBody('Killbill_Bundle', $response);
     }
 
-    public function getSubscriptions($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId . '/subscriptions', $headers);
-        return $this->_getFromBody('Killbill_Subscription', $response);
+    public function getTags($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId . Killbill_Client::PATH_TAGS, $headers);
+        return $this->_getFromBody('Killbill_Tag', $response);
+    }
+
+    public function addTags($tags, $user, $reason, $comment, $headers = null) {
+        $response = $this->_create(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId . Killbill_Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
+            $user, $reason, $comment, $headers);
+        return $this->_getFromResponse('Killbill_Tag', $response, $headers);
+    }
+
+    public function deleteTags($tags, $user, $reason, $comment, $headers = null) {
+        $this->_delete(Killbill_Client::PATH_BUNDLES . '/' . $this->bundleId . Killbill_Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
+            $user, $reason, $comment, $headers);
+        return null;
     }
 }

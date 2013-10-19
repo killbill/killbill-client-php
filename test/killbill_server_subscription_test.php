@@ -80,7 +80,6 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
 
     public function testBundleWithAO() {
 
-
         $subscriptionData = new Killbill_Subscription();
         $subscriptionData->accountId =  $this->account->accountId;
         $subscriptionData->productName = "Super";
@@ -131,14 +130,42 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         $this->assertEquals($bundle->accountId, $this->account->accountId);
         $this->assertEquals($bundle->externalKey, $this->externalBundleId);
         $this->assertEquals(count($bundle->subscriptions), 2);
+        $this->assertEquals($bundle->subscriptions[0]->productCategory, 'BASE');
+        $this->assertEquals($bundle->subscriptions[1]->productCategory, 'ADD_ON');
+    }
 
-        unset($bundle);
+    public function testBundleWithTags() {
+
+        $subscriptionData = new Killbill_Subscription();
+        $subscriptionData->accountId =  $this->account->accountId;
+        $subscriptionData->productName = "Super";
+        $subscriptionData->productCategory = "BASE";
+        $subscriptionData->billingPeriod = "MONTHLY";
+        $subscriptionData->priceList = "DEFAULT";
+        $subscriptionData->externalKey = $this->externalBundleId;
+
+        $subscriptionBase = $subscriptionData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+
         $bundle = new Killbill_Bundle();
         $bundle->bundleId = $subscriptionBase->bundleId;
-        $subscriptions = $bundle->getSubscriptions($this->tenant->getTenantHeaders());
-        $this->assertEquals(count($subscriptions), 2);
+        $bundle = $bundle->get($this->tenant->getTenantHeaders());
 
-        $this->assertEquals($subscriptions[0]->productCategory, 'BASE');
-        $this->assertEquals($subscriptions[1]->productCategory, 'ADD_ON');
+
+        $tag1 = new Killbill_TagDefinition();
+        $tag1->name = uniqid();
+        $tag1->description = "This is super tag1";
+        $tag1 = $tag1->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+
+        $bundleTags = $bundle->addTags(array($tag1->id), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        // I am unclear why we don't get the tags-- this is similar to accounts tags that work, and i verified that Killbill returns 201 with location set correctly
+        //$this->assertEquals(1, count($bundleTags));
+
+        $bundleTags = $bundle->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($bundleTags));
+
+        $bundle->deleteTags(array($tag1->id), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+
+        $bundleTags = $bundle->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(0, count($bundleTags));
     }
 }

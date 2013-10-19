@@ -43,14 +43,28 @@ class Killbill_Account extends Killbill_AccountAttributes {
         return $this->_getFromBody('Killbill_Bundle', $response);
     }
 
-    public function getInvoices($withItems, $headers = null) {
+    public function getInvoices($withItems, $unpaidInvoicesOnly, $headers = null) {
+        $first = true;
         $uri = Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/invoices';
         if ($withItems) {
             $uri = $uri . '?withItems=true';
+            $first = false;
         }
+        if ($unpaidInvoicesOnly) {
+            $uri = $uri . ($first ? '?' : '&') . 'unpaidInvoicesOnly=true';
+            $first = false;
+        }
+
         $response = $this->_get($uri, $headers);
         return $this->_getFromBody('Killbill_Invoice', $response);
     }
+
+    public function payAllUnpaidInvoices($user, $reason, $comment, $headers = null) {
+        $uri = Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/payments';
+        $this->_create($uri, $user, $reason, $comment, $headers);
+        return null;
+    }
+
 
     public function getPaymentMethods($headers = null) {
         $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/paymentMethods', $headers);
@@ -66,5 +80,11 @@ class Killbill_Account extends Killbill_AccountAttributes {
         $response = $this->_create(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
             $user, $reason, $comment, $headers);
         return $this->_getFromResponse('Killbill_Tag', $response, $headers);
+    }
+
+    public function deleteTags($tags, $user, $reason, $comment, $headers = null) {
+        $response = $this->_delete(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . Killbill_Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
+            $user, $reason, $comment, $headers);
+        return null;
     }
 }
