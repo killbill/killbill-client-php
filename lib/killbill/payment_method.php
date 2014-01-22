@@ -18,6 +18,10 @@
  */
 
 require_once(dirname(__FILE__) . '/gen/killbill_payment_method_attributes.php');
+require_once(dirname(__FILE__) . '/gen/killbill_payment_method_plugin_detail_attributes.php');
+require_once(dirname(__FILE__) . '/gen/killbill_payment_method_properties.php');
+
+
 
 class Killbill_PaymentMethod extends Killbill_PaymentMethodAttributes {
 

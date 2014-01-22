@@ -15,7 +15,7 @@
  * under the License.
  */
 
-abstract class Killbill_Resource { // implements JsonSerializable {
+abstract class Killbill_Resource /* implements JsonSerializable */ {
 
     protected $_client;
 
@@ -173,13 +173,36 @@ abstract class Killbill_Resource { // implements JsonSerializable {
      *
      * @return json encoded resource
      */
-    private function jsonSerialize() {
-        $keys = get_object_vars($this);
-        // Don't serialize the client
-        unset($keys['_client']);
+    public function jsonSerialize() {
 
-        return json_encode($keys);
+        $keys = get_object_vars($this);
+
+        $x = $this->prepareForSerialization();
+
+        return json_encode($x);
     }
+
+    public function prepareForSerialization() {
+        $keys = get_object_vars($this);
+        unset($keys['_client']);
+        foreach($keys as $k => $v) {
+            if ($v instanceof Killbill_Resource) {
+                $keys[$k] = $v->prepareForSerialization();
+            } else if (is_array($v)) {
+                $keys[$k]  = array();
+                foreach($v as $ve) {
+                    if ($ve instanceof Killbill_Resource) {
+                        array_push($keys[$k], $ve->prepareForSerialization());
+                    } else {
+                        array_push($keys[$k], $ve);
+                    }
+                }
+            }
+        }
+        return $keys;
+    }
+
+
 
     private function initClientIfNeeded() {
         if (is_null($this->_client)) {
