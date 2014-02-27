@@ -22,6 +22,11 @@ We have a Killbill instance running at http://cloudkilling.org:8080 you can play
     
     // Killbill server
     Killbill_Client::$serverUrl = "http://cloudkilling.org:8080";
+
+    // Set these values for your particular tenant
+    $tenant = new Killbill_Tenant();
+    $tenant->apiKey    = 'bob';
+    $tenant->apiSecret = 'lazar';
     
     // Unique id for this account
     $externalAccountId = uniqid();
@@ -44,7 +49,7 @@ We have a Killbill instance running at http://cloudkilling.org:8080 you can play
     $accountData->timeZone = "UTC";
     
     // Create it
-    $createdAccount = $accountData->create("pierre", "PHP_TEST", "Test for " . $externalAccountId);
+    $createdAccount = $accountData->create("pierre", "PHP_TEST", "Test for " . $externalAccountId, $tenant->getTenantHeaders());
 
 
 Requirements
