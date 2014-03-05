@@ -114,11 +114,9 @@ abstract class Killbill_Resource /* implements JsonSerializable */ {
     public function _getFromBody() {
         $args = func_get_args();
         if (func_num_args() == 1) {
-            my_var_dump('at 1');
             $class = get_class($this);
             $response = $args[0];
         } else {
-            my_var_dump('at 2');
             $class = $args[0];
             $response = $args[1];
         }
