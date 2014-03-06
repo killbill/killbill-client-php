@@ -19,12 +19,27 @@ require_once(dirname(__FILE__) . '/gen/killbill_account_attributes.php');
 
 class Killbill_Account extends Killbill_AccountAttributes {
 
-    public function get($headers = null) {
+    public function get($accountWithBalance = false, $accountWithBalanceAndCBA = false, $headers = null) {
         if ($this->accountId) {
-            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $headers);
+            # fetch by account id
+            $uri = Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId;
         } else {
-            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '?external_key=' . $this->externalKey, $headers);
+            # fetch by external id
+            $uri = Killbill_Client::PATH_ACCOUNTS . '?externalKey=' . $this->externalKey;
         }
+
+        if ($accountWithBalance) {
+            $uri   = $uri . '?accountWithBalance=true';
+        }
+
+        # $accountWithBalanceAndCBA always takes precedence over $accountWithBalance
+        # thus, we overwrite the URI below
+        if ($accountWithBalanceAndCBA) {
+            $uri   = $uri . '?accountWithBalanceAndCBA=true';
+        }
+
+        $response = $this->_get($uri, $headers);
+
         return $this->_getFromBody('Killbill_Account', $response);
     }
 
