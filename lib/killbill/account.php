@@ -20,31 +20,23 @@ require_once(dirname(__FILE__) . '/gen/killbill_account_attributes.php');
 class Killbill_Account extends Killbill_AccountAttributes {
 
     public function get($accountWithBalance = false, $accountWithBalanceAndCBA = false, $headers = null) {
-        # keep track of the first parameter on the URI
-        $first = true;
-
         if ($this->accountId) {
             # fetch by account id
             $uri = Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId;
         } else {
             # fetch by external id
-            $uri   = Killbill_Client::PATH_ACCOUNTS . '?externalKey=' . $this->externalKey;
-            $first = false;
+            # if the account id is not present, Kill Bill will fetch by external id.
+            # An error does not occur if externalId is in the query when fetching by account id.
+            $uri   = Killbill_Client::PATH_ACCOUNTS;
         }
 
-        if ($accountWithBalance) {
-            $uri   = $uri . ($first ? '?' : '&') . 'accountWithBalance=true';
-            $first = false;
-        }
+        $params = array(
+            'externalKey'              => $this->externalKey,
+            'accountWithBalance'       => $accountWithBalance       ? 'true' : 'false',
+            'accountWithBalanceAndCBA' => $accountWithBalanceAndCBA ? 'true' : 'false',
+        );
 
-        # $accountWithBalanceAndCBA always takes precedence over $accountWithBalance
-        # thus, we overwrite the URI below
-        if ($accountWithBalanceAndCBA) {
-            $uri   = $uri . ($first ? '?' : '&') . 'accountWithBalanceAndCBA=true';
-            $first = false;
-        }
-
-        $response = $this->_get($uri, $headers);
+        $response = $this->_get($uri, $params, $headers);
 
         return $this->_getFromBody('Killbill_Account', $response);
     }
@@ -65,18 +57,14 @@ class Killbill_Account extends Killbill_AccountAttributes {
     }
 
     public function getInvoices($withItems, $unpaidInvoicesOnly, $headers = null) {
-        $first = true;
         $uri = Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/invoices';
-        if ($withItems) {
-            $uri = $uri . '?withItems=true';
-            $first = false;
-        }
-        if ($unpaidInvoicesOnly) {
-            $uri = $uri . ($first ? '?' : '&') . 'unpaidInvoicesOnly=true';
-            $first = false;
-        }
 
-        $response = $this->_get($uri, $headers);
+        $params = array(
+            'withItems'          => $withItems          ? 'true' : 'false',
+            'unpaidInvoicesOnly' => $unpaidInvoicesOnly ? 'true' : 'false',
+        );
+
+        $response = $this->_get($uri, $params, $headers);
         return $this->_getFromBody('Killbill_Invoice', $response);
     }
 

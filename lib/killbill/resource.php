@@ -25,8 +25,13 @@ abstract class Killbill_Resource /* implements JsonSerializable */ {
      * @param  $uri relative or absolute killbill url
      * @return a response object
      */
-    protected function _get($uri, $headers = null) {
+    protected function _get($uri, $params, $headers = null) {
         $this->initClientIfNeeded();
+
+        $query = $this->_buildQuery($params);
+        if (!empty($query)) {
+            $uri .= '?' . $query;
+        }
 
         return $this->_client->request(Killbill_Client::GET, $uri, null, null, null, null, $headers);
     }
@@ -34,14 +39,20 @@ abstract class Killbill_Resource /* implements JsonSerializable */ {
     /**
      * Issue a POST request to killbill
      *
-     * @param  $uri relative or absolute killbill url
+     * @param  $uri relative or absolute killbill url - should not contain any parameters
+     * 
      * @param  $user user requesting the creation
      * @param  $reason reason for the creation
      * @param  $comment any addition comment
      * @return a response object
      */
-    protected function _create($uri, $user, $reason, $comment, $headers = null) {
+    protected function _create($uri, $user, $reason, $comment, $params, $headers = null) {
         $this->initClientIfNeeded();
+        
+        $query = $this->_buildQuery($params);
+        if (!empty($query)) {
+            $uri .= '?' . $query;
+        }
 
         return $this->_client->request(Killbill_Client::POST, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
     }
@@ -102,6 +113,20 @@ abstract class Killbill_Resource /* implements JsonSerializable */ {
         }
 
         return $this->_getFromBody($class, $getResonse);
+    }
+
+    /**
+     * Given an array of key => value pairs, transform that into a query.  e.g. a=1&b=2&c=234
+     * NOTE: you should translate booleans to 'true'/'false' strings before passing in.
+     *       otherwise, they will be translated to 1/0
+     *
+     * @param  $params array of key=>value pairs
+     * @return a string
+     */
+    protected function _buildQuery($params = array()) {
+        $query = http_build_query($params);
+
+        return $query;
     }
 
     /**

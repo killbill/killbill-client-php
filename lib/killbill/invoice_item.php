@@ -22,18 +22,29 @@ class Killbill_InvoiceItem extends Killbill_InvoiceItemAttributes {
 
     public function createExternalCharge($user, $reason, $comment, $requestedDate = null, $headers = null) {
         # these fields need to be set: $amount, $accountId
-        $uri = Killbill_Client::PATH_INVOICES . '/charges?requestedDate=' . htmlentities($requestedDate);
+        $uri = Killbill_Client::PATH_INVOICES . '/charges';
+        
+        $params = array(
+            'requestedDate' => $requestedDate,
+        );
 
-        $response = $this->_create($uri, $user, $reason, $comment, $headers);
+        $response = $this->_create($uri, $user, $reason, $comment, $params, $headers);
 
         return $this->_getFromBody('Killbill_InvoiceItem', $response);
     }
 
     public function createExternalChargeForInvoice($user, $reason, $comment, $requestedDate = null, $headers = null) {
         # these fields need to be set: amount, accountId, invoiceId
-        $uri = Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId . '/charges?requestedDate=' . htmlentities($requestedDate);
+        $uri = Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId . '/charges';
 
-        $response = $this->_create($uri, $user, $reason, $comment, $headers);
+        $params = array(
+            'requestedDate' => $requestedDate,
+        );
+
+        $response = $this->_create($uri, $user, $reason, $comment, $params, $headers);
+        
+        my_var_dump('$response');
+        my_var_dump($response);
 
         return $this->_getFromBody('Killbill_InvoiceItem', $response);
     }
