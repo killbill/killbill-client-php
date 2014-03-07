@@ -142,8 +142,9 @@ class Killbill_Client {
         $returnHeaders = array();
         foreach ($headers as &$header) {
             preg_match('/([^:]+): (.*)/', $header, $matches);
-            if (sizeof($matches) > 2)
+            if (sizeof($matches) > 2) {
                 $returnHeaders[$matches[1]] = $matches[2];
+            }
         }
 
         return $returnHeaders;
