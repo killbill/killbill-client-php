@@ -123,7 +123,7 @@ abstract class Killbill_Resource /* implements JsonSerializable */ {
 
         $data = $response->body;
         $dataJson = json_decode($data);
-        if ($dataJson == null) {
+        if ($dataJson === null) {
             # cater for lack of X-Killbill-ApiKey and X-Killbill-ApiSecret headers
             if (isset($response->statusCode) && isset($response->body))
             {

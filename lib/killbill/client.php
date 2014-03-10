@@ -112,10 +112,13 @@ class Killbill_Client {
         }
 
         $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
         curl_close($ch);
 
-        list($header, $body) = explode("\r\n\r\n", $response, 2);
+        $header = substr($response, 0, $header_size);
         $headers = $this->_getHeaders($header);
+
+        $body = substr($response, $header_size);
 
         return new Killbill_Response($statusCode, $headers, $body);
     }

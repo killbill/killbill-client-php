@@ -157,8 +157,7 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         $tag1 = $tag1->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $bundleTags = $bundle->addTags(array($tag1->id), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
-        // I am unclear why we don't get the tags-- this is similar to accounts tags that work, and i verified that Killbill returns 201 with location set correctly
-        //$this->assertEquals(1, count($bundleTags));
+        $this->assertEquals(1, count($bundleTags));
 
         $bundleTags = $bundle->getTags($this->tenant->getTenantHeaders());
         $this->assertEquals(1, count($bundleTags));
