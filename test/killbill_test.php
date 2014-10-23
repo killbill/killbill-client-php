@@ -19,7 +19,8 @@ require_once ('PHPUnit/Framework/TestCase.php');
 require_once(dirname(__FILE__) . '/../lib/killbill.php');
 require_once(dirname(__FILE__) . '/killbill_server_clock_mock.php');
 
-class KillbillTest extends PHPUnit_Framework_TestCase {
+class KillbillTest extends PHPUnit_Framework_TestCase
+{
 
     protected $user = 'phpTester';
     protected $reason = 'test';
@@ -27,7 +28,6 @@ class KillbillTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-
         $tenant = new Killbill_Tenant();
         $tenant->externalKey = uniqid();
         $tenant->apiKey = 'test-php-api-key-' . $tenant->externalKey;

@@ -17,7 +17,6 @@
 
 class killbill_ServerClockMock extends Killbill_Resource
 {
-
     public function setClock($requestedDate, $headers)
     {
         $uri = '/test/clock';
@@ -26,7 +25,7 @@ class killbill_ServerClockMock extends Killbill_Resource
         }
         $this->_create($uri, null, null, null, $headers);
         // For precaution
-        usleep(2000000);
+        usleep(3000000);
     }
 
     public function addDays($count, $headers)

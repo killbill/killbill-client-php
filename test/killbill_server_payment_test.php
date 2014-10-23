@@ -19,7 +19,6 @@ require_once(dirname(__FILE__) . '/killbill_test.php');
 
 class Killbill_Server_PaymentTest extends KillbillTest
 {
-
     function setUp()
     {
         parent::setUp();
@@ -43,9 +42,8 @@ class Killbill_Server_PaymentTest extends KillbillTest
         unset($this->account);
     }
 
-
-    function testBasic() {
-
+    function testBasic()
+    {
         # Add AUTO_PAY_OFF to account to end up with unpaid invoices
         $this->account->addTags(array('00000000-0000-0000-0000-000000000001'), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
@@ -80,6 +78,5 @@ class Killbill_Server_PaymentTest extends KillbillTest
 
         $allInvoices = $this->account->getInvoices(true, null, $this->tenant->getTenantHeaders());
         $this->assertEquals(count($allInvoices), 2);
-
     }
 }

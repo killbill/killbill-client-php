@@ -20,7 +20,6 @@ require_once(dirname(__FILE__) . '/killbill_test.php');
 
 class Killbill_Server_InvoiceTest extends KillbillTest
 {
-
     function setUp()
     {
         parent::setUp();
@@ -44,9 +43,8 @@ class Killbill_Server_InvoiceTest extends KillbillTest
         unset($this->account);
     }
 
-
-    function testBasic() {
-
+    function testBasic()
+    {
         $subscriptionData = new Killbill_Subscription();
         $subscriptionData->accountId =  $this->account->accountId;
         $subscriptionData->productName = "Sports";
@@ -64,7 +62,6 @@ class Killbill_Server_InvoiceTest extends KillbillTest
 
         # Move clock after trials
         $this->clock->addDays(31, $this->tenant->getTenantHeaders());
-
 
         # Should see 2 invoices for account
         $invoices = $this->account->getInvoices(true, null, $this->tenant->getTenantHeaders());
@@ -94,5 +91,4 @@ class Killbill_Server_InvoiceTest extends KillbillTest
         $this->assertNotEmpty($invoice->items);
         $this->assertEquals(1, count($invoice->items));
     }
-
 }
