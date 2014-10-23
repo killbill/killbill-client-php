@@ -1,8 +1,11 @@
 <?php
+
 /*
  * Copyright 2011-2012 Ning, Inc.
+ * Copyright 2014 Groupon, Inc.
+ * Copyright 2014 The Billing Project, LLC
  *
- * Ning licenses this file to you under the Apache License, version 2.0
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
  * License.  You may obtain a copy of the License at:
  *
@@ -73,6 +76,11 @@ class Killbill_Account extends Killbill_AccountAttributes {
     public function getPaymentMethods($headers = null) {
         $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/paymentMethods', $headers);
         return $this->_getFromBody('Killbill_PaymentMethod', $response);
+    }
+
+    public function getPayments($headers = null) {
+        $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/payments', $headers);
+        return $this->_getFromBody('Killbill_Payment', $response);
     }
 
     public function getTags($headers = null) {

@@ -17,7 +17,6 @@
 
 class Killbill_Client {
 
-    //public static $serverUrl = 'http://192.168.1.111:8080';
     public static $serverUrl = 'http://127.0.0.1:8080';
     public static $apiVersion = '1.0';
     public static $apiKey = 'admin';
@@ -37,6 +36,8 @@ class Killbill_Client {
     const PATH_CATALOG = '/catalog';
     const PATH_INVOICES = '/invoices';
     const PATH_PAYMENT_METHODS = '/paymentMethods';
+    const PATH_PAYMENTS = '/payments';
+    const PATH_PAYMENT_TRANSACTIONS = '/paymentTransactions';
     const PATH_SUBSCRIPTIONS = '/subscriptions';
     const PATH_TAGS = '/tags';
     const PATH_TAGDEFINITIONS = '/tagDefinitions';

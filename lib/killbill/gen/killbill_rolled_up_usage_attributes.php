@@ -2,8 +2,10 @@
 
 /*
  * Copyright 2011-2013 Ning, Inc.
+ * Copyright 2014 Groupon, Inc.
+ * Copyright 2014 The Billing Project, LLC
  *
- * Ning licenses this file to you under the Apache License, version 2.0
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
  * License.  You may obtain a copy of the License at:
  *
@@ -24,13 +26,9 @@ require_once(dirname(__FILE__) . '/../resource.php');
  */
 
 
-class Killbill_ChargebackAttributes extends Killbill_Resource {
-  protected $chargebackId;
-  protected $accountId;
-  protected $requestedDate;
-  protected $effectiveDate;
-  protected $amount;
-  protected $paymentId;
-  protected $currency;
-  protected $auditLogs;
+class Killbill_RolledUpUsageAttributes extends Killbill_Resource {
+  protected $subscriptionId;
+  protected $startDate;
+  protected $endDate;
+  protected $rolledUpUnits;
 }

@@ -26,11 +26,19 @@ require_once(dirname(__FILE__) . '/../resource.php');
  */
 
 
-class Killbill_CreditAttributes extends Killbill_Resource {
-  protected $creditAmount;
-  protected $invoiceId;
-  protected $invoiceNumber;
-  protected $effectiveDate;
+class Killbill_InvoicePaymentAttributes extends Killbill_Resource {
+  protected $targetInvoiceId;
   protected $accountId;
+  protected $paymentId;
+  protected $paymentNumber;
+  protected $paymentExternalKey;
+  protected $authAmount;
+  protected $capturedAmount;
+  protected $purchasedAmount;
+  protected $refundedAmount;
+  protected $creditedAmount;
+  protected $currency;
+  protected $paymentMethodId;
+  protected $transactions;
   protected $auditLogs;
 }
