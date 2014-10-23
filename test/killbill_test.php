@@ -63,4 +63,9 @@ class KillbillTest extends PHPUnit_Framework_TestCase
         unset($this->tenant);
         unset($this->clock);
     }
+
+    public function testDummyToAvoidWarning()
+    {
+        $this->assertTrue(true);
+    }
 }
