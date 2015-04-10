@@ -26,7 +26,7 @@ class Killbill_Account extends Killbill_AccountAttributes {
         if ($this->accountId) {
             $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId, $headers);
         } else {
-            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '?external_key=' . $this->externalKey, $headers);
+            $response = $this->_get(Killbill_Client::PATH_ACCOUNTS . '?externalKey=' . $this->externalKey, $headers);
         }
         return $this->_getFromBody('Killbill_Account', $response);
     }
