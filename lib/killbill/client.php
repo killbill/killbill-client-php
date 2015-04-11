@@ -19,8 +19,8 @@ class Killbill_Client {
 
     public static $serverUrl = 'http://127.0.0.1:8080';
     public static $apiVersion = '1.0';
-    public static $apiKey = 'admin';
-    public static $apiSecret = 'password';
+    public static $apiUser = 'admin';
+    public static $apiPassword = 'password';
 
     const API_CLIENT_VERSION = '1.0.0';
     const DEFAULT_ENCODING = 'UTF-8';
@@ -84,9 +84,9 @@ class Killbill_Client {
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, $http_headers);
 
-        if (self::__apiKey() != NULL && self::__apiSecret() != NULL) {
+        if (self::__apiUser() != NULL && self::__apiPassword() != NULL) {
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC ) ;
-            curl_setopt($ch, CURLOPT_USERPWD, self::__apiKey() . ":" . self::__apiSecret());
+            curl_setopt($ch, CURLOPT_USERPWD, self::__apiUser() . ":" . self::__apiPassword());
         }
 
         if ('POST' == $method) {
@@ -128,12 +128,12 @@ class Killbill_Client {
         return Killbill_Client::$serverUrl . '/' . Killbill_Client::$apiVersion . '/kb';
     }
 
-    private static function __apiKey() {
-        return Killbill_Client::$apiKey;
+    private static function __apiUser() {
+        return Killbill_Client::$apiUser;
     }
 
-    private static function __apiSecret() {
-        return Killbill_Client::$apiSecret;
+    private static function __apiPassword() {
+        return Killbill_Client::$apiPassword;
     }
 
     private static function __userAgent() {
