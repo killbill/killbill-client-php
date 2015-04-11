@@ -90,7 +90,7 @@ abstract class Killbill_Resource /* implements JsonSerializable */ {
         }
 
         $reponseHeaders = $response->headers;
-        if ($reponseHeaders == NULL || $reponseHeaders['Location'] == NULL) {
+        if ($reponseHeaders == NULL || !isset($reponseHeaders['Location']) || $reponseHeaders['Location'] == NULL) {
             return null;
         }
 
