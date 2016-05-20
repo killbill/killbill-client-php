@@ -45,4 +45,17 @@ class Killbill_Bundle extends Killbill_BundleAttributes {
             $user, $reason, $comment, $headers);
         return null;
     }
+
+    public function pause($date, $user, $reason, $comment, $headers = null) {
+        $this->_update(Killbill_Client::PATH_BUNDLES . '/' .
+            $this->bundleId . '/pause?requestedDate=' . $date, $user, $reason, $comment, $headers);
+        return null;
+    }
+
+    public function resume($date, $user, $reason, $comment, $headers = null) {
+        $this->_update(Killbill_Client::PATH_BUNDLES . '/' .
+            $this->bundleId . '/resume?requestedDate=' . $date, $user, $reason, $comment, $headers);
+        return null;
+    }
+
 }
