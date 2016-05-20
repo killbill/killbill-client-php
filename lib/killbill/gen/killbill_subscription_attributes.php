@@ -41,7 +41,5 @@ class Killbill_SubscriptionAttributes extends Killbill_Resource {
   protected $billingStartDate;
   protected $billingEndDate;
   protected $events;
-  protected $newEvents;
-  protected $deletedEvents;
   protected $auditLogs;
 }

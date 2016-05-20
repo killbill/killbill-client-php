@@ -21,7 +21,7 @@ class Killbill_Catalog extends Killbill_CatalogAttributesSimple {
     private $fullCatalog;
 
     public function initialize($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_CATALOG . '/simpleCatalog', $headers);
+        $response = $this->_get(Killbill_Client::PATH_CATALOG, $headers);
         $this->fullCatalog = json_decode($response->body);
     }
 
