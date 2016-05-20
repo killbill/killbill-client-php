@@ -23,7 +23,10 @@ class Killbill_Tenant extends Killbill_TenantAttributes
 
     public function get($headers = null)
     {
-        $response = $this->_get(Killbill_Client::PATH_TENANTS . '/' . $this->tenantId, $headers);
+
+        $response = $this->_get(Killbill_Client::PATH_TENANTS . ( isset($this->tenantId) ? '/' .$this->tenantId : '?apiKey=' . $this->$apiKey), $headers);
+
+
         return $this->_getFromBody('Killbill_Tenant', $response);
     }
 
