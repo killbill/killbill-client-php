@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright 2011-2012 Ning, Inc.
+ * Copyright 2011-2017 Ning, Inc.
  * Copyright 2014 Groupon, Inc.
  * Copyright 2014 The Billing Project, LLC
  *
