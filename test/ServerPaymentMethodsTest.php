@@ -15,10 +15,9 @@
  * under the License.
  */
 
+namespace Killbill\Client;
 
-require_once(dirname(__FILE__) . '/killbill_test.php');
-
-class Killbill_Server_PaymentMethodTest extends KillbillTest
+class ServerPaymentMethodTest extends KillbillTest
 {
 
     function setUp()
@@ -26,7 +25,6 @@ class Killbill_Server_PaymentMethodTest extends KillbillTest
         parent::setUp();
         $this->externalBundleId = uniqid();
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
-
     }
 
     function tearDown()
@@ -38,8 +36,7 @@ class Killbill_Server_PaymentMethodTest extends KillbillTest
 
 
     function testBasic() {
-
-        $paymentMethod = new Killbill_PaymentMethod();
+        $paymentMethod = new PaymentMethod();
         $paymentMethod->accountId = $this->account->accountId;
         $paymentMethod->isDefault = true;
         $paymentMethod->pluginName = '__EXTERNAL_PAYMENT__';
