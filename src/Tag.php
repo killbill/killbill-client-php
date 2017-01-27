@@ -15,7 +15,9 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_tag_attributes.php');
+namespace Killbill\Client;
 
-class Killbill_Tag extends Killbill_TagAttributes {
+use Type\TagAttributes;
+
+class Tag extends TagAttributes {
 }
