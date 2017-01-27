@@ -18,9 +18,9 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/killbill_test.php');
+namespace Killbill\Client;
 
-class Killbill_Server_PaymentTest extends KillbillTest
+class ServerPaymentTest extends KillbillTest
 {
     function setUp()
     {
@@ -28,7 +28,7 @@ class Killbill_Server_PaymentTest extends KillbillTest
         $this->externalBundleId = uniqid();
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
-        $paymentMethod = new Killbill_PaymentMethod();
+        $paymentMethod = new PaymentMethod();
         $paymentMethod->accountId = $this->account->accountId;
         $paymentMethod->isDefault = true;
         $paymentMethod->pluginName = '__EXTERNAL_PAYMENT__';
@@ -50,7 +50,7 @@ class Killbill_Server_PaymentTest extends KillbillTest
         # Add AUTO_PAY_OFF to account to end up with unpaid invoices
         $this->account->addTags(array('00000000-0000-0000-0000-000000000001'), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
-        $subscriptionData = new Killbill_Subscription();
+        $subscriptionData = new Subscription();
         $subscriptionData->accountId = $this->account->accountId;
         $subscriptionData->productName = "Sports";
         $subscriptionData->productCategory = "BASE";
@@ -85,7 +85,7 @@ class Killbill_Server_PaymentTest extends KillbillTest
 
     function testAuthCaptureRefund()
     {
-        $paymentData = new Killbill_Transaction();
+        $paymentData = new Transaction();
         $paymentData->amount = 10;
         $paymentData->currency = 'USD';
         $payment = $paymentData->createAuthorization($this->account->accountId, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
@@ -112,7 +112,7 @@ class Killbill_Server_PaymentTest extends KillbillTest
 
     function testAuthVoid()
     {
-        $paymentData = new Killbill_Transaction();
+        $paymentData = new Transaction();
         $paymentData->amount = 10;
         $paymentData->currency = 'USD';
         $payment = $paymentData->createAuthorization($this->account->accountId, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
@@ -128,7 +128,7 @@ class Killbill_Server_PaymentTest extends KillbillTest
 
     function testPurchaseCredit()
     {
-        $paymentData = new Killbill_Transaction();
+        $paymentData = new Transaction();
         $paymentData->amount = 10;
         $paymentData->currency = 'USD';
         $payment = $paymentData->createPurchase($this->account->accountId, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
