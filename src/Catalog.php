@@ -15,13 +15,15 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_catalog_attributes_simple.php');
+namespace Killbill\Client;
 
-class Killbill_Catalog extends Killbill_CatalogAttributesSimple {
+use Type\CatalogAttributes;
+
+class Catalog extends CatalogAttributes {
     private $fullCatalog;
 
     public function initialize($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_CATALOG, $headers);
+        $response = $this->_get(Client::PATH_CATALOG, $headers);
         $this->fullCatalog = json_decode($response->body);
     }
 
