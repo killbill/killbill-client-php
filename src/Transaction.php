@@ -2,7 +2,7 @@
 
 /*
  * Copyright 2014 Groupon, Inc.
- * Copyright 2014 The Billing Project, LLC
+ * Copyright 2014 - 2017 The Billing Project, LLC
  *
  * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
@@ -17,9 +17,11 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_payment_transaction_attributes.php');
+namespace Killbill\Client;
 
-class Killbill_Transaction extends Killbill_PaymentTransactionAttributes
+use Type\PaymentTransactionAttributes;
+
+class Transaction extends PaymentTransactionAttributes
 {
     public function createAuthorization($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
@@ -41,32 +43,32 @@ class Killbill_Transaction extends Killbill_PaymentTransactionAttributes
 
     public function createCapture($user, $reason, $comment, $headers = null)
     {
-        $uri = Killbill_Client::PATH_PAYMENTS . '/' . $this->paymentId;
+        $uri = Client::PATH_PAYMENTS . '/' . $this->paymentId;
         return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
     }
 
     public function createRefund($user, $reason, $comment, $headers = null)
     {
-        $uri = Killbill_Client::PATH_PAYMENTS . '/' . $this->paymentId . '/refunds';
+        $uri = Client::PATH_PAYMENTS . '/' . $this->paymentId . '/refunds';
         return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
     }
 
     public function createChargeback($user, $reason, $comment, $headers = null)
     {
-        $uri = Killbill_Client::PATH_PAYMENTS . '/' . $this->paymentId . '/chargebacks';
+        $uri = Client::PATH_PAYMENTS . '/' . $this->paymentId . '/chargebacks';
         return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
     }
 
     public function createVoid($user, $reason, $comment, $headers = null)
     {
-        $uri = Killbill_Client::PATH_PAYMENTS . '/' . $this->paymentId;
+        $uri = Client::PATH_PAYMENTS . '/' . $this->paymentId;
         $response = $this->_delete($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Killbill_Payment', $response, $headers);
+        return $this->_getFromResponse('Payment', $response, $headers);
     }
 
     public function _createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
-        $uri = Killbill_Client::PATH_ACCOUNTS . '/' . $accountId . '/payments';
+        $uri = Client::PATH_ACCOUNTS . '/' . $accountId . '/payments';
         if ($paymentMethodId) {
             $uri = $uri . '?paymentMethodId=' . $paymentMethodId;
         }
@@ -76,6 +78,6 @@ class Killbill_Transaction extends Killbill_PaymentTransactionAttributes
     public function _createTransaction($uri, $user, $reason, $comment, $headers = null)
     {
         $response = $this->_create($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Killbill_Payment', $response, $headers);
+        return $this->_getFromResponse('Payment', $response, $headers);
     }
 }
