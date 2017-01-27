@@ -15,7 +15,9 @@
  * under the License.
  */
 
-abstract class Killbill_Resource /* implements JsonSerializable */ {
+namespace Killbill\Client;
+
+abstract class Resource /* implements JsonSerializable */ {
 
     protected $_client;
 
