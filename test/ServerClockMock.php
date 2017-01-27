@@ -15,7 +15,9 @@
  * under the License.
  */
 
-class killbill_ServerClockMock extends Killbill_Resource
+namespace Killbill\Client;
+
+class ServerClockMock extends Resource
 {
     public function setClock($requestedDate, $headers)
     {
