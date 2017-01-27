@@ -15,13 +15,15 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_subscription_attributes.php');
+namespace Killbill\Client;
 
-class Killbill_Subscription extends Killbill_SubscriptionAttributes {
+use Type\SubscriptionAttributes;
+
+class Subscription extends SubscriptionAttributes {
 
     public function get($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $headers);
-        return $this->_getFromBody('Killbill_Subscription', $response, $headers);
+        $response = $this->_get(Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $headers);
+        return $this->_getFromBody('Subscription', $response, $headers);
     }
 
     public function create($user, $reason, $comment, $headers = null) {
@@ -29,12 +31,12 @@ class Killbill_Subscription extends Killbill_SubscriptionAttributes {
     }
 
     public function createAndWait($wait, $user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Killbill_Client::PATH_SUBSCRIPTIONS . '?call_completion=' . ($wait ? 'true' : 'false'), $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Killbill_Subscription', $response, $headers);
+        $response = $this->_create(Client::PATH_SUBSCRIPTIONS . '?call_completion=' . ($wait ? 'true' : 'false'), $user, $reason, $comment, $headers);
+        return $this->_getFromResponse('Subscription', $response, $headers);
     }
 
     public function changePlan($requestedDate, $billingPolicy,  $callCompletion, $user, $reason, $comment, $headers = null) {
-        $uri = Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId;
+        $uri = Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId;
         $first = true;
         if ($requestedDate) {
             $uri = $uri . ($first ? '?' : '&') . 'requestedDate=' . $requestedDate;
@@ -49,16 +51,16 @@ class Killbill_Subscription extends Killbill_SubscriptionAttributes {
             $first = false;
         }
         $response = $this->_update($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Killbill_Subscription', $response);
+        return $this->_getFromBody('Subscription', $response);
     }
 
     public function reinstate($user, $reason, $comment, $headers = null) {
-        $response = $this->_update(Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId . '/uncancel', $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Killbill_Subscription', $response);
+        $response = $this->_update(Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId . '/uncancel', $user, $reason, $comment, $headers);
+        return $this->_getFromBody('Subscription', $response);
     }
 
     public function cancel($requestedDate, $entitlementPolicy, $billingPolicy, $useRequestedDateForBilling, $callCompletion, $user, $reason, $comment, $headers = null) {
-        $uri = Killbill_Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId;
+        $uri = Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId;
         $first = true;
         if ($requestedDate) {
             $uri = $uri . ($first ? '?' : '&') . 'requestedDate=' . $requestedDate;
@@ -81,6 +83,6 @@ class Killbill_Subscription extends Killbill_SubscriptionAttributes {
             $first = false;
         }
         $response = $this->_delete($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Killbill_Subscription', $response);
+        return $this->_getFromBody('Subscription', $response);
     }
 }
