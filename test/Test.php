@@ -15,10 +15,12 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/../lib/killbill.php');
-require_once(dirname(__FILE__) . '/killbill_server_clock_mock.php');
+// require_once(dirname(__FILE__) . '/../lib/killbill.php');
+// require_once(dirname(__FILE__) . '/killbill_server_clock_mock.php');
 
-class KillbillTest extends PHPUnit_Framework_TestCase
+namespace Killbill\Client;
+
+class Test extends \PHPUnit_Framework_TestCase
 {
 
     protected $user = 'phpTester';
@@ -27,19 +29,19 @@ class KillbillTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $tenant = new Killbill_Tenant();
+        $tenant = new Tenant();
         $tenant->externalKey = uniqid();
         $tenant->apiKey = 'test-php-api-key-' . $tenant->externalKey;
         $tenant->apiSecret = 'test-php-api-secret-' . $tenant->externalKey;
         $this->tenant = $tenant->create($this->user, $this->reason, $this->comment);
         $this->tenant->apiSecret = $tenant->apiSecret;
 
-        $this->clock = new killbill_ServerClockMock();
+        $this->clock = new ServerClockMock();
         // Reset clock to now
         $this->clock->setClock(null, $this->tenant->getTenantHeaders());
 
         $this->externalAccountId = uniqid();
-        $this->accountData = new Killbill_Account();
+        $this->accountData = new Account();
         $this->accountData->name = "Killbill php test";
         $this->accountData->externalKey = $this->externalAccountId;
         $this->accountData->email = "test-" . $this->externalAccountId . "@kill-bill.org";
