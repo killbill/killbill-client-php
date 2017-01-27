@@ -17,9 +17,9 @@
  */
 
 
-require_once(dirname(__FILE__) . '/killbill_test.php');
+namespace Killbill\Client;
 
-class Killbill_Server_CatalogTest extends KillbillTest
+class ServerCatalogTest extends KillbillTest
 {
 
     function setUp()
@@ -35,7 +35,7 @@ class Killbill_Server_CatalogTest extends KillbillTest
     }
 
     public function testBasic() {
-        $catalog = new Killbill_Catalog();
+        $catalog = new Catalog();
         $catalog->initialize($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($catalog->getFullCatalog());
         $this->assertEquals(count($catalog->getFullCatalog()->products), 6);
