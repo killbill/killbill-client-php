@@ -20,7 +20,7 @@
 
 namespace Killbill\Client;
 
-class Test extends \PHPUnit_Framework_TestCase
+class KillbillTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $user = 'phpTester';
