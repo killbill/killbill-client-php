@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PhaseAttributes extends Killbill_Resource {
+class PhaseAttributes extends \Killbill\Client\Resource {
   protected $type;
   protected $prices;
   protected $fixedPrices;

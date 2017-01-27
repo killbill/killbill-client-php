@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class CatalogAttributes extends Killbill_Resource {
+class CatalogAttributes extends \Killbill\Client\Resource {
   protected $name;
   protected $effectiveDate;
   protected $currencies;

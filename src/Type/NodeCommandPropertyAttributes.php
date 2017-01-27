@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class NodeCommandPropertyAttributes extends Killbill_Resource {
+class NodeCommandPropertyAttributes extends \Killbill\Client\Resource {
   protected $key;
   protected $value;
 }

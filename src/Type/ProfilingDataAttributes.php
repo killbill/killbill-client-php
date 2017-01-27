@@ -26,6 +26,6 @@ namespace Killbill\Client\Type;
  */
 
 
-class ProfilingDataAttributes extends Killbill_Resource {
+class ProfilingDataAttributes extends \Killbill\Client\Resource {
   protected $rawData;
 }

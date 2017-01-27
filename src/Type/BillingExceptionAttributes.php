@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class BillingExceptionAttributes extends Killbill_Resource {
+class BillingExceptionAttributes extends \Killbill\Client\Resource {
   protected $className;
   protected $code;
   protected $message;

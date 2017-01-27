@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class OverdueStateConfigAttributes extends Killbill_Resource {
+class OverdueStateConfigAttributes extends \Killbill\Client\Resource {
   protected $name;
   protected $isClearState;
   protected $condition;

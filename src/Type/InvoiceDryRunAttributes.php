@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class InvoiceDryRunAttributes extends Killbill_Resource {
+class InvoiceDryRunAttributes extends \Killbill\Client\Resource {
   protected $dryRunType;
   protected $dryRunAction;
   protected $phaseType;

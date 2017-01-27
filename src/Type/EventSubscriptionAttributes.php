@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class EventSubscriptionAttributes extends Killbill_Resource {
+class EventSubscriptionAttributes extends \Killbill\Client\Resource {
   protected $eventId;
   protected $billingPeriod;
   protected $effectiveDt;

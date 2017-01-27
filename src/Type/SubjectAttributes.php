@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class SubjectAttributes extends Killbill_Resource {
+class SubjectAttributes extends \Killbill\Client\Resource {
   protected $principal;
   protected $isAuthenticated;
   protected $isRemembered;

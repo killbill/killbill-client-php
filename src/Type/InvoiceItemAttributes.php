@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class InvoiceItemAttributes extends Killbill_Resource {
+class InvoiceItemAttributes extends \Killbill\Client\Resource {
   protected $invoiceItemId;
   protected $invoiceId;
   protected $linkedInvoiceItemId;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PluginServiceInfoAttributes extends Killbill_Resource {
+class PluginServiceInfoAttributes extends \Killbill\Client\Resource {
   protected $serviceTypeName;
   protected $registrationName;
 }

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class ProfilingDataAttributesItem extends Killbill_Resource {
+class ProfilingDataAttributesItem extends \Killbill\Client\Resource {
   protected $name;
   protected $startUsec;
   protected $durationUsec;

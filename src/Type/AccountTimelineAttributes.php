@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class AccountTimelineAttributes extends Killbill_Resource {
+class AccountTimelineAttributes extends \Killbill\Client\Resource {
   protected $account;
   protected $bundles;
   protected $invoices;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class SubscriptionUsageRecordAttributes extends Killbill_Resource {
+class SubscriptionUsageRecordAttributes extends \Killbill\Client\Resource {
   protected $subscriptionId;
   protected $trackingId;
   protected $unitUsageRecords;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class AdminPaymentAttributes extends Killbill_Resource {
+class AdminPaymentAttributes extends \Killbill\Client\Resource {
   protected $lastSuccessPaymentState;
   protected $currentPaymentStateName;
   protected $transactionStatus;

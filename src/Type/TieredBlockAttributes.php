@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class TieredBlockAttributes extends Killbill_Resource {
+class TieredBlockAttributes extends \Killbill\Client\Resource {
   protected $unit;
   protected $size;
   protected $max;

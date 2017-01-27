@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class AccountAttributes extends Killbill_Resource {
+class AccountAttributes extends \Killbill\Client\Resource {
   protected $accountId;
   protected $name;
   protected $firstNameLength;

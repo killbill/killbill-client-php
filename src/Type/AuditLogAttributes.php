@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class AuditLogAttributes extends Killbill_Resource {
+class AuditLogAttributes extends \Killbill\Client\Resource {
   protected $changeType;
   protected $changeDate;
   protected $changedBy;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class RolledUpUsageAttributes extends Killbill_Resource {
+class RolledUpUsageAttributes extends \Killbill\Client\Resource {
   protected $subscriptionId;
   protected $startDate;
   protected $endDate;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class HostedPaymentPageFormDescriptorAttributes extends Killbill_Resource {
+class HostedPaymentPageFormDescriptorAttributes extends \Killbill\Client\Resource {
   protected $kbAccountId;
   protected $formMethod;
   protected $formUrl;

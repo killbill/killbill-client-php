@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class SessionAttributes extends Killbill_Resource {
+class SessionAttributes extends \Killbill\Client\Resource {
   protected $id;
   protected $startDate;
   protected $lastAccessDate;

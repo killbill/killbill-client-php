@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class BlockingStateAttributes extends Killbill_Resource {
+class BlockingStateAttributes extends \Killbill\Client\Resource {
   protected $blockedId;
   protected $stateName;
   protected $service;

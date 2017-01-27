@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PriceAttributes extends Killbill_Resource {
+class PriceAttributes extends \Killbill\Client\Resource {
   protected $currency;
   protected $value;
 }

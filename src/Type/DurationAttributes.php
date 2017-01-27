@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class DurationAttributes extends Killbill_Resource {
+class DurationAttributes extends \Killbill\Client\Resource {
   protected $unit;
   protected $number;
 }

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class UsageAttributes extends Killbill_Resource {
+class UsageAttributes extends \Killbill\Client\Resource {
   protected $billingPeriod;
   protected $tiers;
 }

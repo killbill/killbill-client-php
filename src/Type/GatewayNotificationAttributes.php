@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class GatewayNotificationAttributes extends Killbill_Resource {
+class GatewayNotificationAttributes extends \Killbill\Client\Resource {
   protected $kbPaymentId;
   protected $status;
   protected $entity;

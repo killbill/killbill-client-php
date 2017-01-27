@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PhasePriceOverrideAttributes extends Killbill_Resource {
+class PhasePriceOverrideAttributes extends \Killbill\Client\Resource {
   protected $planName;
   protected $phaseName;
   protected $phaseType;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class TagDefinitionAttributes extends Killbill_Resource {
+class TagDefinitionAttributes extends \Killbill\Client\Resource {
   protected $id;
   protected $isControlTag;
   protected $name;

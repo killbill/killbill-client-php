@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class UsageRecordAttributes extends Killbill_Resource {
+class UsageRecordAttributes extends \Killbill\Client\Resource {
   protected $recordDate;
   protected $amount;
 }

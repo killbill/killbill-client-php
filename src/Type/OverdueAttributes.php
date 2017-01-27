@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class OverdueAttributes extends Killbill_Resource {
+class OverdueAttributes extends \Killbill\Client\Resource {
   protected $initialReevaluationInterval;
   protected $overdueStates;
 }

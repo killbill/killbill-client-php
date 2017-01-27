@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class LimitAttributes extends Killbill_Resource {
+class LimitAttributes extends \Killbill\Client\Resource {
   protected $unit;
   protected $max;
   protected $min;

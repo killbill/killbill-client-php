@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class AccountEmailAttributes extends Killbill_Resource {
+class AccountEmailAttributes extends \Killbill\Client\Resource {
   protected $accountId;
   protected $email;
 }

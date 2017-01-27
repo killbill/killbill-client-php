@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class StackTraceElementAttributes extends Killbill_Resource {
+class StackTraceElementAttributes extends \Killbill\Client\Resource {
   protected $className;
   protected $fileName;
   protected $lineNumber;

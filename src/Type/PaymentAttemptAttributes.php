@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PaymentAttemptAttributes extends Killbill_Resource {
+class PaymentAttemptAttributes extends \Killbill\Client\Resource {
   protected $accountId;
   protected $paymentMethodId;
   protected $paymentExternalKey;

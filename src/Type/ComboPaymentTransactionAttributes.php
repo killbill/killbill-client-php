@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class ComboPaymentTransactionAttributes extends Killbill_Resource {
+class ComboPaymentTransactionAttributes extends \Killbill\Client\Resource {
   protected $account;
   protected $paymentMethod;
   protected $transaction;

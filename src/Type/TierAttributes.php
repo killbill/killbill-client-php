@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class TierAttributes extends Killbill_Resource {
+class TierAttributes extends \Killbill\Client\Resource {
   protected $tiers;
   protected $limits;
   protected $fixedPrice;

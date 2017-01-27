@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class NotificationAttributes extends Killbill_Resource {
+class NotificationAttributes extends \Killbill\Client\Resource {
   protected $eventType;
   protected $accountId;
   protected $objectType;

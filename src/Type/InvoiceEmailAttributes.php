@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class InvoiceEmailAttributes extends Killbill_Resource {
+class InvoiceEmailAttributes extends \Killbill\Client\Resource {
   protected $accountId;
   protected $isNotifiedForInvoices;
 }

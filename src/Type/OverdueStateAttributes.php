@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class OverdueStateAttributes extends Killbill_Resource {
+class OverdueStateAttributes extends \Killbill\Client\Resource {
   protected $name;
   protected $externalMessage;
   protected $daysBetweenPaymentRetries;

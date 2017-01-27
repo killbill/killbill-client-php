@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class BundleTimelineAttributes extends Killbill_Resource {
+class BundleTimelineAttributes extends \Killbill\Client\Resource {
   protected $accountId;
   protected $bundleId;
   protected $externalKey;

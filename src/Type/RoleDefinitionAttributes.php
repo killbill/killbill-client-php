@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class RoleDefinitionAttributes extends Killbill_Resource {
+class RoleDefinitionAttributes extends \Killbill\Client\Resource {
   protected $role;
   protected $permissions;
 }

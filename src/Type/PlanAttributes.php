@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PlanAttributes extends Killbill_Resource {
+class PlanAttributes extends \Killbill\Client\Resource {
   protected $name;
   protected $billingPeriod;
   protected $phases;

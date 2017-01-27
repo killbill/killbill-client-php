@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class HostedPaymentPageBillingAddressAttributes extends Killbill_Resource {
+class HostedPaymentPageBillingAddressAttributes extends \Killbill\Client\Resource {
   protected $city;
   protected $address1;
   protected $address2;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class TenantKeyAttributes extends Killbill_Resource {
+class TenantKeyAttributes extends \Killbill\Client\Resource {
   protected $key;
   protected $values;
 }

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class InvoiceAttributes extends Killbill_Resource {
+class InvoiceAttributes extends \Killbill\Client\Resource {
   protected $amount;
   protected $currency;
   protected $status;

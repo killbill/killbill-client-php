@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class SubscriptionAttributes extends Killbill_Resource {
+class SubscriptionAttributes extends \Killbill\Client\Resource {
   protected $accountId;
   protected $bundleId;
   protected $subscriptionId;

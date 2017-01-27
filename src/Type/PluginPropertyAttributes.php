@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PluginPropertyAttributes extends Killbill_Resource {
+class PluginPropertyAttributes extends \Killbill\Client\Resource {
   protected $key;
   protected $value;
   protected $isUpdatable;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class SimplePlanAttributes extends Killbill_Resource {
+class SimplePlanAttributes extends \Killbill\Client\Resource {
   protected $planId;
   protected $productName;
   protected $productCategory;

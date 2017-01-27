@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class NodeInfoAttributes extends Killbill_Resource {
+class NodeInfoAttributes extends \Killbill\Client\Resource {
   protected $nodeName;
   protected $bootTime;
   protected $lastUpdatedDate;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PaymentMethodPluginDetailAttributes extends Killbill_Resource {
+class PaymentMethodPluginDetailAttributes extends \Killbill\Client\Resource {
   protected $externalPaymentMethodId;
   protected $isDefaultPaymentMethod;
   protected $properties;

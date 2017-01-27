@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class CustomFieldAttributes extends Killbill_Resource {
+class CustomFieldAttributes extends \Killbill\Client\Resource {
   protected $customFieldId;
   protected $objectId;
   protected $objectType;

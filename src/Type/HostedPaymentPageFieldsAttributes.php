@@ -26,6 +26,6 @@ namespace Killbill\Client\Type;
  */
 
 
-class HostedPaymentPageFieldsAttributes extends Killbill_Resource {
+class HostedPaymentPageFieldsAttributes extends \Killbill\Client\Resource {
   protected $formFields;
 }

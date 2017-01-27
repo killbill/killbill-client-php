@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class OverdueConditionAttributes extends Killbill_Resource {
+class OverdueConditionAttributes extends \Killbill\Client\Resource {
   protected $timeSinceEarliestUnpaidInvoiceEqualsOrExceeds;
   protected $controlTagInclusion;
   protected $controlTagExclusion;

@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class RolledUpUnitAttributes extends Killbill_Resource {
+class RolledUpUnitAttributes extends \Killbill\Client\Resource {
   protected $unitType;
   protected $amount;
 }

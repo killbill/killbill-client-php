@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PluginInfoAttributes extends Killbill_Resource {
+class PluginInfoAttributes extends \Killbill\Client\Resource {
   protected $bundleSymbolicName;
   protected $pluginKey;
   protected $pluginName;

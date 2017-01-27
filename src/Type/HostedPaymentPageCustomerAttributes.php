@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class HostedPaymentPageCustomerAttributes extends Killbill_Resource {
+class HostedPaymentPageCustomerAttributes extends \Killbill\Client\Resource {
   protected $firstName;
   protected $lastName;
   protected $email;

@@ -26,6 +26,6 @@ namespace Killbill\Client\Type;
  */
 
 
-class BulkBaseSubscriptionAndAddOnsAttributes extends Killbill_Resource {
+class BulkBaseSubscriptionAndAddOnsAttributes extends \Killbill\Client\Resource {
   protected $baseEntitlementAndAddOns;
 }

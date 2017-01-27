@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class ComboHostedPaymentPageAttributes extends Killbill_Resource {
+class ComboHostedPaymentPageAttributes extends \Killbill\Client\Resource {
   protected $account;
   protected $paymentMethod;
   protected $hostedPaymentPageFields;

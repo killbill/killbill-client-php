@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class NodeCommandAttributes extends Killbill_Resource {
+class NodeCommandAttributes extends \Killbill\Client\Resource {
   protected $systemCommandType;
   protected $nodeCommandType;
   protected $nodeCommandProperties;

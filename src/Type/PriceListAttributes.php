@@ -26,7 +26,7 @@ namespace Killbill\Client\Type;
  */
 
 
-class PriceListAttributes extends Killbill_Resource {
+class PriceListAttributes extends \Killbill\Client\Resource {
   protected $name;
   protected $plans;
 }
