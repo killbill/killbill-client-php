@@ -15,22 +15,24 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_tag_definition_attributes.php');
+namespace Killbill\Client;
 
-class Killbill_TagDefinition extends Killbill_TagDefinitionAttributes {
+use Type\TagDefinitionAttributes;
+
+class TagDefinition extends TagDefinitionAttributes {
 
     public function get($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_TAGDEFINITIONS . '/' . $this->accountId, $headers);
-        return $this->_getFromBody('Killbill_TagDefinition', $response);
+        $response = $this->_get(Client::PATH_TAGDEFINITIONS . '/' . $this->accountId, $headers);
+        return $this->_getFromBody('TagDefinition', $response);
     }
 
     public function create($user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Killbill_Client::PATH_TAGDEFINITIONS, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Killbill_TagDefinition', $response, $headers);
+        $response = $this->_create(Client::PATH_TAGDEFINITIONS, $user, $reason, $comment, $headers);
+        return $this->_getFromResponse('TagDefinition', $response, $headers);
     }
 
     public function delete($user, $reason, $comment, $headers = null) {
-        $response = $this->_delete(Killbill_Client::PATH_TAGDEFINITIONS . '/' . $this->name, $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Killbill_TagDefinition', $response, $headers);
+        $response = $this->_delete(Client::PATH_TAGDEFINITIONS . '/' . $this->name, $user, $reason, $comment, $headers);
+        return $this->_getFromBody('TagDefinition', $response, $headers);
     }
 }
