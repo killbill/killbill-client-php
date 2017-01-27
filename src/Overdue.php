@@ -16,8 +16,11 @@
 * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_overdue_state_attributes.php');
+namespace Killbill\Client;
 
-class Killbill_Overdue extends Killbill_OverdueStateAttributes {
+use Type\OverdueStateAttributes;
+
+
+class Overdue extends OverdueStateAttributes {
 
 }
