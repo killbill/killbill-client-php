@@ -4,7 +4,7 @@
     "type": "library",
     "autoload": {
       "psr-4": {
-        "Killbill\\Client\\": "lib/"
+        "Killbill\\Client\\": "src/"
       }
     },
     "license": "Apache",
