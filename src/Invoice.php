@@ -15,22 +15,23 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_invoice_attributes.php');
+namespace Killbill\Client;
 
+use Type\InvoiceAttributes;
 
-class Killbill_Invoice extends Killbill_InvoiceAttributes {
+class Invoice extends InvoiceAttributes {
 
     public function get($withItems, $headers = null) {
-        $uri = Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId;
+        $uri = Client::PATH_INVOICES . '/' . $this->invoiceId;
         if ($withItems) {
            $uri = $uri . '?withItems=true';
         }
         $response = $this->_get($uri, $headers);
-        return $this->_getFromBody('Killbill_Invoice', $response);
+        return $this->_getFromBody('Invoice', $response);
     }
 
     public function getInvoiceAsHTML($headers = null) {
-        $response = $this->_get(Killbill_Client::PATH_INVOICES . '/' . $this->invoiceId . '/html', $headers);
+        $response = $this->_get(Client::PATH_INVOICES . '/' . $this->invoiceId . '/html', $headers);
         return $response->body;
     }
 }
