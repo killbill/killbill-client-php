@@ -15,7 +15,9 @@
  * under the License.
  */
 
-class Killbill_Client {
+namespace Killbill\Client;
+
+class Client {
 
     public static $serverUrl = 'http://127.0.0.1:8080';
     public static $apiVersion = '1.0';
