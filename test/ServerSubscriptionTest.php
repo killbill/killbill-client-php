@@ -16,9 +16,9 @@
  */
 
 
-require_once(dirname(__FILE__) . '/killbill_test.php');
+namespace Killbill\Client;
 
-class Killbill_Server_SubscriptionTest extends KillbillTest
+class ServerSubscriptionTest extends KillbillTest
 {
 
     function setUp()
@@ -27,7 +27,7 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         $this->externalBundleId = uniqid();
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
-        $paymentMethod = new Killbill_PaymentMethod();
+        $paymentMethod = new PaymentMethod();
         $paymentMethod->accountId = $this->account->accountId;
         $paymentMethod->isDefault = true;
         $paymentMethod->pluginName = '__EXTERNAL_PAYMENT__';
@@ -47,7 +47,7 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
 
     function testBasic() {
 
-        $subscriptionData = new Killbill_Subscription();
+        $subscriptionData = new Subscription();
         $subscriptionData->accountId =  $this->account->accountId;
         $subscriptionData->productName = "Sports";
         $subscriptionData->productCategory = "BASE";
@@ -80,7 +80,7 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
 
     public function testBundleWithAO() {
 
-        $subscriptionData = new Killbill_Subscription();
+        $subscriptionData = new Subscription();
         $subscriptionData->accountId =  $this->account->accountId;
         $subscriptionData->productName = "Super";
         $subscriptionData->productCategory = "BASE";
@@ -97,7 +97,7 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
 
         $this->clock->addDays(3, $this->tenant->getTenantHeaders());
 
-        $subscriptionData2 = new Killbill_Subscription();
+        $subscriptionData2 = new Subscription();
         $subscriptionData2->accountId =  $this->account->accountId;
         $subscriptionData2->productName = "RemoteControl";
         $subscriptionData2->productCategory = "ADD_ON";
@@ -114,7 +114,7 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         $this->assertEquals($subscriptionAO->priceList, $subscriptionData2->priceList);
         $this->assertEquals($subscriptionAO->externalKey, $this->externalBundleId);
 
-        $bundle = new Killbill_Bundle();
+        $bundle = new Bundle();
         $bundle->bundleId = $subscriptionBase->bundleId;
         $bundle = $bundle->get($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($bundle);
@@ -123,7 +123,7 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
         $this->assertEquals(count($bundle->subscriptions), 2);
 
         unset($bundle);
-        $bundle = new Killbill_Bundle();
+        $bundle = new Bundle();
         $bundle->externalKey = $this->externalBundleId;
         $bundle = $bundle->getByExternalKey($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($bundle);
@@ -136,7 +136,7 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
 
     public function testBundleWithTags() {
 
-        $subscriptionData = new Killbill_Subscription();
+        $subscriptionData = new Subscription();
         $subscriptionData->accountId =  $this->account->accountId;
         $subscriptionData->productName = "Super";
         $subscriptionData->productCategory = "BASE";
@@ -146,12 +146,12 @@ class Killbill_Server_SubscriptionTest extends KillbillTest
 
         $subscriptionBase = $subscriptionData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
-        $bundle = new Killbill_Bundle();
+        $bundle = new Bundle();
         $bundle->bundleId = $subscriptionBase->bundleId;
         $bundle = $bundle->get($this->tenant->getTenantHeaders());
 
 
-        $tag1 = new Killbill_TagDefinition();
+        $tag1 = new TagDefinition();
         $tag1->name = uniqid();
         $tag1->description = "This is super tag1";
         $tag1 = $tag1->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
