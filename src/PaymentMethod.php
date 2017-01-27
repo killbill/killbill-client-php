@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright 2011-2013 Ning, Inc.
+ * Copyright 2011-2017 Ning, Inc.
  * Copyright 2014 Groupon, Inc.
  * Copyright 2014 The Billing Project, LLC
  *
@@ -18,21 +18,23 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_payment_method_attributes.php');
+namespace Killbill\Client;
 
-class Killbill_PaymentMethod extends Killbill_PaymentMethodAttributes {
+use Type\PaymentMethodAttributes;
+
+class PaymentMethod extends PaymentMethodAttributes {
 
     public function get($headers = null) {
-            $response = $this->_get(Killbill_Client::PATH_PAYMENT_METHODS . '/' . $this->accountId, $headers);
-        return $this->_getFromBody('Killbill_PaymentMethod', $response);
+            $response = $this->_get(Client::PATH_PAYMENT_METHODS . '/' . $this->accountId, $headers);
+        return $this->_getFromBody('PaymentMethod', $response);
     }
 
     public function create($user, $reason, $comment, $headers = null) {
-        $uri = Killbill_Client::PATH_ACCOUNTS . '/' . $this->accountId . '/paymentMethods';
+        $uri = Client::PATH_ACCOUNTS . '/' . $this->accountId . '/paymentMethods';
         if ($this->isDefault) {
             $uri = $uri . '?isDefault=true';
         }
         $response = $this->_create($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Killbill_PaymentMethod', $response, $headers);
+        return $this->_getFromResponse('PaymentMethod', $response, $headers);
     }
 }
