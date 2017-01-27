@@ -15,9 +15,9 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/killbill_test.php');
+namespace Killbill\Client;
 
-class Killbill_Server_AccountTest extends KillbillTest
+class ServerAccountTest extends KillbillTest
 {
 
     function setUp()
@@ -53,7 +53,7 @@ class Killbill_Server_AccountTest extends KillbillTest
         /*
          * Verify we can retrieve it
          */
-        $account = new Killbill_Account();
+        $account = new Account();
         $account->accountId = $createdAccount->accountId;
         $account = $account->get($this->tenant->getTenantHeaders());
 
@@ -80,12 +80,12 @@ class Killbill_Server_AccountTest extends KillbillTest
         /*
          * Create the tag definitions
         */
-        $tag1 = new Killbill_TagDefinition();
+        $tag1 = new TagDefinition();
         $tag1->name = uniqid();
         $tag1->description = "This is tag1";
         $tag1 = $tag1->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
-        $tag2 = new Killbill_TagDefinition();
+        $tag2 = new TagDefinition();
         $tag2->name = uniqid();
         $tag2->description = "This is tag2";
         $tag2 = $tag2->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
