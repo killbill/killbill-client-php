@@ -123,7 +123,7 @@ class Client {
 
         $body = substr($response, $header_size);
 
-        return new Killbill_Response($statusCode, $headers, $body);
+        return new Response($statusCode, $headers, $body);
     }
 
     private static function __apiUrl() {

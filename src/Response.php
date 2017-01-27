@@ -15,7 +15,9 @@
  * under the License.
  */
 
-class Killbill_Response {
+namespace Killbill\Client;
+
+class Response {
     public $statusCode;
     public $headers;
     public $body;
