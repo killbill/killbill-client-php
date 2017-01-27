@@ -16,9 +16,9 @@
  */
 
 
-require_once(dirname(__FILE__) . '/killbill_test.php');
+namespace Killbill\Client;
 
-class Killbill_Server_InvoiceTest extends KillbillTest
+class ServerInvoiceTest extends KillbillTest
 {
     function setUp()
     {
@@ -26,7 +26,7 @@ class Killbill_Server_InvoiceTest extends KillbillTest
         $this->externalBundleId = uniqid();
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
-        $paymentMethod = new Killbill_PaymentMethod();
+        $paymentMethod = new PaymentMethod();
         $paymentMethod->accountId = $this->account->accountId;
         $paymentMethod->isDefault = true;
         $paymentMethod->pluginName = '__EXTERNAL_PAYMENT__';
@@ -45,7 +45,7 @@ class Killbill_Server_InvoiceTest extends KillbillTest
 
     function testBasic()
     {
-        $subscriptionData = new Killbill_Subscription();
+        $subscriptionData = new Subscription();
         $subscriptionData->accountId =  $this->account->accountId;
         $subscriptionData->productName = "Sports";
         $subscriptionData->productCategory = "BASE";
@@ -68,7 +68,7 @@ class Killbill_Server_InvoiceTest extends KillbillTest
         $this->assertEquals(2, count($invoices));
 
         # Retrieve each invoice by id
-        $invoice = new Killbill_Invoice();
+        $invoice = new Invoice();
         $invoice->invoiceId =  $invoices[0]->invoiceId;
         $invoice = $invoice->get(false, $this->tenant->getTenantHeaders());
         $this->assertNotEmpty($invoice);
@@ -79,7 +79,7 @@ class Killbill_Server_InvoiceTest extends KillbillTest
         $this->assertEquals($invoice->balance, 0);
         $this->assertEmpty($invoice->items);
 
-        $invoice = new Killbill_Invoice();
+        $invoice = new Invoice();
         $invoice->invoiceId =  $invoices[1]->invoiceId;
         $invoice = $invoice->get(true, $this->tenant->getTenantHeaders());
         $this->assertNotEmpty($invoice);
