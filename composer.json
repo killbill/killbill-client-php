@@ -1,0 +1,12 @@
+{
+    "name": "killbill/killbill-client",
+    "description": "Official PHP client to the Killbill HTTP API",
+    "type": "library",
+    "autoload": {
+      "psr-4": {
+        "Killbill\\Client\\": "lib/"
+      }
+    },
+    "license": "Apache",
+    "require": {}
+}
