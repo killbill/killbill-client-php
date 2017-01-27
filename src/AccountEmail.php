@@ -15,7 +15,9 @@
  * under the License.
  */
 
-require_once(dirname(__FILE__) . '/gen/killbill_account_email_attributes.php');
+namespace Killbill\Client;
 
-class Killbill_AccountEmail extends Killbill_AccountEmailAttributes {
+use Type\AccountEmailAttributes;
+
+class AccountEmail extends AccountEmailAttributes {
 }
