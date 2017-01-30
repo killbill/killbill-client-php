@@ -17,7 +17,7 @@
 
 namespace Killbill\Client;
 
-use Type\AccountEmailAttributes;
+use Killbill\Client\Type\AccountEmailAttributes;
 
 class AccountEmail extends AccountEmailAttributes {
 }

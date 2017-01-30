@@ -17,7 +17,7 @@
 
 namespace Killbill\Client;
 
-use Type\TagDefinitionAttributes;
+use Killbill\Client\Type\TagDefinitionAttributes;
 
 class TagDefinition extends TagDefinitionAttributes {
 

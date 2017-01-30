@@ -17,7 +17,7 @@
 
 namespace Killbill\Client;
 
-use Type\CatalogAttributes;
+use Killbill\Client\Type\CatalogAttributes;
 
 class Catalog extends CatalogAttributes {
     private $fullCatalog;

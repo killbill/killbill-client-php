@@ -17,7 +17,7 @@
 
 namespace Killbill\Client;
 
-use Type\BundleAttributes;
+use Killbill\Client\Type\BundleAttributes;
 
 class Bundle extends BundleAttributes {
 

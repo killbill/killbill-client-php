@@ -20,7 +20,7 @@
 
 namespace Killbill\Client;
 
-use Type\AccountAttributes;
+use Killbill\Client\Type\AccountAttributes;
 
 class Account extends AccountAttributes {
 

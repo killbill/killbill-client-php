@@ -17,7 +17,7 @@
 
 namespace Killbill\Client;
 
-use Type\SubscriptionAttributes;
+use Killbill\Client\Type\SubscriptionAttributes;
 
 class Subscription extends SubscriptionAttributes {
 

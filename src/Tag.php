@@ -17,7 +17,7 @@
 
 namespace Killbill\Client;
 
-use Type\TagAttributes;
+use Killbill\Client\Type\TagAttributes;
 
 class Tag extends TagAttributes {
 }

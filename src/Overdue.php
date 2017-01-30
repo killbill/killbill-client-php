@@ -18,7 +18,7 @@
 
 namespace Killbill\Client;
 
-use Type\OverdueStateAttributes;
+use Killbill\Client\Type\OverdueStateAttributes;
 
 
 class Overdue extends OverdueStateAttributes {

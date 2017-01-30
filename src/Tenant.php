@@ -18,17 +18,14 @@
 
 namespace Killbill\Client;
 
-use Type\TenantAttributes;
+use Killbill\Client\Type\TenantAttributes;
 
 class Tenant extends TenantAttributes
 {
 
     public function get($headers = null)
     {
-
         $response = $this->_get(Client::PATH_TENANTS . ( isset($this->tenantId) ? '/' .$this->tenantId : '?apiKey=' . $this->$apiKey), $headers);
-
-
         return $this->_getFromBody('Tenant', $response);
     }
 

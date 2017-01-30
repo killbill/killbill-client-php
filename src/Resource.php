@@ -17,6 +17,8 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Tenant;
+
 abstract class Resource /* implements JsonSerializable */ {
 
     protected $_client;
@@ -30,7 +32,7 @@ abstract class Resource /* implements JsonSerializable */ {
     protected function _get($uri, $headers = null) {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Killbill_Client::GET, $uri, null, null, null, null, $headers);
+        return $this->_client->request(Client::GET, $uri, null, null, null, null, $headers);
     }
 
     /**
@@ -45,7 +47,7 @@ abstract class Resource /* implements JsonSerializable */ {
     protected function _create($uri, $user, $reason, $comment, $headers = null) {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Killbill_Client::POST, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
+        return $this->_client->request(Client::POST, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -60,7 +62,7 @@ abstract class Resource /* implements JsonSerializable */ {
     protected function _update($uri, $user, $reason, $comment, $headers = null) {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Killbill_Client::PUT, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
+        return $this->_client->request(Client::PUT, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -75,7 +77,7 @@ abstract class Resource /* implements JsonSerializable */ {
     protected function _delete($uri, $user, $reason, $comment, $headers = null) {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Killbill_Client::DELETE, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
+        return $this->_client->request(Client::DELETE, $uri, $this->jsonSerialize($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -167,7 +169,8 @@ abstract class Resource /* implements JsonSerializable */ {
             return $json;
         }
 
-        $object = new $class();
+        $classNameWithNs = '\\Killbill\\Client\\' . $class;
+        $object = new $classNameWithNs();
 
         foreach ($json as $key => $value) {
             $object->__set($key, $value);
@@ -194,12 +197,12 @@ abstract class Resource /* implements JsonSerializable */ {
         $keys = get_object_vars($this);
         unset($keys['_client']);
         foreach($keys as $k => $v) {
-            if ($v instanceof Killbill_Resource) {
+            if ($v instanceof Resource) {
                 $keys[$k] = $v->prepareForSerialization();
             } else if (is_array($v)) {
                 $keys[$k]  = array();
                 foreach($v as $ve) {
-                    if ($ve instanceof Killbill_Resource) {
+                    if ($ve instanceof Resource) {
                         array_push($keys[$k], $ve->prepareForSerialization());
                     } else {
                         array_push($keys[$k], $ve);
@@ -214,7 +217,7 @@ abstract class Resource /* implements JsonSerializable */ {
 
     private function initClientIfNeeded() {
         if (is_null($this->_client)) {
-            $this->_client = new Killbill_Client();
+            $this->_client = new Client();
         }
     }
 

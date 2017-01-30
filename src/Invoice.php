@@ -17,7 +17,7 @@
 
 namespace Killbill\Client;
 
-use Type\InvoiceAttributes;
+use Killbill\Client\Type\InvoiceAttributes;
 
 class Invoice extends InvoiceAttributes {
 
