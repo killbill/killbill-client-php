@@ -15,9 +15,6 @@
  * under the License.
  */
 
-// require_once(dirname(__FILE__) . '/../lib/killbill.php');
-// require_once(dirname(__FILE__) . '/killbill_server_clock_mock.php');
-
 namespace Killbill\Client;
 
 class KillbillTest extends \PHPUnit_Framework_TestCase
