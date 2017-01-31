@@ -24,7 +24,7 @@ class Catalog extends CatalogAttributes {
 
     public function initialize($headers = null) {
         $response = $this->_get(Client::PATH_CATALOG, $headers);
-        $this->fullCatalog = json_decode($response->body);
+        $this->fullCatalog = json_decode($response->body)[0];
     }
 
     public function getFullCatalog() {
