@@ -7,4 +7,6 @@ notifications:
   email:
     - kill-bill-commits@googlegroups.com
 
+install: composer install
+
 script: composer test
