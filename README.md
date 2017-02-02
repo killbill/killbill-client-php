@@ -6,7 +6,7 @@ PHP client library for [Killbill](http://killbill.io)
 Configuration
 -------------
 
-In order to user the library, you need to:
+In order to use the library, you need to:
 
 1. Require the library via [composer](https://getcomposer.org): `composer require killbill\killbill-client`
 2. Point the library to your Killbill instance via the `Client::$serverUrl` variable (http://127.0.0.1:8080 by default)
@@ -54,6 +54,17 @@ $accountData->timeZone = "UTC";
 // Create it
 $createdAccount = $accountData->create("pierre", "PHP_TEST", "Test for " . $externalAccountId, $tenant->getTenantHeaders());
 ```
+
+Using the client in a non-composer environment
+----------------------------------------------
+
+If you want to use the client but are not using [Composer](https://getcomposer.org) (yet), follow these steps:
+
+- Install composer locally: [Instruction](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+- Run `composer require killbill/killbill-client`. This will download the library into the `vendor/` folder and create a `composer.json` and a `composer.lock` file that define this dependency.
+- Include the auto-generated `autoload.php` file from the `vendor/` folder.
+- You can now use the client like above described.
+- If you don't want to have an additional build step, just check the `vendor/` folder into your repository.
 
 Requirements
 ------------
