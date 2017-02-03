@@ -7,4 +7,6 @@ notifications:
   email:
     - kill-bill-commits@googlegroups.com
 
-script: phpunit --coverage-text test
+install: composer install
+
+script: composer test
