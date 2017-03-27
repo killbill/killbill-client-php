@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class ProductAttributes extends \Killbill\Client\Resource {
-  protected $type;
-  protected $name;
-  protected $plans;
-  protected $included;
-  protected $available;
+  protected $type = null;
+  protected $name = null;
+  protected $plans = null;
+  protected $included = null;
+  protected $available = null;
+
+  public function setType ($type) {
+    $this->type = $type;
+  }
+
+  public function getType () {
+    return $this->type;
+  }
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setPlans ($plans) {
+    $this->plans = $plans;
+  }
+
+  public function getPlans () {
+    return $this->plans;
+  }
+
+  public function setIncluded ($included) {
+    $this->included = $included;
+  }
+
+  public function getIncluded () {
+    return $this->included;
+  }
+
+  public function setAvailable ($available) {
+    $this->available = $available;
+  }
+
+  public function getAvailable () {
+    return $this->available;
+  }
+
 }

@@ -27,11 +27,68 @@ namespace Killbill\Client\Type;
 
 
 class PaymentMethodAttributes extends \Killbill\Client\Resource {
-  protected $paymentMethodId;
-  protected $externalKey;
-  protected $accountId;
-  protected $isDefault;
-  protected $pluginName;
-  protected $pluginInfo;
-  protected $auditLogs;
+  protected $paymentMethodId = null;
+  protected $externalKey = null;
+  protected $accountId = null;
+  protected $isDefault = null;
+  protected $pluginName = null;
+  protected $pluginInfo = null;
+  protected $auditLogs = null;
+
+  public function setPaymentMethodId ($paymentMethodId) {
+    $this->paymentMethodId = $paymentMethodId;
+  }
+
+  public function getPaymentMethodId () {
+    return $this->paymentMethodId;
+  }
+
+  public function setExternalKey ($externalKey) {
+    $this->externalKey = $externalKey;
+  }
+
+  public function getExternalKey () {
+    return $this->externalKey;
+  }
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setIsDefault ($isDefault) {
+    $this->isDefault = $isDefault;
+  }
+
+  public function getIsDefault () {
+    return $this->isDefault;
+  }
+
+  public function setPluginName ($pluginName) {
+    $this->pluginName = $pluginName;
+  }
+
+  public function getPluginName () {
+    return $this->pluginName;
+  }
+
+  public function setPluginInfo ($pluginInfo) {
+    $this->pluginInfo = $pluginInfo;
+  }
+
+  public function getPluginInfo () {
+    return $this->pluginInfo;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

@@ -27,18 +27,131 @@ namespace Killbill\Client\Type;
 
 
 class PaymentAttributes extends \Killbill\Client\Resource {
-  protected $accountId;
-  protected $paymentId;
-  protected $paymentNumber;
-  protected $paymentExternalKey;
-  protected $authAmount;
-  protected $capturedAmount;
-  protected $purchasedAmount;
-  protected $refundedAmount;
-  protected $creditedAmount;
-  protected $currency;
-  protected $paymentMethodId;
-  protected $transactions;
-  protected $paymentAttempts;
-  protected $auditLogs;
+  protected $accountId = null;
+  protected $paymentId = null;
+  protected $paymentNumber = null;
+  protected $paymentExternalKey = null;
+  protected $authAmount = null;
+  protected $capturedAmount = null;
+  protected $purchasedAmount = null;
+  protected $refundedAmount = null;
+  protected $creditedAmount = null;
+  protected $currency = null;
+  protected $paymentMethodId = null;
+  protected $transactions = null;
+  protected $paymentAttempts = null;
+  protected $auditLogs = null;
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setPaymentId ($paymentId) {
+    $this->paymentId = $paymentId;
+  }
+
+  public function getPaymentId () {
+    return $this->paymentId;
+  }
+
+  public function setPaymentNumber ($paymentNumber) {
+    $this->paymentNumber = $paymentNumber;
+  }
+
+  public function getPaymentNumber () {
+    return $this->paymentNumber;
+  }
+
+  public function setPaymentExternalKey ($paymentExternalKey) {
+    $this->paymentExternalKey = $paymentExternalKey;
+  }
+
+  public function getPaymentExternalKey () {
+    return $this->paymentExternalKey;
+  }
+
+  public function setAuthAmount ($authAmount) {
+    $this->authAmount = $authAmount;
+  }
+
+  public function getAuthAmount () {
+    return $this->authAmount;
+  }
+
+  public function setCapturedAmount ($capturedAmount) {
+    $this->capturedAmount = $capturedAmount;
+  }
+
+  public function getCapturedAmount () {
+    return $this->capturedAmount;
+  }
+
+  public function setPurchasedAmount ($purchasedAmount) {
+    $this->purchasedAmount = $purchasedAmount;
+  }
+
+  public function getPurchasedAmount () {
+    return $this->purchasedAmount;
+  }
+
+  public function setRefundedAmount ($refundedAmount) {
+    $this->refundedAmount = $refundedAmount;
+  }
+
+  public function getRefundedAmount () {
+    return $this->refundedAmount;
+  }
+
+  public function setCreditedAmount ($creditedAmount) {
+    $this->creditedAmount = $creditedAmount;
+  }
+
+  public function getCreditedAmount () {
+    return $this->creditedAmount;
+  }
+
+  public function setCurrency ($currency) {
+    $this->currency = $currency;
+  }
+
+  public function getCurrency () {
+    return $this->currency;
+  }
+
+  public function setPaymentMethodId ($paymentMethodId) {
+    $this->paymentMethodId = $paymentMethodId;
+  }
+
+  public function getPaymentMethodId () {
+    return $this->paymentMethodId;
+  }
+
+  public function setTransactions ($transactions) {
+    $this->transactions = $transactions;
+  }
+
+  public function getTransactions () {
+    return $this->transactions;
+  }
+
+  public function setPaymentAttempts ($paymentAttempts) {
+    $this->paymentAttempts = $paymentAttempts;
+  }
+
+  public function getPaymentAttempts () {
+    return $this->paymentAttempts;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

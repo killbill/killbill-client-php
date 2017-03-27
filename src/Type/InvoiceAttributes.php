@@ -27,20 +27,149 @@ namespace Killbill\Client\Type;
 
 
 class InvoiceAttributes extends \Killbill\Client\Resource {
-  protected $amount;
-  protected $currency;
-  protected $status;
-  protected $creditAdj;
-  protected $refundAdj;
-  protected $invoiceId;
-  protected $invoiceDate;
-  protected $targetDate;
-  protected $invoiceNumber;
-  protected $balance;
-  protected $accountId;
-  protected $externalBundleKeys;
-  protected $credits;
-  protected $items;
-  protected $isParentInvoice;
-  protected $auditLogs;
+  protected $amount = null;
+  protected $currency = null;
+  protected $status = null;
+  protected $creditAdj = null;
+  protected $refundAdj = null;
+  protected $invoiceId = null;
+  protected $invoiceDate = null;
+  protected $targetDate = null;
+  protected $invoiceNumber = null;
+  protected $balance = null;
+  protected $accountId = null;
+  protected $externalBundleKeys = null;
+  protected $credits = null;
+  protected $items = null;
+  protected $isParentInvoice = null;
+  protected $auditLogs = null;
+
+  public function setAmount ($amount) {
+    $this->amount = $amount;
+  }
+
+  public function getAmount () {
+    return $this->amount;
+  }
+
+  public function setCurrency ($currency) {
+    $this->currency = $currency;
+  }
+
+  public function getCurrency () {
+    return $this->currency;
+  }
+
+  public function setStatus ($status) {
+    $this->status = $status;
+  }
+
+  public function getStatus () {
+    return $this->status;
+  }
+
+  public function setCreditAdj ($creditAdj) {
+    $this->creditAdj = $creditAdj;
+  }
+
+  public function getCreditAdj () {
+    return $this->creditAdj;
+  }
+
+  public function setRefundAdj ($refundAdj) {
+    $this->refundAdj = $refundAdj;
+  }
+
+  public function getRefundAdj () {
+    return $this->refundAdj;
+  }
+
+  public function setInvoiceId ($invoiceId) {
+    $this->invoiceId = $invoiceId;
+  }
+
+  public function getInvoiceId () {
+    return $this->invoiceId;
+  }
+
+  public function setInvoiceDate ($invoiceDate) {
+    $this->invoiceDate = $invoiceDate;
+  }
+
+  public function getInvoiceDate () {
+    return $this->invoiceDate;
+  }
+
+  public function setTargetDate ($targetDate) {
+    $this->targetDate = $targetDate;
+  }
+
+  public function getTargetDate () {
+    return $this->targetDate;
+  }
+
+  public function setInvoiceNumber ($invoiceNumber) {
+    $this->invoiceNumber = $invoiceNumber;
+  }
+
+  public function getInvoiceNumber () {
+    return $this->invoiceNumber;
+  }
+
+  public function setBalance ($balance) {
+    $this->balance = $balance;
+  }
+
+  public function getBalance () {
+    return $this->balance;
+  }
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setExternalBundleKeys ($externalBundleKeys) {
+    $this->externalBundleKeys = $externalBundleKeys;
+  }
+
+  public function getExternalBundleKeys () {
+    return $this->externalBundleKeys;
+  }
+
+  public function setCredits ($credits) {
+    $this->credits = $credits;
+  }
+
+  public function getCredits () {
+    return $this->credits;
+  }
+
+  public function setItems ($items) {
+    $this->items = $items;
+  }
+
+  public function getItems () {
+    return $this->items;
+  }
+
+  public function setIsParentInvoice ($isParentInvoice) {
+    $this->isParentInvoice = $isParentInvoice;
+  }
+
+  public function getIsParentInvoice () {
+    return $this->isParentInvoice;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class PhaseAttributes extends \Killbill\Client\Resource {
-  protected $type;
-  protected $prices;
-  protected $fixedPrices;
-  protected $duration;
-  protected $usages;
+  protected $type = null;
+  protected $prices = null;
+  protected $fixedPrices = null;
+  protected $duration = null;
+  protected $usages = null;
+
+  public function setType ($type) {
+    $this->type = $type;
+  }
+
+  public function getType () {
+    return $this->type;
+  }
+
+  public function setPrices ($prices) {
+    $this->prices = $prices;
+  }
+
+  public function getPrices () {
+    return $this->prices;
+  }
+
+  public function setFixedPrices ($fixedPrices) {
+    $this->fixedPrices = $fixedPrices;
+  }
+
+  public function getFixedPrices () {
+    return $this->fixedPrices;
+  }
+
+  public function setDuration ($duration) {
+    $this->duration = $duration;
+  }
+
+  public function getDuration () {
+    return $this->duration;
+  }
+
+  public function setUsages ($usages) {
+    $this->usages = $usages;
+  }
+
+  public function getUsages () {
+    return $this->usages;
+  }
+
 }

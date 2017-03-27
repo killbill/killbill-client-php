@@ -27,13 +27,86 @@ namespace Killbill\Client\Type;
 
 
 class BlockingStateAttributes extends \Killbill\Client\Resource {
-  protected $blockedId;
-  protected $stateName;
-  protected $service;
-  protected $blockChange;
-  protected $blockEntitlement;
-  protected $blockBilling;
-  protected $effectiveDate;
-  protected $type;
-  protected $auditLogs;
+  protected $blockedId = null;
+  protected $stateName = null;
+  protected $service = null;
+  protected $blockChange = null;
+  protected $blockEntitlement = null;
+  protected $blockBilling = null;
+  protected $effectiveDate = null;
+  protected $type = null;
+  protected $auditLogs = null;
+
+  public function setBlockedId ($blockedId) {
+    $this->blockedId = $blockedId;
+  }
+
+  public function getBlockedId () {
+    return $this->blockedId;
+  }
+
+  public function setStateName ($stateName) {
+    $this->stateName = $stateName;
+  }
+
+  public function getStateName () {
+    return $this->stateName;
+  }
+
+  public function setService ($service) {
+    $this->service = $service;
+  }
+
+  public function getService () {
+    return $this->service;
+  }
+
+  public function setBlockChange ($blockChange) {
+    $this->blockChange = $blockChange;
+  }
+
+  public function getBlockChange () {
+    return $this->blockChange;
+  }
+
+  public function setBlockEntitlement ($blockEntitlement) {
+    $this->blockEntitlement = $blockEntitlement;
+  }
+
+  public function getBlockEntitlement () {
+    return $this->blockEntitlement;
+  }
+
+  public function setBlockBilling ($blockBilling) {
+    $this->blockBilling = $blockBilling;
+  }
+
+  public function getBlockBilling () {
+    return $this->blockBilling;
+  }
+
+  public function setEffectiveDate ($effectiveDate) {
+    $this->effectiveDate = $effectiveDate;
+  }
+
+  public function getEffectiveDate () {
+    return $this->effectiveDate;
+  }
+
+  public function setType ($type) {
+    $this->type = $type;
+  }
+
+  public function getType () {
+    return $this->type;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class RolledUpUnitAttributes extends \Killbill\Client\Resource {
-  protected $unitType;
-  protected $amount;
+  protected $unitType = null;
+  protected $amount = null;
+
+  public function setUnitType ($unitType) {
+    $this->unitType = $unitType;
+  }
+
+  public function getUnitType () {
+    return $this->unitType;
+  }
+
+  public function setAmount ($amount) {
+    $this->amount = $amount;
+  }
+
+  public function getAmount () {
+    return $this->amount;
+  }
+
 }

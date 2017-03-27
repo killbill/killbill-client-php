@@ -27,13 +27,86 @@ namespace Killbill\Client\Type;
 
 
 class NodeInfoAttributes extends \Killbill\Client\Resource {
-  protected $nodeName;
-  protected $bootTime;
-  protected $lastUpdatedDate;
-  protected $kbVersion;
-  protected $apiVersion;
-  protected $pluginApiVersion;
-  protected $commonVersion;
-  protected $platformVersion;
-  protected $pluginsInfo;
+  protected $nodeName = null;
+  protected $bootTime = null;
+  protected $lastUpdatedDate = null;
+  protected $kbVersion = null;
+  protected $apiVersion = null;
+  protected $pluginApiVersion = null;
+  protected $commonVersion = null;
+  protected $platformVersion = null;
+  protected $pluginsInfo = null;
+
+  public function setNodeName ($nodeName) {
+    $this->nodeName = $nodeName;
+  }
+
+  public function getNodeName () {
+    return $this->nodeName;
+  }
+
+  public function setBootTime ($bootTime) {
+    $this->bootTime = $bootTime;
+  }
+
+  public function getBootTime () {
+    return $this->bootTime;
+  }
+
+  public function setLastUpdatedDate ($lastUpdatedDate) {
+    $this->lastUpdatedDate = $lastUpdatedDate;
+  }
+
+  public function getLastUpdatedDate () {
+    return $this->lastUpdatedDate;
+  }
+
+  public function setKbVersion ($kbVersion) {
+    $this->kbVersion = $kbVersion;
+  }
+
+  public function getKbVersion () {
+    return $this->kbVersion;
+  }
+
+  public function setApiVersion ($apiVersion) {
+    $this->apiVersion = $apiVersion;
+  }
+
+  public function getApiVersion () {
+    return $this->apiVersion;
+  }
+
+  public function setPluginApiVersion ($pluginApiVersion) {
+    $this->pluginApiVersion = $pluginApiVersion;
+  }
+
+  public function getPluginApiVersion () {
+    return $this->pluginApiVersion;
+  }
+
+  public function setCommonVersion ($commonVersion) {
+    $this->commonVersion = $commonVersion;
+  }
+
+  public function getCommonVersion () {
+    return $this->commonVersion;
+  }
+
+  public function setPlatformVersion ($platformVersion) {
+    $this->platformVersion = $platformVersion;
+  }
+
+  public function getPlatformVersion () {
+    return $this->platformVersion;
+  }
+
+  public function setPluginsInfo ($pluginsInfo) {
+    $this->pluginsInfo = $pluginsInfo;
+  }
+
+  public function getPluginsInfo () {
+    return $this->pluginsInfo;
+  }
+
 }

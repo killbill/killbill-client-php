@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class UsageRecordAttributes extends \Killbill\Client\Resource {
-  protected $recordDate;
-  protected $amount;
+  protected $recordDate = null;
+  protected $amount = null;
+
+  public function setRecordDate ($recordDate) {
+    $this->recordDate = $recordDate;
+  }
+
+  public function getRecordDate () {
+    return $this->recordDate;
+  }
+
+  public function setAmount ($amount) {
+    $this->amount = $amount;
+  }
+
+  public function getAmount () {
+    return $this->amount;
+  }
+
 }

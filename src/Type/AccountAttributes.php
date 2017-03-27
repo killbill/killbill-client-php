@@ -27,30 +27,239 @@ namespace Killbill\Client\Type;
 
 
 class AccountAttributes extends \Killbill\Client\Resource {
-  protected $accountId;
-  protected $name;
-  protected $firstNameLength;
-  protected $externalKey;
-  protected $email;
-  protected $billCycleDayLocal;
-  protected $currency;
-  protected $parentAccountId;
-  protected $isPaymentDelegatedToParent;
-  protected $paymentMethodId;
-  protected $timeZone;
-  protected $address1;
-  protected $address2;
-  protected $postalCode;
-  protected $company;
-  protected $city;
-  protected $state;
-  protected $country;
-  protected $locale;
-  protected $phone;
-  protected $notes;
-  protected $isMigrated;
-  protected $isNotifiedForInvoices;
-  protected $accountBalance;
-  protected $accountCBA;
-  protected $auditLogs;
+  protected $accountId = null;
+  protected $name = null;
+  protected $firstNameLength = null;
+  protected $externalKey = null;
+  protected $email = null;
+  protected $billCycleDayLocal = null;
+  protected $currency = null;
+  protected $parentAccountId = null;
+  protected $isPaymentDelegatedToParent = null;
+  protected $paymentMethodId = null;
+  protected $timeZone = null;
+  protected $address1 = null;
+  protected $address2 = null;
+  protected $postalCode = null;
+  protected $company = null;
+  protected $city = null;
+  protected $state = null;
+  protected $country = null;
+  protected $locale = null;
+  protected $phone = null;
+  protected $notes = null;
+  protected $isMigrated = null;
+  protected $isNotifiedForInvoices = null;
+  protected $accountBalance = null;
+  protected $accountCBA = null;
+  protected $auditLogs = null;
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setFirstNameLength ($firstNameLength) {
+    $this->firstNameLength = $firstNameLength;
+  }
+
+  public function getFirstNameLength () {
+    return $this->firstNameLength;
+  }
+
+  public function setExternalKey ($externalKey) {
+    $this->externalKey = $externalKey;
+  }
+
+  public function getExternalKey () {
+    return $this->externalKey;
+  }
+
+  public function setEmail ($email) {
+    $this->email = $email;
+  }
+
+  public function getEmail () {
+    return $this->email;
+  }
+
+  public function setBillCycleDayLocal ($billCycleDayLocal) {
+    $this->billCycleDayLocal = $billCycleDayLocal;
+  }
+
+  public function getBillCycleDayLocal () {
+    return $this->billCycleDayLocal;
+  }
+
+  public function setCurrency ($currency) {
+    $this->currency = $currency;
+  }
+
+  public function getCurrency () {
+    return $this->currency;
+  }
+
+  public function setParentAccountId ($parentAccountId) {
+    $this->parentAccountId = $parentAccountId;
+  }
+
+  public function getParentAccountId () {
+    return $this->parentAccountId;
+  }
+
+  public function setIsPaymentDelegatedToParent ($isPaymentDelegatedToParent) {
+    $this->isPaymentDelegatedToParent = $isPaymentDelegatedToParent;
+  }
+
+  public function getIsPaymentDelegatedToParent () {
+    return $this->isPaymentDelegatedToParent;
+  }
+
+  public function setPaymentMethodId ($paymentMethodId) {
+    $this->paymentMethodId = $paymentMethodId;
+  }
+
+  public function getPaymentMethodId () {
+    return $this->paymentMethodId;
+  }
+
+  public function setTimeZone ($timeZone) {
+    $this->timeZone = $timeZone;
+  }
+
+  public function getTimeZone () {
+    return $this->timeZone;
+  }
+
+  public function setAddress1 ($address1) {
+    $this->address1 = $address1;
+  }
+
+  public function getAddress1 () {
+    return $this->address1;
+  }
+
+  public function setAddress2 ($address2) {
+    $this->address2 = $address2;
+  }
+
+  public function getAddress2 () {
+    return $this->address2;
+  }
+
+  public function setPostalCode ($postalCode) {
+    $this->postalCode = $postalCode;
+  }
+
+  public function getPostalCode () {
+    return $this->postalCode;
+  }
+
+  public function setCompany ($company) {
+    $this->company = $company;
+  }
+
+  public function getCompany () {
+    return $this->company;
+  }
+
+  public function setCity ($city) {
+    $this->city = $city;
+  }
+
+  public function getCity () {
+    return $this->city;
+  }
+
+  public function setState ($state) {
+    $this->state = $state;
+  }
+
+  public function getState () {
+    return $this->state;
+  }
+
+  public function setCountry ($country) {
+    $this->country = $country;
+  }
+
+  public function getCountry () {
+    return $this->country;
+  }
+
+  public function setLocale ($locale) {
+    $this->locale = $locale;
+  }
+
+  public function getLocale () {
+    return $this->locale;
+  }
+
+  public function setPhone ($phone) {
+    $this->phone = $phone;
+  }
+
+  public function getPhone () {
+    return $this->phone;
+  }
+
+  public function setNotes ($notes) {
+    $this->notes = $notes;
+  }
+
+  public function getNotes () {
+    return $this->notes;
+  }
+
+  public function setIsMigrated ($isMigrated) {
+    $this->isMigrated = $isMigrated;
+  }
+
+  public function getIsMigrated () {
+    return $this->isMigrated;
+  }
+
+  public function setIsNotifiedForInvoices ($isNotifiedForInvoices) {
+    $this->isNotifiedForInvoices = $isNotifiedForInvoices;
+  }
+
+  public function getIsNotifiedForInvoices () {
+    return $this->isNotifiedForInvoices;
+  }
+
+  public function setAccountBalance ($accountBalance) {
+    $this->accountBalance = $accountBalance;
+  }
+
+  public function getAccountBalance () {
+    return $this->accountBalance;
+  }
+
+  public function setAccountCBA ($accountCBA) {
+    $this->accountCBA = $accountCBA;
+  }
+
+  public function getAccountCBA () {
+    return $this->accountCBA;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

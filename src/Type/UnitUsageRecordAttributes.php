@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class UnitUsageRecordAttributes extends \Killbill\Client\Resource {
-  protected $unitType;
-  protected $usageRecords;
+  protected $unitType = null;
+  protected $usageRecords = null;
+
+  public function setUnitType ($unitType) {
+    $this->unitType = $unitType;
+  }
+
+  public function getUnitType () {
+    return $this->unitType;
+  }
+
+  public function setUsageRecords ($usageRecords) {
+    $this->usageRecords = $usageRecords;
+  }
+
+  public function getUsageRecords () {
+    return $this->usageRecords;
+  }
+
 }

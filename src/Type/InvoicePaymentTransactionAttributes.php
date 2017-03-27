@@ -27,23 +27,176 @@ namespace Killbill\Client\Type;
 
 
 class InvoicePaymentTransactionAttributes extends \Killbill\Client\Resource {
-  protected $transactionId;
-  protected $transactionExternalKey;
-  protected $paymentId;
-  protected $paymentExternalKey;
-  protected $transactionType;
-  protected $amount;
-  protected $currency;
-  protected $effectiveDate;
-  protected $processedAmount;
-  protected $processedCurrency;
-  protected $status;
-  protected $gatewayErrorCode;
-  protected $gatewayErrorMsg;
-  protected $firstPaymentReferenceId;
-  protected $secondPaymentReferenceId;
-  protected $properties;
-  protected $isAdjusted;
-  protected $adjustments;
-  protected $auditLogs;
+  protected $transactionId = null;
+  protected $transactionExternalKey = null;
+  protected $paymentId = null;
+  protected $paymentExternalKey = null;
+  protected $transactionType = null;
+  protected $amount = null;
+  protected $currency = null;
+  protected $effectiveDate = null;
+  protected $processedAmount = null;
+  protected $processedCurrency = null;
+  protected $status = null;
+  protected $gatewayErrorCode = null;
+  protected $gatewayErrorMsg = null;
+  protected $firstPaymentReferenceId = null;
+  protected $secondPaymentReferenceId = null;
+  protected $properties = null;
+  protected $isAdjusted = null;
+  protected $adjustments = null;
+  protected $auditLogs = null;
+
+  public function setTransactionId ($transactionId) {
+    $this->transactionId = $transactionId;
+  }
+
+  public function getTransactionId () {
+    return $this->transactionId;
+  }
+
+  public function setTransactionExternalKey ($transactionExternalKey) {
+    $this->transactionExternalKey = $transactionExternalKey;
+  }
+
+  public function getTransactionExternalKey () {
+    return $this->transactionExternalKey;
+  }
+
+  public function setPaymentId ($paymentId) {
+    $this->paymentId = $paymentId;
+  }
+
+  public function getPaymentId () {
+    return $this->paymentId;
+  }
+
+  public function setPaymentExternalKey ($paymentExternalKey) {
+    $this->paymentExternalKey = $paymentExternalKey;
+  }
+
+  public function getPaymentExternalKey () {
+    return $this->paymentExternalKey;
+  }
+
+  public function setTransactionType ($transactionType) {
+    $this->transactionType = $transactionType;
+  }
+
+  public function getTransactionType () {
+    return $this->transactionType;
+  }
+
+  public function setAmount ($amount) {
+    $this->amount = $amount;
+  }
+
+  public function getAmount () {
+    return $this->amount;
+  }
+
+  public function setCurrency ($currency) {
+    $this->currency = $currency;
+  }
+
+  public function getCurrency () {
+    return $this->currency;
+  }
+
+  public function setEffectiveDate ($effectiveDate) {
+    $this->effectiveDate = $effectiveDate;
+  }
+
+  public function getEffectiveDate () {
+    return $this->effectiveDate;
+  }
+
+  public function setProcessedAmount ($processedAmount) {
+    $this->processedAmount = $processedAmount;
+  }
+
+  public function getProcessedAmount () {
+    return $this->processedAmount;
+  }
+
+  public function setProcessedCurrency ($processedCurrency) {
+    $this->processedCurrency = $processedCurrency;
+  }
+
+  public function getProcessedCurrency () {
+    return $this->processedCurrency;
+  }
+
+  public function setStatus ($status) {
+    $this->status = $status;
+  }
+
+  public function getStatus () {
+    return $this->status;
+  }
+
+  public function setGatewayErrorCode ($gatewayErrorCode) {
+    $this->gatewayErrorCode = $gatewayErrorCode;
+  }
+
+  public function getGatewayErrorCode () {
+    return $this->gatewayErrorCode;
+  }
+
+  public function setGatewayErrorMsg ($gatewayErrorMsg) {
+    $this->gatewayErrorMsg = $gatewayErrorMsg;
+  }
+
+  public function getGatewayErrorMsg () {
+    return $this->gatewayErrorMsg;
+  }
+
+  public function setFirstPaymentReferenceId ($firstPaymentReferenceId) {
+    $this->firstPaymentReferenceId = $firstPaymentReferenceId;
+  }
+
+  public function getFirstPaymentReferenceId () {
+    return $this->firstPaymentReferenceId;
+  }
+
+  public function setSecondPaymentReferenceId ($secondPaymentReferenceId) {
+    $this->secondPaymentReferenceId = $secondPaymentReferenceId;
+  }
+
+  public function getSecondPaymentReferenceId () {
+    return $this->secondPaymentReferenceId;
+  }
+
+  public function setProperties ($properties) {
+    $this->properties = $properties;
+  }
+
+  public function getProperties () {
+    return $this->properties;
+  }
+
+  public function setIsAdjusted ($isAdjusted) {
+    $this->isAdjusted = $isAdjusted;
+  }
+
+  public function getIsAdjusted () {
+    return $this->isAdjusted;
+  }
+
+  public function setAdjustments ($adjustments) {
+    $this->adjustments = $adjustments;
+  }
+
+  public function getAdjustments () {
+    return $this->adjustments;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

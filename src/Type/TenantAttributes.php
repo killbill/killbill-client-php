@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class TenantAttributes extends \Killbill\Client\Resource {
-  protected $tenantId;
-  protected $externalKey;
-  protected $apiKey;
-  protected $apiSecret;
+  protected $tenantId = null;
+  protected $externalKey = null;
+  protected $apiKey = null;
+  protected $apiSecret = null;
+
+  public function setTenantId ($tenantId) {
+    $this->tenantId = $tenantId;
+  }
+
+  public function getTenantId () {
+    return $this->tenantId;
+  }
+
+  public function setExternalKey ($externalKey) {
+    $this->externalKey = $externalKey;
+  }
+
+  public function getExternalKey () {
+    return $this->externalKey;
+  }
+
+  public function setApiKey ($apiKey) {
+    $this->apiKey = $apiKey;
+  }
+
+  public function getApiKey () {
+    return $this->apiKey;
+  }
+
+  public function setApiSecret ($apiSecret) {
+    $this->apiSecret = $apiSecret;
+  }
+
+  public function getApiSecret () {
+    return $this->apiSecret;
+  }
+
 }

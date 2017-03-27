@@ -27,17 +27,122 @@ namespace Killbill\Client\Type;
 
 
 class PaymentAttemptAttributes extends \Killbill\Client\Resource {
-  protected $accountId;
-  protected $paymentMethodId;
-  protected $paymentExternalKey;
-  protected $transactionId;
-  protected $transactionExternalKey;
-  protected $transactionType;
-  protected $effectiveDate;
-  protected $stateName;
-  protected $amount;
-  protected $currency;
-  protected $pluginName;
-  protected $pluginProperties;
-  protected $auditLogs;
+  protected $accountId = null;
+  protected $paymentMethodId = null;
+  protected $paymentExternalKey = null;
+  protected $transactionId = null;
+  protected $transactionExternalKey = null;
+  protected $transactionType = null;
+  protected $effectiveDate = null;
+  protected $stateName = null;
+  protected $amount = null;
+  protected $currency = null;
+  protected $pluginName = null;
+  protected $pluginProperties = null;
+  protected $auditLogs = null;
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setPaymentMethodId ($paymentMethodId) {
+    $this->paymentMethodId = $paymentMethodId;
+  }
+
+  public function getPaymentMethodId () {
+    return $this->paymentMethodId;
+  }
+
+  public function setPaymentExternalKey ($paymentExternalKey) {
+    $this->paymentExternalKey = $paymentExternalKey;
+  }
+
+  public function getPaymentExternalKey () {
+    return $this->paymentExternalKey;
+  }
+
+  public function setTransactionId ($transactionId) {
+    $this->transactionId = $transactionId;
+  }
+
+  public function getTransactionId () {
+    return $this->transactionId;
+  }
+
+  public function setTransactionExternalKey ($transactionExternalKey) {
+    $this->transactionExternalKey = $transactionExternalKey;
+  }
+
+  public function getTransactionExternalKey () {
+    return $this->transactionExternalKey;
+  }
+
+  public function setTransactionType ($transactionType) {
+    $this->transactionType = $transactionType;
+  }
+
+  public function getTransactionType () {
+    return $this->transactionType;
+  }
+
+  public function setEffectiveDate ($effectiveDate) {
+    $this->effectiveDate = $effectiveDate;
+  }
+
+  public function getEffectiveDate () {
+    return $this->effectiveDate;
+  }
+
+  public function setStateName ($stateName) {
+    $this->stateName = $stateName;
+  }
+
+  public function getStateName () {
+    return $this->stateName;
+  }
+
+  public function setAmount ($amount) {
+    $this->amount = $amount;
+  }
+
+  public function getAmount () {
+    return $this->amount;
+  }
+
+  public function setCurrency ($currency) {
+    $this->currency = $currency;
+  }
+
+  public function getCurrency () {
+    return $this->currency;
+  }
+
+  public function setPluginName ($pluginName) {
+    $this->pluginName = $pluginName;
+  }
+
+  public function getPluginName () {
+    return $this->pluginName;
+  }
+
+  public function setPluginProperties ($pluginProperties) {
+    $this->pluginProperties = $pluginProperties;
+  }
+
+  public function getPluginProperties () {
+    return $this->pluginProperties;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

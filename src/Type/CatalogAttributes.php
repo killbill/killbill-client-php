@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class CatalogAttributes extends \Killbill\Client\Resource {
-  protected $name;
-  protected $effectiveDate;
-  protected $currencies;
-  protected $products;
-  protected $priceLists;
+  protected $name = null;
+  protected $effectiveDate = null;
+  protected $currencies = null;
+  protected $products = null;
+  protected $priceLists = null;
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setEffectiveDate ($effectiveDate) {
+    $this->effectiveDate = $effectiveDate;
+  }
+
+  public function getEffectiveDate () {
+    return $this->effectiveDate;
+  }
+
+  public function setCurrencies ($currencies) {
+    $this->currencies = $currencies;
+  }
+
+  public function getCurrencies () {
+    return $this->currencies;
+  }
+
+  public function setProducts ($products) {
+    $this->products = $products;
+  }
+
+  public function getProducts () {
+    return $this->products;
+  }
+
+  public function setPriceLists ($priceLists) {
+    $this->priceLists = $priceLists;
+  }
+
+  public function getPriceLists () {
+    return $this->priceLists;
+  }
+
 }

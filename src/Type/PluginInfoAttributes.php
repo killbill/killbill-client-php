@@ -27,11 +27,68 @@ namespace Killbill\Client\Type;
 
 
 class PluginInfoAttributes extends \Killbill\Client\Resource {
-  protected $bundleSymbolicName;
-  protected $pluginKey;
-  protected $pluginName;
-  protected $version;
-  protected $state;
-  protected $isSelectedForStart;
-  protected $services;
+  protected $bundleSymbolicName = null;
+  protected $pluginKey = null;
+  protected $pluginName = null;
+  protected $version = null;
+  protected $state = null;
+  protected $isSelectedForStart = null;
+  protected $services = null;
+
+  public function setBundleSymbolicName ($bundleSymbolicName) {
+    $this->bundleSymbolicName = $bundleSymbolicName;
+  }
+
+  public function getBundleSymbolicName () {
+    return $this->bundleSymbolicName;
+  }
+
+  public function setPluginKey ($pluginKey) {
+    $this->pluginKey = $pluginKey;
+  }
+
+  public function getPluginKey () {
+    return $this->pluginKey;
+  }
+
+  public function setPluginName ($pluginName) {
+    $this->pluginName = $pluginName;
+  }
+
+  public function getPluginName () {
+    return $this->pluginName;
+  }
+
+  public function setVersion ($version) {
+    $this->version = $version;
+  }
+
+  public function getVersion () {
+    return $this->version;
+  }
+
+  public function setState ($state) {
+    $this->state = $state;
+  }
+
+  public function getState () {
+    return $this->state;
+  }
+
+  public function setIsSelectedForStart ($isSelectedForStart) {
+    $this->isSelectedForStart = $isSelectedForStart;
+  }
+
+  public function getIsSelectedForStart () {
+    return $this->isSelectedForStart;
+  }
+
+  public function setServices ($services) {
+    $this->services = $services;
+  }
+
+  public function getServices () {
+    return $this->services;
+  }
+
 }

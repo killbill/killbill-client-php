@@ -27,7 +27,32 @@ namespace Killbill\Client\Type;
 
 
 class UserRolesAttributes extends \Killbill\Client\Resource {
-  protected $username;
-  protected $password;
-  protected $roles;
+  protected $username = null;
+  protected $password = null;
+  protected $roles = null;
+
+  public function setUsername ($username) {
+    $this->username = $username;
+  }
+
+  public function getUsername () {
+    return $this->username;
+  }
+
+  public function setPassword ($password) {
+    $this->password = $password;
+  }
+
+  public function getPassword () {
+    return $this->password;
+  }
+
+  public function setRoles ($roles) {
+    $this->roles = $roles;
+  }
+
+  public function getRoles () {
+    return $this->roles;
+  }
+
 }

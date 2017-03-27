@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class SessionAttributes extends \Killbill\Client\Resource {
-  protected $id;
-  protected $startDate;
-  protected $lastAccessDate;
-  protected $timeout;
-  protected $host;
+  protected $id = null;
+  protected $startDate = null;
+  protected $lastAccessDate = null;
+  protected $timeout = null;
+  protected $host = null;
+
+  public function setId ($id) {
+    $this->id = $id;
+  }
+
+  public function getId () {
+    return $this->id;
+  }
+
+  public function setStartDate ($startDate) {
+    $this->startDate = $startDate;
+  }
+
+  public function getStartDate () {
+    return $this->startDate;
+  }
+
+  public function setLastAccessDate ($lastAccessDate) {
+    $this->lastAccessDate = $lastAccessDate;
+  }
+
+  public function getLastAccessDate () {
+    return $this->lastAccessDate;
+  }
+
+  public function setTimeout ($timeout) {
+    $this->timeout = $timeout;
+  }
+
+  public function getTimeout () {
+    return $this->timeout;
+  }
+
+  public function setHost ($host) {
+    $this->host = $host;
+  }
+
+  public function getHost () {
+    return $this->host;
+  }
+
 }

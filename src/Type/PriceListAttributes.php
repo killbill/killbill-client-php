@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class PriceListAttributes extends \Killbill\Client\Resource {
-  protected $name;
-  protected $plans;
+  protected $name = null;
+  protected $plans = null;
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setPlans ($plans) {
+    $this->plans = $plans;
+  }
+
+  public function getPlans () {
+    return $this->plans;
+  }
+
 }

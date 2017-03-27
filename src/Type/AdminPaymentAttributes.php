@@ -27,7 +27,32 @@ namespace Killbill\Client\Type;
 
 
 class AdminPaymentAttributes extends \Killbill\Client\Resource {
-  protected $lastSuccessPaymentState;
-  protected $currentPaymentStateName;
-  protected $transactionStatus;
+  protected $lastSuccessPaymentState = null;
+  protected $currentPaymentStateName = null;
+  protected $transactionStatus = null;
+
+  public function setLastSuccessPaymentState ($lastSuccessPaymentState) {
+    $this->lastSuccessPaymentState = $lastSuccessPaymentState;
+  }
+
+  public function getLastSuccessPaymentState () {
+    return $this->lastSuccessPaymentState;
+  }
+
+  public function setCurrentPaymentStateName ($currentPaymentStateName) {
+    $this->currentPaymentStateName = $currentPaymentStateName;
+  }
+
+  public function getCurrentPaymentStateName () {
+    return $this->currentPaymentStateName;
+  }
+
+  public function setTransactionStatus ($transactionStatus) {
+    $this->transactionStatus = $transactionStatus;
+  }
+
+  public function getTransactionStatus () {
+    return $this->transactionStatus;
+  }
+
 }

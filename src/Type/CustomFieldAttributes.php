@@ -27,10 +27,59 @@ namespace Killbill\Client\Type;
 
 
 class CustomFieldAttributes extends \Killbill\Client\Resource {
-  protected $customFieldId;
-  protected $objectId;
-  protected $objectType;
-  protected $name;
-  protected $value;
-  protected $auditLogs;
+  protected $customFieldId = null;
+  protected $objectId = null;
+  protected $objectType = null;
+  protected $name = null;
+  protected $value = null;
+  protected $auditLogs = null;
+
+  public function setCustomFieldId ($customFieldId) {
+    $this->customFieldId = $customFieldId;
+  }
+
+  public function getCustomFieldId () {
+    return $this->customFieldId;
+  }
+
+  public function setObjectId ($objectId) {
+    $this->objectId = $objectId;
+  }
+
+  public function getObjectId () {
+    return $this->objectId;
+  }
+
+  public function setObjectType ($objectType) {
+    $this->objectType = $objectType;
+  }
+
+  public function getObjectType () {
+    return $this->objectType;
+  }
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setValue ($value) {
+    $this->value = $value;
+  }
+
+  public function getValue () {
+    return $this->value;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

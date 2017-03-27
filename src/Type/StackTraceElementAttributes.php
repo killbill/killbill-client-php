@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class StackTraceElementAttributes extends \Killbill\Client\Resource {
-  protected $className;
-  protected $fileName;
-  protected $lineNumber;
-  protected $methodName;
-  protected $nativeMethod;
+  protected $className = null;
+  protected $fileName = null;
+  protected $lineNumber = null;
+  protected $methodName = null;
+  protected $nativeMethod = null;
+
+  public function setClassName ($className) {
+    $this->className = $className;
+  }
+
+  public function getClassName () {
+    return $this->className;
+  }
+
+  public function setFileName ($fileName) {
+    $this->fileName = $fileName;
+  }
+
+  public function getFileName () {
+    return $this->fileName;
+  }
+
+  public function setLineNumber ($lineNumber) {
+    $this->lineNumber = $lineNumber;
+  }
+
+  public function getLineNumber () {
+    return $this->lineNumber;
+  }
+
+  public function setMethodName ($methodName) {
+    $this->methodName = $methodName;
+  }
+
+  public function getMethodName () {
+    return $this->methodName;
+  }
+
+  public function setNativeMethod ($nativeMethod) {
+    $this->nativeMethod = $nativeMethod;
+  }
+
+  public function getNativeMethod () {
+    return $this->nativeMethod;
+  }
+
 }

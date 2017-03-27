@@ -27,10 +27,59 @@ namespace Killbill\Client\Type;
 
 
 class BundleAttributes extends \Killbill\Client\Resource {
-  protected $accountId;
-  protected $bundleId;
-  protected $externalKey;
-  protected $subscriptions;
-  protected $timeline;
-  protected $auditLogs;
+  protected $accountId = null;
+  protected $bundleId = null;
+  protected $externalKey = null;
+  protected $subscriptions = null;
+  protected $timeline = null;
+  protected $auditLogs = null;
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setBundleId ($bundleId) {
+    $this->bundleId = $bundleId;
+  }
+
+  public function getBundleId () {
+    return $this->bundleId;
+  }
+
+  public function setExternalKey ($externalKey) {
+    $this->externalKey = $externalKey;
+  }
+
+  public function getExternalKey () {
+    return $this->externalKey;
+  }
+
+  public function setSubscriptions ($subscriptions) {
+    $this->subscriptions = $subscriptions;
+  }
+
+  public function getSubscriptions () {
+    return $this->subscriptions;
+  }
+
+  public function setTimeline ($timeline) {
+    $this->timeline = $timeline;
+  }
+
+  public function getTimeline () {
+    return $this->timeline;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

@@ -27,10 +27,59 @@ namespace Killbill\Client\Type;
 
 
 class ComboPaymentTransactionAttributes extends \Killbill\Client\Resource {
-  protected $account;
-  protected $paymentMethod;
-  protected $transaction;
-  protected $paymentMethodPluginProperties;
-  protected $transactionPluginProperties;
-  protected $auditLogs;
+  protected $account = null;
+  protected $paymentMethod = null;
+  protected $transaction = null;
+  protected $paymentMethodPluginProperties = null;
+  protected $transactionPluginProperties = null;
+  protected $auditLogs = null;
+
+  public function setAccount ($account) {
+    $this->account = $account;
+  }
+
+  public function getAccount () {
+    return $this->account;
+  }
+
+  public function setPaymentMethod ($paymentMethod) {
+    $this->paymentMethod = $paymentMethod;
+  }
+
+  public function getPaymentMethod () {
+    return $this->paymentMethod;
+  }
+
+  public function setTransaction ($transaction) {
+    $this->transaction = $transaction;
+  }
+
+  public function getTransaction () {
+    return $this->transaction;
+  }
+
+  public function setPaymentMethodPluginProperties ($paymentMethodPluginProperties) {
+    $this->paymentMethodPluginProperties = $paymentMethodPluginProperties;
+  }
+
+  public function getPaymentMethodPluginProperties () {
+    return $this->paymentMethodPluginProperties;
+  }
+
+  public function setTransactionPluginProperties ($transactionPluginProperties) {
+    $this->transactionPluginProperties = $transactionPluginProperties;
+  }
+
+  public function getTransactionPluginProperties () {
+    return $this->transactionPluginProperties;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

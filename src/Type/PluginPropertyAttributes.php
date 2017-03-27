@@ -27,7 +27,32 @@ namespace Killbill\Client\Type;
 
 
 class PluginPropertyAttributes extends \Killbill\Client\Resource {
-  protected $key;
-  protected $value;
-  protected $isUpdatable;
+  protected $key = null;
+  protected $value = null;
+  protected $isUpdatable = null;
+
+  public function setKey ($key) {
+    $this->key = $key;
+  }
+
+  public function getKey () {
+    return $this->key;
+  }
+
+  public function setValue ($value) {
+    $this->value = $value;
+  }
+
+  public function getValue () {
+    return $this->value;
+  }
+
+  public function setIsUpdatable ($isUpdatable) {
+    $this->isUpdatable = $isUpdatable;
+  }
+
+  public function getIsUpdatable () {
+    return $this->isUpdatable;
+  }
+
 }

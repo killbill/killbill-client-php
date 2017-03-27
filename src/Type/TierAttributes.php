@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class TierAttributes extends \Killbill\Client\Resource {
-  protected $tiers;
-  protected $limits;
-  protected $fixedPrice;
-  protected $recurringPrice;
+  protected $tiers = null;
+  protected $limits = null;
+  protected $fixedPrice = null;
+  protected $recurringPrice = null;
+
+  public function setTiers ($tiers) {
+    $this->tiers = $tiers;
+  }
+
+  public function getTiers () {
+    return $this->tiers;
+  }
+
+  public function setLimits ($limits) {
+    $this->limits = $limits;
+  }
+
+  public function getLimits () {
+    return $this->limits;
+  }
+
+  public function setFixedPrice ($fixedPrice) {
+    $this->fixedPrice = $fixedPrice;
+  }
+
+  public function getFixedPrice () {
+    return $this->fixedPrice;
+  }
+
+  public function setRecurringPrice ($recurringPrice) {
+    $this->recurringPrice = $recurringPrice;
+  }
+
+  public function getRecurringPrice () {
+    return $this->recurringPrice;
+  }
+
 }

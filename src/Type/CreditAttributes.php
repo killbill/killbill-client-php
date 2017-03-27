@@ -27,12 +27,77 @@ namespace Killbill\Client\Type;
 
 
 class CreditAttributes extends \Killbill\Client\Resource {
-  protected $creditAmount;
-  protected $currency;
-  protected $invoiceId;
-  protected $invoiceNumber;
-  protected $effectiveDate;
-  protected $accountId;
-  protected $description;
-  protected $auditLogs;
+  protected $creditAmount = null;
+  protected $currency = null;
+  protected $invoiceId = null;
+  protected $invoiceNumber = null;
+  protected $effectiveDate = null;
+  protected $accountId = null;
+  protected $description = null;
+  protected $auditLogs = null;
+
+  public function setCreditAmount ($creditAmount) {
+    $this->creditAmount = $creditAmount;
+  }
+
+  public function getCreditAmount () {
+    return $this->creditAmount;
+  }
+
+  public function setCurrency ($currency) {
+    $this->currency = $currency;
+  }
+
+  public function getCurrency () {
+    return $this->currency;
+  }
+
+  public function setInvoiceId ($invoiceId) {
+    $this->invoiceId = $invoiceId;
+  }
+
+  public function getInvoiceId () {
+    return $this->invoiceId;
+  }
+
+  public function setInvoiceNumber ($invoiceNumber) {
+    $this->invoiceNumber = $invoiceNumber;
+  }
+
+  public function getInvoiceNumber () {
+    return $this->invoiceNumber;
+  }
+
+  public function setEffectiveDate ($effectiveDate) {
+    $this->effectiveDate = $effectiveDate;
+  }
+
+  public function getEffectiveDate () {
+    return $this->effectiveDate;
+  }
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setDescription ($description) {
+    $this->description = $description;
+  }
+
+  public function getDescription () {
+    return $this->description;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

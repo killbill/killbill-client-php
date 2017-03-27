@@ -27,10 +27,59 @@ namespace Killbill\Client\Type;
 
 
 class BillingExceptionAttributes extends \Killbill\Client\Resource {
-  protected $className;
-  protected $code;
-  protected $message;
-  protected $causeClassName;
-  protected $causeMessage;
-  protected $stackTrace;
+  protected $className = null;
+  protected $code = null;
+  protected $message = null;
+  protected $causeClassName = null;
+  protected $causeMessage = null;
+  protected $stackTrace = null;
+
+  public function setClassName ($className) {
+    $this->className = $className;
+  }
+
+  public function getClassName () {
+    return $this->className;
+  }
+
+  public function setCode ($code) {
+    $this->code = $code;
+  }
+
+  public function getCode () {
+    return $this->code;
+  }
+
+  public function setMessage ($message) {
+    $this->message = $message;
+  }
+
+  public function getMessage () {
+    return $this->message;
+  }
+
+  public function setCauseClassName ($causeClassName) {
+    $this->causeClassName = $causeClassName;
+  }
+
+  public function getCauseClassName () {
+    return $this->causeClassName;
+  }
+
+  public function setCauseMessage ($causeMessage) {
+    $this->causeMessage = $causeMessage;
+  }
+
+  public function getCauseMessage () {
+    return $this->causeMessage;
+  }
+
+  public function setStackTrace ($stackTrace) {
+    $this->stackTrace = $stackTrace;
+  }
+
+  public function getStackTrace () {
+    return $this->stackTrace;
+  }
+
 }

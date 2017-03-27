@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class NotificationAttributes extends \Killbill\Client\Resource {
-  protected $eventType;
-  protected $accountId;
-  protected $objectType;
-  protected $objectId;
+  protected $eventType = null;
+  protected $accountId = null;
+  protected $objectType = null;
+  protected $objectId = null;
+
+  public function setEventType ($eventType) {
+    $this->eventType = $eventType;
+  }
+
+  public function getEventType () {
+    return $this->eventType;
+  }
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setObjectType ($objectType) {
+    $this->objectType = $objectType;
+  }
+
+  public function getObjectType () {
+    return $this->objectType;
+  }
+
+  public function setObjectId ($objectId) {
+    $this->objectId = $objectId;
+  }
+
+  public function getObjectId () {
+    return $this->objectId;
+  }
+
 }

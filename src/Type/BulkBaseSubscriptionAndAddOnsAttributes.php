@@ -27,5 +27,14 @@ namespace Killbill\Client\Type;
 
 
 class BulkBaseSubscriptionAndAddOnsAttributes extends \Killbill\Client\Resource {
-  protected $baseEntitlementAndAddOns;
+  protected $baseEntitlementAndAddOns = null;
+
+  public function setBaseEntitlementAndAddOns ($baseEntitlementAndAddOns) {
+    $this->baseEntitlementAndAddOns = $baseEntitlementAndAddOns;
+  }
+
+  public function getBaseEntitlementAndAddOns () {
+    return $this->baseEntitlementAndAddOns;
+  }
+
 }
