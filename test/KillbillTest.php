@@ -16,6 +16,7 @@
  */
 
 namespace Killbill\Client;
+use Killbill;
 
 class KillbillTest extends \PHPUnit_Framework_TestCase
 {
@@ -24,14 +25,27 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     protected $reason = 'test';
     protected $comment = 'no comment';
 
+    /**
+    * @var Account
+    */
+    protected $accountData = null;
+
     public function setUp()
     {
         $tenant = new Tenant();
-        $tenant->externalKey = uniqid();
-        $tenant->apiKey = 'test-php-api-key-' . $tenant->externalKey;
-        $tenant->apiSecret = 'test-php-api-secret-' . $tenant->externalKey;
+        $tenant->setExternalKey(uniqid());
+        $tenant->setApiKey('test-php-api-key-' . $tenant->getExternalKey());
+        $tenant->setApiSecret('test-php-api-secret-' . $tenant->getExternalKey());
         $this->tenant = $tenant->create($this->user, $this->reason, $this->comment);
-        $this->tenant->apiSecret = $tenant->apiSecret;
+        $this->tenant->setApiSecret($tenant->getApiSecret());
+
+        // setup catalog
+        $killbillClient = new Killbill\Client\Client();
+        $headers = $tenant->getTenantHeaders();
+        $headers[] = 'Content-Type: application/xml; charset=utf-8';
+
+        $catalogContents = file_get_contents(__DIR__ . '/resources/SpyCarAdvanced.xml');
+        $response = $killbillClient->request(Client::POST, Client::PATH_CATALOG, $catalogContents, $this->user, $this->reason, $this->comment, $headers);
 
         $this->clock = new ServerClockMock();
         // Reset clock to now
@@ -39,20 +53,20 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 
         $this->externalAccountId = uniqid();
         $this->accountData = new Account();
-        $this->accountData->name = "Killbill php test";
-        $this->accountData->externalKey = $this->externalAccountId;
-        $this->accountData->email = "test-" . $this->externalAccountId . "@kill-bill.org";
-        $this->accountData->currency = "USD";
-        $this->accountData->paymentMethodId = null;
-        $this->accountData->address1 = "12 rue des ecoles";
-        $this->accountData->address2 = "Poitier";
-        $this->accountData->company = "Renault";
-        $this->accountData->state = "Poitou";
-        $this->accountData->country = "France";
-        $this->accountData->phone = "81 53 26 56";
-        $this->accountData->length = 4;
-        $this->accountData->billCycleDay = 12;
-        $this->accountData->timeZone = "UTC";
+        $this->accountData->setName("Killbill php test");
+        $this->accountData->setExternalKey($this->externalAccountId);
+        $this->accountData->setEmail("test-" . $this->externalAccountId . "@kill-bill.org");
+        $this->accountData->setCurrency("USD");
+        $this->accountData->setPaymentMethodId(null);
+        $this->accountData->setAddress1("12 rue des ecoles");
+        $this->accountData->setAddress2("Poitier");
+        $this->accountData->setCompany("Renault");
+        $this->accountData->setState("Poitou");
+        $this->accountData->setCountry("France");
+        $this->accountData->setPhone("81 53 26 56");
+        $this->accountData->setFirstNameLength(4);
+        $this->accountData->setBillCycleDayLocal(12);
+        $this->accountData->setTimeZone("UTC");
     }
 
     public function tearDown()
