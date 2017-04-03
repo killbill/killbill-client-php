@@ -35,34 +35,33 @@ class ServerAccountTest extends KillbillTest
 
         $createdAccount = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
-        $this->assertEquals($this->accountData->name, $createdAccount->name);
-        $this->assertEquals($this->accountData->externalKey, $createdAccount->externalKey);
-        $this->assertEquals($this->accountData->email, $createdAccount->email);
-        $this->assertEquals($this->accountData->currency, $createdAccount->currency);
-        $this->assertEquals($this->accountData->address1, $createdAccount->address1);
-        $this->assertEquals($this->accountData->address2, $createdAccount->address2);
-        $this->assertEquals($this->accountData->company, $createdAccount->company);
-        $this->assertEquals($this->accountData->state, $createdAccount->state);
-        $this->assertEquals($this->accountData->country, $createdAccount->country);
-        $this->assertEquals($this->accountData->phone, $createdAccount->phone);
-        $this->assertEquals($this->accountData->country, $createdAccount->country);
-        $this->assertEquals($this->accountData->length, $createdAccount->length);
-        $this->assertEquals($this->accountData->billCycleDay, $createdAccount->billCycleDay);
-        $this->assertEquals($this->accountData->timeZone, $createdAccount->timeZone);
+        $this->assertEquals($this->accountData->getName(), $createdAccount->getName());
+        $this->assertEquals($this->accountData->getExternalKey(), $createdAccount->getExternalKey());
+        $this->assertEquals($this->accountData->getEmail(), $createdAccount->getEmail());
+        $this->assertEquals($this->accountData->getCurrency(), $createdAccount->getCurrency());
+        $this->assertEquals($this->accountData->getAddress1(), $createdAccount->getAddress1());
+        $this->assertEquals($this->accountData->getAddress2(), $createdAccount->getAddress2());
+        $this->assertEquals($this->accountData->getCompany(), $createdAccount->getCompany());
+        $this->assertEquals($this->accountData->getState(), $createdAccount->getState());
+        $this->assertEquals($this->accountData->getCountry(), $createdAccount->getCountry());
+        $this->assertEquals($this->accountData->getPhone(), $createdAccount->getPhone());
+        $this->assertEquals($this->accountData->getFirstNameLength(), $createdAccount->getFirstNameLength());
+        $this->assertEquals($this->accountData->getBillCycleDayLocal(), $createdAccount->getBillCycleDayLocal());
+        $this->assertEquals($this->accountData->getTimeZone(), $createdAccount->getTimeZone());
 
         /*
          * Verify we can retrieve it
          */
         $account = new Account();
-        $account->accountId = $createdAccount->accountId;
+        $account->setAccountId($createdAccount->getAccountId());
         $account = $account->get($this->tenant->getTenantHeaders());
 
         /*
          * Update it
          */
-        $account->name = "My awesome new name";
+        $account->setName("My awesome new name");
         $updatedAccount = $account->update($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
-        $this->assertEquals("My awesome new name", $updatedAccount->name);
+        $this->assertEquals("My awesome new name", $updatedAccount->getName());
     }
 
     function testOverdueState() {
@@ -70,7 +69,7 @@ class ServerAccountTest extends KillbillTest
         $account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $state = $account->getOverdueState($this->tenant->getTenantHeaders());
-        $this->assertEquals($state->name, '__KILLBILL__CLEAR__OVERDUE_STATE__');
+        $this->assertEquals($state->getName(), '__KILLBILL__CLEAR__OVERDUE_STATE__');
     }
 
     function testTags()
@@ -81,19 +80,19 @@ class ServerAccountTest extends KillbillTest
          * Create the tag definitions
         */
         $tag1 = new TagDefinition();
-        $tag1->name = uniqid();
-        $tag1->description = "This is tag1";
+        $tag1->setName(uniqid());
+        $tag1->setDescription("This is tag1");
         $tag1 = $tag1->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $tag2 = new TagDefinition();
-        $tag2->name = uniqid();
-        $tag2->description = "This is tag2";
+        $tag2->setName(uniqid());
+        $tag2->setDescription("This is tag2");
         $tag2 = $tag2->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         /*
          * Add tags
          */
-        $accountTags = $account->addTags(array($tag1->id, $tag2->id), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $accountTags = $account->addTags(array($tag1->getId(), $tag2->getId()), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->assertEquals(2, count($accountTags));
 
         /*
@@ -101,12 +100,12 @@ class ServerAccountTest extends KillbillTest
          */
         $tags = $account->getTags($this->tenant->getTenantHeaders());
         $this->assertEquals(2, count($tags));
-        if (strcmp($tags[0]->tagDefinitionName, $tag1->name) == 0) {
-            $this->assertEquals($tags[0]->tagDefinitionId, $tag1->id);
-            $this->assertEquals($tags[1]->tagDefinitionId, $tag2->id);
+        if (strcmp($tags[0]->getTagDefinitionName(), $tag1->getName()) == 0) {
+            $this->assertEquals($tags[0]->getTagDefinitionId(), $tag1->getId());
+            $this->assertEquals($tags[1]->getTagDefinitionId(), $tag2->getId());
         } else {
-            $this->assertEquals($tags[1]->tagDefinitionId, $tag1->id);
-            $this->assertEquals($tags[0]->tagDefinitionId, $tag2->id);
+            $this->assertEquals($tags[1]->getTagDefinitionId(), $tag1->getId());
+            $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
         }
     }
 }

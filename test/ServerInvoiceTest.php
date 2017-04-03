@@ -20,6 +20,11 @@ namespace Killbill\Client;
 
 class ServerInvoiceTest extends KillbillTest
 {
+    /**
+    * @var Account
+    */
+    protected $account = null;
+
     function setUp()
     {
         parent::setUp();
@@ -27,13 +32,13 @@ class ServerInvoiceTest extends KillbillTest
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $paymentMethod = new PaymentMethod();
-        $paymentMethod->accountId = $this->account->accountId;
-        $paymentMethod->isDefault = true;
-        $paymentMethod->pluginName = '__EXTERNAL_PAYMENT__';
+        $paymentMethod->setAccountId($this->account->getAccountId());
+        $paymentMethod->setIsDefault(true);
+        $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
         $paymentMethod->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $this->account = $this->account->get($this->tenant->getTenantHeaders());
-        $this->assertNotEmpty($this->account->paymentMethodId);
+        $this->assertNotEmpty($this->account->getPaymentMethodId());
     }
 
     function tearDown()
@@ -46,19 +51,19 @@ class ServerInvoiceTest extends KillbillTest
     function testBasic()
     {
         $subscriptionData = new Subscription();
-        $subscriptionData->accountId =  $this->account->accountId;
-        $subscriptionData->productName = "Sports";
-        $subscriptionData->productCategory = "BASE";
-        $subscriptionData->billingPeriod = "MONTHLY";
-        $subscriptionData->priceList = "DEFAULT";
-        $subscriptionData->externalKey = $this->externalBundleId;
+        $subscriptionData->setAccountId($this->account->getAccountId());
+        $subscriptionData->setProductName('Sports');
+        $subscriptionData->setProductCategory('BASE');
+        $subscriptionData->setBillingPeriod('MONTHLY');
+        $subscriptionData->setPriceList('DEFAULT');
+        $subscriptionData->setExternalKey($this->externalBundleId);
 
         $subscription = $subscriptionData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
-        $this->assertEquals($subscription->accountId, $subscriptionData->accountId);
-        $this->assertEquals($subscription->productName, $subscriptionData->productName);
-        $this->assertEquals($subscription->productCategory, $subscriptionData->productCategory);
-        $this->assertEquals($subscription->billingPeriod, $subscriptionData->billingPeriod);
-        $this->assertEquals($subscription->externalKey, $subscriptionData->externalKey);
+        $this->assertEquals($subscription->getAccountId(), $subscriptionData->getAccountId());
+        $this->assertEquals($subscription->getProductName(), $subscriptionData->getProductName());
+        $this->assertEquals($subscription->getProductCategory(), $subscriptionData->getProductCategory());
+        $this->assertEquals($subscription->getBillingPeriod(), $subscriptionData->getBillingPeriod());
+        $this->assertEquals($subscription->getExternalKey(), $subscriptionData->getExternalKey());
 
         # Move clock after trials
         $this->clock->addDays(31, $this->tenant->getTenantHeaders());
@@ -69,26 +74,26 @@ class ServerInvoiceTest extends KillbillTest
 
         # Retrieve each invoice by id
         $invoice = new Invoice();
-        $invoice->invoiceId =  $invoices[0]->invoiceId;
+        $invoice->setInvoiceId($invoices[0]->getInvoiceId());
         $invoice = $invoice->get(false, $this->tenant->getTenantHeaders());
         $this->assertNotEmpty($invoice);
-        $this->assertNotEmpty($invoice->accountId);
-        $this->assertNotEmpty($invoice->invoiceId);
-        $this->assertNotEmpty($invoice->currency);
-        $this->assertEquals($invoice->amount, 0);
-        $this->assertEquals($invoice->balance, 0);
-        $this->assertEmpty($invoice->items);
+        $this->assertNotEmpty($invoice->getAccountId());
+        $this->assertNotEmpty($invoice->getInvoiceId());
+        $this->assertNotEmpty($invoice->getCurrency());
+        $this->assertEquals($invoice->getAmount(), 0);
+        $this->assertEquals($invoice->getBalance(), 0);
+        $this->assertEmpty($invoice->getItems());
 
         $invoice = new Invoice();
-        $invoice->invoiceId =  $invoices[1]->invoiceId;
+        $invoice->setInvoiceId($invoices[1]->getInvoiceId());
         $invoice = $invoice->get(true, $this->tenant->getTenantHeaders());
         $this->assertNotEmpty($invoice);
-        $this->assertNotEmpty($invoice->accountId);
-        $this->assertNotEmpty($invoice->invoiceId);
-        $this->assertNotEmpty($invoice->currency);
-        $this->assertEquals($invoice->amount, 500);
-        $this->assertEquals($invoice->balance, 0);
-        $this->assertNotEmpty($invoice->items);
-        $this->assertEquals(1, count($invoice->items));
+        $this->assertNotEmpty($invoice->getAccountId());
+        $this->assertNotEmpty($invoice->getInvoiceId());
+        $this->assertNotEmpty($invoice->getCurrency());
+        $this->assertEquals($invoice->getAmount(), 500);
+        $this->assertEquals($invoice->getBalance(), 0);
+        $this->assertNotEmpty($invoice->getItems());
+        $this->assertEquals(1, count($invoice->getItems()));
     }
 }
