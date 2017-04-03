@@ -38,7 +38,7 @@ class InvoiceAttributes extends \Killbill\Client\Resource {
   protected $invoiceNumber = null;
   protected $balance = null;
   protected $accountId = null;
-  protected $externalBundleKeys = null;
+  protected $bundleKeys = null;
   protected $credits = null;
   protected $items = null;
   protected $isParentInvoice = null;
@@ -132,12 +132,12 @@ class InvoiceAttributes extends \Killbill\Client\Resource {
     return $this->accountId;
   }
 
-  public function setExternalBundleKeys ($externalBundleKeys) {
-    $this->externalBundleKeys = $externalBundleKeys;
+  public function setBundleKeys ($bundleKeys) {
+    $this->bundleKeys = $bundleKeys;
   }
 
-  public function getExternalBundleKeys () {
-    return $this->externalBundleKeys;
+  public function getBundleKeys () {
+    return $this->bundleKeys;
   }
 
   public function setCredits ($credits) {
