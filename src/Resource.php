@@ -183,7 +183,7 @@ abstract class Resource /* implements JsonSerializable */ {
         $object = new $classNameWithNs();
 
         foreach ($json as $key => $value) {
-            $object->__set($key, $value);
+            $object->{'set'.ucfirst($key)}($value);
         }
 
         return $object;
