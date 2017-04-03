@@ -24,7 +24,7 @@ use \Killbill\Client\Tenant;
 use \Killbill\Client\Account;
 
 // Killbill server
-Client::$serverUrl = "http://localhost:8080";
+Client::$serverUrl = 'http://localhost:8080';
 
 // Set these values for your particular tenant
 $tenant = new Tenant();
