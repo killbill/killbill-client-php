@@ -21,7 +21,17 @@ use Killbill\Client\Tenant;
 
 abstract class Resource /* implements JsonSerializable */ {
 
+    protected $auditLogs = null;
+
     protected $_client;
+
+    public function setAuditLogs($auditLogs) {
+      $this->auditLogs = $auditLogs;
+    }
+
+    public function getAuditLogs() {
+      return $this->auditLogs;
+    }
 
     /**
      * Issue a GET request to killbill
