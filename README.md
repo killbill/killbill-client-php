@@ -28,31 +28,31 @@ Client::$serverUrl = "http://localhost:8080";
 
 // Set these values for your particular tenant
 $tenant = new Tenant();
-$tenant->apiKey    = 'bob';
-$tenant->apiSecret = 'lazar';
+$tenant->setApiKey('bob');
+$tenant->setApiSecret('lazar');
 
 // Unique id for this account
 $externalAccountId = uniqid();
 
 // Prepare the account data
 $accountData = new Account();
-$accountData->name = "Killbill php test";
-$accountData->externalKey = $externalAccountId;
-$accountData->email = "test-" . $externalAccountId . "@kill-bill.org";
-$accountData->currency = "USD";
-$accountData->paymentMethodId = null;
-$accountData->address1 = "12 rue des ecoles";
-$accountData->address2 = "Poitier";
-$accountData->company = "Renault";
-$accountData->state = "Poitou";
-$accountData->country = "France";
-$accountData->phone = "81 53 26 56";
-$accountData->length = 4;
-$accountData->billCycleDay = 12;
-$accountData->timeZone = "UTC";
+$accountData->setName('Killbill php test');
+$accountData->setExternalKey($externalAccountId);
+$accountData->setEmail('test-' . $externalAccountId . '@kill-bill.org');
+$accountData->setCurrency('USD');
+$accountData->setPaymentMethodId(null);
+$accountData->setAddress1('12 rue des ecoles');
+$accountData->setAddress2('Poitier');
+$accountData->setCompany('Renault');
+$accountData->setState('Poitou');
+$accountData->setCountry('France');
+$accountData->setPhone('81 53 26 56');
+$accountData->setFirstNameLength(4);
+$accountData->setBillCycleDay(12);
+$accountData->setTimeZone('UTC');
 
 // Create it
-$createdAccount = $accountData->create("pierre", "PHP_TEST", "Test for " . $externalAccountId, $tenant->getTenantHeaders());
+$createdAccount = $accountData->create('pierre', 'PHP_TEST', 'Test for '' . $externalAccountId, $tenant->getTenantHeaders());
 ```
 
 Using the client in a non-composer environment
