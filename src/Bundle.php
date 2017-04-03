@@ -30,7 +30,7 @@ class Bundle extends BundleAttributes {
     }
 
     /**
-    * @return Bundle
+    * @return Bundle[]
     */
     public function getByExternalKey($headers = null) {
         $response = $this->_get(Client::PATH_BUNDLES . '?externalKey=' . $this->getExternalKey(), $headers);
