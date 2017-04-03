@@ -84,7 +84,6 @@ class Transaction extends PaymentTransactionAttributes
     {
         $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId();
         $response = $this->_delete($uri, $user, $reason, $comment, $headers);
-        var_dump($response);
         return $this->_getFromResponse('Payment', $response, $headers);
     }
 
