@@ -25,12 +25,15 @@ use Killbill\Client\Type\PaymentMethodAttributes;
 class PaymentMethod extends PaymentMethodAttributes {
 
     public function get($headers = null) {
-            $response = $this->_get(Client::PATH_PAYMENT_METHODS . '/' . $this->accountId, $headers);
+            $response = $this->_get(Client::PATH_PAYMENT_METHODS . '/' . $this->getAccountId(), $headers);
         return $this->_getFromBody('PaymentMethod', $response);
     }
 
+    /**
+    * @return PaymentMethod the newly created payment method
+    */
     public function create($user, $reason, $comment, $headers = null) {
-        $uri = Client::PATH_ACCOUNTS . '/' . $this->accountId . '/paymentMethods';
+        $uri = Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/paymentMethods';
         if ($this->isDefault) {
             $uri = $uri . '?isDefault=true';
         }

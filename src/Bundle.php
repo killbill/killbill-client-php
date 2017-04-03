@@ -21,42 +21,48 @@ use Killbill\Client\Type\BundleAttributes;
 
 class Bundle extends BundleAttributes {
 
+    /**
+    * @return Bundle
+    */
     public function get($headers = null) {
-        $response = $this->_get(Client::PATH_BUNDLES . '/' . $this->bundleId, $headers);
+        $response = $this->_get(Client::PATH_BUNDLES . '/' . $this->getBundleId(), $headers);
         return $this->_getFromBody('Bundle', $response);
     }
 
+    /**
+    * @return Bundle
+    */
     public function getByExternalKey($headers = null) {
-        $response = $this->_get(Client::PATH_BUNDLES . '?externalKey=' . $this->externalKey, $headers);
+        $response = $this->_get(Client::PATH_BUNDLES . '?externalKey=' . $this->getExternalKey(), $headers);
         return $this->_getFromBody('Bundle', $response);
     }
 
     public function getTags($headers = null) {
-        $response = $this->_get(Client::PATH_BUNDLES . '/' . $this->bundleId . Client::PATH_TAGS, $headers);
+        $response = $this->_get(Client::PATH_BUNDLES . '/' . $this->getBundleId() . Client::PATH_TAGS, $headers);
         return $this->_getFromBody('Tag', $response);
     }
 
     public function addTags($tags, $user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Client::PATH_BUNDLES . '/' . $this->bundleId . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
+        $response = $this->_create(Client::PATH_BUNDLES . '/' . $this->getBundleId() . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
             $user, $reason, $comment, $headers);
         return $this->_getFromResponse('Tag', $response, $headers);
     }
 
     public function deleteTags($tags, $user, $reason, $comment, $headers = null) {
-        $this->_delete(Client::PATH_BUNDLES . '/' . $this->bundleId . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
+        $this->_delete(Client::PATH_BUNDLES . '/' . $this->getBundleId() . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
             $user, $reason, $comment, $headers);
         return null;
     }
 
     public function pause($date, $user, $reason, $comment, $headers = null) {
         $this->_update(Client::PATH_BUNDLES . '/' .
-            $this->bundleId . '/pause?requestedDate=' . $date, $user, $reason, $comment, $headers);
+            $this->getBundleId() . '/pause?requestedDate=' . $date, $user, $reason, $comment, $headers);
         return null;
     }
 
     public function resume($date, $user, $reason, $comment, $headers = null) {
         $this->_update(Client::PATH_BUNDLES . '/' .
-            $this->bundleId . '/resume?requestedDate=' . $date, $user, $reason, $comment, $headers);
+            $this->getBundleId() . '/resume?requestedDate=' . $date, $user, $reason, $comment, $headers);
         return null;
     }
 
