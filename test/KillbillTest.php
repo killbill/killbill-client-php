@@ -65,7 +65,6 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $this->accountData->setCountry("France");
         $this->accountData->setPhone("81 53 26 56");
         $this->accountData->setFirstNameLength(4);
-        $this->accountData->setBillCycleDayLocal(12);
         $this->accountData->setTimeZone("UTC");
     }
 
