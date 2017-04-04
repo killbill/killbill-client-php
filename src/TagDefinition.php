@@ -22,7 +22,7 @@ use Killbill\Client\Type\TagDefinitionAttributes;
 class TagDefinition extends TagDefinitionAttributes {
 
     public function get($headers = null) {
-        $response = $this->_get(Client::PATH_TAGDEFINITIONS . '/' . $this->getName(), $headers);
+        $response = $this->_get(Client::PATH_TAGDEFINITIONS . '/' . $this->getId(), $headers);
         return $this->_getFromBody('TagDefinition', $response);
     }
 
@@ -35,7 +35,7 @@ class TagDefinition extends TagDefinitionAttributes {
     }
 
     public function delete($user, $reason, $comment, $headers = null) {
-        $response = $this->_delete(Client::PATH_TAGDEFINITIONS . '/' . $this->getName(), $user, $reason, $comment, $headers);
+        $response = $this->_delete(Client::PATH_TAGDEFINITIONS . '/' . $this->getId(), $user, $reason, $comment, $headers);
         return $this->_getFromBody('TagDefinition', $response, $headers);
     }
 }
