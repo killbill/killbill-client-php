@@ -103,12 +103,13 @@ class Client {
         if ('POST' == $method) {
             curl_setopt($ch, CURLOPT_POST, TRUE);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        }
-        else if ('PUT' == $method) {
+        } else if ('PUT' == $method) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        }
-        else if ('GET' != $method) {
+        } else if ('DELETE' == $method) {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        } else if ('GET' != $method) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         }
 
