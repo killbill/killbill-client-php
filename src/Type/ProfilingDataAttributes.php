@@ -27,5 +27,14 @@ namespace Killbill\Client\Type;
 
 
 class ProfilingDataAttributes extends \Killbill\Client\Resource {
-  protected $rawData;
+  protected $rawData = null;
+
+  public function setRawData ($rawData) {
+    $this->rawData = $rawData;
+  }
+
+  public function getRawData () {
+    return $this->rawData;
+  }
+
 }

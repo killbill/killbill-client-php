@@ -27,7 +27,32 @@ namespace Killbill\Client\Type;
 
 
 class SubscriptionUsageRecordAttributes extends \Killbill\Client\Resource {
-  protected $subscriptionId;
-  protected $trackingId;
-  protected $unitUsageRecords;
+  protected $subscriptionId = null;
+  protected $trackingId = null;
+  protected $unitUsageRecords = null;
+
+  public function setSubscriptionId ($subscriptionId) {
+    $this->subscriptionId = $subscriptionId;
+  }
+
+  public function getSubscriptionId () {
+    return $this->subscriptionId;
+  }
+
+  public function setTrackingId ($trackingId) {
+    $this->trackingId = $trackingId;
+  }
+
+  public function getTrackingId () {
+    return $this->trackingId;
+  }
+
+  public function setUnitUsageRecords ($unitUsageRecords) {
+    $this->unitUsageRecords = $unitUsageRecords;
+  }
+
+  public function getUnitUsageRecords () {
+    return $this->unitUsageRecords;
+  }
+
 }

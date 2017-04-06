@@ -22,6 +22,11 @@ namespace Killbill\Client;
 
 class ServerPaymentTest extends KillbillTest
 {
+    /**
+    * @var Account
+    */
+    protected $account = null;
+
     function setUp()
     {
         parent::setUp();
@@ -29,13 +34,13 @@ class ServerPaymentTest extends KillbillTest
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $paymentMethod = new PaymentMethod();
-        $paymentMethod->accountId = $this->account->accountId;
-        $paymentMethod->isDefault = true;
-        $paymentMethod->pluginName = '__EXTERNAL_PAYMENT__';
+        $paymentMethod->setAccountId($this->account->getAccountId());
+        $paymentMethod->setIsDefault(true);
+        $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
         $paymentMethod->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $this->account = $this->account->get($this->tenant->getTenantHeaders());
-        $this->assertNotEmpty($this->account->paymentMethodId);
+        $this->assertNotEmpty($this->account->getPaymentMethodId());
     }
 
     function tearDown()
@@ -51,19 +56,19 @@ class ServerPaymentTest extends KillbillTest
         $this->account->addTags(array('00000000-0000-0000-0000-000000000001'), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $subscriptionData = new Subscription();
-        $subscriptionData->accountId = $this->account->accountId;
-        $subscriptionData->productName = "Sports";
-        $subscriptionData->productCategory = "BASE";
-        $subscriptionData->billingPeriod = "MONTHLY";
-        $subscriptionData->priceList = "DEFAULT";
-        $subscriptionData->externalKey = $this->externalBundleId;
+        $subscriptionData->setAccountId($this->account->getAccountId());
+        $subscriptionData->setProductName('Sports');
+        $subscriptionData->setProductCategory('BASE');
+        $subscriptionData->setBillingPeriod('MONTHLY');
+        $subscriptionData->setPriceList('DEFAULT');
+        $subscriptionData->setExternalKey($this->externalBundleId);
 
         $subscription = $subscriptionData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
-        $this->assertEquals($subscription->accountId, $subscriptionData->accountId);
-        $this->assertEquals($subscription->productName, $subscriptionData->productName);
-        $this->assertEquals($subscription->productCategory, $subscriptionData->productCategory);
-        $this->assertEquals($subscription->billingPeriod, $subscriptionData->billingPeriod);
-        $this->assertEquals($subscription->externalKey, $subscriptionData->externalKey);
+        $this->assertEquals($subscription->getAccountId(), $subscriptionData->getAccountId());
+        $this->assertEquals($subscription->getProductName(), $subscriptionData->getProductName());
+        $this->assertEquals($subscription->getProductCategory(), $subscriptionData->getProductCategory());
+        $this->assertEquals($subscription->getBillingPeriod(), $subscriptionData->getBillingPeriod());
+        $this->assertEquals($subscription->getExternalKey(), $subscriptionData->getExternalKey());
 
         # Move after trial
         $this->clock->addDays(31, $this->tenant->getTenantHeaders());
@@ -86,26 +91,26 @@ class ServerPaymentTest extends KillbillTest
     function testAuthCaptureRefund()
     {
         $paymentData = new Transaction();
-        $paymentData->amount = 10;
-        $paymentData->currency = 'USD';
-        $payment = $paymentData->createAuthorization($this->account->accountId, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $paymentData->setAmount(10);
+        $paymentData->setCurrency('USD');
+        $payment = $paymentData->createAuthorization($this->account->getAccountId(), null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 10, 1, 10, 0, 0, 0, 0);
 
         // Populate the paymentId, required below
-        $paymentData->paymentId = $payment->paymentId;
+        $paymentData->setPaymentId($payment->getPaymentId());
 
         // Partial capture 1
-        $paymentData->amount = 2;
+        $paymentData->setAmount(2);
         $payment = $paymentData->createCapture($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 2, 2, 10, 2, 0, 0, 0);
 
         // Partial capture 2
-        $paymentData->amount = 3;
+        $paymentData->setAmount(3);
         $payment = $paymentData->createCapture($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 3, 3, 10, 5, 0, 0, 0);
 
         // Partial refund
-        $paymentData->amount = 4;
+        $paymentData->setAmount(4);
         $payment = $paymentData->createRefund($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 4, 4, 10, 5, 0, 4, 0);
     }
@@ -113,29 +118,29 @@ class ServerPaymentTest extends KillbillTest
     function testAuthVoid()
     {
         $paymentData = new Transaction();
-        $paymentData->amount = 10;
-        $paymentData->currency = 'USD';
-        $payment = $paymentData->createAuthorization($this->account->accountId, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $paymentData->setAmount(10);
+        $paymentData->setCurrency('USD');
+        $payment = $paymentData->createAuthorization($this->account->getAccountId(), null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 10, 1, 10, 0, 0, 0, 0);
 
         // Populate the paymentId, required below
-        $paymentData->paymentId = $payment->paymentId;
+        $paymentData->setPaymentId($payment->getPaymentId());
 
         // Void
         $payment = $paymentData->createVoid($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
-        $this->verifyPaymentAndTransaction($payment, 0, 2, 10, 0, 0, 0, 0);
+        $this->verifyPaymentAndTransaction($payment, 0, 2, 0, 0, 0, 0, 0);
     }
 
     function testPurchaseCredit()
     {
         $paymentData = new Transaction();
-        $paymentData->amount = 10;
-        $paymentData->currency = 'USD';
-        $payment = $paymentData->createPurchase($this->account->accountId, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $paymentData->setAmount(10);
+        $paymentData->setCurrency('USD');
+        $payment = $paymentData->createPurchase($this->account->getAccountId(), null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 10, 1, 0, 0, 10, 0, 0);
 
-        $paymentData->amount = 12;
-        $payment = $paymentData->createCredit($this->account->accountId, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $paymentData->setAmount(12);
+        $payment = $paymentData->createCredit($this->account->getAccountId(), null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         // A credit is a different payment
         $this->verifyPaymentAndTransaction($payment, 12, 1, 0, 0, 0, 0, 12);
     }
@@ -151,20 +156,24 @@ class ServerPaymentTest extends KillbillTest
         $this->verifyPayment($retrieved_payment, $transactionAmount, $nbTransactions, $authAmount, $capturedAmount, $purchasedAmount, $refundedAmount, $creditedAmount);
     }
 
+    /**
+    * @param Payment $payment
+    */
     private function verifyPayment($payment, $transactionAmount, $nbTransactions, $authAmount, $capturedAmount, $purchasedAmount, $refundedAmount, $creditedAmount)
     {
-        $this->assertEquals($authAmount, $payment->authAmount);
-        $this->assertEquals($capturedAmount, $payment->capturedAmount);
-        $this->assertEquals($purchasedAmount, $payment->purchasedAmount);
-        $this->assertEquals($refundedAmount, $payment->refundedAmount);
-        $this->assertEquals($creditedAmount, $payment->creditedAmount);
+        $this->assertEquals($authAmount, $payment->getAuthAmount());
+        $this->assertEquals($capturedAmount, $payment->getCapturedAmount());
+        $this->assertEquals($purchasedAmount, $payment->getPurchasedAmount());
+        $this->assertEquals($refundedAmount, $payment->getRefundedAmount());
+        $this->assertEquals($creditedAmount, $payment->getCreditedAmount());
 
-        $this->assertEquals($nbTransactions, count($payment->transactions));
-        foreach ($payment->transactions as $tx) {
+        $this->assertEquals($nbTransactions, count($payment->getTransactions()));
+        foreach ($payment->getTransactions() as $tx) {
             $this->assertEquals('SUCCESS', $tx->status);
         }
 
-        $transaction = $payment->transactions[count($payment->transactions) - 1];
+        $transactions = $payment->getTransactions();
+        $transaction = $transactions[count($payment->getTransactions()) - 1];
         $this->assertEquals($transactionAmount, $transaction->amount);
         $this->assertEquals('SUCCESS', $transaction->status);
     }

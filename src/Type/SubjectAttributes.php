@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class SubjectAttributes extends \Killbill\Client\Resource {
-  protected $principal;
-  protected $isAuthenticated;
-  protected $isRemembered;
-  protected $session;
+  protected $principal = null;
+  protected $isAuthenticated = null;
+  protected $isRemembered = null;
+  protected $session = null;
+
+  public function setPrincipal ($principal) {
+    $this->principal = $principal;
+  }
+
+  public function getPrincipal () {
+    return $this->principal;
+  }
+
+  public function setIsAuthenticated ($isAuthenticated) {
+    $this->isAuthenticated = $isAuthenticated;
+  }
+
+  public function getIsAuthenticated () {
+    return $this->isAuthenticated;
+  }
+
+  public function setIsRemembered ($isRemembered) {
+    $this->isRemembered = $isRemembered;
+  }
+
+  public function getIsRemembered () {
+    return $this->isRemembered;
+  }
+
+  public function setSession ($session) {
+    $this->session = $session;
+  }
+
+  public function getSession () {
+    return $this->session;
+  }
+
 }

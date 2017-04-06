@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class OverdueAttributes extends \Killbill\Client\Resource {
-  protected $initialReevaluationInterval;
-  protected $overdueStates;
+  protected $initialReevaluationInterval = null;
+  protected $overdueStates = null;
+
+  public function setInitialReevaluationInterval ($initialReevaluationInterval) {
+    $this->initialReevaluationInterval = $initialReevaluationInterval;
+  }
+
+  public function getInitialReevaluationInterval () {
+    return $this->initialReevaluationInterval;
+  }
+
+  public function setOverdueStates ($overdueStates) {
+    $this->overdueStates = $overdueStates;
+  }
+
+  public function getOverdueStates () {
+    return $this->overdueStates;
+  }
+
 }

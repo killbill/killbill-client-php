@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class PhasePriceOverrideAttributes extends \Killbill\Client\Resource {
-  protected $planName;
-  protected $phaseName;
-  protected $phaseType;
-  protected $fixedPrice;
-  protected $recurringPrice;
+  protected $planName = null;
+  protected $phaseName = null;
+  protected $phaseType = null;
+  protected $fixedPrice = null;
+  protected $recurringPrice = null;
+
+  public function setPlanName ($planName) {
+    $this->planName = $planName;
+  }
+
+  public function getPlanName () {
+    return $this->planName;
+  }
+
+  public function setPhaseName ($phaseName) {
+    $this->phaseName = $phaseName;
+  }
+
+  public function getPhaseName () {
+    return $this->phaseName;
+  }
+
+  public function setPhaseType ($phaseType) {
+    $this->phaseType = $phaseType;
+  }
+
+  public function getPhaseType () {
+    return $this->phaseType;
+  }
+
+  public function setFixedPrice ($fixedPrice) {
+    $this->fixedPrice = $fixedPrice;
+  }
+
+  public function getFixedPrice () {
+    return $this->fixedPrice;
+  }
+
+  public function setRecurringPrice ($recurringPrice) {
+    $this->recurringPrice = $recurringPrice;
+  }
+
+  public function getRecurringPrice () {
+    return $this->recurringPrice;
+  }
+
 }

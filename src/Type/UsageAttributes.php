@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class UsageAttributes extends \Killbill\Client\Resource {
-  protected $billingPeriod;
-  protected $tiers;
+  protected $billingPeriod = null;
+  protected $tiers = null;
+
+  public function setBillingPeriod ($billingPeriod) {
+    $this->billingPeriod = $billingPeriod;
+  }
+
+  public function getBillingPeriod () {
+    return $this->billingPeriod;
+  }
+
+  public function setTiers ($tiers) {
+    $this->tiers = $tiers;
+  }
+
+  public function getTiers () {
+    return $this->tiers;
+  }
+
 }

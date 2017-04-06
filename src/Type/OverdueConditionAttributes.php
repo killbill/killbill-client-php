@@ -27,10 +27,59 @@ namespace Killbill\Client\Type;
 
 
 class OverdueConditionAttributes extends \Killbill\Client\Resource {
-  protected $timeSinceEarliestUnpaidInvoiceEqualsOrExceeds;
-  protected $controlTagInclusion;
-  protected $controlTagExclusion;
-  protected $numberOfUnpaidInvoicesEqualsOrExceeds;
-  protected $responseForLastFailedPayment;
-  protected $totalUnpaidInvoiceBalanceEqualsOrExceeds;
+  protected $timeSinceEarliestUnpaidInvoiceEqualsOrExceeds = null;
+  protected $controlTagInclusion = null;
+  protected $controlTagExclusion = null;
+  protected $numberOfUnpaidInvoicesEqualsOrExceeds = null;
+  protected $responseForLastFailedPayment = null;
+  protected $totalUnpaidInvoiceBalanceEqualsOrExceeds = null;
+
+  public function setTimeSinceEarliestUnpaidInvoiceEqualsOrExceeds ($timeSinceEarliestUnpaidInvoiceEqualsOrExceeds) {
+    $this->timeSinceEarliestUnpaidInvoiceEqualsOrExceeds = $timeSinceEarliestUnpaidInvoiceEqualsOrExceeds;
+  }
+
+  public function getTimeSinceEarliestUnpaidInvoiceEqualsOrExceeds () {
+    return $this->timeSinceEarliestUnpaidInvoiceEqualsOrExceeds;
+  }
+
+  public function setControlTagInclusion ($controlTagInclusion) {
+    $this->controlTagInclusion = $controlTagInclusion;
+  }
+
+  public function getControlTagInclusion () {
+    return $this->controlTagInclusion;
+  }
+
+  public function setControlTagExclusion ($controlTagExclusion) {
+    $this->controlTagExclusion = $controlTagExclusion;
+  }
+
+  public function getControlTagExclusion () {
+    return $this->controlTagExclusion;
+  }
+
+  public function setNumberOfUnpaidInvoicesEqualsOrExceeds ($numberOfUnpaidInvoicesEqualsOrExceeds) {
+    $this->numberOfUnpaidInvoicesEqualsOrExceeds = $numberOfUnpaidInvoicesEqualsOrExceeds;
+  }
+
+  public function getNumberOfUnpaidInvoicesEqualsOrExceeds () {
+    return $this->numberOfUnpaidInvoicesEqualsOrExceeds;
+  }
+
+  public function setResponseForLastFailedPayment ($responseForLastFailedPayment) {
+    $this->responseForLastFailedPayment = $responseForLastFailedPayment;
+  }
+
+  public function getResponseForLastFailedPayment () {
+    return $this->responseForLastFailedPayment;
+  }
+
+  public function setTotalUnpaidInvoiceBalanceEqualsOrExceeds ($totalUnpaidInvoiceBalanceEqualsOrExceeds) {
+    $this->totalUnpaidInvoiceBalanceEqualsOrExceeds = $totalUnpaidInvoiceBalanceEqualsOrExceeds;
+  }
+
+  public function getTotalUnpaidInvoiceBalanceEqualsOrExceeds () {
+    return $this->totalUnpaidInvoiceBalanceEqualsOrExceeds;
+  }
+
 }

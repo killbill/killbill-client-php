@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class PlanDetailAttributes extends \Killbill\Client\Resource {
-  protected $product;
-  protected $plan;
-  protected $final_phase_billing_period;
-  protected $priceList;
-  protected $final_phase_recurring_price;
+  protected $product = null;
+  protected $plan = null;
+  protected $final_phase_billing_period = null;
+  protected $priceList = null;
+  protected $final_phase_recurring_price = null;
+
+  public function setProduct ($product) {
+    $this->product = $product;
+  }
+
+  public function getProduct () {
+    return $this->product;
+  }
+
+  public function setPlan ($plan) {
+    $this->plan = $plan;
+  }
+
+  public function getPlan () {
+    return $this->plan;
+  }
+
+  public function setFinal_phase_billing_period ($final_phase_billing_period) {
+    $this->final_phase_billing_period = $final_phase_billing_period;
+  }
+
+  public function getFinal_phase_billing_period () {
+    return $this->final_phase_billing_period;
+  }
+
+  public function setPriceList ($priceList) {
+    $this->priceList = $priceList;
+  }
+
+  public function getPriceList () {
+    return $this->priceList;
+  }
+
+  public function setFinal_phase_recurring_price ($final_phase_recurring_price) {
+    $this->final_phase_recurring_price = $final_phase_recurring_price;
+  }
+
+  public function getFinal_phase_recurring_price () {
+    return $this->final_phase_recurring_price;
+  }
+
 }

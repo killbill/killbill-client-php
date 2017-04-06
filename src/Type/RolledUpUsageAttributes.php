@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class RolledUpUsageAttributes extends \Killbill\Client\Resource {
-  protected $subscriptionId;
-  protected $startDate;
-  protected $endDate;
-  protected $rolledUpUnits;
+  protected $subscriptionId = null;
+  protected $startDate = null;
+  protected $endDate = null;
+  protected $rolledUpUnits = null;
+
+  public function setSubscriptionId ($subscriptionId) {
+    $this->subscriptionId = $subscriptionId;
+  }
+
+  public function getSubscriptionId () {
+    return $this->subscriptionId;
+  }
+
+  public function setStartDate ($startDate) {
+    $this->startDate = $startDate;
+  }
+
+  public function getStartDate () {
+    return $this->startDate;
+  }
+
+  public function setEndDate ($endDate) {
+    $this->endDate = $endDate;
+  }
+
+  public function getEndDate () {
+    return $this->endDate;
+  }
+
+  public function setRolledUpUnits ($rolledUpUnits) {
+    $this->rolledUpUnits = $rolledUpUnits;
+  }
+
+  public function getRolledUpUnits () {
+    return $this->rolledUpUnits;
+  }
+
 }

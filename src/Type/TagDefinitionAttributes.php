@@ -27,10 +27,59 @@ namespace Killbill\Client\Type;
 
 
 class TagDefinitionAttributes extends \Killbill\Client\Resource {
-  protected $id;
-  protected $isControlTag;
-  protected $name;
-  protected $description;
-  protected $applicableObjectTypes;
-  protected $auditLogs;
+  protected $id = null;
+  protected $isControlTag = null;
+  protected $name = null;
+  protected $description = null;
+  protected $applicableObjectTypes = null;
+  protected $auditLogs = null;
+
+  public function setId ($id) {
+    $this->id = $id;
+  }
+
+  public function getId () {
+    return $this->id;
+  }
+
+  public function setIsControlTag ($isControlTag) {
+    $this->isControlTag = $isControlTag;
+  }
+
+  public function getIsControlTag () {
+    return $this->isControlTag;
+  }
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setDescription ($description) {
+    $this->description = $description;
+  }
+
+  public function getDescription () {
+    return $this->description;
+  }
+
+  public function setApplicableObjectTypes ($applicableObjectTypes) {
+    $this->applicableObjectTypes = $applicableObjectTypes;
+  }
+
+  public function getApplicableObjectTypes () {
+    return $this->applicableObjectTypes;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

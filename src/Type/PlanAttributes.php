@@ -27,7 +27,32 @@ namespace Killbill\Client\Type;
 
 
 class PlanAttributes extends \Killbill\Client\Resource {
-  protected $name;
-  protected $billingPeriod;
-  protected $phases;
+  protected $name = null;
+  protected $billingPeriod = null;
+  protected $phases = null;
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setBillingPeriod ($billingPeriod) {
+    $this->billingPeriod = $billingPeriod;
+  }
+
+  public function getBillingPeriod () {
+    return $this->billingPeriod;
+  }
+
+  public function setPhases ($phases) {
+    $this->phases = $phases;
+  }
+
+  public function getPhases () {
+    return $this->phases;
+  }
+
 }

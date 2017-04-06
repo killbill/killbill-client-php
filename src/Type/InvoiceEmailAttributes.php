@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class InvoiceEmailAttributes extends \Killbill\Client\Resource {
-  protected $accountId;
-  protected $isNotifiedForInvoices;
+  protected $accountId = null;
+  protected $isNotifiedForInvoices = null;
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setIsNotifiedForInvoices ($isNotifiedForInvoices) {
+    $this->isNotifiedForInvoices = $isNotifiedForInvoices;
+  }
+
+  public function getIsNotifiedForInvoices () {
+    return $this->isNotifiedForInvoices;
+  }
+
 }

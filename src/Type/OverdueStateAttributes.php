@@ -27,11 +27,68 @@ namespace Killbill\Client\Type;
 
 
 class OverdueStateAttributes extends \Killbill\Client\Resource {
-  protected $name;
-  protected $externalMessage;
-  protected $daysBetweenPaymentRetries;
-  protected $disableEntitlementAndChangesBlocked;
-  protected $blockChanges;
-  protected $clearState;
-  protected $reevaluationIntervalDays;
+  protected $name = null;
+  protected $externalMessage = null;
+  protected $daysBetweenPaymentRetries = null;
+  protected $disableEntitlementAndChangesBlocked = null;
+  protected $blockChanges = null;
+  protected $clearState = null;
+  protected $reevaluationIntervalDays = null;
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setExternalMessage ($externalMessage) {
+    $this->externalMessage = $externalMessage;
+  }
+
+  public function getExternalMessage () {
+    return $this->externalMessage;
+  }
+
+  public function setDaysBetweenPaymentRetries ($daysBetweenPaymentRetries) {
+    $this->daysBetweenPaymentRetries = $daysBetweenPaymentRetries;
+  }
+
+  public function getDaysBetweenPaymentRetries () {
+    return $this->daysBetweenPaymentRetries;
+  }
+
+  public function setDisableEntitlementAndChangesBlocked ($disableEntitlementAndChangesBlocked) {
+    $this->disableEntitlementAndChangesBlocked = $disableEntitlementAndChangesBlocked;
+  }
+
+  public function getDisableEntitlementAndChangesBlocked () {
+    return $this->disableEntitlementAndChangesBlocked;
+  }
+
+  public function setBlockChanges ($blockChanges) {
+    $this->blockChanges = $blockChanges;
+  }
+
+  public function getBlockChanges () {
+    return $this->blockChanges;
+  }
+
+  public function setClearState ($clearState) {
+    $this->clearState = $clearState;
+  }
+
+  public function getClearState () {
+    return $this->clearState;
+  }
+
+  public function setReevaluationIntervalDays ($reevaluationIntervalDays) {
+    $this->reevaluationIntervalDays = $reevaluationIntervalDays;
+  }
+
+  public function getReevaluationIntervalDays () {
+    return $this->reevaluationIntervalDays;
+  }
+
 }

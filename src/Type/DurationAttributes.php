@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class DurationAttributes extends \Killbill\Client\Resource {
-  protected $unit;
-  protected $number;
+  protected $unit = null;
+  protected $number = null;
+
+  public function setUnit ($unit) {
+    $this->unit = $unit;
+  }
+
+  public function getUnit () {
+    return $this->unit;
+  }
+
+  public function setNumber ($number) {
+    $this->number = $number;
+  }
+
+  public function getNumber () {
+    return $this->number;
+  }
+
 }

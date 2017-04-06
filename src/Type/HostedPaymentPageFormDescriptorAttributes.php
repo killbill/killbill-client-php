@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class HostedPaymentPageFormDescriptorAttributes extends \Killbill\Client\Resource {
-  protected $kbAccountId;
-  protected $formMethod;
-  protected $formUrl;
-  protected $formFields;
-  protected $properties;
+  protected $kbAccountId = null;
+  protected $formMethod = null;
+  protected $formUrl = null;
+  protected $formFields = null;
+  protected $properties = null;
+
+  public function setKbAccountId ($kbAccountId) {
+    $this->kbAccountId = $kbAccountId;
+  }
+
+  public function getKbAccountId () {
+    return $this->kbAccountId;
+  }
+
+  public function setFormMethod ($formMethod) {
+    $this->formMethod = $formMethod;
+  }
+
+  public function getFormMethod () {
+    return $this->formMethod;
+  }
+
+  public function setFormUrl ($formUrl) {
+    $this->formUrl = $formUrl;
+  }
+
+  public function getFormUrl () {
+    return $this->formUrl;
+  }
+
+  public function setFormFields ($formFields) {
+    $this->formFields = $formFields;
+  }
+
+  public function getFormFields () {
+    return $this->formFields;
+  }
+
+  public function setProperties ($properties) {
+    $this->properties = $properties;
+  }
+
+  public function getProperties () {
+    return $this->properties;
+  }
+
 }

@@ -27,10 +27,59 @@ namespace Killbill\Client\Type;
 
 
 class AuditLogAttributes extends \Killbill\Client\Resource {
-  protected $changeType;
-  protected $changeDate;
-  protected $changedBy;
-  protected $reasonCode;
-  protected $comments;
-  protected $userToken;
+  protected $changeType = null;
+  protected $changeDate = null;
+  protected $changedBy = null;
+  protected $reasonCode = null;
+  protected $comments = null;
+  protected $userToken = null;
+
+  public function setChangeType ($changeType) {
+    $this->changeType = $changeType;
+  }
+
+  public function getChangeType () {
+    return $this->changeType;
+  }
+
+  public function setChangeDate ($changeDate) {
+    $this->changeDate = $changeDate;
+  }
+
+  public function getChangeDate () {
+    return $this->changeDate;
+  }
+
+  public function setChangedBy ($changedBy) {
+    $this->changedBy = $changedBy;
+  }
+
+  public function getChangedBy () {
+    return $this->changedBy;
+  }
+
+  public function setReasonCode ($reasonCode) {
+    $this->reasonCode = $reasonCode;
+  }
+
+  public function getReasonCode () {
+    return $this->reasonCode;
+  }
+
+  public function setComments ($comments) {
+    $this->comments = $comments;
+  }
+
+  public function getComments () {
+    return $this->comments;
+  }
+
+  public function setUserToken ($userToken) {
+    $this->userToken = $userToken;
+  }
+
+  public function getUserToken () {
+    return $this->userToken;
+  }
+
 }

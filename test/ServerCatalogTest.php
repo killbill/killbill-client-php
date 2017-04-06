@@ -38,6 +38,6 @@ class ServerCatalogTest extends KillbillTest
         $catalog = new Catalog();
         $catalog->initialize($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($catalog->getFullCatalog());
-        $this->assertEquals(count($catalog->getFullCatalog()->products), 6);
+        $this->assertEquals(count($catalog->getFullCatalog()[0]->products), 6);
     }
 }

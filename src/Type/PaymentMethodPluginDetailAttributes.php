@@ -27,7 +27,32 @@ namespace Killbill\Client\Type;
 
 
 class PaymentMethodPluginDetailAttributes extends \Killbill\Client\Resource {
-  protected $externalPaymentMethodId;
-  protected $isDefaultPaymentMethod;
-  protected $properties;
+  protected $externalPaymentMethodId = null;
+  protected $isDefaultPaymentMethod = null;
+  protected $properties = null;
+
+  public function setExternalPaymentMethodId ($externalPaymentMethodId) {
+    $this->externalPaymentMethodId = $externalPaymentMethodId;
+  }
+
+  public function getExternalPaymentMethodId () {
+    return $this->externalPaymentMethodId;
+  }
+
+  public function setIsDefaultPaymentMethod ($isDefaultPaymentMethod) {
+    $this->isDefaultPaymentMethod = $isDefaultPaymentMethod;
+  }
+
+  public function getIsDefaultPaymentMethod () {
+    return $this->isDefaultPaymentMethod;
+  }
+
+  public function setProperties ($properties) {
+    $this->properties = $properties;
+  }
+
+  public function getProperties () {
+    return $this->properties;
+  }
+
 }

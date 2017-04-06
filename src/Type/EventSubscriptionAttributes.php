@@ -27,17 +27,122 @@ namespace Killbill\Client\Type;
 
 
 class EventSubscriptionAttributes extends \Killbill\Client\Resource {
-  protected $eventId;
-  protected $billingPeriod;
-  protected $effectiveDt;
-  protected $plan;
-  protected $product;
-  protected $priceList;
-  protected $eventType;
-  protected $isBlockedBilling;
-  protected $isBlockedEntitlement;
-  protected $serviceName;
-  protected $serviceStateName;
-  protected $phase;
-  protected $auditLogs;
+  protected $eventId = null;
+  protected $billingPeriod = null;
+  protected $effectiveDt = null;
+  protected $plan = null;
+  protected $product = null;
+  protected $priceList = null;
+  protected $eventType = null;
+  protected $isBlockedBilling = null;
+  protected $isBlockedEntitlement = null;
+  protected $serviceName = null;
+  protected $serviceStateName = null;
+  protected $phase = null;
+  protected $auditLogs = null;
+
+  public function setEventId ($eventId) {
+    $this->eventId = $eventId;
+  }
+
+  public function getEventId () {
+    return $this->eventId;
+  }
+
+  public function setBillingPeriod ($billingPeriod) {
+    $this->billingPeriod = $billingPeriod;
+  }
+
+  public function getBillingPeriod () {
+    return $this->billingPeriod;
+  }
+
+  public function setEffectiveDt ($effectiveDt) {
+    $this->effectiveDt = $effectiveDt;
+  }
+
+  public function getEffectiveDt () {
+    return $this->effectiveDt;
+  }
+
+  public function setPlan ($plan) {
+    $this->plan = $plan;
+  }
+
+  public function getPlan () {
+    return $this->plan;
+  }
+
+  public function setProduct ($product) {
+    $this->product = $product;
+  }
+
+  public function getProduct () {
+    return $this->product;
+  }
+
+  public function setPriceList ($priceList) {
+    $this->priceList = $priceList;
+  }
+
+  public function getPriceList () {
+    return $this->priceList;
+  }
+
+  public function setEventType ($eventType) {
+    $this->eventType = $eventType;
+  }
+
+  public function getEventType () {
+    return $this->eventType;
+  }
+
+  public function setIsBlockedBilling ($isBlockedBilling) {
+    $this->isBlockedBilling = $isBlockedBilling;
+  }
+
+  public function getIsBlockedBilling () {
+    return $this->isBlockedBilling;
+  }
+
+  public function setIsBlockedEntitlement ($isBlockedEntitlement) {
+    $this->isBlockedEntitlement = $isBlockedEntitlement;
+  }
+
+  public function getIsBlockedEntitlement () {
+    return $this->isBlockedEntitlement;
+  }
+
+  public function setServiceName ($serviceName) {
+    $this->serviceName = $serviceName;
+  }
+
+  public function getServiceName () {
+    return $this->serviceName;
+  }
+
+  public function setServiceStateName ($serviceStateName) {
+    $this->serviceStateName = $serviceStateName;
+  }
+
+  public function getServiceStateName () {
+    return $this->serviceStateName;
+  }
+
+  public function setPhase ($phase) {
+    $this->phase = $phase;
+  }
+
+  public function getPhase () {
+    return $this->phase;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

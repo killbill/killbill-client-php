@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class RoleDefinitionAttributes extends \Killbill\Client\Resource {
-  protected $role;
-  protected $permissions;
+  protected $role = null;
+  protected $permissions = null;
+
+  public function setRole ($role) {
+    $this->role = $role;
+  }
+
+  public function getRole () {
+    return $this->role;
+  }
+
+  public function setPermissions ($permissions) {
+    $this->permissions = $permissions;
+  }
+
+  public function getPermissions () {
+    return $this->permissions;
+  }
+
 }

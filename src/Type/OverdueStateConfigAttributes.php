@@ -27,12 +27,77 @@ namespace Killbill\Client\Type;
 
 
 class OverdueStateConfigAttributes extends \Killbill\Client\Resource {
-  protected $name;
-  protected $isClearState;
-  protected $condition;
-  protected $externalMessage;
-  protected $blockChanges;
-  protected $disableEntitlement;
-  protected $subscriptionCancellationPolicy;
-  protected $autoReevaluationIntervalDays;
+  protected $name = null;
+  protected $isClearState = null;
+  protected $condition = null;
+  protected $externalMessage = null;
+  protected $blockChanges = null;
+  protected $disableEntitlement = null;
+  protected $subscriptionCancellationPolicy = null;
+  protected $autoReevaluationIntervalDays = null;
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setIsClearState ($isClearState) {
+    $this->isClearState = $isClearState;
+  }
+
+  public function getIsClearState () {
+    return $this->isClearState;
+  }
+
+  public function setCondition ($condition) {
+    $this->condition = $condition;
+  }
+
+  public function getCondition () {
+    return $this->condition;
+  }
+
+  public function setExternalMessage ($externalMessage) {
+    $this->externalMessage = $externalMessage;
+  }
+
+  public function getExternalMessage () {
+    return $this->externalMessage;
+  }
+
+  public function setBlockChanges ($blockChanges) {
+    $this->blockChanges = $blockChanges;
+  }
+
+  public function getBlockChanges () {
+    return $this->blockChanges;
+  }
+
+  public function setDisableEntitlement ($disableEntitlement) {
+    $this->disableEntitlement = $disableEntitlement;
+  }
+
+  public function getDisableEntitlement () {
+    return $this->disableEntitlement;
+  }
+
+  public function setSubscriptionCancellationPolicy ($subscriptionCancellationPolicy) {
+    $this->subscriptionCancellationPolicy = $subscriptionCancellationPolicy;
+  }
+
+  public function getSubscriptionCancellationPolicy () {
+    return $this->subscriptionCancellationPolicy;
+  }
+
+  public function setAutoReevaluationIntervalDays ($autoReevaluationIntervalDays) {
+    $this->autoReevaluationIntervalDays = $autoReevaluationIntervalDays;
+  }
+
+  public function getAutoReevaluationIntervalDays () {
+    return $this->autoReevaluationIntervalDays;
+  }
+
 }

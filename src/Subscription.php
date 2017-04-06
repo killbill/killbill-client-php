@@ -22,10 +22,13 @@ use Killbill\Client\Type\SubscriptionAttributes;
 class Subscription extends SubscriptionAttributes {
 
     public function get($headers = null) {
-        $response = $this->_get(Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId, $headers);
+        $response = $this->_get(Client::PATH_SUBSCRIPTIONS . '/' . $this->getSubscriptionId(), $headers);
         return $this->_getFromBody('Subscription', $response, $headers);
     }
 
+    /**
+    * @return Subscription the newly created subscription
+    */
     public function create($user, $reason, $comment, $headers = null) {
         return $this->createAndWait(false, $user, $reason, $comment, $headers);
     }
@@ -35,8 +38,11 @@ class Subscription extends SubscriptionAttributes {
         return $this->_getFromResponse('Subscription', $response, $headers);
     }
 
+    /**
+    * @return Subscription the changed plan
+    */
     public function changePlan($requestedDate, $billingPolicy,  $callCompletion, $user, $reason, $comment, $headers = null) {
-        $uri = Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId;
+        $uri = Client::PATH_SUBSCRIPTIONS . '/' . $this->getSubscriptionId();
         $first = true;
         if ($requestedDate) {
             $uri = $uri . ($first ? '?' : '&') . 'requestedDate=' . $requestedDate;
@@ -55,12 +61,12 @@ class Subscription extends SubscriptionAttributes {
     }
 
     public function reinstate($user, $reason, $comment, $headers = null) {
-        $response = $this->_update(Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId . '/uncancel', $user, $reason, $comment, $headers);
+        $response = $this->_update(Client::PATH_SUBSCRIPTIONS . '/' . $this->getSubscriptionId() . '/uncancel', $user, $reason, $comment, $headers);
         return $this->_getFromBody('Subscription', $response);
     }
 
     public function cancel($requestedDate, $entitlementPolicy, $billingPolicy, $useRequestedDateForBilling, $callCompletion, $user, $reason, $comment, $headers = null) {
-        $uri = Client::PATH_SUBSCRIPTIONS . '/' . $this->subscriptionId;
+        $uri = Client::PATH_SUBSCRIPTIONS . '/' . $this->getSubscriptionId();
         $first = true;
         if ($requestedDate) {
             $uri = $uri . ($first ? '?' : '&') . 'requestedDate=' . $requestedDate;

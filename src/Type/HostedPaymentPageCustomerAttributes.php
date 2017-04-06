@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class HostedPaymentPageCustomerAttributes extends \Killbill\Client\Resource {
-  protected $firstName;
-  protected $lastName;
-  protected $email;
-  protected $phone;
+  protected $firstName = null;
+  protected $lastName = null;
+  protected $email = null;
+  protected $phone = null;
+
+  public function setFirstName ($firstName) {
+    $this->firstName = $firstName;
+  }
+
+  public function getFirstName () {
+    return $this->firstName;
+  }
+
+  public function setLastName ($lastName) {
+    $this->lastName = $lastName;
+  }
+
+  public function getLastName () {
+    return $this->lastName;
+  }
+
+  public function setEmail ($email) {
+    $this->email = $email;
+  }
+
+  public function getEmail () {
+    return $this->email;
+  }
+
+  public function setPhone ($phone) {
+    $this->phone = $phone;
+  }
+
+  public function getPhone () {
+    return $this->phone;
+  }
+
 }

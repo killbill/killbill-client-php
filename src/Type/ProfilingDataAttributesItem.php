@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class ProfilingDataAttributesItem extends \Killbill\Client\Resource {
-  protected $name;
-  protected $startUsec;
-  protected $durationUsec;
-  protected $calls;
+  protected $name = null;
+  protected $startUsec = null;
+  protected $durationUsec = null;
+  protected $calls = null;
+
+  public function setName ($name) {
+    $this->name = $name;
+  }
+
+  public function getName () {
+    return $this->name;
+  }
+
+  public function setStartUsec ($startUsec) {
+    $this->startUsec = $startUsec;
+  }
+
+  public function getStartUsec () {
+    return $this->startUsec;
+  }
+
+  public function setDurationUsec ($durationUsec) {
+    $this->durationUsec = $durationUsec;
+  }
+
+  public function getDurationUsec () {
+    return $this->durationUsec;
+  }
+
+  public function setCalls ($calls) {
+    $this->calls = $calls;
+  }
+
+  public function getCalls () {
+    return $this->calls;
+  }
+
 }

@@ -22,17 +22,20 @@ use Killbill\Client\Type\TagDefinitionAttributes;
 class TagDefinition extends TagDefinitionAttributes {
 
     public function get($headers = null) {
-        $response = $this->_get(Client::PATH_TAGDEFINITIONS . '/' . $this->accountId, $headers);
+        $response = $this->_get(Client::PATH_TAGDEFINITIONS . '/' . $this->getId(), $headers);
         return $this->_getFromBody('TagDefinition', $response);
     }
 
+    /**
+    * @return TagDefinition the newly created tag definition
+    */
     public function create($user, $reason, $comment, $headers = null) {
         $response = $this->_create(Client::PATH_TAGDEFINITIONS, $user, $reason, $comment, $headers);
         return $this->_getFromResponse('TagDefinition', $response, $headers);
     }
 
     public function delete($user, $reason, $comment, $headers = null) {
-        $response = $this->_delete(Client::PATH_TAGDEFINITIONS . '/' . $this->name, $user, $reason, $comment, $headers);
+        $response = $this->_delete(Client::PATH_TAGDEFINITIONS . '/' . $this->getId(), $user, $reason, $comment, $headers);
         return $this->_getFromBody('TagDefinition', $response, $headers);
     }
 }

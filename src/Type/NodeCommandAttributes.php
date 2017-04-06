@@ -27,7 +27,32 @@ namespace Killbill\Client\Type;
 
 
 class NodeCommandAttributes extends \Killbill\Client\Resource {
-  protected $systemCommandType;
-  protected $nodeCommandType;
-  protected $nodeCommandProperties;
+  protected $systemCommandType = null;
+  protected $nodeCommandType = null;
+  protected $nodeCommandProperties = null;
+
+  public function setSystemCommandType ($systemCommandType) {
+    $this->systemCommandType = $systemCommandType;
+  }
+
+  public function getSystemCommandType () {
+    return $this->systemCommandType;
+  }
+
+  public function setNodeCommandType ($nodeCommandType) {
+    $this->nodeCommandType = $nodeCommandType;
+  }
+
+  public function getNodeCommandType () {
+    return $this->nodeCommandType;
+  }
+
+  public function setNodeCommandProperties ($nodeCommandProperties) {
+    $this->nodeCommandProperties = $nodeCommandProperties;
+  }
+
+  public function getNodeCommandProperties () {
+    return $this->nodeCommandProperties;
+  }
+
 }

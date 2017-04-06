@@ -21,7 +21,17 @@ use Killbill\Client\Tenant;
 
 abstract class Resource /* implements JsonSerializable */ {
 
+    protected $auditLogs = null;
+
     protected $_client;
+
+    public function setAuditLogs($auditLogs) {
+      $this->auditLogs = $auditLogs;
+    }
+
+    public function getAuditLogs() {
+      return $this->auditLogs;
+    }
 
     /**
      * Issue a GET request to killbill
@@ -173,7 +183,7 @@ abstract class Resource /* implements JsonSerializable */ {
         $object = new $classNameWithNs();
 
         foreach ($json as $key => $value) {
-            $object->__set($key, $value);
+            $object->{'set'.ucfirst($key)}($value);
         }
 
         return $object;
@@ -219,19 +229,5 @@ abstract class Resource /* implements JsonSerializable */ {
         if (is_null($this->_client)) {
             $this->_client = new Client();
         }
-    }
-
-    public function __get($property) {
-        if (property_exists($this, $property)) {
-            return $this->$property;
-        }
-    }
-
-    public function __set($property, $value) {
-        if (property_exists($this, $property)) {
-            $this->$property = $value;
-        }
-
-        return $this;
     }
 }

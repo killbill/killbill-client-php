@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class PriceAttributes extends \Killbill\Client\Resource {
-  protected $currency;
-  protected $value;
+  protected $currency = null;
+  protected $value = null;
+
+  public function setCurrency ($currency) {
+    $this->currency = $currency;
+  }
+
+  public function getCurrency () {
+    return $this->currency;
+  }
+
+  public function setValue ($value) {
+    $this->value = $value;
+  }
+
+  public function getValue () {
+    return $this->value;
+  }
+
 }

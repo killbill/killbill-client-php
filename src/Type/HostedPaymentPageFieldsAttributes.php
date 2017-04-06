@@ -27,5 +27,14 @@ namespace Killbill\Client\Type;
 
 
 class HostedPaymentPageFieldsAttributes extends \Killbill\Client\Resource {
-  protected $formFields;
+  protected $formFields = null;
+
+  public function setFormFields ($formFields) {
+    $this->formFields = $formFields;
+  }
+
+  public function getFormFields () {
+    return $this->formFields;
+  }
+
 }

@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class AccountEmailAttributes extends \Killbill\Client\Resource {
-  protected $accountId;
-  protected $email;
+  protected $accountId = null;
+  protected $email = null;
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setEmail ($email) {
+    $this->email = $email;
+  }
+
+  public function getEmail () {
+    return $this->email;
+  }
+
 }

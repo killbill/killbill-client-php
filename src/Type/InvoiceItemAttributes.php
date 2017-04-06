@@ -27,22 +27,167 @@ namespace Killbill\Client\Type;
 
 
 class InvoiceItemAttributes extends \Killbill\Client\Resource {
-  protected $invoiceItemId;
-  protected $invoiceId;
-  protected $linkedInvoiceItemId;
-  protected $accountId;
-  protected $childAccountId;
-  protected $bundleId;
-  protected $subscriptionId;
-  protected $planName;
-  protected $phaseName;
-  protected $usageName;
-  protected $itemType;
-  protected $description;
-  protected $startDate;
-  protected $endDate;
-  protected $amount;
-  protected $currency;
-  protected $childItems;
-  protected $auditLogs;
+  protected $invoiceItemId = null;
+  protected $invoiceId = null;
+  protected $linkedInvoiceItemId = null;
+  protected $accountId = null;
+  protected $childAccountId = null;
+  protected $bundleId = null;
+  protected $subscriptionId = null;
+  protected $planName = null;
+  protected $phaseName = null;
+  protected $usageName = null;
+  protected $itemType = null;
+  protected $description = null;
+  protected $startDate = null;
+  protected $endDate = null;
+  protected $amount = null;
+  protected $currency = null;
+  protected $childItems = null;
+  protected $auditLogs = null;
+
+  public function setInvoiceItemId ($invoiceItemId) {
+    $this->invoiceItemId = $invoiceItemId;
+  }
+
+  public function getInvoiceItemId () {
+    return $this->invoiceItemId;
+  }
+
+  public function setInvoiceId ($invoiceId) {
+    $this->invoiceId = $invoiceId;
+  }
+
+  public function getInvoiceId () {
+    return $this->invoiceId;
+  }
+
+  public function setLinkedInvoiceItemId ($linkedInvoiceItemId) {
+    $this->linkedInvoiceItemId = $linkedInvoiceItemId;
+  }
+
+  public function getLinkedInvoiceItemId () {
+    return $this->linkedInvoiceItemId;
+  }
+
+  public function setAccountId ($accountId) {
+    $this->accountId = $accountId;
+  }
+
+  public function getAccountId () {
+    return $this->accountId;
+  }
+
+  public function setChildAccountId ($childAccountId) {
+    $this->childAccountId = $childAccountId;
+  }
+
+  public function getChildAccountId () {
+    return $this->childAccountId;
+  }
+
+  public function setBundleId ($bundleId) {
+    $this->bundleId = $bundleId;
+  }
+
+  public function getBundleId () {
+    return $this->bundleId;
+  }
+
+  public function setSubscriptionId ($subscriptionId) {
+    $this->subscriptionId = $subscriptionId;
+  }
+
+  public function getSubscriptionId () {
+    return $this->subscriptionId;
+  }
+
+  public function setPlanName ($planName) {
+    $this->planName = $planName;
+  }
+
+  public function getPlanName () {
+    return $this->planName;
+  }
+
+  public function setPhaseName ($phaseName) {
+    $this->phaseName = $phaseName;
+  }
+
+  public function getPhaseName () {
+    return $this->phaseName;
+  }
+
+  public function setUsageName ($usageName) {
+    $this->usageName = $usageName;
+  }
+
+  public function getUsageName () {
+    return $this->usageName;
+  }
+
+  public function setItemType ($itemType) {
+    $this->itemType = $itemType;
+  }
+
+  public function getItemType () {
+    return $this->itemType;
+  }
+
+  public function setDescription ($description) {
+    $this->description = $description;
+  }
+
+  public function getDescription () {
+    return $this->description;
+  }
+
+  public function setStartDate ($startDate) {
+    $this->startDate = $startDate;
+  }
+
+  public function getStartDate () {
+    return $this->startDate;
+  }
+
+  public function setEndDate ($endDate) {
+    $this->endDate = $endDate;
+  }
+
+  public function getEndDate () {
+    return $this->endDate;
+  }
+
+  public function setAmount ($amount) {
+    $this->amount = $amount;
+  }
+
+  public function getAmount () {
+    return $this->amount;
+  }
+
+  public function setCurrency ($currency) {
+    $this->currency = $currency;
+  }
+
+  public function getCurrency () {
+    return $this->currency;
+  }
+
+  public function setChildItems ($childItems) {
+    $this->childItems = $childItems;
+  }
+
+  public function getChildItems () {
+    return $this->childItems;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

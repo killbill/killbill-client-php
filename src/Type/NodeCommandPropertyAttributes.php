@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class NodeCommandPropertyAttributes extends \Killbill\Client\Resource {
-  protected $key;
-  protected $value;
+  protected $key = null;
+  protected $value = null;
+
+  public function setKey ($key) {
+    $this->key = $key;
+  }
+
+  public function getKey () {
+    return $this->key;
+  }
+
+  public function setValue ($value) {
+    $this->value = $value;
+  }
+
+  public function getValue () {
+    return $this->value;
+  }
+
 }

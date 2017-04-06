@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class TieredBlockAttributes extends \Killbill\Client\Resource {
-  protected $unit;
-  protected $size;
-  protected $max;
-  protected $prices;
+  protected $unit = null;
+  protected $size = null;
+  protected $max = null;
+  protected $prices = null;
+
+  public function setUnit ($unit) {
+    $this->unit = $unit;
+  }
+
+  public function getUnit () {
+    return $this->unit;
+  }
+
+  public function setSize ($size) {
+    $this->size = $size;
+  }
+
+  public function getSize () {
+    return $this->size;
+  }
+
+  public function setMax ($max) {
+    $this->max = $max;
+  }
+
+  public function getMax () {
+    return $this->max;
+  }
+
+  public function setPrices ($prices) {
+    $this->prices = $prices;
+  }
+
+  public function getPrices () {
+    return $this->prices;
+  }
+
 }

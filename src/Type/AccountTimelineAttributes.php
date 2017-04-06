@@ -27,8 +27,41 @@ namespace Killbill\Client\Type;
 
 
 class AccountTimelineAttributes extends \Killbill\Client\Resource {
-  protected $account;
-  protected $bundles;
-  protected $invoices;
-  protected $payments;
+  protected $account = null;
+  protected $bundles = null;
+  protected $invoices = null;
+  protected $payments = null;
+
+  public function setAccount ($account) {
+    $this->account = $account;
+  }
+
+  public function getAccount () {
+    return $this->account;
+  }
+
+  public function setBundles ($bundles) {
+    $this->bundles = $bundles;
+  }
+
+  public function getBundles () {
+    return $this->bundles;
+  }
+
+  public function setInvoices ($invoices) {
+    $this->invoices = $invoices;
+  }
+
+  public function getInvoices () {
+    return $this->invoices;
+  }
+
+  public function setPayments ($payments) {
+    $this->payments = $payments;
+  }
+
+  public function getPayments () {
+    return $this->payments;
+  }
+
 }

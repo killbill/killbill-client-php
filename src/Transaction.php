@@ -23,49 +23,73 @@ use Killbill\Client\Type\PaymentTransactionAttributes;
 
 class Transaction extends PaymentTransactionAttributes
 {
+    /**
+    * @return Payment
+    */
     public function createAuthorization($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
         $this->transactionType = 'AUTHORIZE';
         return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
+    /**
+    * @return Payment
+    */
     public function createPurchase($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
         $this->transactionType = 'PURCHASE';
         return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
+    /**
+    * @return Payment
+    */
     public function createCredit($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
         $this->transactionType = 'CREDIT';
         return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
+    /**
+    * @return Payment
+    */
     public function createCapture($user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_PAYMENTS . '/' . $this->paymentId;
+        $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId();
         return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
     }
 
+    /**
+    * @return Payment
+    */
     public function createRefund($user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_PAYMENTS . '/' . $this->paymentId . '/refunds';
+        $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId() . '/refunds';
         return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
     }
 
+    /**
+    * @return Payment
+    */
     public function createChargeback($user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_PAYMENTS . '/' . $this->paymentId . '/chargebacks';
+        $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId() . '/chargebacks';
         return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
     }
 
+    /**
+    * @return Payment
+    */
     public function createVoid($user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_PAYMENTS . '/' . $this->paymentId;
+        $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId();
         $response = $this->_delete($uri, $user, $reason, $comment, $headers);
         return $this->_getFromResponse('Payment', $response, $headers);
     }
 
+    /**
+    * @return Payment
+    */
     public function _createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
         $uri = Client::PATH_ACCOUNTS . '/' . $accountId . '/payments';
@@ -75,6 +99,9 @@ class Transaction extends PaymentTransactionAttributes
         return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
     }
 
+    /**
+    * @return Payment
+    */
     public function _createTransaction($uri, $user, $reason, $comment, $headers = null)
     {
         $response = $this->_create($uri, $user, $reason, $comment, $headers);

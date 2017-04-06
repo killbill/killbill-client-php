@@ -21,8 +21,11 @@ use Killbill\Client\Type\InvoiceAttributes;
 
 class Invoice extends InvoiceAttributes {
 
+    /**
+    * @return Invoice
+    */
     public function get($withItems, $headers = null) {
-        $uri = Client::PATH_INVOICES . '/' . $this->invoiceId;
+        $uri = Client::PATH_INVOICES . '/' . $this->getInvoiceId();
         if ($withItems) {
            $uri = $uri . '?withItems=true';
         }
@@ -31,7 +34,7 @@ class Invoice extends InvoiceAttributes {
     }
 
     public function getInvoiceAsHTML($headers = null) {
-        $response = $this->_get(Client::PATH_INVOICES . '/' . $this->invoiceId . '/html', $headers);
+        $response = $this->_get(Client::PATH_INVOICES . '/' . $this->getInvoiceId() . '/html', $headers);
         return $response->body;
     }
 }

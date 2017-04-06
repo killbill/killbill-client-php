@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class PluginServiceInfoAttributes extends \Killbill\Client\Resource {
-  protected $serviceTypeName;
-  protected $registrationName;
+  protected $serviceTypeName = null;
+  protected $registrationName = null;
+
+  public function setServiceTypeName ($serviceTypeName) {
+    $this->serviceTypeName = $serviceTypeName;
+  }
+
+  public function getServiceTypeName () {
+    return $this->serviceTypeName;
+  }
+
+  public function setRegistrationName ($registrationName) {
+    $this->registrationName = $registrationName;
+  }
+
+  public function getRegistrationName () {
+    return $this->registrationName;
+  }
+
 }

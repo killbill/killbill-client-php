@@ -27,6 +27,23 @@ namespace Killbill\Client\Type;
 
 
 class TenantKeyAttributes extends \Killbill\Client\Resource {
-  protected $key;
-  protected $values;
+  protected $key = null;
+  protected $values = null;
+
+  public function setKey ($key) {
+    $this->key = $key;
+  }
+
+  public function getKey () {
+    return $this->key;
+  }
+
+  public function setValues ($values) {
+    $this->values = $values;
+  }
+
+  public function getValues () {
+    return $this->values;
+  }
+
 }

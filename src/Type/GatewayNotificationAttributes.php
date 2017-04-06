@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class GatewayNotificationAttributes extends \Killbill\Client\Resource {
-  protected $kbPaymentId;
-  protected $status;
-  protected $entity;
-  protected $headers;
-  protected $properties;
+  protected $kbPaymentId = null;
+  protected $status = null;
+  protected $entity = null;
+  protected $headers = null;
+  protected $properties = null;
+
+  public function setKbPaymentId ($kbPaymentId) {
+    $this->kbPaymentId = $kbPaymentId;
+  }
+
+  public function getKbPaymentId () {
+    return $this->kbPaymentId;
+  }
+
+  public function setStatus ($status) {
+    $this->status = $status;
+  }
+
+  public function getStatus () {
+    return $this->status;
+  }
+
+  public function setEntity ($entity) {
+    $this->entity = $entity;
+  }
+
+  public function getEntity () {
+    return $this->entity;
+  }
+
+  public function setHeaders ($headers) {
+    $this->headers = $headers;
+  }
+
+  public function getHeaders () {
+    return $this->headers;
+  }
+
+  public function setProperties ($properties) {
+    $this->properties = $properties;
+  }
+
+  public function getProperties () {
+    return $this->properties;
+  }
+
 }

@@ -27,9 +27,50 @@ namespace Killbill\Client\Type;
 
 
 class ComboHostedPaymentPageAttributes extends \Killbill\Client\Resource {
-  protected $account;
-  protected $paymentMethod;
-  protected $hostedPaymentPageFields;
-  protected $paymentMethodPluginProperties;
-  protected $auditLogs;
+  protected $account = null;
+  protected $paymentMethod = null;
+  protected $hostedPaymentPageFields = null;
+  protected $paymentMethodPluginProperties = null;
+  protected $auditLogs = null;
+
+  public function setAccount ($account) {
+    $this->account = $account;
+  }
+
+  public function getAccount () {
+    return $this->account;
+  }
+
+  public function setPaymentMethod ($paymentMethod) {
+    $this->paymentMethod = $paymentMethod;
+  }
+
+  public function getPaymentMethod () {
+    return $this->paymentMethod;
+  }
+
+  public function setHostedPaymentPageFields ($hostedPaymentPageFields) {
+    $this->hostedPaymentPageFields = $hostedPaymentPageFields;
+  }
+
+  public function getHostedPaymentPageFields () {
+    return $this->hostedPaymentPageFields;
+  }
+
+  public function setPaymentMethodPluginProperties ($paymentMethodPluginProperties) {
+    $this->paymentMethodPluginProperties = $paymentMethodPluginProperties;
+  }
+
+  public function getPaymentMethodPluginProperties () {
+    return $this->paymentMethodPluginProperties;
+  }
+
+  public function setAuditLogs ($auditLogs) {
+    $this->auditLogs = $auditLogs;
+  }
+
+  public function getAuditLogs () {
+    return $this->auditLogs;
+  }
+
 }

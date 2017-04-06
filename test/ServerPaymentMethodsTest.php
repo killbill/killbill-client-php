@@ -19,6 +19,10 @@ namespace Killbill\Client;
 
 class ServerPaymentMethodTest extends KillbillTest
 {
+    /**
+    * @var Account
+    */
+    protected $account = null;
 
     function setUp()
     {
@@ -37,20 +41,20 @@ class ServerPaymentMethodTest extends KillbillTest
 
     function testBasic() {
         $paymentMethod = new PaymentMethod();
-        $paymentMethod->accountId = $this->account->accountId;
-        $paymentMethod->isDefault = true;
-        $paymentMethod->pluginName = '__EXTERNAL_PAYMENT__';
+        $paymentMethod->setAccountId($this->account->getAccountId());
+        $paymentMethod->setIsDefault(true);
+        $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
         $paymentMethod->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $this->account = $this->account->get($this->tenant->getTenantHeaders());
-        $this->assertNotEmpty($this->account->paymentMethodId);
+        $this->assertNotEmpty($this->account->getPaymentMethodId());
 
 
         $paymentMethods = $this->account->getPaymentMethods($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($paymentMethods);
         $this->assertEquals(count($paymentMethods), 1);
-        $this->assertEquals($paymentMethods[0]->accountId, $this->account->accountId);
-        $this->assertEquals($paymentMethods[0]->isDefault, true);
-        $this->assertEquals($paymentMethods[0]->pluginName, '__EXTERNAL_PAYMENT__');
+        $this->assertEquals($paymentMethods[0]->getAccountId(), $this->account->getAccountId());
+        $this->assertEquals($paymentMethods[0]->getIsDefault(), true);
+        $this->assertEquals($paymentMethods[0]->getPluginName(), '__EXTERNAL_PAYMENT__');
     }
 }

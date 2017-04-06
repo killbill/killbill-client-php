@@ -24,33 +24,42 @@ use Killbill\Client\Type\AccountAttributes;
 
 class Account extends AccountAttributes {
 
+    /**
+    * @return Account the fetched account
+    */
     public function get($headers = null) {
-        if ($this->accountId) {
-            $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->accountId, $headers);
+        if ($this->getAccountId()) {
+            $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId(), $headers);
         } else {
-            $response = $this->_get(Client::PATH_ACCOUNTS . '?externalKey=' . $this->externalKey, $headers);
+            $response = $this->_get(Client::PATH_ACCOUNTS . '?externalKey=' . $this->getExternalKey(), $headers);
         }
         return $this->_getFromBody('Account', $response);
     }
 
+    /**
+    * @return Account newly created account
+    */
     public function create($user, $reason, $comment, $headers = null) {
         $response = $this->_create(Client::PATH_ACCOUNTS, $user, $reason, $comment, $headers);
         return $this->_getFromResponse('Account', $response, $headers);
     }
 
+    /**
+    * @return Account the updated account
+    */
     public function update($user, $reason, $comment, $headers = null) {
-        $response = $this->_update(Client::PATH_ACCOUNTS . '/' . $this->accountId, $user, $reason, $comment, $headers);
+        $response = $this->_update(Client::PATH_ACCOUNTS . '/' . $this->getAccountId(), $user, $reason, $comment, $headers);
         return $this->_getFromBody('Account', $response);
     }
 
     public function getBundles($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->accountId . '/bundles', $headers);
+        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/bundles', $headers);
         return $this->_getFromBody('Bundle', $response);
     }
 
     public function getInvoices($withItems, $unpaidInvoicesOnly, $headers = null) {
         $first = true;
-        $uri = Client::PATH_ACCOUNTS . '/' . $this->accountId . '/invoices';
+        $uri = Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/invoices';
         if ($withItems) {
             $uri = $uri . '?withItems=true';
             $first = false;
@@ -65,39 +74,45 @@ class Account extends AccountAttributes {
     }
 
     public function payAllUnpaidInvoices($user, $reason, $comment, $headers = null) {
-        $uri = Client::PATH_ACCOUNTS . '/' . $this->accountId . '/payments';
+        $uri = Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/payments';
         $this->_create($uri, $user, $reason, $comment, $headers);
         return null;
     }
 
+    /**
+    * @return Overdue
+    */
     public function getOverdueState($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->accountId . '/overdue', $headers);
+        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/overdue', $headers);
         return $this->_getFromBody('Overdue', $response);
     }
 
+    /**
+    * @return PaymentMethod[]
+    */
     public function getPaymentMethods($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->accountId . '/paymentMethods', $headers);
+        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/paymentMethods', $headers);
         return $this->_getFromBody('PaymentMethod', $response);
     }
 
     public function getPayments($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->accountId . '/payments', $headers);
+        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/payments', $headers);
         return $this->_getFromBody('Payment', $response);
     }
 
     public function getTags($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->accountId . Client::PATH_TAGS, $headers);
+        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . Client::PATH_TAGS, $headers);
         return $this->_getFromBody('Tag', $response);
     }
 
     public function addTags($tags, $user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Client::PATH_ACCOUNTS . '/' . $this->accountId . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
+        $response = $this->_create(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
             $user, $reason, $comment, $headers);
         return $this->_getFromResponse('Tag', $response, $headers);
     }
 
     public function deleteTags($tags, $user, $reason, $comment, $headers = null) {
-        $response = $this->_delete(Client::PATH_ACCOUNTS . '/' . $this->accountId . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
+        $response = $this->_delete(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
             $user, $reason, $comment, $headers);
         return null;
     }

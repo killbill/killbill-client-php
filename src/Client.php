@@ -73,7 +73,6 @@ class Client {
         curl_setopt($ch, CURLOPT_TIMEOUT, 45);
         // Default http headers
         $http_headers = array(
-            'Content-Type: application/json; charset=utf-8',
             'Accept: application/json, text/html',
             'X-Killbill-Reason: ' . $reason,
             'X-Killbill-CreatedBy: ' . $user,
@@ -82,6 +81,16 @@ class Client {
         );
         if ($additional_headers) {
             $http_headers = array_merge($http_headers, $additional_headers);
+        }
+
+        $hasContentTypeHeader = false;
+        foreach ($http_headers as $currentHeader) {
+          if (strpos($currentHeader, 'Content-Type') === 0) {
+            $hasContentTypeHeader = true;
+          }
+        }
+        if (!$hasContentTypeHeader) {
+          $http_headers[] = 'Content-Type: application/json; charset=utf-8';
         }
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, $http_headers);
@@ -94,12 +103,13 @@ class Client {
         if ('POST' == $method) {
             curl_setopt($ch, CURLOPT_POST, TRUE);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        }
-        else if ('PUT' == $method) {
+        } else if ('PUT' == $method) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        }
-        else if ('GET' != $method) {
+        } else if ('DELETE' == $method) {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        } else if ('GET' != $method) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         }
 

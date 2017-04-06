@@ -27,10 +27,59 @@ namespace Killbill\Client\Type;
 
 
 class HostedPaymentPageBillingAddressAttributes extends \Killbill\Client\Resource {
-  protected $city;
-  protected $address1;
-  protected $address2;
-  protected $state;
-  protected $zip;
-  protected $country;
+  protected $city = null;
+  protected $address1 = null;
+  protected $address2 = null;
+  protected $state = null;
+  protected $zip = null;
+  protected $country = null;
+
+  public function setCity ($city) {
+    $this->city = $city;
+  }
+
+  public function getCity () {
+    return $this->city;
+  }
+
+  public function setAddress1 ($address1) {
+    $this->address1 = $address1;
+  }
+
+  public function getAddress1 () {
+    return $this->address1;
+  }
+
+  public function setAddress2 ($address2) {
+    $this->address2 = $address2;
+  }
+
+  public function getAddress2 () {
+    return $this->address2;
+  }
+
+  public function setState ($state) {
+    $this->state = $state;
+  }
+
+  public function getState () {
+    return $this->state;
+  }
+
+  public function setZip ($zip) {
+    $this->zip = $zip;
+  }
+
+  public function getZip () {
+    return $this->zip;
+  }
+
+  public function setCountry ($country) {
+    $this->country = $country;
+  }
+
+  public function getCountry () {
+    return $this->country;
+  }
+
 }

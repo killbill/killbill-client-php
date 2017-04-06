@@ -27,16 +27,113 @@ namespace Killbill\Client\Type;
 
 
 class InvoiceDryRunAttributes extends \Killbill\Client\Resource {
-  protected $dryRunType;
-  protected $dryRunAction;
-  protected $phaseType;
-  protected $productName;
-  protected $productCategory;
-  protected $billingPeriod;
-  protected $priceListName;
-  protected $subscriptionId;
-  protected $bundleId;
-  protected $effectiveDate;
-  protected $billingPolicy;
-  protected $priceOverrides;
+  protected $dryRunType = null;
+  protected $dryRunAction = null;
+  protected $phaseType = null;
+  protected $productName = null;
+  protected $productCategory = null;
+  protected $billingPeriod = null;
+  protected $priceListName = null;
+  protected $subscriptionId = null;
+  protected $bundleId = null;
+  protected $effectiveDate = null;
+  protected $billingPolicy = null;
+  protected $priceOverrides = null;
+
+  public function setDryRunType ($dryRunType) {
+    $this->dryRunType = $dryRunType;
+  }
+
+  public function getDryRunType () {
+    return $this->dryRunType;
+  }
+
+  public function setDryRunAction ($dryRunAction) {
+    $this->dryRunAction = $dryRunAction;
+  }
+
+  public function getDryRunAction () {
+    return $this->dryRunAction;
+  }
+
+  public function setPhaseType ($phaseType) {
+    $this->phaseType = $phaseType;
+  }
+
+  public function getPhaseType () {
+    return $this->phaseType;
+  }
+
+  public function setProductName ($productName) {
+    $this->productName = $productName;
+  }
+
+  public function getProductName () {
+    return $this->productName;
+  }
+
+  public function setProductCategory ($productCategory) {
+    $this->productCategory = $productCategory;
+  }
+
+  public function getProductCategory () {
+    return $this->productCategory;
+  }
+
+  public function setBillingPeriod ($billingPeriod) {
+    $this->billingPeriod = $billingPeriod;
+  }
+
+  public function getBillingPeriod () {
+    return $this->billingPeriod;
+  }
+
+  public function setPriceListName ($priceListName) {
+    $this->priceListName = $priceListName;
+  }
+
+  public function getPriceListName () {
+    return $this->priceListName;
+  }
+
+  public function setSubscriptionId ($subscriptionId) {
+    $this->subscriptionId = $subscriptionId;
+  }
+
+  public function getSubscriptionId () {
+    return $this->subscriptionId;
+  }
+
+  public function setBundleId ($bundleId) {
+    $this->bundleId = $bundleId;
+  }
+
+  public function getBundleId () {
+    return $this->bundleId;
+  }
+
+  public function setEffectiveDate ($effectiveDate) {
+    $this->effectiveDate = $effectiveDate;
+  }
+
+  public function getEffectiveDate () {
+    return $this->effectiveDate;
+  }
+
+  public function setBillingPolicy ($billingPolicy) {
+    $this->billingPolicy = $billingPolicy;
+  }
+
+  public function getBillingPolicy () {
+    return $this->billingPolicy;
+  }
+
+  public function setPriceOverrides ($priceOverrides) {
+    $this->priceOverrides = $priceOverrides;
+  }
+
+  public function getPriceOverrides () {
+    return $this->priceOverrides;
+  }
+
 }
