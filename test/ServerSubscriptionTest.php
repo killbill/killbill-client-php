@@ -79,7 +79,7 @@ class ServerSubscriptionTest extends KillbillTest
         $subscription->cancel(null, null, null, null, false, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $subscriptionRes = $subscription->get($this->tenant->getTenantHeaders());
-        $this->assertNotEmpty($subscriptionRes->cancelledDate);
+        $this->assertNotEmpty($subscriptionRes->getCancelledDate());
     }
 
     public function testBundleWithAO() {
