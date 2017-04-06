@@ -128,7 +128,7 @@ class ServerPaymentTest extends KillbillTest
 
         // Void
         $payment = $paymentData->createVoid($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
-        // $this->verifyPaymentAndTransaction($payment, 0, 2, 10, 0, 0, 0, 0);
+        $this->verifyPaymentAndTransaction($payment, 0, 2, 0, 0, 0, 0, 0);
     }
 
     function testPurchaseCredit()
