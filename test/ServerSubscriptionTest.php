@@ -68,7 +68,7 @@ class ServerSubscriptionTest extends KillbillTest
 
         # Move by a few days -- still in trial -- and change product
         $this->clock->addDays(3, $this->tenant->getTenantHeaders());
-        $subscription->setProductName('Super');
+        $subscription->setPlanName('super-monthly');
         $subscriptionRes = $subscription->changePlan(null, null, null, $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
         $this->assertEquals($subscriptionRes->getProductName(), 'Super');
         $subscription = $subscriptionRes;
