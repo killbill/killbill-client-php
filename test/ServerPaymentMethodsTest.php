@@ -28,6 +28,9 @@ class ServerPaymentMethodTest extends KillbillTest
     {
         parent::setUp();
         $this->externalBundleId = uniqid();
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+            $this->externalBundleId = md5('serverPaymentMethodTest' . static::class . ':' . $this->getName());
+        }
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
     }
 

@@ -81,12 +81,18 @@ class ServerAccountTest extends KillbillTest
         */
         $tag1 = new TagDefinition();
         $tag1->setName(uniqid());
-        $tag1->setDescription("This is tag1");
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+            $tag1->setName(md5('tag1' . static::class . ':' . $this->getName()));
+        }
+        $tag1->setDescription('This is tag1');
         $tag1 = $tag1->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $tag2 = new TagDefinition();
         $tag2->setName(uniqid());
-        $tag2->setDescription("This is tag2");
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+            $tag2->setName(md5('tag2' . static::class . ':' . $this->getName()));
+        }
+        $tag2->setDescription('This is tag2');
         $tag2 = $tag2->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         /*
