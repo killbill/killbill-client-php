@@ -195,11 +195,7 @@ abstract class Resource /* implements JsonSerializable */ {
      * @return json encoded resource
      */
     public function jsonSerialize() {
-
-        $keys = get_object_vars($this);
-
         $x = $this->prepareForSerialization();
-
         return json_encode($x);
     }
 
@@ -220,6 +216,7 @@ abstract class Resource /* implements JsonSerializable */ {
                 }
             }
         }
+        asort($keys);
         return $keys;
     }
 
