@@ -18,6 +18,7 @@
 namespace Killbill\Client;
 
 class Client {
+    public static $mockManager = null;
 
     public static $serverUrl = 'http://127.0.0.1:8080';
     public static $apiVersion = '1.0';
@@ -51,16 +52,24 @@ class Client {
 
     private function _sendRequest($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additional_headers = null) {
 
+        if (getenv('ENV') === 'local' && isset(self::$mockManager)) {
+            $mockName = $method . ' ' . $uri . ' ' . $data;
+            $rawMockFileContents = self::$mockManager->getMock($mockName);
+            $mockData = json_decode($rawMockFileContents, true);
+            return new Response($mockData['statusCode'], $mockData['headers'], $mockData['body']);
+        }
+
         if (function_exists('mb_internal_encoding')) {
             mb_internal_encoding(self::DEFAULT_ENCODING);
         }
 
+        $effectiveUri = $uri;
         if (substr($uri, 0, 4) != 'http') {
-            $uri = self::__apiUrl() . $uri;
+            $effectiveUri = self::__apiUrl() . $uri;
         }
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $uri);
+        curl_setopt($ch, CURLOPT_URL, $effectiveUri);
         // Don't follow the Location header
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, FALSE);
         // Include the header in the output
@@ -128,12 +137,20 @@ class Client {
         $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
         curl_close($ch);
 
+
         $header = substr($response, 0, $header_size);
         $headers = $this->_getHeaders($header);
 
         $body = substr($response, $header_size);
 
-        return new Response($statusCode, $headers, $body);
+        $response = new Response($statusCode, $headers, $body);
+        if (getenv('RECORD_REQUESTS') === '1' && isset(self::$mockManager)) {
+            $mockName = $method . ' ' . $uri . ' ' . $data;
+            $mockContents = json_encode($response);
+            self::$mockManager->saveMock($mockName, $mockContents);
+        }
+
+        return $response;
     }
 
     private static function __apiUrl() {
