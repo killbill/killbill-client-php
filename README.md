@@ -69,8 +69,8 @@ If you want to use the client but are not using [Composer](https://getcomposer.o
 Testing
 -------
 
-The Killbill PHP client uses [phpunit](https://phpunit.de/) as testing framework. Tests can either be run locally using `npm test` or against
-a live Killbill instance that is running on `127.0.0.1:8080` using `npm test-integration`.
+The Killbill PHP client uses [phpunit](https://phpunit.de/) as testing framework. Tests can either be run locally using `composer test` or against
+a live Killbill instance that is running on `127.0.0.1:8080` using `composer test-integration`.
 
 Requirements
 ------------
