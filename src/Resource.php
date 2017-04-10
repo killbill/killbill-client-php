@@ -216,11 +216,16 @@ abstract class Resource /* implements JsonSerializable */ {
                 }
             }
         }
-        asort($keys);
-        return $keys;
+        $sortedArray = array();
+        $arrayKeys = array_keys($keys);
+        asort($arrayKeys, SORT_STRING | SORT_NATURAL);
+
+        foreach ($arrayKeys as $arrayKey) {
+            $sortedArray[$arrayKey] = $keys[$arrayKey];
+        }
+
+        return $sortedArray;
     }
-
-
 
     private function initClientIfNeeded() {
         if (is_null($this->_client)) {
