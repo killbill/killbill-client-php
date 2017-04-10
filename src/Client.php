@@ -19,6 +19,8 @@ namespace Killbill\Client;
 
 class Client {
     public static $mockManager = null;
+    public static $useMockData = false;
+    public static $recordMocks = false;
 
     public static $serverUrl = 'http://127.0.0.1:8080';
     public static $apiVersion = '1.0';
@@ -52,11 +54,8 @@ class Client {
 
     private function _sendRequest($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additional_headers = null) {
 
-        if (getenv('ENV') === 'local' && isset(self::$mockManager)) {
-            $mockName = $method . ' ' . $uri . ' ' . $data;
-            $rawMockFileContents = self::$mockManager->getMock($mockName);
-            $mockData = json_decode($rawMockFileContents, true);
-            return new Response($mockData['statusCode'], $mockData['headers'], $mockData['body']);
+        if (self::$useMockData && isset(self::$mockManager)) {
+            return $this->getMockResponse($method . ' ' . $uri . ' ' . $data);
         }
 
         if (function_exists('mb_internal_encoding')) {
@@ -144,13 +143,22 @@ class Client {
         $body = substr($response, $header_size);
 
         $response = new Response($statusCode, $headers, $body);
-        if (getenv('RECORD_REQUESTS') === '1' && isset(self::$mockManager)) {
-            $mockName = $method . ' ' . $uri . ' ' . $data;
-            $mockContents = json_encode($response);
-            self::$mockManager->saveMock($mockName, $mockContents);
+        if (self::$recordMocks && isset(self::$mockManager)) {
+            $this->saveResponseMock($method . ' ' . $uri . ' ' . $data, $response);
         }
 
         return $response;
+    }
+
+    private function getMockResponse($mockName) {
+        $rawMockFileContents = self::$mockManager->getMock($mockName);
+        $mockData = json_decode($rawMockFileContents, true);
+        return new Response($mockData['statusCode'], $mockData['headers'], $mockData['body']);
+    }
+
+    private function saveResponseMock($mockName, $response) {
+        $mockContents = json_encode($response);
+        self::$mockManager->saveMock($mockName, $mockContents);
     }
 
     private static function __apiUrl() {
