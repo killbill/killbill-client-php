@@ -29,6 +29,9 @@ class ServerSubscriptionTest extends KillbillTest
     {
         parent::setUp();
         $this->externalBundleId = uniqid();
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+            $this->externalBundleId = md5('serverSubscriptionTest' . static::class . ':' . $this->getName());
+        }
         $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 
         $paymentMethod = new PaymentMethod();
@@ -159,6 +162,9 @@ class ServerSubscriptionTest extends KillbillTest
 
         $tag1 = new TagDefinition();
         $tag1->setName(uniqid());
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+            $tag1->setName(md5('testBundleWithTags' . static::class . ':' . $this->getName()));
+        }
         $tag1->setDescription('This is super tag1');
         $tag1 = $tag1->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
 

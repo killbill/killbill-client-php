@@ -32,8 +32,21 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        $externalKey = uniqid();
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+            Client::$mockManager = new MockManager();
+            $externalKey = md5(static::class . ':' . $this->getName());
+
+            if (getenv('RECORD_REQUESTS') == '1') {
+                Client::$recordMocks = true;
+            } else {
+                Client::$useMockData = true;
+            }
+        }
+
+
         $tenant = new Tenant();
-        $tenant->setExternalKey(uniqid());
+        $tenant->setExternalKey($externalKey);
         $tenant->setApiKey('test-php-api-key-' . $tenant->getExternalKey());
         $tenant->setApiSecret('test-php-api-secret-' . $tenant->getExternalKey());
         $this->tenant = $tenant->create($this->user, $this->reason, $this->comment);
@@ -52,6 +65,9 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $this->clock->setClock(null, $this->tenant->getTenantHeaders());
 
         $this->externalAccountId = uniqid();
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+            $this->externalAccountId = md5('externalAccount' . static::class . ':' . $this->getName());
+        }
         $this->accountData = new Account();
         $this->accountData->setName("Killbill php test");
         $this->accountData->setExternalKey($this->externalAccountId);

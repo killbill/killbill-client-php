@@ -195,11 +195,7 @@ abstract class Resource /* implements JsonSerializable */ {
      * @return json encoded resource
      */
     public function jsonSerialize() {
-
-        $keys = get_object_vars($this);
-
         $x = $this->prepareForSerialization();
-
         return json_encode($x);
     }
 
@@ -220,10 +216,16 @@ abstract class Resource /* implements JsonSerializable */ {
                 }
             }
         }
-        return $keys;
+        $sortedArray = array();
+        $arrayKeys = array_keys($keys);
+        asort($arrayKeys, SORT_STRING | SORT_NATURAL);
+
+        foreach ($arrayKeys as $arrayKey) {
+            $sortedArray[$arrayKey] = $keys[$arrayKey];
+        }
+
+        return $sortedArray;
     }
-
-
 
     private function initClientIfNeeded() {
         if (is_null($this->_client)) {
