@@ -1,6 +1,8 @@
 killbill-client-php
 ===================
 
+[![build status](https://secure.travis-ci.org/killbill/killbill-client-php.png)](https://travis-ci.org/killbill/killbill-client-php)
+
 PHP client library for [Killbill](http://killbill.io)
 
 Configuration
