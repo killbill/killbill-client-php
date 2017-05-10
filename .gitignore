@@ -1,4 +1,8 @@
+# System, IDE, ...
+.DS_Store
 .idea
 
-/vendor/
+# Composer
+composer.phar
 composer.lock
+vendor
