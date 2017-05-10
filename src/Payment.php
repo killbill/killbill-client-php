@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2014 Groupon, Inc.
  * Copyright 2014 - 2017 The Billing Project, LLC

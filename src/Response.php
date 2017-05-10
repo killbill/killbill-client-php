@@ -17,14 +17,19 @@
 
 namespace Killbill\Client;
 
-class Response {
+class Response
+{
+    /** @var int */
     public $statusCode;
+    /** @var string[string] */
     public $headers;
+    /** @var string */
     public $body;
 
-    function __construct($statusCode, $headers, $body) {
+    function __construct($statusCode, $headers, $body)
+    {
         $this->statusCode = $statusCode;
-        $this->headers = $headers;
-        $this->body = $body;
+        $this->headers    = $headers;
+        $this->body       = $body;
     }
 }

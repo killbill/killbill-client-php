@@ -19,32 +19,52 @@ namespace Killbill\Client;
 
 class MockManager
 {
+    /** @var array|null */
     protected $stubs = null;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->stubs = array();
     }
 
-    public function saveMock($identifier, $response) {
+    /**
+     * @param string $identifier
+     * @param string $response
+     */
+    public function saveMock($identifier, $response)
+    {
         $filename = $this->getIteratedIdentifier($identifier);
-        file_put_contents(__DIR__ . '/resources/mocks/' . $filename, $response);
+        file_put_contents(__DIR__.'/resources/mocks/'.$filename, $response);
     }
 
-    public function getMock($identifier) {
+    /**
+     * @param string $identifier
+     *
+     * @return bool|string
+     */
+    public function getMock($identifier)
+    {
         $filename = $this->getIteratedIdentifier($identifier);
-        return file_get_contents(__DIR__ . '/resources/mocks/' . $filename);
+
+        return file_get_contents(__DIR__.'/resources/mocks/'.$filename);
     }
 
-    private function getIteratedIdentifier($identifier) {
-        $iteration = 0;
+    /**
+     * @param string $identifier
+     *
+     * @return string
+     */
+    private function getIteratedIdentifier($identifier)
+    {
+        $iteration  = 0;
         $identifier = md5($identifier);
         if (in_array($identifier, array_keys($this->stubs))) {
-            $iteration = $this->stubs[$identifier];
+            $iteration                = $this->stubs[$identifier];
             $this->stubs[$identifier] = ++$iteration;
         } else {
             $this->stubs[$identifier] = 0;
         }
 
-        return md5($identifier . '_' . $iteration);
+        return md5($identifier.'_'.$iteration);
     }
 }

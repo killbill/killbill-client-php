@@ -19,7 +19,6 @@ namespace Killbill\Client;
 
 class ServerAccountTest extends KillbillTest
 {
-
     function setUp()
     {
         parent::setUp();
@@ -32,8 +31,7 @@ class ServerAccountTest extends KillbillTest
 
     function testBasicApi()
     {
-
-        $createdAccount = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $createdAccount = $this->accountData->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
 
         $this->assertEquals($this->accountData->getName(), $createdAccount->getName());
         $this->assertEquals($this->accountData->getExternalKey(), $createdAccount->getExternalKey());
@@ -60,13 +58,13 @@ class ServerAccountTest extends KillbillTest
          * Update it
          */
         $account->setName("My awesome new name");
-        $updatedAccount = $account->update($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $updatedAccount = $account->update(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
         $this->assertEquals("My awesome new name", $updatedAccount->getName());
     }
 
-    function testOverdueState() {
-
-        $account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+    function testOverdueState()
+    {
+        $account = $this->accountData->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
 
         $state = $account->getOverdueState($this->tenant->getTenantHeaders());
         $this->assertEquals($state->getName(), '__KILLBILL__CLEAR__OVERDUE_STATE__');
@@ -74,7 +72,7 @@ class ServerAccountTest extends KillbillTest
 
     function testTags()
     {
-        $account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $account = $this->accountData->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
 
         /*
          * Create the tag definitions
@@ -82,23 +80,23 @@ class ServerAccountTest extends KillbillTest
         $tag1 = new TagDefinition();
         $tag1->setName(uniqid());
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $tag1->setName(md5('tag1' . static::class . ':' . $this->getName()));
+            $tag1->setName(md5('tag1'.static::class.':'.$this->getName()));
         }
         $tag1->setDescription('This is tag1');
-        $tag1 = $tag1->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $tag1 = $tag1->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
 
         $tag2 = new TagDefinition();
         $tag2->setName(uniqid());
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $tag2->setName(md5('tag2' . static::class . ':' . $this->getName()));
+            $tag2->setName(md5('tag2'.static::class.':'.$this->getName()));
         }
         $tag2->setDescription('This is tag2');
-        $tag2 = $tag2->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $tag2 = $tag2->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
 
         /*
          * Add tags
          */
-        $accountTags = $account->addTags(array($tag1->getId(), $tag2->getId()), $this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $accountTags = $account->addTags(array($tag1->getId(), $tag2->getId()), self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
         $this->assertEquals(2, count($accountTags));
 
         /*

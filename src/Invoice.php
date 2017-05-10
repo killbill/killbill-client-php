@@ -19,22 +19,38 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\InvoiceAttributes;
 
-class Invoice extends InvoiceAttributes {
-
+class Invoice extends InvoiceAttributes
+{
     /**
-    * @return Invoice
-    */
-    public function get($withItems, $headers = null) {
-        $uri = Client::PATH_INVOICES . '/' . $this->getInvoiceId();
+     * @param bool|null     $withItems ?
+     * @param string[]|null $headers   Any additional headers
+     *
+     * @return Invoice|null The fetched invoice
+     */
+    public function get($withItems, $headers = null)
+    {
+        $queryData = array();
         if ($withItems) {
-           $uri = $uri . '?withItems=true';
+            $queryData['withItems'] = 'true';
         }
-        $response = $this->_get($uri, $headers);
-        return $this->_getFromBody('Invoice', $response);
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->getRequest(Client::PATH_INVOICES.'/'.$this->getInvoiceId().$query, $headers);
+
+        /** @var Invoice|null $object */
+        $object = $this->getFromBody(Invoice::class, $response);
+        return $object;
     }
 
-    public function getInvoiceAsHTML($headers = null) {
-        $response = $this->_get(Client::PATH_INVOICES . '/' . $this->getInvoiceId() . '/html', $headers);
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return string|null
+     */
+    public function getInvoiceAsHTML($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_INVOICES.'/'.$this->getInvoiceId().'/html', $headers);
+
         return $response->body;
     }
 }

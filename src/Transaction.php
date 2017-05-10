@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2014 Groupon, Inc.
  * Copyright 2014 - 2017 The Billing Project, LLC
@@ -24,87 +23,148 @@ use Killbill\Client\Type\PaymentTransactionAttributes;
 class Transaction extends PaymentTransactionAttributes
 {
     /**
-    * @return Payment
-    */
+     * @param string        $accountId       ?
+     * @param string|null   $paymentMethodId ?
+     * @param string|null   $user            User requesting the creation
+     * @param string|null   $reason          Reason for the creation
+     * @param string|null   $comment         Any addition comment
+     * @param string[]|null $headers         Any additional headers
+     *
+     * @return Payment|null
+     */
     public function createAuthorization($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
         $this->transactionType = 'AUTHORIZE';
+
         return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
     /**
-    * @return Payment
-    */
+     * @param string        $accountId       ?
+     * @param string|null   $paymentMethodId ?
+     * @param string|null   $user            User requesting the creation
+     * @param string|null   $reason          Reason for the creation
+     * @param string|null   $comment         Any addition comment
+     * @param string[]|null $headers         Any additional headers
+     *
+     * @return Payment|null
+     */
     public function createPurchase($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
         $this->transactionType = 'PURCHASE';
+
         return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
     /**
-    * @return Payment
-    */
+     * @param string        $accountId       ?
+     * @param string|null   $paymentMethodId ?
+     * @param string|null   $user            User requesting the creation
+     * @param string|null   $reason          Reason for the creation
+     * @param string|null   $comment         Any addition comment
+     * @param string[]|null $headers         Any additional headers
+     *
+     * @return Payment|null
+     */
     public function createCredit($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
         $this->transactionType = 'CREDIT';
+
         return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
     /**
-    * @return Payment
-    */
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Payment|null
+     */
     public function createCapture($user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId();
-        return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
+        return $this->_createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId(), $user, $reason, $comment, $headers);
     }
 
     /**
-    * @return Payment
-    */
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Payment|null
+     */
     public function createRefund($user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId() . '/refunds';
-        return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
+        return $this->_createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId().Client::PATH_REFUNDS, $user, $reason, $comment, $headers);
     }
 
     /**
-    * @return Payment
-    */
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Payment|null
+     */
     public function createChargeback($user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId() . '/chargebacks';
-        return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
+        return $this->_createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId().Client::PATH_CHARGEBACKS, $user, $reason, $comment, $headers);
     }
 
     /**
-    * @return Payment
-    */
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Payment|null
+     */
     public function createVoid($user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_PAYMENTS . '/' . $this->getPaymentId();
-        $response = $this->_delete($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Payment', $response, $headers);
+        $response = $this->deleteRequest(Client::PATH_PAYMENTS.'/'.$this->getPaymentId(), $user, $reason, $comment, $headers);
+
+        /** @var Payment|null $object */
+        $object = $this->getFromResponse(Payment::class, $response, $headers);
+        return $object;
     }
 
     /**
-    * @return Payment
-    */
+     * @param string        $accountId       ?
+     * @param string|null   $paymentMethodId ?
+     * @param string|null   $user            User requesting the creation
+     * @param string|null   $reason          Reason for the creation
+     * @param string|null   $comment         Any addition comment
+     * @param string[]|null $headers         Any additional headers
+     *
+     * @return Payment|null
+     */
     public function _createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
-        $uri = Client::PATH_ACCOUNTS . '/' . $accountId . '/payments';
+        $queryData = array();
         if ($paymentMethodId) {
-            $uri = $uri . '?paymentMethodId=' . $paymentMethodId;
+            $queryData['paymentMethodId'] = $paymentMethodId;
         }
-        return $this->_createTransaction($uri, $user, $reason, $comment, $headers);
+
+        $query = $this->makeQuery($queryData);
+        return $this->_createTransaction(Client::PATH_ACCOUNTS.'/'.$accountId.Client::PATH_PAYMENTS.$query, $user, $reason, $comment, $headers);
     }
 
     /**
-    * @return Payment
-    */
+     * @param string        $uri
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Payment|null
+     */
     public function _createTransaction($uri, $user, $reason, $comment, $headers = null)
     {
-        $response = $this->_create($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Payment', $response, $headers);
+        $response = $this->createRequest($uri, $user, $reason, $comment, $headers);
+
+        /** @var Payment|null $object */
+        $object = $this->getFromResponse(Payment::class, $response, $headers);
+        return $object;
     }
 }

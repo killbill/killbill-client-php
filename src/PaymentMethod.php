@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2011-2017 Ning, Inc.
  * Copyright 2014 Groupon, Inc.
@@ -22,22 +21,42 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\PaymentMethodAttributes;
 
-class PaymentMethod extends PaymentMethodAttributes {
+class PaymentMethod extends PaymentMethodAttributes
+{
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return PaymentMethod[]|null The fetched payment method
+     */
+    public function get($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_PAYMENT_METHODS.'/'.$this->getAccountId(), $headers);
 
-    public function get($headers = null) {
-            $response = $this->_get(Client::PATH_PAYMENT_METHODS . '/' . $this->getAccountId(), $headers);
-        return $this->_getFromBody('PaymentMethod', $response);
+        /** @var PaymentMethod[]|null $object */
+        $object = $this->getFromBody(PaymentMethod::class, $response);
+        return $object;
     }
 
     /**
-    * @return PaymentMethod the newly created payment method
-    */
-    public function create($user, $reason, $comment, $headers = null) {
-        $uri = Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/paymentMethods';
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Account|null The newly created payment method
+     */
+    public function create($user, $reason, $comment, $headers = null)
+    {
+        $queryData = array();
         if ($this->isDefault) {
-            $uri = $uri . '?isDefault=true';
+            $queryData['isDefault'] = 'true';
         }
-        $response = $this->_create($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('PaymentMethod', $response, $headers);
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENT_METHODS.$query, $user, $reason, $comment, $headers);
+
+        /** @var Account|null $object */
+        $object = $this->getFromResponse(PaymentMethod::class, $response, $headers);
+        return $object;
     }
 }

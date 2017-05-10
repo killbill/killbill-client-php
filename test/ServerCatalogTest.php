@@ -16,12 +16,10 @@
 * under the License.
  */
 
-
 namespace Killbill\Client;
 
 class ServerCatalogTest extends KillbillTest
 {
-
     function setUp()
     {
         parent::setUp();
@@ -34,7 +32,8 @@ class ServerCatalogTest extends KillbillTest
         unset($this->account);
     }
 
-    public function testBasic() {
+    public function testBasic()
+    {
         $catalog = new Catalog();
         $catalog->initialize($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($catalog->getFullCatalog());

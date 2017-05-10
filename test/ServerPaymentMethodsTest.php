@@ -19,39 +19,41 @@ namespace Killbill\Client;
 
 class ServerPaymentMethodTest extends KillbillTest
 {
-    /**
-    * @var Account
-    */
+    /** @var Account|null */
     protected $account = null;
+    /** @var string|null */
+    private $externalBundleId = null;
 
     function setUp()
     {
         parent::setUp();
+
         $this->externalBundleId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalBundleId = md5('serverPaymentMethodTest' . static::class . ':' . $this->getName());
+            $this->externalBundleId = md5('serverPaymentMethodTest'.static::class.':'.$this->getName());
         }
-        $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+
+        $this->account = $this->accountData->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
     }
 
     function tearDown()
     {
         parent::tearDown();
+
         unset($this->externalBundleId);
         unset($this->account);
     }
 
-
-    function testBasic() {
+    function testBasic()
+    {
         $paymentMethod = new PaymentMethod();
         $paymentMethod->setAccountId($this->account->getAccountId());
         $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
-        $paymentMethod->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $paymentMethod->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
 
         $this->account = $this->account->get($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($this->account->getPaymentMethodId());
-
 
         $paymentMethods = $this->account->getPaymentMethods($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($paymentMethods);

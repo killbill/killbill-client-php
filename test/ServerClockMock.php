@@ -23,9 +23,10 @@ class ServerClockMock extends Resource
     {
         $uri = '/test/clock';
         if ($requestedDate) {
-            $uri = $uri . '?requestedDate=' . $requestedDate;
+            $uri = $uri.'?requestedDate='.$requestedDate;
         }
-        $this->_create($uri, null, null, null, $headers);
+        $this->createRequest($uri, null, null, null, $headers);
+
         // For precaution
         usleep(3000000);
     }
@@ -47,7 +48,8 @@ class ServerClockMock extends Resource
         } else if ($years) {
             $uri = $uri . '?years=' . $years . '&timeZone=' . $timeZone;
         }
-        $this->_update($uri, null, null, null, $headers);
+        $this->updateRequest($uri, null, null, null, $headers);
+
         // For precaution
         usleep(3000000);
     }
