@@ -17,7 +17,6 @@
 
 namespace Killbill\Client;
 
-use function GuzzleHttp\Psr7\build_query;
 use Killbill\Client\Type\SubscriptionAttributes;
 
 class Subscription extends SubscriptionAttributes
