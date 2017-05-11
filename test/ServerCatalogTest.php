@@ -16,25 +16,24 @@
 * under the License.
  */
 
-
 namespace Killbill\Client;
 
 class ServerCatalogTest extends KillbillTest
 {
-
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
     }
 
-    function tearDown()
+    public function tearDown()
     {
         parent::tearDown();
         unset($this->externalBundleId);
         unset($this->account);
     }
 
-    public function testBasic() {
+    public function testBasic()
+    {
         $catalog = new Catalog();
         $catalog->initialize($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($catalog->getFullCatalog());

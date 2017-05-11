@@ -19,76 +19,143 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\SubscriptionAttributes;
 
-class Subscription extends SubscriptionAttributes {
+class Subscription extends SubscriptionAttributes
+{
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Subscription|null The fetched subscription
+     */
+    public function get($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId(), $headers);
 
-    public function get($headers = null) {
-        $response = $this->_get(Client::PATH_SUBSCRIPTIONS . '/' . $this->getSubscriptionId(), $headers);
-        return $this->_getFromBody('Subscription', $response, $headers);
+        /** @var Subscription|null $object */
+        $object = $this->getFromBody(Subscription::class, $response);
+        return $object;
     }
 
     /**
-    * @return Subscription the newly created subscription
-    */
-    public function create($user, $reason, $comment, $headers = null) {
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Subscription|null The newly created subscription
+     */
+    public function create($user, $reason, $comment, $headers = null)
+    {
         return $this->createAndWait(false, $user, $reason, $comment, $headers);
     }
 
-    public function createAndWait($wait, $user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Client::PATH_SUBSCRIPTIONS . '?call_completion=' . ($wait ? 'true' : 'false'), $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Subscription', $response, $headers);
+    /**
+     * @param bool          $wait    ?
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Subscription|null The newly created subscription
+     */
+    public function createAndWait($wait, $user, $reason, $comment, $headers = null)
+    {
+        $queryData = array();
+        $queryData['call_completion'] = ($wait ? 'true' : 'false');
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->createRequest(Client::PATH_SUBSCRIPTIONS.$query, $user, $reason, $comment, $headers);
+
+        /** @var Subscription|null $object */
+        $object = $this->getFromResponse(Subscription::class, $response, $headers);
+        return $object;
     }
 
     /**
-    * @return Subscription the changed plan
-    */
-    public function changePlan($requestedDate, $billingPolicy,  $callCompletion, $user, $reason, $comment, $headers = null) {
-        $uri = Client::PATH_SUBSCRIPTIONS . '/' . $this->getSubscriptionId();
-        $first = true;
+     * @param string|null   $requestedDate  ?
+     * @param string|null   $billingPolicy  ?
+     * @param string|null   $callCompletion ?
+     * @param string|null   $user           User requesting the creation
+     * @param string|null   $reason         Reason for the creation
+     * @param string|null   $comment        Any addition comment
+     * @param string[]|null $headers        Any additional headers
+     *
+     * @return Subscription|null The updated subscription
+     */
+    public function changePlan($requestedDate, $billingPolicy, $callCompletion, $user, $reason, $comment, $headers = null)
+    {
+        $queryData = array();
         if ($requestedDate) {
-            $uri = $uri . ($first ? '?' : '&') . 'requestedDate=' . $requestedDate;
-            $first = false;
+            $queryData['requestedDate'] = $requestedDate;
         }
         if ($billingPolicy) {
-            $uri = $uri . ($first ? '?' : '&') . 'billingPolicy=' . $billingPolicy;
-            $first = false;
+            $queryData['billingPolicy'] = $billingPolicy;
         }
         if ($callCompletion) {
-            $uri = $uri . ($first ? '?' : '&') . 'callCompletion=' . $callCompletion;
-            $first = false;
+            $queryData['callCompletion'] = $callCompletion;
         }
-        $response = $this->_update($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Subscription', $response);
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->updateRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().$query, $user, $reason, $comment, $headers);
+
+        /** @var Subscription|null $object */
+        $object = $this->getFromBody(Subscription::class, $response);
+        return $object;
     }
 
-    public function reinstate($user, $reason, $comment, $headers = null) {
-        $response = $this->_update(Client::PATH_SUBSCRIPTIONS . '/' . $this->getSubscriptionId() . '/uncancel', $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Subscription', $response);
+    /**
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Subscription|null The updated subscription
+     */
+    public function reinstate($user, $reason, $comment, $headers = null)
+    {
+        $response = $this->updateRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().Client::PATH_UNCANCEL, $user, $reason, $comment, $headers);
+
+        /** @var Subscription|null $object */
+        $object = $this->getFromBody(Subscription::class, $response);
+        return $object;
     }
 
-    public function cancel($requestedDate, $entitlementPolicy, $billingPolicy, $useRequestedDateForBilling, $callCompletion, $user, $reason, $comment, $headers = null) {
-        $uri = Client::PATH_SUBSCRIPTIONS . '/' . $this->getSubscriptionId();
-        $first = true;
+    /**
+     * @param string|null   $requestedDate              ?
+     * @param string|null   $entitlementPolicy          ?
+     * @param string|null   $billingPolicy              ?
+     * @param string|null   $useRequestedDateForBilling ?
+     * @param string|null   $callCompletion             ?
+     * @param string|null   $user                       User requesting the creation
+     * @param string|null   $reason                     Reason for the creation
+     * @param string|null   $comment                    Any addition comment
+     * @param string[]|null $headers                    Any additional headers
+     *
+     * @return Subscription|null The updated subscription
+     */
+    public function cancel($requestedDate, $entitlementPolicy, $billingPolicy, $useRequestedDateForBilling, $callCompletion, $user, $reason, $comment, $headers = null)
+    {
+        $queryData = array();
         if ($requestedDate) {
-            $uri = $uri . ($first ? '?' : '&') . 'requestedDate=' . $requestedDate;
-            $first = false;
+            $queryData['requestedDate'] = $requestedDate;
         }
         if ($entitlementPolicy) {
-            $uri = $uri . ($first ? '?' : '&') . 'entitlementPolicy=' . $entitlementPolicy;
-            $first = false;
+            $queryData['entitlementPolicy'] = $entitlementPolicy;
         }
         if ($billingPolicy) {
-            $uri = $uri . ($first ? '?' : '&') . 'billingPolicy=' . $billingPolicy;
-            $first = false;
+            $queryData['billingPolicy'] = $billingPolicy;
         }
         if ($useRequestedDateForBilling) {
-            $uri = $uri . ($first ? '?' : '&') . 'useRequestedDateForBilling=' . $useRequestedDateForBilling;
-            $first = false;
+            $queryData['useRequestedDateForBilling'] = $useRequestedDateForBilling;
         }
         if ($callCompletion) {
-            $uri = $uri . ($first ? '?' : '&') . 'callCompletion=' . $callCompletion;
-            $first = false;
+            $queryData['callCompletion'] = $callCompletion;
         }
-        $response = $this->_delete($uri, $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Subscription', $response);
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->deleteRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().$query, $user, $reason, $comment, $headers);
+
+        /** @var Subscription|null $object */
+        $object = $this->getFromBody(Subscription::class, $response);
+        return $object;
     }
 }

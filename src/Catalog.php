@@ -19,35 +19,56 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\CatalogAttributes;
 
-class Catalog extends CatalogAttributes {
+class Catalog extends CatalogAttributes
+{
     private $fullCatalog;
 
-    public function initialize($headers = null) {
-        $response = $this->_get(Client::PATH_CATALOG, $headers);
+    /**
+     * @param string[]|null $headers Any additional headers
+     */
+    public function initialize($headers = null)
+    {
+        $response          = $this->getRequest(Client::PATH_CATALOG, $headers);
         $this->fullCatalog = json_decode($response->body);
     }
 
-    public function getFullCatalog() {
+    /**
+     * @return object|null
+     */
+    public function getFullCatalog()
+    {
         return $this->fullCatalog;
     }
 
-    public function getBaseProducts() {
+    /**
+     * @return array
+     */
+    public function getBaseProducts()
+    {
         $baseProducts = array();
+
         foreach ($this->fullCatalog->products as $product) {
             if ($product->type == 'BASE') {
-                $baseProducts [] = $product;
+                $baseProducts[] = $product;
             }
         }
+
         return $baseProducts;
     }
 
-    public function getAddons() {
+    /**
+     * @return array
+     */
+    public function getAddons()
+    {
         $addons = array();
+
         foreach ($this->fullCatalog->products as $addon) {
             if ($addon->type == 'ADD_ON') {
-                $addons [] = $addon;
+                $addons[] = $addon;
             }
         }
+
         return $addons;
     }
 }

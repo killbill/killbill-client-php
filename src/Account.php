@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2011-2017 Ning, Inc.
  * Copyright 2014 Groupon, Inc.
@@ -20,100 +19,213 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\ResponseException;
 use Killbill\Client\Type\AccountAttributes;
 
-class Account extends AccountAttributes {
-
+class Account extends AccountAttributes
+{
     /**
-    * @return Account the fetched account
-    */
-    public function get($headers = null) {
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Account|null The fetched account
+     */
+    public function get($headers = null)
+    {
         if ($this->getAccountId()) {
-            $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId(), $headers);
+            $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId(), $headers);
         } else {
-            $response = $this->_get(Client::PATH_ACCOUNTS . '?externalKey=' . $this->getExternalKey(), $headers);
+            $queryData = array();
+            $queryData['externalKey'] = $this->getExternalKey();
+
+            $query = $this->makeQuery($queryData);
+            $response = $this->getRequest(Client::PATH_ACCOUNTS.$query, $headers);
         }
-        return $this->_getFromBody('Account', $response);
+
+        try {
+            /** @var Account|null $object */
+            $object = $this->getFromBody(Account::class, $response);
+        } catch (ResponseException $e) {
+            return null;
+        }
+
+        return $object;
     }
 
     /**
-    * @return Account newly created account
-    */
-    public function create($user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Client::PATH_ACCOUNTS, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Account', $response, $headers);
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Account|null The newly created account
+     */
+    public function create($user, $reason, $comment, $headers = null)
+    {
+        $response = $this->createRequest(Client::PATH_ACCOUNTS, $user, $reason, $comment, $headers);
+
+        /** @var Account|null $object */
+        $object = $this->getFromResponse(Account::class, $response, $headers);
+        return $object;
     }
 
     /**
-    * @return Account the updated account
-    */
-    public function update($user, $reason, $comment, $headers = null) {
-        $response = $this->_update(Client::PATH_ACCOUNTS . '/' . $this->getAccountId(), $user, $reason, $comment, $headers);
-        return $this->_getFromBody('Account', $response);
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Account|null The updated account
+     */
+    public function update($user, $reason, $comment, $headers = null)
+    {
+        $response = $this->updateRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId(), $user, $reason, $comment, $headers);
+
+        /** @var Account|null $object */
+        $object = $this->getFromBody(Account::class, $response);
+        return $object;
     }
 
-    public function getBundles($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/bundles', $headers);
-        return $this->_getFromBody('Bundle', $response);
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Bundle[]|null
+     */
+    public function getBundles($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_BUNDLES, $headers);
+
+        /** @var Bundle[]|null $object */
+        $object = $this->getFromBody(Bundle::class, $response);
+        return $object;
     }
 
-    public function getInvoices($withItems, $unpaidInvoicesOnly, $headers = null) {
-        $first = true;
-        $uri = Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/invoices';
+    /**
+     * @param bool|null     $withItems          ?
+     * @param bool|null     $unpaidInvoicesOnly ?
+     * @param string[]|null $headers            Any additional headers
+     *
+     * @return Invoice[]|null
+     */
+    public function getInvoices($withItems, $unpaidInvoicesOnly, $headers = null)
+    {
+        $queryData = array();
         if ($withItems) {
-            $uri = $uri . '?withItems=true';
-            $first = false;
+            $queryData['withItems'] = 'true';
         }
         if ($unpaidInvoicesOnly) {
-            $uri = $uri . ($first ? '?' : '&') . 'unpaidInvoicesOnly=true';
-            $first = false;
+            $queryData['unpaidInvoicesOnly'] = 'true';
         }
 
-        $response = $this->_get($uri, $headers);
-        return $this->_getFromBody('Invoice', $response);
+        $query = $this->makeQuery($queryData);
+        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_INVOICES.$query, $headers);
+
+        /** @var Invoice[]|null $object */
+        $object = $this->getFromBody(Invoice::class, $response);
+        return $object;
     }
 
-    public function payAllUnpaidInvoices($user, $reason, $comment, $headers = null) {
-        $uri = Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/payments';
-        $this->_create($uri, $user, $reason, $comment, $headers);
+    /**
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return null
+     */
+    public function payAllUnpaidInvoices($user, $reason, $comment, $headers = null)
+    {
+        $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENTS, $user, $reason, $comment, $headers);
+
         return null;
     }
 
     /**
-    * @return Overdue
-    */
-    public function getOverdueState($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/overdue', $headers);
-        return $this->_getFromBody('Overdue', $response);
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Overdue|null
+     */
+    public function getOverdueState($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_OVERDUE, $headers);
+
+        /** @var Overdue|null $object */
+        $object = $this->getFromBody(Overdue::class, $response);
+        return $object;
     }
 
     /**
-    * @return PaymentMethod[]
-    */
-    public function getPaymentMethods($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/paymentMethods', $headers);
-        return $this->_getFromBody('PaymentMethod', $response);
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return PaymentMethod[]|null
+     */
+    public function getPaymentMethods($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENT_METHODS, $headers);
+
+        /** @var PaymentMethod[]|null $object */
+        $object = $this->getFromBody(PaymentMethod::class, $response);
+        return $object;
     }
 
-    public function getPayments($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . '/payments', $headers);
-        return $this->_getFromBody('Payment', $response);
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Payment[]|null
+     */
+    public function getPayments($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENTS, $headers);
+
+        /** @var Payment[]|null $object */
+        $object = $this->getFromBody(Payment::class, $response);
+        return $object;
     }
 
-    public function getTags($headers = null) {
-        $response = $this->_get(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . Client::PATH_TAGS, $headers);
-        return $this->_getFromBody('Tag', $response);
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Tag[]|null
+     */
+    public function getTags($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS, $headers);
+
+        /** @var Tag[]|null $object */
+        $object = $this->getFromBody(Tag::class, $response);
+        return $object;
     }
 
-    public function addTags($tags, $user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
-            $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Tag', $response, $headers);
+    /**
+     * @param string[]      $tags    Tags list
+     * @param string|null   $user
+     * @param string|null   $reason
+     * @param string|null   $comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Tag[]|null
+     */
+    public function addTags($tags, $user, $reason, $comment, $headers = null)
+    {
+        $response = $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
+
+        /** @var Tag[]|null $object */
+        $object = $this->getFromResponse(Tag::class, $response, $headers);
+        return $object;
     }
 
-    public function deleteTags($tags, $user, $reason, $comment, $headers = null) {
-        $response = $this->_delete(Client::PATH_ACCOUNTS . '/' . $this->getAccountId() . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
-            $user, $reason, $comment, $headers);
+    /**
+     * @param string[]      $tags    Tags list
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return null
+     */
+    public function deleteTags($tags, $user, $reason, $comment, $headers = null)
+    {
+        $response = $this->deleteRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
+
         return null;
     }
 }

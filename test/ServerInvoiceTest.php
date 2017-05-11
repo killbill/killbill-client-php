@@ -15,43 +15,44 @@
  * under the License.
  */
 
-
 namespace Killbill\Client;
 
 class ServerInvoiceTest extends KillbillTest
 {
-    /**
-    * @var Account
-    */
+    /** @var Account|null */
     protected $account = null;
+    /** @var string|null */
+    private $externalBundleId = null;
 
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
+
         $this->externalBundleId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalBundleId = md5('serverInvoiceTest' . static::class . ':' . $this->getName());
+            $this->externalBundleId = md5('serverInvoiceTest'.static::class.':'.$this->getName());
         }
-        $this->account = $this->accountData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $paymentMethod = new PaymentMethod();
         $paymentMethod->setAccountId($this->account->getAccountId());
         $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
-        $paymentMethod->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $paymentMethod->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $this->account = $this->account->get($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($this->account->getPaymentMethodId());
     }
 
-    function tearDown()
+    public function tearDown()
     {
         parent::tearDown();
+
         unset($this->externalBundleId);
         unset($this->account);
     }
 
-    function testBasic()
+    public function testBasic()
     {
         $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
@@ -61,21 +62,21 @@ class ServerInvoiceTest extends KillbillTest
         $subscriptionData->setPriceList('DEFAULT');
         $subscriptionData->setExternalKey($this->externalBundleId);
 
-        $subscription = $subscriptionData->create($this->user, $this->reason, $this->comment, $this->tenant->getTenantHeaders());
+        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->assertEquals($subscription->getAccountId(), $subscriptionData->getAccountId());
         $this->assertEquals($subscription->getProductName(), $subscriptionData->getProductName());
         $this->assertEquals($subscription->getProductCategory(), $subscriptionData->getProductCategory());
         $this->assertEquals($subscription->getBillingPeriod(), $subscriptionData->getBillingPeriod());
         $this->assertEquals($subscription->getExternalKey(), $subscriptionData->getExternalKey());
 
-        # Move clock after trials
+        // Move clock after trials
         $this->clock->addDays(31, $this->tenant->getTenantHeaders());
 
-        # Should see 2 invoices for account
+        // Should see 2 invoices for account
         $invoices = $this->account->getInvoices(true, null, $this->tenant->getTenantHeaders());
         $this->assertEquals(2, count($invoices));
 
-        # Retrieve each invoice by id
+        // Retrieve each invoice by id
         $invoice = new Invoice();
         $invoice->setInvoiceId($invoices[0]->getInvoiceId());
         $invoice = $invoice->get(false, $this->tenant->getTenantHeaders());

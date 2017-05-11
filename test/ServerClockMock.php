@@ -23,9 +23,10 @@ class ServerClockMock extends Resource
     {
         $uri = '/test/clock';
         if ($requestedDate) {
-            $uri = $uri . '?requestedDate=' . $requestedDate;
+            $uri = $uri.'?requestedDate='.$requestedDate;
         }
-        $this->_create($uri, null, null, null, $headers);
+        $this->createRequest($uri, null, null, null, $headers);
+
         // For precaution
         usleep(3000000);
     }
@@ -39,15 +40,16 @@ class ServerClockMock extends Resource
     {
         $uri = '/test/clock';
         if ($days) {
-            $uri = $uri . '?days=' . $days . '&timeZone=' . $timeZone;
-        } else if ($weeks) {
-            $uri = $uri . '?weeks=' . $weeks . '&timeZone=' . $timeZone;
-        } else if ($months) {
-            $uri = $uri . '?months=' . $months . '&timeZone=' . $timeZone;
-        } else if ($years) {
-            $uri = $uri . '?years=' . $years . '&timeZone=' . $timeZone;
+            $uri = $uri.'?days='.$days.'&timeZone='.$timeZone;
+        } elseif ($weeks) {
+            $uri = $uri.'?weeks='.$weeks.'&timeZone='.$timeZone;
+        } elseif ($months) {
+            $uri = $uri.'?months='.$months.'&timeZone='.$timeZone;
+        } elseif ($years) {
+            $uri = $uri.'?years='.$years.'&timeZone='.$timeZone;
         }
-        $this->_update($uri, null, null, null, $headers);
+        $this->updateRequest($uri, null, null, null, $headers);
+
         // For precaution
         usleep(3000000);
     }

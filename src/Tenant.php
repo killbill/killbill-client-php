@@ -22,28 +22,44 @@ use Killbill\Client\Type\TenantAttributes;
 
 class Tenant extends TenantAttributes
 {
-
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Tenant|null The fetched tenant
+     */
     public function get($headers = null)
     {
-        $response = $this->_get(Client::PATH_TENANTS . ( (null !== $this->getTenantId()) ? '/' .$this->getTenantId() : '?apiKey=' . $this->$apiKey), $headers);
-        return $this->_getFromBody('Tenant', $response);
+        $response = $this->getRequest(Client::PATH_TENANTS.((null !== $this->getTenantId()) ? '/'.$this->getTenantId() : '?apiKey='.$this->$apiKey), $headers);
+
+        /** @var Tenant|null $object */
+        $object = $this->getFromBody('Tenant', $response);
+        return $object;
     }
 
     /**
-    * @return Tenant the newly created tenant
-    */
+     * @param string|null $user    User requesting the creation
+     * @param string|null $reason  Reason for the creation
+     * @param string|null $comment Any addition comment
+     *
+     * @return Tenant|null The newly created tenant
+     */
     public function create($user, $reason, $comment)
     {
-        $response = $this->_create(Client::PATH_TENANTS, $user, $reason, $comment);
-        return $this->_getFromResponse('Tenant', $response, $this->getTenantHeaders());
+        $response = $this->createRequest(Client::PATH_TENANTS, $user, $reason, $comment);
+
+        /** @var Tenant|null $object */
+        $object = $this->getFromResponse(Tenant::class, $response, $this->getTenantHeaders());
+        return $object;
     }
 
-
+    /**
+     * @return array
+     */
     public function getTenantHeaders()
     {
         return array(
-            'X-Killbill-ApiKey: ' . $this->apiKey,
-            'X-Killbill-ApiSecret: ' . $this->apiSecret
+            'X-Killbill-ApiKey: '.$this->apiKey,
+            'X-Killbill-ApiSecret: '.$this->apiSecret,
         );
     }
 }

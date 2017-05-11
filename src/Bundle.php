@@ -19,51 +19,113 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\BundleAttributes;
 
-class Bundle extends BundleAttributes {
+class Bundle extends BundleAttributes
+{
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Bundle|null The fetched bundle
+     */
+    public function get($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId(), $headers);
+
+        /** @var Bundle|null $object */
+        $object = $this->getFromBody(Bundle::class, $response);
+        return $object;
+    }
 
     /**
-    * @return Bundle
-    */
-    public function get($headers = null) {
-        $response = $this->_get(Client::PATH_BUNDLES . '/' . $this->getBundleId(), $headers);
-        return $this->_getFromBody('Bundle', $response);
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Bundle[]|null The fetched bundles
+     */
+    public function getByExternalKey($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_BUNDLES.'?externalKey='.$this->getExternalKey(), $headers);
+
+        /** @var Bundle[]|null $object */
+        $object = $this->getFromBody(Bundle::class, $response);
+        return $object;
     }
 
     /**
-    * @return Bundle[]
-    */
-    public function getByExternalKey($headers = null) {
-        $response = $this->_get(Client::PATH_BUNDLES . '?externalKey=' . $this->getExternalKey(), $headers);
-        return $this->_getFromBody('Bundle', $response);
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Tag[]|null
+     */
+    public function getTags($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_TAGS, $headers);
+
+        /** @var Tag[]|null $object */
+        $object = $this->getFromBody(Tag::class, $response);
+        return $object;
     }
 
-    public function getTags($headers = null) {
-        $response = $this->_get(Client::PATH_BUNDLES . '/' . $this->getBundleId() . Client::PATH_TAGS, $headers);
-        return $this->_getFromBody('Tag', $response);
+    /**
+     * @param string[]      $tags    ?
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Tag[]|null
+     */
+    public function addTags($tags, $user, $reason, $comment, $headers = null)
+    {
+        $response = $this->createRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
+
+        /** @var Tag[]|null $object */
+        $object = $this->getFromResponse(Tag::class, $response, $headers);
+        return $object;
     }
 
-    public function addTags($tags, $user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Client::PATH_BUNDLES . '/' . $this->getBundleId() . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
-            $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('Tag', $response, $headers);
-    }
+    /**
+     * @param string[]      $tags    ?
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return null
+     */
+    public function deleteTags($tags, $user, $reason, $comment, $headers = null)
+    {
+        $this->deleteRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
 
-    public function deleteTags($tags, $user, $reason, $comment, $headers = null) {
-        $this->_delete(Client::PATH_BUNDLES . '/' . $this->getBundleId() . Client::PATH_TAGS  . '?tagList=' . join(',', $tags),
-            $user, $reason, $comment, $headers);
         return null;
     }
 
-    public function pause($date, $user, $reason, $comment, $headers = null) {
-        $this->_update(Client::PATH_BUNDLES . '/' .
-            $this->getBundleId() . '/pause?requestedDate=' . $date, $user, $reason, $comment, $headers);
+    /**
+     * @param string        $date    ?
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return null
+     */
+    public function pause($date, $user, $reason, $comment, $headers = null)
+    {
+        $this->updateRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_PAUSE.'?requestedDate='.$date, $user, $reason, $comment, $headers);
+
         return null;
     }
 
-    public function resume($date, $user, $reason, $comment, $headers = null) {
-        $this->_update(Client::PATH_BUNDLES . '/' .
-            $this->getBundleId() . '/resume?requestedDate=' . $date, $user, $reason, $comment, $headers);
+    /**
+     * @param string        $date    ?
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return null
+     */
+    public function resume($date, $user, $reason, $comment, $headers = null)
+    {
+        $this->updateRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_RESUME.'?requestedDate='.$date, $user, $reason, $comment, $headers);
+
         return null;
     }
-
 }

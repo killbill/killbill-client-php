@@ -19,23 +19,53 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\TagDefinitionAttributes;
 
-class TagDefinition extends TagDefinitionAttributes {
+class TagDefinition extends TagDefinitionAttributes
+{
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return TagDefinition|null The fetched tag definition
+     */
+    public function get($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_TAGDEFINITIONS.'/'.$this->getId(), $headers);
 
-    public function get($headers = null) {
-        $response = $this->_get(Client::PATH_TAGDEFINITIONS . '/' . $this->getId(), $headers);
-        return $this->_getFromBody('TagDefinition', $response);
+        /** @var TagDefinition|null $object */
+        $object = $this->getFromBody(TagDefinition::class, $response);
+        return $object;
     }
 
     /**
-    * @return TagDefinition the newly created tag definition
-    */
-    public function create($user, $reason, $comment, $headers = null) {
-        $response = $this->_create(Client::PATH_TAGDEFINITIONS, $user, $reason, $comment, $headers);
-        return $this->_getFromResponse('TagDefinition', $response, $headers);
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return TagDefinition|null The newly created tag definition
+     */
+    public function create($user, $reason, $comment, $headers = null)
+    {
+        $response = $this->createRequest(Client::PATH_TAGDEFINITIONS, $user, $reason, $comment, $headers);
+
+        /** @var TagDefinition|null $object */
+        $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
+        return $object;
     }
 
-    public function delete($user, $reason, $comment, $headers = null) {
-        $response = $this->_delete(Client::PATH_TAGDEFINITIONS . '/' . $this->getId(), $user, $reason, $comment, $headers);
-        return $this->_getFromBody('TagDefinition', $response, $headers);
+    /**
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return TagDefinition|null
+     */
+    public function delete($user, $reason, $comment, $headers = null)
+    {
+        $response = $this->deleteRequest(Client::PATH_TAGDEFINITIONS.'/'.$this->getId(), $user, $reason, $comment, $headers);
+
+        /** @var TagDefinition|null $object */
+        $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
+        return $object;
     }
 }

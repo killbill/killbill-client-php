@@ -16,26 +16,30 @@
  */
 
 namespace Killbill\Client;
+
 use Killbill;
 
 class KillbillTest extends \PHPUnit_Framework_TestCase
 {
+    const USER    = 'phpTester';
+    const REASON  = 'test';
+    const COMMENT = 'no comment';
 
-    protected $user = 'phpTester';
-    protected $reason = 'test';
-    protected $comment = 'no comment';
-
-    /**
-    * @var Account
-    */
+    /** @var Account|null */
     protected $accountData = null;
+    /** @var Tenant|null */
+    protected $tenant = null;
+    /** @var ServerClockMock|null */
+    protected $clock = null;
+    /** @var string|null */
+    protected $externalAccountId = null;
 
     public function setUp()
     {
         $externalKey = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             Client::$mockManager = new MockManager();
-            $externalKey = md5(static::class . ':' . $this->getName());
+            $externalKey         = md5(static::class.':'.$this->getName());
 
             if (getenv('RECORD_REQUESTS') == '1') {
                 Client::$recordMocks = true;
@@ -44,21 +48,20 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
             }
         }
 
-
         $tenant = new Tenant();
         $tenant->setExternalKey($externalKey);
-        $tenant->setApiKey('test-php-api-key-' . $tenant->getExternalKey());
-        $tenant->setApiSecret('test-php-api-secret-' . $tenant->getExternalKey());
-        $this->tenant = $tenant->create($this->user, $this->reason, $this->comment);
+        $tenant->setApiKey('test-php-api-key-'.$tenant->getExternalKey());
+        $tenant->setApiSecret('test-php-api-secret-'.$tenant->getExternalKey());
+        $this->tenant = $tenant->create(self::USER, self::REASON, self::COMMENT);
         $this->tenant->setApiSecret($tenant->getApiSecret());
 
         // setup catalog
         $killbillClient = new Killbill\Client\Client();
-        $headers = $tenant->getTenantHeaders();
-        $headers[] = 'Content-Type: application/xml; charset=utf-8';
+        $headers        = $tenant->getTenantHeaders();
+        $headers[]      = 'Content-Type: application/xml; charset=utf-8';
 
-        $catalogContents = file_get_contents(__DIR__ . '/resources/SpyCarAdvanced.xml');
-        $response = $killbillClient->request(Client::POST, Client::PATH_CATALOG, $catalogContents, $this->user, $this->reason, $this->comment, $headers);
+        $catalogContents = file_get_contents(__DIR__.'/resources/SpyCarAdvanced.xml');
+        $response        = $killbillClient->request(Client::POST, Client::PATH_CATALOG, $catalogContents, self::USER, self::REASON, self::COMMENT, $headers);
 
         $this->clock = new ServerClockMock();
         // Reset clock to now
@@ -66,22 +69,22 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 
         $this->externalAccountId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalAccountId = md5('externalAccount' . static::class . ':' . $this->getName());
+            $this->externalAccountId = md5('externalAccount'.static::class.':'.$this->getName());
         }
         $this->accountData = new Account();
-        $this->accountData->setName("Killbill php test");
+        $this->accountData->setName('Killbill php test');
         $this->accountData->setExternalKey($this->externalAccountId);
-        $this->accountData->setEmail("test-" . $this->externalAccountId . "@kill-bill.org");
-        $this->accountData->setCurrency("USD");
+        $this->accountData->setEmail('test-'.$this->externalAccountId.'@kill-bill.org');
+        $this->accountData->setCurrency('USD');
         $this->accountData->setPaymentMethodId(null);
-        $this->accountData->setAddress1("12 rue des ecoles");
-        $this->accountData->setAddress2("Poitier");
-        $this->accountData->setCompany("Renault");
-        $this->accountData->setState("Poitou");
-        $this->accountData->setCountry("France");
-        $this->accountData->setPhone("81 53 26 56");
+        $this->accountData->setAddress1('12 rue des ecoles');
+        $this->accountData->setAddress2('Poitier');
+        $this->accountData->setCompany('Renault');
+        $this->accountData->setState('Poitou');
+        $this->accountData->setCountry('France');
+        $this->accountData->setPhone('81 53 26 56');
         $this->accountData->setFirstNameLength(4);
-        $this->accountData->setTimeZone("UTC");
+        $this->accountData->setTimeZone('UTC');
     }
 
     public function tearDown()

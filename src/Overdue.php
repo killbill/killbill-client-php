@@ -1,5 +1,4 @@
 <?php
-
 /*
 * Copyright 2011-2017 Ning, Inc.
  *
@@ -20,7 +19,6 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\OverdueStateAttributes;
 
-
-class Overdue extends OverdueStateAttributes {
-
+class Overdue extends OverdueStateAttributes
+{
 }
