@@ -225,6 +225,10 @@ abstract class Resource /* implements JsonSerializable */
      */
     private function fromJsonObject($class, $json)
     {
+        if ($json === null) {
+            return null;
+        }
+
         if (isset($json->className) && isset($json->code) && isset($json->message)) {
             // An exception has been returned by killbill
             // also available: $json->causeClassName, $json->causeMessage, $json->stackTrace
