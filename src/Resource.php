@@ -24,7 +24,7 @@ abstract class Resource /* implements JsonSerializable */
 {
     protected $auditLogs = null;
     /** @var Client */
-    protected $_client;
+    protected $client;
 
     public function setAuditLogs($auditLogs)
     {
@@ -66,7 +66,7 @@ abstract class Resource /* implements JsonSerializable */
     {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Client::GET, $uri, null, null, null, null, $headers);
+        return $this->client->request(Client::GET, $uri, null, null, null, null, $headers);
     }
 
     /**
@@ -84,7 +84,7 @@ abstract class Resource /* implements JsonSerializable */
     {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Client::POST, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::POST, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -102,7 +102,7 @@ abstract class Resource /* implements JsonSerializable */
     {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Client::PUT, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::PUT, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -120,7 +120,7 @@ abstract class Resource /* implements JsonSerializable */
     {
         $this->initClientIfNeeded();
 
-        return $this->_client->request(Client::DELETE, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::DELETE, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -191,7 +191,7 @@ abstract class Resource /* implements JsonSerializable */
     {
         if (is_array($json)) {
             return $this->fromJsonArray($class, $json);
-        } else if (is_string($json)) {
+        } elseif (is_string($json)) {
             return $json;
         } else {
             return $this->fromJsonObject($class, $json);
@@ -270,7 +270,7 @@ abstract class Resource /* implements JsonSerializable */
     {
         $keys = get_object_vars($this);
 
-        unset($keys['_client']);
+        unset($keys['client']);
 
         foreach ($keys as $k => $v) {
             if ($v instanceof Resource) {
@@ -305,8 +305,8 @@ abstract class Resource /* implements JsonSerializable */
      */
     private function initClientIfNeeded()
     {
-        if (is_null($this->_client)) {
-            $this->_client = new Client();
+        if (is_null($this->client)) {
+            $this->client = new Client();
         }
     }
 }

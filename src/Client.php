@@ -71,13 +71,13 @@ class Client
      * @param string|null   $user
      * @param string|null   $reason
      * @param string|null   $comment
-     * @param string[]|null $additional_headers
+     * @param string[]|null $additionalHeaders
      *
      * @return Response
      */
-    public function request($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additional_headers = null)
+    public function request($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additionalHeaders = null)
     {
-        return $this->_sendRequest($method, $uri, $data, $user, $reason, $comment, $additional_headers);
+        return $this->sendRequest($method, $uri, $data, $user, $reason, $comment, $additionalHeaders);
     }
 
     /**
@@ -87,11 +87,11 @@ class Client
      * @param string|null   $user
      * @param string|null   $reason
      * @param string|null   $comment
-     * @param string[]|null $additional_headers
+     * @param string[]|null $additionalHeaders
      *
      * @return Response
      */
-    private function _sendRequest($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additional_headers = null)
+    private function sendRequest($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additionalHeaders = null)
     {
         if (self::$useMockData && isset(self::$mockManager)) {
             return $this->getMockResponse($method.' '.$uri.' '.$data);
@@ -119,28 +119,28 @@ class Client
         // The maximum number of seconds to allow cURL functions to execute
         curl_setopt($ch, CURLOPT_TIMEOUT, 45);
         // Default http headers
-        $http_headers = array(
+        $httpHeaders = array(
             'Accept: application/json, text/html',
             'X-Killbill-Reason: '.$reason,
             'X-Killbill-CreatedBy: '.$user,
             'X-Killbill-Comment: '.$comment,
             self::userAgentHeader(),
         );
-        if ($additional_headers) {
-            $http_headers = array_merge($http_headers, $additional_headers);
+        if ($additionalHeaders) {
+            $httpHeaders = array_merge($httpHeaders, $additionalHeaders);
         }
 
         $hasContentTypeHeader = false;
-        foreach ($http_headers as $currentHeader) {
+        foreach ($httpHeaders as $currentHeader) {
             if (strpos($currentHeader, 'Content-Type') === 0) {
                 $hasContentTypeHeader = true;
             }
         }
         if (!$hasContentTypeHeader) {
-            $http_headers[] = 'Content-Type: application/json; charset=utf-8';
+            $httpHeaders[] = 'Content-Type: application/json; charset=utf-8';
         }
 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $http_headers);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeaders);
 
         if (self::apiUser() != null && self::apiPassword() != null) {
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -150,13 +150,13 @@ class Client
         if ('POST' == $method) {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        } else if ('PUT' == $method) {
+        } elseif ('PUT' == $method) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        } else if ('DELETE' == $method) {
+        } elseif ('DELETE' == $method) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        } else if ('GET' != $method) {
+        } elseif ('GET' != $method) {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         }
 
@@ -173,13 +173,13 @@ class Client
         }
 
         $statusCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
         curl_close($ch);
 
-        $header  = substr($response, 0, $header_size);
+        $header  = substr($response, 0, $headerSize);
         $headers = $this->getHeaders($header);
 
-        $body = substr($response, $header_size);
+        $body = substr($response, $headerSize);
 
         $response = new Response($statusCode, $headers, $body);
         if (self::$recordMocks && isset(self::$mockManager)) {

@@ -27,7 +27,7 @@ class ServerPaymentTest extends KillbillTest
     /** @var string|null */
     private $externalBundleId = null;
 
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
 
@@ -35,29 +35,29 @@ class ServerPaymentTest extends KillbillTest
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             $this->externalBundleId = md5('serverPaymentTest'.static::class.':'.$this->getName());
         }
-        $this->account = $this->accountData->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $paymentMethod = new PaymentMethod();
         $paymentMethod->setAccountId($this->account->getAccountId());
         $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
-        $paymentMethod->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $paymentMethod->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $this->account = $this->account->get($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($this->account->getPaymentMethodId());
     }
 
-    function tearDown()
+    public function tearDown()
     {
         parent::tearDown();
         unset($this->externalBundleId);
         unset($this->account);
     }
 
-    function testBasic()
+    public function testBasic()
     {
-        # Add AUTO_PAY_OFF to account to end up with unpaid invoices
-        $this->account->addTags(array('00000000-0000-0000-0000-000000000001'), self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        // Add AUTO_PAY_OFF to account to end up with unpaid invoices
+        $this->account->addTags(array('00000000-0000-0000-0000-000000000001'), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
@@ -67,23 +67,23 @@ class ServerPaymentTest extends KillbillTest
         $subscriptionData->setPriceList('DEFAULT');
         $subscriptionData->setExternalKey($this->externalBundleId);
 
-        $subscription = $subscriptionData->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->assertEquals($subscription->getAccountId(), $subscriptionData->getAccountId());
         $this->assertEquals($subscription->getProductName(), $subscriptionData->getProductName());
         $this->assertEquals($subscription->getProductCategory(), $subscriptionData->getProductCategory());
         $this->assertEquals($subscription->getBillingPeriod(), $subscriptionData->getBillingPeriod());
         $this->assertEquals($subscription->getExternalKey(), $subscriptionData->getExternalKey());
 
-        # Move after trial
+        // Move after trial
         $this->clock->addDays(31, $this->tenant->getTenantHeaders());
 
         $unpaidInvoices = $this->account->getInvoices(true, true, $this->tenant->getTenantHeaders());
         $this->assertEquals(count($unpaidInvoices), 1);
 
-        # Remove the tag
-        $this->account->deleteTags(array('00000000-0000-0000-0000-000000000001'), self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        // Remove the tag
+        $this->account->deleteTags(array('00000000-0000-0000-0000-000000000001'), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        # processing unpaid invoices is asynchronous (bus event), so let's wait a bit before we check
+        // processing unpaid invoices is asynchronous (bus event), so let's wait a bit before we check
         usleep(3000000);
         $unpaidInvoices = $this->account->getInvoices(true, true, $this->tenant->getTenantHeaders());
         $this->assertEmpty($unpaidInvoices);
@@ -92,12 +92,12 @@ class ServerPaymentTest extends KillbillTest
         $this->assertEquals(count($allInvoices), 2);
     }
 
-    function testAuthCaptureRefund()
+    public function testAuthCaptureRefund()
     {
         $paymentData = new Transaction();
         $paymentData->setAmount(10);
         $paymentData->setCurrency('USD');
-        $payment = $paymentData->createAuthorization($this->account->getAccountId(), null, self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $payment = $paymentData->createAuthorization($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 10, 1, 10, 0, 0, 0, 0);
 
         // Populate the paymentId, required below
@@ -105,46 +105,46 @@ class ServerPaymentTest extends KillbillTest
 
         // Partial capture 1
         $paymentData->setAmount(2);
-        $payment = $paymentData->createCapture(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $payment = $paymentData->createCapture(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 2, 2, 10, 2, 0, 0, 0);
 
         // Partial capture 2
         $paymentData->setAmount(3);
-        $payment = $paymentData->createCapture(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $payment = $paymentData->createCapture(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 3, 3, 10, 5, 0, 0, 0);
 
         // Partial refund
         $paymentData->setAmount(4);
-        $payment = $paymentData->createRefund(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $payment = $paymentData->createRefund(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 4, 4, 10, 5, 0, 4, 0);
     }
 
-    function testAuthVoid()
+    public function testAuthVoid()
     {
         $paymentData = new Transaction();
         $paymentData->setAmount(10);
         $paymentData->setCurrency('USD');
-        $payment = $paymentData->createAuthorization($this->account->getAccountId(), null, self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $payment = $paymentData->createAuthorization($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 10, 1, 10, 0, 0, 0, 0);
 
         // Populate the paymentId, required below
         $paymentData->setPaymentId($payment->getPaymentId());
 
         // Void
-        $payment = $paymentData->createVoid(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $payment = $paymentData->createVoid(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 0, 2, 0, 0, 0, 0, 0);
     }
 
-    function testPurchaseCredit()
+    public function testPurchaseCredit()
     {
         $paymentData = new Transaction();
         $paymentData->setAmount(10);
         $paymentData->setCurrency('USD');
-        $payment = $paymentData->createPurchase($this->account->getAccountId(), null, self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $payment = $paymentData->createPurchase($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->verifyPaymentAndTransaction($payment, 10, 1, 0, 0, 10, 0, 0);
 
         $paymentData->setAmount(12);
-        $payment = $paymentData->createCredit($this->account->getAccountId(), null, self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $payment = $paymentData->createCredit($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         // A credit is a different payment
         $this->verifyPaymentAndTransaction($payment, 12, 1, 0, 0, 0, 0, 12);
     }
@@ -165,9 +165,9 @@ class ServerPaymentTest extends KillbillTest
         $this->verifyPayment($payment, $transactionAmount, $nbTransactions, $authAmount, $capturedAmount, $purchasedAmount, $refundedAmount, $creditedAmount);
 
         // Check the server
-        $payments          = $this->account->getPayments($this->tenant->getTenantHeaders());
-        $retrieved_payment = $payments[count($payments) - 1];
-        $this->verifyPayment($retrieved_payment, $transactionAmount, $nbTransactions, $authAmount, $capturedAmount, $purchasedAmount, $refundedAmount, $creditedAmount);
+        $payments = $this->account->getPayments($this->tenant->getTenantHeaders());
+        $retrievedPayment = $payments[count($payments) - 1];
+        $this->verifyPayment($retrievedPayment, $transactionAmount, $nbTransactions, $authAmount, $capturedAmount, $purchasedAmount, $refundedAmount, $creditedAmount);
     }
 
     /**

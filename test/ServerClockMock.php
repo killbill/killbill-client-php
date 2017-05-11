@@ -40,13 +40,13 @@ class ServerClockMock extends Resource
     {
         $uri = '/test/clock';
         if ($days) {
-            $uri = $uri . '?days=' . $days . '&timeZone=' . $timeZone;
-        } else if ($weeks) {
-            $uri = $uri . '?weeks=' . $weeks . '&timeZone=' . $timeZone;
-        } else if ($months) {
-            $uri = $uri . '?months=' . $months . '&timeZone=' . $timeZone;
-        } else if ($years) {
-            $uri = $uri . '?years=' . $years . '&timeZone=' . $timeZone;
+            $uri = $uri.'?days='.$days.'&timeZone='.$timeZone;
+        } elseif ($weeks) {
+            $uri = $uri.'?weeks='.$weeks.'&timeZone='.$timeZone;
+        } elseif ($months) {
+            $uri = $uri.'?months='.$months.'&timeZone='.$timeZone;
+        } elseif ($years) {
+            $uri = $uri.'?years='.$years.'&timeZone='.$timeZone;
         }
         $this->updateRequest($uri, null, null, null, $headers);
 

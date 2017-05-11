@@ -24,7 +24,7 @@ class ServerPaymentMethodTest extends KillbillTest
     /** @var string|null */
     private $externalBundleId = null;
 
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
 
@@ -33,10 +33,10 @@ class ServerPaymentMethodTest extends KillbillTest
             $this->externalBundleId = md5('serverPaymentMethodTest'.static::class.':'.$this->getName());
         }
 
-        $this->account = $this->accountData->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
     }
 
-    function tearDown()
+    public function tearDown()
     {
         parent::tearDown();
 
@@ -44,13 +44,13 @@ class ServerPaymentMethodTest extends KillbillTest
         unset($this->account);
     }
 
-    function testBasic()
+    public function testBasic()
     {
         $paymentMethod = new PaymentMethod();
         $paymentMethod->setAccountId($this->account->getAccountId());
         $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
-        $paymentMethod->create(self::user, self::reason, self::comment, $this->tenant->getTenantHeaders());
+        $paymentMethod->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $this->account = $this->account->get($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($this->account->getPaymentMethodId());

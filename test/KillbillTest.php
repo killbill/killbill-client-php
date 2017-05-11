@@ -21,9 +21,9 @@ use Killbill;
 
 class KillbillTest extends \PHPUnit_Framework_TestCase
 {
-    const user    = 'phpTester';
-    const reason  = 'test';
-    const comment = 'no comment';
+    const USER    = 'phpTester';
+    const REASON  = 'test';
+    const COMMENT = 'no comment';
 
     /** @var Account|null */
     protected $accountData = null;
@@ -52,7 +52,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $tenant->setExternalKey($externalKey);
         $tenant->setApiKey('test-php-api-key-'.$tenant->getExternalKey());
         $tenant->setApiSecret('test-php-api-secret-'.$tenant->getExternalKey());
-        $this->tenant = $tenant->create(self::user, self::reason, self::comment);
+        $this->tenant = $tenant->create(self::USER, self::REASON, self::COMMENT);
         $this->tenant->setApiSecret($tenant->getApiSecret());
 
         // setup catalog
@@ -61,7 +61,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $headers[]      = 'Content-Type: application/xml; charset=utf-8';
 
         $catalogContents = file_get_contents(__DIR__.'/resources/SpyCarAdvanced.xml');
-        $response        = $killbillClient->request(Client::POST, Client::PATH_CATALOG, $catalogContents, self::user, self::reason, self::comment, $headers);
+        $response        = $killbillClient->request(Client::POST, Client::PATH_CATALOG, $catalogContents, self::USER, self::REASON, self::COMMENT, $headers);
 
         $this->clock = new ServerClockMock();
         // Reset clock to now
@@ -97,6 +97,6 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 
     public function testDummyToAvoidWarning()
     {
-        //$this->assertTrue(true);
+        $this->assertTrue(true);
     }
 }

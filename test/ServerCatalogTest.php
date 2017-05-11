@@ -20,12 +20,12 @@ namespace Killbill\Client;
 
 class ServerCatalogTest extends KillbillTest
 {
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
     }
 
-    function tearDown()
+    public function tearDown()
     {
         parent::tearDown();
         unset($this->externalBundleId);

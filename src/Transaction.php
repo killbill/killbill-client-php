@@ -36,7 +36,7 @@ class Transaction extends PaymentTransactionAttributes
     {
         $this->transactionType = 'AUTHORIZE';
 
-        return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
+        return $this->createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
     /**
@@ -53,7 +53,7 @@ class Transaction extends PaymentTransactionAttributes
     {
         $this->transactionType = 'PURCHASE';
 
-        return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
+        return $this->createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
     /**
@@ -70,7 +70,7 @@ class Transaction extends PaymentTransactionAttributes
     {
         $this->transactionType = 'CREDIT';
 
-        return $this->_createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
+        return $this->createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers);
     }
 
     /**
@@ -83,7 +83,7 @@ class Transaction extends PaymentTransactionAttributes
      */
     public function createCapture($user, $reason, $comment, $headers = null)
     {
-        return $this->_createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId(), $user, $reason, $comment, $headers);
+        return $this->createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId(), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -96,7 +96,7 @@ class Transaction extends PaymentTransactionAttributes
      */
     public function createRefund($user, $reason, $comment, $headers = null)
     {
-        return $this->_createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId().Client::PATH_REFUNDS, $user, $reason, $comment, $headers);
+        return $this->createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId().Client::PATH_REFUNDS, $user, $reason, $comment, $headers);
     }
 
     /**
@@ -109,7 +109,7 @@ class Transaction extends PaymentTransactionAttributes
      */
     public function createChargeback($user, $reason, $comment, $headers = null)
     {
-        return $this->_createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId().Client::PATH_CHARGEBACKS, $user, $reason, $comment, $headers);
+        return $this->createTransaction(Client::PATH_PAYMENTS.'/'.$this->getPaymentId().Client::PATH_CHARGEBACKS, $user, $reason, $comment, $headers);
     }
 
     /**
@@ -139,7 +139,7 @@ class Transaction extends PaymentTransactionAttributes
      *
      * @return Payment|null
      */
-    public function _createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
+    public function createAccountTransaction($accountId, $paymentMethodId, $user, $reason, $comment, $headers = null)
     {
         $queryData = array();
         if ($paymentMethodId) {
@@ -147,7 +147,7 @@ class Transaction extends PaymentTransactionAttributes
         }
 
         $query = $this->makeQuery($queryData);
-        return $this->_createTransaction(Client::PATH_ACCOUNTS.'/'.$accountId.Client::PATH_PAYMENTS.$query, $user, $reason, $comment, $headers);
+        return $this->createTransaction(Client::PATH_ACCOUNTS.'/'.$accountId.Client::PATH_PAYMENTS.$query, $user, $reason, $comment, $headers);
     }
 
     /**
@@ -159,7 +159,7 @@ class Transaction extends PaymentTransactionAttributes
      *
      * @return Payment|null
      */
-    public function _createTransaction($uri, $user, $reason, $comment, $headers = null)
+    public function createTransaction($uri, $user, $reason, $comment, $headers = null)
     {
         $response = $this->createRequest($uri, $user, $reason, $comment, $headers);
 

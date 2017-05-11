@@ -26,7 +26,7 @@ class Response
     /** @var string */
     public $body;
 
-    function __construct($statusCode, $headers, $body)
+    public function __construct($statusCode, $headers, $body)
     {
         $this->statusCode = $statusCode;
         $this->headers    = $headers;

@@ -37,9 +37,9 @@ class Tenant extends TenantAttributes
     }
 
     /**
-     * @param string|null   $user    User requesting the creation
-     * @param string|null   $reason  Reason for the creation
-     * @param string|null   $comment Any addition comment
+     * @param string|null $user    User requesting the creation
+     * @param string|null $reason  Reason for the creation
+     * @param string|null $comment Any addition comment
      *
      * @return Tenant|null The newly created tenant
      */
@@ -52,6 +52,9 @@ class Tenant extends TenantAttributes
         return $object;
     }
 
+    /**
+     * @return array
+     */
     public function getTenantHeaders()
     {
         return array(
