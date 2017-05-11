@@ -20,7 +20,7 @@ namespace Killbill\Client;
 /**
 * Manipulate the server clock
 */
-class ServerClockMock extends Resource
+class ServerClockMock extends AbstractResource
 {
     /**
     * Set the clock to a specific date
