@@ -17,6 +17,9 @@
 
 namespace Killbill\Client;
 
+/**
+* Response wrapper
+*/
 class Response
 {
     /** @var int */
@@ -26,6 +29,11 @@ class Response
     /** @var string */
     public $body;
 
+    /**
+    * @param int    $statusCode HTTP status code
+    * @param array  $headers    Response headers
+    * @param string $body       Response body
+    */
     public function __construct($statusCode, $headers, $body)
     {
         $this->statusCode = $statusCode;

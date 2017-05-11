@@ -22,6 +22,9 @@ namespace Killbill\Client;
 use Killbill\Client\Exception\ResponseException;
 use Killbill\Client\Type\AccountAttributes;
 
+/**
+* Account actions
+*/
 class Account extends AccountAttributes
 {
     /**
@@ -65,6 +68,7 @@ class Account extends AccountAttributes
 
         /** @var Account|null $object */
         $object = $this->getFromResponse(Account::class, $response, $headers);
+
         return $object;
     }
 
@@ -82,6 +86,7 @@ class Account extends AccountAttributes
 
         /** @var Account|null $object */
         $object = $this->getFromBody(Account::class, $response);
+
         return $object;
     }
 
@@ -96,6 +101,7 @@ class Account extends AccountAttributes
 
         /** @var Bundle[]|null $object */
         $object = $this->getFromBody(Bundle::class, $response);
+
         return $object;
     }
 
@@ -121,6 +127,7 @@ class Account extends AccountAttributes
 
         /** @var Invoice[]|null $object */
         $object = $this->getFromBody(Invoice::class, $response);
+
         return $object;
     }
 
@@ -150,6 +157,7 @@ class Account extends AccountAttributes
 
         /** @var Overdue|null $object */
         $object = $this->getFromBody(Overdue::class, $response);
+
         return $object;
     }
 
@@ -164,6 +172,7 @@ class Account extends AccountAttributes
 
         /** @var PaymentMethod[]|null $object */
         $object = $this->getFromBody(PaymentMethod::class, $response);
+
         return $object;
     }
 
@@ -178,6 +187,7 @@ class Account extends AccountAttributes
 
         /** @var Payment[]|null $object */
         $object = $this->getFromBody(Payment::class, $response);
+
         return $object;
     }
 
@@ -192,6 +202,7 @@ class Account extends AccountAttributes
 
         /** @var Tag[]|null $object */
         $object = $this->getFromBody(Tag::class, $response);
+
         return $object;
     }
 
@@ -210,6 +221,7 @@ class Account extends AccountAttributes
 
         /** @var Tag[]|null $object */
         $object = $this->getFromResponse(Tag::class, $response, $headers);
+
         return $object;
     }
 

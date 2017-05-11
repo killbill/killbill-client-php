@@ -21,6 +21,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\PaymentMethodAttributes;
 
+/**
+* PaymentMethod actions
+*/
 class PaymentMethod extends PaymentMethodAttributes
 {
     /**
@@ -34,6 +37,7 @@ class PaymentMethod extends PaymentMethodAttributes
 
         /** @var PaymentMethod[]|null $object */
         $object = $this->getFromBody(PaymentMethod::class, $response);
+
         return $object;
     }
 
@@ -57,6 +61,7 @@ class PaymentMethod extends PaymentMethodAttributes
 
         /** @var Account|null $object */
         $object = $this->getFromResponse(PaymentMethod::class, $response, $headers);
+
         return $object;
     }
 }

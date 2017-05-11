@@ -19,6 +19,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\CatalogAttributes;
 
+/**
+* Catalog actions
+*/
 class Catalog extends CatalogAttributes
 {
     private $fullCatalog;

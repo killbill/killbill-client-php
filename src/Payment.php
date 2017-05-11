@@ -20,6 +20,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\PaymentAttributes;
 
+/**
+* Payment actions
+*/
 class Payment extends PaymentAttributes
 {
 }

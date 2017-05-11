@@ -19,6 +19,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\BundleAttributes;
 
+/**
+* Bundle actions
+*/
 class Bundle extends BundleAttributes
 {
     /**
@@ -32,6 +35,7 @@ class Bundle extends BundleAttributes
 
         /** @var Bundle|null $object */
         $object = $this->getFromBody(Bundle::class, $response);
+
         return $object;
     }
 
@@ -46,6 +50,7 @@ class Bundle extends BundleAttributes
 
         /** @var Bundle[]|null $object */
         $object = $this->getFromBody(Bundle::class, $response);
+
         return $object;
     }
 
@@ -60,6 +65,7 @@ class Bundle extends BundleAttributes
 
         /** @var Tag[]|null $object */
         $object = $this->getFromBody(Tag::class, $response);
+
         return $object;
     }
 
@@ -78,6 +84,7 @@ class Bundle extends BundleAttributes
 
         /** @var Tag[]|null $object */
         $object = $this->getFromResponse(Tag::class, $response, $headers);
+
         return $object;
     }
 

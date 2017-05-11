@@ -19,6 +19,9 @@ namespace Killbill\Client;
 
 use Killbill;
 
+/**
+* Base test class
+*/
 class KillbillTest extends \PHPUnit_Framework_TestCase
 {
     const USER    = 'phpTester';
@@ -34,6 +37,9 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     /** @var string|null */
     protected $externalAccountId = null;
 
+    /**
+    * Set up the test
+    */
     public function setUp()
     {
         $externalKey = uniqid();
@@ -87,6 +93,9 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $this->accountData->setTimeZone('UTC');
     }
 
+    /**
+    * Unset everything
+    */
     public function tearDown()
     {
         unset($this->externalAccountId);
@@ -95,6 +104,9 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         unset($this->clock);
     }
 
+    /**
+    * Dummy test
+    */
     public function testDummyToAvoidWarning()
     {
         $this->assertTrue(true);

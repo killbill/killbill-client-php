@@ -19,6 +19,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\InvoiceAttributes;
 
+/**
+* Invoice actions
+*/
 class Invoice extends InvoiceAttributes
 {
     /**
@@ -39,6 +42,7 @@ class Invoice extends InvoiceAttributes
 
         /** @var Invoice|null $object */
         $object = $this->getFromBody(Invoice::class, $response);
+
         return $object;
     }
 

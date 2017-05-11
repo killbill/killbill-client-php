@@ -20,6 +20,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\TenantAttributes;
 
+/**
+* Tenant actions
+*/
 class Tenant extends TenantAttributes
 {
     /**
@@ -33,6 +36,7 @@ class Tenant extends TenantAttributes
 
         /** @var Tenant|null $object */
         $object = $this->getFromBody('Tenant', $response);
+
         return $object;
     }
 
@@ -49,6 +53,7 @@ class Tenant extends TenantAttributes
 
         /** @var Tenant|null $object */
         $object = $this->getFromResponse(Tenant::class, $response, $this->getTenantHeaders());
+
         return $object;
     }
 

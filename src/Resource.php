@@ -20,20 +20,84 @@ namespace Killbill\Client;
 use Killbill\Client\Exception\ResourceParsingException;
 use Killbill\Client\Exception\ResponseException;
 
-abstract class Resource /* implements JsonSerializable */
+/**
+* Abstract resource class that implements most CRUD functions
+*/
+abstract class AbstractResource /* implements JsonSerializable */
 {
     protected $auditLogs = null;
     /** @var Client */
     protected $client;
 
+    /**
+    * Set the audit logs
+    *
+    * @param array $auditLogs The audit logs
+    */
     public function setAuditLogs($auditLogs)
     {
         $this->auditLogs = $auditLogs;
     }
 
+    /**
+    * Get the audit logs
+    *
+    * @return array The audit logs
+    */
     public function getAuditLogs()
     {
         return $this->auditLogs;
+    }
+
+    /**
+     * Returns the resource as json
+     *
+     * @return string Json encoded resource
+     */
+    public function jsonSerialize()
+    {
+        $x = $this->prepareForSerialization();
+
+        return json_encode($x);
+    }
+
+    /**
+     * Converts the resource into an array
+     *
+     * @return array
+     */
+    public function prepareForSerialization()
+    {
+        $keys = get_object_vars($this);
+
+        unset($keys['client']);
+
+        foreach ($keys as $k => $v) {
+            if ($v instanceof Resource) {
+                $keys[$k] = $v->prepareForSerialization();
+            } else {
+                if (is_array($v)) {
+                    $keys[$k] = array();
+                    foreach ($v as $ve) {
+                        if ($ve instanceof Resource) {
+                            array_push($keys[$k], $ve->prepareForSerialization());
+                        } else {
+                            array_push($keys[$k], $ve);
+                        }
+                    }
+                }
+            }
+        }
+
+        $sortedArray = array();
+        $arrayKeys   = array_keys($keys);
+        asort($arrayKeys, SORT_STRING | SORT_NATURAL);
+
+        foreach ($arrayKeys as $arrayKey) {
+            $sortedArray[$arrayKey] = $keys[$arrayKey];
+        }
+
+        return $sortedArray;
     }
 
     /**
@@ -264,58 +328,7 @@ abstract class Resource /* implements JsonSerializable */
     }
 
     /**
-     * Returns the resource as json
-     *
-     * @return string Json encoded resource
-     */
-    public function jsonSerialize()
-    {
-        $x = $this->prepareForSerialization();
-
-        return json_encode($x);
-    }
-
-    /**
-     * Converts the resource into an array
-     *
-     * @return array
-     */
-    public function prepareForSerialization()
-    {
-        $keys = get_object_vars($this);
-
-        unset($keys['client']);
-
-        foreach ($keys as $k => $v) {
-            if ($v instanceof Resource) {
-                $keys[$k] = $v->prepareForSerialization();
-            } else {
-                if (is_array($v)) {
-                    $keys[$k] = array();
-                    foreach ($v as $ve) {
-                        if ($ve instanceof Resource) {
-                            array_push($keys[$k], $ve->prepareForSerialization());
-                        } else {
-                            array_push($keys[$k], $ve);
-                        }
-                    }
-                }
-            }
-        }
-
-        $sortedArray = array();
-        $arrayKeys   = array_keys($keys);
-        asort($arrayKeys, SORT_STRING | SORT_NATURAL);
-
-        foreach ($arrayKeys as $arrayKey) {
-            $sortedArray[$arrayKey] = $keys[$arrayKey];
-        }
-
-        return $sortedArray;
-    }
-
-    /**
-     *
+     * Initialize API client
      */
     private function initClientIfNeeded()
     {

@@ -17,18 +17,15 @@
 
 namespace Killbill\Client;
 
+/**
+* Test class for ServerAccount
+*/
 class ServerAccountTest extends KillbillTest
 {
-    public function setUp()
-    {
-        parent::setUp();
-    }
 
-    public function tearDown()
-    {
-        parent::tearDown();
-    }
-
+    /**
+    * Test the basic API
+    */
     public function testBasicApi()
     {
         $createdAccount = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
@@ -62,6 +59,9 @@ class ServerAccountTest extends KillbillTest
         $this->assertEquals("My awesome new name", $updatedAccount->getName());
     }
 
+    /**
+    * Test the overdue state
+    */
     public function testOverdueState()
     {
         $account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
@@ -70,6 +70,9 @@ class ServerAccountTest extends KillbillTest
         $this->assertEquals($state->getName(), '__KILLBILL__CLEAR__OVERDUE_STATE__');
     }
 
+    /**
+    * Test tags
+    */
     public function testTags()
     {
         $account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());

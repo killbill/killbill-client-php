@@ -17,6 +17,9 @@
 
 namespace Killbill\Client;
 
+/**
+* Tests for ServerInvoice
+*/
 class ServerInvoiceTest extends KillbillTest
 {
     /** @var Account|null */
@@ -24,6 +27,9 @@ class ServerInvoiceTest extends KillbillTest
     /** @var string|null */
     private $externalBundleId = null;
 
+    /**
+    * Set up the test
+    */
     public function setUp()
     {
         parent::setUp();
@@ -44,6 +50,9 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertNotEmpty($this->account->getPaymentMethodId());
     }
 
+    /**
+    * Tear down the Test
+    */
     public function tearDown()
     {
         parent::tearDown();
@@ -52,6 +61,9 @@ class ServerInvoiceTest extends KillbillTest
         unset($this->account);
     }
 
+    /**
+    * Test basic functionality
+    */
     public function testBasic()
     {
         $subscriptionData = new Subscription();
