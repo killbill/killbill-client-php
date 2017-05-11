@@ -121,6 +121,14 @@ class BundleAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getTimelineType()
+    {
+        return BundleTimelineAttributes::class;
+    }
+
+    /**
      * @param array|null $auditLogs
      */
     public function setAuditLogs($auditLogs)

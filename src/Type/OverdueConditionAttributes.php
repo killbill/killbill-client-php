@@ -57,6 +57,14 @@ class OverdueConditionAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getTimeSinceEarliestUnpaidInvoiceEqualsOrExceedsType()
+    {
+        return DurationAttributes::class;
+    }
+
+    /**
      * @param mixed|null $controlTagInclusion
      */
     public function setControlTagInclusion($controlTagInclusion)

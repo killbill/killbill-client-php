@@ -139,6 +139,14 @@ class PaymentMethodAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getPluginInfoType()
+    {
+        return PaymentMethodPluginDetailAttributes::class;
+    }
+
+    /**
      * @param array|null $auditLogs
      */
     public function setAuditLogs($auditLogs)

@@ -53,6 +53,14 @@ class AccountTimelineAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getAccountType()
+    {
+        return AccountAttributes::class;
+    }
+
+    /**
      * @param array|null $bundles
      */
     public function setBundles($bundles)

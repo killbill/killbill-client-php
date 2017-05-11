@@ -93,6 +93,14 @@ class OverdueStateConfigAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getConditionType()
+    {
+        return OverdueConditionAttributes::class;
+    }
+
+    /**
      * @param string|null $externalMessage
      */
     public function setExternalMessage($externalMessage)

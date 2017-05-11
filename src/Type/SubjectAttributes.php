@@ -100,4 +100,12 @@ class SubjectAttributes extends \Killbill\Client\Resource
         return $this->session;
     }
 
+    /**
+     * @return string
+     */
+    public function getSessionType()
+    {
+        return SessionAttributes::class;
+    }
+
 }

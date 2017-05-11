@@ -103,6 +103,14 @@ class PhaseAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getDurationType()
+    {
+        return DurationAttributes::class;
+    }
+
+    /**
      * @param array|null $usages
      */
     public function setUsages($usages)

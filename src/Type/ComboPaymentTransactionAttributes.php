@@ -57,6 +57,14 @@ class ComboPaymentTransactionAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getAccountType()
+    {
+        return AccountAttributes::class;
+    }
+
+    /**
      * @param PaymentMethodAttributes|null $paymentMethod
      */
     public function setPaymentMethod($paymentMethod)
@@ -73,6 +81,14 @@ class ComboPaymentTransactionAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getPaymentMethodType()
+    {
+        return PaymentMethodAttributes::class;
+    }
+
+    /**
      * @param PaymentTransactionAttributes|null $transaction
      */
     public function setTransaction($transaction)
@@ -86,6 +102,14 @@ class ComboPaymentTransactionAttributes extends \Killbill\Client\Resource
     public function getTransaction()
     {
         return $this->transaction;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTransactionType()
+    {
+        return PaymentTransactionAttributes::class;
     }
 
     /**

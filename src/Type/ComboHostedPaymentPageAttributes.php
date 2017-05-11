@@ -55,6 +55,14 @@ class ComboHostedPaymentPageAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getAccountType()
+    {
+        return AccountAttributes::class;
+    }
+
+    /**
      * @param PaymentMethodAttributes|null $paymentMethod
      */
     public function setPaymentMethod($paymentMethod)
@@ -71,6 +79,14 @@ class ComboHostedPaymentPageAttributes extends \Killbill\Client\Resource
     }
 
     /**
+     * @return string
+     */
+    public function getPaymentMethodType()
+    {
+        return PaymentMethodAttributes::class;
+    }
+
+    /**
      * @param HostedPaymentPageFieldsAttributes|null $hostedPaymentPageFields
      */
     public function setHostedPaymentPageFields($hostedPaymentPageFields)
@@ -84,6 +100,14 @@ class ComboHostedPaymentPageAttributes extends \Killbill\Client\Resource
     public function getHostedPaymentPageFields()
     {
         return $this->hostedPaymentPageFields;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHostedPaymentPageFieldsType()
+    {
+        return HostedPaymentPageFieldsAttributes::class;
     }
 
     /**
