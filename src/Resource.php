@@ -238,12 +238,22 @@ abstract class Resource /* implements JsonSerializable */
         $object = new $class();
 
         foreach ($json as $key => $value) {
-            $method = 'set'.ucfirst($key);
-            if (!method_exists($object, $method)) {
-                throw new ResourceParsingException('Could not call method '.$method.' on object of type '.get_class($object));
+            $typeMethod = 'get'.ucfirst($key).'Type';
+            if (method_exists($object, $typeMethod)) {
+                $type = $object->{$typeMethod}();
+
+                // A type has been specified for this property, so trying to convert the value into this type
+                if ($type) {
+                    $value = $this->fromJsonObject($type, $value);
+                }
             }
 
-            $object->{'set'.ucfirst($key)}($value);
+            $setterMethod = 'set'.ucfirst($key);
+            if (!method_exists($object, $setterMethod)) {
+                throw new ResourceParsingException('Could not call method '.$setterMethod.' on object of type '.get_class($object));
+            }
+
+            $object->{$setterMethod}($value);
         }
 
         return $object;
