@@ -19,6 +19,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Exception\CurlException;
 
+/**
+* Killbill HTTP API client
+*/
 class Client
 {
     /** @var MockManager|null */

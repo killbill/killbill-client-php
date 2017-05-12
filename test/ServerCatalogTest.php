@@ -18,13 +18,15 @@
 
 namespace Killbill\Client;
 
+/**
+* Tests for ServerCatalog
+*/
 class ServerCatalogTest extends KillbillTest
 {
-    public function setUp()
-    {
-        parent::setUp();
-    }
 
+    /**
+    * Tear down test
+    */
     public function tearDown()
     {
         parent::tearDown();
@@ -32,6 +34,9 @@ class ServerCatalogTest extends KillbillTest
         unset($this->account);
     }
 
+    /**
+    * Test basic API
+    */
     public function testBasic()
     {
         $catalog = new Catalog();

@@ -19,6 +19,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\SubscriptionAttributes;
 
+/**
+* Subscription actions
+*/
 class Subscription extends SubscriptionAttributes
 {
     /**
@@ -32,6 +35,7 @@ class Subscription extends SubscriptionAttributes
 
         /** @var Subscription|null $object */
         $object = $this->getFromBody(Subscription::class, $response);
+
         return $object;
     }
 
@@ -67,6 +71,7 @@ class Subscription extends SubscriptionAttributes
 
         /** @var Subscription|null $object */
         $object = $this->getFromResponse(Subscription::class, $response, $headers);
+
         return $object;
     }
 
@@ -99,6 +104,7 @@ class Subscription extends SubscriptionAttributes
 
         /** @var Subscription|null $object */
         $object = $this->getFromBody(Subscription::class, $response);
+
         return $object;
     }
 
@@ -116,6 +122,7 @@ class Subscription extends SubscriptionAttributes
 
         /** @var Subscription|null $object */
         $object = $this->getFromBody(Subscription::class, $response);
+
         return $object;
     }
 
@@ -156,6 +163,7 @@ class Subscription extends SubscriptionAttributes
 
         /** @var Subscription|null $object */
         $object = $this->getFromBody(Subscription::class, $response);
+
         return $object;
     }
 }

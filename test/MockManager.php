@@ -17,11 +17,17 @@
 
 namespace Killbill\Client;
 
+/**
+* Work with response mocks
+*/
 class MockManager
 {
     /** @var array|null */
     protected $stubs = null;
 
+    /**
+    * Public constructor
+    */
     public function __construct()
     {
         $this->stubs = array();

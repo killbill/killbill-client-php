@@ -19,6 +19,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\TagDefinitionAttributes;
 
+/**
+* TagDefinition actions
+*/
 class TagDefinition extends TagDefinitionAttributes
 {
     /**
@@ -32,6 +35,7 @@ class TagDefinition extends TagDefinitionAttributes
 
         /** @var TagDefinition|null $object */
         $object = $this->getFromBody(TagDefinition::class, $response);
+
         return $object;
     }
 
@@ -49,6 +53,7 @@ class TagDefinition extends TagDefinitionAttributes
 
         /** @var TagDefinition|null $object */
         $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
+
         return $object;
     }
 
@@ -66,6 +71,7 @@ class TagDefinition extends TagDefinitionAttributes
 
         /** @var TagDefinition|null $object */
         $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
+
         return $object;
     }
 }

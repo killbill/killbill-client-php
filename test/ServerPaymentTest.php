@@ -20,6 +20,9 @@
 
 namespace Killbill\Client;
 
+/**
+* Tests for ServerPayment
+*/
 class ServerPaymentTest extends KillbillTest
 {
     /** @var Account|null */
@@ -27,6 +30,9 @@ class ServerPaymentTest extends KillbillTest
     /** @var string|null */
     private $externalBundleId = null;
 
+    /**
+    * Set up test
+    */
     public function setUp()
     {
         parent::setUp();
@@ -47,6 +53,9 @@ class ServerPaymentTest extends KillbillTest
         $this->assertNotEmpty($this->account->getPaymentMethodId());
     }
 
+    /**
+    * Tear down test
+    */
     public function tearDown()
     {
         parent::tearDown();
@@ -54,6 +63,9 @@ class ServerPaymentTest extends KillbillTest
         unset($this->account);
     }
 
+    /**
+    * Test basic functionality
+    */
     public function testBasic()
     {
         // Add AUTO_PAY_OFF to account to end up with unpaid invoices
@@ -92,6 +104,9 @@ class ServerPaymentTest extends KillbillTest
         $this->assertEquals(count($allInvoices), 2);
     }
 
+    /**
+    * Test auth capture refund
+    */
     public function testAuthCaptureRefund()
     {
         $paymentData = new Transaction();
@@ -119,6 +134,9 @@ class ServerPaymentTest extends KillbillTest
         $this->verifyPaymentAndTransaction($payment, 4, 4, 10, 5, 0, 4, 0);
     }
 
+    /**
+    * Test auth void
+    */
     public function testAuthVoid()
     {
         $paymentData = new Transaction();
@@ -135,6 +153,9 @@ class ServerPaymentTest extends KillbillTest
         $this->verifyPaymentAndTransaction($payment, 0, 2, 0, 0, 0, 0, 0);
     }
 
+    /**
+    * Test purchase credit
+    */
     public function testPurchaseCredit()
     {
         $paymentData = new Transaction();

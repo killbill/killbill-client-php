@@ -10,4 +10,4 @@ notifications:
 
 install: composer install
 
-script: composer test
+script: composer phpcs && composer test

@@ -20,6 +20,9 @@ namespace Killbill\Client;
 
 use Killbill\Client\Type\PaymentTransactionAttributes;
 
+/**
+* Transaction actions
+*/
 class Transaction extends PaymentTransactionAttributes
 {
     /**
@@ -126,6 +129,7 @@ class Transaction extends PaymentTransactionAttributes
 
         /** @var Payment|null $object */
         $object = $this->getFromResponse(Payment::class, $response, $headers);
+
         return $object;
     }
 
@@ -147,6 +151,7 @@ class Transaction extends PaymentTransactionAttributes
         }
 
         $query = $this->makeQuery($queryData);
+
         return $this->createTransaction(Client::PATH_ACCOUNTS.'/'.$accountId.Client::PATH_PAYMENTS.$query, $user, $reason, $comment, $headers);
     }
 
@@ -165,6 +170,7 @@ class Transaction extends PaymentTransactionAttributes
 
         /** @var Payment|null $object */
         $object = $this->getFromResponse(Payment::class, $response, $headers);
+
         return $object;
     }
 }

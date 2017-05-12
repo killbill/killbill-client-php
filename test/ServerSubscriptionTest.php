@@ -17,6 +17,9 @@
 
 namespace Killbill\Client;
 
+/**
+* Tests for Subscription
+*/
 class ServerSubscriptionTest extends KillbillTest
 {
     /** @var Account|null */
@@ -24,6 +27,9 @@ class ServerSubscriptionTest extends KillbillTest
     /** @var string|null */
     private $externalBundleId = null;
 
+    /**
+    * Set up test
+    */
     public function setUp()
     {
         parent::setUp();
@@ -44,6 +50,9 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertNotEmpty($this->account->getPaymentMethodId());
     }
 
+    /**
+    * Tear down test
+    */
     public function tearDown()
     {
         parent::tearDown();
@@ -52,6 +61,9 @@ class ServerSubscriptionTest extends KillbillTest
         unset($this->account);
     }
 
+    /**
+    * Test basic functionality
+    */
     public function testBasic()
     {
         $subscriptionData = new Subscription();
@@ -85,6 +97,9 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertNotEmpty($subscriptionRes->getCancelledDate());
     }
 
+    /**
+    * Test bundle with AO
+    */
     public function testBundleWithAO()
     {
         $subscriptionData = new Subscription();
@@ -143,6 +158,9 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertEquals($bundle->getSubscriptions()[1]->productCategory, 'ADD_ON');
     }
 
+    /**
+    * Test bundle with tags
+    */
     public function testBundleWithTags()
     {
         $subscriptionData = new Subscription();
