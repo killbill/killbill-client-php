@@ -1,9 +1,8 @@
 <?php
 /*
- * Copyright 2014 Groupon, Inc.
- * Copyright 2014 - 2017 The Billing Project, LLC
+ * Copyright 2011-2017 Ning, Inc.
  *
- * The Billing Project licenses this file to you under the Apache License, version 2.0
+ * Ning licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
  * License.  You may obtain a copy of the License at:
  *
@@ -18,11 +17,11 @@
 
 namespace Killbill\Client;
 
-use Killbill\Client\Type\PaymentAttributes;
+use Killbill\Client\Type\InvoiceDryRunAttributes;
 
 /**
- * Payment actions
+ * InvoiceDryRun actions
  */
-class Payment extends PaymentAttributes
+class InvoiceDryRun extends InvoiceDryRunAttributes
 {
 }

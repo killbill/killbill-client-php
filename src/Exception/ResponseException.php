@@ -3,9 +3,8 @@
 namespace Killbill\Client\Exception;
 
 /**
-* General response exception
-*/
+ * General response exception
+ */
 class ResponseException extends Exception
 {
-
 }

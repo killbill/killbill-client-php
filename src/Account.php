@@ -19,12 +19,13 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Exception\ResponseException;
 use Killbill\Client\Type\AccountAttributes;
 
 /**
-* Account actions
-*/
+ * Account actions
+ */
 class Account extends AccountAttributes
 {
     /**
@@ -66,8 +67,12 @@ class Account extends AccountAttributes
     {
         $response = $this->createRequest(Client::PATH_ACCOUNTS, $user, $reason, $comment, $headers);
 
-        /** @var Account|null $object */
-        $object = $this->getFromResponse(Account::class, $response, $headers);
+        try {
+            /** @var Account|null $object */
+            $object = $this->getFromResponse(Account::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -84,8 +89,12 @@ class Account extends AccountAttributes
     {
         $response = $this->updateRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId(), $user, $reason, $comment, $headers);
 
-        /** @var Account|null $object */
-        $object = $this->getFromBody(Account::class, $response);
+        try {
+            /** @var Account|null $object */
+            $object = $this->getFromBody(Account::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -99,8 +108,12 @@ class Account extends AccountAttributes
     {
         $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_BUNDLES, $headers);
 
-        /** @var Bundle[]|null $object */
-        $object = $this->getFromBody(Bundle::class, $response);
+        try {
+            /** @var Bundle[]|null $object */
+            $object = $this->getFromBody(Bundle::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -125,8 +138,42 @@ class Account extends AccountAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_INVOICES.$query, $headers);
 
-        /** @var Invoice[]|null $object */
-        $object = $this->getFromBody(Invoice::class, $response);
+        try {
+            /** @var Invoice[]|null $object */
+            $object = $this->getFromBody(Invoice::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
+
+        return $object;
+    }
+
+    /**
+     * @param string        $date    Target date
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return Invoice|null The dry invoice
+     */
+    public function getDryInvoice($date, $user, $reason, $comment, $headers = null)
+    {
+        $invoice = new InvoiceDryRun();
+
+        $queryData = array();
+        $queryData['accountId'] = $this->getAccountId();
+        $queryData['targetDate'] = $date;
+
+        $query = $this->makeQuery($queryData);
+        $response = $invoice->createRequest(Client::PATH_INVOICES.Client::PATH_DRYRUN.$query, $user, $reason, $comment, $headers);
+
+        try {
+            /** @var Invoice|null $object */
+            $object = $this->getFromBody(Invoice::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -155,8 +202,12 @@ class Account extends AccountAttributes
     {
         $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_OVERDUE, $headers);
 
-        /** @var Overdue|null $object */
-        $object = $this->getFromBody(Overdue::class, $response);
+        try {
+            /** @var Overdue|null $object */
+            $object = $this->getFromBody(Overdue::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -168,10 +219,18 @@ class Account extends AccountAttributes
      */
     public function getPaymentMethods($headers = null)
     {
-        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENT_METHODS, $headers);
+        $queryData = array();
+        $queryData['withPluginInfo'] = 'true';
 
-        /** @var PaymentMethod[]|null $object */
-        $object = $this->getFromBody(PaymentMethod::class, $response);
+        $query = $this->makeQuery($queryData);
+        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENT_METHODS.$query, $headers);
+
+        try {
+            /** @var PaymentMethod[]|null $object */
+            $object = $this->getFromBody(PaymentMethod::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -185,8 +244,12 @@ class Account extends AccountAttributes
     {
         $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENTS, $headers);
 
-        /** @var Payment[]|null $object */
-        $object = $this->getFromBody(Payment::class, $response);
+        try {
+            /** @var Payment[]|null $object */
+            $object = $this->getFromBody(Payment::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -200,8 +263,12 @@ class Account extends AccountAttributes
     {
         $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS, $headers);
 
-        /** @var Tag[]|null $object */
-        $object = $this->getFromBody(Tag::class, $response);
+        try {
+            /** @var Tag[]|null $object */
+            $object = $this->getFromBody(Tag::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -219,8 +286,12 @@ class Account extends AccountAttributes
     {
         $response = $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
 
-        /** @var Tag[]|null $object */
-        $object = $this->getFromResponse(Tag::class, $response, $headers);
+        try {
+            /** @var Tag[]|null $object */
+            $object = $this->getFromResponse(Tag::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -237,6 +308,60 @@ class Account extends AccountAttributes
     public function deleteTags($tags, $user, $reason, $comment, $headers = null)
     {
         $response = $this->deleteRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
+
+        return null;
+    }
+
+    /**
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return CustomField[]|null
+     */
+    public function getCustomFields($headers = null)
+    {
+        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_CUSTOM_FIELDS, $headers);
+
+        try {
+            /** @var CustomField[]|null $object */
+            $object = $this->getFromBody(CustomField::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
+
+        return $object;
+    }
+
+    // Not implemented
+    ///**
+    // * @param               $customFields    ?
+    // * @param string|null   $user            User requesting the creation
+    // * @param string|null   $reason          Reason for the creation
+    // * @param string|null   $comment         Any addition comment
+    // * @param string[]|null $headers         Any additional headers
+    // *
+    // * @return CustomField[]|null
+    // */
+    //public function addCustomFields($customFields, $user, $reason, $comment, $headers = null)
+    //{
+    //    $response = $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_CUSTOM_FIELDS.'?customFieldList='.join(',', $customFields), $user, $reason, $comment, $headers);
+    //
+    //    /** @var CustomField[]|null $object */
+    //    $object = $this->getFromResponse(CustomField::class, $response, $headers);
+    //    return $object;
+    //}
+
+    /**
+     * @param string[]      $customFields Custom fields list
+     * @param string|null   $user         User requesting the creation
+     * @param string|null   $reason       Reason for the creation
+     * @param string|null   $comment      Any addition comment
+     * @param string[]|null $headers      Any additional headers
+     *
+     * @return CustomField[]|null
+     */
+    public function deleteCustomFields($customFields, $user, $reason, $comment, $headers = null)
+    {
+        $response = $this->deleteRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_CUSTOM_FIELDS.'?customFieldList='.join(',', $customFields), $user, $reason, $comment, $headers);
 
         return null;
     }

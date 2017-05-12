@@ -20,8 +20,8 @@ namespace Killbill\Client;
 use Killbill\Client\Type\TagAttributes;
 
 /**
-* Tag actions
-*/
+ * Tag actions
+ */
 class Tag extends TagAttributes
 {
 }

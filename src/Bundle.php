@@ -17,11 +17,12 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Type\BundleAttributes;
 
 /**
-* Bundle actions
-*/
+ * Bundle actions
+ */
 class Bundle extends BundleAttributes
 {
     /**
@@ -33,8 +34,12 @@ class Bundle extends BundleAttributes
     {
         $response = $this->getRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId(), $headers);
 
-        /** @var Bundle|null $object */
-        $object = $this->getFromBody(Bundle::class, $response);
+        try {
+            /** @var Bundle|null $object */
+            $object = $this->getFromBody(Bundle::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -48,8 +53,12 @@ class Bundle extends BundleAttributes
     {
         $response = $this->getRequest(Client::PATH_BUNDLES.'?externalKey='.$this->getExternalKey(), $headers);
 
-        /** @var Bundle[]|null $object */
-        $object = $this->getFromBody(Bundle::class, $response);
+        try {
+            /** @var Bundle[]|null $object */
+            $object = $this->getFromBody(Bundle::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -63,8 +72,12 @@ class Bundle extends BundleAttributes
     {
         $response = $this->getRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_TAGS, $headers);
 
-        /** @var Tag[]|null $object */
-        $object = $this->getFromBody(Tag::class, $response);
+        try {
+            /** @var Tag[]|null $object */
+            $object = $this->getFromBody(Tag::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -82,8 +95,12 @@ class Bundle extends BundleAttributes
     {
         $response = $this->createRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
 
-        /** @var Tag[]|null $object */
-        $object = $this->getFromResponse(Tag::class, $response, $headers);
+        try {
+            /** @var Tag[]|null $object */
+            $object = $this->getFromResponse(Tag::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }

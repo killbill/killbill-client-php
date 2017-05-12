@@ -25,29 +25,8 @@ use Killbill\Client\Exception\ResponseException;
 */
 abstract class AbstractResource /* implements JsonSerializable */
 {
-    protected $auditLogs = null;
     /** @var Client */
     protected $client;
-
-    /**
-    * Set the audit logs
-    *
-    * @param array $auditLogs The audit logs
-    */
-    public function setAuditLogs($auditLogs)
-    {
-        $this->auditLogs = $auditLogs;
-    }
-
-    /**
-    * Get the audit logs
-    *
-    * @return array The audit logs
-    */
-    public function getAuditLogs()
-    {
-        return $this->auditLogs;
-    }
 
     /**
      * Returns the resource as json
@@ -224,19 +203,15 @@ abstract class AbstractResource /* implements JsonSerializable */
      * @param string   $class    resource class (optional)
      * @param Response $response response object
      *
-     * @return Resource|Resource[]|null An instance or collection of resources
+     * @return Resource|\Resource[]|null An instance or collection of resources
+     * @throws ResponseException
      */
     protected function getFromBody($class, $response)
     {
         $dataJson = json_decode($response->body);
 
         if ($dataJson === null) {
-            // cater for lack of X-Killbill-ApiKey and X-Killbill-ApiSecret headers
-            if (isset($response->statusCode) && isset($response->body)) {
-                return array('statusCode' => $response->statusCode, 'body' => $response->body);
-            }
-
-            return null;
+            throw new ResponseException('Killbill returned an invalid response: '.$response->statusCode.' '.$response->body, $response->statusCode);
         }
 
         return $this->fromJson($class, $dataJson);
@@ -293,7 +268,7 @@ abstract class AbstractResource /* implements JsonSerializable */
             return null;
         }
 
-        if (isset($json->className) && isset($json->code) && isset($json->message)) {
+        if (property_exists($json, 'className') && property_exists($json, 'code') && property_exists($json, 'message')) {
             // An exception has been returned by killbill
             // also available: $json->causeClassName, $json->causeMessage, $json->stackTrace
             throw new ResponseException('Killbill returned an exception: '.$json->className.' '.$json->message, $json->code);
@@ -307,12 +282,23 @@ abstract class AbstractResource /* implements JsonSerializable */
 
         foreach ($json as $key => $value) {
             $typeMethod = 'get'.ucfirst($key).'Type';
+
             if (method_exists($object, $typeMethod)) {
                 $type = $object->{$typeMethod}();
 
                 // A type has been specified for this property, so trying to convert the value into this type
                 if ($type) {
-                    $value = $this->fromJsonObject($type, $value);
+                    if (is_array($value)) {
+                        // Type refers to type of each object in the array
+                        $newValue = array();
+                        foreach ($value as $k => $v) {
+                            $newValue[] = $this->fromJsonObject($type, $v);
+                        }
+                        $value = $newValue;
+                    } else {
+                        // Type refers to type of each object in the array
+                        $value = $this->fromJsonObject($type, $value);
+                    }
                 }
             }
 

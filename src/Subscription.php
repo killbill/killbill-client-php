@@ -17,11 +17,12 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Type\SubscriptionAttributes;
 
 /**
-* Subscription actions
-*/
+ * Subscription actions
+ */
 class Subscription extends SubscriptionAttributes
 {
     /**
@@ -33,8 +34,12 @@ class Subscription extends SubscriptionAttributes
     {
         $response = $this->getRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId(), $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromBody(Subscription::class, $response);
+        try {
+            /** @var Subscription|null $object */
+            $object = $this->getFromBody(Subscription::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -69,8 +74,12 @@ class Subscription extends SubscriptionAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->createRequest(Client::PATH_SUBSCRIPTIONS.$query, $user, $reason, $comment, $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromResponse(Subscription::class, $response, $headers);
+        try {
+           /** @var Subscription|null $object */
+            $object = $this->getFromResponse(Subscription::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -102,8 +111,12 @@ class Subscription extends SubscriptionAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->updateRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().$query, $user, $reason, $comment, $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromBody(Subscription::class, $response);
+        try {
+            /** @var Subscription|null $object */
+            $object = $this->getFromBody(Subscription::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -120,8 +133,12 @@ class Subscription extends SubscriptionAttributes
     {
         $response = $this->updateRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().Client::PATH_UNCANCEL, $user, $reason, $comment, $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromBody(Subscription::class, $response);
+        try {
+            /** @var Subscription|null $object */
+            $object = $this->getFromBody(Subscription::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -161,8 +178,12 @@ class Subscription extends SubscriptionAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->deleteRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().$query, $user, $reason, $comment, $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromBody(Subscription::class, $response);
+        try {
+            /** @var Subscription|null $object */
+            $object = $this->getFromBody(Subscription::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }

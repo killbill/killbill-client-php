@@ -18,11 +18,12 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Type\PaymentTransactionAttributes;
 
 /**
-* Transaction actions
-*/
+ * Transaction actions
+ */
 class Transaction extends PaymentTransactionAttributes
 {
     /**
@@ -127,8 +128,12 @@ class Transaction extends PaymentTransactionAttributes
     {
         $response = $this->deleteRequest(Client::PATH_PAYMENTS.'/'.$this->getPaymentId(), $user, $reason, $comment, $headers);
 
-        /** @var Payment|null $object */
-        $object = $this->getFromResponse(Payment::class, $response, $headers);
+        try {
+            /** @var Payment|null $object */
+            $object = $this->getFromResponse(Payment::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -168,8 +173,12 @@ class Transaction extends PaymentTransactionAttributes
     {
         $response = $this->createRequest($uri, $user, $reason, $comment, $headers);
 
-        /** @var Payment|null $object */
-        $object = $this->getFromResponse(Payment::class, $response, $headers);
+        try {
+            /** @var Payment|null $object */
+            $object = $this->getFromResponse(Payment::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }

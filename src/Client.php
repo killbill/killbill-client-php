@@ -20,8 +20,8 @@ namespace Killbill\Client;
 use Killbill\Client\Exception\CurlException;
 
 /**
-* Killbill HTTP API client
-*/
+ * Killbill HTTP API client
+ */
 class Client
 {
     /** @var MockManager|null */
@@ -39,6 +39,10 @@ class Client
     public static $apiUser = 'admin';
     /** @var string Api password */
     public static $apiPassword = 'password';
+    /** @var int Api requests timeout in seconds */
+    public static $timeout = 45;
+    /** @var int Api requests conneciton timeout in seconds */
+    public static $connectionTimeout = 10;
 
     const API_CLIENT_VERSION = '1.0.0';
     const DEFAULT_ENCODING   = 'UTF-8';
@@ -52,6 +56,7 @@ class Client
     const PATH_ACCOUNTS             = '/accounts';
     const PATH_BUNDLES              = '/bundles';
     const PATH_CATALOG              = '/catalog';
+    const PATH_CUSTOM_FIELDS        = '/customFields';
     const PATH_INVOICES             = '/invoices';
     const PATH_OVERDUE              = '/overdue';
     const PATH_PAYMENT_METHODS      = '/paymentMethods';
@@ -64,8 +69,10 @@ class Client
     const PATH_TAGDEFINITIONS       = '/tagDefinitions';
     const PATH_TENANTS              = '/tenants';
     const PATH_UNCANCEL             = '/uncancel';
+    const PATH_USAGES               = '/usages';
     const PATH_CHARGEBACKS          = '/chargebacks';
     const PATH_REFUNDS              = '/refunds';
+    const PATH_DRYRUN               = '/dryRun';
 
     /**
      * @param string        $method
@@ -106,7 +113,11 @@ class Client
 
         $effectiveUri = $uri;
         if (substr($uri, 0, 4) != 'http') {
-            $effectiveUri = self::apiUrl().$uri;
+            if (substr($uri, 0, 8) == '/plugins') {
+                $effectiveUri = self::apiUrl('plugins').$uri;
+            } else {
+                $effectiveUri = self::apiUrl('killbill').$uri;
+            }
         }
 
         $ch = curl_init();
@@ -118,9 +129,10 @@ class Client
         // Transfer as a string of the return value of curl_exec() instead of outputting it out directly
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // The number of seconds to wait while trying to connect
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, Client::$connectionTimeout);
         // The maximum number of seconds to allow cURL functions to execute
-        curl_setopt($ch, CURLOPT_TIMEOUT, 45);
+        curl_setopt($ch, CURLOPT_TIMEOUT, Client::$timeout);
+
         // Default http headers
         $httpHeaders = array(
             'Accept: application/json, text/html',
@@ -216,11 +228,19 @@ class Client
     }
 
     /**
+     * @param string $type killbill or plugins
+     *
      * @return string
      */
-    private static function apiUrl()
+    private static function apiUrl($type = 'killbill')
     {
-        return Client::$serverUrl.'/'.Client::$apiVersion.'/kb';
+        if ($type == 'killbill') {
+            return Client::$serverUrl.'/'.Client::$apiVersion.'/kb';
+        } elseif ($type == 'plugins') {
+            return Client::$serverUrl;
+        }
+
+        return '';
     }
 
     /**

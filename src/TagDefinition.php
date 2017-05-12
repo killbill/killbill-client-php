@@ -17,11 +17,12 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Type\TagDefinitionAttributes;
 
 /**
-* TagDefinition actions
-*/
+ * TagDefinition actions
+ */
 class TagDefinition extends TagDefinitionAttributes
 {
     /**
@@ -33,8 +34,12 @@ class TagDefinition extends TagDefinitionAttributes
     {
         $response = $this->getRequest(Client::PATH_TAGDEFINITIONS.'/'.$this->getId(), $headers);
 
-        /** @var TagDefinition|null $object */
-        $object = $this->getFromBody(TagDefinition::class, $response);
+        try {
+            /** @var TagDefinition|null $object */
+            $object = $this->getFromBody(TagDefinition::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -51,8 +56,12 @@ class TagDefinition extends TagDefinitionAttributes
     {
         $response = $this->createRequest(Client::PATH_TAGDEFINITIONS, $user, $reason, $comment, $headers);
 
-        /** @var TagDefinition|null $object */
-        $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
+        try {
+            /** @var TagDefinition|null $object */
+            $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -69,8 +78,12 @@ class TagDefinition extends TagDefinitionAttributes
     {
         $response = $this->deleteRequest(Client::PATH_TAGDEFINITIONS.'/'.$this->getId(), $user, $reason, $comment, $headers);
 
-        /** @var TagDefinition|null $object */
-        $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
+        try {
+            /** @var TagDefinition|null $object */
+            $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }

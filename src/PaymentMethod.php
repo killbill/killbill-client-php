@@ -19,11 +19,12 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Type\PaymentMethodAttributes;
 
 /**
-* PaymentMethod actions
-*/
+ * PaymentMethod actions
+ */
 class PaymentMethod extends PaymentMethodAttributes
 {
     /**
@@ -35,8 +36,12 @@ class PaymentMethod extends PaymentMethodAttributes
     {
         $response = $this->getRequest(Client::PATH_PAYMENT_METHODS.'/'.$this->getAccountId(), $headers);
 
-        /** @var PaymentMethod[]|null $object */
-        $object = $this->getFromBody(PaymentMethod::class, $response);
+        try {
+            /** @var PaymentMethod[]|null $object */
+            $object = $this->getFromBody(PaymentMethod::class, $response);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
     }
@@ -59,9 +64,32 @@ class PaymentMethod extends PaymentMethodAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENT_METHODS.$query, $user, $reason, $comment, $headers);
 
-        /** @var Account|null $object */
-        $object = $this->getFromResponse(PaymentMethod::class, $response, $headers);
+        try {
+            /** @var Account|null $object */
+            $object = $this->getFromResponse(PaymentMethod::class, $response, $headers);
+        } catch (Exception $e) {
+            return null;
+        }
 
         return $object;
+    }
+
+    /**
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return null
+     */
+    public function delete($user, $reason, $comment, $headers = null)
+    {
+        $queryData = array();
+        $queryData['forceDefaultPmDeletion'] = 'true';
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->deleteRequest(Client::PATH_PAYMENT_METHODS.'/'.$this->getPaymentMethodId().$query, $user, $reason, $comment, $headers);
+
+        return null;
     }
 }
