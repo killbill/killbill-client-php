@@ -77,7 +77,7 @@ a live Killbill instance that is running on `127.0.0.1:8080` using `composer tes
 Requirements
 ------------
 
-The PHP library requires PHP 5.3.0 or greater with _libcurl_ compiled (e.g. you need the php5-curl package on Ubuntu).
+The PHP library requires PHP 5.5 or greater with _libcurl_ compiled (e.g. you need the php-curl package on Ubuntu).
 
 
 Support
