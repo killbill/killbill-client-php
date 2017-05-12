@@ -20,7 +20,10 @@
     "phpcs-checkstyle": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php --ignore=src/Type -d memory_limit=1024M --report=checkstyle"
   },
   "license": "Apache",
-  "require": {},
+  "require": {
+    "php": "^5.5 || ^7.0",
+    "ext-curl": "*"
+  },
   "require-dev": {
     "phpunit/phpunit": "^4.8",
     "squizlabs/php_codesniffer": "^2.0",
