@@ -37,7 +37,7 @@ class Tenant extends TenantAttributes
 
         try {
             /** @var Tenant|null $object */
-            $object = $this->getFromBody('Tenant', $response);
+            $object = $this->getFromBody(Tenant::class, $response);
         } catch (Exception $e) {
             return null;
         }

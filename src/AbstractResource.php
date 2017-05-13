@@ -52,13 +52,13 @@ abstract class AbstractResource /* implements JsonSerializable */
         unset($keys['client']);
 
         foreach ($keys as $k => $v) {
-            if ($v instanceof Resource) {
+            if ($v instanceof AbstractResource) {
                 $keys[$k] = $v->prepareForSerialization();
             } else {
                 if (is_array($v)) {
                     $keys[$k] = array();
                     foreach ($v as $ve) {
-                        if ($ve instanceof Resource) {
+                        if ($ve instanceof AbstractResource) {
                             array_push($keys[$k], $ve->prepareForSerialization());
                         } else {
                             array_push($keys[$k], $ve);
@@ -228,9 +228,11 @@ abstract class AbstractResource /* implements JsonSerializable */
      */
     private function fromJson($class, $json)
     {
-        if (is_array($json)) {
+        if (is_null($json)) {
+            return null;
+        } elseif (is_array($json)) {
             return $this->fromJsonArray($class, $json);
-        } elseif (is_string($json)) {
+        } elseif (is_scalar($json)) {
             return $json;
         } else {
             return $this->fromJsonObject($class, $json);
@@ -288,26 +290,31 @@ abstract class AbstractResource /* implements JsonSerializable */
 
                 // A type has been specified for this property, so trying to convert the value into this type
                 if ($type) {
-                    if (is_array($value)) {
+                    // if (is_array($value)) {
                         // Type refers to type of each object in the array
-                        $newValue = array();
-                        foreach ($value as $k => $v) {
-                            $newValue[] = $this->fromJsonObject($type, $v);
-                        }
-                        $value = $newValue;
-                    } else {
+                        // $newValue = array();
+                        // foreach ($value as $k => $v) {
+                        //     $newValue[] = $this->fromJson($type, $v);
+                        // }
+                        // $value = $newValue;
+                    // } else {
                         // Type refers to type of each object in the array
-                        $value = $this->fromJsonObject($type, $value);
-                    }
+                        $value = $this->fromJson($type, $value);
+                    // }
                 }
             }
 
             $setterMethod = 'set'.ucfirst($key);
-            if (!method_exists($object, $setterMethod)) {
-                throw new ResourceParsingException('Could not call method '.$setterMethod.' on object of type '.get_class($object));
+            if (method_exists($object, $setterMethod)) {
+                $object->{$setterMethod}($value);
             }
-
-            $object->{$setterMethod}($value);
+            // if (!method_exists($object, $setterMethod)) {
+            //     if (!in_array($setterMethod, array('setAuditLogs'))) { // skipping some non-mandatory methods
+            //         throw new ResourceParsingException('Could not call method '.$setterMethod.' on object of type '.get_class($object));
+            //     }
+            // } else {
+            //     $object->{$setterMethod}($value);
+            // }
         }
 
         return $object;

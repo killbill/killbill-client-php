@@ -154,8 +154,8 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertEquals($bundle->getAccountId(), $this->account->getAccountId());
         $this->assertEquals($bundle->getExternalKey(), $this->externalBundleId);
         $this->assertEquals(count($bundle->getSubscriptions()), 2);
-        $this->assertEquals($bundle->getSubscriptions()[0]->productCategory, 'BASE');
-        $this->assertEquals($bundle->getSubscriptions()[1]->productCategory, 'ADD_ON');
+        $this->assertEquals($bundle->getSubscriptions()[0]->getProductCategory(), 'BASE');
+        $this->assertEquals($bundle->getSubscriptions()[1]->getProductCategory(), 'ADD_ON');
     }
 
     /**

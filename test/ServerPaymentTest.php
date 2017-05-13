@@ -20,6 +20,8 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Type\PaymentTransactionAttributes;
+
 /**
 * Tests for ServerPayment
 */
@@ -210,13 +212,15 @@ class ServerPaymentTest extends KillbillTest
         $this->assertEquals($creditedAmount, $payment->getCreditedAmount());
 
         $this->assertEquals($nbTransactions, count($payment->getTransactions()));
+        /** @var PaymentTransactionAttributes $tx */
         foreach ($payment->getTransactions() as $tx) {
-            $this->assertEquals('SUCCESS', $tx->status);
+            $this->assertEquals('SUCCESS', $tx->getStatus());
         }
 
         $transactions = $payment->getTransactions();
+        /** @var PaymentTransactionAttributes $transaction */
         $transaction  = $transactions[count($payment->getTransactions()) - 1];
-        $this->assertEquals($transactionAmount, $transaction->amount);
-        $this->assertEquals('SUCCESS', $transaction->status);
+        $this->assertEquals($transactionAmount, $transaction->getAmount());
+        $this->assertEquals('SUCCESS', $transaction->getStatus());
     }
 }
