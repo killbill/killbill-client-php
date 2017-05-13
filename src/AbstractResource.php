@@ -232,7 +232,7 @@ abstract class AbstractResource /* implements JsonSerializable */
         $dataJson = json_decode($response->body);
 
         if ($dataJson === null) {
-            throw new ResponseException('Killbill returned an invalid response: '.$response->statusCode.' '.$response->body, $response->statusCode);
+            throw new ResponseException('Killbill returned an invalid response: '.$response->statusCode.' "'.$response->body.'"', $response->statusCode);
         }
 
         return $this->fromJson($class, $dataJson);
