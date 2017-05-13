@@ -56,6 +56,7 @@ class MockManager
     }
 
     /**
+     * @param string $identifier
      * @param string $externalKey
      */
     public function saveExternalKey($identifier, $externalKey)
@@ -64,6 +65,8 @@ class MockManager
     }
 
     /**
+     * @param string $identifier
+     *
      * @return bool|string
      */
     public function getExternalKey($identifier)
