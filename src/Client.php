@@ -218,7 +218,14 @@ class Client
 
         $response = new Response($statusCode, $headers, $body);
         if (self::$recordMocks && isset(self::$mockManager)) {
-            $this->saveResponseMock($method.' '.$uri.' '.$data, $response);
+            // Removing server url from mocks, as it is not relevant
+            $mockUri = str_replace(Client::$serverUrl, '', $uri);
+            $mockData = str_replace(Client::$serverUrl, '', $data);
+            $mockHeaders = str_replace(Client::$serverUrl, '', $response->headers);
+            $mockBody = str_replace(Client::$serverUrl, '', $response->body);
+            $mockResponse = new Response($statusCode, $mockHeaders, $mockBody);
+
+            $this->saveResponseMock($method.' '.$mockUri.' '.$mockData, $mockResponse);
         }
 
         return $response;
