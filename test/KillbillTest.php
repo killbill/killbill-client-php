@@ -58,10 +58,10 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 
             if (getenv('RECORD_REQUESTS') == '1') {
                 Client::$recordMocks = true;
-                Client::$mockManager->saveExternalKey($externalKey);
+                Client::$mockManager->saveExternalKey(static::class.':'.$this->getName(), $externalKey);
             } else {
                 Client::$useMockData = true;
-                $externalKey = Client::$mockManager->getExternalKey();
+                $externalKey = Client::$mockManager->getExternalKey(static::class.':'.$this->getName());
             }
         }
 
@@ -86,7 +86,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 
         $this->externalAccountId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalAccountId = md5('externalAccount'.static::class.':'.$this->getName());
+            $this->externalAccountId = md5('externalAccount'.$this->tenant->getExternalKey());
         }
         $this->accountData = new Account($this->logger);
         $this->accountData->setName('Killbill php test');

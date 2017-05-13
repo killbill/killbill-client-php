@@ -41,7 +41,7 @@ class ServerPaymentTest extends KillbillTest
 
         $this->externalBundleId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalBundleId = md5('serverPaymentTest'.static::class.':'.$this->getName());
+            $this->externalBundleId = md5('serverPaymentTest'.$this->tenant->getExternalKey());
         }
         $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 

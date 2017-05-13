@@ -36,7 +36,7 @@ class ServerSubscriptionTest extends KillbillTest
 
         $this->externalBundleId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalBundleId = md5('serverSubscriptionTest'.static::class.':'.$this->getName());
+            $this->externalBundleId = md5('serverSubscriptionTest'.$this->tenant->getExternalKey());
         }
         $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 

@@ -58,17 +58,17 @@ class MockManager
     /**
      * @param string $externalKey
      */
-    public function saveExternalKey($externalKey)
+    public function saveExternalKey($identifier, $externalKey)
     {
-        file_put_contents(__DIR__.'/resources/mocks/externalKey', $externalKey);
+        file_put_contents(__DIR__.'/resources/mocks/externalKey-'.md5($identifier), $externalKey);
     }
 
     /**
      * @return bool|string
      */
-    public function getExternalKey()
+    public function getExternalKey($identifier)
     {
-        return file_get_contents(__DIR__.'/resources/mocks/externalKey');
+        return file_get_contents(__DIR__.'/resources/mocks/externalKey-'.md5($identifier));
     }
 
     /**
