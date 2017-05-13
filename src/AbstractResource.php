@@ -19,6 +19,8 @@ namespace Killbill\Client;
 
 use Killbill\Client\Exception\ResourceParsingException;
 use Killbill\Client\Exception\ResponseException;
+use Psr\Log\LoggerInterface;
+use Bit3\NoOpLogger\NoOpLogger;
 
 /**
 * Abstract resource class that implements most CRUD functions
@@ -27,6 +29,18 @@ abstract class AbstractResource /* implements JsonSerializable */
 {
     /** @var Client */
     protected $client;
+    /** @var LoggerInterface */
+    protected $logger;
+
+    /**
+     * AbstractResource constructor.
+     *
+     * @param LoggerInterface|null $logger
+     */
+    public function __construct(LoggerInterface $logger = null)
+    {
+        $this->logger = ($logger != null) ? $logger : new NoOpLogger();
+    }
 
     /**
      * Returns the resource as json
@@ -50,6 +64,7 @@ abstract class AbstractResource /* implements JsonSerializable */
         $keys = get_object_vars($this);
 
         unset($keys['client']);
+        unset($keys['logger']);
 
         foreach ($keys as $k => $v) {
             if ($v instanceof AbstractResource) {
@@ -179,20 +194,24 @@ abstract class AbstractResource /* implements JsonSerializable */
     protected function getFromResponse($class, $response, $headers = null)
     {
         if ($response === null) {
+            $this->logger->notice('Response is null for class '.$class);
+
             return null;
         }
 
         $responseHeaders = $response->headers;
         if ($responseHeaders === null || !isset($responseHeaders['Location']) || $responseHeaders['Location'] === null) {
             $this->logger->notice('Response has no Location header while seeking response for class '.$class);
+
             return null;
         }
 
         $this->initClientIfNeeded();
 
         $getResponse = $this->getRequest($responseHeaders['Location'], $headers);
-		// var_dump($getResponse);
         if ($getResponse === null || $getResponse->body === null) {
+            $this->logger->notice('Redirected response is null for class '.$class);
+
             return null;
         }
 
@@ -268,10 +287,6 @@ abstract class AbstractResource /* implements JsonSerializable */
      */
     private function fromJsonObject($class, $json)
     {
-        if ($json === null) {
-            return null;
-        }
-
         if (property_exists($json, 'className') && property_exists($json, 'code') && property_exists($json, 'message')) {
             // An exception has been returned by killbill
             // also available: $json->causeClassName, $json->causeMessage, $json->stackTrace
@@ -282,7 +297,7 @@ abstract class AbstractResource /* implements JsonSerializable */
             throw new ResourceParsingException('Could not instantiate a class of type '.$class);
         }
 
-        $object = new $class();
+        $object = new $class($this->logger);
 
         foreach ($json as $key => $value) {
             $typeMethod = 'get'.ucfirst($key).'Type';
@@ -292,31 +307,16 @@ abstract class AbstractResource /* implements JsonSerializable */
 
                 // A type has been specified for this property, so trying to convert the value into this type
                 if ($type) {
-                    // if (is_array($value)) {
-                        // Type refers to type of each object in the array
-                        // $newValue = array();
-                        // foreach ($value as $k => $v) {
-                        //     $newValue[] = $this->fromJson($type, $v);
-                        // }
-                        // $value = $newValue;
-                    // } else {
-                        // Type refers to type of each object in the array
-                        $value = $this->fromJson($type, $value);
-                    // }
+                    $value = $this->fromJson($type, $value);
                 }
             }
 
             $setterMethod = 'set'.ucfirst($key);
             if (method_exists($object, $setterMethod)) {
                 $object->{$setterMethod}($value);
+            } else {
+                $this->logger->warning('JSON response has '.$key.' but method '.$setterMethod.' does not exist on '.$class);
             }
-            // if (!method_exists($object, $setterMethod)) {
-            //     if (!in_array($setterMethod, array('setAuditLogs'))) { // skipping some non-mandatory methods
-            //         throw new ResourceParsingException('Could not call method '.$setterMethod.' on object of type '.get_class($object));
-            //     }
-            // } else {
-            //     $object->{$setterMethod}($value);
-            // }
         }
 
         return $object;
@@ -328,7 +328,7 @@ abstract class AbstractResource /* implements JsonSerializable */
     private function initClientIfNeeded()
     {
         if (is_null($this->client)) {
-            $this->client = new Client();
+            $this->client = new Client($this->logger);
         }
     }
 }

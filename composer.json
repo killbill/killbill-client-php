@@ -22,11 +22,14 @@
   "license": "Apache",
   "require": {
     "php": "^5.5 || ^7.0",
-    "ext-curl": "*"
+    "ext-curl": "*",
+    "psr/log": "^1.0",
+    "bit3/no-op-logger": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8",
     "squizlabs/php_codesniffer": "^2.0",
-    "escapestudios/symfony2-coding-standard": "^2.0"
+    "escapestudios/symfony2-coding-standard": "^2.0",
+    "monolog/monolog": "^1.0"
   }
 }

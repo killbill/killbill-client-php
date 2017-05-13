@@ -40,7 +40,7 @@ class ServerSubscriptionTest extends KillbillTest
         }
         $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        $paymentMethod = new PaymentMethod();
+        $paymentMethod = new PaymentMethod($this->logger);
         $paymentMethod->setAccountId($this->account->getAccountId());
         $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
@@ -66,7 +66,7 @@ class ServerSubscriptionTest extends KillbillTest
     */
     public function testBasic()
     {
-        $subscriptionData = new Subscription();
+        $subscriptionData = new Subscription($this->logger);
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Sports');
         $subscriptionData->setProductCategory('BASE');
@@ -102,7 +102,7 @@ class ServerSubscriptionTest extends KillbillTest
     */
     public function testBundleWithAO()
     {
-        $subscriptionData = new Subscription();
+        $subscriptionData = new Subscription($this->logger);
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Super');
         $subscriptionData->setProductCategory('BASE');
@@ -119,7 +119,7 @@ class ServerSubscriptionTest extends KillbillTest
 
         $this->clock->addDays(3, $this->tenant->getTenantHeaders());
 
-        $subscriptionData2 = new Subscription();
+        $subscriptionData2 = new Subscription($this->logger);
         $subscriptionData2->setAccountId($this->account->getAccountId());
         $subscriptionData2->setProductName('RemoteControl');
         $subscriptionData2->setProductCategory('ADD_ON');
@@ -136,7 +136,7 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertEquals($subscriptionAO->getPriceList(), $subscriptionData2->getPriceList());
         $this->assertEquals($subscriptionAO->getExternalKey(), $this->externalBundleId);
 
-        $bundle = new Bundle();
+        $bundle = new Bundle($this->logger);
         $bundle->setBundleId($subscriptionBase->getBundleId());
         $bundle = $bundle->get($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($bundle);
@@ -145,7 +145,7 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertEquals(count($bundle->getSubscriptions()), 2);
 
         unset($bundle);
-        $bundle = new Bundle();
+        $bundle = new Bundle($this->logger);
         $bundle->setExternalKey($this->externalBundleId);
         $bundles = $bundle->getByExternalKey($this->tenant->getTenantHeaders());
         $this->assertEquals(count($bundles), 1);
@@ -163,7 +163,7 @@ class ServerSubscriptionTest extends KillbillTest
     */
     public function testBundleWithTags()
     {
-        $subscriptionData = new Subscription();
+        $subscriptionData = new Subscription($this->logger);
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Super');
         $subscriptionData->setProductCategory('BASE');
@@ -173,11 +173,11 @@ class ServerSubscriptionTest extends KillbillTest
 
         $subscriptionBase = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        $bundle = new Bundle();
+        $bundle = new Bundle($this->logger);
         $bundle->setBundleId($subscriptionBase->getBundleId());
         $bundle = $bundle->get($this->tenant->getTenantHeaders());
 
-        $tag1 = new TagDefinition();
+        $tag1 = new TagDefinition($this->logger);
         $tag1->setName(uniqid());
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             $tag1->setName(md5('testBundleWithTags'.static::class.':'.$this->getName()));

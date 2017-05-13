@@ -17,7 +17,9 @@
 
 namespace Killbill\Client;
 
+use Bit3\NoOpLogger\NoOpLogger;
 use Killbill\Client\Exception\CurlException;
+use Psr\Log\LoggerInterface;
 
 /**
  * Killbill HTTP API client
@@ -30,8 +32,8 @@ class Client
     public static $useMockData = false;
     /** @var bool */
     public static $recordMocks = false;
-    /** @var string URL of the killbill server */
 
+    /** @var string URL of the killbill server */
     public static $serverUrl = 'http://127.0.0.1:8080';
     /** @var string Api version */
     public static $apiVersion = '1.0';
@@ -74,6 +76,19 @@ class Client
     const PATH_REFUNDS              = '/refunds';
     const PATH_DRYRUN               = '/dryRun';
 
+    /** @var LoggerInterface */
+    private $logger;
+
+    /**
+     * Client constructor.
+     *
+     * @param LoggerInterface|null $logger
+     */
+    public function __construct(LoggerInterface $logger = null)
+    {
+        $this->logger = ($logger != null) ? $logger : new NoOpLogger();
+    }
+
     /**
      * @param string        $method
      * @param string        $uri
@@ -87,7 +102,12 @@ class Client
      */
     public function request($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additionalHeaders = null)
     {
-        return $this->sendRequest($method, $uri, $data, $user, $reason, $comment, $additionalHeaders);
+        $this->logger->debug('Performing '.$method.' request on '.$uri.' with data "'.(strlen($data) > 1000 ? 'truncated:'.substr($data, 0, 500).'...'.substr($data, -500, 500) : $data).'" (user: "'.$user.'", reason: "'.$reason.'", comment: "'.$comment.'", additionalHeaders: "'.json_encode($additionalHeaders).'")');
+
+        $response = $this->sendRequest($method, $uri, $data, $user, $reason, $comment, $additionalHeaders);
+        $this->logger->debug('Received response '.$response->statusCode.' with headers '.json_encode($response->headers).' and body "'.(strlen($response->body) > 1000 ? 'truncated:'.substr($response->body, 0, 500).'...'.substr($response->body, -500, 500) : $response->body).'"');
+
+        return $response;
     }
 
     /**
@@ -270,7 +290,7 @@ class Client
     /**
      * @param string $headerText
      *
-     * @return string[string]
+     * @return array[string]string
      */
     private function getHeaders($headerText)
     {
@@ -296,6 +316,8 @@ class Client
      */
     private function raiseCurlError($errorNumber, $message)
     {
+        $this->logger->error('Curl error '.$errorNumber.' '.$message);
+
         switch ($errorNumber) {
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:

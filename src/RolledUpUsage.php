@@ -33,6 +33,8 @@ class RolledUpUsage extends RolledUpUsageAttributes
             /** @var RolledUpUsage|null $object */
             $object = $this->getFromBody(RolledUpUsage::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 

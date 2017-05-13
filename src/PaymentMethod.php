@@ -40,6 +40,8 @@ class PaymentMethod extends PaymentMethodAttributes
             /** @var PaymentMethod[]|null $object */
             $object = $this->getFromBody(PaymentMethod::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -68,6 +70,8 @@ class PaymentMethod extends PaymentMethodAttributes
             /** @var Account|null $object */
             $object = $this->getFromResponse(PaymentMethod::class, $response, $headers);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 

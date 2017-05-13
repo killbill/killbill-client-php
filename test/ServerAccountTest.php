@@ -47,7 +47,7 @@ class ServerAccountTest extends KillbillTest
         /*
          * Verify we can retrieve it
          */
-        $account = new Account();
+        $account = new Account($this->logger);
         $account->setAccountId($createdAccount->getAccountId());
         $account = $account->get($this->tenant->getTenantHeaders());
 
@@ -80,7 +80,7 @@ class ServerAccountTest extends KillbillTest
         /*
          * Create the tag definitions
         */
-        $tag1 = new TagDefinition();
+        $tag1 = new TagDefinition($this->logger);
         $tag1->setName(uniqid());
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             $tag1->setName(md5('tag1'.static::class.':'.$this->getName()));
@@ -88,7 +88,7 @@ class ServerAccountTest extends KillbillTest
         $tag1->setDescription('This is tag1');
         $tag1 = $tag1->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        $tag2 = new TagDefinition();
+        $tag2 = new TagDefinition($this->logger);
         $tag2->setName(uniqid());
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             $tag2->setName(md5('tag2'.static::class.':'.$this->getName()));

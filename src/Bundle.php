@@ -38,6 +38,8 @@ class Bundle extends BundleAttributes
             /** @var Bundle|null $object */
             $object = $this->getFromBody(Bundle::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -57,6 +59,8 @@ class Bundle extends BundleAttributes
             /** @var Bundle[]|null $object */
             $object = $this->getFromBody(Bundle::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -76,6 +80,8 @@ class Bundle extends BundleAttributes
             /** @var Tag[]|null $object */
             $object = $this->getFromBody(Tag::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -99,6 +105,8 @@ class Bundle extends BundleAttributes
             /** @var Tag[]|null $object */
             $object = $this->getFromResponse(Tag::class, $response, $headers);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 

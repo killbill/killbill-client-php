@@ -39,6 +39,8 @@ class Tenant extends TenantAttributes
             /** @var Tenant|null $object */
             $object = $this->getFromBody(Tenant::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -60,6 +62,8 @@ class Tenant extends TenantAttributes
             /** @var Tenant|null $object */
             $object = $this->getFromResponse(Tenant::class, $response, $this->getTenantHeaders());
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 

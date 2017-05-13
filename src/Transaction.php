@@ -132,6 +132,8 @@ class Transaction extends PaymentTransactionAttributes
             /** @var Payment|null $object */
             $object = $this->getFromResponse(Payment::class, $response, $headers);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -177,6 +179,8 @@ class Transaction extends PaymentTransactionAttributes
             /** @var Payment|null $object */
             $object = $this->getFromResponse(Payment::class, $response, $headers);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 

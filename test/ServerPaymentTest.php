@@ -45,7 +45,7 @@ class ServerPaymentTest extends KillbillTest
         }
         $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        $paymentMethod = new PaymentMethod();
+        $paymentMethod = new PaymentMethod($this->logger);
         $paymentMethod->setAccountId($this->account->getAccountId());
         $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
@@ -73,7 +73,7 @@ class ServerPaymentTest extends KillbillTest
         // Add AUTO_PAY_OFF to account to end up with unpaid invoices
         $this->account->addTags(array('00000000-0000-0000-0000-000000000001'), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        $subscriptionData = new Subscription();
+        $subscriptionData = new Subscription($this->logger);
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Sports');
         $subscriptionData->setProductCategory('BASE');
@@ -111,7 +111,7 @@ class ServerPaymentTest extends KillbillTest
     */
     public function testAuthCaptureRefund()
     {
-        $paymentData = new Transaction();
+        $paymentData = new Transaction($this->logger);
         $paymentData->setAmount(10);
         $paymentData->setCurrency('USD');
         $payment = $paymentData->createAuthorization($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
@@ -141,7 +141,7 @@ class ServerPaymentTest extends KillbillTest
     */
     public function testAuthVoid()
     {
-        $paymentData = new Transaction();
+        $paymentData = new Transaction($this->logger);
         $paymentData->setAmount(10);
         $paymentData->setCurrency('USD');
         $payment = $paymentData->createAuthorization($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
@@ -160,7 +160,7 @@ class ServerPaymentTest extends KillbillTest
     */
     public function testPurchaseCredit()
     {
-        $paymentData = new Transaction();
+        $paymentData = new Transaction($this->logger);
         $paymentData->setAmount(10);
         $paymentData->setCurrency('USD');
         $payment = $paymentData->createPurchase($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());

@@ -38,6 +38,8 @@ class Subscription extends SubscriptionAttributes
             /** @var Subscription|null $object */
             $object = $this->getFromBody(Subscription::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -78,6 +80,8 @@ class Subscription extends SubscriptionAttributes
            /** @var Subscription|null $object */
             $object = $this->getFromResponse(Subscription::class, $response, $headers);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -115,6 +119,8 @@ class Subscription extends SubscriptionAttributes
             /** @var Subscription|null $object */
             $object = $this->getFromBody(Subscription::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -137,6 +143,8 @@ class Subscription extends SubscriptionAttributes
             /** @var Subscription|null $object */
             $object = $this->getFromBody(Subscription::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -182,6 +190,8 @@ class Subscription extends SubscriptionAttributes
             /** @var Subscription|null $object */
             $object = $this->getFromBody(Subscription::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 

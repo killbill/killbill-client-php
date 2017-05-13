@@ -38,6 +38,8 @@ class TagDefinition extends TagDefinitionAttributes
             /** @var TagDefinition|null $object */
             $object = $this->getFromBody(TagDefinition::class, $response);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -60,6 +62,8 @@ class TagDefinition extends TagDefinitionAttributes
             /** @var TagDefinition|null $object */
             $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
@@ -82,6 +86,8 @@ class TagDefinition extends TagDefinitionAttributes
             /** @var TagDefinition|null $object */
             $object = $this->getFromResponse(TagDefinition::class, $response, $headers);
         } catch (Exception $e) {
+            $this->logger->error($e);
+
             return null;
         }
 
