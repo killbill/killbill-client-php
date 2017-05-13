@@ -178,10 +178,7 @@ class ServerSubscriptionTest extends KillbillTest
         $bundle = $bundle->get($this->tenant->getTenantHeaders());
 
         $tag1 = new TagDefinition($this->logger);
-        $tag1->setName(uniqid());
-        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $tag1->setName(md5('testBundleWithTags'.static::class.':'.$this->getName()));
-        }
+        $tag1->setName('stag1-'.$this->tenant->getExternalKey());
         $tag1->setDescription('This is super tag1');
         $tag1 = $tag1->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
