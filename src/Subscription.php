@@ -162,7 +162,7 @@ class Subscription extends SubscriptionAttributes
      * @param string|null   $comment                    Any addition comment
      * @param string[]|null $headers                    Any additional headers
      *
-     * @return Subscription|null The updated subscription
+     * @return null
      */
     public function cancel($requestedDate, $entitlementPolicy, $billingPolicy, $useRequestedDateForBilling, $callCompletion, $user, $reason, $comment, $headers = null)
     {
@@ -186,15 +186,6 @@ class Subscription extends SubscriptionAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->deleteRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().$query, $user, $reason, $comment, $headers);
 
-        try {
-            /** @var Subscription|null $object */
-            $object = $this->getFromBody(Subscription::class, $response);
-        } catch (Exception $e) {
-            $this->logger->error($e);
-
-            return null;
-        }
-
-        return $object;
+        return null;
     }
 }
