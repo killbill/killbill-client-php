@@ -56,6 +56,22 @@ class MockManager
     }
 
     /**
+     * @param string $externalKey
+     */
+    public function saveExternalKey($externalKey)
+    {
+        file_put_contents(__DIR__.'/resources/mocks/externalKey', $externalKey);
+    }
+
+    /**
+     * @return bool|string
+     */
+    public function getExternalKey()
+    {
+        return file_get_contents(__DIR__.'/resources/mocks/externalKey');
+    }
+
+    /**
      * @param string $identifier
      *
      * @return string

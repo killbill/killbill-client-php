@@ -55,12 +55,13 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $externalKey = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             Client::$mockManager = new MockManager();
-            $externalKey         = md5(static::class.':'.$this->getName());
 
             if (getenv('RECORD_REQUESTS') == '1') {
                 Client::$recordMocks = true;
+                Client::$mockManager->saveExternalKey($externalKey);
             } else {
                 Client::$useMockData = true;
+                $externalKey = Client::$mockManager->getExternalKey();
             }
         }
 
