@@ -182,19 +182,21 @@ abstract class AbstractResource /* implements JsonSerializable */
             return null;
         }
 
-        $reponseHeaders = $response->headers;
-        if ($reponseHeaders === null || !isset($reponseHeaders['Location']) || $reponseHeaders['Location'] === null) {
+        $responseHeaders = $response->headers;
+        if ($responseHeaders === null || !isset($responseHeaders['Location']) || $responseHeaders['Location'] === null) {
+            $this->logger->notice('Response has no Location header while seeking response for class '.$class);
             return null;
         }
 
         $this->initClientIfNeeded();
 
-        $getResonse = $this->getRequest($reponseHeaders['Location'], $headers);
-        if ($getResonse === null || $getResonse->body === null) {
+        $getResponse = $this->getRequest($responseHeaders['Location'], $headers);
+		// var_dump($getResponse);
+        if ($getResponse === null || $getResponse->body === null) {
             return null;
         }
 
-        return $this->getFromBody($class, $getResonse);
+        return $this->getFromBody($class, $getResponse);
     }
 
     /**
