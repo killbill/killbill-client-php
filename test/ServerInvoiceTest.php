@@ -36,11 +36,11 @@ class ServerInvoiceTest extends KillbillTest
 
         $this->externalBundleId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalBundleId = md5('serverInvoiceTest'.static::class.':'.$this->getName());
+            $this->externalBundleId = md5('serverInvoiceTest'.$this->tenant->getExternalKey());
         }
         $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        $paymentMethod = new PaymentMethod();
+        $paymentMethod = new PaymentMethod($this->logger);
         $paymentMethod->setAccountId($this->account->getAccountId());
         $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
@@ -66,7 +66,7 @@ class ServerInvoiceTest extends KillbillTest
     */
     public function testBasic()
     {
-        $subscriptionData = new Subscription();
+        $subscriptionData = new Subscription($this->logger);
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Sports');
         $subscriptionData->setProductCategory('BASE');
@@ -89,7 +89,7 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertEquals(2, count($invoices));
 
         // Retrieve each invoice by id
-        $invoice = new Invoice();
+        $invoice = new Invoice($this->logger);
         $invoice->setInvoiceId($invoices[0]->getInvoiceId());
         $invoice = $invoice->get(false, $this->tenant->getTenantHeaders());
         $this->assertNotEmpty($invoice);
@@ -100,7 +100,7 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertEquals($invoice->getBalance(), 0);
         $this->assertEmpty($invoice->getItems());
 
-        $invoice = new Invoice();
+        $invoice = new Invoice($this->logger);
         $invoice->setInvoiceId($invoices[1]->getInvoiceId());
         $invoice = $invoice->get(true, $this->tenant->getTenantHeaders());
         $this->assertNotEmpty($invoice);

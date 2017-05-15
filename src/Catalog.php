@@ -20,8 +20,8 @@ namespace Killbill\Client;
 use Killbill\Client\Type\CatalogAttributes;
 
 /**
-* Catalog actions
-*/
+ * Catalog actions
+ */
 class Catalog extends CatalogAttributes
 {
     private $fullCatalog;

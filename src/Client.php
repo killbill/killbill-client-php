@@ -17,11 +17,13 @@
 
 namespace Killbill\Client;
 
+use Bit3\NoOpLogger\NoOpLogger;
 use Killbill\Client\Exception\CurlException;
+use Psr\Log\LoggerInterface;
 
 /**
-* Killbill HTTP API client
-*/
+ * Killbill HTTP API client
+ */
 class Client
 {
     /** @var MockManager|null */
@@ -30,8 +32,8 @@ class Client
     public static $useMockData = false;
     /** @var bool */
     public static $recordMocks = false;
-    /** @var string URL of the killbill server */
 
+    /** @var string URL of the killbill server */
     public static $serverUrl = 'http://127.0.0.1:8080';
     /** @var string Api version */
     public static $apiVersion = '1.0';
@@ -39,6 +41,10 @@ class Client
     public static $apiUser = 'admin';
     /** @var string Api password */
     public static $apiPassword = 'password';
+    /** @var int Api requests timeout in seconds */
+    public static $timeout = 45;
+    /** @var int Api requests conneciton timeout in seconds */
+    public static $connectionTimeout = 10;
 
     const API_CLIENT_VERSION = '1.0.0';
     const DEFAULT_ENCODING   = 'UTF-8';
@@ -52,6 +58,7 @@ class Client
     const PATH_ACCOUNTS             = '/accounts';
     const PATH_BUNDLES              = '/bundles';
     const PATH_CATALOG              = '/catalog';
+    const PATH_CUSTOM_FIELDS        = '/customFields';
     const PATH_INVOICES             = '/invoices';
     const PATH_OVERDUE              = '/overdue';
     const PATH_PAYMENT_METHODS      = '/paymentMethods';
@@ -64,8 +71,23 @@ class Client
     const PATH_TAGDEFINITIONS       = '/tagDefinitions';
     const PATH_TENANTS              = '/tenants';
     const PATH_UNCANCEL             = '/uncancel';
+    const PATH_USAGES               = '/usages';
     const PATH_CHARGEBACKS          = '/chargebacks';
     const PATH_REFUNDS              = '/refunds';
+    const PATH_DRYRUN               = '/dryRun';
+
+    /** @var LoggerInterface */
+    private $logger;
+
+    /**
+     * Client constructor.
+     *
+     * @param LoggerInterface|null $logger
+     */
+    public function __construct(LoggerInterface $logger = null)
+    {
+        $this->logger = ($logger != null) ? $logger : new NoOpLogger();
+    }
 
     /**
      * @param string        $method
@@ -80,7 +102,12 @@ class Client
      */
     public function request($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additionalHeaders = null)
     {
-        return $this->sendRequest($method, $uri, $data, $user, $reason, $comment, $additionalHeaders);
+        $this->logger->debug('Performing '.$method.' request on '.$uri.' with data "'.(strlen($data) > 1000 ? 'truncated:'.substr($data, 0, 500).'...'.substr($data, -500, 500) : $data).'" (user: "'.$user.'", reason: "'.$reason.'", comment: "'.$comment.'", additionalHeaders: "'.json_encode($additionalHeaders).'")');
+
+        $response = $this->sendRequest($method, $uri, $data, $user, $reason, $comment, $additionalHeaders);
+        $this->logger->debug('Received response '.$response->statusCode.' with headers '.json_encode($response->headers).' and body "'.(strlen($response->body) > 1000 ? 'truncated:'.substr($response->body, 0, 500).'...'.substr($response->body, -500, 500) : $response->body).'"');
+
+        return $response;
     }
 
     /**
@@ -106,7 +133,11 @@ class Client
 
         $effectiveUri = $uri;
         if (substr($uri, 0, 4) != 'http') {
-            $effectiveUri = self::apiUrl().$uri;
+            if (substr($uri, 0, 8) == '/plugins') {
+                $effectiveUri = self::apiUrl('plugins').$uri;
+            } else {
+                $effectiveUri = self::apiUrl('killbill').$uri;
+            }
         }
 
         $ch = curl_init();
@@ -118,9 +149,10 @@ class Client
         // Transfer as a string of the return value of curl_exec() instead of outputting it out directly
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         // The number of seconds to wait while trying to connect
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, Client::$connectionTimeout);
         // The maximum number of seconds to allow cURL functions to execute
-        curl_setopt($ch, CURLOPT_TIMEOUT, 45);
+        curl_setopt($ch, CURLOPT_TIMEOUT, Client::$timeout);
+
         // Default http headers
         $httpHeaders = array(
             'Accept: application/json, text/html',
@@ -186,7 +218,14 @@ class Client
 
         $response = new Response($statusCode, $headers, $body);
         if (self::$recordMocks && isset(self::$mockManager)) {
-            $this->saveResponseMock($method.' '.$uri.' '.$data, $response);
+            // Removing server url from mocks, as it is not relevant
+            $mockUri = str_replace(Client::$serverUrl, '', $uri);
+            $mockData = str_replace(Client::$serverUrl, '', $data);
+            $mockHeaders = str_replace(Client::$serverUrl, '', $response->headers);
+            $mockBody = str_replace(Client::$serverUrl, '', $response->body);
+            $mockResponse = new Response($statusCode, $mockHeaders, $mockBody);
+
+            $this->saveResponseMock($method.' '.$mockUri.' '.$mockData, $mockResponse);
         }
 
         return $response;
@@ -216,11 +255,19 @@ class Client
     }
 
     /**
+     * @param string $type killbill or plugins
+     *
      * @return string
      */
-    private static function apiUrl()
+    private static function apiUrl($type = 'killbill')
     {
-        return Client::$serverUrl.'/'.Client::$apiVersion.'/kb';
+        if ($type == 'killbill') {
+            return Client::$serverUrl.'/'.Client::$apiVersion.'/kb';
+        } elseif ($type == 'plugins') {
+            return Client::$serverUrl;
+        }
+
+        return '';
     }
 
     /**
@@ -250,7 +297,7 @@ class Client
     /**
      * @param string $headerText
      *
-     * @return string[string]
+     * @return array[string]string
      */
     private function getHeaders($headerText)
     {
@@ -276,6 +323,8 @@ class Client
      */
     private function raiseCurlError($errorNumber, $message)
     {
+        $this->logger->error('Curl error '.$errorNumber.' '.$message);
+
         switch ($errorNumber) {
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:

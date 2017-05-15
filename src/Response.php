@@ -18,8 +18,8 @@
 namespace Killbill\Client;
 
 /**
-* Response wrapper
-*/
+ * Response wrapper
+ */
 class Response
 {
     /** @var int */

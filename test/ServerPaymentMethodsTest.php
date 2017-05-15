@@ -36,7 +36,7 @@ class ServerPaymentMethodTest extends KillbillTest
 
         $this->externalBundleId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalBundleId = md5('serverPaymentMethodTest'.static::class.':'.$this->getName());
+            $this->externalBundleId = md5('serverPaymentMethodTest'.$this->tenant->getExternalKey());
         }
 
         $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
@@ -58,7 +58,7 @@ class ServerPaymentMethodTest extends KillbillTest
     */
     public function testBasic()
     {
-        $paymentMethod = new PaymentMethod();
+        $paymentMethod = new PaymentMethod($this->logger);
         $paymentMethod->setAccountId($this->account->getAccountId());
         $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');

@@ -3,9 +3,8 @@
 namespace Killbill\Client\Exception;
 
 /**
-* General Client exception
-*/
+ * General Client exception
+ */
 class Exception extends \Exception
 {
-
 }

@@ -17,11 +17,12 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Type\InvoiceAttributes;
 
 /**
-* Invoice actions
-*/
+ * Invoice actions
+ */
 class Invoice extends InvoiceAttributes
 {
     /**
@@ -40,8 +41,14 @@ class Invoice extends InvoiceAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->getRequest(Client::PATH_INVOICES.'/'.$this->getInvoiceId().$query, $headers);
 
-        /** @var Invoice|null $object */
-        $object = $this->getFromBody(Invoice::class, $response);
+        try {
+            /** @var Invoice|null $object */
+            $object = $this->getFromBody(Invoice::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
 
         return $object;
     }

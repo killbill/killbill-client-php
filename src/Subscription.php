@@ -17,11 +17,12 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Type\SubscriptionAttributes;
 
 /**
-* Subscription actions
-*/
+ * Subscription actions
+ */
 class Subscription extends SubscriptionAttributes
 {
     /**
@@ -33,8 +34,14 @@ class Subscription extends SubscriptionAttributes
     {
         $response = $this->getRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId(), $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromBody(Subscription::class, $response);
+        try {
+            /** @var Subscription|null $object */
+            $object = $this->getFromBody(Subscription::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
 
         return $object;
     }
@@ -69,8 +76,14 @@ class Subscription extends SubscriptionAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->createRequest(Client::PATH_SUBSCRIPTIONS.$query, $user, $reason, $comment, $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromResponse(Subscription::class, $response, $headers);
+        try {
+           /** @var Subscription|null $object */
+            $object = $this->getFromResponse(Subscription::class, $response, $headers);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
 
         return $object;
     }
@@ -102,8 +115,14 @@ class Subscription extends SubscriptionAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->updateRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().$query, $user, $reason, $comment, $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromBody(Subscription::class, $response);
+        try {
+            /** @var Subscription|null $object */
+            $object = $this->getFromBody(Subscription::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
 
         return $object;
     }
@@ -120,8 +139,14 @@ class Subscription extends SubscriptionAttributes
     {
         $response = $this->updateRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().Client::PATH_UNCANCEL, $user, $reason, $comment, $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromBody(Subscription::class, $response);
+        try {
+            /** @var Subscription|null $object */
+            $object = $this->getFromBody(Subscription::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
 
         return $object;
     }
@@ -137,7 +162,7 @@ class Subscription extends SubscriptionAttributes
      * @param string|null   $comment                    Any addition comment
      * @param string[]|null $headers                    Any additional headers
      *
-     * @return Subscription|null The updated subscription
+     * @return null
      */
     public function cancel($requestedDate, $entitlementPolicy, $billingPolicy, $useRequestedDateForBilling, $callCompletion, $user, $reason, $comment, $headers = null)
     {
@@ -161,9 +186,6 @@ class Subscription extends SubscriptionAttributes
         $query = $this->makeQuery($queryData);
         $response = $this->deleteRequest(Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId().$query, $user, $reason, $comment, $headers);
 
-        /** @var Subscription|null $object */
-        $object = $this->getFromBody(Subscription::class, $response);
-
-        return $object;
+        return null;
     }
 }

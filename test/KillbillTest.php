@@ -18,6 +18,9 @@
 namespace Killbill\Client;
 
 use Killbill;
+use Killbill\Client\Client;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 /**
 * Base test class
@@ -37,24 +40,32 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     /** @var string|null */
     protected $externalAccountId = null;
 
+    /** @var Logger|null */
+    protected $logger = null;
+
     /**
     * Set up the test
     */
     public function setUp()
     {
+        // Enable this if you need some logs
+        //$this->logger = new Logger('name');
+        //$this->logger->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
+
         $externalKey = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             Client::$mockManager = new MockManager();
-            $externalKey         = md5(static::class.':'.$this->getName());
 
             if (getenv('RECORD_REQUESTS') == '1') {
                 Client::$recordMocks = true;
+                Client::$mockManager->saveExternalKey(static::class.':'.$this->getName(), $externalKey);
             } else {
                 Client::$useMockData = true;
+                $externalKey = Client::$mockManager->getExternalKey(static::class.':'.$this->getName());
             }
         }
 
-        $tenant = new Tenant();
+        $tenant = new Tenant($this->logger);
         $tenant->setExternalKey($externalKey);
         $tenant->setApiKey('test-php-api-key-'.$tenant->getExternalKey());
         $tenant->setApiSecret('test-php-api-secret-'.$tenant->getExternalKey());
@@ -62,7 +73,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $this->tenant->setApiSecret($tenant->getApiSecret());
 
         // setup catalog
-        $killbillClient = new Killbill\Client\Client();
+        $killbillClient = new Client($this->logger);
         $headers        = $tenant->getTenantHeaders();
         $headers[]      = 'Content-Type: application/xml; charset=utf-8';
 
@@ -75,9 +86,9 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 
         $this->externalAccountId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            $this->externalAccountId = md5('externalAccount'.static::class.':'.$this->getName());
+            $this->externalAccountId = md5('externalAccount'.$this->tenant->getExternalKey());
         }
-        $this->accountData = new Account();
+        $this->accountData = new Account($this->logger);
         $this->accountData->setName('Killbill php test');
         $this->accountData->setExternalKey($this->externalAccountId);
         $this->accountData->setEmail('test-'.$this->externalAccountId.'@kill-bill.org');

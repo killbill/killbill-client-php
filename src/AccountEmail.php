@@ -20,8 +20,8 @@ namespace Killbill\Client;
 use Killbill\Client\Type\AccountEmailAttributes;
 
 /**
-* AccountEmail actions
-*/
+ * AccountEmail actions
+ */
 class AccountEmail extends AccountEmailAttributes
 {
 }

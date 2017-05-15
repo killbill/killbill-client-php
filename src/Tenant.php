@@ -18,11 +18,12 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Exception\Exception;
 use Killbill\Client\Type\TenantAttributes;
 
 /**
-* Tenant actions
-*/
+ * Tenant actions
+ */
 class Tenant extends TenantAttributes
 {
     /**
@@ -34,8 +35,14 @@ class Tenant extends TenantAttributes
     {
         $response = $this->getRequest(Client::PATH_TENANTS.((null !== $this->getTenantId()) ? '/'.$this->getTenantId() : '?apiKey='.$this->$apiKey), $headers);
 
-        /** @var Tenant|null $object */
-        $object = $this->getFromBody('Tenant', $response);
+        try {
+            /** @var Tenant|null $object */
+            $object = $this->getFromBody(Tenant::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
 
         return $object;
     }
@@ -51,8 +58,14 @@ class Tenant extends TenantAttributes
     {
         $response = $this->createRequest(Client::PATH_TENANTS, $user, $reason, $comment);
 
-        /** @var Tenant|null $object */
-        $object = $this->getFromResponse(Tenant::class, $response, $this->getTenantHeaders());
+        try {
+            /** @var Tenant|null $object */
+            $object = $this->getFromResponse(Tenant::class, $response, $this->getTenantHeaders());
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
 
         return $object;
     }
