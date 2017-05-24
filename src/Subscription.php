@@ -18,6 +18,8 @@
 namespace Killbill\Client;
 
 use Killbill\Client\Exception\Exception;
+use Killbill\Client\Traits\CustomFieldTrait;
+use Killbill\Client\Traits\TagTrait;
 use Killbill\Client\Type\SubscriptionAttributes;
 
 /**
@@ -188,4 +190,17 @@ class Subscription extends SubscriptionAttributes
 
         return null;
     }
+
+    /**
+     * Returns the base uri for the current object
+     *
+     * @return string
+     */
+    protected function baseUri()
+    {
+        return Client::PATH_SUBSCRIPTIONS.'/'.$this->getSubscriptionId();
+    }
+
+    use CustomFieldTrait;
+    use TagTrait;
 }

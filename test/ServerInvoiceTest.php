@@ -112,4 +112,125 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertNotEmpty($invoice->getItems());
         $this->assertEquals(1, count($invoice->getItems()));
     }
+
+    /**
+     * Test tags
+     */
+    public function testTags()
+    {
+        // Creating a subscription to make an invoice
+        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData->setAccountId($this->account->getAccountId());
+        $subscriptionData->setProductName('Sports');
+        $subscriptionData->setProductCategory('BASE');
+        $subscriptionData->setBillingPeriod('MONTHLY');
+        $subscriptionData->setPriceList('DEFAULT');
+        $subscriptionData->setExternalKey($this->externalBundleId);
+
+        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        // Should see 2 invoices for account
+        $invoices = $this->account->getInvoices(true, null, $this->tenant->getTenantHeaders());
+        $invoice = $invoices[0];
+
+        /*
+         * Create the tag definitions
+         */
+        $tag1 = new TagDefinition($this->logger);
+        $tag1->setName('tag1-'.$this->tenant->getExternalKey());
+        $tag1->setDescription('This is tag1');
+        $tag1 = $tag1->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $tag2 = new TagDefinition($this->logger);
+        $tag2->setName('tag2-'.$this->tenant->getExternalKey());
+        $tag2->setDescription('This is tag2');
+        $tag2 = $tag2->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Add tags
+         */
+        $accountTags = $invoice->addTags(array($tag1->getId(), $tag2->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($accountTags));
+
+        /*
+         * Verify we can retrieve them
+         */
+        $tags = $invoice->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($tags));
+        if (strcmp($tags[0]->getTagDefinitionName(), $tag1->getName()) == 0) {
+            $this->assertEquals($tags[0]->getTagDefinitionId(), $tag1->getId());
+            $this->assertEquals($tags[1]->getTagDefinitionId(), $tag2->getId());
+        } else {
+            $this->assertEquals($tags[1]->getTagDefinitionId(), $tag1->getId());
+            $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
+        }
+
+        /*
+         * Delete one of them
+         */
+        $invoice->deleteTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $tags = $invoice->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($tags));
+        $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
+    }
+
+    /**
+     * Test customfields
+     */
+    public function testCustomFields()
+    {
+        // Creating a subscription to make an invoice
+        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData->setAccountId($this->account->getAccountId());
+        $subscriptionData->setProductName('Sports');
+        $subscriptionData->setProductCategory('BASE');
+        $subscriptionData->setBillingPeriod('MONTHLY');
+        $subscriptionData->setPriceList('DEFAULT');
+        $subscriptionData->setExternalKey($this->externalBundleId);
+
+        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $invoices = $this->account->getInvoices(true, null, $this->tenant->getTenantHeaders());
+        $invoice = $invoices[0];
+
+        /*
+         * Create a custom field
+         */
+        $customFields = array();
+
+        $cf1 = new CustomField();
+        $cf1->setObjectType(CustomField::OBJECTTYPE_INVOICE);
+        $cf1->setName('cf1-'.$this->tenant->getExternalKey());
+        $cf1->setValue('123456');
+        $customFields[] = $cf1;
+
+        $cf2 = new CustomField();
+        $cf2->setObjectType(CustomField::OBJECTTYPE_INVOICE);
+        $cf2->setName('cf2-'.$this->tenant->getExternalKey());
+        $cf2->setValue('123456');
+        $customFields[] = $cf2;
+
+        $invoice->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Verify we can retrieve them
+         */
+        $cfs = $invoice->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($cfs));
+
+        $cf = $invoice->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
+        $this->assertEquals($cf->getName(), $cf1->getName());
+        $this->assertEquals($cf->getValue(), $cf1->getValue());
+        $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
+        $this->assertEquals($cf->getObjectId(), $invoice->getInvoiceId());
+
+        /*
+         * Delete one of them
+         */
+        $invoice->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $cfs = $invoice->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($cfs));
+        $this->assertEquals($cfs[0]->getName(), $cf2->getName());
+    }
 }

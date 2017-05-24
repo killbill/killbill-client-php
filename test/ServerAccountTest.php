@@ -107,5 +107,61 @@ class ServerAccountTest extends KillbillTest
             $this->assertEquals($tags[1]->getTagDefinitionId(), $tag1->getId());
             $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
         }
+
+        /*
+         * Delete one of them
+         */
+        $account->deleteTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $tags = $account->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($tags));
+        $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
+    }
+
+    /**
+     * Test customfields
+     */
+    public function testCustomFields()
+    {
+        $account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Create a custom field
+         */
+        $customFields = array();
+
+        $cf1 = new CustomField();
+        $cf1->setObjectType(CustomField::OBJECTTYPE_ACCOUNT);
+        $cf1->setName('cf1-'.$this->tenant->getExternalKey());
+        $cf1->setValue('123456');
+        $customFields[] = $cf1;
+
+        $cf2 = new CustomField();
+        $cf2->setObjectType(CustomField::OBJECTTYPE_ACCOUNT);
+        $cf2->setName('cf2-'.$this->tenant->getExternalKey());
+        $cf2->setValue('123456');
+        $customFields[] = $cf2;
+
+        $account->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Verify we can retrieve them
+         */
+        $cfs = $account->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($cfs));
+
+        $cf = $account->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
+        $this->assertEquals($cf->getName(), $cf1->getName());
+        $this->assertEquals($cf->getValue(), $cf1->getValue());
+        $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
+        $this->assertEquals($cf->getObjectId(), $account->getAccountId());
+
+        /*
+         * Delete one of them
+         */
+        $account->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $cfs = $account->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($cfs));
+        $this->assertEquals($cfs[0]->getName(), $cf2->getName());
     }
 }

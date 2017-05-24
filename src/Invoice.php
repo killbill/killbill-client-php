@@ -18,6 +18,8 @@
 namespace Killbill\Client;
 
 use Killbill\Client\Exception\Exception;
+use Killbill\Client\Traits\CustomFieldTrait;
+use Killbill\Client\Traits\TagTrait;
 use Killbill\Client\Type\InvoiceAttributes;
 
 /**
@@ -64,4 +66,17 @@ class Invoice extends InvoiceAttributes
 
         return $response->body;
     }
+
+    /**
+     * Returns the base uri for the current object
+     *
+     * @return string
+     */
+    protected function baseUri()
+    {
+        return Client::PATH_INVOICES.'/'.$this->getInvoiceId();
+    }
+
+    use CustomFieldTrait;
+    use TagTrait;
 }

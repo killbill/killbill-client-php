@@ -18,6 +18,8 @@
 namespace Killbill\Client;
 
 use Killbill\Client\Exception\Exception;
+use Killbill\Client\Traits\CustomFieldTrait;
+use Killbill\Client\Traits\TagTrait;
 use Killbill\Client\Type\BundleAttributes;
 
 /**
@@ -68,68 +70,6 @@ class Bundle extends BundleAttributes
     }
 
     /**
-     * @param string[]|null $headers Any additional headers
-     *
-     * @return Tag[]|null
-     */
-    public function getTags($headers = null)
-    {
-        $response = $this->getRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_TAGS, $headers);
-
-        try {
-            /** @var Tag[]|null $object */
-            $object = $this->getFromBody(Tag::class, $response);
-        } catch (Exception $e) {
-            $this->logger->error($e);
-
-            return null;
-        }
-
-        return $object;
-    }
-
-    /**
-     * @param string[]      $tags    ?
-     * @param string|null   $user    User requesting the creation
-     * @param string|null   $reason  Reason for the creation
-     * @param string|null   $comment Any addition comment
-     * @param string[]|null $headers Any additional headers
-     *
-     * @return Tag[]|null
-     */
-    public function addTags($tags, $user, $reason, $comment, $headers = null)
-    {
-        $response = $this->createRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
-
-        try {
-            /** @var Tag[]|null $object */
-            $object = $this->getFromResponse(Tag::class, $response, $headers);
-        } catch (Exception $e) {
-            $this->logger->error($e);
-
-            return null;
-        }
-
-        return $object;
-    }
-
-    /**
-     * @param string[]      $tags    ?
-     * @param string|null   $user    User requesting the creation
-     * @param string|null   $reason  Reason for the creation
-     * @param string|null   $comment Any addition comment
-     * @param string[]|null $headers Any additional headers
-     *
-     * @return null
-     */
-    public function deleteTags($tags, $user, $reason, $comment, $headers = null)
-    {
-        $this->deleteRequest(Client::PATH_BUNDLES.'/'.$this->getBundleId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
-
-        return null;
-    }
-
-    /**
      * @param string        $date    ?
      * @param string|null   $user    User requesting the creation
      * @param string|null   $reason  Reason for the creation
@@ -160,4 +100,17 @@ class Bundle extends BundleAttributes
 
         return null;
     }
+
+    /**
+     * Returns the base uri for the current object
+     *
+     * @return string
+     */
+    protected function baseUri()
+    {
+        return Client::PATH_BUNDLES.'/'.$this->getBundleId();
+    }
+
+    use CustomFieldTrait;
+    use TagTrait;
 }

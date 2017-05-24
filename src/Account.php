@@ -21,6 +21,8 @@ namespace Killbill\Client;
 
 use Killbill\Client\Exception\Exception;
 use Killbill\Client\Exception\ResponseException;
+use Killbill\Client\Traits\CustomFieldTrait;
+use Killbill\Client\Traits\TagTrait;
 use Killbill\Client\Type\AccountAttributes;
 
 /**
@@ -271,120 +273,15 @@ class Account extends AccountAttributes
     }
 
     /**
-     * @param string[]|null $headers Any additional headers
+     * Returns the base uri for the current object
      *
-     * @return Tag[]|null
+     * @return string
      */
-    public function getTags($headers = null)
+    protected function baseUri()
     {
-        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS, $headers);
-
-        try {
-            /** @var Tag[]|null $object */
-            $object = $this->getFromBody(Tag::class, $response);
-        } catch (Exception $e) {
-            $this->logger->error($e);
-
-            return null;
-        }
-
-        return $object;
+        return Client::PATH_ACCOUNTS.'/'.$this->getAccountId();
     }
 
-    /**
-     * @param string[]      $tags    Tags list
-     * @param string|null   $user
-     * @param string|null   $reason
-     * @param string|null   $comment
-     * @param string[]|null $headers Any additional headers
-     *
-     * @return Tag[]|null
-     */
-    public function addTags($tags, $user, $reason, $comment, $headers = null)
-    {
-        $response = $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
-
-        try {
-            /** @var Tag[]|null $object */
-            $object = $this->getFromResponse(Tag::class, $response, $headers);
-        } catch (Exception $e) {
-            $this->logger->error($e);
-
-            return null;
-        }
-
-        return $object;
-    }
-
-    /**
-     * @param string[]      $tags    Tags list
-     * @param string|null   $user    User requesting the creation
-     * @param string|null   $reason  Reason for the creation
-     * @param string|null   $comment Any addition comment
-     * @param string[]|null $headers Any additional headers
-     *
-     * @return null
-     */
-    public function deleteTags($tags, $user, $reason, $comment, $headers = null)
-    {
-        $response = $this->deleteRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_TAGS.'?tagList='.join(',', $tags), $user, $reason, $comment, $headers);
-
-        return null;
-    }
-
-    /**
-     * @param string[]|null $headers Any additional headers
-     *
-     * @return CustomField[]|null
-     */
-    public function getCustomFields($headers = null)
-    {
-        $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_CUSTOM_FIELDS, $headers);
-
-        try {
-            /** @var CustomField[]|null $object */
-            $object = $this->getFromBody(CustomField::class, $response);
-        } catch (Exception $e) {
-            $this->logger->error($e);
-
-            return null;
-        }
-
-        return $object;
-    }
-
-    // Not implemented
-    ///**
-    // * @param               $customFields    ?
-    // * @param string|null   $user            User requesting the creation
-    // * @param string|null   $reason          Reason for the creation
-    // * @param string|null   $comment         Any addition comment
-    // * @param string[]|null $headers         Any additional headers
-    // *
-    // * @return CustomField[]|null
-    // */
-    //public function addCustomFields($customFields, $user, $reason, $comment, $headers = null)
-    //{
-    //    $response = $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_CUSTOM_FIELDS.'?customFieldList='.join(',', $customFields), $user, $reason, $comment, $headers);
-    //
-    //    /** @var CustomField[]|null $object */
-    //    $object = $this->getFromResponse(CustomField::class, $response, $headers);
-    //    return $object;
-    //}
-
-    /**
-     * @param string[]      $customFields Custom fields list
-     * @param string|null   $user         User requesting the creation
-     * @param string|null   $reason       Reason for the creation
-     * @param string|null   $comment      Any addition comment
-     * @param string[]|null $headers      Any additional headers
-     *
-     * @return CustomField[]|null
-     */
-    public function deleteCustomFields($customFields, $user, $reason, $comment, $headers = null)
-    {
-        $response = $this->deleteRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_CUSTOM_FIELDS.'?customFieldList='.join(',', $customFields), $user, $reason, $comment, $headers);
-
-        return null;
-    }
+    use CustomFieldTrait;
+    use TagTrait;
 }
