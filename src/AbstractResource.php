@@ -115,14 +115,15 @@ abstract class AbstractResource implements \JsonSerializable
      * @param string|null   $reason  Reason for the creation
      * @param string|null   $comment Any addition comment
      * @param string[]|null $headers Any additional headers
+     * @param string        $data    JSON encoded data to use, instead of the default object serialization
      *
      * @return Response A response object
      */
-    protected function createRequest($uri, $user, $reason, $comment, $headers = null)
+    protected function createRequest($uri, $user, $reason, $comment, $headers = null, $data = null)
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::POST, $uri, json_encode($this), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::POST, $uri, ($data != null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -133,14 +134,15 @@ abstract class AbstractResource implements \JsonSerializable
      * @param string|null   $reason  Reason for the update
      * @param string|null   $comment Any addition comment
      * @param string[]|null $headers Any additional headers
+     * @param string        $data    JSON encoded data to use, instead of the default object serialization
      *
      * @return Response A response object
      */
-    protected function updateRequest($uri, $user, $reason, $comment, $headers = null)
+    protected function updateRequest($uri, $user, $reason, $comment, $headers = null, $data = null)
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::PUT, $uri, json_encode($this), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::PUT, $uri, ($data != null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -151,14 +153,15 @@ abstract class AbstractResource implements \JsonSerializable
      * @param string|null   $reason  Reason for the deletion
      * @param string|null   $comment Any addition comment
      * @param string[]|null $headers Any additional headers
+     * @param string        $data    JSON encoded data to use, instead of the default object serialization
      *
      * @return Response A response object
      */
-    protected function deleteRequest($uri, $user, $reason, $comment, $headers = null)
+    protected function deleteRequest($uri, $user, $reason, $comment, $headers = null, $data = null)
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::DELETE, $uri, json_encode($this), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::DELETE, $uri, ($data != null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
