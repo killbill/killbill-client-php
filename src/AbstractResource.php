@@ -270,8 +270,20 @@ abstract class AbstractResource /* implements JsonSerializable */
     {
         $objects = array();
 
-        foreach ($json as $object) {
-            $objects[] = $this->fromJson($class, $object);
+        $associativeArray = count(array_filter(array_keys($json), 'is_string')) > 0;
+
+        if ($associativeArray) {
+            // key-value array
+
+            foreach ($json as $key => $object) {
+                $objects[$key] = $this->fromJson($class, $object);
+            }
+        } else {
+            // indexed array
+
+            foreach ($json as $object) {
+                $objects[] = $this->fromJson($class, $object);
+            }
         }
 
         return $objects;
