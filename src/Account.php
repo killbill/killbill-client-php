@@ -30,6 +30,9 @@ use Killbill\Client\Type\AccountAttributes;
  */
 class Account extends AccountAttributes
 {
+    /** Type to use for custom fields */
+    const CUSTOMFIELD_OBJECTTYPE = CustomField::OBJECTTYPE_ACCOUNT;
+
     /**
      * @param string[]|null $headers Any additional headers
      *

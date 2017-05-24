@@ -27,6 +27,9 @@ use Killbill\Client\Type\SubscriptionAttributes;
  */
 class Subscription extends SubscriptionAttributes
 {
+    /** Type to use for custom fields */
+    const CUSTOMFIELD_OBJECTTYPE = CustomField::OBJECTTYPE_SUBSCRIPTION;
+
     /**
      * @param string[]|null $headers Any additional headers
      *

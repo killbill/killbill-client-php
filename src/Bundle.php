@@ -27,6 +27,9 @@ use Killbill\Client\Type\BundleAttributes;
  */
 class Bundle extends BundleAttributes
 {
+    /** Type to use for custom fields */
+    const CUSTOMFIELD_OBJECTTYPE = CustomField::OBJECTTYPE_BUNDLE;
+
     /**
      * @param string[]|null $headers Any additional headers
      *

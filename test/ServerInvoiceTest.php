@@ -232,5 +232,12 @@ class ServerInvoiceTest extends KillbillTest
         $cfs = $invoice->getCustomFields($this->tenant->getTenantHeaders());
         $this->assertEquals(1, count($cfs));
         $this->assertEquals($cfs[0]->getName(), $cf2->getName());
+
+        /*
+         * Simpler add method
+         */
+        $invoice->addCustomField('cf3-'.$this->tenant->getExternalKey(), '123456', self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $cfs = $invoice->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($cfs));
     }
 }

@@ -27,6 +27,9 @@ use Killbill\Client\Type\InvoiceAttributes;
  */
 class Invoice extends InvoiceAttributes
 {
+    /** Type to use for custom fields */
+    const CUSTOMFIELD_OBJECTTYPE = CustomField::OBJECTTYPE_INVOICE;
+
     /**
      * @param bool|null     $withItems ?
      * @param string[]|null $headers   Any additional headers

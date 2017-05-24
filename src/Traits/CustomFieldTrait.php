@@ -60,13 +60,13 @@ trait CustomFieldTrait
     /**
      * Adds custom fields to the account
      *
-     * @param CustomField[] $customFields ?
+     * @param CustomField[] $customFields Array of custom field objects to add
      * @param string|null   $user         User requesting the creation
      * @param string|null   $reason       Reason for the creation
      * @param string|null   $comment      Any addition comment
      * @param string[]|null $headers      Any additional headers
      *
-     * @return CustomField[]|null
+     * @return null
      */
     public function addCustomFields($customFields, $user, $reason, $comment, $headers = null)
     {
@@ -79,6 +79,31 @@ trait CustomFieldTrait
         $response = $this->createRequest($this->baseUri().Client::PATH_CUSTOM_FIELDS, $user, $reason, $comment, $headers, $data);
 
         return null;
+    }
+
+    /**
+     * Adds a custom field to the account
+     *
+     * @param string        $name    Name of the custom field to add
+     * @param string        $value   Value of the custom field to add
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
+     *
+     * @return null
+     */
+    public function addCustomField($name, $value, $user, $reason, $comment, $headers = null)
+    {
+        $customFields = array();
+
+        $cf = new CustomField();
+        $cf->setObjectType(self::CUSTOMFIELD_OBJECTTYPE);
+        $cf->setName($name);
+        $cf->setValue($value);
+        $customFields[] = $cf;
+
+        return $this->addCustomFields($customFields, $user, $reason, $comment, $headers);
     }
 
     /**
