@@ -18,14 +18,13 @@
 namespace Killbill\Client;
 
 /**
-* Test class for ServerAccount
-*/
+ * Test class for ServerAccount
+ */
 class ServerAccountTest extends KillbillTest
 {
-
     /**
-    * Test the basic API
-    */
+     * Test the basic API
+     */
     public function testBasicApi()
     {
         $createdAccount = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
@@ -54,14 +53,14 @@ class ServerAccountTest extends KillbillTest
         /*
          * Update it
          */
-        $account->setName("My awesome new name");
+        $account->setName('My awesome new name');
         $updatedAccount = $account->update(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
-        $this->assertEquals("My awesome new name", $updatedAccount->getName());
+        $this->assertEquals('My awesome new name', $updatedAccount->getName());
     }
 
     /**
-    * Test the overdue state
-    */
+     * Test the overdue state
+     */
     public function testOverdueState()
     {
         $account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
@@ -71,15 +70,15 @@ class ServerAccountTest extends KillbillTest
     }
 
     /**
-    * Test tags
-    */
+     * Test tags
+     */
     public function testTags()
     {
         $account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         /*
          * Create the tag definitions
-        */
+         */
         $tag1 = new TagDefinition($this->logger);
         $tag1->setName('tag1-'.$this->tenant->getExternalKey());
         $tag1->setDescription('This is tag1');

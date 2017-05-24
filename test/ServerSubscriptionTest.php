@@ -18,8 +18,8 @@
 namespace Killbill\Client;
 
 /**
-* Tests for Subscription
-*/
+ * Tests for Subscription
+ */
 class ServerSubscriptionTest extends KillbillTest
 {
     /** @var Account|null */
@@ -28,8 +28,8 @@ class ServerSubscriptionTest extends KillbillTest
     private $externalBundleId = null;
 
     /**
-    * Set up test
-    */
+     * Set up test
+     */
     public function setUp()
     {
         parent::setUp();
@@ -51,8 +51,8 @@ class ServerSubscriptionTest extends KillbillTest
     }
 
     /**
-    * Tear down test
-    */
+     * Tear down test
+     */
     public function tearDown()
     {
         parent::tearDown();
@@ -62,8 +62,8 @@ class ServerSubscriptionTest extends KillbillTest
     }
 
     /**
-    * Test basic functionality
-    */
+     * Test basic functionality
+     */
     public function testBasic()
     {
         $subscriptionData = new Subscription($this->logger);
@@ -98,8 +98,8 @@ class ServerSubscriptionTest extends KillbillTest
     }
 
     /**
-    * Test bundle with AO
-    */
+     * Test bundle with AO
+     */
     public function testBundleWithAO()
     {
         $subscriptionData = new Subscription($this->logger);
@@ -159,8 +159,8 @@ class ServerSubscriptionTest extends KillbillTest
     }
 
     /**
-    * Test bundle with tags
-    */
+     * Test bundle with tags
+     */
     public function testBundleWithTags()
     {
         $subscriptionData = new Subscription($this->logger);

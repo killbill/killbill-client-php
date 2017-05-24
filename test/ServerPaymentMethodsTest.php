@@ -18,8 +18,8 @@
 namespace Killbill\Client;
 
 /**
-* Tests for ServerPaymentMethod
-*/
+ * Tests for ServerPaymentMethod
+ */
 class ServerPaymentMethodTest extends KillbillTest
 {
     /** @var Account|null */
@@ -28,8 +28,8 @@ class ServerPaymentMethodTest extends KillbillTest
     private $externalBundleId = null;
 
     /**
-    * Set up test
-    */
+     * Set up test
+     */
     public function setUp()
     {
         parent::setUp();
@@ -43,8 +43,8 @@ class ServerPaymentMethodTest extends KillbillTest
     }
 
     /**
-    * Tear down test
-    */
+     * Tear down test
+     */
     public function tearDown()
     {
         parent::tearDown();
@@ -54,8 +54,8 @@ class ServerPaymentMethodTest extends KillbillTest
     }
 
     /**
-    * Test basic functionality
-    */
+     * Test basic functionality
+     */
     public function testBasic()
     {
         $paymentMethod = new PaymentMethod($this->logger);
