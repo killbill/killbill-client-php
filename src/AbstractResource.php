@@ -25,7 +25,7 @@ use Bit3\NoOpLogger\NoOpLogger;
 /**
 * Abstract resource class that implements most CRUD functions
 */
-abstract class AbstractResource /* implements JsonSerializable */
+abstract class AbstractResource implements \JsonSerializable
 {
     /** @var Client */
     protected $client;
@@ -43,55 +43,35 @@ abstract class AbstractResource /* implements JsonSerializable */
     }
 
     /**
-     * Returns the resource as json
-     *
-     * @return string Json encoded resource
-     */
-    public function jsonSerialize()
-    {
-        $x = $this->prepareForSerialization();
-
-        return json_encode($x);
-    }
-
-    /**
-     * Converts the resource into an array
+     * Implementation of PHP's debug getter
+     * Mainly to exclude logger's very verbose and not useful information
      *
      * @return array
      */
-    public function prepareForSerialization()
+    public function __debugInfo()
     {
-        $keys = get_object_vars($this);
+        $vars = get_object_vars($this);
 
-        unset($keys['client']);
-        unset($keys['logger']);
+        unset($vars['logger']);
 
-        foreach ($keys as $k => $v) {
-            if ($v instanceof AbstractResource) {
-                $keys[$k] = $v->prepareForSerialization();
-            } else {
-                if (is_array($v)) {
-                    $keys[$k] = array();
-                    foreach ($v as $ve) {
-                        if ($ve instanceof AbstractResource) {
-                            array_push($keys[$k], $ve->prepareForSerialization());
-                        } else {
-                            array_push($keys[$k], $ve);
-                        }
-                    }
-                }
-            }
-        }
+        return $vars;
+    }
 
-        $sortedArray = array();
-        $arrayKeys   = array_keys($keys);
-        asort($arrayKeys, SORT_STRING | SORT_NATURAL);
+    /**
+     * Implementation of JsonSerializable
+     *
+     * Mainly to exclude logger and client properties
+     *
+     * @return mixed Json encoded resource
+     */
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
 
-        foreach ($arrayKeys as $arrayKey) {
-            $sortedArray[$arrayKey] = $keys[$arrayKey];
-        }
+        unset($vars['client']);
+        unset($vars['logger']);
 
-        return $sortedArray;
+        return $vars;
     }
 
     /**
@@ -142,7 +122,7 @@ abstract class AbstractResource /* implements JsonSerializable */
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::POST, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::POST, $uri, json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -160,7 +140,7 @@ abstract class AbstractResource /* implements JsonSerializable */
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::PUT, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::PUT, $uri, json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -178,7 +158,7 @@ abstract class AbstractResource /* implements JsonSerializable */
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::DELETE, $uri, $this->jsonSerialize(), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::DELETE, $uri, json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
