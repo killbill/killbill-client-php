@@ -52,7 +52,7 @@ trait CustomFieldTrait
             }
         }
 
-        $this->logger->warning('No CustomField found on this account with name '.$name);
+        $this->logger->warning('No CustomField found on this object with name '.$name);
 
         return null;
     }
