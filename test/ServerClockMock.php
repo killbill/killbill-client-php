@@ -18,16 +18,16 @@
 namespace Killbill\Client;
 
 /**
-* Manipulate the server clock
-*/
+ * Manipulate the server clock
+ */
 class ServerClockMock extends AbstractResource
 {
     /**
-    * Set the clock to a specific date
-    *
-    * @param string $requestedDate Date as a string
-    * @param array  $headers       Headers for the request
-    */
+     * Set the clock to a specific date
+     *
+     * @param string $requestedDate Date as a string
+     * @param array  $headers       Headers for the request
+     */
     public function setClock($requestedDate, $headers)
     {
         $uri = '/test/clock';
@@ -41,26 +41,26 @@ class ServerClockMock extends AbstractResource
     }
 
     /**
-    * Add a specific amount of days to the clock
-    *
-    * @param int   $count   Days to add
-    * @param array $headers Headers for the request
-    */
+     * Add a specific amount of days to the clock
+     *
+     * @param int   $count   Days to add
+     * @param array $headers Headers for the request
+     */
     public function addDays($count, $headers)
     {
         $this->incrementClock($count, null, null, null, 'UTC', $headers);
     }
 
     /**
-    * Increment the clock
-    *
-    * @param int $days Days to add
-    * @param int $weeks Weeks to add
-    * @param int $months Months to add
-    * @param int $years Years to add
-    * @param string $timezone Timezone as a string
-    * @param array $headers Headers for the request
-    */
+     * Increment the clock
+     *
+     * @param int    $days     Days to add
+     * @param int    $weeks    Weeks to add
+     * @param int    $months   Months to add
+     * @param int    $years    Years to add
+     * @param string $timezone Timezone as a string
+     * @param array  $headers  Headers for the request
+     */
     private function incrementClock($days, $weeks, $months, $years, $timeZone, $headers)
     {
         $uri = '/test/clock';

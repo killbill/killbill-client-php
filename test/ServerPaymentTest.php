@@ -23,8 +23,8 @@ namespace Killbill\Client;
 use Killbill\Client\Type\PaymentTransactionAttributes;
 
 /**
-* Tests for ServerPayment
-*/
+ * Tests for ServerPayment
+ */
 class ServerPaymentTest extends KillbillTest
 {
     /** @var Account|null */
@@ -33,8 +33,8 @@ class ServerPaymentTest extends KillbillTest
     private $externalBundleId = null;
 
     /**
-    * Set up test
-    */
+     * Set up test
+     */
     public function setUp()
     {
         parent::setUp();
@@ -56,8 +56,8 @@ class ServerPaymentTest extends KillbillTest
     }
 
     /**
-    * Tear down test
-    */
+     * Tear down test
+     */
     public function tearDown()
     {
         parent::tearDown();
@@ -66,8 +66,8 @@ class ServerPaymentTest extends KillbillTest
     }
 
     /**
-    * Test basic functionality
-    */
+     * Test basic functionality
+     */
     public function testBasic()
     {
         // Add AUTO_PAY_OFF to account to end up with unpaid invoices
@@ -107,8 +107,8 @@ class ServerPaymentTest extends KillbillTest
     }
 
     /**
-    * Test auth capture refund
-    */
+     * Test auth capture refund
+     */
     public function testAuthCaptureRefund()
     {
         $paymentData = new Transaction($this->logger);
@@ -137,8 +137,8 @@ class ServerPaymentTest extends KillbillTest
     }
 
     /**
-    * Test auth void
-    */
+     * Test auth void
+     */
     public function testAuthVoid()
     {
         $paymentData = new Transaction($this->logger);
@@ -156,8 +156,8 @@ class ServerPaymentTest extends KillbillTest
     }
 
     /**
-    * Test purchase credit
-    */
+     * Test purchase credit
+     */
     public function testPurchaseCredit()
     {
         $paymentData = new Transaction($this->logger);
@@ -219,7 +219,7 @@ class ServerPaymentTest extends KillbillTest
 
         $transactions = $payment->getTransactions();
         /** @var PaymentTransactionAttributes $transaction */
-        $transaction  = $transactions[count($payment->getTransactions()) - 1];
+        $transaction = $transactions[count($payment->getTransactions()) - 1];
         $this->assertEquals($transactionAmount, $transaction->getAmount());
         $this->assertEquals('SUCCESS', $transaction->getStatus());
     }

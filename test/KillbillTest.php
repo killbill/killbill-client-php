@@ -18,13 +18,12 @@
 namespace Killbill\Client;
 
 use Killbill;
-use Killbill\Client\Client;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
 /**
-* Base test class
-*/
+ * Base test class
+ */
 class KillbillTest extends \PHPUnit_Framework_TestCase
 {
     const USER    = 'phpTester';
@@ -44,8 +43,8 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     protected $logger = null;
 
     /**
-    * Set up the test
-    */
+     * Set up the test
+     */
     public function setUp()
     {
         // Enable this if you need some logs
@@ -105,8 +104,8 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-    * Unset everything
-    */
+     * Unset everything
+     */
     public function tearDown()
     {
         unset($this->externalAccountId);
@@ -116,8 +115,8 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-    * Dummy test
-    */
+     * Dummy test
+     */
     public function testDummyToAvoidWarning()
     {
         $this->assertTrue(true);
