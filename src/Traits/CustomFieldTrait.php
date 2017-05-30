@@ -72,7 +72,7 @@ trait CustomFieldTrait
     {
         $data = array();
         foreach ($customFields as $customField) {
-            $data[] = $customField->prepareForSerialization();
+            $data[] = $customField;
         }
         $data = json_encode($data);
 
