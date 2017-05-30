@@ -98,6 +98,97 @@ class ServerSubscriptionTest extends KillbillTest
     }
 
     /**
+     * Test tags
+     */
+    public function testTags()
+    {
+        // Creating a subscription to make an bundle
+        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData->setAccountId($this->account->getAccountId());
+        $subscriptionData->setProductName('Super');
+        $subscriptionData->setProductCategory('BASE');
+        $subscriptionData->setBillingPeriod('MONTHLY');
+        $subscriptionData->setPriceList('DEFAULT');
+        $subscriptionData->setExternalKey($this->externalBundleId);
+
+        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $tag1 = new TagDefinition($this->logger);
+        $tag1->setName('stag1-'.$this->tenant->getExternalKey());
+        $tag1->setDescription('This is super tag1');
+        $tag1 = $tag1->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $tags = $subscription->addTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($tags));
+
+        $tags = $subscription->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($tags));
+        $this->assertEquals($tags[0]->getTagDefinitionId(), $tag1->getId());
+
+        $subscription->deleteTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $tags = $subscription->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(0, count($tags));
+    }
+
+    /**
+     * Test customfields
+     */
+    public function testCustomFields()
+    {
+        // Creating a subscription to make an bundle
+        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData->setAccountId($this->account->getAccountId());
+        $subscriptionData->setProductName('Super');
+        $subscriptionData->setProductCategory('BASE');
+        $subscriptionData->setBillingPeriod('MONTHLY');
+        $subscriptionData->setPriceList('DEFAULT');
+        $subscriptionData->setExternalKey($this->externalBundleId);
+
+        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Create a custom field
+         */
+        $customFields = array();
+
+        $cf1 = new CustomField();
+        $cf1->setObjectType(CustomField::OBJECTTYPE_SUBSCRIPTION);
+        $cf1->setName('cf1-'.$this->tenant->getExternalKey());
+        $cf1->setValue('123456');
+        $customFields[] = $cf1;
+
+        $cf2 = new CustomField();
+        $cf2->setObjectType(CustomField::OBJECTTYPE_SUBSCRIPTION);
+        $cf2->setName('cf2-'.$this->tenant->getExternalKey());
+        $cf2->setValue('123456');
+        $customFields[] = $cf2;
+
+        $subscription->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Verify we can retrieve them
+         */
+        $cfs = $subscription->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($cfs));
+
+        $cf = $subscription->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
+        $this->assertEquals($cf->getName(), $cf1->getName());
+        $this->assertEquals($cf->getValue(), $cf1->getValue());
+        $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
+        $this->assertEquals($cf->getObjectId(), $subscription->getSubscriptionId());
+
+        /*
+         * Delete one of them
+         */
+        $subscription->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $cfs = $subscription->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($cfs));
+        $this->assertEquals($cfs[0]->getName(), $cf2->getName());
+    }
+
+    /**
      * Test bundle with AO
      */
     public function testBundleWithAO()
@@ -163,6 +254,7 @@ class ServerSubscriptionTest extends KillbillTest
      */
     public function testBundleWithTags()
     {
+        // Creating a subscription to make an bundle
         $subscriptionData = new Subscription($this->logger);
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Super');
@@ -187,10 +279,72 @@ class ServerSubscriptionTest extends KillbillTest
 
         $bundleTags = $bundle->getTags($this->tenant->getTenantHeaders());
         $this->assertEquals(1, count($bundleTags));
+        $this->assertEquals($bundleTags[0]->getTagDefinitionId(), $tag1->getId());
 
         $bundle->deleteTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $bundleTags = $bundle->getTags($this->tenant->getTenantHeaders());
         $this->assertEquals(0, count($bundleTags));
+    }
+
+    /**
+     * Test bundle with customfields
+     */
+    public function testBundleWithCustomFields()
+    {
+        // Creating a subscription to make an bundle
+        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData->setAccountId($this->account->getAccountId());
+        $subscriptionData->setProductName('Super');
+        $subscriptionData->setProductCategory('BASE');
+        $subscriptionData->setBillingPeriod('MONTHLY');
+        $subscriptionData->setPriceList('DEFAULT');
+        $subscriptionData->setExternalKey($this->externalBundleId);
+
+        $subscriptionBase = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $bundle = new Bundle($this->logger);
+        $bundle->setBundleId($subscriptionBase->getBundleId());
+        $bundle = $bundle->get($this->tenant->getTenantHeaders());
+
+        /*
+         * Create a custom field
+         */
+        $customFields = array();
+
+        $cf1 = new CustomField();
+        $cf1->setObjectType(CustomField::OBJECTTYPE_BUNDLE);
+        $cf1->setName('cf1-'.$this->tenant->getExternalKey());
+        $cf1->setValue('123456');
+        $customFields[] = $cf1;
+
+        $cf2 = new CustomField();
+        $cf2->setObjectType(CustomField::OBJECTTYPE_BUNDLE);
+        $cf2->setName('cf2-'.$this->tenant->getExternalKey());
+        $cf2->setValue('123456');
+        $customFields[] = $cf2;
+
+        $bundle->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Verify we can retrieve them
+         */
+        $cfs = $bundle->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($cfs));
+
+        $cf = $bundle->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
+        $this->assertEquals($cf->getName(), $cf1->getName());
+        $this->assertEquals($cf->getValue(), $cf1->getValue());
+        $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
+        $this->assertEquals($cf->getObjectId(), $bundle->getBundleId());
+
+        /*
+         * Delete one of them
+         */
+        $bundle->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $cfs = $bundle->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($cfs));
+        $this->assertEquals($cfs[0]->getName(), $cf2->getName());
     }
 }

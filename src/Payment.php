@@ -18,6 +18,8 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Traits\CustomFieldTrait;
+use Killbill\Client\Traits\TagTrait;
 use Killbill\Client\Type\PaymentAttributes;
 
 /**
@@ -25,4 +27,19 @@ use Killbill\Client\Type\PaymentAttributes;
  */
 class Payment extends PaymentAttributes
 {
+    /** Type to use for custom fields */
+    const CUSTOMFIELD_OBJECTTYPE = CustomField::OBJECTTYPE_PAYMENT;
+
+    /**
+     * Returns the base uri for the current object
+     *
+     * @return string
+     */
+    protected function baseUri()
+    {
+        return Client::PATH_PAYMENTS.'/'.$this->getPaymentId();
+    }
+
+    use CustomFieldTrait;
+    use TagTrait;
 }

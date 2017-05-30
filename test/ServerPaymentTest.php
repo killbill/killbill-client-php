@@ -71,7 +71,8 @@ class ServerPaymentTest extends KillbillTest
     public function testBasic()
     {
         // Add AUTO_PAY_OFF to account to end up with unpaid invoices
-        $this->account->addTags(array('00000000-0000-0000-0000-000000000001'), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $tagId = '00000000-0000-0000-0000-000000000001';
+        $this->account->addTags(array($tagId), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $subscriptionData = new Subscription($this->logger);
         $subscriptionData->setAccountId($this->account->getAccountId());
@@ -95,7 +96,7 @@ class ServerPaymentTest extends KillbillTest
         $this->assertEquals(count($unpaidInvoices), 1);
 
         // Remove the tag
-        $this->account->deleteTags(array('00000000-0000-0000-0000-000000000001'), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->account->deleteTags(array($tagId), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         // processing unpaid invoices is asynchronous (bus event), so let's wait a bit before we check
         usleep(3000000);
@@ -170,6 +171,108 @@ class ServerPaymentTest extends KillbillTest
         $payment = $paymentData->createCredit($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         // A credit is a different payment
         $this->verifyPaymentAndTransaction($payment, 12, 1, 0, 0, 0, 0, 12);
+    }
+
+    /**
+     * Test tags
+     */
+    public function testTags()
+    {
+        $paymentData = new Transaction($this->logger);
+        $paymentData->setAmount(10);
+        $paymentData->setCurrency('USD');
+        $payment = $paymentData->createPurchase($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Create the tag definitions
+         */
+        $tag1 = new TagDefinition($this->logger);
+        $tag1->setName('tag1-'.$this->tenant->getExternalKey());
+        $tag1->setDescription('This is tag1');
+        $tag1 = $tag1->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $tag2 = new TagDefinition($this->logger);
+        $tag2->setName('tag2-'.$this->tenant->getExternalKey());
+        $tag2->setDescription('This is tag2');
+        $tag2 = $tag2->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Add tags
+         */
+        $tags = $payment->addTags(array($tag1->getId(), $tag2->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($tags));
+
+        /*
+         * Verify we can retrieve them
+         */
+        $tags = $payment->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($tags));
+        if (strcmp($tags[0]->getTagDefinitionName(), $tag1->getName()) == 0) {
+            $this->assertEquals($tags[0]->getTagDefinitionId(), $tag1->getId());
+            $this->assertEquals($tags[1]->getTagDefinitionId(), $tag2->getId());
+        } else {
+            $this->assertEquals($tags[1]->getTagDefinitionId(), $tag1->getId());
+            $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
+        }
+
+        /*
+         * Delete one of them
+         */
+        $payment->deleteTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $tags = $payment->getTags($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($tags));
+        $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
+    }
+
+    /**
+     * Test customfields
+     */
+    public function testCustomFields()
+    {
+        $paymentData = new Transaction($this->logger);
+        $paymentData->setAmount(10);
+        $paymentData->setCurrency('USD');
+        $payment = $paymentData->createPurchase($this->account->getAccountId(), null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Create a custom field
+         */
+        $customFields = array();
+
+        $cf1 = new CustomField();
+        $cf1->setObjectType(CustomField::OBJECTTYPE_PAYMENT);
+        $cf1->setName('cf1-'.$this->tenant->getExternalKey());
+        $cf1->setValue('123456');
+        $customFields[] = $cf1;
+
+        $cf2 = new CustomField();
+        $cf2->setObjectType(CustomField::OBJECTTYPE_PAYMENT);
+        $cf2->setName('cf2-'.$this->tenant->getExternalKey());
+        $cf2->setValue('123456');
+        $customFields[] = $cf2;
+
+        $payment->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        /*
+         * Verify we can retrieve them
+         */
+        $cfs = $payment->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(2, count($cfs));
+
+        $cf = $payment->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
+        $this->assertEquals($cf->getName(), $cf1->getName());
+        $this->assertEquals($cf->getValue(), $cf1->getValue());
+        $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
+        $this->assertEquals($cf->getObjectId(), $payment->getPaymentId());
+
+        /*
+         * Delete one of them
+         */
+        $payment->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        $cfs = $payment->getCustomFields($this->tenant->getTenantHeaders());
+        $this->assertEquals(1, count($cfs));
+        $this->assertEquals($cfs[0]->getName(), $cf2->getName());
     }
 
     /**
