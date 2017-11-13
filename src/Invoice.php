@@ -57,6 +57,42 @@ class Invoice extends InvoiceAttributes
 
         return $object;
     }
+    
+    public function getPayments(
+        $withPluginInfo = false, 
+        $withAttempts = false,
+        $headers = null
+    ) {
+        
+        $queryData = array();
+        if ($withAttempts) {
+            $queryData['withAttempts'] = 'true';
+        }
+        
+        if ($withPluginInfo) {
+            $queryData['withPluginInfos'] = 'true';
+        }
+        
+        $query = $this->makeQuery($queryData);
+        $response = $this->getRequest(
+            Client::PATH_INVOICES.'/'
+            .$this->getInvoiceId()
+            .InvoicePayment::SUB_PATH_INVOICES_PAYMENT
+            .$query, 
+            $headers);
+        
+        try {
+            /** @var InvoicePayment[]|null $object */
+            $object = $this->getFromBody(InvoicePayment::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
+
+        return $object;
+        
+    }
 
     /**
      * @param string[]|null $headers Any additional headers
