@@ -58,6 +58,14 @@ class Invoice extends InvoiceAttributes
         return $object;
     }
     
+    /**
+     * Get payements for this invoice
+     * 
+     * @param boolean $withPluginInfo
+     * @param boolean $withAttempts
+     * @param string[]|null $headers   Any additional headers
+     * @return InvoicePayment[]
+     */
     public function getPayments(
         $withPluginInfo = false, 
         $withAttempts = false,
