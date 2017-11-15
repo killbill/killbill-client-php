@@ -17,9 +17,9 @@
 
 namespace Killbill\Client;
 
-use Bit3\NoOpLogger\NoOpLogger;
 use Killbill\Client\Exception\CurlException;
 use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 /**
  * Killbill HTTP API client
@@ -86,7 +86,7 @@ class Client
      */
     public function __construct(LoggerInterface $logger = null)
     {
-        $this->logger = ($logger != null) ? $logger : new NoOpLogger();
+        $this->logger = ($logger != null) ? $logger : new NullLogger();
     }
 
     /**
