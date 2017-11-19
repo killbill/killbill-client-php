@@ -19,9 +19,7 @@ namespace Killbill\Client;
 use Killbill\Client\Type\InvoicePaymentAttributes;
 
 /**
- * 
- *
- * @author Julien Fastré <julien.fastre@champs-libres.coop>
+ * InvoicePayment actions and constants
  */
 class InvoicePayment extends InvoicePaymentAttributes
 {

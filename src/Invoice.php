@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2011-2017 Ning, Inc.
+ * Copyright 2011-2017 The Billing Project, LLC
  *
  * Ning licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
@@ -27,7 +27,9 @@ use Killbill\Client\Type\InvoiceAttributes;
  */
 class Invoice extends InvoiceAttributes
 {
-    /** Type to use for custom fields */
+    /**
+     * Type to use for custom fields
+     */
     const CUSTOMFIELD_OBJECTTYPE = CustomField::OBJECTTYPE_INVOICE;
 
     /**
@@ -57,38 +59,35 @@ class Invoice extends InvoiceAttributes
 
         return $object;
     }
-    
+
     /**
-     * Get payements for this invoice
-     * 
-     * @param boolean $withPluginInfo
-     * @param boolean $withAttempts
-     * @param string[]|null $headers   Any additional headers
+     * Get payments for this invoice
+     *
+     * @param  boolean       $withPluginInfo
+     * @param  boolean       $withAttempts
+     * @param  string[]|null $headers        Any additional headers
      * @return InvoicePayment[]
      */
     public function getPayments(
-        $withPluginInfo = false, 
+        $withPluginInfo = false,
         $withAttempts = false,
         $headers = null
     ) {
-        
         $queryData = array();
         if ($withAttempts) {
             $queryData['withAttempts'] = 'true';
         }
-        
+
         if ($withPluginInfo) {
             $queryData['withPluginInfos'] = 'true';
         }
-        
+
         $query = $this->makeQuery($queryData);
         $response = $this->getRequest(
-            Client::PATH_INVOICES.'/'
-            .$this->getInvoiceId()
-            .InvoicePayment::SUB_PATH_INVOICES_PAYMENT
-            .$query, 
-            $headers);
-        
+            Client::PATH_INVOICES.'/'.$this->getInvoiceId().InvoicePayment::SUB_PATH_INVOICES_PAYMENT.$query,
+            $headers
+        );
+
         try {
             /** @var InvoicePayment[]|null $object */
             $object = $this->getFromBody(InvoicePayment::class, $response);
@@ -99,7 +98,6 @@ class Invoice extends InvoiceAttributes
         }
 
         return $object;
-        
     }
 
     /**
