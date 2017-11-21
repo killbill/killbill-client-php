@@ -20,7 +20,7 @@ namespace Killbill\Client;
 use Killbill\Client\Exception\ResourceParsingException;
 use Killbill\Client\Exception\ResponseException;
 use Psr\Log\LoggerInterface;
-use Bit3\NoOpLogger\NoOpLogger;
+use Psr\Log\NullLogger;
 
 /**
 * Abstract resource class that implements most CRUD functions
@@ -39,7 +39,7 @@ abstract class AbstractResource implements \JsonSerializable
      */
     public function __construct(LoggerInterface $logger = null)
     {
-        $this->logger = ($logger != null) ? $logger : new NoOpLogger();
+        $this->logger = ($logger != null) ? $logger : new NullLogger();
     }
 
     /**
