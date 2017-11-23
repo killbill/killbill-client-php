@@ -66,8 +66,8 @@ class Invoice extends InvoiceAttributes
      *
      * @param  boolean       $withPluginInfo
      * @param  boolean       $withAttempts
-     * @param  string[]|null $headers         Any additional headers
-     * 
+     * @param  string[]|null $headers        Any additional headers
+     *
      * @return InvoicePayment[]
      */
     public function getPayments(
