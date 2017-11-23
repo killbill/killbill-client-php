@@ -59,6 +59,7 @@ class Client
     const PATH_BUNDLES              = '/bundles';
     const PATH_CATALOG              = '/catalog';
     const PATH_CUSTOM_FIELDS        = '/customFields';
+    const PATH_CREDITS              = '/credits';
     const PATH_INVOICES             = '/invoices';
     const PATH_OVERDUE              = '/overdue';
     const PATH_PAYMENT_METHODS      = '/paymentMethods';
@@ -75,6 +76,7 @@ class Client
     const PATH_CHARGEBACKS          = '/chargebacks';
     const PATH_REFUNDS              = '/refunds';
     const PATH_DRYRUN               = '/dryRun';
+    const SUB_PATH_INVOICES_PAYMENT = '/payments';
 
     /** @var LoggerInterface */
     private $logger;

@@ -21,6 +21,7 @@ use Killbill\Client\Exception\Exception;
 use Killbill\Client\Traits\CustomFieldTrait;
 use Killbill\Client\Traits\TagTrait;
 use Killbill\Client\Type\InvoiceAttributes;
+use Killbill\Client\Type\InvoicePaymentAttributes;
 
 /**
  * Invoice actions
@@ -65,7 +66,8 @@ class Invoice extends InvoiceAttributes
      *
      * @param  boolean       $withPluginInfo
      * @param  boolean       $withAttempts
-     * @param  string[]|null $headers        Any additional headers
+     * @param  string[]|null $headers         Any additional headers
+     * 
      * @return InvoicePayment[]
      */
     public function getPayments(
@@ -84,13 +86,13 @@ class Invoice extends InvoiceAttributes
 
         $query = $this->makeQuery($queryData);
         $response = $this->getRequest(
-            Client::PATH_INVOICES.'/'.$this->getInvoiceId().InvoicePayment::SUB_PATH_INVOICES_PAYMENT.$query,
+            Client::PATH_INVOICES.'/'.$this->getInvoiceId().Client::SUB_PATH_INVOICES_PAYMENT.$query,
             $headers
         );
 
         try {
             /** @var InvoicePayment[]|null $object */
-            $object = $this->getFromBody(InvoicePayment::class, $response);
+            $object = $this->getFromBody(InvoicePaymentAttributes::class, $response);
         } catch (Exception $e) {
             $this->logger->error($e);
 

@@ -114,12 +114,12 @@ class ServerInvoiceTest extends KillbillTest
 
         $payments = $invoice->getPayments(false, false, $this->tenant->getTenantHeaders());
         $this->assertEquals(1, count($payments));
-        $this->assertContainsOnlyInstancesOf(InvoicePayment::class, $payments);
+        $this->assertContainsOnlyInstancesOf(Type\InvoicePaymentAttributes::class, $payments);
 
         // test getPayments with arguments
         $payments = $invoice->getPayments(true, true, $this->tenant->getTenantHeaders());
         $this->assertEquals(1, count($payments));
-        $this->assertContainsOnlyInstancesOf(InvoicePayment::class, $payments);
+        $this->assertContainsOnlyInstancesOf(Type\InvoicePaymentAttributes::class, $payments);
 
         // test some data in payement
         $payment = $payments[0];
