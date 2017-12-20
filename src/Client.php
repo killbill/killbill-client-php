@@ -59,6 +59,7 @@ class Client
     const PATH_BUNDLES              = '/bundles';
     const PATH_CATALOG              = '/catalog';
     const PATH_CUSTOM_FIELDS        = '/customFields';
+    const PATH_CREDITS              = '/credits';
     const PATH_INVOICES             = '/invoices';
     const PATH_OVERDUE              = '/overdue';
     const PATH_PAYMENT_METHODS      = '/paymentMethods';
@@ -75,6 +76,8 @@ class Client
     const PATH_CHARGEBACKS          = '/chargebacks';
     const PATH_REFUNDS              = '/refunds';
     const PATH_DRYRUN               = '/dryRun';
+    const PATH_SECURITY             = '/security';
+    const SUB_PATH_INVOICES_PAYMENT = '/payments';
 
     /** @var LoggerInterface */
     private $logger;
@@ -103,7 +106,7 @@ class Client
     public function request($method, $uri, $data = null, $user = null, $reason = null, $comment = null, $additionalHeaders = null)
     {
         $this->logger->debug('Performing '.$method.' request on '.$uri.' with data "'.(strlen($data) > 1000 ? 'truncated:'.substr($data, 0, 500).'...'.substr($data, -500, 500) : $data).'" (user: "'.$user.'", reason: "'.$reason.'", comment: "'.$comment.'", additionalHeaders: "'.json_encode($additionalHeaders).'")');
-
+        
         $response = $this->sendRequest($method, $uri, $data, $user, $reason, $comment, $additionalHeaders);
         $this->logger->debug('Received response '.$response->statusCode.' with headers '.json_encode($response->headers).' and body "'.(strlen($response->body) > 1000 ? 'truncated:'.substr($response->body, 0, 500).'...'.substr($response->body, -500, 500) : $response->body).'"');
 

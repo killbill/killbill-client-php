@@ -14,7 +14,7 @@
 * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
 * License for the specific language governing permissions and limitations
 * under the License.
- */
+*/
 
 namespace Killbill\Client;
 
@@ -42,5 +42,6 @@ class ServerCatalogTest extends KillbillTest
         $catalog->initialize($this->tenant->getTenantHeaders());
         $this->assertNotEmpty($catalog->getFullCatalog());
         $this->assertEquals(count($catalog->getFullCatalog()[0]->products), 6);
+        $this->assertEquals(3, $catalog->getBaseProducts());
     }
 }

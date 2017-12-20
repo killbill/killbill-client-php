@@ -24,4 +24,33 @@ use Killbill\Client\Type\InvoiceDryRunAttributes;
  */
 class InvoiceDryRun extends InvoiceDryRunAttributes
 {
+    /**
+     *
+     * @return Invoice|null The dry-run invoice
+     */
+    public function get($accountId = null, $targetDate = null, $user = null, $reason = null, $comment = null, $headers = null)
+    {
+        $queryData = array();
+        if ($targetDate) {
+            $queryData['targetDate'] = $targetDate;
+        }
+        
+        if ($accountId) {
+            $queryData['accountId'] = $accountId;
+        }
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->createRequest(Client::PATH_INVOICES.'/dryRun'.$query, $user, $reason, $comment, $headers);
+        
+        try {
+            /** @var Invoice|null $object */
+            $object = $this->getFromBody(Invoice::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
+
+        return $object;
+    }
 }

@@ -73,10 +73,37 @@ class Subscription extends SubscriptionAttributes
      *
      * @return Subscription|null The newly created subscription
      */
-    public function createAndWait($wait, $user, $reason, $comment, $headers = null)
+    public function createAndWait(
+        $wait, 
+        $user, 
+        $reason, 
+        $comment, 
+        $headers = null,
+        $requestedDate = null,
+        $entitlementDate = null,
+        $billingDate = null,
+        $migrated = null,
+        $bcd = null
+        )
     {
         $queryData = array();
         $queryData['call_completion'] = ($wait ? 'true' : 'false');
+        
+        if ($requestedDate !== null) {
+            $queryData['requestedDate'] = $requestedDate;
+        }
+        
+        if ($entitlementDate !== null) {
+            $queryData['entitlementDate'] = $entitlementDate;
+        }
+        
+        if ($billingDate !== null) {
+            $queryData['billingDate'] = $billingDate;
+        }
+        
+        if ($migrated !== null) {
+            $queryData['migrated'] = $migrated ? 'true' : 'false';
+        }
 
         $query = $this->makeQuery($queryData);
         $response = $this->createRequest(Client::PATH_SUBSCRIPTIONS.$query, $user, $reason, $comment, $headers);

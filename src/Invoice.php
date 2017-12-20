@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2011-2017 Ning, Inc.
+ * Copyright 2011-2017 The Billing Project, LLC
  *
  * Ning licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
@@ -21,13 +21,16 @@ use Killbill\Client\Exception\Exception;
 use Killbill\Client\Traits\CustomFieldTrait;
 use Killbill\Client\Traits\TagTrait;
 use Killbill\Client\Type\InvoiceAttributes;
+use Killbill\Client\Type\InvoicePaymentAttributes;
 
 /**
  * Invoice actions
  */
 class Invoice extends InvoiceAttributes
 {
-    /** Type to use for custom fields */
+    /**
+     * Type to use for custom fields
+     */
     const CUSTOMFIELD_OBJECTTYPE = CustomField::OBJECTTYPE_INVOICE;
 
     /**
@@ -49,6 +52,47 @@ class Invoice extends InvoiceAttributes
         try {
             /** @var Invoice|null $object */
             $object = $this->getFromBody(Invoice::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
+
+        return $object;
+    }
+
+    /**
+     * Get payments for this invoice
+     *
+     * @param  boolean       $withPluginInfo
+     * @param  boolean       $withAttempts
+     * @param  string[]|null $headers        Any additional headers
+     *
+     * @return InvoicePayment[]
+     */
+    public function getPayments(
+        $withPluginInfo = false,
+        $withAttempts = false,
+        $headers = null
+    ) {
+        $queryData = array();
+        if ($withAttempts) {
+            $queryData['withAttempts'] = 'true';
+        }
+
+        if ($withPluginInfo) {
+            $queryData['withPluginInfos'] = 'true';
+        }
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->getRequest(
+            Client::PATH_INVOICES.'/'.$this->getInvoiceId().Client::SUB_PATH_INVOICES_PAYMENT.$query,
+            $headers
+        );
+
+        try {
+            /** @var InvoicePayment[]|null $object */
+            $object = $this->getFromBody(InvoicePaymentAttributes::class, $response);
         } catch (Exception $e) {
             $this->logger->error($e);
 
