@@ -37,13 +37,24 @@ class Account extends AccountAttributes
      * @param string[]|null $headers Any additional headers
      *
      * @return Account|null The fetched account
+     * @internal note : this is not consistent the rest of this library. But 
+     * placing the accountWithBalance at first place would create a backward 
+     * compatibility issue.
      */
-    public function get($headers = null)
-    {
+    public function get(
+        $headers = null,
+        $accountWithBalance = false, 
+        $accountWithBalanceAndCBA = false
+    ) {
+        $queryData = array();
+        $queryData['accountWithBalance'] = $accountWithBalance ? 'true' : 'false';
+        $queryData['accountWithBalanceAndCBA'] = $accountWithBalanceAndCBA ? 'true' : 'false';
+        
         if ($this->getAccountId()) {
-            $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId(), $headers);
+            $query = $this->makeQuery($queryData);
+            $response = $this->getRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().$query, $headers);
         } else {
-            $queryData = array();
+            
             $queryData['externalKey'] = $this->getExternalKey();
 
             $query = $this->makeQuery($queryData);

@@ -14,37 +14,34 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Killbill\Client;
 
-use Killbill\Client\Type\InvoiceDryRunAttributes;
-
 /**
- * InvoiceDryRun actions
+ * 
+ *
  */
-class InvoiceDryRun extends InvoiceDryRunAttributes
+class Credit extends Type\CreditAttributes
 {
     /**
+     * @param boolean       $autoCommit
+     * @param string|null   $user    User requesting the creation
+     * @param string|null   $reason  Reason for the creation
+     * @param string|null   $comment Any addition comment
+     * @param string[]|null $headers Any additional headers
      *
-     * @return Invoice|null The dry-run invoice
+     * @return Credit|null The newly created payment method
      */
-    public function get($accountId = null, $targetDate = null, $user = null, $reason = null, $comment = null, $headers = null)
+    public function create($autoCommit = false, $user, $reason, $comment, $headers = null)
     {
         $queryData = array();
-        if ($targetDate) {
-            $queryData['targetDate'] = $targetDate;
-        }
-        
-        if ($accountId) {
-            $queryData['accountId'] = $accountId;
-        }
+        $queryData['autoCommit'] = $autoCommit ? 'true' : 'false';
 
         $query = $this->makeQuery($queryData);
-        $response = $this->createRequest(Client::PATH_INVOICES.'/dryRun'.$query, $user, $reason, $comment, $headers);
-        
+        $response = $this->createRequest(Client::PATH_CREDITS.$query, $user, $reason, $comment, $headers);
+
         try {
-            /** @var Invoice|null $object */
-            $object = $this->getFromBody(Invoice::class, $response);
+            /** @var Credit|null $object */
+            $object = $this->getFromResponse(PaymentMethod::class, $response, $headers);
         } catch (Exception $e) {
             $this->logger->error($e);
 
