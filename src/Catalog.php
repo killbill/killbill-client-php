@@ -50,7 +50,9 @@ class Catalog extends CatalogAttributes
     {
         $baseProducts = array();
 
-        foreach ($this->fullCatalog->products as $product) {
+        $prodsArray = count($this->fullCatalog) > 0 ? $this->fullCatalog[0]->products : array();
+
+        foreach ($prodsArray as $product) {
             if ($product->type == 'BASE') {
                 $baseProducts[] = $product;
             }
