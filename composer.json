@@ -19,7 +19,7 @@
     "phpcs": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php --ignore=src/Type -d memory_limit=1024M",
     "phpcs-checkstyle": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php --ignore=src/Type -d memory_limit=1024M --report=checkstyle"
   },
-  "license": "Apache",
+  "license": "Apache-2.0",
   "require": {
     "php": "^5.5 || ^7.0",
     "ext-curl": "*",
