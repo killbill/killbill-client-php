@@ -33,7 +33,7 @@ class Tenant extends TenantAttributes
      */
     public function get($headers = null)
     {
-        $response = $this->getRequest(Client::PATH_TENANTS.((null !== $this->getTenantId()) ? '/'.$this->getTenantId() : '?apiKey='.$this->$apiKey), $headers);
+        $response = $this->getRequest(Client::PATH_TENANTS.((null !== $this->getTenantId()) ? '/'.$this->getTenantId() : '?apiKey='.$this->apiKey), $headers);
 
         try {
             /** @var Tenant|null $object */
