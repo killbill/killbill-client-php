@@ -203,7 +203,7 @@ class Account extends AccountAttributes
      */
     public function payAllUnpaidInvoices($user, $reason, $comment, $headers = null)
     {
-        $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_PAYMENTS, $user, $reason, $comment, $headers);
+        $this->createRequest(Client::PATH_ACCOUNTS.'/'.$this->getAccountId().Client::PATH_INVOICE_PAYMENTS, $user, $reason, $comment, $headers);
 
         return null;
     }
