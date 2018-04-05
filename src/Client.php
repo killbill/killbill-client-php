@@ -64,6 +64,7 @@ class Client
     const PATH_PAYMENT_METHODS      = '/paymentMethods';
     const PATH_PAYMENTS             = '/payments';
     const PATH_PAYMENT_TRANSACTIONS = '/paymentTransactions';
+    const PATH_INVOICE_PAYMENTS     = '/invoicePayments';
     const PATH_PAUSE                = '/pause';
     const PATH_RESUME               = '/resume';
     const PATH_SUBSCRIPTIONS        = '/subscriptions';
