@@ -24,4 +24,14 @@ use Killbill\Client\Type\InvoiceItemAttributes;
  */
 class InvoiceItem extends InvoiceItemAttributes
 {
+    /** InvoiceItem types (see: https://github.com/killbill/killbill-api/blob/master/src/main/java/org/killbill/billing/invoice/api/InvoiceItemType.java) */
+    const ITEM_TYPE_EXTERNAL_CHARGE = 'EXTERNAL_CHARGE';
+    const ITEM_TYPE_FIXED           = 'FIXED';
+    const ITEM_TYPE_RECURRING       = 'RECURRING';
+    const ITEM_TYPE_REPAIR_ADJ      = 'REPAIR_ADJ';
+    const ITEM_TYPE_CBA_ADJ         = 'CBA_ADJ';
+    const ITEM_TYPE_CREDIT_ADJ      = 'CREDIT_ADJ';
+    const ITEM_TYPE_ITEM_ADJ        = 'ITEM_ADJ';
+    const ITEM_TYPE_USAGE           = 'USAGE';
+    const ITEM_TYPE_TAX             = 'TAX';
 }
