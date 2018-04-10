@@ -72,21 +72,21 @@ class Invoice extends InvoiceAttributes
     }
 
     /**
-     * @param string        $accountId     Account to add invoice to
-     * @param string        $requestedDate Target date
-     * @param InvoiceItem[] $invoiceItems  Invoice items to add (with at least an amount set on each)
+     * @param string        $accountId              Account to add invoice to
+     * @param string        $requestedDate          Target date
+     * @param InvoiceItem[] $invoiceItems           Invoice items to add (with at least an amount set on each)
      * @param bool          $payInvoice
      * @param bool          $autoCommit
-     * @param null          $paymentExternalKey
-     * @param null          $transactionExternalKey
-     * @param string|null   $user          User requesting the creation
-     * @param string|null   $reason        Reason for the creation
-     * @param string|null   $comment       Any addition comment
-     * @param string[]|null $headers       Any additional headers
+     * @param string        $paymentExternalKey
+     * @param string        $transactionExternalKey
+     * @param string|null   $user                   User requesting the creation
+     * @param string|null   $reason                 Reason for the creation
+     * @param string|null   $comment                Any addition comment
+     * @param string[]|null $headers                Any additional headers
      *
      * @return InvoiceItem[]|null The invoice
      */
-    public function createExternalCharges($accountId, $requestedDate, $invoiceItems, $payInvoice, $autoCommit, $paymentExternalKey = null, $transactionExternalKey = null, $user, $reason, $comment, $headers = null)
+    public function createExternalCharges($accountId, $requestedDate, $invoiceItems, $payInvoice, $autoCommit, $paymentExternalKey, $transactionExternalKey, $user, $reason, $comment, $headers = null)
     {
         $queryData = array();
         if ($requestedDate !== null) {
