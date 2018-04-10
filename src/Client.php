@@ -76,6 +76,7 @@ class Client
     const PATH_CHARGEBACKS          = '/chargebacks';
     const PATH_REFUNDS              = '/refunds';
     const PATH_DRYRUN               = '/dryRun';
+    const PATH_CHARGES              = '/charges';
 
     /** @var LoggerInterface */
     private $logger;

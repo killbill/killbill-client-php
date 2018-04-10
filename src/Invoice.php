@@ -21,6 +21,7 @@ use Killbill\Client\Exception\Exception;
 use Killbill\Client\Traits\CustomFieldTrait;
 use Killbill\Client\Traits\TagTrait;
 use Killbill\Client\Type\InvoiceAttributes;
+use Killbill\Client\Type\InvoiceItemAttributes;
 
 /**
  * Invoice actions
@@ -68,6 +69,55 @@ class Invoice extends InvoiceAttributes
         $response = $this->getRequest(Client::PATH_INVOICES.'/'.$this->getInvoiceId().'/html', $headers);
 
         return $response->body;
+    }
+
+    /**
+     * @param string        $accountId              Account to add invoice to
+     * @param string        $requestedDate          Target date
+     * @param InvoiceItem[] $invoiceItems           Invoice items to add (with at least an amount set on each)
+     * @param bool          $payInvoice
+     * @param bool          $autoCommit
+     * @param string        $paymentExternalKey
+     * @param string        $transactionExternalKey
+     * @param string|null   $user                   User requesting the creation
+     * @param string|null   $reason                 Reason for the creation
+     * @param string|null   $comment                Any addition comment
+     * @param string[]|null $headers                Any additional headers
+     *
+     * @return InvoiceItem[]|null The invoice
+     */
+    public function createExternalCharges($accountId, $requestedDate, $invoiceItems, $payInvoice, $autoCommit, $paymentExternalKey, $transactionExternalKey, $user, $reason, $comment, $headers = null)
+    {
+        $queryData = array();
+        if ($requestedDate !== null) {
+            $queryData['requestedDate'] = $requestedDate;
+        }
+        if ($payInvoice) {
+            $queryData['payInvoice'] = 'true';
+        }
+        if ($autoCommit) {
+            $queryData['autoCommit'] = 'true';
+        }
+        if ($paymentExternalKey !== null) {
+            $queryData['paymentExternalKey'] = $paymentExternalKey;
+        }
+        if ($transactionExternalKey !== null) {
+            $queryData['transactionExternalKey'] = $transactionExternalKey;
+        }
+
+        $query = $this->makeQuery($queryData);
+        $response = $this->createRequest(Client::PATH_INVOICES.Client::PATH_CHARGES.'/'.$accountId.$query, $user, $reason, $comment, $headers, json_encode($invoiceItems));
+
+        try {
+            /** @var InvoiceItem[]|null $object */
+            $object = $this->getFromBody(InvoiceItem::class, $response);
+        } catch (Exception $e) {
+            $this->logger->error($e);
+
+            return null;
+        }
+
+        return $object;
     }
 
     /**

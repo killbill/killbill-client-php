@@ -39,7 +39,7 @@ abstract class AbstractResource implements \JsonSerializable
      */
     public function __construct(LoggerInterface $logger = null)
     {
-        $this->logger = ($logger != null) ? $logger : new NullLogger();
+        $this->logger = ($logger !== null) ? $logger : new NullLogger();
     }
 
     /**
@@ -123,7 +123,7 @@ abstract class AbstractResource implements \JsonSerializable
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::POST, $uri, ($data != null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::POST, $uri, ($data !== null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -142,7 +142,7 @@ abstract class AbstractResource implements \JsonSerializable
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::PUT, $uri, ($data != null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::PUT, $uri, ($data !== null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
@@ -161,7 +161,7 @@ abstract class AbstractResource implements \JsonSerializable
     {
         $this->initClientIfNeeded();
 
-        return $this->client->request(Client::DELETE, $uri, ($data != null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
+        return $this->client->request(Client::DELETE, $uri, ($data !== null) ? $data : json_encode($this), $user, $reason, $comment, $headers);
     }
 
     /**
