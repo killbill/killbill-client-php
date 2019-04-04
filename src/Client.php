@@ -34,7 +34,7 @@ class Client
     public static $recordMocks = false;
 
     /** @var string URL of the killbill server */
-    public static $serverUrl = 'http://127.0.0.1:8980';
+    public static $serverUrl = 'http://127.0.0.1:8080';
     /** @var string Api version */
     public static $apiVersion = '1.0';
     /** @var string Api user */
