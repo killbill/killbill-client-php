@@ -30,11 +30,11 @@ namespace Killbill\Client\Type;
  */
 class PaymentMethodAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $paymentMethodId = null;
     /** @var string|null */
     protected $externalKey = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
     /** @var bool|null */
     protected $isDefault = null;
@@ -46,7 +46,7 @@ class PaymentMethodAttributes extends \Killbill\Client\AbstractResource
     protected $auditLogs = null;
 
     /**
-     * @param string|null $paymentMethodId
+     * @param mixed|null $paymentMethodId
      */
     public function setPaymentMethodId($paymentMethodId)
     {
@@ -54,7 +54,7 @@ class PaymentMethodAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getPaymentMethodId()
     {
@@ -78,7 +78,7 @@ class PaymentMethodAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -86,7 +86,7 @@ class PaymentMethodAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {

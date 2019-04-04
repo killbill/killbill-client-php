@@ -39,9 +39,9 @@ class OverdueStateConfigAttributes extends \Killbill\Client\AbstractResource
     /** @var string|null */
     protected $externalMessage = null;
     /** @var bool|null */
-    protected $blockChanges = null;
+    protected $isBlockChanges = null;
     /** @var bool|null */
-    protected $disableEntitlement = null;
+    protected $isDisableEntitlement = null;
     /** @var mixed|null */
     protected $subscriptionCancellationPolicy = null;
     /** @var int|null */
@@ -120,35 +120,35 @@ class OverdueStateConfigAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param bool|null $blockChanges
+     * @param bool|null $isBlockChanges
      */
-    public function setBlockChanges($blockChanges)
+    public function setIsBlockChanges($isBlockChanges)
     {
-        $this->blockChanges = $blockChanges;
+        $this->isBlockChanges = $isBlockChanges;
     }
 
     /**
      * @return bool|null
      */
-    public function getBlockChanges()
+    public function getIsBlockChanges()
     {
-        return $this->blockChanges;
+        return $this->isBlockChanges;
     }
 
     /**
-     * @param bool|null $disableEntitlement
+     * @param bool|null $isDisableEntitlement
      */
-    public function setDisableEntitlement($disableEntitlement)
+    public function setIsDisableEntitlement($isDisableEntitlement)
     {
-        $this->disableEntitlement = $disableEntitlement;
+        $this->isDisableEntitlement = $isDisableEntitlement;
     }
 
     /**
      * @return bool|null
      */
-    public function getDisableEntitlement()
+    public function getIsDisableEntitlement()
     {
-        return $this->disableEntitlement;
+        return $this->isDisableEntitlement;
     }
 
     /**

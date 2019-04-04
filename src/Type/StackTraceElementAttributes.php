@@ -39,7 +39,7 @@ class StackTraceElementAttributes extends \Killbill\Client\AbstractResource
     /** @var string|null */
     protected $methodName = null;
     /** @var bool|null */
-    protected $nativeMethod = null;
+    protected $isNativeMethod = null;
 
     /**
      * @param string|null $className
@@ -106,19 +106,19 @@ class StackTraceElementAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param bool|null $nativeMethod
+     * @param bool|null $isNativeMethod
      */
-    public function setNativeMethod($nativeMethod)
+    public function setIsNativeMethod($isNativeMethod)
     {
-        $this->nativeMethod = $nativeMethod;
+        $this->isNativeMethod = $isNativeMethod;
     }
 
     /**
      * @return bool|null
      */
-    public function getNativeMethod()
+    public function getIsNativeMethod()
     {
-        return $this->nativeMethod;
+        return $this->isNativeMethod;
     }
 
 }

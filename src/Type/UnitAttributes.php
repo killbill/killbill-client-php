@@ -26,45 +26,45 @@ namespace Killbill\Client\Type;
  */
 
 /**
- * PriceAttributes
+ * UnitAttributes
  */
-class PriceAttributes extends \Killbill\Client\AbstractResource
+class UnitAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var mixed|null */
-    protected $currency = null;
-    /** @var float|null */
-    protected $value = null;
+    /** @var string|null */
+    protected $name = null;
+    /** @var string|null */
+    protected $prettyName = null;
 
     /**
-     * @param mixed|null $currency
+     * @param string|null $name
      */
-    public function setCurrency($currency)
+    public function setName($name)
     {
-        $this->currency = $currency;
+        $this->name = $name;
     }
 
     /**
-     * @return mixed|null
+     * @return string|null
      */
-    public function getCurrency()
+    public function getName()
     {
-        return $this->currency;
+        return $this->name;
     }
 
     /**
-     * @param float|null $value
+     * @param string|null $prettyName
      */
-    public function setValue($value)
+    public function setPrettyName($prettyName)
     {
-        $this->value = $value;
+        $this->prettyName = $prettyName;
     }
 
     /**
-     * @return float|null
+     * @return string|null
      */
-    public function getValue()
+    public function getPrettyName()
     {
-        return $this->value;
+        return $this->prettyName;
     }
 
 }

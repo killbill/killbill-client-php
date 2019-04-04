@@ -36,7 +36,7 @@ class ComboHostedPaymentPageAttributes extends \Killbill\Client\AbstractResource
     protected $paymentMethod = null;
     /** @var HostedPaymentPageFieldsAttributes|null */
     protected $hostedPaymentPageFields = null;
-    /** @var mixed|null */
+    /** @var PluginPropertyAttributes[]|null */
     protected $paymentMethodPluginProperties = null;
     /** @var AuditLogAttributes[]|null */
     protected $auditLogs = null;
@@ -114,7 +114,7 @@ class ComboHostedPaymentPageAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param mixed|null $paymentMethodPluginProperties
+     * @param PluginPropertyAttributes[]|null $paymentMethodPluginProperties
      */
     public function setPaymentMethodPluginProperties($paymentMethodPluginProperties)
     {
@@ -122,11 +122,19 @@ class ComboHostedPaymentPageAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return mixed|null
+     * @return PluginPropertyAttributes[]|null
      */
     public function getPaymentMethodPluginProperties()
     {
         return $this->paymentMethodPluginProperties;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentMethodPluginPropertiesType()
+    {
+        return PluginPropertyAttributes::class;
     }
 
     /**

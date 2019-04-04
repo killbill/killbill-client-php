@@ -30,13 +30,13 @@ namespace Killbill\Client\Type;
  */
 class AccountEmailAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
     /** @var string|null */
     protected $email = null;
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -44,7 +44,7 @@ class AccountEmailAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {

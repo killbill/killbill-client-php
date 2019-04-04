@@ -34,6 +34,8 @@ class ProductAttributes extends \Killbill\Client\AbstractResource
     protected $type = null;
     /** @var string|null */
     protected $name = null;
+    /** @var string|null */
+    protected $prettyName = null;
     /** @var PlanAttributes[]|null */
     protected $plans = null;
     /** @var string[]|null */
@@ -71,6 +73,22 @@ class ProductAttributes extends \Killbill\Client\AbstractResource
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param string|null $prettyName
+     */
+    public function setPrettyName($prettyName)
+    {
+        $this->prettyName = $prettyName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrettyName()
+    {
+        return $this->prettyName;
     }
 
     /**

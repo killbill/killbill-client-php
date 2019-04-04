@@ -30,7 +30,7 @@ namespace Killbill\Client\Type;
  */
 class GatewayNotificationAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $kbPaymentId = null;
     /** @var int|null */
     protected $status = null;
@@ -42,7 +42,7 @@ class GatewayNotificationAttributes extends \Killbill\Client\AbstractResource
     protected $properties = null;
 
     /**
-     * @param string|null $kbPaymentId
+     * @param mixed|null $kbPaymentId
      */
     public function setKbPaymentId($kbPaymentId)
     {
@@ -50,7 +50,7 @@ class GatewayNotificationAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getKbPaymentId()
     {

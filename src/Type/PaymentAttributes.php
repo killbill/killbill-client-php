@@ -30,9 +30,9 @@ namespace Killbill\Client\Type;
  */
 class PaymentAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $paymentId = null;
     /** @var string|null */
     protected $paymentNumber = null;
@@ -48,9 +48,9 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     protected $refundedAmount = null;
     /** @var float|null */
     protected $creditedAmount = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $currency = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $paymentMethodId = null;
     /** @var PaymentTransactionAttributes[]|null */
     protected $transactions = null;
@@ -60,7 +60,7 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     protected $auditLogs = null;
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -68,7 +68,7 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {
@@ -76,7 +76,7 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $paymentId
+     * @param mixed|null $paymentId
      */
     public function setPaymentId($paymentId)
     {
@@ -84,7 +84,7 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getPaymentId()
     {
@@ -204,7 +204,7 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $currency
+     * @param mixed|null $currency
      */
     public function setCurrency($currency)
     {
@@ -212,7 +212,7 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getCurrency()
     {
@@ -220,7 +220,7 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $paymentMethodId
+     * @param mixed|null $paymentMethodId
      */
     public function setPaymentMethodId($paymentMethodId)
     {
@@ -228,7 +228,7 @@ class PaymentAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getPaymentMethodId()
     {

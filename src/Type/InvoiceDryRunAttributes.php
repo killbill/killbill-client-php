@@ -30,33 +30,33 @@ namespace Killbill\Client\Type;
  */
 class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $dryRunType = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $dryRunAction = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $phaseType = null;
     /** @var string|null */
     protected $productName = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $productCategory = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $billingPeriod = null;
     /** @var string|null */
     protected $priceListName = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $subscriptionId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $bundleId = null;
     /** @var string|null */
     protected $effectiveDate = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $billingPolicy = null;
-    /** @var PhasePriceOverrideAttributes[]|null */
+    /** @var PhasePriceAttributes[]|null */
     protected $priceOverrides = null;
 
     /**
-     * @param string|null $dryRunType
+     * @param mixed|null $dryRunType
      */
     public function setDryRunType($dryRunType)
     {
@@ -64,7 +64,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getDryRunType()
     {
@@ -72,7 +72,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $dryRunAction
+     * @param mixed|null $dryRunAction
      */
     public function setDryRunAction($dryRunAction)
     {
@@ -80,7 +80,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getDryRunAction()
     {
@@ -88,7 +88,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $phaseType
+     * @param mixed|null $phaseType
      */
     public function setPhaseType($phaseType)
     {
@@ -96,7 +96,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getPhaseType()
     {
@@ -120,7 +120,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $productCategory
+     * @param mixed|null $productCategory
      */
     public function setProductCategory($productCategory)
     {
@@ -128,7 +128,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getProductCategory()
     {
@@ -136,7 +136,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $billingPeriod
+     * @param mixed|null $billingPeriod
      */
     public function setBillingPeriod($billingPeriod)
     {
@@ -144,7 +144,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBillingPeriod()
     {
@@ -168,7 +168,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $subscriptionId
+     * @param mixed|null $subscriptionId
      */
     public function setSubscriptionId($subscriptionId)
     {
@@ -176,7 +176,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getSubscriptionId()
     {
@@ -184,7 +184,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $bundleId
+     * @param mixed|null $bundleId
      */
     public function setBundleId($bundleId)
     {
@@ -192,7 +192,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBundleId()
     {
@@ -216,7 +216,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $billingPolicy
+     * @param mixed|null $billingPolicy
      */
     public function setBillingPolicy($billingPolicy)
     {
@@ -224,7 +224,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBillingPolicy()
     {
@@ -232,7 +232,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param PhasePriceOverrideAttributes[]|null $priceOverrides
+     * @param PhasePriceAttributes[]|null $priceOverrides
      */
     public function setPriceOverrides($priceOverrides)
     {
@@ -240,7 +240,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return PhasePriceOverrideAttributes[]|null
+     * @return PhasePriceAttributes[]|null
      */
     public function getPriceOverrides()
     {
@@ -252,7 +252,7 @@ class InvoiceDryRunAttributes extends \Killbill\Client\AbstractResource
      */
     public function getPriceOverridesType()
     {
-        return PhasePriceOverrideAttributes::class;
+        return PhasePriceAttributes::class;
     }
 
 }

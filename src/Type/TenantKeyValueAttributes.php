@@ -26,45 +26,53 @@ namespace Killbill\Client\Type;
  */
 
 /**
- * PriceAttributes
+ * TenantKeyValueAttributes
  */
-class PriceAttributes extends \Killbill\Client\AbstractResource
+class TenantKeyValueAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var mixed|null */
-    protected $currency = null;
-    /** @var float|null */
-    protected $value = null;
+    /** @var string|null */
+    protected $key = null;
+    /** @var string[]|null */
+    protected $values = null;
 
     /**
-     * @param mixed|null $currency
+     * @param string|null $key
      */
-    public function setCurrency($currency)
+    public function setKey($key)
     {
-        $this->currency = $currency;
+        $this->key = $key;
     }
 
     /**
-     * @return mixed|null
+     * @return string|null
      */
-    public function getCurrency()
+    public function getKey()
     {
-        return $this->currency;
+        return $this->key;
     }
 
     /**
-     * @param float|null $value
+     * @param string[]|null $values
      */
-    public function setValue($value)
+    public function setValues($values)
     {
-        $this->value = $value;
+        $this->values = $values;
     }
 
     /**
-     * @return float|null
+     * @return string[]|null
      */
-    public function getValue()
+    public function getValues()
     {
-        return $this->value;
+        return $this->values;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValuesType()
+    {
+        return string::class;
     }
 
 }

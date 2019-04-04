@@ -26,81 +26,81 @@ namespace Killbill\Client\Type;
  */
 
 /**
- * TenantAttributes
+ * BlockPriceAttributes
  */
-class TenantAttributes extends \Killbill\Client\AbstractResource
+class BlockPriceAttributes extends \Killbill\Client\AbstractResource
 {
+    /** @var string|null */
+    protected $unitName = null;
     /** @var mixed|null */
-    protected $tenantId = null;
-    /** @var string|null */
-    protected $externalKey = null;
-    /** @var string|null */
-    protected $apiKey = null;
-    /** @var string|null */
-    protected $apiSecret = null;
+    protected $size = null;
+    /** @var float|null */
+    protected $price = null;
+    /** @var mixed|null */
+    protected $max = null;
 
     /**
-     * @param mixed|null $tenantId
+     * @param string|null $unitName
      */
-    public function setTenantId($tenantId)
+    public function setUnitName($unitName)
     {
-        $this->tenantId = $tenantId;
+        $this->unitName = $unitName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUnitName()
+    {
+        return $this->unitName;
+    }
+
+    /**
+     * @param mixed|null $size
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
     }
 
     /**
      * @return mixed|null
      */
-    public function getTenantId()
+    public function getSize()
     {
-        return $this->tenantId;
+        return $this->size;
     }
 
     /**
-     * @param string|null $externalKey
+     * @param float|null $price
      */
-    public function setExternalKey($externalKey)
+    public function setPrice($price)
     {
-        $this->externalKey = $externalKey;
+        $this->price = $price;
     }
 
     /**
-     * @return string|null
+     * @return float|null
      */
-    public function getExternalKey()
+    public function getPrice()
     {
-        return $this->externalKey;
+        return $this->price;
     }
 
     /**
-     * @param string|null $apiKey
+     * @param mixed|null $max
      */
-    public function setApiKey($apiKey)
+    public function setMax($max)
     {
-        $this->apiKey = $apiKey;
+        $this->max = $max;
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
-    public function getApiKey()
+    public function getMax()
     {
-        return $this->apiKey;
-    }
-
-    /**
-     * @param string|null $apiSecret
-     */
-    public function setApiSecret($apiSecret)
-    {
-        $this->apiSecret = $apiSecret;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getApiSecret()
-    {
-        return $this->apiSecret;
+        return $this->max;
     }
 
 }

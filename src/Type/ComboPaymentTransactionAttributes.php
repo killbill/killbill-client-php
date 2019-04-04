@@ -36,9 +36,9 @@ class ComboPaymentTransactionAttributes extends \Killbill\Client\AbstractResourc
     protected $paymentMethod = null;
     /** @var PaymentTransactionAttributes|null */
     protected $transaction = null;
-    /** @var mixed|null */
+    /** @var PluginPropertyAttributes[]|null */
     protected $paymentMethodPluginProperties = null;
-    /** @var mixed|null */
+    /** @var PluginPropertyAttributes[]|null */
     protected $transactionPluginProperties = null;
     /** @var AuditLogAttributes[]|null */
     protected $auditLogs = null;
@@ -116,7 +116,7 @@ class ComboPaymentTransactionAttributes extends \Killbill\Client\AbstractResourc
     }
 
     /**
-     * @param mixed|null $paymentMethodPluginProperties
+     * @param PluginPropertyAttributes[]|null $paymentMethodPluginProperties
      */
     public function setPaymentMethodPluginProperties($paymentMethodPluginProperties)
     {
@@ -124,7 +124,7 @@ class ComboPaymentTransactionAttributes extends \Killbill\Client\AbstractResourc
     }
 
     /**
-     * @return mixed|null
+     * @return PluginPropertyAttributes[]|null
      */
     public function getPaymentMethodPluginProperties()
     {
@@ -132,7 +132,15 @@ class ComboPaymentTransactionAttributes extends \Killbill\Client\AbstractResourc
     }
 
     /**
-     * @param mixed|null $transactionPluginProperties
+     * @return string
+     */
+    public function getPaymentMethodPluginPropertiesType()
+    {
+        return PluginPropertyAttributes::class;
+    }
+
+    /**
+     * @param PluginPropertyAttributes[]|null $transactionPluginProperties
      */
     public function setTransactionPluginProperties($transactionPluginProperties)
     {
@@ -140,11 +148,19 @@ class ComboPaymentTransactionAttributes extends \Killbill\Client\AbstractResourc
     }
 
     /**
-     * @return mixed|null
+     * @return PluginPropertyAttributes[]|null
      */
     public function getTransactionPluginProperties()
     {
         return $this->transactionPluginProperties;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTransactionPluginPropertiesType()
+    {
+        return PluginPropertyAttributes::class;
     }
 
     /**

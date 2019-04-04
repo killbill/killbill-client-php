@@ -30,13 +30,13 @@ namespace Killbill\Client\Type;
  */
 class TagAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $tagId = null;
     /** @var mixed|null */
     protected $objectType = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $objectId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $tagDefinitionId = null;
     /** @var string|null */
     protected $tagDefinitionName = null;
@@ -44,7 +44,7 @@ class TagAttributes extends \Killbill\Client\AbstractResource
     protected $auditLogs = null;
 
     /**
-     * @param string|null $tagId
+     * @param mixed|null $tagId
      */
     public function setTagId($tagId)
     {
@@ -52,7 +52,7 @@ class TagAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getTagId()
     {
@@ -76,7 +76,7 @@ class TagAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $objectId
+     * @param mixed|null $objectId
      */
     public function setObjectId($objectId)
     {
@@ -84,7 +84,7 @@ class TagAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getObjectId()
     {
@@ -92,7 +92,7 @@ class TagAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $tagDefinitionId
+     * @param mixed|null $tagDefinitionId
      */
     public function setTagDefinitionId($tagDefinitionId)
     {
@@ -100,7 +100,7 @@ class TagAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getTagDefinitionId()
     {

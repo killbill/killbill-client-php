@@ -36,6 +36,8 @@ class CatalogAttributes extends \Killbill\Client\AbstractResource
     protected $effectiveDate = null;
     /** @var null[]|null */
     protected $currencies = null;
+    /** @var UnitAttributes[]|null */
+    protected $units = null;
     /** @var ProductAttributes[]|null */
     protected $products = null;
     /** @var PriceListAttributes[]|null */
@@ -95,6 +97,30 @@ class CatalogAttributes extends \Killbill\Client\AbstractResource
     public function getCurrenciesType()
     {
         return null::class;
+    }
+
+    /**
+     * @param UnitAttributes[]|null $units
+     */
+    public function setUnits($units)
+    {
+        $this->units = $units;
+    }
+
+    /**
+     * @return UnitAttributes[]|null
+     */
+    public function getUnits()
+    {
+        return $this->units;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUnitsType()
+    {
+        return UnitAttributes::class;
     }
 
     /**

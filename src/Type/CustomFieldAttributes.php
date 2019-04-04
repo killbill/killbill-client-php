@@ -30,9 +30,9 @@ namespace Killbill\Client\Type;
  */
 class CustomFieldAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $customFieldId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $objectId = null;
     /** @var mixed|null */
     protected $objectType = null;
@@ -44,7 +44,7 @@ class CustomFieldAttributes extends \Killbill\Client\AbstractResource
     protected $auditLogs = null;
 
     /**
-     * @param string|null $customFieldId
+     * @param mixed|null $customFieldId
      */
     public function setCustomFieldId($customFieldId)
     {
@@ -52,7 +52,7 @@ class CustomFieldAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getCustomFieldId()
     {
@@ -60,7 +60,7 @@ class CustomFieldAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $objectId
+     * @param mixed|null $objectId
      */
     public function setObjectId($objectId)
     {
@@ -68,7 +68,7 @@ class CustomFieldAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getObjectId()
     {

@@ -26,45 +26,35 @@ namespace Killbill\Client\Type;
  */
 
 /**
- * PriceAttributes
+ * BulkSubscriptionsBundleAttributes
  */
-class PriceAttributes extends \Killbill\Client\AbstractResource
+class BulkSubscriptionsBundleAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var mixed|null */
-    protected $currency = null;
-    /** @var float|null */
-    protected $value = null;
+    /** @var SubscriptionAttributes[]|null */
+    protected $baseEntitlementAndAddOns = null;
 
     /**
-     * @param mixed|null $currency
+     * @param SubscriptionAttributes[]|null $baseEntitlementAndAddOns
      */
-    public function setCurrency($currency)
+    public function setBaseEntitlementAndAddOns($baseEntitlementAndAddOns)
     {
-        $this->currency = $currency;
+        $this->baseEntitlementAndAddOns = $baseEntitlementAndAddOns;
     }
 
     /**
-     * @return mixed|null
+     * @return SubscriptionAttributes[]|null
      */
-    public function getCurrency()
+    public function getBaseEntitlementAndAddOns()
     {
-        return $this->currency;
+        return $this->baseEntitlementAndAddOns;
     }
 
     /**
-     * @param float|null $value
+     * @return string
      */
-    public function setValue($value)
+    public function getBaseEntitlementAndAddOnsType()
     {
-        $this->value = $value;
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getValue()
-    {
-        return $this->value;
+        return SubscriptionAttributes::class;
     }
 
 }

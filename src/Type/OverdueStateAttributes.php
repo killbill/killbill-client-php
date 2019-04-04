@@ -37,11 +37,11 @@ class OverdueStateAttributes extends \Killbill\Client\AbstractResource
     /** @var int[]|null */
     protected $daysBetweenPaymentRetries = null;
     /** @var bool|null */
-    protected $disableEntitlementAndChangesBlocked = null;
+    protected $isDisableEntitlementAndChangesBlocked = null;
     /** @var bool|null */
-    protected $blockChanges = null;
+    protected $isBlockChanges = null;
     /** @var bool|null */
-    protected $clearState = null;
+    protected $isClearState = null;
     /** @var int|null */
     protected $reevaluationIntervalDays = null;
 
@@ -102,51 +102,51 @@ class OverdueStateAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param bool|null $disableEntitlementAndChangesBlocked
+     * @param bool|null $isDisableEntitlementAndChangesBlocked
      */
-    public function setDisableEntitlementAndChangesBlocked($disableEntitlementAndChangesBlocked)
+    public function setIsDisableEntitlementAndChangesBlocked($isDisableEntitlementAndChangesBlocked)
     {
-        $this->disableEntitlementAndChangesBlocked = $disableEntitlementAndChangesBlocked;
+        $this->isDisableEntitlementAndChangesBlocked = $isDisableEntitlementAndChangesBlocked;
     }
 
     /**
      * @return bool|null
      */
-    public function getDisableEntitlementAndChangesBlocked()
+    public function getIsDisableEntitlementAndChangesBlocked()
     {
-        return $this->disableEntitlementAndChangesBlocked;
+        return $this->isDisableEntitlementAndChangesBlocked;
     }
 
     /**
-     * @param bool|null $blockChanges
+     * @param bool|null $isBlockChanges
      */
-    public function setBlockChanges($blockChanges)
+    public function setIsBlockChanges($isBlockChanges)
     {
-        $this->blockChanges = $blockChanges;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getBlockChanges()
-    {
-        return $this->blockChanges;
-    }
-
-    /**
-     * @param bool|null $clearState
-     */
-    public function setClearState($clearState)
-    {
-        $this->clearState = $clearState;
+        $this->isBlockChanges = $isBlockChanges;
     }
 
     /**
      * @return bool|null
      */
-    public function getClearState()
+    public function getIsBlockChanges()
     {
-        return $this->clearState;
+        return $this->isBlockChanges;
+    }
+
+    /**
+     * @param bool|null $isClearState
+     */
+    public function setIsClearState($isClearState)
+    {
+        $this->isClearState = $isClearState;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsClearState()
+    {
+        return $this->isClearState;
     }
 
     /**

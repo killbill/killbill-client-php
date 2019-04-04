@@ -30,7 +30,7 @@ namespace Killbill\Client\Type;
  */
 class TagDefinitionAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $id = null;
     /** @var bool|null */
     protected $isControlTag = null;
@@ -38,13 +38,13 @@ class TagDefinitionAttributes extends \Killbill\Client\AbstractResource
     protected $name = null;
     /** @var string|null */
     protected $description = null;
-    /** @var string[]|null */
+    /** @var null[]|null */
     protected $applicableObjectTypes = null;
     /** @var AuditLogAttributes[]|null */
     protected $auditLogs = null;
 
     /**
-     * @param string|null $id
+     * @param mixed|null $id
      */
     public function setId($id)
     {
@@ -52,7 +52,7 @@ class TagDefinitionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getId()
     {
@@ -108,7 +108,7 @@ class TagDefinitionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string[]|null $applicableObjectTypes
+     * @param null[]|null $applicableObjectTypes
      */
     public function setApplicableObjectTypes($applicableObjectTypes)
     {
@@ -116,7 +116,7 @@ class TagDefinitionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string[]|null
+     * @return null[]|null
      */
     public function getApplicableObjectTypes()
     {
@@ -128,7 +128,7 @@ class TagDefinitionAttributes extends \Killbill\Client\AbstractResource
      */
     public function getApplicableObjectTypesType()
     {
-        return string::class;
+        return null::class;
     }
 
     /**

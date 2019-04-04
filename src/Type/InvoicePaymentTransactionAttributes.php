@@ -30,25 +30,25 @@ namespace Killbill\Client\Type;
  */
 class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $transactionId = null;
     /** @var string|null */
     protected $transactionExternalKey = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $paymentId = null;
     /** @var string|null */
     protected $paymentExternalKey = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $transactionType = null;
     /** @var float|null */
     protected $amount = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $currency = null;
     /** @var string|null */
     protected $effectiveDate = null;
     /** @var float|null */
     protected $processedAmount = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $processedCurrency = null;
     /** @var string|null */
     protected $status = null;
@@ -70,7 +70,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     protected $auditLogs = null;
 
     /**
-     * @param string|null $transactionId
+     * @param mixed|null $transactionId
      */
     public function setTransactionId($transactionId)
     {
@@ -78,7 +78,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getTransactionId()
     {
@@ -102,7 +102,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @param string|null $paymentId
+     * @param mixed|null $paymentId
      */
     public function setPaymentId($paymentId)
     {
@@ -110,7 +110,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getPaymentId()
     {
@@ -134,7 +134,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @param string|null $transactionType
+     * @param mixed|null $transactionType
      */
     public function setTransactionType($transactionType)
     {
@@ -142,7 +142,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getTransactionType()
     {
@@ -166,7 +166,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @param string|null $currency
+     * @param mixed|null $currency
      */
     public function setCurrency($currency)
     {
@@ -174,7 +174,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getCurrency()
     {
@@ -214,7 +214,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @param string|null $processedCurrency
+     * @param mixed|null $processedCurrency
      */
     public function setProcessedCurrency($processedCurrency)
     {
@@ -222,7 +222,7 @@ class InvoicePaymentTransactionAttributes extends \Killbill\Client\AbstractResou
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getProcessedCurrency()
     {

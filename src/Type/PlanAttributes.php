@@ -32,6 +32,8 @@ class PlanAttributes extends \Killbill\Client\AbstractResource
 {
     /** @var string|null */
     protected $name = null;
+    /** @var string|null */
+    protected $prettyName = null;
     /** @var mixed|null */
     protected $billingPeriod = null;
     /** @var PhaseAttributes[]|null */
@@ -51,6 +53,22 @@ class PlanAttributes extends \Killbill\Client\AbstractResource
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param string|null $prettyName
+     */
+    public function setPrettyName($prettyName)
+    {
+        $this->prettyName = $prettyName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrettyName()
+    {
+        return $this->prettyName;
     }
 
     /**

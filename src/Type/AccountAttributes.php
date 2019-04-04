@@ -30,7 +30,7 @@ namespace Killbill\Client\Type;
  */
 class AccountAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
     /** @var string|null */
     protected $name = null;
@@ -42,14 +42,16 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     protected $email = null;
     /** @var int|null */
     protected $billCycleDayLocal = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $currency = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $parentAccountId = null;
     /** @var bool|null */
     protected $isPaymentDelegatedToParent = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $paymentMethodId = null;
+    /** @var string|null */
+    protected $referenceTime = null;
     /** @var string|null */
     protected $timeZone = null;
     /** @var string|null */
@@ -74,8 +76,6 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     protected $notes = null;
     /** @var bool|null */
     protected $isMigrated = null;
-    /** @var bool|null */
-    protected $isNotifiedForInvoices = null;
     /** @var float|null */
     protected $accountBalance = null;
     /** @var float|null */
@@ -84,7 +84,7 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     protected $auditLogs = null;
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -92,7 +92,7 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {
@@ -180,7 +180,7 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $currency
+     * @param mixed|null $currency
      */
     public function setCurrency($currency)
     {
@@ -188,7 +188,7 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getCurrency()
     {
@@ -196,7 +196,7 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $parentAccountId
+     * @param mixed|null $parentAccountId
      */
     public function setParentAccountId($parentAccountId)
     {
@@ -204,7 +204,7 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getParentAccountId()
     {
@@ -228,7 +228,7 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $paymentMethodId
+     * @param mixed|null $paymentMethodId
      */
     public function setPaymentMethodId($paymentMethodId)
     {
@@ -236,11 +236,27 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getPaymentMethodId()
     {
         return $this->paymentMethodId;
+    }
+
+    /**
+     * @param string|null $referenceTime
+     */
+    public function setReferenceTime($referenceTime)
+    {
+        $this->referenceTime = $referenceTime;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReferenceTime()
+    {
+        return $this->referenceTime;
     }
 
     /**
@@ -433,22 +449,6 @@ class AccountAttributes extends \Killbill\Client\AbstractResource
     public function getIsMigrated()
     {
         return $this->isMigrated;
-    }
-
-    /**
-     * @param bool|null $isNotifiedForInvoices
-     */
-    public function setIsNotifiedForInvoices($isNotifiedForInvoices)
-    {
-        $this->isNotifiedForInvoices = $isNotifiedForInvoices;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getIsNotifiedForInvoices()
-    {
-        return $this->isNotifiedForInvoices;
     }
 
     /**

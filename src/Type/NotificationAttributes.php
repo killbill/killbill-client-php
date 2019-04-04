@@ -32,12 +32,14 @@ class NotificationAttributes extends \Killbill\Client\AbstractResource
 {
     /** @var string|null */
     protected $eventType = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
     /** @var string|null */
     protected $objectType = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $objectId = null;
+    /** @var string|null */
+    protected $metaData = null;
 
     /**
      * @param string|null $eventType
@@ -56,7 +58,7 @@ class NotificationAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -64,7 +66,7 @@ class NotificationAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {
@@ -88,7 +90,7 @@ class NotificationAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $objectId
+     * @param mixed|null $objectId
      */
     public function setObjectId($objectId)
     {
@@ -96,11 +98,27 @@ class NotificationAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getObjectId()
     {
         return $this->objectId;
+    }
+
+    /**
+     * @param string|null $metaData
+     */
+    public function setMetaData($metaData)
+    {
+        $this->metaData = $metaData;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMetaData()
+    {
+        return $this->metaData;
     }
 
 }

@@ -30,20 +30,22 @@ namespace Killbill\Client\Type;
  */
 class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $invoiceItemId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $invoiceId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $linkedInvoiceItemId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $childAccountId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $bundleId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $subscriptionId = null;
+    /** @var string|null */
+    protected $productName = null;
     /** @var string|null */
     protected $planName = null;
     /** @var string|null */
@@ -51,6 +53,14 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     /** @var string|null */
     protected $usageName = null;
     /** @var string|null */
+    protected $prettyProductName = null;
+    /** @var string|null */
+    protected $prettyPlanName = null;
+    /** @var string|null */
+    protected $prettyPhaseName = null;
+    /** @var string|null */
+    protected $prettyUsageName = null;
+    /** @var mixed|null */
     protected $itemType = null;
     /** @var string|null */
     protected $description = null;
@@ -60,15 +70,21 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     protected $endDate = null;
     /** @var float|null */
     protected $amount = null;
-    /** @var string|null */
+    /** @var float|null */
+    protected $rate = null;
+    /** @var mixed|null */
     protected $currency = null;
+    /** @var int|null */
+    protected $quantity = null;
+    /** @var string|null */
+    protected $itemDetails = null;
     /** @var InvoiceItemAttributes[]|null */
     protected $childItems = null;
     /** @var AuditLogAttributes[]|null */
     protected $auditLogs = null;
 
     /**
-     * @param string|null $invoiceItemId
+     * @param mixed|null $invoiceItemId
      */
     public function setInvoiceItemId($invoiceItemId)
     {
@@ -76,7 +92,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getInvoiceItemId()
     {
@@ -84,7 +100,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $invoiceId
+     * @param mixed|null $invoiceId
      */
     public function setInvoiceId($invoiceId)
     {
@@ -92,7 +108,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getInvoiceId()
     {
@@ -100,7 +116,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $linkedInvoiceItemId
+     * @param mixed|null $linkedInvoiceItemId
      */
     public function setLinkedInvoiceItemId($linkedInvoiceItemId)
     {
@@ -108,7 +124,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getLinkedInvoiceItemId()
     {
@@ -116,7 +132,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -124,7 +140,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {
@@ -132,7 +148,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $childAccountId
+     * @param mixed|null $childAccountId
      */
     public function setChildAccountId($childAccountId)
     {
@@ -140,7 +156,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getChildAccountId()
     {
@@ -148,7 +164,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $bundleId
+     * @param mixed|null $bundleId
      */
     public function setBundleId($bundleId)
     {
@@ -156,7 +172,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBundleId()
     {
@@ -164,7 +180,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $subscriptionId
+     * @param mixed|null $subscriptionId
      */
     public function setSubscriptionId($subscriptionId)
     {
@@ -172,11 +188,27 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getSubscriptionId()
     {
         return $this->subscriptionId;
+    }
+
+    /**
+     * @param string|null $productName
+     */
+    public function setProductName($productName)
+    {
+        $this->productName = $productName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getProductName()
+    {
+        return $this->productName;
     }
 
     /**
@@ -228,7 +260,71 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $itemType
+     * @param string|null $prettyProductName
+     */
+    public function setPrettyProductName($prettyProductName)
+    {
+        $this->prettyProductName = $prettyProductName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrettyProductName()
+    {
+        return $this->prettyProductName;
+    }
+
+    /**
+     * @param string|null $prettyPlanName
+     */
+    public function setPrettyPlanName($prettyPlanName)
+    {
+        $this->prettyPlanName = $prettyPlanName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrettyPlanName()
+    {
+        return $this->prettyPlanName;
+    }
+
+    /**
+     * @param string|null $prettyPhaseName
+     */
+    public function setPrettyPhaseName($prettyPhaseName)
+    {
+        $this->prettyPhaseName = $prettyPhaseName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrettyPhaseName()
+    {
+        return $this->prettyPhaseName;
+    }
+
+    /**
+     * @param string|null $prettyUsageName
+     */
+    public function setPrettyUsageName($prettyUsageName)
+    {
+        $this->prettyUsageName = $prettyUsageName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrettyUsageName()
+    {
+        return $this->prettyUsageName;
+    }
+
+    /**
+     * @param mixed|null $itemType
      */
     public function setItemType($itemType)
     {
@@ -236,7 +332,7 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getItemType()
     {
@@ -308,7 +404,23 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $currency
+     * @param float|null $rate
+     */
+    public function setRate($rate)
+    {
+        $this->rate = $rate;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * @param mixed|null $currency
      */
     public function setCurrency($currency)
     {
@@ -316,11 +428,43 @@ class InvoiceItemAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    /**
+     * @param int|null $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param string|null $itemDetails
+     */
+    public function setItemDetails($itemDetails)
+    {
+        $this->itemDetails = $itemDetails;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getItemDetails()
+    {
+        return $this->itemDetails;
     }
 
     /**

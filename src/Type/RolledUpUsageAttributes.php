@@ -30,7 +30,7 @@ namespace Killbill\Client\Type;
  */
 class RolledUpUsageAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $subscriptionId = null;
     /** @var string|null */
     protected $startDate = null;
@@ -40,7 +40,7 @@ class RolledUpUsageAttributes extends \Killbill\Client\AbstractResource
     protected $rolledUpUnits = null;
 
     /**
-     * @param string|null $subscriptionId
+     * @param mixed|null $subscriptionId
      */
     public function setSubscriptionId($subscriptionId)
     {
@@ -48,7 +48,7 @@ class RolledUpUsageAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getSubscriptionId()
     {

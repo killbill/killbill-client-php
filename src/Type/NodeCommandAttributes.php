@@ -31,26 +31,26 @@ namespace Killbill\Client\Type;
 class NodeCommandAttributes extends \Killbill\Client\AbstractResource
 {
     /** @var bool|null */
-    protected $systemCommandType = null;
+    protected $isSystemCommandType = null;
     /** @var string|null */
     protected $nodeCommandType = null;
     /** @var NodeCommandPropertyAttributes[]|null */
     protected $nodeCommandProperties = null;
 
     /**
-     * @param bool|null $systemCommandType
+     * @param bool|null $isSystemCommandType
      */
-    public function setSystemCommandType($systemCommandType)
+    public function setIsSystemCommandType($isSystemCommandType)
     {
-        $this->systemCommandType = $systemCommandType;
+        $this->isSystemCommandType = $isSystemCommandType;
     }
 
     /**
      * @return bool|null
      */
-    public function getSystemCommandType()
+    public function getIsSystemCommandType()
     {
-        return $this->systemCommandType;
+        return $this->isSystemCommandType;
     }
 
     /**

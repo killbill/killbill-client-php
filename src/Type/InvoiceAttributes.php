@@ -32,15 +32,15 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
 {
     /** @var float|null */
     protected $amount = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $currency = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $status = null;
     /** @var float|null */
     protected $creditAdj = null;
     /** @var float|null */
     protected $refundAdj = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $invoiceId = null;
     /** @var string|null */
     protected $invoiceDate = null;
@@ -50,7 +50,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     protected $invoiceNumber = null;
     /** @var float|null */
     protected $balance = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
     /** @var string|null */
     protected $bundleKeys = null;
@@ -60,6 +60,10 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     protected $items = null;
     /** @var bool|null */
     protected $isParentInvoice = null;
+    /** @var mixed|null */
+    protected $parentInvoiceId = null;
+    /** @var mixed|null */
+    protected $parentAccountId = null;
     /** @var AuditLogAttributes[]|null */
     protected $auditLogs = null;
 
@@ -80,7 +84,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $currency
+     * @param mixed|null $currency
      */
     public function setCurrency($currency)
     {
@@ -88,7 +92,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getCurrency()
     {
@@ -96,7 +100,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $status
+     * @param mixed|null $status
      */
     public function setStatus($status)
     {
@@ -104,7 +108,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getStatus()
     {
@@ -144,7 +148,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $invoiceId
+     * @param mixed|null $invoiceId
      */
     public function setInvoiceId($invoiceId)
     {
@@ -152,7 +156,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getInvoiceId()
     {
@@ -224,7 +228,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -232,7 +236,7 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {
@@ -317,6 +321,38 @@ class InvoiceAttributes extends \Killbill\Client\AbstractResource
     public function getIsParentInvoice()
     {
         return $this->isParentInvoice;
+    }
+
+    /**
+     * @param mixed|null $parentInvoiceId
+     */
+    public function setParentInvoiceId($parentInvoiceId)
+    {
+        $this->parentInvoiceId = $parentInvoiceId;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getParentInvoiceId()
+    {
+        return $this->parentInvoiceId;
+    }
+
+    /**
+     * @param mixed|null $parentAccountId
+     */
+    public function setParentAccountId($parentAccountId)
+    {
+        $this->parentAccountId = $parentAccountId;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getParentAccountId()
+    {
+        return $this->parentAccountId;
     }
 
     /**

@@ -30,9 +30,9 @@ namespace Killbill\Client\Type;
  */
 class EventSubscriptionAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $eventId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $billingPeriod = null;
     /** @var string|null */
     protected $effectiveDate = null;
@@ -42,7 +42,7 @@ class EventSubscriptionAttributes extends \Killbill\Client\AbstractResource
     protected $product = null;
     /** @var string|null */
     protected $priceList = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $eventType = null;
     /** @var bool|null */
     protected $isBlockedBilling = null;
@@ -58,7 +58,7 @@ class EventSubscriptionAttributes extends \Killbill\Client\AbstractResource
     protected $auditLogs = null;
 
     /**
-     * @param string|null $eventId
+     * @param mixed|null $eventId
      */
     public function setEventId($eventId)
     {
@@ -66,7 +66,7 @@ class EventSubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getEventId()
     {
@@ -74,7 +74,7 @@ class EventSubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $billingPeriod
+     * @param mixed|null $billingPeriod
      */
     public function setBillingPeriod($billingPeriod)
     {
@@ -82,7 +82,7 @@ class EventSubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBillingPeriod()
     {
@@ -154,7 +154,7 @@ class EventSubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $eventType
+     * @param mixed|null $eventType
      */
     public function setEventType($eventType)
     {
@@ -162,7 +162,7 @@ class EventSubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getEventType()
     {

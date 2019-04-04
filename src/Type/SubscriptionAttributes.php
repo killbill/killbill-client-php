@@ -30,11 +30,11 @@ namespace Killbill\Client\Type;
  */
 class SubscriptionAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $bundleId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $subscriptionId = null;
     /** @var string|null */
     protected $externalKey = null;
@@ -42,19 +42,19 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     protected $startDate = null;
     /** @var string|null */
     protected $productName = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $productCategory = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $billingPeriod = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $phaseType = null;
     /** @var string|null */
     protected $priceList = null;
     /** @var string|null */
     protected $planName = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $state = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $sourceType = null;
     /** @var string|null */
     protected $cancelledDate = null;
@@ -68,13 +68,15 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     protected $billCycleDayLocal = null;
     /** @var EventSubscriptionAttributes[]|null */
     protected $events = null;
-    /** @var PhasePriceOverrideAttributes[]|null */
+    /** @var PhasePriceAttributes[]|null */
     protected $priceOverrides = null;
+    /** @var PhasePriceAttributes[]|null */
+    protected $prices = null;
     /** @var AuditLogAttributes[]|null */
     protected $auditLogs = null;
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -82,7 +84,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {
@@ -90,7 +92,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $bundleId
+     * @param mixed|null $bundleId
      */
     public function setBundleId($bundleId)
     {
@@ -98,7 +100,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBundleId()
     {
@@ -106,7 +108,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $subscriptionId
+     * @param mixed|null $subscriptionId
      */
     public function setSubscriptionId($subscriptionId)
     {
@@ -114,7 +116,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getSubscriptionId()
     {
@@ -170,7 +172,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $productCategory
+     * @param mixed|null $productCategory
      */
     public function setProductCategory($productCategory)
     {
@@ -178,7 +180,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getProductCategory()
     {
@@ -186,7 +188,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $billingPeriod
+     * @param mixed|null $billingPeriod
      */
     public function setBillingPeriod($billingPeriod)
     {
@@ -194,7 +196,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBillingPeriod()
     {
@@ -202,7 +204,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $phaseType
+     * @param mixed|null $phaseType
      */
     public function setPhaseType($phaseType)
     {
@@ -210,7 +212,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getPhaseType()
     {
@@ -250,7 +252,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $state
+     * @param mixed|null $state
      */
     public function setState($state)
     {
@@ -258,7 +260,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getState()
     {
@@ -266,7 +268,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $sourceType
+     * @param mixed|null $sourceType
      */
     public function setSourceType($sourceType)
     {
@@ -274,7 +276,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getSourceType()
     {
@@ -386,7 +388,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param PhasePriceOverrideAttributes[]|null $priceOverrides
+     * @param PhasePriceAttributes[]|null $priceOverrides
      */
     public function setPriceOverrides($priceOverrides)
     {
@@ -394,7 +396,7 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return PhasePriceOverrideAttributes[]|null
+     * @return PhasePriceAttributes[]|null
      */
     public function getPriceOverrides()
     {
@@ -406,7 +408,31 @@ class SubscriptionAttributes extends \Killbill\Client\AbstractResource
      */
     public function getPriceOverridesType()
     {
-        return PhasePriceOverrideAttributes::class;
+        return PhasePriceAttributes::class;
+    }
+
+    /**
+     * @param PhasePriceAttributes[]|null $prices
+     */
+    public function setPrices($prices)
+    {
+        $this->prices = $prices;
+    }
+
+    /**
+     * @return PhasePriceAttributes[]|null
+     */
+    public function getPrices()
+    {
+        return $this->prices;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPricesType()
+    {
+        return PhasePriceAttributes::class;
     }
 
     /**

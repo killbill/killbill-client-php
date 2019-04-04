@@ -30,22 +30,42 @@ namespace Killbill\Client\Type;
  */
 class CreditAttributes extends \Killbill\Client\AbstractResource
 {
+    /** @var mixed|null */
+    protected $creditId = null;
     /** @var float|null */
     protected $creditAmount = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $currency = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $invoiceId = null;
     /** @var string|null */
     protected $invoiceNumber = null;
     /** @var string|null */
     protected $effectiveDate = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
     /** @var string|null */
     protected $description = null;
+    /** @var string|null */
+    protected $itemDetails = null;
     /** @var AuditLogAttributes[]|null */
     protected $auditLogs = null;
+
+    /**
+     * @param mixed|null $creditId
+     */
+    public function setCreditId($creditId)
+    {
+        $this->creditId = $creditId;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getCreditId()
+    {
+        return $this->creditId;
+    }
 
     /**
      * @param float|null $creditAmount
@@ -64,7 +84,7 @@ class CreditAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $currency
+     * @param mixed|null $currency
      */
     public function setCurrency($currency)
     {
@@ -72,7 +92,7 @@ class CreditAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getCurrency()
     {
@@ -80,7 +100,7 @@ class CreditAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $invoiceId
+     * @param mixed|null $invoiceId
      */
     public function setInvoiceId($invoiceId)
     {
@@ -88,7 +108,7 @@ class CreditAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getInvoiceId()
     {
@@ -128,7 +148,7 @@ class CreditAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -136,7 +156,7 @@ class CreditAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {
@@ -157,6 +177,22 @@ class CreditAttributes extends \Killbill\Client\AbstractResource
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @param string|null $itemDetails
+     */
+    public function setItemDetails($itemDetails)
+    {
+        $this->itemDetails = $itemDetails;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getItemDetails()
+    {
+        return $this->itemDetails;
     }
 
     /**

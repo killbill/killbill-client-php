@@ -30,18 +30,18 @@ namespace Killbill\Client\Type;
  */
 class BlockingStateAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $blockedId = null;
     /** @var string|null */
     protected $stateName = null;
     /** @var string|null */
     protected $service = null;
     /** @var bool|null */
-    protected $blockChange = null;
+    protected $isBlockChange = null;
     /** @var bool|null */
-    protected $blockEntitlement = null;
+    protected $isBlockEntitlement = null;
     /** @var bool|null */
-    protected $blockBilling = null;
+    protected $isBlockBilling = null;
     /** @var string|null */
     protected $effectiveDate = null;
     /** @var mixed|null */
@@ -50,7 +50,7 @@ class BlockingStateAttributes extends \Killbill\Client\AbstractResource
     protected $auditLogs = null;
 
     /**
-     * @param string|null $blockedId
+     * @param mixed|null $blockedId
      */
     public function setBlockedId($blockedId)
     {
@@ -58,7 +58,7 @@ class BlockingStateAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBlockedId()
     {
@@ -98,51 +98,51 @@ class BlockingStateAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param bool|null $blockChange
+     * @param bool|null $isBlockChange
      */
-    public function setBlockChange($blockChange)
+    public function setIsBlockChange($isBlockChange)
     {
-        $this->blockChange = $blockChange;
+        $this->isBlockChange = $isBlockChange;
     }
 
     /**
      * @return bool|null
      */
-    public function getBlockChange()
+    public function getIsBlockChange()
     {
-        return $this->blockChange;
+        return $this->isBlockChange;
     }
 
     /**
-     * @param bool|null $blockEntitlement
+     * @param bool|null $isBlockEntitlement
      */
-    public function setBlockEntitlement($blockEntitlement)
+    public function setIsBlockEntitlement($isBlockEntitlement)
     {
-        $this->blockEntitlement = $blockEntitlement;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function getBlockEntitlement()
-    {
-        return $this->blockEntitlement;
-    }
-
-    /**
-     * @param bool|null $blockBilling
-     */
-    public function setBlockBilling($blockBilling)
-    {
-        $this->blockBilling = $blockBilling;
+        $this->isBlockEntitlement = $isBlockEntitlement;
     }
 
     /**
      * @return bool|null
      */
-    public function getBlockBilling()
+    public function getIsBlockEntitlement()
     {
-        return $this->blockBilling;
+        return $this->isBlockEntitlement;
+    }
+
+    /**
+     * @param bool|null $isBlockBilling
+     */
+    public function setIsBlockBilling($isBlockBilling)
+    {
+        $this->isBlockBilling = $isBlockBilling;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsBlockBilling()
+    {
+        return $this->isBlockBilling;
     }
 
     /**

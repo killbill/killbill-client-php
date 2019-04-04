@@ -34,6 +34,10 @@ class AuditLogAttributes extends \Killbill\Client\AbstractResource
     protected $changeType = null;
     /** @var string|null */
     protected $changeDate = null;
+    /** @var mixed|null */
+    protected $objectType = null;
+    /** @var mixed|null */
+    protected $objectId = null;
     /** @var string|null */
     protected $changedBy = null;
     /** @var string|null */
@@ -42,6 +46,8 @@ class AuditLogAttributes extends \Killbill\Client\AbstractResource
     protected $comments = null;
     /** @var string|null */
     protected $userToken = null;
+    /** @var mixed|null */
+    protected $history = null;
 
     /**
      * @param string|null $changeType
@@ -73,6 +79,38 @@ class AuditLogAttributes extends \Killbill\Client\AbstractResource
     public function getChangeDate()
     {
         return $this->changeDate;
+    }
+
+    /**
+     * @param mixed|null $objectType
+     */
+    public function setObjectType($objectType)
+    {
+        $this->objectType = $objectType;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getObjectType()
+    {
+        return $this->objectType;
+    }
+
+    /**
+     * @param mixed|null $objectId
+     */
+    public function setObjectId($objectId)
+    {
+        $this->objectId = $objectId;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getObjectId()
+    {
+        return $this->objectId;
     }
 
     /**
@@ -137,6 +175,22 @@ class AuditLogAttributes extends \Killbill\Client\AbstractResource
     public function getUserToken()
     {
         return $this->userToken;
+    }
+
+    /**
+     * @param mixed|null $history
+     */
+    public function setHistory($history)
+    {
+        $this->history = $history;
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getHistory()
+    {
+        return $this->history;
     }
 
 }

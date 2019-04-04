@@ -30,7 +30,7 @@ namespace Killbill\Client\Type;
  */
 class HostedPaymentPageFormDescriptorAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $kbAccountId = null;
     /** @var string|null */
     protected $formMethod = null;
@@ -42,7 +42,7 @@ class HostedPaymentPageFormDescriptorAttributes extends \Killbill\Client\Abstrac
     protected $properties = null;
 
     /**
-     * @param string|null $kbAccountId
+     * @param mixed|null $kbAccountId
      */
     public function setKbAccountId($kbAccountId)
     {
@@ -50,7 +50,7 @@ class HostedPaymentPageFormDescriptorAttributes extends \Killbill\Client\Abstrac
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getKbAccountId()
     {

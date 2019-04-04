@@ -30,7 +30,7 @@ namespace Killbill\Client\Type;
  */
 class SubscriptionUsageRecordAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $subscriptionId = null;
     /** @var string|null */
     protected $trackingId = null;
@@ -38,7 +38,7 @@ class SubscriptionUsageRecordAttributes extends \Killbill\Client\AbstractResourc
     protected $unitUsageRecords = null;
 
     /**
-     * @param string|null $subscriptionId
+     * @param mixed|null $subscriptionId
      */
     public function setSubscriptionId($subscriptionId)
     {
@@ -46,7 +46,7 @@ class SubscriptionUsageRecordAttributes extends \Killbill\Client\AbstractResourc
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getSubscriptionId()
     {

@@ -26,45 +26,35 @@ namespace Killbill\Client\Type;
  */
 
 /**
- * PriceAttributes
+ * TierPriceAttributes
  */
-class PriceAttributes extends \Killbill\Client\AbstractResource
+class TierPriceAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var mixed|null */
-    protected $currency = null;
-    /** @var float|null */
-    protected $value = null;
+    /** @var BlockPriceAttributes[]|null */
+    protected $blockPrices = null;
 
     /**
-     * @param mixed|null $currency
+     * @param BlockPriceAttributes[]|null $blockPrices
      */
-    public function setCurrency($currency)
+    public function setBlockPrices($blockPrices)
     {
-        $this->currency = $currency;
+        $this->blockPrices = $blockPrices;
     }
 
     /**
-     * @return mixed|null
+     * @return BlockPriceAttributes[]|null
      */
-    public function getCurrency()
+    public function getBlockPrices()
     {
-        return $this->currency;
+        return $this->blockPrices;
     }
 
     /**
-     * @param float|null $value
+     * @return string
      */
-    public function setValue($value)
+    public function getBlockPricesType()
     {
-        $this->value = $value;
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getValue()
-    {
-        return $this->value;
+        return BlockPriceAttributes::class;
     }
 
 }

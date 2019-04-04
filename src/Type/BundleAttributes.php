@@ -30,9 +30,9 @@ namespace Killbill\Client\Type;
  */
 class BundleAttributes extends \Killbill\Client\AbstractResource
 {
-    /** @var string|null */
+    /** @var mixed|null */
     protected $accountId = null;
-    /** @var string|null */
+    /** @var mixed|null */
     protected $bundleId = null;
     /** @var string|null */
     protected $externalKey = null;
@@ -44,7 +44,7 @@ class BundleAttributes extends \Killbill\Client\AbstractResource
     protected $auditLogs = null;
 
     /**
-     * @param string|null $accountId
+     * @param mixed|null $accountId
      */
     public function setAccountId($accountId)
     {
@@ -52,7 +52,7 @@ class BundleAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getAccountId()
     {
@@ -60,7 +60,7 @@ class BundleAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @param string|null $bundleId
+     * @param mixed|null $bundleId
      */
     public function setBundleId($bundleId)
     {
@@ -68,7 +68,7 @@ class BundleAttributes extends \Killbill\Client\AbstractResource
     }
 
     /**
-     * @return string|null
+     * @return mixed|null
      */
     public function getBundleId()
     {
