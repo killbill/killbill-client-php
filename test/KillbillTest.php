@@ -18,6 +18,8 @@
 namespace Killbill\Client;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\CurlHandler;
+use GuzzleHttp\HandlerStack;
 use Killbill\Client\Api\AccountApi;
 use Killbill\Client\Api\TenantApi;
 use Killbill\Client\Model\Account;
@@ -66,22 +68,35 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 //            }
 //        }
 
+        $tenantApiKey = 'test-php-api-key-'.$externalKey;
+        $tenantApiSecret = 'test-php-api-secret-'.$externalKey;
+
         $config = Configuration::getDefaultConfiguration();
         $config
             ->setHost(getenv('API_HOST'))
             ->setUsername(getenv('ADMIN_LOGIN'))
-            ->setPassword(getenv('ADMIN_PASSWORD'));
+            ->setPassword(getenv('ADMIN_PASSWORD'))
+            ->setApiKey('X-Killbill-ApiKey', $tenantApiKey)
+            ->setApiKey('X-Killbill-ApiSecret', $tenantApiSecret)
+        ;
+
+        $stack = new HandlerStack();
+        $stack->setHandler(new CurlHandler());
+        $stack->push(RedirectOnPostMiddleware::get());
+        $stack->push(AddTenantHeadersMiddleware::get($config));
+
+        $guzzle = new Client(['handler' => $stack]);
 
         $tenant = new Tenant();
         $tenant->setExternalKey($externalKey);
-        $tenant->setApiKey('test-php-api-key-'.$tenant->getExternalKey());
-        $tenant->setApiSecret('test-php-api-secret-'.$tenant->getExternalKey());
+        $tenant->setApiKey($tenantApiKey);
+        $tenant->setApiSecret($tenantApiSecret);
 
-        $tenantApi = new TenantApi(null, $config);
-        $response = $tenantApi->createTenant($tenant, self::USER, self::REASON, self::COMMENT);
-//        $this->tenant->setApiSecret($tenant->getApiSecret());
+        $tenantApi = new TenantApi($guzzle, $config);
+        $this->tenant = $tenantApi->createTenant($tenant, self::USER, self::REASON, self::COMMENT);
+        $this->tenant->setApiSecret($tenant->getApiSecret());
 
-        $this->accountData = new Account($this->logger);
+        $this->accountData = new Account();
         $this->accountData->setName('Killbill php test');
         $this->accountData->setExternalKey($this->externalAccountId);
         $this->accountData->setEmail('test-'.$this->externalAccountId.'@kill-bill.org');
@@ -96,12 +111,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $this->accountData->setFirstNameLength(4);
         $this->accountData->setTimeZone('UTC');
 
-        $config
-            ->setApiKey('X-Killbill-ApiKey', $tenant->getApiKey())
-            ->setApiKey('X-Killbill-ApiSecret', $tenant->getApiSecret())
-        ;
-
-        $accountApi = new AccountApi(null, $config);
+        $accountApi = new AccountApi($guzzle, $config);
         $this->accountData = $accountApi->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
 
