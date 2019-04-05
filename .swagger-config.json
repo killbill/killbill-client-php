@@ -1,0 +1,10 @@
+{
+    "modelPackage" : "Model",
+    "apiPackage" : "Api",
+    "invokerPackage" : "Killbill\\Client",
+    "packagePath" : ".",
+    "gitUserId" : "killbill",
+    "gitRepoId" : "killbill-client",
+    "variableNamingConvention": "camelCase",
+    "srcBasePath": "src"
+}

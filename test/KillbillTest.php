@@ -17,9 +17,11 @@
 
 namespace Killbill\Client;
 
-use Killbill;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
+use GuzzleHttp\Client;
+use Killbill\Client\Api\AccountApi;
+use Killbill\Client\Api\TenantApi;
+use Killbill\Client\Model\Account;
+use Killbill\Client\Model\Tenant;
 
 /**
  * Base test class
@@ -39,8 +41,8 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     /** @var string|null */
     protected $externalAccountId = null;
 
-    /** @var Logger|null */
-    protected $logger = null;
+//    /** @var Logger|null */
+//    protected $logger = null;
 
     /**
      * Set up the test
@@ -52,24 +54,56 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         //$this->logger->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
 
         $externalKey = uniqid();
-        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
-            Client::$mockManager = new MockManager();
+//        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+//            Client::$mockManager = new MockManager();
+//
+//            if (getenv('RECORD_REQUESTS') == '1') {
+//                Client::$recordMocks = true;
+//                Client::$mockManager->saveExternalKey(static::class.':'.$this->getName(), $externalKey);
+//            } else {
+//                Client::$useMockData = true;
+//                $externalKey = Client::$mockManager->getExternalKey(static::class.':'.$this->getName());
+//            }
+//        }
 
-            if (getenv('RECORD_REQUESTS') == '1') {
-                Client::$recordMocks = true;
-                Client::$mockManager->saveExternalKey(static::class.':'.$this->getName(), $externalKey);
-            } else {
-                Client::$useMockData = true;
-                $externalKey = Client::$mockManager->getExternalKey(static::class.':'.$this->getName());
-            }
-        }
+        $config = Configuration::getDefaultConfiguration();
+        $config
+            ->setHost(getenv('API_HOST'))
+            ->setUsername(getenv('ADMIN_LOGIN'))
+            ->setPassword(getenv('ADMIN_PASSWORD'));
 
-        $tenant = new Tenant($this->logger);
+        $tenant = new Tenant();
         $tenant->setExternalKey($externalKey);
         $tenant->setApiKey('test-php-api-key-'.$tenant->getExternalKey());
         $tenant->setApiSecret('test-php-api-secret-'.$tenant->getExternalKey());
-        $this->tenant = $tenant->create(self::USER, self::REASON, self::COMMENT);
-        $this->tenant->setApiSecret($tenant->getApiSecret());
+
+        $tenantApi = new TenantApi(null, $config);
+        $response = $tenantApi->createTenant($tenant, self::USER, self::REASON, self::COMMENT);
+//        $this->tenant->setApiSecret($tenant->getApiSecret());
+
+        $this->accountData = new Account($this->logger);
+        $this->accountData->setName('Killbill php test');
+        $this->accountData->setExternalKey($this->externalAccountId);
+        $this->accountData->setEmail('test-'.$this->externalAccountId.'@kill-bill.org');
+        $this->accountData->setCurrency('USD');
+        $this->accountData->setPaymentMethodId(null);
+        $this->accountData->setAddress1('12 rue des ecoles');
+        $this->accountData->setAddress2('Poitier');
+        $this->accountData->setCompany('Renault');
+        $this->accountData->setState('Poitou');
+        $this->accountData->setCountry('France');
+        $this->accountData->setPhone('81 53 26 56');
+        $this->accountData->setFirstNameLength(4);
+        $this->accountData->setTimeZone('UTC');
+
+        $config
+            ->setApiKey('X-Killbill-ApiKey', $tenant->getApiKey())
+            ->setApiKey('X-Killbill-ApiSecret', $tenant->getApiSecret())
+        ;
+
+        $accountApi = new AccountApi(null, $config);
+        $this->accountData = $accountApi->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
+
 
         // setup catalog
         $killbillClient = new Client($this->logger);
