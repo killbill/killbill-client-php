@@ -18,10 +18,10 @@ Name | Type | Description | Notes
 **gatewayErrorMsg** | **string** |  | [optional] 
 **firstPaymentReferenceId** | **string** |  | [optional] 
 **secondPaymentReferenceId** | **string** |  | [optional] 
-**properties** | [**\Killbill\Client\Model\PluginProperty[]**](PluginProperty.md) |  | [optional] 
+**properties** | [**\Killbill\Client\Swagger\Model\PluginProperty[]**](PluginProperty.md) |  | [optional] 
 **isAdjusted** | **bool** |  | [optional] 
-**adjustments** | [**\Killbill\Client\Model\InvoiceItem[]**](InvoiceItem.md) |  | [optional] 
-**auditLogs** | [**\Killbill\Client\Model\AuditLog[]**](AuditLog.md) |  | [optional] 
+**adjustments** | [**\Killbill\Client\Swagger\Model\InvoiceItem[]**](InvoiceItem.md) |  | [optional] 
+**auditLogs** | [**\Killbill\Client\Swagger\Model\AuditLog[]**](AuditLog.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

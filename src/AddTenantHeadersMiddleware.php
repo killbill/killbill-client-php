@@ -2,6 +2,7 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Swagger\Configuration;
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Psr7;
 
@@ -16,12 +17,20 @@ class AddTenantHeadersMiddleware
 
     private $configuration;
 
+    /**
+     * @param callable      $nextHandler
+     * @param Configuration $configuration
+     */
     public function __construct(callable $nextHandler, Configuration $configuration)
     {
         $this->nextHandler = $nextHandler;
         $this->configuration = $configuration;
     }
 
+    /**
+     * @param Configuration $configuration
+     * @return \Closure
+     */
     public static function get(Configuration $configuration)
     {
         return function (callable $handler) use ($configuration) {
@@ -29,6 +38,11 @@ class AddTenantHeadersMiddleware
         };
     }
 
+    /**
+     * @param RequestInterface $request
+     * @param array            $options
+     * @return mixed
+     */
     public function __invoke(RequestInterface $request, array $options)
     {
         if ($this->isTenantHeaderMissing($request)) {
@@ -36,21 +50,34 @@ class AddTenantHeadersMiddleware
         }
 
         $fn = $this->nextHandler;
+
         return $fn($request, $options);
     }
 
+    /**
+     * @param RequestInterface $request
+     * @return bool
+     */
     private function isTenantHeaderMissing(RequestInterface $request)
     {
         return (in_array($request->getMethod(), ['GET'], true)
             && strpos($request->getUri()->getPath(), '/tenants') !== false);
     }
 
+    /**
+     * @param RequestInterface $request
+     * @return RequestInterface
+     */
     private function addTenantHeader(RequestInterface $request)
     {
         $modify['set_headers'] = $this->getTenantHeaders();
+
         return Psr7\modify_request($request, $modify);
     }
 
+    /**
+     * @return array
+     */
     private function getTenantHeaders()
     {
         $headers = [];
@@ -62,6 +89,7 @@ class AddTenantHeadersMiddleware
         if ($apiKey !== null) {
             $headers['X-Killbill-ApiSecret'] = $apiKey;
         }
+
         return $headers;
     }
 }

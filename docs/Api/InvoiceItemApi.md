@@ -1,4 +1,4 @@
-# Killbill\Client\InvoiceItemApi
+# Killbill\Client\Swagger\InvoiceItemApi
 
 All URIs are relative to */*
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**modifyInvoiceItemCustomFields**](InvoiceItemApi.md#modifyInvoiceItemCustomFields) | **PUT** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Modify custom fields to invoice item
 
 # **createInvoiceItemCustomFields**
-> \Killbill\Client\Model\CustomField[] createInvoiceItemCustomFields($body, $xKillbillCreatedBy, $invoiceItemId, $xKillbillReason, $xKillbillComment)
+> \Killbill\Client\Swagger\Model\CustomField[] createInvoiceItemCustomFields($body, $xKillbillCreatedBy, $invoiceItemId, $xKillbillReason, $xKillbillComment)
 
 Add custom fields to invoice item
 
@@ -22,24 +22,24 @@ Add custom fields to invoice item
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\InvoiceItemApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(new \Killbill\Client\Model\CustomField()); // \Killbill\Client\Model\CustomField[] | 
+$body = array(new \Killbill\Client\Swagger\Model\CustomField()); // \Killbill\Client\Swagger\Model\CustomField[] | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $invoiceItemId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -58,7 +58,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\CustomField[]**](../Model/CustomField.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **invoiceItemId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\CustomField[]**](../Model/CustomField.md)
+[**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createInvoiceItemTags**
-> \Killbill\Client\Model\Tag[] createInvoiceItemTags($body, $xKillbillCreatedBy, $invoiceItemId, $xKillbillReason, $xKillbillComment)
+> \Killbill\Client\Swagger\Model\Tag[] createInvoiceItemTags($body, $xKillbillCreatedBy, $invoiceItemId, $xKillbillReason, $xKillbillComment)
 
 Add tags to invoice item
 
@@ -89,18 +89,18 @@ Add tags to invoice item
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\InvoiceItemApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Tag[]**](../Model/Tag.md)
+[**\Killbill\Client\Swagger\Model\Tag[]**](../Model/Tag.md)
 
 ### Authorization
 
@@ -156,18 +156,18 @@ Remove custom fields from invoice item
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\InvoiceItemApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -222,18 +222,18 @@ Remove tags from invoice item
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\InvoiceItemApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -279,7 +279,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoiceItemCustomFields**
-> \Killbill\Client\Model\CustomField[] getInvoiceItemCustomFields($invoiceItemId, $audit)
+> \Killbill\Client\Swagger\Model\CustomField[] getInvoiceItemCustomFields($invoiceItemId, $audit)
 
 Retrieve invoice item custom fields
 
@@ -288,18 +288,18 @@ Retrieve invoice item custom fields
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\InvoiceItemApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\CustomField[]**](../Model/CustomField.md)
+[**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)
 
 ### Authorization
 
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoiceItemTags**
-> \Killbill\Client\Model\Tag[] getInvoiceItemTags($invoiceItemId, $accountId, $includedDeleted, $audit)
+> \Killbill\Client\Swagger\Model\Tag[] getInvoiceItemTags($invoiceItemId, $accountId, $includedDeleted, $audit)
 
 Retrieve invoice item tags
 
@@ -349,18 +349,18 @@ Retrieve invoice item tags
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\InvoiceItemApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Tag[]**](../Model/Tag.md)
+[**\Killbill\Client\Swagger\Model\Tag[]**](../Model/Tag.md)
 
 ### Authorization
 
@@ -414,24 +414,24 @@ Modify custom fields to invoice item
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\InvoiceItemApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(new \Killbill\Client\Model\CustomField()); // \Killbill\Client\Model\CustomField[] | 
+$body = array(new \Killbill\Client\Swagger\Model\CustomField()); // \Killbill\Client\Swagger\Model\CustomField[] | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $invoiceItemId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -449,7 +449,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\CustomField[]**](../Model/CustomField.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **invoiceItemId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]

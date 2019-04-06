@@ -1,4 +1,4 @@
-# Killbill\Client\SecurityApi
+# Killbill\Client\Swagger\SecurityApi
 
 All URIs are relative to */*
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**updateUserRoles**](SecurityApi.md#updateUserRoles) | **PUT** /1.0/kb/security/users/{username}/roles | Update roles associated to a user
 
 # **addRoleDefinition**
-> \Killbill\Client\Model\RoleDefinition addRoleDefinition($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)
+> \Killbill\Client\Swagger\Model\RoleDefinition addRoleDefinition($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)
 
 Add a new role definition)
 
@@ -25,18 +25,18 @@ Add a new role definition)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\RoleDefinition(); // \Killbill\Client\Model\RoleDefinition | 
+$body = new \Killbill\Client\Swagger\Model\RoleDefinition(); // \Killbill\Client\Swagger\Model\RoleDefinition | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -54,14 +54,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\RoleDefinition**](../Model/RoleDefinition.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\RoleDefinition**](../Model/RoleDefinition.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
 
 ### Return type
 
-[**\Killbill\Client\Model\RoleDefinition**](../Model/RoleDefinition.md)
+[**\Killbill\Client\Swagger\Model\RoleDefinition**](../Model/RoleDefinition.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **addUserRoles**
-> \Killbill\Client\Model\UserRoles addUserRoles($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)
+> \Killbill\Client\Swagger\Model\UserRoles addUserRoles($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)
 
 Add a new user with roles (to make api requests)
 
@@ -84,18 +84,18 @@ Add a new user with roles (to make api requests)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\UserRoles(); // \Killbill\Client\Model\UserRoles | 
+$body = new \Killbill\Client\Swagger\Model\UserRoles(); // \Killbill\Client\Swagger\Model\UserRoles | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -113,14 +113,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\UserRoles**](../Model/UserRoles.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\UserRoles**](../Model/UserRoles.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
 
 ### Return type
 
-[**\Killbill\Client\Model\UserRoles**](../Model/UserRoles.md)
+[**\Killbill\Client\Swagger\Model\UserRoles**](../Model/UserRoles.md)
 
 ### Authorization
 
@@ -143,12 +143,12 @@ List user permissions
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -183,7 +183,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCurrentUserSubject**
-> \Killbill\Client\Model\Subject getCurrentUserSubject()
+> \Killbill\Client\Swagger\Model\Subject getCurrentUserSubject()
 
 Get user information
 
@@ -192,12 +192,12 @@ Get user information
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -218,7 +218,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Killbill\Client\Model\Subject**](../Model/Subject.md)
+[**\Killbill\Client\Swagger\Model\Subject**](../Model/Subject.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRoleDefinition**
-> \Killbill\Client\Model\RoleDefinition getRoleDefinition($role)
+> \Killbill\Client\Swagger\Model\RoleDefinition getRoleDefinition($role)
 
 Get role definition
 
@@ -241,12 +241,12 @@ Get role definition
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\RoleDefinition**](../Model/RoleDefinition.md)
+[**\Killbill\Client\Swagger\Model\RoleDefinition**](../Model/RoleDefinition.md)
 
 ### Authorization
 
@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getUserRoles**
-> \Killbill\Client\Model\UserRoles getUserRoles($username)
+> \Killbill\Client\Swagger\Model\UserRoles getUserRoles($username)
 
 Get roles associated to a user
 
@@ -294,12 +294,12 @@ Get roles associated to a user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\UserRoles**](../Model/UserRoles.md)
+[**\Killbill\Client\Swagger\Model\UserRoles**](../Model/UserRoles.md)
 
 ### Authorization
 
@@ -347,12 +347,12 @@ Invalidate an existing user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -405,18 +405,18 @@ Update a new role definition)
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\RoleDefinition(); // \Killbill\Client\Model\RoleDefinition | 
+$body = new \Killbill\Client\Swagger\Model\RoleDefinition(); // \Killbill\Client\Swagger\Model\RoleDefinition | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -433,7 +433,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\RoleDefinition**](../Model/RoleDefinition.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\RoleDefinition**](../Model/RoleDefinition.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
@@ -463,18 +463,18 @@ Update a user password
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\UserRoles(); // \Killbill\Client\Model\UserRoles | 
+$body = new \Killbill\Client\Swagger\Model\UserRoles(); // \Killbill\Client\Swagger\Model\UserRoles | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $username = "username_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -492,7 +492,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\UserRoles**](../Model/UserRoles.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\UserRoles**](../Model/UserRoles.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **username** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
@@ -523,18 +523,18 @@ Update roles associated to a user
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\SecurityApi(
+$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\UserRoles(); // \Killbill\Client\Model\UserRoles | 
+$body = new \Killbill\Client\Swagger\Model\UserRoles(); // \Killbill\Client\Swagger\Model\UserRoles | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $username = "username_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -552,7 +552,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\UserRoles**](../Model/UserRoles.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\UserRoles**](../Model/UserRoles.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **username** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]

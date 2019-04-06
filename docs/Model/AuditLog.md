@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **reasonCode** | **string** |  | [optional] 
 **comments** | **string** |  | [optional] 
 **userToken** | **string** |  | [optional] 
-**history** | [**\Killbill\Client\Model\Entity**](Entity.md) |  | [optional] 
+**history** | [**\Killbill\Client\Swagger\Model\Entity**](Entity.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

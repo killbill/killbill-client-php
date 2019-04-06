@@ -1,4 +1,4 @@
-# Killbill\Client\BundleApi
+# Killbill\Client\Swagger\BundleApi
 
 All URIs are relative to */*
 
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 [**transferBundle**](BundleApi.md#transferBundle) | **POST** /1.0/kb/bundles/{bundleId} | Transfer a bundle to another account
 
 # **addBundleBlockingState**
-> \Killbill\Client\Model\BlockingState[] addBundleBlockingState($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $pluginProperty)
+> \Killbill\Client\Swagger\Model\BlockingState[] addBundleBlockingState($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $pluginProperty)
 
 Block a bundle
 
@@ -31,24 +31,24 @@ Block a bundle
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\BlockingState(); // \Killbill\Client\Model\BlockingState | 
+$body = new \Killbill\Client\Swagger\Model\BlockingState(); // \Killbill\Client\Swagger\Model\BlockingState | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -69,7 +69,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\BlockingState**](../Model/BlockingState.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\BlockingState**](../Model/BlockingState.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **bundleId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\BlockingState[]**](../Model/BlockingState.md)
+[**\Killbill\Client\Swagger\Model\BlockingState[]**](../Model/BlockingState.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createBundleCustomFields**
-> \Killbill\Client\Model\CustomField[] createBundleCustomFields($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment)
+> \Killbill\Client\Swagger\Model\CustomField[] createBundleCustomFields($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment)
 
 Add custom fields to bundle
 
@@ -102,24 +102,24 @@ Add custom fields to bundle
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(new \Killbill\Client\Model\CustomField()); // \Killbill\Client\Model\CustomField[] | 
+$body = array(new \Killbill\Client\Swagger\Model\CustomField()); // \Killbill\Client\Swagger\Model\CustomField[] | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -138,7 +138,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\CustomField[]**](../Model/CustomField.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **bundleId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\CustomField[]**](../Model/CustomField.md)
+[**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createBundleTags**
-> \Killbill\Client\Model\Tag[] createBundleTags($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment)
+> \Killbill\Client\Swagger\Model\Tag[] createBundleTags($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment)
 
 Add tags to bundle
 
@@ -169,18 +169,18 @@ Add tags to bundle
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Tag[]**](../Model/Tag.md)
+[**\Killbill\Client\Swagger\Model\Tag[]**](../Model/Tag.md)
 
 ### Authorization
 
@@ -236,18 +236,18 @@ Remove custom fields from bundle
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -302,18 +302,18 @@ Remove tags from bundle
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -359,7 +359,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBundle**
-> \Killbill\Client\Model\Bundle getBundle($bundleId, $audit)
+> \Killbill\Client\Swagger\Model\Bundle getBundle($bundleId, $audit)
 
 Retrieve a bundle by id
 
@@ -368,18 +368,18 @@ Retrieve a bundle by id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -406,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Bundle**](../Model/Bundle.md)
+[**\Killbill\Client\Swagger\Model\Bundle**](../Model/Bundle.md)
 
 ### Authorization
 
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBundleByKey**
-> \Killbill\Client\Model\Bundle[] getBundleByKey($externalKey, $includedDeleted, $audit)
+> \Killbill\Client\Swagger\Model\Bundle[] getBundleByKey($externalKey, $includedDeleted, $audit)
 
 Retrieve a bundle by external key
 
@@ -429,18 +429,18 @@ Retrieve a bundle by external key
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -469,7 +469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Bundle[]**](../Model/Bundle.md)
+[**\Killbill\Client\Swagger\Model\Bundle[]**](../Model/Bundle.md)
 
 ### Authorization
 
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBundleCustomFields**
-> \Killbill\Client\Model\CustomField[] getBundleCustomFields($bundleId, $audit)
+> \Killbill\Client\Swagger\Model\CustomField[] getBundleCustomFields($bundleId, $audit)
 
 Retrieve bundle custom fields
 
@@ -492,18 +492,18 @@ Retrieve bundle custom fields
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\CustomField[]**](../Model/CustomField.md)
+[**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)
 
 ### Authorization
 
@@ -544,7 +544,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBundleTags**
-> \Killbill\Client\Model\Tag[] getBundleTags($bundleId, $includedDeleted, $audit)
+> \Killbill\Client\Swagger\Model\Tag[] getBundleTags($bundleId, $includedDeleted, $audit)
 
 Retrieve bundle tags
 
@@ -553,18 +553,18 @@ Retrieve bundle tags
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -593,7 +593,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Tag[]**](../Model/Tag.md)
+[**\Killbill\Client\Swagger\Model\Tag[]**](../Model/Tag.md)
 
 ### Authorization
 
@@ -607,7 +607,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBundles**
-> \Killbill\Client\Model\Bundle[] getBundles($offset, $limit, $audit)
+> \Killbill\Client\Swagger\Model\Bundle[] getBundles($offset, $limit, $audit)
 
 List bundles
 
@@ -616,18 +616,18 @@ List bundles
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -656,7 +656,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Bundle[]**](../Model/Bundle.md)
+[**\Killbill\Client\Swagger\Model\Bundle[]**](../Model/Bundle.md)
 
 ### Authorization
 
@@ -679,24 +679,24 @@ Modify custom fields to bundle
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(new \Killbill\Client\Model\CustomField()); // \Killbill\Client\Model\CustomField[] | 
+$body = array(new \Killbill\Client\Swagger\Model\CustomField()); // \Killbill\Client\Swagger\Model\CustomField[] | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -714,7 +714,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\CustomField[]**](../Model/CustomField.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **bundleId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
@@ -745,18 +745,18 @@ Pause a bundle
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -813,24 +813,24 @@ Update a bundle externalKey
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\Bundle(); // \Killbill\Client\Model\Bundle | 
+$body = new \Killbill\Client\Swagger\Model\Bundle(); // \Killbill\Client\Swagger\Model\Bundle | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -848,7 +848,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\Bundle**](../Model/Bundle.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\Bundle**](../Model/Bundle.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **bundleId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
@@ -879,18 +879,18 @@ Resume a bundle
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -938,7 +938,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **searchBundles**
-> \Killbill\Client\Model\Bundle[] searchBundles($searchKey, $offset, $limit, $audit)
+> \Killbill\Client\Swagger\Model\Bundle[] searchBundles($searchKey, $offset, $limit, $audit)
 
 Search bundles
 
@@ -947,18 +947,18 @@ Search bundles
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -989,7 +989,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Bundle[]**](../Model/Bundle.md)
+[**\Killbill\Client\Swagger\Model\Bundle[]**](../Model/Bundle.md)
 
 ### Authorization
 
@@ -1003,7 +1003,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **transferBundle**
-> \Killbill\Client\Model\Bundle transferBundle($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $billingPolicy, $pluginProperty)
+> \Killbill\Client\Swagger\Model\Bundle transferBundle($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $billingPolicy, $pluginProperty)
 
 Transfer a bundle to another account
 
@@ -1012,24 +1012,24 @@ Transfer a bundle to another account
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\BundleApi(
+$apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\Bundle(); // \Killbill\Client\Model\Bundle | 
+$body = new \Killbill\Client\Swagger\Model\Bundle(); // \Killbill\Client\Swagger\Model\Bundle | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -1051,7 +1051,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\Bundle**](../Model/Bundle.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\Bundle**](../Model/Bundle.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **bundleId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
@@ -1062,7 +1062,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\Bundle**](../Model/Bundle.md)
+[**\Killbill\Client\Swagger\Model\Bundle**](../Model/Bundle.md)
 
 ### Authorization
 

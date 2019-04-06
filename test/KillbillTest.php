@@ -20,10 +20,11 @@ namespace Killbill\Client;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
-use Killbill\Client\Api\AccountApi;
-use Killbill\Client\Api\TenantApi;
-use Killbill\Client\Model\Account;
-use Killbill\Client\Model\Tenant;
+use Killbill\Client\Swagger\Api\AccountApi;
+use Killbill\Client\Swagger\Api\TenantApi;
+use Killbill\Client\Swagger\Configuration;
+use Killbill\Client\Swagger\Model\Account;
+use Killbill\Client\Swagger\Model\Tenant;
 
 /**
  * Base test class

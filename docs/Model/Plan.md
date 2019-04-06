@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional] 
 **prettyName** | **string** |  | [optional] 
 **billingPeriod** | **string** |  | [optional] 
-**phases** | [**\Killbill\Client\Model\Phase[]**](Phase.md) |  | [optional] 
+**phases** | [**\Killbill\Client\Swagger\Model\Phase[]**](Phase.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

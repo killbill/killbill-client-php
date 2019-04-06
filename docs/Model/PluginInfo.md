@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **version** | **string** |  | [optional] 
 **state** | **string** |  | [optional] 
 **isSelectedForStart** | **bool** |  | [optional] 
-**services** | [**\Killbill\Client\Model\PluginServiceInfo[]**](PluginServiceInfo.md) |  | [optional] 
+**services** | [**\Killbill\Client\Swagger\Model\PluginServiceInfo[]**](PluginServiceInfo.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

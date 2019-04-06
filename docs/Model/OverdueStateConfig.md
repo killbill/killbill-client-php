@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional] 
 **isClearState** | **bool** |  | [optional] 
-**condition** | [**\Killbill\Client\Model\OverdueCondition**](OverdueCondition.md) |  | [optional] 
+**condition** | [**\Killbill\Client\Swagger\Model\OverdueCondition**](OverdueCondition.md) |  | [optional] 
 **externalMessage** | **string** |  | [optional] 
 **isBlockChanges** | **bool** |  | [optional] 
 **isDisableEntitlement** | **bool** |  | [optional] 

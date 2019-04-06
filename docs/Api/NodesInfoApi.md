@@ -1,4 +1,4 @@
-# Killbill\Client\NodesInfoApi
+# Killbill\Client\Swagger\NodesInfoApi
 
 All URIs are relative to */*
 
@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**triggerNodeCommand**](NodesInfoApi.md#triggerNodeCommand) | **POST** /1.0/kb/nodesInfo | Trigger a node command
 
 # **getNodesInfo**
-> \Killbill\Client\Model\PluginInfo[] getNodesInfo()
+> \Killbill\Client\Swagger\Model\PluginInfo[] getNodesInfo()
 
 Retrieve all the nodes infos
 
@@ -17,12 +17,12 @@ Retrieve all the nodes infos
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\NodesInfoApi(
+$apiInstance = new Killbill\Client\Swagger\Api\NodesInfoApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -43,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Killbill\Client\Model\PluginInfo[]**](../Model/PluginInfo.md)
+[**\Killbill\Client\Swagger\Model\PluginInfo[]**](../Model/PluginInfo.md)
 
 ### Authorization
 
@@ -66,18 +66,18 @@ Trigger a node command
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\NodesInfoApi(
+$apiInstance = new Killbill\Client\Swagger\Api\NodesInfoApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\NodeCommand(); // \Killbill\Client\Model\NodeCommand | 
+$body = new \Killbill\Client\Swagger\Model\NodeCommand(); // \Killbill\Client\Swagger\Model\NodeCommand | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -95,7 +95,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\NodeCommand**](../Model/NodeCommand.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\NodeCommand**](../Model/NodeCommand.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]

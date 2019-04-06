@@ -9,7 +9,10 @@
         "api"
     ],
     "autoload": {
-        "psr-4": { "Killbill\\Client\\": "src/" }
+        "psr-4": {
+            "Killbill\\Client\\Swagger\\": "lib/",
+            "Killbill\\Client\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": { "Killbill\\Client\\": "test/" }
@@ -18,8 +21,8 @@
         "test": "ENV=local phpunit",
         "test-integration": "phpunit",
         "record-mocks": "composer run test-integration && RECORD_REQUESTS=1 phpunit",
-        "phpcs": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php --ignore=src/Type -d memory_limit=1024M",
-        "phpcs-checkstyle": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php --ignore=src/Type -d memory_limit=1024M --report=checkstyle"
+        "phpcs": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php -d memory_limit=1024M",
+        "phpcs-checkstyle": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php -d memory_limit=1024M --report=checkstyle"
     },
     "license": "Apache-2.0",
     "require": {

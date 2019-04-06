@@ -1,4 +1,4 @@
-# Killbill\Client\PluginInfoApi
+# Killbill\Client\Swagger\PluginInfoApi
 
 All URIs are relative to */*
 
@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**getPluginsInfo**](PluginInfoApi.md#getPluginsInfo) | **GET** /1.0/kb/pluginsInfo | Retrieve the list of registered plugins
 
 # **getPluginsInfo**
-> \Killbill\Client\Model\PluginInfo[] getPluginsInfo()
+> \Killbill\Client\Swagger\Model\PluginInfo[] getPluginsInfo()
 
 Retrieve the list of registered plugins
 
@@ -16,18 +16,18 @@ Retrieve the list of registered plugins
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\PluginInfoApi(
+$apiInstance = new Killbill\Client\Swagger\Api\PluginInfoApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -48,7 +48,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Killbill\Client\Model\PluginInfo[]**](../Model/PluginInfo.md)
+[**\Killbill\Client\Swagger\Model\PluginInfo[]**](../Model/PluginInfo.md)
 
 ### Authorization
 

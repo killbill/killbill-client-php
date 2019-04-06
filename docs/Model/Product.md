@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **type** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **prettyName** | **string** |  | [optional] 
-**plans** | [**\Killbill\Client\Model\Plan[]**](Plan.md) |  | [optional] 
+**plans** | [**\Killbill\Client\Swagger\Model\Plan[]**](Plan.md) |  | [optional] 
 **included** | **string[]** |  | [optional] 
 **available** | **string[]** |  | [optional] 
 

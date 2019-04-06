@@ -21,10 +21,10 @@ Name | Type | Description | Notes
 **billingStartDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **billingEndDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **billCycleDayLocal** | **int** |  | [optional] 
-**events** | [**\Killbill\Client\Model\EventSubscription[]**](EventSubscription.md) |  | [optional] 
-**priceOverrides** | [**\Killbill\Client\Model\PhasePrice[]**](PhasePrice.md) |  | [optional] 
-**prices** | [**\Killbill\Client\Model\PhasePrice[]**](PhasePrice.md) |  | [optional] 
-**auditLogs** | [**\Killbill\Client\Model\AuditLog[]**](AuditLog.md) |  | [optional] 
+**events** | [**\Killbill\Client\Swagger\Model\EventSubscription[]**](EventSubscription.md) |  | [optional] 
+**priceOverrides** | [**\Killbill\Client\Swagger\Model\PhasePrice[]**](PhasePrice.md) |  | [optional] 
+**prices** | [**\Killbill\Client\Swagger\Model\PhasePrice[]**](PhasePrice.md) |  | [optional] 
+**auditLogs** | [**\Killbill\Client\Swagger\Model\AuditLog[]**](AuditLog.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

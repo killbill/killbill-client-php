@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**timeSinceEarliestUnpaidInvoiceEqualsOrExceeds** | [**\Killbill\Client\Model\Duration**](Duration.md) |  | [optional] 
+**timeSinceEarliestUnpaidInvoiceEqualsOrExceeds** | [**\Killbill\Client\Swagger\Model\Duration**](Duration.md) |  | [optional] 
 **controlTagInclusion** | **string** |  | [optional] 
 **controlTagExclusion** | **string** |  | [optional] 
 **numberOfUnpaidInvoicesEqualsOrExceeds** | **int** |  | [optional] 

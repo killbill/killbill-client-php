@@ -1,4 +1,4 @@
-# Killbill\Client\PaymentGatewayApi
+# Killbill\Client\Swagger\PaymentGatewayApi
 
 All URIs are relative to */*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**processNotification**](PaymentGatewayApi.md#processNotification) | **POST** /1.0/kb/paymentGateways/notification/{pluginName} | Process a gateway notification
 
 # **buildComboFormDescriptor**
-> \Killbill\Client\Model\HostedPaymentPageFormDescriptor buildComboFormDescriptor($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty)
+> \Killbill\Client\Swagger\Model\HostedPaymentPageFormDescriptor buildComboFormDescriptor($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty)
 
 Combo API to generate form data to redirect the customer to the gateway
 
@@ -18,24 +18,24 @@ Combo API to generate form data to redirect the customer to the gateway
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\PaymentGatewayApi(
+$apiInstance = new Killbill\Client\Swagger\Api\PaymentGatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\ComboHostedPaymentPage(); // \Killbill\Client\Model\ComboHostedPaymentPage | 
+$body = new \Killbill\Client\Swagger\Model\ComboHostedPaymentPage(); // \Killbill\Client\Swagger\Model\ComboHostedPaymentPage | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -55,7 +55,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\ComboHostedPaymentPage**](../Model/ComboHostedPaymentPage.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\ComboHostedPaymentPage**](../Model/ComboHostedPaymentPage.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\HostedPaymentPageFormDescriptor**](../Model/HostedPaymentPageFormDescriptor.md)
+[**\Killbill\Client\Swagger\Model\HostedPaymentPageFormDescriptor**](../Model/HostedPaymentPageFormDescriptor.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **buildFormDescriptor**
-> \Killbill\Client\Model\HostedPaymentPageFormDescriptor buildFormDescriptor($body, $xKillbillCreatedBy, $accountId, $xKillbillReason, $xKillbillComment, $paymentMethodId, $controlPluginName, $pluginProperty)
+> \Killbill\Client\Swagger\Model\HostedPaymentPageFormDescriptor buildFormDescriptor($body, $xKillbillCreatedBy, $accountId, $xKillbillReason, $xKillbillComment, $paymentMethodId, $controlPluginName, $pluginProperty)
 
 Generate form data to redirect the customer to the gateway
 
@@ -87,24 +87,24 @@ Generate form data to redirect the customer to the gateway
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\PaymentGatewayApi(
+$apiInstance = new Killbill\Client\Swagger\Api\PaymentGatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Model\HostedPaymentPageFields(); // \Killbill\Client\Model\HostedPaymentPageFields | 
+$body = new \Killbill\Client\Swagger\Model\HostedPaymentPageFields(); // \Killbill\Client\Swagger\Model\HostedPaymentPageFields | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -126,7 +126,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Model\HostedPaymentPageFields**](../Model/HostedPaymentPageFields.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\HostedPaymentPageFields**](../Model/HostedPaymentPageFields.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **accountId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Model\HostedPaymentPageFormDescriptor**](../Model/HostedPaymentPageFormDescriptor.md)
+[**\Killbill\Client\Swagger\Model\HostedPaymentPageFormDescriptor**](../Model/HostedPaymentPageFormDescriptor.md)
 
 ### Authorization
 
@@ -162,18 +162,18 @@ The response is built by the appropriate plugin
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 // Configure API key authorization: Killbill Api Key
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
-$config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Killbill\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
-$config = Killbill\Client\Configuration::getDefaultConfiguration()
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Api\PaymentGatewayApi(
+$apiInstance = new Killbill\Client\Swagger\Api\PaymentGatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
