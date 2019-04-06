@@ -17,6 +17,9 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Swagger\Model\Account;
+use Killbill\Client\Swagger\Model\PaymentMethod;
+
 /**
  * Tests for ServerPaymentMethod
  */
@@ -38,8 +41,7 @@ class ServerPaymentMethodTest extends KillbillTest
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             $this->externalBundleId = md5('serverPaymentMethodTest'.$this->tenant->getExternalKey());
         }
-
-        $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
     }
 
     /**
@@ -58,16 +60,24 @@ class ServerPaymentMethodTest extends KillbillTest
      */
     public function testBasic()
     {
-        $paymentMethod = new PaymentMethod($this->logger);
+        $paymentMethod = new PaymentMethod();
         $paymentMethod->setAccountId($this->account->getAccountId());
-        $paymentMethod->setIsDefault(true);
+        $paymentMethod->setIsDefault('true');
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
-        $paymentMethod->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        $this->account = $this->account->get($this->tenant->getTenantHeaders());
+        $this->client->getAccountApi()->createPaymentMethod(
+            $paymentMethod,
+            self::USER,
+            $this->account->getAccountId(),
+            self::REASON,
+            self::COMMENT,
+            $default = 'true'
+        );
+
+        $this->account = $this->client->getAccountApi()->getAccount($this->account->getAccountId());
         $this->assertNotEmpty($this->account->getPaymentMethodId());
 
-        $paymentMethods = $this->account->getPaymentMethods($this->tenant->getTenantHeaders());
+        $paymentMethods = $this->client->getAccountApi()->getPaymentMethodsForAccount($this->account->getAccountId());
         $this->assertNotEmpty($paymentMethods);
         $this->assertEquals(count($paymentMethods), 1);
         $this->assertEquals($paymentMethods[0]->getAccountId(), $this->account->getAccountId());
