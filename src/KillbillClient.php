@@ -1,0 +1,105 @@
+<?php
+
+namespace Killbill\Client;
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\CurlHandler;
+use GuzzleHttp\HandlerStack;
+use Killbill\Client\Swagger\Api;
+use Killbill\Client\Swagger\Configuration;
+
+/**
+ * Killbill client wrapper
+ * @method Api\AccountApi getAccountApi
+ * @method Api\AdminApi getAdminApi
+ * @method Api\BundleApi getBundleApi
+ * @method Api\CatalogApi getCatalogApi
+ * @method Api\CreditApi getCreditApi
+ * @method Api\CustomFieldApi getCustomFieldApi
+ * @method Api\ExportApi getExportApi
+ * @method Api\InvoiceApi getInvoiceApi
+ * @method Api\InvoiceItemApi getInvoiceItemApi
+ * @method Api\InvoicePaymentApi getInvoicePaymentApi
+ * @method Api\NodesInfoApi getNodesInfoApi
+ * @method Api\OverdueApi getOverdueApi
+ * @method Api\PaymentApi getPaymentApi
+ * @method Api\PaymentGatewayApi getPaymentGatewayApi
+ * @method Api\PaymentMethodApi getPaymentMethodApi
+ * @method Api\PaymentTransactionApi getPaymentTransactionApi
+ * @method Api\PluginInfoApi getPluginInfoApi
+ * @method Api\SecurityApi getSecurityApi
+ * @method Api\SubscriptionApi getSubscriptionApi
+ * @method Api\TagApi getTagApi
+ * @method Api\TagDefinitionApi getTagDefinitionApi
+ * @method Api\TenantApi getTenantApi
+ * @method Api\UsageApi getUsageApi
+ */
+class KillbillClient
+{
+    /** @var Client */
+    private $guzzleClient;
+
+    /** @var Configuration */
+    private $configuration;
+
+    /**
+     * @param string $host
+     * @param string $username
+     * @param string $password
+     */
+    public function __construct($host = 'http://localhost:8080', $username = 'admin', $password = 'password')
+    {
+        $this->configuration = Configuration::getDefaultConfiguration()
+            ->setHost($host)
+            ->setUsername($username)
+            ->setPassword($password);
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setApiKey($value)
+    {
+        $this->configuration->setApiKey('X-Killbill-ApiKey', $value);
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setApiSecret($value)
+    {
+        $this->configuration->setApiKey('X-Killbill-ApiSecret', $value);
+    }
+
+    /**
+     * @param string $name
+     * @param array  $args
+     * @return mixed
+     */
+    public function __call($name, array $args)
+    {
+        if (strpos($name, 'get') !== 0) {
+            throw new \RuntimeException(sprintf('Method "%s" not found', $name));
+        }
+        list(, $class) = explode('get', $name);
+        $fqcn = 'Killbill\\Client\\Swagger\\Api\\'.$class;
+
+        return new $fqcn($this->getGuzzleClient(), $this->configuration);
+    }
+
+    /**
+     * @return Client
+     */
+    private function getGuzzleClient()
+    {
+        if (!$this->guzzleClient) {
+            $stack = new HandlerStack();
+            $stack->setHandler(new CurlHandler());
+            $stack->push(RedirectOnPostMiddleware::get());
+            $stack->push(AddTenantHeadersMiddleware::get($this->configuration));
+            $this->guzzleClient = new Client(['handler' => $stack]);
+        }
+
+        return $this->guzzleClient;
+    }
+}
