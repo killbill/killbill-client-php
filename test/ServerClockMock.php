@@ -17,27 +17,57 @@
 
 namespace Killbill\Client;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use Killbill\Client\Swagger\Configuration;
+use Psr\Http\Message\ResponseInterface;
+
 /**
  * Manipulate the server clock
  */
-class ServerClockMock extends AbstractResource
+class ServerClockMock
 {
+    /**
+     * @var ClientInterface
+     */
+    protected $client;
+
+    /**
+     * @var Configuration
+     */
+    protected $config;
+
+    /**
+     * @param ClientInterface $client
+     * @param Configuration   $config
+     */
+    public function __construct(
+        ClientInterface $client = null,
+        Configuration $config = null
+    ) {
+        $this->client = $client ?: new Client();
+        $this->config = $config ?: new Configuration();
+    }
+
     /**
      * Set the clock to a specific date
      *
      * @param string $requestedDate Date as a string
-     * @param array  $headers       Headers for the request
+     *
+     * @return ResponseInterface
      */
-    public function setClock($requestedDate, $headers)
+    public function setClock($requestedDate)
     {
-        $uri = '/test/clock';
+        $uri = 'test/clock';
         if ($requestedDate) {
             $uri = $uri.'?requestedDate='.$requestedDate;
         }
-        $this->createRequest($uri, null, null, null, $headers);
+        $response = $this->client->post($uri);
 
         // For precaution
         usleep(3000000);
+
+        return $response;
     }
 
     /**

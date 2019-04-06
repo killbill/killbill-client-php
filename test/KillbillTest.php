@@ -19,6 +19,7 @@ namespace Killbill\Client;
 
 use Killbill\Client\Swagger\Model\Account;
 use Killbill\Client\Swagger\Model\Tenant;
+use Psr\Log\LoggerInterface;
 
 /**
  * Base test class
@@ -30,16 +31,15 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     const COMMENT = 'no comment';
 
     /** @var Account|null */
-    protected $accountData = null;
+    protected $accountData;
     /** @var Tenant|null */
-    protected $tenant = null;
+    protected $tenant;
     /** @var ServerClockMock|null */
-    protected $clock = null;
+    protected $clock;
     /** @var string|null */
-    protected $externalAccountId = null;
-
-//    /** @var Logger|null */
-//    protected $logger = null;
+    protected $externalAccountId;
+    /** @var LoggerInterface|null */
+    protected $logger;
 
     /**
      * Set up the test
@@ -50,7 +50,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         //$this->logger = new Logger('name');
         //$this->logger->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
 
-        $externalKey = uniqid();
+        $externalKey = uniqid('', true);
 //        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
 //            Client::$mockManager = new MockManager();
 //
@@ -67,6 +67,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $tenantApiSecret = 'test-php-api-secret-'.$externalKey;
 
         $client = new KillbillClient(
+            $this->logger,
             getenv('API_HOST'),
             getenv('ADMIN_LOGIN'),
             getenv('ADMIN_PASSWORD')
@@ -100,22 +101,17 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
 
 
         // setup catalog
-        $killbillClient = new Client($this->logger);
-        $headers        = $tenant->getTenantHeaders();
-        $headers[]      = 'Content-Type: application/xml; charset=utf-8';
-
         $catalogContents = file_get_contents(__DIR__.'/resources/SpyCarAdvanced.xml');
-        $response        = $killbillClient->request(Client::POST, Client::PATH_CATALOG, $catalogContents, self::USER, self::REASON, self::COMMENT, $headers);
+        $client->getCatalogApi()->uploadCatalogXml($catalogContents, self::USER, self::REASON, self::COMMENT);
 
-        $this->clock = new ServerClockMock();
+        $this->clock = new ServerClockMock($client->getGuzzleClient(), $client->getConfiguration());
         // Reset clock to now
-        $this->clock->setClock(null, $this->tenant->getTenantHeaders());
-
-        $this->externalAccountId = uniqid();
-        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+        $this->clock->setClock(null);
+        $this->externalAccountId = uniqid('', true);
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') === '1') {
             $this->externalAccountId = md5('externalAccount'.$this->tenant->getExternalKey());
         }
-        $this->accountData = new Account($this->logger);
+        $this->accountData = new Account();
         $this->accountData->setName('Killbill php test');
         $this->accountData->setExternalKey($this->externalAccountId);
         $this->accountData->setEmail('test-'.$this->externalAccountId.'@kill-bill.org');
@@ -136,10 +132,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
      */
     public function tearDown()
     {
-        unset($this->externalAccountId);
-        unset($this->accountData);
-        unset($this->tenant);
-        unset($this->clock);
+        unset($this->externalAccountId, $this->accountData, $this->tenant, $this->clock);
     }
 
     /**

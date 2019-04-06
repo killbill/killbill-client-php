@@ -5,8 +5,12 @@ namespace Killbill\Client;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
 use Killbill\Client\Swagger\Api;
 use Killbill\Client\Swagger\Configuration;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
+use Psr\Log\NullLogger;
 
 /**
  * Killbill client wrapper
@@ -36,6 +40,9 @@ use Killbill\Client\Swagger\Configuration;
  */
 class KillbillClient
 {
+    /** @var LoggerInterface */
+    private $logger;
+
     /** @var Client */
     private $guzzleClient;
 
@@ -43,12 +50,18 @@ class KillbillClient
     private $configuration;
 
     /**
-     * @param string $host
-     * @param string $username
-     * @param string $password
+     * @param LoggerInterface|null $logger
+     * @param string               $host
+     * @param string               $username
+     * @param string               $password
      */
-    public function __construct($host = 'http://localhost:8080', $username = 'admin', $password = 'password')
-    {
+    public function __construct(
+        LoggerInterface $logger = null,
+        $host = 'http://localhost:8080',
+        $username = 'admin',
+        $password = 'password'
+    ) {
+        $this->logger = $logger ?: new NullLogger();
         $this->configuration = Configuration::getDefaultConfiguration()
             ->setHost($host)
             ->setUsername($username)
@@ -90,16 +103,28 @@ class KillbillClient
     /**
      * @return Client
      */
-    private function getGuzzleClient()
+    public function getGuzzleClient()
     {
         if (!$this->guzzleClient) {
             $stack = new HandlerStack();
             $stack->setHandler(new CurlHandler());
             $stack->push(RedirectOnPostMiddleware::get());
             $stack->push(AddTenantHeadersMiddleware::get($this->configuration));
-            $this->guzzleClient = new Client(['handler' => $stack]);
+            $stack->push(Middleware::log($this->logger, new \GuzzleHttp\MessageFormatter(), LogLevel::ERROR));
+            $this->guzzleClient = new Client([
+                'handler' => $stack,
+                'base_uri' => $this->configuration->getHost().'/1.0/kb/',
+            ]);
         }
 
         return $this->guzzleClient;
+    }
+
+    /**
+     * @return Configuration
+     */
+    public function getConfiguration()
+    {
+        return $this->configuration;
     }
 }
