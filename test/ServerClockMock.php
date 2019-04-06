@@ -20,7 +20,6 @@ namespace Killbill\Client;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Killbill\Client\Swagger\Configuration;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * Manipulate the server clock
@@ -53,8 +52,6 @@ class ServerClockMock
      * Set the clock to a specific date
      *
      * @param string $requestedDate Date as a string
-     *
-     * @return ResponseInterface
      */
     public function setClock($requestedDate)
     {
@@ -62,23 +59,20 @@ class ServerClockMock
         if ($requestedDate) {
             $uri = $uri.'?requestedDate='.$requestedDate;
         }
-        $response = $this->client->post($uri);
+        $this->client->post($uri);
 
         // For precaution
         usleep(3000000);
-
-        return $response;
     }
 
     /**
      * Add a specific amount of days to the clock
      *
-     * @param int   $count   Days to add
-     * @param array $headers Headers for the request
+     * @param int $count Days to add
      */
-    public function addDays($count, $headers)
+    public function addDays($count)
     {
-        $this->incrementClock($count, null, null, null, 'UTC', $headers);
+        $this->incrementClock($count, null, null, null, 'UTC');
     }
 
     /**
@@ -89,11 +83,10 @@ class ServerClockMock
      * @param int    $months   Months to add
      * @param int    $years    Years to add
      * @param string $timezone Timezone as a string
-     * @param array  $headers  Headers for the request
      */
-    private function incrementClock($days, $weeks, $months, $years, $timeZone, $headers)
+    private function incrementClock($days, $weeks, $months, $years, $timeZone)
     {
-        $uri = '/test/clock';
+        $uri = 'test/clock';
         if ($days) {
             $uri = $uri.'?days='.$days.'&timeZone='.$timeZone;
         } elseif ($weeks) {
@@ -103,7 +96,7 @@ class ServerClockMock
         } elseif ($years) {
             $uri = $uri.'?years='.$years.'&timeZone='.$timeZone;
         }
-        $this->updateRequest($uri, null, null, null, $headers);
+        $this->client->post($uri);
 
         // For precaution
         usleep(3000000);

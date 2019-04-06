@@ -109,7 +109,7 @@ class KillbillClient
             $stack = new HandlerStack();
             $stack->setHandler(new CurlHandler());
             $stack->push(RedirectOnPostMiddleware::get());
-            $stack->push(AddTenantHeadersMiddleware::get($this->configuration));
+            $stack->push(AddAuthHeadersMiddleware::get($this->configuration));
             $stack->push(Middleware::log($this->logger, new \GuzzleHttp\MessageFormatter(), LogLevel::ERROR));
             $this->guzzleClient = new Client([
                 'handler' => $stack,

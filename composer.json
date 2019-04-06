@@ -22,6 +22,7 @@
         "test-integration": "phpunit",
         "record-mocks": "composer run test-integration && RECORD_REQUESTS=1 phpunit",
         "phpcs": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php -d memory_limit=1024M",
+        "phpcbf": "phpcbf --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php -d memory_limit=1024M",
         "phpcs-checkstyle": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php -d memory_limit=1024M --report=checkstyle"
     },
     "license": "Apache-2.0",

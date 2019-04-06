@@ -98,8 +98,13 @@ class ServerAccountTest extends KillbillTest
          * Add tags
          */
         //TODO: must be createAccountTags([$tag1, $tag2], ...)
-        $accountTags = $this->client->getAccountApi()->createAccountTags(json_encode([$tag1->getId(), $tag2->getId()]),
-            self::USER, $account->getAccountId(), self::REASON, self::COMMENT);
+        $accountTags = $this->client->getAccountApi()->createAccountTags(
+            json_encode([$tag1->getId(), $tag2->getId()]),
+            self::USER,
+            $account->getAccountId(),
+            self::REASON,
+            self::COMMENT
+        );
         $this->assertEquals(2, count($accountTags));
 
         /*
@@ -119,8 +124,13 @@ class ServerAccountTest extends KillbillTest
          * Delete one of them
          */
         //TODO: must be deleteAccountTags([$tag1->getId()], ...)
-        $this->client->getAccountApi()->deleteAccountTags($account->getAccountId(), self::USER,
-            "{$tag1->getId()}", self::REASON, self::COMMENT);
+        $this->client->getAccountApi()->deleteAccountTags(
+            $account->getAccountId(),
+            self::USER,
+            implode(',', [$tag1->getId()]),
+            self::REASON,
+            self::COMMENT
+        );
         $tags = $this->client->getAccountApi()->getAccountTags($account->getAccountId());
         $this->assertCount(1, $tags);
         $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
@@ -157,6 +167,7 @@ class ServerAccountTest extends KillbillTest
         $cfs = $this->client->getAccountApi()->getAccountCustomFields($account->getAccountId());
         $this->assertCount(2, $cfs);
 
+        //TODO: endpoint custom field by name?
         $cf = $cfs[0]->getName() === $cf1->getName() ? $cfs[0] : $cfs[1];
         $this->assertEquals($cf->getName(), $cf1->getName());
         $this->assertEquals($cf->getValue(), $cf1->getValue());
@@ -167,9 +178,13 @@ class ServerAccountTest extends KillbillTest
          * Delete one of them
          */
         //TODO: must be deleteAccountCustomFields(..., [$cf->getCustomFieldId()])
-
-        $this->client->getAccountApi()->deleteAccountCustomFields($account->getAccountId(), self::USER,
-            "{$cf->getCustomFieldId()}", self::REASON, self::COMMENT);
+        $this->client->getAccountApi()->deleteAccountCustomFields(
+            $account->getAccountId(),
+            self::USER,
+            "{$cf->getCustomFieldId()}",
+            self::REASON,
+            self::COMMENT
+        );
 
         $cfs = $this->client->getAccountApi()->getAccountCustomFields($account->getAccountId());
         $this->assertCount(1, $cfs);

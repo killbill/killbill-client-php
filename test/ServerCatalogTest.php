@@ -41,15 +41,14 @@ class ServerCatalogTest extends KillbillTest
     public function testBasic()
     {
         /** @var Catalog $catalog */
-        list($catalog) =  = $this->client->getCatalogApi()->getCatalogJson();
+        list($catalog) = $this->client->getCatalogApi()->getCatalogJson();
         self::assertCount(6, $catalog->getProducts());
 
+        //check XML
         $xml = $this->client->getCatalogApi()->getCatalogXml();
-
         $dom = new \DOMDocument();
         $dom->loadXml($xml);
-
         $xp = new \DOMXPath($dom);
-        self::assertSame(6, $xp->evaluate('count(//versions[1]/version/products/product)'));
+        self::assertSame(6.0, $xp->evaluate('count(//versions[1]/version/products/product)'));
     }
 }
