@@ -17,6 +17,9 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Swagger\Model\CustomField;
+use Killbill\Client\Swagger\Model\TagDefinition;
+
 /**
  * Test class for ServerAccount
  */
@@ -27,7 +30,7 @@ class ServerAccountTest extends KillbillTest
      */
     public function testBasicApi()
     {
-        $createdAccount = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $createdAccount = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
         $this->assertEquals($this->accountData->getName(), $createdAccount->getName());
         $this->assertEquals($this->accountData->getExternalKey(), $createdAccount->getExternalKey());
@@ -46,15 +49,15 @@ class ServerAccountTest extends KillbillTest
         /*
          * Verify we can retrieve it
          */
-        $account = new Account($this->logger);
-        $account->setAccountId($createdAccount->getAccountId());
-        $account = $account->get($this->tenant->getTenantHeaders());
+        $account = $this->client->getAccountApi()->getAccount($createdAccount->getAccountId());
 
         /*
          * Update it
          */
         $account->setName('My awesome new name');
-        $updatedAccount = $account->update(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->client->getAccountApi()->updateAccount($account, self::USER, $account->getAccountId(), self::REASON, self::COMMENT);
+        $updatedAccount = $this->client->getAccountApi()->getAccount($account->getAccountId());
+
         $this->assertEquals('My awesome new name', $updatedAccount->getName());
     }
 
@@ -63,9 +66,9 @@ class ServerAccountTest extends KillbillTest
      */
     public function testOverdueState()
     {
-        $account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
-        $state = $account->getOverdueState($this->tenant->getTenantHeaders());
+        $state = $this->client->getAccountApi()->getOverdueAccount($account->getAccountId());
         $this->assertEquals($state->getName(), '__KILLBILL__CLEAR__OVERDUE_STATE__');
     }
 
@@ -74,31 +77,35 @@ class ServerAccountTest extends KillbillTest
      */
     public function testTags()
     {
-        $account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
         /*
          * Create the tag definitions
          */
-        $tag1 = new TagDefinition($this->logger);
+        $tag1 = new TagDefinition();
         $tag1->setName('tag1-'.$this->tenant->getExternalKey());
         $tag1->setDescription('This is tag1');
-        $tag1 = $tag1->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $tag1->setApplicableObjectTypes([TagDefinition::APPLICABLE_OBJECT_TYPES_ACCOUNT]);
+        $tag1 = $this->client->getTagDefinitionApi()->createTagDefinition($tag1, self::USER, self::REASON, self::COMMENT);
 
-        $tag2 = new TagDefinition($this->logger);
+        $tag2 = new TagDefinition();
         $tag2->setName('tag2-'.$this->tenant->getExternalKey());
         $tag2->setDescription('This is tag2');
-        $tag2 = $tag2->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $tag2->setApplicableObjectTypes([TagDefinition::APPLICABLE_OBJECT_TYPES_ACCOUNT]);
+        $tag2 = $this->client->getTagDefinitionApi()->createTagDefinition($tag2, self::USER, self::REASON, self::COMMENT);
 
         /*
          * Add tags
          */
-        $accountTags = $account->addTags(array($tag1->getId(), $tag2->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        //TODO: must be createAccountTags([$tag1, $tag2], ...)
+        $accountTags = $this->client->getAccountApi()->createAccountTags(json_encode([$tag1->getId(), $tag2->getId()]),
+            self::USER, $account->getAccountId(), self::REASON, self::COMMENT);
         $this->assertEquals(2, count($accountTags));
 
         /*
          * Verify we can retrieve them
          */
-        $tags = $account->getTags($this->tenant->getTenantHeaders());
+        $tags = $this->client->getAccountApi()->getAccountTags($account->getAccountId());
         $this->assertEquals(2, count($tags));
         if (strcmp($tags[0]->getTagDefinitionName(), $tag1->getName()) == 0) {
             $this->assertEquals($tags[0]->getTagDefinitionId(), $tag1->getId());
@@ -111,9 +118,11 @@ class ServerAccountTest extends KillbillTest
         /*
          * Delete one of them
          */
-        $account->deleteTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
-        $tags = $account->getTags($this->tenant->getTenantHeaders());
-        $this->assertEquals(1, count($tags));
+        //TODO: must be deleteAccountTags([$tag1->getId()], ...)
+        $this->client->getAccountApi()->deleteAccountTags($account->getAccountId(), self::USER,
+            "{$tag1->getId()}", self::REASON, self::COMMENT);
+        $tags = $this->client->getAccountApi()->getAccountTags($account->getAccountId());
+        $this->assertCount(1, $tags);
         $this->assertEquals($tags[0]->getTagDefinitionId(), $tag2->getId());
     }
 
@@ -122,34 +131,33 @@ class ServerAccountTest extends KillbillTest
      */
     public function testCustomFields()
     {
-        $account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
         /*
          * Create a custom field
          */
-        $customFields = array();
-
         $cf1 = new CustomField();
-        $cf1->setObjectType(CustomField::OBJECTTYPE_ACCOUNT);
+        $cf1->setObjectType(CustomField::OBJECT_TYPE_ACCOUNT);
         $cf1->setName('cf1-'.$this->tenant->getExternalKey());
         $cf1->setValue('123456');
-        $customFields[] = $cf1;
 
         $cf2 = new CustomField();
-        $cf2->setObjectType(CustomField::OBJECTTYPE_ACCOUNT);
+        $cf2->setObjectType(CustomField::OBJECT_TYPE_ACCOUNT);
         $cf2->setName('cf2-'.$this->tenant->getExternalKey());
         $cf2->setValue('123456');
-        $customFields[] = $cf2;
 
-        $account->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+
+        //TODO: must be createAccountCustomFields([$cf1, $cf2], ...)
+        $customFieldsJson = '['.implode(',', [$cf1, $cf2]).']';
+        $this->client->getAccountApi()->createAccountCustomFields($customFieldsJson, self::USER, $account->getAccountId(), self::REASON, self::COMMENT);
 
         /*
          * Verify we can retrieve them
          */
-        $cfs = $account->getCustomFields($this->tenant->getTenantHeaders());
-        $this->assertEquals(2, count($cfs));
+        $cfs = $this->client->getAccountApi()->getAccountCustomFields($account->getAccountId());
+        $this->assertCount(2, $cfs);
 
-        $cf = $account->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
+        $cf = $cfs[0]->getName() === $cf1->getName() ? $cfs[0] : $cfs[1];
         $this->assertEquals($cf->getName(), $cf1->getName());
         $this->assertEquals($cf->getValue(), $cf1->getValue());
         $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
@@ -158,10 +166,13 @@ class ServerAccountTest extends KillbillTest
         /*
          * Delete one of them
          */
-        $account->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        //TODO: must be deleteAccountCustomFields(..., [$cf->getCustomFieldId()])
 
-        $cfs = $account->getCustomFields($this->tenant->getTenantHeaders());
-        $this->assertEquals(1, count($cfs));
+        $this->client->getAccountApi()->deleteAccountCustomFields($account->getAccountId(), self::USER,
+            "{$cf->getCustomFieldId()}", self::REASON, self::COMMENT);
+
+        $cfs = $this->client->getAccountApi()->getAccountCustomFields($account->getAccountId());
+        $this->assertCount(1, $cfs);
         $this->assertEquals($cfs[0]->getName(), $cf2->getName());
     }
 }

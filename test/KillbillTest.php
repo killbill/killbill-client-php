@@ -30,6 +30,8 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     const REASON  = 'test';
     const COMMENT = 'no comment';
 
+    /** @var KillbillClient|null */
+    protected $client;
     /** @var Account|null */
     protected $accountData;
     /** @var Tenant|null */
@@ -50,7 +52,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         //$this->logger = new Logger('name');
         //$this->logger->pushHandler(new StreamHandler('php://stdout', Logger::INFO));
 
-        $externalKey = uniqid('', true);
+        $externalKey = uniqid();
 //        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
 //            Client::$mockManager = new MockManager();
 //
@@ -66,21 +68,21 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $tenantApiKey = 'test-php-api-key-'.$externalKey;
         $tenantApiSecret = 'test-php-api-secret-'.$externalKey;
 
-        $client = new KillbillClient(
+        $this->client = new KillbillClient(
             $this->logger,
             getenv('API_HOST'),
             getenv('ADMIN_LOGIN'),
             getenv('ADMIN_PASSWORD')
         );
-        $client->setApiKey($tenantApiKey);
-        $client->setApiSecret($tenantApiSecret);
+        $this->client->setApiKey($tenantApiKey);
+        $this->client->setApiSecret($tenantApiSecret);
 
         $tenant = new Tenant();
         $tenant->setExternalKey($externalKey);
         $tenant->setApiKey($tenantApiKey);
         $tenant->setApiSecret($tenantApiSecret);
 
-        $this->tenant = $client->getTenantApi()->createTenant($tenant, self::USER, self::REASON, self::COMMENT);
+        $this->tenant = $this->client->getTenantApi()->createTenant($tenant, self::USER, self::REASON, self::COMMENT);
 
         $this->accountData = new Account();
         $this->accountData->setName('Killbill php test');
@@ -97,17 +99,17 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $this->accountData->setFirstNameLength(4);
         $this->accountData->setTimeZone('UTC');
 
-        $this->accountData = $client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
+        $this->accountData = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
 
         // setup catalog
         $catalogContents = file_get_contents(__DIR__.'/resources/SpyCarAdvanced.xml');
-        $client->getCatalogApi()->uploadCatalogXml($catalogContents, self::USER, self::REASON, self::COMMENT);
+        $this->client->getCatalogApi()->uploadCatalogXml($catalogContents, self::USER, self::REASON, self::COMMENT);
 
-        $this->clock = new ServerClockMock($client->getGuzzleClient(), $client->getConfiguration());
+        $this->clock = new ServerClockMock($this->client->getGuzzleClient(), $this->client->getConfiguration());
         // Reset clock to now
         $this->clock->setClock(null);
-        $this->externalAccountId = uniqid('', true);
+        $this->externalAccountId = uniqid();
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') === '1') {
             $this->externalAccountId = md5('externalAccount'.$this->tenant->getExternalKey());
         }

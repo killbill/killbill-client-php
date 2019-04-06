@@ -94,7 +94,7 @@ class KillbillClient
         if (strpos($name, 'get') !== 0) {
             throw new \RuntimeException(sprintf('Method "%s" not found', $name));
         }
-        list(, $class) = explode('get', $name);
+        list(, $class) = explode('get', $name, 2);
         $fqcn = 'Killbill\\Client\\Swagger\\Api\\'.$class;
 
         return new $fqcn($this->getGuzzleClient(), $this->configuration);
