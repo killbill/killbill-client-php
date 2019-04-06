@@ -57,7 +57,8 @@ class Price implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'currency' => 'string',
-'value' => 'BigDecimal'    ];
+        'value' => 'float'
+    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -585,7 +586,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets value
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getValue()
     {
@@ -595,7 +596,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets value
      *
-     * @param BigDecimal $value value
+     * @param float $value value
      *
      * @return $this
      */

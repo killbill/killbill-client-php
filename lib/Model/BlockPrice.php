@@ -58,7 +58,7 @@ class BlockPrice implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'unitName' => 'string',
 'size' => 'double',
-'price' => 'BigDecimal',
+'price' => 'float',
 'max' => 'double'    ];
 
     /**
@@ -265,7 +265,7 @@ class BlockPrice implements ModelInterface, ArrayAccess
     /**
      * Gets price
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getPrice()
     {
@@ -275,7 +275,7 @@ class BlockPrice implements ModelInterface, ArrayAccess
     /**
      * Sets price
      *
-     * @param BigDecimal $price price
+     * @param float $price price
      *
      * @return $this
      */

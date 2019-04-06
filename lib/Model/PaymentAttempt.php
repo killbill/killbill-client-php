@@ -64,7 +64,7 @@ class PaymentAttempt implements ModelInterface, ArrayAccess
 'transactionType' => 'string',
 'effectiveDate' => '\DateTime',
 'stateName' => 'string',
-'amount' => 'BigDecimal',
+'amount' => 'float',
 'currency' => 'string',
 'pluginName' => 'string',
 'pluginProperties' => '\Killbill\Client\Swagger\Model\PluginProperty[]',
@@ -850,7 +850,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets amount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getAmount()
     {
@@ -860,7 +860,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets amount
      *
-     * @param BigDecimal $amount Transaction amount, required except for void operations
+     * @param float $amount Transaction amount, required except for void operations
      *
      * @return $this
      */

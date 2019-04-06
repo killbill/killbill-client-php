@@ -61,10 +61,10 @@ class PaymentTransaction implements ModelInterface, ArrayAccess
 'paymentId' => 'string',
 'paymentExternalKey' => 'string',
 'transactionType' => 'string',
-'amount' => 'BigDecimal',
+'amount' => 'float',
 'currency' => 'string',
 'effectiveDate' => '\DateTime',
-'processedAmount' => 'BigDecimal',
+'processedAmount' => 'float',
 'processedCurrency' => 'string',
 'status' => 'string',
 'gatewayErrorCode' => 'string',
@@ -1178,7 +1178,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
     /**
      * Gets amount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getAmount()
     {
@@ -1188,7 +1188,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
     /**
      * Sets amount
      *
-     * @param BigDecimal $amount Transaction amount, required except for void operations
+     * @param float $amount Transaction amount, required except for void operations
      *
      * @return $this
      */
@@ -1259,7 +1259,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
     /**
      * Gets processedAmount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getProcessedAmount()
     {
@@ -1269,7 +1269,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
     /**
      * Sets processedAmount
      *
-     * @param BigDecimal $processedAmount processedAmount
+     * @param float $processedAmount processedAmount
      *
      * @return $this
      */

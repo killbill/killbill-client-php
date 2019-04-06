@@ -79,8 +79,8 @@ class Account implements ModelInterface, ArrayAccess
 'phone' => 'string',
 'notes' => 'string',
 'isMigrated' => 'bool',
-'accountBalance' => 'BigDecimal',
-'accountCBA' => 'BigDecimal',
+'accountBalance' => 'float',
+'accountCBA' => 'float',
 'auditLogs' => '\Killbill\Client\Swagger\Model\AuditLog[]'    ];
 
     /**
@@ -1257,7 +1257,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets accountBalance
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getAccountBalance()
     {
@@ -1267,7 +1267,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets accountBalance
      *
-     * @param BigDecimal $accountBalance accountBalance
+     * @param float $accountBalance accountBalance
      *
      * @return $this
      */
@@ -1281,7 +1281,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets accountCBA
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getAccountCBA()
     {
@@ -1291,7 +1291,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets accountCBA
      *
-     * @param BigDecimal $accountCBA accountCBA
+     * @param float $accountCBA accountCBA
      *
      * @return $this
      */

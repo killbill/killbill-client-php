@@ -75,8 +75,8 @@ class InvoiceItem implements ModelInterface, ArrayAccess
 'description' => 'string',
 'startDate' => '\DateTime',
 'endDate' => '\DateTime',
-'amount' => 'BigDecimal',
-'rate' => 'BigDecimal',
+'amount' => 'float',
+'rate' => 'float',
 'currency' => 'string',
 'quantity' => 'int',
 'itemDetails' => 'string',
@@ -1204,7 +1204,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets amount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getAmount()
     {
@@ -1214,7 +1214,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets amount
      *
-     * @param BigDecimal $amount amount
+     * @param float $amount amount
      *
      * @return $this
      */
@@ -1228,7 +1228,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets rate
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getRate()
     {
@@ -1238,7 +1238,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets rate
      *
-     * @param BigDecimal $rate rate
+     * @param float $rate rate
      *
      * @return $this
      */

@@ -57,7 +57,7 @@ class Credit implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'creditId' => 'string',
-'creditAmount' => 'BigDecimal',
+'creditAmount' => 'float',
 'currency' => 'string',
 'invoiceId' => 'string',
 'invoiceNumber' => 'string',
@@ -630,7 +630,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets creditAmount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getCreditAmount()
     {
@@ -640,7 +640,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets creditAmount
      *
-     * @param BigDecimal $creditAmount creditAmount
+     * @param float $creditAmount creditAmount
      *
      * @return $this
      */

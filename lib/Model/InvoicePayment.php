@@ -61,11 +61,11 @@ class InvoicePayment implements ModelInterface, ArrayAccess
 'paymentId' => 'string',
 'paymentNumber' => 'string',
 'paymentExternalKey' => 'string',
-'authAmount' => 'BigDecimal',
-'capturedAmount' => 'BigDecimal',
-'purchasedAmount' => 'BigDecimal',
-'refundedAmount' => 'BigDecimal',
-'creditedAmount' => 'BigDecimal',
+'authAmount' => 'float',
+'capturedAmount' => 'float',
+'purchasedAmount' => 'float',
+'refundedAmount' => 'float',
+'creditedAmount' => 'float',
 'currency' => 'string',
 'paymentMethodId' => 'string',
 'transactions' => '\Killbill\Client\Swagger\Model\PaymentTransaction[]',
@@ -750,7 +750,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets authAmount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getAuthAmount()
     {
@@ -760,7 +760,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets authAmount
      *
-     * @param BigDecimal $authAmount authAmount
+     * @param float $authAmount authAmount
      *
      * @return $this
      */
@@ -774,7 +774,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets capturedAmount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getCapturedAmount()
     {
@@ -784,7 +784,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets capturedAmount
      *
-     * @param BigDecimal $capturedAmount capturedAmount
+     * @param float $capturedAmount capturedAmount
      *
      * @return $this
      */
@@ -798,7 +798,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets purchasedAmount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getPurchasedAmount()
     {
@@ -808,7 +808,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets purchasedAmount
      *
-     * @param BigDecimal $purchasedAmount purchasedAmount
+     * @param float $purchasedAmount purchasedAmount
      *
      * @return $this
      */
@@ -822,7 +822,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets refundedAmount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getRefundedAmount()
     {
@@ -832,7 +832,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets refundedAmount
      *
-     * @param BigDecimal $refundedAmount refundedAmount
+     * @param float $refundedAmount refundedAmount
      *
      * @return $this
      */
@@ -846,7 +846,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Gets creditedAmount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getCreditedAmount()
     {
@@ -856,7 +856,7 @@ self::CURRENCY_BTC,        ];
     /**
      * Sets creditedAmount
      *
-     * @param BigDecimal $creditedAmount creditedAmount
+     * @param float $creditedAmount creditedAmount
      *
      * @return $this
      */

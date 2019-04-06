@@ -60,7 +60,7 @@ class SimplePlan implements ModelInterface, ArrayAccess
 'productName' => 'string',
 'productCategory' => 'string',
 'currency' => 'string',
-'amount' => 'BigDecimal',
+'amount' => 'float',
 'billingPeriod' => 'string',
 'trialLength' => 'int',
 'trialTimeUnit' => 'string',
@@ -803,7 +803,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
     /**
      * Gets amount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getAmount()
     {
@@ -813,7 +813,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
     /**
      * Sets amount
      *
-     * @param BigDecimal $amount amount
+     * @param float $amount amount
      *
      * @return $this
      */

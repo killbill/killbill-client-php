@@ -59,8 +59,8 @@ class PhasePrice implements ModelInterface, ArrayAccess
         'planName' => 'string',
 'phaseName' => 'string',
 'phaseType' => 'string',
-'fixedPrice' => 'BigDecimal',
-'recurringPrice' => 'BigDecimal',
+'fixedPrice' => 'float',
+'recurringPrice' => 'float',
 'usagePrices' => '\Killbill\Client\Swagger\Model\UsagePrice[]'    ];
 
     /**
@@ -301,7 +301,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
     /**
      * Gets fixedPrice
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getFixedPrice()
     {
@@ -311,7 +311,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
     /**
      * Sets fixedPrice
      *
-     * @param BigDecimal $fixedPrice fixedPrice
+     * @param float $fixedPrice fixedPrice
      *
      * @return $this
      */
@@ -325,7 +325,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
     /**
      * Gets recurringPrice
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getRecurringPrice()
     {
@@ -335,7 +335,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
     /**
      * Sets recurringPrice
      *
-     * @param BigDecimal $recurringPrice recurringPrice
+     * @param float $recurringPrice recurringPrice
      *
      * @return $this
      */

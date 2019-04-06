@@ -61,7 +61,7 @@ class OverdueCondition implements ModelInterface, ArrayAccess
 'controlTagExclusion' => 'string',
 'numberOfUnpaidInvoicesEqualsOrExceeds' => 'int',
 'responseForLastFailedPayment' => 'string[]',
-'totalUnpaidInvoiceBalanceEqualsOrExceeds' => 'BigDecimal'    ];
+'totalUnpaidInvoiceBalanceEqualsOrExceeds' => 'float'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -475,7 +475,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
     /**
      * Gets totalUnpaidInvoiceBalanceEqualsOrExceeds
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getTotalUnpaidInvoiceBalanceEqualsOrExceeds()
     {
@@ -485,7 +485,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
     /**
      * Sets totalUnpaidInvoiceBalanceEqualsOrExceeds
      *
-     * @param BigDecimal $totalUnpaidInvoiceBalanceEqualsOrExceeds totalUnpaidInvoiceBalanceEqualsOrExceeds
+     * @param float $totalUnpaidInvoiceBalanceEqualsOrExceeds totalUnpaidInvoiceBalanceEqualsOrExceeds
      *
      * @return $this
      */

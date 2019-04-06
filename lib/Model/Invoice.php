@@ -56,16 +56,16 @@ class Invoice implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'amount' => 'BigDecimal',
+        'amount' => 'float',
 'currency' => 'string',
 'status' => 'string',
-'creditAdj' => 'BigDecimal',
-'refundAdj' => 'BigDecimal',
+'creditAdj' => 'float',
+'refundAdj' => 'float',
 'invoiceId' => 'string',
 'invoiceDate' => '\DateTime',
 'targetDate' => '\DateTime',
 'invoiceNumber' => 'string',
-'balance' => 'BigDecimal',
+'balance' => 'float',
 'accountId' => 'string',
 'bundleKeys' => 'string',
 'credits' => '\Killbill\Client\Swagger\Model\Credit[]',
@@ -671,7 +671,7 @@ self::STATUS_VOID,        ];
     /**
      * Gets amount
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getAmount()
     {
@@ -681,7 +681,7 @@ self::STATUS_VOID,        ];
     /**
      * Sets amount
      *
-     * @param BigDecimal $amount amount
+     * @param float $amount amount
      *
      * @return $this
      */
@@ -761,7 +761,7 @@ self::STATUS_VOID,        ];
     /**
      * Gets creditAdj
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getCreditAdj()
     {
@@ -771,7 +771,7 @@ self::STATUS_VOID,        ];
     /**
      * Sets creditAdj
      *
-     * @param BigDecimal $creditAdj creditAdj
+     * @param float $creditAdj creditAdj
      *
      * @return $this
      */
@@ -785,7 +785,7 @@ self::STATUS_VOID,        ];
     /**
      * Gets refundAdj
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getRefundAdj()
     {
@@ -795,7 +795,7 @@ self::STATUS_VOID,        ];
     /**
      * Sets refundAdj
      *
-     * @param BigDecimal $refundAdj refundAdj
+     * @param float $refundAdj refundAdj
      *
      * @return $this
      */
@@ -905,7 +905,7 @@ self::STATUS_VOID,        ];
     /**
      * Gets balance
      *
-     * @return BigDecimal
+     * @return float
      */
     public function getBalance()
     {
@@ -915,7 +915,7 @@ self::STATUS_VOID,        ];
     /**
      * Sets balance
      *
-     * @param BigDecimal $balance balance
+     * @param float $balance balance
      *
      * @return $this
      */
