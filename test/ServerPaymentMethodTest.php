@@ -61,8 +61,8 @@ class ServerPaymentMethodTest extends KillbillTest
     public function testBasic()
     {
         $paymentMethod = new PaymentMethod();
-        $paymentMethod->setAccountId($this->account->getAccountId());
-        $paymentMethod->setIsDefault('true');
+//        $paymentMethod->setAccountId($this->account->getAccountId());
+//        $paymentMethod->setIsDefault('true');
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
 
         $this->client->getAccountApi()->createPaymentMethod(

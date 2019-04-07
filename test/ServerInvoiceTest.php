@@ -47,8 +47,8 @@ class ServerInvoiceTest extends KillbillTest
         $this->account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
         $paymentMethod = new PaymentMethod();
-        $paymentMethod->setAccountId($this->account->getAccountId());
-        $paymentMethod->setIsDefault(true);
+//        $paymentMethod->setAccountId($this->account->getAccountId());
+//        $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
         //TODO: $default = 'true' must be without quotes
         $this->client->getAccountApi()->createPaymentMethod(
