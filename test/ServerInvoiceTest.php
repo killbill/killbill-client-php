@@ -165,13 +165,13 @@ class ServerInvoiceTest extends KillbillTest
         $tag1 = new TagDefinition();
         $tag1->setName('tag1-'.$this->tenant->getExternalKey());
         $tag1->setDescription('This is tag1');
-        $tag1->setApplicableObjectTypes([TagDefinition::APPLICABLE_OBJECT_TYPES_ACCOUNT]);
+        $tag1->setApplicableObjectTypes([TagDefinition::APPLICABLE_OBJECT_TYPES_INVOICE]);
         $tag1 = $this->client->getTagDefinitionApi()->createTagDefinition($tag1, self::USER, self::REASON, self::COMMENT);
 
         $tag2 = new TagDefinition();
         $tag2->setName('tag2-'.$this->tenant->getExternalKey());
         $tag2->setDescription('This is tag2');
-        $tag2->setApplicableObjectTypes([TagDefinition::APPLICABLE_OBJECT_TYPES_ACCOUNT]);
+        $tag2->setApplicableObjectTypes([TagDefinition::APPLICABLE_OBJECT_TYPES_INVOICE]);
         $tag2 = $this->client->getTagDefinitionApi()->createTagDefinition($tag2, self::USER, self::REASON, self::COMMENT);
 
         /*
@@ -203,7 +203,7 @@ class ServerInvoiceTest extends KillbillTest
         /*
          * Delete one of them
          */
-        //TODO: must be deleteInvoiceTags([$tag1->getId()], ...)
+        //TODO: must be deleteInvoiceTags(.., [$tag1->getId()], ...)
         $this->client->getInvoiceApi()->deleteInvoiceTags(
             $invoice->getInvoiceId(),
             self::USER,
