@@ -17,24 +17,56 @@
 
 namespace Killbill\Client;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use Killbill\Client\Swagger\ApiException;
+use Killbill\Client\Swagger\Configuration;
+use Psr\Http\Message\ResponseInterface;
+
 /**
  * Manipulate the server clock
  */
-class ServerClockMock extends AbstractResource
+class ServerClockMock
 {
+    /**
+     * @var ClientInterface
+     */
+    protected $client;
+
+    /**
+     * @var Configuration
+     */
+    protected $config;
+
+    /**
+     * @param ClientInterface $client
+     * @param Configuration   $config
+     */
+    public function __construct(
+        ClientInterface $client = null,
+        Configuration $config = null
+    ) {
+        $this->client = $client ?: new Client();
+        $this->config = $config ?: new Configuration();
+    }
+
     /**
      * Set the clock to a specific date
      *
-     * @param string $requestedDate Date as a string
-     * @param array  $headers       Headers for the request
+     * @param string|null $requestedDate Date as a string
+     * @throws ApiException
      */
-    public function setClock($requestedDate, $headers)
+    public function setClock($requestedDate)
     {
-        $uri = '/test/clock';
-        if ($requestedDate) {
-            $uri = $uri.'?requestedDate='.$requestedDate;
+        $uri = 'test/clock';
+        if (in_array($requestedDate, ['', null], true)) {
+            $requestedDate = date('c');
         }
-        $this->createRequest($uri, null, null, null, $headers);
+        $this->assertResponse($this->client->post($uri, [
+            'query' => [
+                'requestedDate' => $requestedDate,
+            ],
+        ]));
 
         // For precaution
         usleep(3000000);
@@ -43,39 +75,60 @@ class ServerClockMock extends AbstractResource
     /**
      * Add a specific amount of days to the clock
      *
-     * @param int   $count   Days to add
-     * @param array $headers Headers for the request
+     * @param int $count Days to add
+     *
+     * @throws ApiException
      */
-    public function addDays($count, $headers)
+    public function addDays($count)
     {
-        $this->incrementClock($count, null, null, null, 'UTC', $headers);
+        $this->incrementClock($count, null, null, null, 'UTC');
     }
 
     /**
      * Increment the clock
      *
-     * @param int    $days     Days to add
-     * @param int    $weeks    Weeks to add
-     * @param int    $months   Months to add
-     * @param int    $years    Years to add
-     * @param string $timezone Timezone as a string
-     * @param array  $headers  Headers for the request
+     * @param int|null    $days     Days to add
+     * @param int|null    $weeks    Weeks to add
+     * @param int|null    $months   Months to add
+     * @param int|null    $years    Years to add
+     * @param string      $timeZone Timezone as a string
+     *
+     * @throws ApiException
      */
-    private function incrementClock($days, $weeks, $months, $years, $timeZone, $headers)
+    private function incrementClock($days, $weeks, $months, $years, $timeZone)
     {
-        $uri = '/test/clock';
+        $uri = 'test/clock';
+        $params = ['timeZone' => $timeZone];
         if ($days) {
-            $uri = $uri.'?days='.$days.'&timeZone='.$timeZone;
+            $params['days'] = $days;
         } elseif ($weeks) {
-            $uri = $uri.'?weeks='.$weeks.'&timeZone='.$timeZone;
+            $params['weeks'] = $weeks;
         } elseif ($months) {
-            $uri = $uri.'?months='.$months.'&timeZone='.$timeZone;
+            $params['months'] = $months;
         } elseif ($years) {
-            $uri = $uri.'?years='.$years.'&timeZone='.$timeZone;
+            $params['years'] = $years;
         }
-        $this->updateRequest($uri, null, null, null, $headers);
+        $this->assertResponse($this->client->put($uri, ['query' => $params]));
 
         // For precaution
         usleep(3000000);
+    }
+
+
+    /**
+     * @param ResponseInterface $response
+     * @throws ApiException
+     */
+    private function assertResponse(ResponseInterface $response)
+    {
+        $payload = $response->getBody()->getContents();
+        $data = json_decode($payload, true);
+        if (null === $data || 200 !== $response->getStatusCode()) {
+            throw new ApiException(sprintf(
+                'Unable to mock the server date. Status: %d, Message: %s',
+                $response->getStatusCode(),
+                $payload
+            ));
+        }
     }
 }

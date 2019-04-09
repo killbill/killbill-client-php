@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpunit bootstrap="vendor/autoload.php">
+    <php>
+        <env name="API_HOST" value="http://localhost:8080" />
+        <env name="ADMIN_LOGIN" value="admin" />
+        <env name="ADMIN_PASSWORD" value="password" />
+    </php>
+
     <testsuite name='Kill Bill PHP client test suite'>
         <directory suffix='Test.php'>./test</directory>
     </testsuite>

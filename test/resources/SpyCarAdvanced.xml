@@ -16,7 +16,7 @@
   -->
 
 <catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="CatalogSchema.xsd ">
+         xsi:noNamespaceSchemaLocation="CatalogSchema.xsd">
 
     <effectiveDate>2013-02-08T00:00:00+00:00</effectiveDate>
     <catalogName>SpyCarAdvanced</catalogName>
