@@ -47,8 +47,6 @@ class ServerInvoiceTest extends KillbillTest
         $this->account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
         $paymentMethod = new PaymentMethod();
-//        $paymentMethod->setAccountId($this->account->getAccountId());
-//        $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
         //TODO: $default = 'true' must be without quotes
         $this->client->getAccountApi()->createPaymentMethod(
@@ -82,17 +80,14 @@ class ServerInvoiceTest extends KillbillTest
         $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setExternalKey($this->externalBundleId);
-        $subscriptionData->setPlanName('sports-monthly');
-//        $subscriptionData->setProductName('Sports');
-//        $subscriptionData->setProductCategory('BASE');
-//        $subscriptionData->setBillingPeriod('MONTHLY');
-//        $subscriptionData->setPriceList('DEFAULT');
+        $subscriptionData->setProductName('Sports');
+        $subscriptionData->setProductCategory('BASE');
+        $subscriptionData->setBillingPeriod('MONTHLY');
+        $subscriptionData->setPriceList('DEFAULT');
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
-//        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->assertEquals($subscriptionData->getAccountId(), $subscription->getAccountId());
         $this->assertEquals($subscriptionData->getExternalKey(), $subscription->getExternalKey());
-        $this->assertEquals($subscriptionData->getPlanName(), $subscription->getPlanName());
 
         $this->assertEquals('Sports', $subscription->getProductName());
         $this->assertEquals('BASE', $subscription->getProductCategory());
@@ -102,18 +97,13 @@ class ServerInvoiceTest extends KillbillTest
         // Move clock after trials
         $this->clock->addDays(31);
 
-        $subscription = $this->client->getSubscriptionApi()->getSubscription($subscription->getSubscriptionId());
-
         // Should see 2 invoices for account
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
-//        $invoices = $this->account->getInvoices(true, null, $this->tenant->getTenantHeaders());
         $this->assertCount(2, $invoices);
 
         // Retrieve each invoice by id
-//        $invoice = new Invoice();
-//        $invoice->setInvoiceId($invoices[0]->getInvoiceId());
-//        $invoice = $invoice->get(false, $this->tenant->getTenantHeaders());
-        $invoice = $this->client->getInvoiceApi()->getInvoice($invoices[0]->getInvoiceId());
+        //TODO: must be $withItems = true (w/o quotes)
+        $invoice = $this->client->getInvoiceApi()->getInvoice($invoices[0]->getInvoiceId(), $withItems = 'true');
 
         $this->assertNotEmpty($invoice);
         $this->assertNotEmpty($invoice->getAccountId());
@@ -121,13 +111,11 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertNotEmpty($invoice->getCurrency());
         $this->assertEquals($invoice->getAmount(), 0);
         $this->assertEquals($invoice->getBalance(), 0);
-        $this->assertEmpty($invoice->getItems());
+        $this->assertCount(1, $invoice->getItems());
+        $this->assertEquals(0, $invoice->getItems()[0]->getAmount());
 
-//        $invoice = new Invoice();
-//        $invoice->setInvoiceId($invoices[1]->getInvoiceId());
-//        $invoice = $invoice->get(true, $this->tenant->getTenantHeaders());
-        $invoice = $this->client->getInvoiceApi()->getInvoice($invoices[1]->getInvoiceId());
-
+        //TODO: must be $withItems = true (w/o quotes)
+        $invoice = $this->client->getInvoiceApi()->getInvoice($invoices[1]->getInvoiceId(), $withItems = 'true');
 
         $this->assertNotEmpty($invoice);
         $this->assertNotEmpty($invoice->getAccountId());
@@ -137,6 +125,7 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertEquals($invoice->getBalance(), 0);
         $this->assertNotEmpty($invoice->getItems());
         $this->assertCount(1, $invoice->getItems());
+        $this->assertEquals(500, $invoice->getItems()[0]->getAmount());
     }
 
     /**
@@ -252,34 +241,15 @@ class ServerInvoiceTest extends KillbillTest
         //TODO: must be createInvoiceCustomFields([$cf1, $cf2], ...)
         $customFieldsJson = '['.implode(',', [$cf1, $cf2]).']';
         $this->client->getInvoiceApi()->createInvoiceCustomFields($customFieldsJson, self::USER, $invoice->getInvoiceId(), self::REASON, self::COMMENT);
-//
-//
-//        $customFields = array();
-//
-//        $cf1 = new CustomField();
-//        $cf1->setObjectType(CustomField::OBJECTTYPE_INVOICE);
-//        $cf1->setName('cf1-'.$this->tenant->getExternalKey());
-//        $cf1->setValue('123456');
-//        $customFields[] = $cf1;
-//
-//        $cf2 = new CustomField();
-//        $cf2->setObjectType(CustomField::OBJECTTYPE_INVOICE);
-//        $cf2->setName('cf2-'.$this->tenant->getExternalKey());
-//        $cf2->setValue('123456');
-//        $customFields[] = $cf2;
-//
-//        $invoice->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         /*
          * Verify we can retrieve them
          */
         $cfs = $this->client->getInvoiceApi()->getInvoiceCustomFields($invoice->getInvoiceId());
-//        $cfs = $invoice->getCustomFields($this->tenant->getTenantHeaders());
         $this->assertCount(2, $cfs);
 
         //TODO: Swagger didn't generate method getCustomField by name
         $cf = $cfs[0]->getName() === $cf1->getName() ? $cfs[0] : $cfs[1];
-//        $cf = $invoice->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
         $this->assertEquals($cf->getName(), $cf1->getName());
         $this->assertEquals($cf->getValue(), $cf1->getValue());
         $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
@@ -297,10 +267,7 @@ class ServerInvoiceTest extends KillbillTest
             self::COMMENT
         );
 
-//        $invoice->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
-
         $cfs = $this->client->getInvoiceApi()->getInvoiceCustomFields($invoice->getInvoiceId());
-//        $cfs = $invoice->getCustomFields($this->tenant->getTenantHeaders());
         $this->assertCount(1, $cfs);
         $this->assertEquals($cfs[0]->getName(), $cf2->getName());
 

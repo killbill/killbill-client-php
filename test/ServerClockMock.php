@@ -59,10 +59,14 @@ class ServerClockMock
     public function setClock($requestedDate)
     {
         $uri = 'test/clock';
-        if ($requestedDate) {
-            $uri = $uri.'?requestedDate='.$requestedDate;
+        if (in_array($requestedDate, ['', null], true)) {
+            $requestedDate = date('c');
         }
-        $this->assertResponse($this->client->put($uri));
+        $this->assertResponse($this->client->post($uri, [
+            'query' => [
+                'requestedDate' => $requestedDate,
+            ],
+        ]));
 
         // For precaution
         usleep(3000000);
@@ -94,16 +98,17 @@ class ServerClockMock
     private function incrementClock($days, $weeks, $months, $years, $timeZone)
     {
         $uri = 'test/clock';
+        $params = ['timeZone' => $timeZone];
         if ($days) {
-            $uri = $uri.'?days='.$days.'&timeZone='.$timeZone;
+            $params['days'] = $days;
         } elseif ($weeks) {
-            $uri = $uri.'?weeks='.$weeks.'&timeZone='.$timeZone;
+            $params['weeks'] = $weeks;
         } elseif ($months) {
-            $uri = $uri.'?months='.$months.'&timeZone='.$timeZone;
+            $params['months'] = $months;
         } elseif ($years) {
-            $uri = $uri.'?years='.$years.'&timeZone='.$timeZone;
+            $params['years'] = $years;
         }
-        $this->assertResponse($this->client->put($uri));
+        $this->assertResponse($this->client->put($uri, ['query' => $params]));
 
         // For precaution
         usleep(3000000);
@@ -119,8 +124,11 @@ class ServerClockMock
         $payload = $response->getBody()->getContents();
         $data = json_decode($payload, true);
         if (null === $data || 200 !== $response->getStatusCode()) {
-            throw new ApiException(sprintf('Unable to mock the server date. Status: %d, Message: %s',
-                $response->getStatusCode(), $payload));
+            throw new ApiException(sprintf(
+                'Unable to mock the server date. Status: %d, Message: %s',
+                $response->getStatusCode(),
+                $payload
+            ));
         }
     }
 }

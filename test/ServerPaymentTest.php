@@ -53,7 +53,6 @@ class ServerPaymentTest extends KillbillTest
             $this->externalBundleId = md5('serverPaymentTest'.$this->tenant->getExternalKey());
         }
         $this->account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
-//        $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $paymentMethod = new PaymentMethod();
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
@@ -95,7 +94,6 @@ class ServerPaymentTest extends KillbillTest
             self::REASON,
             self::COMMENT
         );
-//        $this->account->addTags(array($tagId), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
@@ -106,7 +104,6 @@ class ServerPaymentTest extends KillbillTest
         $subscriptionData->setExternalKey($this->externalBundleId);
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
-//        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
         $this->assertEquals($subscription->getAccountId(), $subscriptionData->getAccountId());
         $this->assertEquals($subscription->getProductName(), $subscriptionData->getProductName());
         $this->assertEquals($subscription->getProductCategory(), $subscriptionData->getProductCategory());
@@ -116,14 +113,14 @@ class ServerPaymentTest extends KillbillTest
         // Move after trial
         $this->clock->addDays(31);
 
+        //TODO: 'true' must be w/o quotes
         $unpaidInvoices = $this->client->getAccountApi()->getInvoicesForAccount(
             $this->account->getAccountId(),
             null,
-            $withItems = true,
+            $withItems = 'true',
             null,
-            $unpaidOnly = true
+            $unpaidOnly = 'true'
         );
-//        $unpaidInvoices = $this->account->getInvoices(true, true, $this->tenant->getTenantHeaders());
         $this->assertCount(1, $unpaidInvoices);
 
         // Remove the tag
@@ -135,21 +132,22 @@ class ServerPaymentTest extends KillbillTest
             self::REASON,
             self::COMMENT
         );
-//        $this->account->deleteTags(array($tagId), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
         // processing unpaid invoices is asynchronous (bus event), so let's wait a bit before we check
         usleep(3000000);
+
+        //TODO: 'true' must be w/o quotes
         $unpaidInvoices = $this->client->getAccountApi()->getInvoicesForAccount(
             $this->account->getAccountId(),
             null,
-            $withItems = true,
+            $withItems = 'true',
             null,
-            $unpaidOnly = true
+            $unpaidOnly = 'true'
         );
-//        $unpaidInvoices = $this->account->getInvoices(true, true, $this->tenant->getTenantHeaders());
         $this->assertEmpty($unpaidInvoices);
 
-        $allInvoices = $this->account->getInvoices(true, null, $this->tenant->getTenantHeaders());
+        //TODO: 'true' must be w/o quotes
+        $allInvoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId(), null, $withItems = 'true');
         $this->assertCount(2, $allInvoices);
     }
 

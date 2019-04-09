@@ -105,7 +105,7 @@ class ServerAccountTest extends KillbillTest
             self::REASON,
             self::COMMENT
         );
-        $this->assertEquals(2, count($accountTags));
+        $this->assertCount(2, $accountTags);
 
         /*
          * Verify we can retrieve them
