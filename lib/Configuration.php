@@ -87,7 +87,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'Swagger-Codegen/1.0.0/php';
+    protected $userAgent = 'Killbill-Client/0.20.10/php';
 
     /**
      * Debug switch (default set to false)

@@ -114,6 +114,9 @@ class KillbillClient
             $this->guzzleClient = new Client([
                 'handler' => $stack,
                 'base_uri' => $this->configuration->getHost().'/1.0/kb/',
+                'headers' => [
+                    'User-Agent' => $this->configuration->getUserAgent(),
+                ],
             ]);
         }
 

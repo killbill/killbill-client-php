@@ -57,8 +57,7 @@ class Price implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'currency' => 'string',
-        'value' => 'float'
-    ];
+'value' => 'float'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
