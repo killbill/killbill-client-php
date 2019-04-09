@@ -1,9 +1,9 @@
 killbill-client-php
 ===================
 
-[![build status](https://secure.travis-ci.org/killbill/killbill-client-php.png)](https://travis-ci.org/killbill/killbill-client-php)
+PHP client library for [Kill Bill](http://killbill.io).
 
-PHP client library for [Killbill](http://killbill.io)
+`master` branch is compatible with Kill Bill 0.18.x. For Kill Bill 0.20.x, use branch `work-for-release-0.20.x`.
 
 Configuration
 -------------
