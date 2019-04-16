@@ -62,7 +62,7 @@ class KillbillClient
         $password = 'password'
     ) {
         $this->logger = $logger ?: new NullLogger();
-        $this->configuration = Configuration::getDefaultConfiguration()
+        $this->configuration = (new Configuration())
             ->setHost($host)
             ->setUsername($username)
             ->setPassword($password);
