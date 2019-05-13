@@ -282,7 +282,10 @@ class ServerInvoiceTest extends KillbillTest
     }
 
 
-    public function testItShouldCreateInvoice_whenSubscribedOnBasePlan()
+    /**
+     * @test
+     */
+    public function itShouldCreateInvoiceWhenSubscribedOnBasePlan()
     {
         $subscriptionBase = new Subscription();
         $subscriptionBase->setAccountId($this->account->getAccountId());
@@ -311,7 +314,10 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
     }
 
-    public function testItShouldCreateInvoice_whenSubscribedOnBasePlanAndConsumableAddon()
+    /**
+     * @test
+     */
+    public function itShouldCreateInvoiceWhenSubscribedOnBasePlanAndConsumableAddon()
     {
         $subscriptionBase = new Subscription();
         $subscriptionBase->setAccountId($this->account->getAccountId());
@@ -346,7 +352,5 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertCount(2, $invoicesNextMonth);
         $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
         $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
-
     }
-
 }
