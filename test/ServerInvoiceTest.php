@@ -280,4 +280,73 @@ class ServerInvoiceTest extends KillbillTest
 //        $cfs = $invoice->getCustomFields($this->tenant->getTenantHeaders());
 //        $this->assertEquals(2, count($cfs));
     }
+
+
+    public function testItShouldCreateInvoice_whenSubscribedOnBasePlan()
+    {
+        $subscriptionBase = new Subscription();
+        $subscriptionBase->setAccountId($this->account->getAccountId());
+        $subscriptionBase->setPlanName('sports-monthly');
+        $subscriptionBase = $this->client->getSubscriptionApi()->createSubscription($subscriptionBase, self::USER, self::REASON, self::COMMENT);
+        self::assertSame($this->account->getAccountId(), $subscriptionBase->getAccountId());
+        self::assertSame('sports-monthly', $subscriptionBase->getPlanName());
+
+        $invoices = $this->client->getAccountApi()->getInvoicesForAccount(
+            $this->account->getAccountId(),
+            null,
+            $withItems = 'true'
+        );
+        $this->assertCount(1, $invoices);
+        $this->assertSame(0.0, $invoices[0]->getAmount());
+
+        $this->clock->addDays(35);
+
+        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount(
+            $this->account->getAccountId(),
+            null,
+            $withItems = 'true'
+        );
+        $this->assertCount(2, $invoicesNextMonth);
+        $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
+        $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
+    }
+
+    public function testItShouldCreateInvoice_whenSubscribedOnBasePlanAndConsumableAddon()
+    {
+        $subscriptionBase = new Subscription();
+        $subscriptionBase->setAccountId($this->account->getAccountId());
+        $subscriptionBase->setPlanName('sports-monthly');
+        $subscriptionBase = $this->client->getSubscriptionApi()->createSubscription($subscriptionBase, self::USER, self::REASON, self::COMMENT);
+        self::assertSame($this->account->getAccountId(), $subscriptionBase->getAccountId());
+        self::assertSame('sports-monthly', $subscriptionBase->getPlanName());
+
+        $subscriptionGas = new Subscription();
+        $subscriptionGas->setAccountId($this->account->getAccountId());
+        $subscriptionGas->setPlanName('gas-monthly');
+        $subscriptionGas->setBundleId($subscriptionBase->getBundleId());
+        $subscriptionGas = $this->client->getSubscriptionApi()->createSubscription($subscriptionGas, self::USER, self::REASON, self::COMMENT);
+        self::assertSame($this->account->getAccountId(), $subscriptionGas->getAccountId());
+        self::assertSame('gas-monthly', $subscriptionGas->getPlanName());
+
+        $invoices = $this->client->getAccountApi()->getInvoicesForAccount(
+            $this->account->getAccountId(),
+            null,
+            $withItems = 'true'
+        );
+        $this->assertCount(1, $invoices);
+        $this->assertSame(0.0, $invoices[0]->getAmount());
+
+        $this->clock->addDays(35);
+
+        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount(
+            $this->account->getAccountId(),
+            null,
+            $withItems = 'true'
+        );
+        $this->assertCount(2, $invoicesNextMonth);
+        $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
+        $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
+
+    }
+
 }
