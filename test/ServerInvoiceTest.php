@@ -303,6 +303,7 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertSame(0.0, $invoices[0]->getAmount());
 
         $this->clock->addDays(35);
+        $this->clock->waitForExpectedClause(2, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
 
         $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount(
             $this->account->getAccountId(),
@@ -344,6 +345,8 @@ class ServerInvoiceTest extends KillbillTest
 
         $this->clock->addDays(35);
 
+        $this->clock->waitForExpectedClause(2, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
+
         $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount(
             $this->account->getAccountId(),
             null,
@@ -352,5 +355,14 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertCount(2, $invoicesNextMonth);
         $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
         $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
+    }
+
+    /**
+     * @param string $accountId
+     * @return int
+     */
+    public function getAccountInvoicesNumber($accountId)
+    {
+        return count($this->client->getAccountApi()->getInvoicesForAccount($accountId));
     }
 }

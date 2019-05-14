@@ -22,6 +22,7 @@ class AddAuthHeadersMiddleware
     private $whitelist = [
         ['GET|PUT', '/1.0/kb/tenants', [self::TENANT_KEY]],
         ['POST|PUT', '/1.0/kb/test/clock', [self::BASIC_AUTH, self::TENANT_KEY]],
+        ['GET', '/1.0/kb/test/queues', [self::BASIC_AUTH, self::TENANT_KEY]],
     ];
     /**
      * @param callable      $nextHandler
