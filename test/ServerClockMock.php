@@ -28,6 +28,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 class ServerClockMock
 {
+    const TIMEOUT_SEC = 120;
+
     /**
      * @var ClientInterface
      */
@@ -69,7 +71,7 @@ class ServerClockMock
         ]));
 
         // For precaution
-        usleep(3000000);
+        $this->waitForKillbill();
     }
 
     /**
@@ -82,6 +84,46 @@ class ServerClockMock
     public function addDays($count)
     {
         $this->incrementClock($count, null, null, null, 'UTC');
+    }
+
+    /**
+     * Wait for all available bus events and notifications to be processed
+     */
+    public function waitForKillbill()
+    {
+        $response = $this->client->get('test/queues', ['query' => ['timeout_sec' => 5]]);
+        if (200 !== $response->getStatusCode()) {
+            throw new ApiException(sprintf(
+                'Error calling test/queues. Status: %d, Message: %s',
+                $response->getStatusCode(),
+                $response->getBody()->getContents()
+            ));
+        }
+    }
+
+    /**
+     * @param mixed    $expected
+     * @param callable $callable
+     * @param array    $args
+     */
+    public function waitForExpectedClause($expected, callable $callable, array $args)
+    {
+        $starttime = microtime(true);
+        do {
+            $actual = call_user_func_array($callable, $args);
+            if ($expected === $actual) {
+                return;
+            }
+            $this->waitForKillbill();
+            $elapsed = microtime(true) - $starttime;
+        } while ($elapsed < self::TIMEOUT_SEC);
+
+        throw new \RuntimeException(sprintf(
+            'Timeout after waiting for %d sec. Expected: "%s", Actual: "%s"',
+            $elapsed,
+            $expected,
+            $actual
+        ));
     }
 
     /**
@@ -111,9 +153,8 @@ class ServerClockMock
         $this->assertResponse($this->client->put($uri, ['query' => $params]));
 
         // For precaution
-        usleep(3000000);
+        $this->waitForKillbill();
     }
-
 
     /**
      * @param ResponseInterface $response
