@@ -114,12 +114,12 @@ class ServerClockMock
             if ($expected === $actual) {
                 return;
             }
-            usleep(1500000);
+            $this->waitForKillbill();
             $elapsed = microtime(true) - $starttime;
         } while ($elapsed < self::TIMEOUT_SEC);
 
         throw new \RuntimeException(sprintf(
-            'Timeout after waiting %d sec. Expected: "%s", Actual: "%s"',
+            'Timeout after waiting for %d sec. Expected: "%s", Actual: "%s"',
             $elapsed,
             $expected,
             $actual
