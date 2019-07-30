@@ -174,7 +174,9 @@ class ObjectSerializer
     public static function toString($value)
     {
         if ($value instanceof \DateTime) { // datetime in ISO8601 format
-            return $value->format(\DateTime::ATOM);
+            return $value->format('Y-m-d');
+        } elseif (is_bool($value)) {
+            return $value ? 'true' : 'false';
         } else {
             return $value;
         }
