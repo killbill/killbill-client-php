@@ -173,7 +173,7 @@ class ObjectSerializer
      */
     public static function toString($value)
     {
-        if ($value instanceof \DateTime) { // datetime in ISO8601 format
+        if ($value instanceof \DateTime) {
             return $value->format('Y-m-d');
         } elseif (is_bool($value)) {
             return $value ? 'true' : 'false';
