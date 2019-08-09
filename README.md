@@ -145,10 +145,15 @@ where `-c .swagger-config.json` is config with php options. See all options:
 java -jar swagger-codegen-cli.jar config-help -l php
 ```
 
-Apply BigDecimal fix (until https://github.com/swagger-api/swagger-codegen/issues/9353 is fixed)
+Apply BigDecimal fix (until https://github.com/swagger-api/swagger-codegen/issues/9353 is fixed):
 ```
 sed -i -- 's/BigDecimal/float/g' lib/Model/*.php
 sed -i -- 's/BigDecimal/float/g' lib/Api/*.php
+```
+
+Apply date/boolean patch for specific KillBill formats:
+```
+patch -p1 -i custom-swagger.patch
 ```
 
 ## Documentation for API Endpoints
