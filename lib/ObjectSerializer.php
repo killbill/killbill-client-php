@@ -165,7 +165,10 @@ class ObjectSerializer
     /**
      * Take value and turn it into a string suitable for inclusion in
      * the parameter. If it's a string, pass through unchanged
-     * If it's a datetime object, format it in ISO8601
+     *
+     * Specific for KillBill:
+     * If it's a boolean, format it as true/false instead of 0/1
+     * If it's a datetime object, format it in Y-m-d
      *
      * @param string|\DateTime $value the value of the parameter
      *
