@@ -151,14 +151,25 @@ sed -i -- 's/BigDecimal/float/g' lib/Model/*.php
 sed -i -- 's/BigDecimal/float/g' lib/Api/*.php
 ```
 
-Apply date/boolean patch for specific KillBill formats:
+Apply patch to convert dates/booleans into KillBill specific formats:
 ```
 patch -p1 -i custom-swagger.patch
 ```
 
-Apply query array fix:
+Apply fix to send query arrays in a comma separated format as expected by KillBill:
 ```
 sed -i '' "s/ObjectSerializer::serializeCollection(\([^,]*\), 'multi', \([^)]*\))/ObjectSerializer::serializeCollection(\1, 'csv')/g" lib/Api/*.php
+```
+
+Apply fix to send body with array objects:
+```
+sed 's/\(\([ ]*\)} elseif (count(\$formParams) > 0) {\)/\2    elseif (is_array($httpBody) \&\& $headers['"'"'Content-Type'"'"'] === '"'"'application\/json'"'"') {\
+\2        $httpBody = array_map(function($value) {\
+\2            return ObjectSerializer::sanitizeForSerialization($value);\
+\2        }, $_tempBody);\
+\2        $httpBody = \GuzzleHttp\json_encode($httpBody);\
+\2    }\
+\1/g' lib/Api/*.php
 ```
 
 ## Documentation for API Endpoints
