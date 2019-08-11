@@ -322,7 +322,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -663,7 +663,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -994,7 +994,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1372,7 +1372,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2310,7 +2310,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2680,7 +2680,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2959,7 +2959,7 @@ class SubscriptionApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'multi', true);
+            $customField = ObjectSerializer::serializeCollection($customField, 'csv');
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -3243,7 +3243,7 @@ class SubscriptionApi
 
         // query params
         if (is_array($tagDef)) {
-            $tagDef = ObjectSerializer::serializeCollection($tagDef, 'multi', true);
+            $tagDef = ObjectSerializer::serializeCollection($tagDef, 'csv');
         }
         if ($tagDef !== null) {
             $queryParams['tagDef'] = ObjectSerializer::toQueryValue($tagDef);
@@ -4677,7 +4677,7 @@ class SubscriptionApi
 
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -4961,7 +4961,7 @@ class SubscriptionApi
 
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);

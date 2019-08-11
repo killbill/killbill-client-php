@@ -606,7 +606,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -890,7 +890,7 @@ class PaymentMethodApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'multi', true);
+            $customField = ObjectSerializer::serializeCollection($customField, 'csv');
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -1213,7 +1213,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1808,7 +1808,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2407,7 +2407,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -3018,7 +3018,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);

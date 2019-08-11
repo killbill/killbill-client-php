@@ -311,7 +311,7 @@ class CreditApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);

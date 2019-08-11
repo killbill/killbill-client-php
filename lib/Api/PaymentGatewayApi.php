@@ -307,14 +307,14 @@ class PaymentGatewayApi
 
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'multi', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv');
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -655,14 +655,14 @@ class PaymentGatewayApi
         }
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'multi', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv');
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -965,14 +965,14 @@ class PaymentGatewayApi
 
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'multi', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv');
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);

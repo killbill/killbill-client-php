@@ -156,6 +156,11 @@ Apply date/boolean patch for specific KillBill formats:
 patch -p1 -i custom-swagger.patch
 ```
 
+Apply query array fix:
+```
+sed -i '' "s/ObjectSerializer::serializeCollection(\([^,]*\), 'multi', \([^)]*\))/ObjectSerializer::serializeCollection(\1, 'csv')/g" lib/Api/*.php
+```
+
 ## Documentation for API Endpoints
 
 All URIs are relative to */*

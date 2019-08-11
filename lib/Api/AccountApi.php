@@ -322,7 +322,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2261,14 +2261,14 @@ class AccountApi
         }
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'multi', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv');
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2555,7 +2555,7 @@ class AccountApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'multi', true);
+            $customField = ObjectSerializer::serializeCollection($customField, 'csv');
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -2839,7 +2839,7 @@ class AccountApi
 
         // query params
         if (is_array($tagDef)) {
-            $tagDef = ObjectSerializer::serializeCollection($tagDef, 'multi', true);
+            $tagDef = ObjectSerializer::serializeCollection($tagDef, 'csv');
         }
         if ($tagDef !== null) {
             $queryParams['tagDef'] = ObjectSerializer::toQueryValue($tagDef);
@@ -6673,14 +6673,14 @@ class AccountApi
 
         // query params
         if (is_array($blockingStateTypes)) {
-            $blockingStateTypes = ObjectSerializer::serializeCollection($blockingStateTypes, 'multi', true);
+            $blockingStateTypes = ObjectSerializer::serializeCollection($blockingStateTypes, 'csv');
         }
         if ($blockingStateTypes !== null) {
             $queryParams['blockingStateTypes'] = ObjectSerializer::toQueryValue($blockingStateTypes);
         }
         // query params
         if (is_array($blockingStateSvcs)) {
-            $blockingStateSvcs = ObjectSerializer::serializeCollection($blockingStateSvcs, 'multi', true);
+            $blockingStateSvcs = ObjectSerializer::serializeCollection($blockingStateSvcs, 'csv');
         }
         if ($blockingStateSvcs !== null) {
             $queryParams['blockingStateSvcs'] = ObjectSerializer::toQueryValue($blockingStateSvcs);
@@ -7574,7 +7574,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -8495,7 +8495,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -8810,7 +8810,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -9408,7 +9408,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -9754,14 +9754,14 @@ class AccountApi
         }
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'multi', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv');
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -10114,14 +10114,14 @@ class AccountApi
         }
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'multi', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv');
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -10681,7 +10681,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -11597,7 +11597,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'multi', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
