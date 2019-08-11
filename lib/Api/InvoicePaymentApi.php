@@ -344,7 +344,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -685,7 +685,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1026,7 +1026,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1355,7 +1355,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1684,7 +1684,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2043,7 +2043,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2333,7 +2333,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2623,7 +2623,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2944,7 +2944,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3235,7 +3235,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3547,7 +3547,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3839,7 +3839,7 @@ class InvoicePaymentApi
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
-                $httpBody = GuzzleHttpjson_encode($httpBody);
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

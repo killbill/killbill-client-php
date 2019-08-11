@@ -167,7 +167,7 @@ sed 's/\(\([ ]*\)} elseif (count(\$formParams) > 0) {\)/\2    elseif (is_array($
 \2        $httpBody = array_map(function($value) {\
 \2            return ObjectSerializer::sanitizeForSerialization($value);\
 \2        }, $_tempBody);\
-\2        $httpBody = \GuzzleHttp\json_encode($httpBody);\
+\2        $httpBody = \\GuzzleHttp\\json_encode($httpBody);\
 \2    }\
 \1/g' lib/Api/*.php
 ```
