@@ -32,6 +32,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
 use Killbill\Client\Swagger\ApiException;
 use Killbill\Client\Swagger\Configuration;
@@ -142,37 +143,7 @@ class CreditApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -236,22 +207,8 @@ class CreditApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -462,37 +419,7 @@ class CreditApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -546,22 +473,8 @@ class CreditApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -697,6 +610,7 @@ class CreditApi
         );
     }
 
+
     /**
      * Create http client option
      *
@@ -714,5 +628,84 @@ class CreditApi
         }
 
         return $options;
+    }
+    
+    /**
+     * Response handler
+     *
+     * @param Request  $request    Request
+     * @param Response $response   Response
+     * @param string   $returnType Return type
+     *
+     * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
+     * @return array of returned object matching type, HTTP status code, HTTP response headers (array of strings)
+     */
+    protected function handleResponse($request, $response, $returnType)
+    {
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                $response->getBody()
+            );
+        }
+
+        if ($statusCode === 201 && $response->hasHeader('Location')) {
+            // This is a Created redirection, getting the object from the location target
+            $location = $response->getHeader('Location')[0];
+
+            if (strpos($location, $this->config->getHost()) !== 0) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Received a location header not matching the configured host (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $options = $this->createHttpClientOption();
+            $locationRequest = new Request(
+                'GET',
+                $location,
+                $request->getHeaders()
+            );
+            $locationResponse = $this->client->send($locationRequest, $options);
+
+            $responseBody = $locationResponse->getBody();
+        } else {
+            $responseBody = $response->getBody();
+        }
+
+        if ($returnType === null || $returnType === '') {
+            $returnedObject = null;
+        } else {
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+            
+            $returnedObject = ObjectSerializer::deserialize($content, $returnType, []);
+        }
+
+        return [
+            $returnedObject,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
     }
 }

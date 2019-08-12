@@ -32,6 +32,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
 use Killbill\Client\Swagger\ApiException;
 use Killbill\Client\Swagger\Configuration;
@@ -144,37 +145,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -240,22 +211,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -470,7 +427,7 @@ class InvoiceApi
      */
     public function commitInvoiceWithHttpInfo($invoiceId, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->commitInvoiceRequest($invoiceId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -486,23 +443,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -548,14 +489,14 @@ class InvoiceApi
      */
     public function commitInvoiceAsyncWithHttpInfo($invoiceId, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->commitInvoiceRequest($invoiceId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -772,37 +713,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -870,22 +781,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1124,37 +1021,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1216,22 +1083,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1447,37 +1300,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1543,22 +1366,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1792,37 +1601,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1884,22 +1663,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2120,37 +1885,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -2212,22 +1947,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2450,37 +2171,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -2544,22 +2235,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2791,37 +2468,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -2889,22 +2536,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3128,7 +2761,7 @@ class InvoiceApi
      */
     public function deleteCBAWithHttpInfo($invoiceId, $invoiceItemId, $accountId, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deleteCBARequest($invoiceId, $invoiceItemId, $accountId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -3144,23 +2777,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -3210,14 +2827,14 @@ class InvoiceApi
      */
     public function deleteCBAAsyncWithHttpInfo($invoiceId, $invoiceItemId, $accountId, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deleteCBARequest($invoiceId, $invoiceItemId, $accountId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3437,7 +3054,7 @@ class InvoiceApi
      */
     public function deleteInvoiceCustomFieldsWithHttpInfo($invoiceId, $xKillbillCreatedBy, $customField = null, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deleteInvoiceCustomFieldsRequest($invoiceId, $xKillbillCreatedBy, $customField, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -3453,23 +3070,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -3517,14 +3118,14 @@ class InvoiceApi
      */
     public function deleteInvoiceCustomFieldsAsyncWithHttpInfo($invoiceId, $xKillbillCreatedBy, $customField = null, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deleteInvoiceCustomFieldsRequest($invoiceId, $xKillbillCreatedBy, $customField, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3726,7 +3327,7 @@ class InvoiceApi
      */
     public function deleteInvoiceTagsWithHttpInfo($invoiceId, $xKillbillCreatedBy, $tagDef = null, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deleteInvoiceTagsRequest($invoiceId, $xKillbillCreatedBy, $tagDef, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -3742,23 +3343,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -3806,14 +3391,14 @@ class InvoiceApi
      */
     public function deleteInvoiceTagsAsyncWithHttpInfo($invoiceId, $xKillbillCreatedBy, $tagDef = null, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deleteInvoiceTagsRequest($invoiceId, $xKillbillCreatedBy, $tagDef, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -4034,37 +3619,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -4128,22 +3683,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -4357,37 +3898,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -4441,22 +3952,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -4644,37 +4141,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -4734,22 +4201,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -4946,37 +4399,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5030,22 +4453,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -5233,37 +4642,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5323,22 +4702,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -5541,37 +4906,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5631,22 +4966,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -5845,37 +5166,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5931,22 +5222,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -6133,37 +5410,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -6217,22 +5464,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -6418,37 +5651,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -6506,22 +5709,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -6711,37 +5900,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -6793,22 +5952,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -6975,37 +6120,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -7059,22 +6174,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -7262,37 +6363,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -7352,22 +6423,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -7560,37 +6617,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -7650,22 +6677,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -7853,7 +6866,7 @@ class InvoiceApi
      */
     public function modifyInvoiceCustomFieldsWithHttpInfo($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->modifyInvoiceCustomFieldsRequest($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -7869,23 +6882,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -7933,14 +6930,14 @@ class InvoiceApi
      */
     public function modifyInvoiceCustomFieldsAsyncWithHttpInfo($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->modifyInvoiceCustomFieldsRequest($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -8161,37 +7158,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -8253,22 +7220,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -8480,37 +7433,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -8574,22 +7497,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -8815,37 +7724,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -8907,22 +7786,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -9133,37 +7998,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -9225,22 +8060,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -9453,37 +8274,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -9547,22 +8338,8 @@ class InvoiceApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -9769,7 +8546,7 @@ class InvoiceApi
      */
     public function voidInvoiceWithHttpInfo($invoiceId, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->voidInvoiceRequest($invoiceId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -9785,23 +8562,7 @@ class InvoiceApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -9847,14 +8608,14 @@ class InvoiceApi
      */
     public function voidInvoiceAsyncWithHttpInfo($invoiceId, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->voidInvoiceRequest($invoiceId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -10011,6 +8772,7 @@ class InvoiceApi
         );
     }
 
+
     /**
      * Create http client option
      *
@@ -10028,5 +8790,84 @@ class InvoiceApi
         }
 
         return $options;
+    }
+    
+    /**
+     * Response handler
+     *
+     * @param Request  $request    Request
+     * @param Response $response   Response
+     * @param string   $returnType Return type
+     *
+     * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
+     * @return array of returned object matching type, HTTP status code, HTTP response headers (array of strings)
+     */
+    protected function handleResponse($request, $response, $returnType)
+    {
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                $response->getBody()
+            );
+        }
+
+        if ($statusCode === 201 && $response->hasHeader('Location')) {
+            // This is a Created redirection, getting the object from the location target
+            $location = $response->getHeader('Location')[0];
+
+            if (strpos($location, $this->config->getHost()) !== 0) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Received a location header not matching the configured host (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $options = $this->createHttpClientOption();
+            $locationRequest = new Request(
+                'GET',
+                $location,
+                $request->getHeaders()
+            );
+            $locationResponse = $this->client->send($locationRequest, $options);
+
+            $responseBody = $locationResponse->getBody();
+        } else {
+            $responseBody = $response->getBody();
+        }
+
+        if ($returnType === null || $returnType === '') {
+            $returnedObject = null;
+        } else {
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+            
+            $returnedObject = ObjectSerializer::deserialize($content, $returnType, []);
+        }
+
+        return [
+            $returnedObject,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
     }
 }

@@ -32,6 +32,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
 use Killbill\Client\Swagger\ApiException;
 use Killbill\Client\Swagger\Configuration;
@@ -121,7 +122,7 @@ class PaymentApi
      */
     public function cancelScheduledPaymentTransactionByExternalKeyWithHttpInfo($transactionExternalKey, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->cancelScheduledPaymentTransactionByExternalKeyRequest($transactionExternalKey, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -137,23 +138,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -199,14 +184,14 @@ class PaymentApi
      */
     public function cancelScheduledPaymentTransactionByExternalKeyAsyncWithHttpInfo($transactionExternalKey, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->cancelScheduledPaymentTransactionByExternalKeyRequest($transactionExternalKey, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -394,7 +379,7 @@ class PaymentApi
      */
     public function cancelScheduledPaymentTransactionByIdWithHttpInfo($paymentTransactionId, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->cancelScheduledPaymentTransactionByIdRequest($paymentTransactionId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -410,23 +395,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -472,14 +441,14 @@ class PaymentApi
      */
     public function cancelScheduledPaymentTransactionByIdAsyncWithHttpInfo($paymentTransactionId, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->cancelScheduledPaymentTransactionByIdRequest($paymentTransactionId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -694,37 +663,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -790,22 +729,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1044,37 +969,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1138,22 +1033,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1379,37 +1260,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1475,22 +1326,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1729,37 +1566,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1823,22 +1630,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2064,37 +1857,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -2160,22 +1923,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2414,37 +2163,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -2508,22 +2227,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2732,7 +2437,7 @@ class PaymentApi
      */
     public function completeTransactionWithHttpInfo($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason = null, $xKillbillComment = null, $controlPluginName = null, $pluginProperty = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->completeTransactionRequest($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty);
 
         try {
@@ -2748,23 +2453,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -2816,14 +2505,14 @@ class PaymentApi
      */
     public function completeTransactionAsyncWithHttpInfo($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason = null, $xKillbillComment = null, $controlPluginName = null, $pluginProperty = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->completeTransactionRequest($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3045,7 +2734,7 @@ class PaymentApi
      */
     public function completeTransactionByExternalKeyWithHttpInfo($body, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null, $controlPluginName = null, $pluginProperty = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->completeTransactionByExternalKeyRequest($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty);
 
         try {
@@ -3061,23 +2750,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -3127,14 +2800,14 @@ class PaymentApi
      */
     public function completeTransactionByExternalKeyAsyncWithHttpInfo($body, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null, $controlPluginName = null, $pluginProperty = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->completeTransactionByExternalKeyRequest($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3356,37 +3029,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -3448,22 +3091,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3677,37 +3306,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -3769,22 +3368,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -4005,37 +3590,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -4097,22 +3652,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -4316,7 +3857,7 @@ class PaymentApi
      */
     public function deletePaymentCustomFieldsWithHttpInfo($paymentId, $xKillbillCreatedBy, $customField = null, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deletePaymentCustomFieldsRequest($paymentId, $xKillbillCreatedBy, $customField, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -4332,23 +3873,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -4396,14 +3921,14 @@ class PaymentApi
      */
     public function deletePaymentCustomFieldsAsyncWithHttpInfo($paymentId, $xKillbillCreatedBy, $customField = null, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deletePaymentCustomFieldsRequest($paymentId, $xKillbillCreatedBy, $customField, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -4605,7 +4130,7 @@ class PaymentApi
      */
     public function deletePaymentTagsWithHttpInfo($paymentId, $xKillbillCreatedBy, $tagDef = null, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deletePaymentTagsRequest($paymentId, $xKillbillCreatedBy, $tagDef, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -4621,23 +4146,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -4685,14 +4194,14 @@ class PaymentApi
      */
     public function deletePaymentTagsAsyncWithHttpInfo($paymentId, $xKillbillCreatedBy, $tagDef = null, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->deletePaymentTagsRequest($paymentId, $xKillbillCreatedBy, $tagDef, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -4911,37 +4420,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5003,22 +4482,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -5223,37 +4688,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5307,22 +4742,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -5504,37 +4925,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5588,22 +4979,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -5793,37 +5170,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -5885,22 +5232,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -6103,37 +5436,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -6189,22 +5492,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -6395,37 +5684,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -6483,22 +5742,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -6702,37 +5947,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -6798,22 +6013,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -7009,7 +6210,7 @@ class PaymentApi
      */
     public function modifyPaymentCustomFieldsWithHttpInfo($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->modifyPaymentCustomFieldsRequest($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason, $xKillbillComment);
 
         try {
@@ -7025,23 +6226,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -7089,14 +6274,14 @@ class PaymentApi
      */
     public function modifyPaymentCustomFieldsAsyncWithHttpInfo($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason = null, $xKillbillComment = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->modifyPaymentCustomFieldsRequest($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason, $xKillbillComment);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -7321,37 +6506,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -7417,22 +6572,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -7671,37 +6812,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -7765,22 +6876,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -8008,37 +7105,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -8106,22 +7173,8 @@ class PaymentApi
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -8336,7 +7389,7 @@ class PaymentApi
      */
     public function voidPaymentWithHttpInfo($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason = null, $xKillbillComment = null, $controlPluginName = null, $pluginProperty = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->voidPaymentRequest($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty);
 
         try {
@@ -8352,23 +7405,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -8420,14 +7457,14 @@ class PaymentApi
      */
     public function voidPaymentAsyncWithHttpInfo($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason = null, $xKillbillComment = null, $controlPluginName = null, $pluginProperty = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->voidPaymentRequest($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -8649,7 +7686,7 @@ class PaymentApi
      */
     public function voidPaymentByExternalKeyWithHttpInfo($body, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null, $controlPluginName = null, $pluginProperty = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->voidPaymentByExternalKeyRequest($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty);
 
         try {
@@ -8665,23 +7702,7 @@ class PaymentApi
                 );
             }
 
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
+            return $this->handleResponse($request, $response, $returnType);
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -8731,14 +7752,14 @@ class PaymentApi
      */
     public function voidPaymentByExternalKeyAsyncWithHttpInfo($body, $xKillbillCreatedBy, $xKillbillReason = null, $xKillbillComment = null, $controlPluginName = null, $pluginProperty = null)
     {
-        $returnType = '';
+        $returnType = null;
         $request = $this->voidPaymentByExternalKeyRequest($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                function ($response) use ($request, $returnType) {
+                    return $this->handleResponse($request, $response, $returnType);
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -8906,6 +7927,7 @@ class PaymentApi
         );
     }
 
+
     /**
      * Create http client option
      *
@@ -8923,5 +7945,84 @@ class PaymentApi
         }
 
         return $options;
+    }
+    
+    /**
+     * Response handler
+     *
+     * @param Request  $request    Request
+     * @param Response $response   Response
+     * @param string   $returnType Return type
+     *
+     * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
+     * @return array of returned object matching type, HTTP status code, HTTP response headers (array of strings)
+     */
+    protected function handleResponse($request, $response, $returnType)
+    {
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode < 200 || $statusCode > 299) {
+            throw new ApiException(
+                sprintf(
+                    '[%d] Error connecting to the API (%s)',
+                    $statusCode,
+                    $request->getUri()
+                ),
+                $statusCode,
+                $response->getHeaders(),
+                $response->getBody()
+            );
+        }
+
+        if ($statusCode === 201 && $response->hasHeader('Location')) {
+            // This is a Created redirection, getting the object from the location target
+            $location = $response->getHeader('Location')[0];
+
+            if (strpos($location, $this->config->getHost()) !== 0) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Received a location header not matching the configured host (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $options = $this->createHttpClientOption();
+            $locationRequest = new Request(
+                'GET',
+                $location,
+                $request->getHeaders()
+            );
+            $locationResponse = $this->client->send($locationRequest, $options);
+
+            $responseBody = $locationResponse->getBody();
+        } else {
+            $responseBody = $response->getBody();
+        }
+
+        if ($returnType === null || $returnType === '') {
+            $returnedObject = null;
+        } else {
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+            
+            $returnedObject = ObjectSerializer::deserialize($content, $returnType, []);
+        }
+
+        return [
+            $returnedObject,
+            $response->getStatusCode(),
+            $response->getHeaders()
+        ];
     }
 }
