@@ -352,8 +352,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -612,7 +611,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -660,8 +659,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -902,7 +900,7 @@ class PaymentMethodApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'csv');
+            $customField = ObjectSerializer::serializeCollection($customField, 'csv', true);
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -950,8 +948,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -1231,7 +1228,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1271,8 +1268,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -1553,8 +1549,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -1838,7 +1833,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1870,8 +1865,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -2161,8 +2155,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -2449,7 +2442,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2481,8 +2474,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -2773,8 +2765,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -3072,7 +3063,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv');
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -3112,8 +3103,7 @@ class PaymentMethodApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);

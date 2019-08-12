@@ -4,23 +4,23 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addSubscriptionBlockingState**](SubscriptionApi.md#addSubscriptionBlockingState) | **POST** /1.0/kb/subscriptions/{subscriptionId}/block | Block a subscription
-[**cancelSubscriptionPlan**](SubscriptionApi.md#cancelSubscriptionPlan) | **DELETE** /1.0/kb/subscriptions/{subscriptionId} | Cancel an entitlement plan
-[**changeSubscriptionPlan**](SubscriptionApi.md#changeSubscriptionPlan) | **PUT** /1.0/kb/subscriptions/{subscriptionId} | Change entitlement plan
-[**createSubscription**](SubscriptionApi.md#createSubscription) | **POST** /1.0/kb/subscriptions | Create an subscription
-[**createSubscriptionCustomFields**](SubscriptionApi.md#createSubscriptionCustomFields) | **POST** /1.0/kb/subscriptions/{subscriptionId}/customFields | Add custom fields to subscription
-[**createSubscriptionTags**](SubscriptionApi.md#createSubscriptionTags) | **POST** /1.0/kb/subscriptions/{subscriptionId}/tags | 
-[**createSubscriptionWithAddOns**](SubscriptionApi.md#createSubscriptionWithAddOns) | **POST** /1.0/kb/subscriptions/createSubscriptionWithAddOns | Create an entitlement with addOn products
-[**createSubscriptionsWithAddOns**](SubscriptionApi.md#createSubscriptionsWithAddOns) | **POST** /1.0/kb/subscriptions/createSubscriptionsWithAddOns | Create multiple entitlements with addOn products
-[**deleteSubscriptionCustomFields**](SubscriptionApi.md#deleteSubscriptionCustomFields) | **DELETE** /1.0/kb/subscriptions/{subscriptionId}/customFields | Remove custom fields from subscription
-[**deleteSubscriptionTags**](SubscriptionApi.md#deleteSubscriptionTags) | **DELETE** /1.0/kb/subscriptions/{subscriptionId}/tags | Remove tags from subscription
-[**getSubscription**](SubscriptionApi.md#getSubscription) | **GET** /1.0/kb/subscriptions/{subscriptionId} | Retrieve a subscription by id
-[**getSubscriptionCustomFields**](SubscriptionApi.md#getSubscriptionCustomFields) | **GET** /1.0/kb/subscriptions/{subscriptionId}/customFields | Retrieve subscription custom fields
-[**getSubscriptionTags**](SubscriptionApi.md#getSubscriptionTags) | **GET** /1.0/kb/subscriptions/{subscriptionId}/tags | Retrieve subscription tags
-[**modifySubscriptionCustomFields**](SubscriptionApi.md#modifySubscriptionCustomFields) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/customFields | Modify custom fields to subscription
-[**uncancelSubscriptionPlan**](SubscriptionApi.md#uncancelSubscriptionPlan) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/uncancel | Un-cancel an entitlement
-[**undoChangeSubscriptionPlan**](SubscriptionApi.md#undoChangeSubscriptionPlan) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/undoChangePlan | Undo a pending change plan on an entitlement
-[**updateSubscriptionBCD**](SubscriptionApi.md#updateSubscriptionBCD) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/bcd | Update the BCD associated to a subscription
+[**addSubscriptionBlockingState**](SubscriptionApi.md#addsubscriptionblockingstate) | **POST** /1.0/kb/subscriptions/{subscriptionId}/block | Block a subscription
+[**cancelSubscriptionPlan**](SubscriptionApi.md#cancelsubscriptionplan) | **DELETE** /1.0/kb/subscriptions/{subscriptionId} | Cancel an entitlement plan
+[**changeSubscriptionPlan**](SubscriptionApi.md#changesubscriptionplan) | **PUT** /1.0/kb/subscriptions/{subscriptionId} | Change entitlement plan
+[**createSubscription**](SubscriptionApi.md#createsubscription) | **POST** /1.0/kb/subscriptions | Create an subscription
+[**createSubscriptionCustomFields**](SubscriptionApi.md#createsubscriptioncustomfields) | **POST** /1.0/kb/subscriptions/{subscriptionId}/customFields | Add custom fields to subscription
+[**createSubscriptionTags**](SubscriptionApi.md#createsubscriptiontags) | **POST** /1.0/kb/subscriptions/{subscriptionId}/tags | 
+[**createSubscriptionWithAddOns**](SubscriptionApi.md#createsubscriptionwithaddons) | **POST** /1.0/kb/subscriptions/createSubscriptionWithAddOns | Create an entitlement with addOn products
+[**createSubscriptionsWithAddOns**](SubscriptionApi.md#createsubscriptionswithaddons) | **POST** /1.0/kb/subscriptions/createSubscriptionsWithAddOns | Create multiple entitlements with addOn products
+[**deleteSubscriptionCustomFields**](SubscriptionApi.md#deletesubscriptioncustomfields) | **DELETE** /1.0/kb/subscriptions/{subscriptionId}/customFields | Remove custom fields from subscription
+[**deleteSubscriptionTags**](SubscriptionApi.md#deletesubscriptiontags) | **DELETE** /1.0/kb/subscriptions/{subscriptionId}/tags | Remove tags from subscription
+[**getSubscription**](SubscriptionApi.md#getsubscription) | **GET** /1.0/kb/subscriptions/{subscriptionId} | Retrieve a subscription by id
+[**getSubscriptionCustomFields**](SubscriptionApi.md#getsubscriptioncustomfields) | **GET** /1.0/kb/subscriptions/{subscriptionId}/customFields | Retrieve subscription custom fields
+[**getSubscriptionTags**](SubscriptionApi.md#getsubscriptiontags) | **GET** /1.0/kb/subscriptions/{subscriptionId}/tags | Retrieve subscription tags
+[**modifySubscriptionCustomFields**](SubscriptionApi.md#modifysubscriptioncustomfields) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/customFields | Modify custom fields to subscription
+[**uncancelSubscriptionPlan**](SubscriptionApi.md#uncancelsubscriptionplan) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/uncancel | Un-cancel an entitlement
+[**undoChangeSubscriptionPlan**](SubscriptionApi.md#undochangesubscriptionplan) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/undoChangePlan | Undo a pending change plan on an entitlement
+[**updateSubscriptionBCD**](SubscriptionApi.md#updatesubscriptionbcd) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/bcd | Update the BCD associated to a subscription
 
 # **addSubscriptionBlockingState**
 > \Killbill\Client\Swagger\Model\BlockingState[] addSubscriptionBlockingState($body, $xKillbillCreatedBy, $subscriptionId, $xKillbillReason, $xKillbillComment, $requestedDate, $pluginProperty)

@@ -4,9 +4,9 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAllUsage**](UsageApi.md#getAllUsage) | **GET** /1.0/kb/usages/{subscriptionId} | Retrieve usage for a subscription
-[**getUsage**](UsageApi.md#getUsage) | **GET** /1.0/kb/usages/{subscriptionId}/{unitType} | Retrieve usage for a subscription and unit type
-[**recordUsage**](UsageApi.md#recordUsage) | **POST** /1.0/kb/usages | Record usage for a subscription
+[**getAllUsage**](UsageApi.md#getallusage) | **GET** /1.0/kb/usages/{subscriptionId} | Retrieve usage for a subscription
+[**getUsage**](UsageApi.md#getusage) | **GET** /1.0/kb/usages/{subscriptionId}/{unitType} | Retrieve usage for a subscription and unit type
+[**recordUsage**](UsageApi.md#recordusage) | **POST** /1.0/kb/usages | Record usage for a subscription
 
 # **getAllUsage**
 > \Killbill\Client\Swagger\Model\RolledUpUsage getAllUsage($subscriptionId, $startDate, $endDate)

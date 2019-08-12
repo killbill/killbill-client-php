@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **controlTagExclusion** | **string** |  | [optional] 
 **numberOfUnpaidInvoicesEqualsOrExceeds** | **int** |  | [optional] 
 **responseForLastFailedPayment** | **string[]** |  | [optional] 
-**totalUnpaidInvoiceBalanceEqualsOrExceeds** | [**BigDecimal**](BigDecimal.md) |  | [optional] 
+**totalUnpaidInvoiceBalanceEqualsOrExceeds** | **float** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

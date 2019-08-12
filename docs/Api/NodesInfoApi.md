@@ -4,8 +4,8 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getNodesInfo**](NodesInfoApi.md#getNodesInfo) | **GET** /1.0/kb/nodesInfo | Retrieve all the nodes infos
-[**triggerNodeCommand**](NodesInfoApi.md#triggerNodeCommand) | **POST** /1.0/kb/nodesInfo | Trigger a node command
+[**getNodesInfo**](NodesInfoApi.md#getnodesinfo) | **GET** /1.0/kb/nodesInfo | Retrieve all the nodes infos
+[**triggerNodeCommand**](NodesInfoApi.md#triggernodecommand) | **POST** /1.0/kb/nodesInfo | Trigger a node command
 
 # **getNodesInfo**
 > \Killbill\Client\Swagger\Model\PluginInfo[] getNodesInfo()

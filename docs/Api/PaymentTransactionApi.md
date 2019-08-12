@@ -4,17 +4,17 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTransactionCustomFields**](PaymentTransactionApi.md#createTransactionCustomFields) | **POST** /1.0/kb/paymentTransactions/{transactionId}/customFields | Add custom fields to payment transaction
-[**createTransactionTags**](PaymentTransactionApi.md#createTransactionTags) | **POST** /1.0/kb/paymentTransactions/{transactionId}/tags | Add tags to payment transaction
-[**deleteTransactionCustomFields**](PaymentTransactionApi.md#deleteTransactionCustomFields) | **DELETE** /1.0/kb/paymentTransactions/{transactionId}/customFields | Remove custom fields from payment transaction
-[**deleteTransactionTags**](PaymentTransactionApi.md#deleteTransactionTags) | **DELETE** /1.0/kb/paymentTransactions/{transactionId}/tags | Remove tags from payment transaction
-[**getPaymentByTransactionExternalKey**](PaymentTransactionApi.md#getPaymentByTransactionExternalKey) | **GET** /1.0/kb/paymentTransactions | Retrieve a payment by transaction external key
-[**getPaymentByTransactionId**](PaymentTransactionApi.md#getPaymentByTransactionId) | **GET** /1.0/kb/paymentTransactions/{transactionId} | Retrieve a payment by transaction id
-[**getTransactionAuditLogsWithHistory**](PaymentTransactionApi.md#getTransactionAuditLogsWithHistory) | **GET** /1.0/kb/paymentTransactions/{transactionId}/auditLogsWithHistory | Retrieve payment transaction audit logs with history by id
-[**getTransactionCustomFields**](PaymentTransactionApi.md#getTransactionCustomFields) | **GET** /1.0/kb/paymentTransactions/{transactionId}/customFields | Retrieve payment transaction custom fields
-[**getTransactionTags**](PaymentTransactionApi.md#getTransactionTags) | **GET** /1.0/kb/paymentTransactions/{transactionId}/tags | Retrieve payment transaction tags
-[**modifyTransactionCustomFields**](PaymentTransactionApi.md#modifyTransactionCustomFields) | **PUT** /1.0/kb/paymentTransactions/{transactionId}/customFields | Modify custom fields to payment transaction
-[**notifyStateChanged**](PaymentTransactionApi.md#notifyStateChanged) | **POST** /1.0/kb/paymentTransactions/{transactionId} | Mark a pending payment transaction as succeeded or failed
+[**createTransactionCustomFields**](PaymentTransactionApi.md#createtransactioncustomfields) | **POST** /1.0/kb/paymentTransactions/{transactionId}/customFields | Add custom fields to payment transaction
+[**createTransactionTags**](PaymentTransactionApi.md#createtransactiontags) | **POST** /1.0/kb/paymentTransactions/{transactionId}/tags | Add tags to payment transaction
+[**deleteTransactionCustomFields**](PaymentTransactionApi.md#deletetransactioncustomfields) | **DELETE** /1.0/kb/paymentTransactions/{transactionId}/customFields | Remove custom fields from payment transaction
+[**deleteTransactionTags**](PaymentTransactionApi.md#deletetransactiontags) | **DELETE** /1.0/kb/paymentTransactions/{transactionId}/tags | Remove tags from payment transaction
+[**getPaymentByTransactionExternalKey**](PaymentTransactionApi.md#getpaymentbytransactionexternalkey) | **GET** /1.0/kb/paymentTransactions | Retrieve a payment by transaction external key
+[**getPaymentByTransactionId**](PaymentTransactionApi.md#getpaymentbytransactionid) | **GET** /1.0/kb/paymentTransactions/{transactionId} | Retrieve a payment by transaction id
+[**getTransactionAuditLogsWithHistory**](PaymentTransactionApi.md#gettransactionauditlogswithhistory) | **GET** /1.0/kb/paymentTransactions/{transactionId}/auditLogsWithHistory | Retrieve payment transaction audit logs with history by id
+[**getTransactionCustomFields**](PaymentTransactionApi.md#gettransactioncustomfields) | **GET** /1.0/kb/paymentTransactions/{transactionId}/customFields | Retrieve payment transaction custom fields
+[**getTransactionTags**](PaymentTransactionApi.md#gettransactiontags) | **GET** /1.0/kb/paymentTransactions/{transactionId}/tags | Retrieve payment transaction tags
+[**modifyTransactionCustomFields**](PaymentTransactionApi.md#modifytransactioncustomfields) | **PUT** /1.0/kb/paymentTransactions/{transactionId}/customFields | Modify custom fields to payment transaction
+[**notifyStateChanged**](PaymentTransactionApi.md#notifystatechanged) | **POST** /1.0/kb/paymentTransactions/{transactionId} | Mark a pending payment transaction as succeeded or failed
 
 # **createTransactionCustomFields**
 > \Killbill\Client\Swagger\Model\CustomField[] createTransactionCustomFields($body, $xKillbillCreatedBy, $transactionId, $xKillbillReason, $xKillbillComment)

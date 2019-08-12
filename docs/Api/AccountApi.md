@@ -4,46 +4,46 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addAccountBlockingState**](AccountApi.md#addAccountBlockingState) | **POST** /1.0/kb/accounts/{accountId}/block | Block an account
-[**addEmail**](AccountApi.md#addEmail) | **POST** /1.0/kb/accounts/{accountId}/emails | Add account email
-[**closeAccount**](AccountApi.md#closeAccount) | **DELETE** /1.0/kb/accounts/{accountId} | Close account
-[**createAccount**](AccountApi.md#createAccount) | **POST** /1.0/kb/accounts | Create account
-[**createAccountCustomFields**](AccountApi.md#createAccountCustomFields) | **POST** /1.0/kb/accounts/{accountId}/customFields | Add custom fields to account
-[**createAccountTags**](AccountApi.md#createAccountTags) | **POST** /1.0/kb/accounts/{accountId}/tags | Add tags to account
-[**createPaymentMethod**](AccountApi.md#createPaymentMethod) | **POST** /1.0/kb/accounts/{accountId}/paymentMethods | Add a payment method
-[**deleteAccountCustomFields**](AccountApi.md#deleteAccountCustomFields) | **DELETE** /1.0/kb/accounts/{accountId}/customFields | Remove custom fields from account
-[**deleteAccountTags**](AccountApi.md#deleteAccountTags) | **DELETE** /1.0/kb/accounts/{accountId}/tags | Remove tags from account
-[**getAccount**](AccountApi.md#getAccount) | **GET** /1.0/kb/accounts/{accountId} | Retrieve an account by id
-[**getAccountAuditLogs**](AccountApi.md#getAccountAuditLogs) | **GET** /1.0/kb/accounts/{accountId}/auditLogs | Retrieve audit logs by account id
-[**getAccountAuditLogsWithHistory**](AccountApi.md#getAccountAuditLogsWithHistory) | **GET** /1.0/kb/accounts/{accountId}/auditLogsWithHistory | Retrieve account audit logs with history by account id
-[**getAccountBundles**](AccountApi.md#getAccountBundles) | **GET** /1.0/kb/accounts/{accountId}/bundles | Retrieve bundles for account
-[**getAccountByKey**](AccountApi.md#getAccountByKey) | **GET** /1.0/kb/accounts | Retrieve an account by external key
-[**getAccountCustomFields**](AccountApi.md#getAccountCustomFields) | **GET** /1.0/kb/accounts/{accountId}/customFields | Retrieve account custom fields
-[**getAccountEmailAuditLogsWithHistory**](AccountApi.md#getAccountEmailAuditLogsWithHistory) | **GET** /1.0/kb/accounts/{accountId}/emails/{accountEmailId}/auditLogsWithHistory | Retrieve account email audit logs with history by id
-[**getAccountTags**](AccountApi.md#getAccountTags) | **GET** /1.0/kb/accounts/{accountId}/tags | Retrieve account tags
-[**getAccountTimeline**](AccountApi.md#getAccountTimeline) | **GET** /1.0/kb/accounts/{accountId}/timeline | Retrieve account timeline
-[**getAccounts**](AccountApi.md#getAccounts) | **GET** /1.0/kb/accounts/pagination | List accounts
-[**getAllCustomFields**](AccountApi.md#getAllCustomFields) | **GET** /1.0/kb/accounts/{accountId}/allCustomFields | Retrieve account customFields
-[**getAllTags**](AccountApi.md#getAllTags) | **GET** /1.0/kb/accounts/{accountId}/allTags | Retrieve account tags
-[**getBlockingStates**](AccountApi.md#getBlockingStates) | **GET** /1.0/kb/accounts/{accountId}/block | Retrieve blocking states for account
-[**getChildrenAccounts**](AccountApi.md#getChildrenAccounts) | **GET** /1.0/kb/accounts/{accountId}/children | List children accounts
-[**getEmails**](AccountApi.md#getEmails) | **GET** /1.0/kb/accounts/{accountId}/emails | Retrieve an account emails
-[**getInvoicePayments**](AccountApi.md#getInvoicePayments) | **GET** /1.0/kb/accounts/{accountId}/invoicePayments | Retrieve account invoice payments
-[**getInvoicesForAccount**](AccountApi.md#getInvoicesForAccount) | **GET** /1.0/kb/accounts/{accountId}/invoices | Retrieve account invoices
-[**getOverdueAccount**](AccountApi.md#getOverdueAccount) | **GET** /1.0/kb/accounts/{accountId}/overdue | Retrieve overdue state for account
-[**getPaymentMethodsForAccount**](AccountApi.md#getPaymentMethodsForAccount) | **GET** /1.0/kb/accounts/{accountId}/paymentMethods | Retrieve account payment methods
-[**getPaymentsForAccount**](AccountApi.md#getPaymentsForAccount) | **GET** /1.0/kb/accounts/{accountId}/payments | Retrieve account payments
-[**modifyAccountCustomFields**](AccountApi.md#modifyAccountCustomFields) | **PUT** /1.0/kb/accounts/{accountId}/customFields | Modify custom fields to account
-[**payAllInvoices**](AccountApi.md#payAllInvoices) | **POST** /1.0/kb/accounts/{accountId}/invoicePayments | Trigger a payment for all unpaid invoices
-[**processPayment**](AccountApi.md#processPayment) | **POST** /1.0/kb/accounts/{accountId}/payments | Trigger a payment (authorization, purchase or credit)
-[**processPaymentByExternalKey**](AccountApi.md#processPaymentByExternalKey) | **POST** /1.0/kb/accounts/payments | Trigger a payment using the account external key (authorization, purchase or credit)
-[**rebalanceExistingCBAOnAccount**](AccountApi.md#rebalanceExistingCBAOnAccount) | **PUT** /1.0/kb/accounts/{accountId}/cbaRebalancing | Rebalance account CBA
-[**refreshPaymentMethods**](AccountApi.md#refreshPaymentMethods) | **PUT** /1.0/kb/accounts/{accountId}/paymentMethods/refresh | Refresh account payment methods
-[**removeEmail**](AccountApi.md#removeEmail) | **DELETE** /1.0/kb/accounts/{accountId}/emails/{email} | Delete email from account
-[**searchAccounts**](AccountApi.md#searchAccounts) | **GET** /1.0/kb/accounts/search/{searchKey} | Search accounts
-[**setDefaultPaymentMethod**](AccountApi.md#setDefaultPaymentMethod) | **PUT** /1.0/kb/accounts/{accountId}/paymentMethods/{paymentMethodId}/setDefault | Set the default payment method
-[**transferChildCreditToParent**](AccountApi.md#transferChildCreditToParent) | **PUT** /1.0/kb/accounts/{childAccountId}/transferCredit | Move a given child credit to the parent level
-[**updateAccount**](AccountApi.md#updateAccount) | **PUT** /1.0/kb/accounts/{accountId} | Update account
+[**addAccountBlockingState**](AccountApi.md#addaccountblockingstate) | **POST** /1.0/kb/accounts/{accountId}/block | Block an account
+[**addEmail**](AccountApi.md#addemail) | **POST** /1.0/kb/accounts/{accountId}/emails | Add account email
+[**closeAccount**](AccountApi.md#closeaccount) | **DELETE** /1.0/kb/accounts/{accountId} | Close account
+[**createAccount**](AccountApi.md#createaccount) | **POST** /1.0/kb/accounts | Create account
+[**createAccountCustomFields**](AccountApi.md#createaccountcustomfields) | **POST** /1.0/kb/accounts/{accountId}/customFields | Add custom fields to account
+[**createAccountTags**](AccountApi.md#createaccounttags) | **POST** /1.0/kb/accounts/{accountId}/tags | Add tags to account
+[**createPaymentMethod**](AccountApi.md#createpaymentmethod) | **POST** /1.0/kb/accounts/{accountId}/paymentMethods | Add a payment method
+[**deleteAccountCustomFields**](AccountApi.md#deleteaccountcustomfields) | **DELETE** /1.0/kb/accounts/{accountId}/customFields | Remove custom fields from account
+[**deleteAccountTags**](AccountApi.md#deleteaccounttags) | **DELETE** /1.0/kb/accounts/{accountId}/tags | Remove tags from account
+[**getAccount**](AccountApi.md#getaccount) | **GET** /1.0/kb/accounts/{accountId} | Retrieve an account by id
+[**getAccountAuditLogs**](AccountApi.md#getaccountauditlogs) | **GET** /1.0/kb/accounts/{accountId}/auditLogs | Retrieve audit logs by account id
+[**getAccountAuditLogsWithHistory**](AccountApi.md#getaccountauditlogswithhistory) | **GET** /1.0/kb/accounts/{accountId}/auditLogsWithHistory | Retrieve account audit logs with history by account id
+[**getAccountBundles**](AccountApi.md#getaccountbundles) | **GET** /1.0/kb/accounts/{accountId}/bundles | Retrieve bundles for account
+[**getAccountByKey**](AccountApi.md#getaccountbykey) | **GET** /1.0/kb/accounts | Retrieve an account by external key
+[**getAccountCustomFields**](AccountApi.md#getaccountcustomfields) | **GET** /1.0/kb/accounts/{accountId}/customFields | Retrieve account custom fields
+[**getAccountEmailAuditLogsWithHistory**](AccountApi.md#getaccountemailauditlogswithhistory) | **GET** /1.0/kb/accounts/{accountId}/emails/{accountEmailId}/auditLogsWithHistory | Retrieve account email audit logs with history by id
+[**getAccountTags**](AccountApi.md#getaccounttags) | **GET** /1.0/kb/accounts/{accountId}/tags | Retrieve account tags
+[**getAccountTimeline**](AccountApi.md#getaccounttimeline) | **GET** /1.0/kb/accounts/{accountId}/timeline | Retrieve account timeline
+[**getAccounts**](AccountApi.md#getaccounts) | **GET** /1.0/kb/accounts/pagination | List accounts
+[**getAllCustomFields**](AccountApi.md#getallcustomfields) | **GET** /1.0/kb/accounts/{accountId}/allCustomFields | Retrieve account customFields
+[**getAllTags**](AccountApi.md#getalltags) | **GET** /1.0/kb/accounts/{accountId}/allTags | Retrieve account tags
+[**getBlockingStates**](AccountApi.md#getblockingstates) | **GET** /1.0/kb/accounts/{accountId}/block | Retrieve blocking states for account
+[**getChildrenAccounts**](AccountApi.md#getchildrenaccounts) | **GET** /1.0/kb/accounts/{accountId}/children | List children accounts
+[**getEmails**](AccountApi.md#getemails) | **GET** /1.0/kb/accounts/{accountId}/emails | Retrieve an account emails
+[**getInvoicePayments**](AccountApi.md#getinvoicepayments) | **GET** /1.0/kb/accounts/{accountId}/invoicePayments | Retrieve account invoice payments
+[**getInvoicesForAccount**](AccountApi.md#getinvoicesforaccount) | **GET** /1.0/kb/accounts/{accountId}/invoices | Retrieve account invoices
+[**getOverdueAccount**](AccountApi.md#getoverdueaccount) | **GET** /1.0/kb/accounts/{accountId}/overdue | Retrieve overdue state for account
+[**getPaymentMethodsForAccount**](AccountApi.md#getpaymentmethodsforaccount) | **GET** /1.0/kb/accounts/{accountId}/paymentMethods | Retrieve account payment methods
+[**getPaymentsForAccount**](AccountApi.md#getpaymentsforaccount) | **GET** /1.0/kb/accounts/{accountId}/payments | Retrieve account payments
+[**modifyAccountCustomFields**](AccountApi.md#modifyaccountcustomfields) | **PUT** /1.0/kb/accounts/{accountId}/customFields | Modify custom fields to account
+[**payAllInvoices**](AccountApi.md#payallinvoices) | **POST** /1.0/kb/accounts/{accountId}/invoicePayments | Trigger a payment for all unpaid invoices
+[**processPayment**](AccountApi.md#processpayment) | **POST** /1.0/kb/accounts/{accountId}/payments | Trigger a payment (authorization, purchase or credit)
+[**processPaymentByExternalKey**](AccountApi.md#processpaymentbyexternalkey) | **POST** /1.0/kb/accounts/payments | Trigger a payment using the account external key (authorization, purchase or credit)
+[**rebalanceExistingCBAOnAccount**](AccountApi.md#rebalanceexistingcbaonaccount) | **PUT** /1.0/kb/accounts/{accountId}/cbaRebalancing | Rebalance account CBA
+[**refreshPaymentMethods**](AccountApi.md#refreshpaymentmethods) | **PUT** /1.0/kb/accounts/{accountId}/paymentMethods/refresh | Refresh account payment methods
+[**removeEmail**](AccountApi.md#removeemail) | **DELETE** /1.0/kb/accounts/{accountId}/emails/{email} | Delete email from account
+[**searchAccounts**](AccountApi.md#searchaccounts) | **GET** /1.0/kb/accounts/search/{searchKey} | Search accounts
+[**setDefaultPaymentMethod**](AccountApi.md#setdefaultpaymentmethod) | **PUT** /1.0/kb/accounts/{accountId}/paymentMethods/{paymentMethodId}/setDefault | Set the default payment method
+[**transferChildCreditToParent**](AccountApi.md#transferchildcredittoparent) | **PUT** /1.0/kb/accounts/{childAccountId}/transferCredit | Move a given child credit to the parent level
+[**updateAccount**](AccountApi.md#updateaccount) | **PUT** /1.0/kb/accounts/{accountId} | Update account
 
 # **addAccountBlockingState**
 > \Killbill\Client\Swagger\Model\BlockingState[] addAccountBlockingState($body, $xKillbillCreatedBy, $accountId, $xKillbillReason, $xKillbillComment, $requestedDate, $pluginProperty)
@@ -2034,7 +2034,7 @@ $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string |
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $paymentMethodId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $externalPayment = true; // bool | 
-$paymentAmount = new \Killbill\Client\Swagger\Model\BigDecimal(); // BigDecimal | 
+$paymentAmount = 1.2; // float | 
 $targetDate = new \DateTime("2013-10-20"); // \DateTime | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
@@ -2056,7 +2056,7 @@ Name | Type | Description  | Notes
  **xKillbillCreatedBy** | **string**|  |
  **paymentMethodId** | [**string**](../Model/.md)|  | [optional]
  **externalPayment** | **bool**|  | [optional]
- **paymentAmount** | **BigDecimal**|  | [optional]
+ **paymentAmount** | **float**|  | [optional]
  **targetDate** | **\DateTime**|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
  **xKillbillReason** | **string**|  | [optional]

@@ -134,44 +134,18 @@ wget http://central.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3
  
 and run the following:
 ```
-java -jar swagger-codegen-cli.jar generate \
-   -i http://127.0.0.1:8980/swagger.json \
-   -l php \
-   -c .swagger-config.json \
-   -o .
+./build.sh
 ```
 
-where `-c .swagger-config.json` is config with php options. See all options:
-```
-java -jar swagger-codegen-cli.jar config-help -l php
-```
+see https://github.com/swagger-api/swagger-codegen/tree/3.0.0 for documentation of swagger-codegen
 
-Apply BigDecimal fix (until https://github.com/swagger-api/swagger-codegen/issues/9353 is fixed):
-```
-sed -i -- 's/BigDecimal/float/g' lib/Model/*.php
-sed -i -- 's/BigDecimal/float/g' lib/Api/*.php
-```
+The generator here uses custom templates in the templates folder based on swagger's default ones (https://github.com/swagger-api/swagger-codegen-generators/tree/master/src/main/resources/handlebars/php)
 
-Apply patch to convert dates/booleans into KillBill specific formats:
-```
-patch -p1 -i custom-swagger.patch
-```
-
-Apply fix to send query arrays in a comma separated format as expected by KillBill:
-```
-sed -i -- "s/ObjectSerializer::serializeCollection(\([^,]*\), 'multi', \([^)]*\))/ObjectSerializer::serializeCollection(\1, 'csv')/g" lib/Api/*.php
-```
-
-Apply fix to send body with array objects:
-```
-sed -i -- 's/\(\([ ]*\)} elseif (count(\$formParams) > 0) {\)/\2    elseif (is_array($httpBody) \&\& $headers['"'"'Content-Type'"'"'] === '"'"'application\/json'"'"') {\
-\2        $httpBody = array_map(function($value) {\
-\2            return ObjectSerializer::sanitizeForSerialization($value);\
-\2        }, $_tempBody);\
-\2        $httpBody = \\GuzzleHttp\\json_encode($httpBody);\
-\2    }\
-\1/g' lib/Api/*.php
-```
+Main differences in the generated client compared to swagger's:
+* dates are formatted into an Y-m-d strings instead of ISO8601 strings
+* booleans are formatted into true/false strings instead of 0/1 strings
+* arrays in queries are formatted as a 'csv' format instead of 'multi' (ex: custom field id lists on account's delete custom fields method)
+* arrays of objects in bodies are not failing at formatting (ex: custom field objects on account's add custom fields method)
 
 ## Documentation for API Endpoints
 

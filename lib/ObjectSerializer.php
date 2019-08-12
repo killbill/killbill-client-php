@@ -132,8 +132,7 @@ class ObjectSerializer
 
     /**
      * Take value and turn it into a string suitable for inclusion in
-     * the header. If it's a string, pass through unchanged
-     * If it's a datetime object, format it in ISO8601
+     * the header.
      *
      * @param string $value a string which will be part of the header
      *
@@ -146,8 +145,7 @@ class ObjectSerializer
 
     /**
      * Take value and turn it into a string suitable for inclusion in
-     * the http body (form parameter). If it's a string, pass through unchanged
-     * If it's a datetime object, format it in ISO8601
+     * the http body (form parameter).
      *
      * @param string|\SplFileObject $value the value of the form parameter
      *
@@ -164,11 +162,10 @@ class ObjectSerializer
 
     /**
      * Take value and turn it into a string suitable for inclusion in
-     * the parameter. If it's a string, pass through unchanged
+     * the parameter.
      *
-     * Specific for KillBill:
-     * If it's a boolean, format it as true/false instead of 0/1
-     * If it's a datetime object, format it in Y-m-d
+     * If it's a datetime object, format it as Y-m-d string.
+     * If it's a boolean, format it as true/false string.
      *
      * @param string|\DateTime $value the value of the parameter
      *

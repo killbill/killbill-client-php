@@ -286,8 +286,7 @@ class NodesInfoApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);
@@ -558,8 +557,7 @@ class NodesInfoApi
             // \stdClass has no __toString(), so we should encode it manually
             if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-            elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
+            } elseif (is_array($httpBody) && $headers['Content-Type'] === 'application/json') {
                 $httpBody = array_map(function($value) {
                     return ObjectSerializer::sanitizeForSerialization($value);
                 }, $_tempBody);

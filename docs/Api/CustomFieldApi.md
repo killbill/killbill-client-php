@@ -4,9 +4,9 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCustomFieldAuditLogsWithHistory**](CustomFieldApi.md#getCustomFieldAuditLogsWithHistory) | **GET** /1.0/kb/customFields/{customFieldId}/auditLogsWithHistory | Retrieve custom field audit logs with history by id
-[**getCustomFields**](CustomFieldApi.md#getCustomFields) | **GET** /1.0/kb/customFields/pagination | List custom fields
-[**searchCustomFields**](CustomFieldApi.md#searchCustomFields) | **GET** /1.0/kb/customFields/search/{searchKey} | Search custom fields
+[**getCustomFieldAuditLogsWithHistory**](CustomFieldApi.md#getcustomfieldauditlogswithhistory) | **GET** /1.0/kb/customFields/{customFieldId}/auditLogsWithHistory | Retrieve custom field audit logs with history by id
+[**getCustomFields**](CustomFieldApi.md#getcustomfields) | **GET** /1.0/kb/customFields/pagination | List custom fields
+[**searchCustomFields**](CustomFieldApi.md#searchcustomfields) | **GET** /1.0/kb/customFields/search/{searchKey} | Search custom fields
 
 # **getCustomFieldAuditLogsWithHistory**
 > \Killbill\Client\Swagger\Model\AuditLog[] getCustomFieldAuditLogsWithHistory($customFieldId)

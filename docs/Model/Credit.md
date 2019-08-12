@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **creditId** | **string** |  | [optional] 
-**creditAmount** | [**BigDecimal**](BigDecimal.md) |  | 
+**creditAmount** | **float** |  | 
 **currency** | **string** |  | [optional] 
 **invoiceId** | **string** |  | [optional] 
 **invoiceNumber** | **string** |  | [optional] 
@@ -14,5 +14,5 @@ Name | Type | Description | Notes
 **itemDetails** | **string** |  | [optional] 
 **auditLogs** | [**\Killbill\Client\Swagger\Model\AuditLog[]**](AuditLog.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

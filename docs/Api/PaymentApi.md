@@ -4,34 +4,34 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelScheduledPaymentTransactionByExternalKey**](PaymentApi.md#cancelScheduledPaymentTransactionByExternalKey) | **DELETE** /1.0/kb/payments/cancelScheduledPaymentTransaction | Cancels a scheduled payment attempt retry
-[**cancelScheduledPaymentTransactionById**](PaymentApi.md#cancelScheduledPaymentTransactionById) | **DELETE** /1.0/kb/payments/{paymentTransactionId}/cancelScheduledPaymentTransaction | Cancels a scheduled payment attempt retry
-[**captureAuthorization**](PaymentApi.md#captureAuthorization) | **POST** /1.0/kb/payments/{paymentId} | Capture an existing authorization
-[**captureAuthorizationByExternalKey**](PaymentApi.md#captureAuthorizationByExternalKey) | **POST** /1.0/kb/payments | Capture an existing authorization
-[**chargebackPayment**](PaymentApi.md#chargebackPayment) | **POST** /1.0/kb/payments/{paymentId}/chargebacks | Record a chargeback
-[**chargebackPaymentByExternalKey**](PaymentApi.md#chargebackPaymentByExternalKey) | **POST** /1.0/kb/payments/chargebacks | Record a chargeback
-[**chargebackReversalPayment**](PaymentApi.md#chargebackReversalPayment) | **POST** /1.0/kb/payments/{paymentId}/chargebackReversals | Record a chargeback reversal
-[**chargebackReversalPaymentByExternalKey**](PaymentApi.md#chargebackReversalPaymentByExternalKey) | **POST** /1.0/kb/payments/chargebackReversals | Record a chargeback reversal
-[**completeTransaction**](PaymentApi.md#completeTransaction) | **PUT** /1.0/kb/payments/{paymentId} | Complete an existing transaction
-[**completeTransactionByExternalKey**](PaymentApi.md#completeTransactionByExternalKey) | **PUT** /1.0/kb/payments | Complete an existing transaction
-[**createComboPayment**](PaymentApi.md#createComboPayment) | **POST** /1.0/kb/payments/combo | Combo api to create a new payment transaction on a existing (or not) account
-[**createPaymentCustomFields**](PaymentApi.md#createPaymentCustomFields) | **POST** /1.0/kb/payments/{paymentId}/customFields | Add custom fields to payment
-[**createPaymentTags**](PaymentApi.md#createPaymentTags) | **POST** /1.0/kb/payments/{paymentId}/tags | Add tags to payment payment
-[**deletePaymentCustomFields**](PaymentApi.md#deletePaymentCustomFields) | **DELETE** /1.0/kb/payments/{paymentId}/customFields | Remove custom fields from payment payment
-[**deletePaymentTags**](PaymentApi.md#deletePaymentTags) | **DELETE** /1.0/kb/payments/{paymentId}/tags | Remove tags from payment payment
-[**getPayment**](PaymentApi.md#getPayment) | **GET** /1.0/kb/payments/{paymentId} | Retrieve a payment by id
-[**getPaymentAttemptAuditLogsWithHistory**](PaymentApi.md#getPaymentAttemptAuditLogsWithHistory) | **GET** /1.0/kb/payments/attempts/{paymentAttemptId}/auditLogsWithHistory | Retrieve payment attempt audit logs with history by id
-[**getPaymentAuditLogsWithHistory**](PaymentApi.md#getPaymentAuditLogsWithHistory) | **GET** /1.0/kb/payments/{paymentId}/auditLogsWithHistory | Retrieve payment audit logs with history by id
-[**getPaymentByExternalKey**](PaymentApi.md#getPaymentByExternalKey) | **GET** /1.0/kb/payments | Retrieve a payment by external key
-[**getPaymentCustomFields**](PaymentApi.md#getPaymentCustomFields) | **GET** /1.0/kb/payments/{paymentId}/customFields | Retrieve payment custom fields
-[**getPaymentTags**](PaymentApi.md#getPaymentTags) | **GET** /1.0/kb/payments/{paymentId}/tags | Retrieve payment payment tags
-[**getPayments**](PaymentApi.md#getPayments) | **GET** /1.0/kb/payments/pagination | Get payments
-[**modifyPaymentCustomFields**](PaymentApi.md#modifyPaymentCustomFields) | **PUT** /1.0/kb/payments/{paymentId}/customFields | Modify custom fields to payment
-[**refundPayment**](PaymentApi.md#refundPayment) | **POST** /1.0/kb/payments/{paymentId}/refunds | Refund an existing payment
-[**refundPaymentByExternalKey**](PaymentApi.md#refundPaymentByExternalKey) | **POST** /1.0/kb/payments/refunds | Refund an existing payment
-[**searchPayments**](PaymentApi.md#searchPayments) | **GET** /1.0/kb/payments/search/{searchKey} | Search payments
-[**voidPayment**](PaymentApi.md#voidPayment) | **DELETE** /1.0/kb/payments/{paymentId} | Void an existing payment
-[**voidPaymentByExternalKey**](PaymentApi.md#voidPaymentByExternalKey) | **DELETE** /1.0/kb/payments | Void an existing payment
+[**cancelScheduledPaymentTransactionByExternalKey**](PaymentApi.md#cancelscheduledpaymenttransactionbyexternalkey) | **DELETE** /1.0/kb/payments/cancelScheduledPaymentTransaction | Cancels a scheduled payment attempt retry
+[**cancelScheduledPaymentTransactionById**](PaymentApi.md#cancelscheduledpaymenttransactionbyid) | **DELETE** /1.0/kb/payments/{paymentTransactionId}/cancelScheduledPaymentTransaction | Cancels a scheduled payment attempt retry
+[**captureAuthorization**](PaymentApi.md#captureauthorization) | **POST** /1.0/kb/payments/{paymentId} | Capture an existing authorization
+[**captureAuthorizationByExternalKey**](PaymentApi.md#captureauthorizationbyexternalkey) | **POST** /1.0/kb/payments | Capture an existing authorization
+[**chargebackPayment**](PaymentApi.md#chargebackpayment) | **POST** /1.0/kb/payments/{paymentId}/chargebacks | Record a chargeback
+[**chargebackPaymentByExternalKey**](PaymentApi.md#chargebackpaymentbyexternalkey) | **POST** /1.0/kb/payments/chargebacks | Record a chargeback
+[**chargebackReversalPayment**](PaymentApi.md#chargebackreversalpayment) | **POST** /1.0/kb/payments/{paymentId}/chargebackReversals | Record a chargeback reversal
+[**chargebackReversalPaymentByExternalKey**](PaymentApi.md#chargebackreversalpaymentbyexternalkey) | **POST** /1.0/kb/payments/chargebackReversals | Record a chargeback reversal
+[**completeTransaction**](PaymentApi.md#completetransaction) | **PUT** /1.0/kb/payments/{paymentId} | Complete an existing transaction
+[**completeTransactionByExternalKey**](PaymentApi.md#completetransactionbyexternalkey) | **PUT** /1.0/kb/payments | Complete an existing transaction
+[**createComboPayment**](PaymentApi.md#createcombopayment) | **POST** /1.0/kb/payments/combo | Combo api to create a new payment transaction on a existing (or not) account
+[**createPaymentCustomFields**](PaymentApi.md#createpaymentcustomfields) | **POST** /1.0/kb/payments/{paymentId}/customFields | Add custom fields to payment
+[**createPaymentTags**](PaymentApi.md#createpaymenttags) | **POST** /1.0/kb/payments/{paymentId}/tags | Add tags to payment payment
+[**deletePaymentCustomFields**](PaymentApi.md#deletepaymentcustomfields) | **DELETE** /1.0/kb/payments/{paymentId}/customFields | Remove custom fields from payment payment
+[**deletePaymentTags**](PaymentApi.md#deletepaymenttags) | **DELETE** /1.0/kb/payments/{paymentId}/tags | Remove tags from payment payment
+[**getPayment**](PaymentApi.md#getpayment) | **GET** /1.0/kb/payments/{paymentId} | Retrieve a payment by id
+[**getPaymentAttemptAuditLogsWithHistory**](PaymentApi.md#getpaymentattemptauditlogswithhistory) | **GET** /1.0/kb/payments/attempts/{paymentAttemptId}/auditLogsWithHistory | Retrieve payment attempt audit logs with history by id
+[**getPaymentAuditLogsWithHistory**](PaymentApi.md#getpaymentauditlogswithhistory) | **GET** /1.0/kb/payments/{paymentId}/auditLogsWithHistory | Retrieve payment audit logs with history by id
+[**getPaymentByExternalKey**](PaymentApi.md#getpaymentbyexternalkey) | **GET** /1.0/kb/payments | Retrieve a payment by external key
+[**getPaymentCustomFields**](PaymentApi.md#getpaymentcustomfields) | **GET** /1.0/kb/payments/{paymentId}/customFields | Retrieve payment custom fields
+[**getPaymentTags**](PaymentApi.md#getpaymenttags) | **GET** /1.0/kb/payments/{paymentId}/tags | Retrieve payment payment tags
+[**getPayments**](PaymentApi.md#getpayments) | **GET** /1.0/kb/payments/pagination | Get payments
+[**modifyPaymentCustomFields**](PaymentApi.md#modifypaymentcustomfields) | **PUT** /1.0/kb/payments/{paymentId}/customFields | Modify custom fields to payment
+[**refundPayment**](PaymentApi.md#refundpayment) | **POST** /1.0/kb/payments/{paymentId}/refunds | Refund an existing payment
+[**refundPaymentByExternalKey**](PaymentApi.md#refundpaymentbyexternalkey) | **POST** /1.0/kb/payments/refunds | Refund an existing payment
+[**searchPayments**](PaymentApi.md#searchpayments) | **GET** /1.0/kb/payments/search/{searchKey} | Search payments
+[**voidPayment**](PaymentApi.md#voidpayment) | **DELETE** /1.0/kb/payments/{paymentId} | Void an existing payment
+[**voidPaymentByExternalKey**](PaymentApi.md#voidpaymentbyexternalkey) | **DELETE** /1.0/kb/payments | Void an existing payment
 
 # **cancelScheduledPaymentTransactionByExternalKey**
 > cancelScheduledPaymentTransactionByExternalKey($transactionExternalKey, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)

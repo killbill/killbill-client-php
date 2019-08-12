@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **recurringPrice** | [**\Killbill\Client\Swagger\Model\Price[]**](Price.md) |  | [optional] 
 **blocks** | [**\Killbill\Client\Swagger\Model\TieredBlock[]**](TieredBlock.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

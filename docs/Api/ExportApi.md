@@ -4,7 +4,7 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**exportDataForAccount**](ExportApi.md#exportDataForAccount) | **GET** /1.0/kb/export/{accountId} | Export account data
+[**exportDataForAccount**](ExportApi.md#exportdataforaccount) | **GET** /1.0/kb/export/{accountId} | Export account data
 
 # **exportDataForAccount**
 > exportDataForAccount($accountId, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)

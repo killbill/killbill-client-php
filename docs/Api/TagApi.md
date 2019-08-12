@@ -4,9 +4,9 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getTagAuditLogsWithHistory**](TagApi.md#getTagAuditLogsWithHistory) | **GET** /1.0/kb/tags/{tagId}/auditLogsWithHistory | Retrieve tag audit logs with history by id
-[**getTags**](TagApi.md#getTags) | **GET** /1.0/kb/tags/pagination | List tags
-[**searchTags**](TagApi.md#searchTags) | **GET** /1.0/kb/tags/search/{searchKey} | Search tags
+[**getTagAuditLogsWithHistory**](TagApi.md#gettagauditlogswithhistory) | **GET** /1.0/kb/tags/{tagId}/auditLogsWithHistory | Retrieve tag audit logs with history by id
+[**getTags**](TagApi.md#gettags) | **GET** /1.0/kb/tags/pagination | List tags
+[**searchTags**](TagApi.md#searchtags) | **GET** /1.0/kb/tags/search/{searchKey} | Search tags
 
 # **getTagAuditLogsWithHistory**
 > \Killbill\Client\Swagger\Model\AuditLog[] getTagAuditLogsWithHistory($tagId)

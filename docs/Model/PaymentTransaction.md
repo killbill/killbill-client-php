@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **paymentId** | **string** | Associated payment id, required when notifying state transitions | [optional] 
 **paymentExternalKey** | **string** |  | [optional] 
 **transactionType** | **string** |  | [optional] 
-**amount** | [**BigDecimal**](BigDecimal.md) | Transaction amount, required except for void operations | [optional] 
+**amount** | **float** | Transaction amount, required except for void operations | [optional] 
 **currency** | **string** | Amount currency (account currency unless specified) | [optional] 
 **effectiveDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
-**processedAmount** | [**BigDecimal**](BigDecimal.md) |  | [optional] 
+**processedAmount** | **float** |  | [optional] 
 **processedCurrency** | **string** |  | [optional] 
 **status** | **string** | Transaction status, required for state change notifications | [optional] 
 **gatewayErrorCode** | **string** |  | [optional] 
@@ -21,5 +21,5 @@ Name | Type | Description | Notes
 **properties** | [**\Killbill\Client\Swagger\Model\PluginProperty[]**](PluginProperty.md) |  | [optional] 
 **auditLogs** | [**\Killbill\Client\Swagger\Model\AuditLog[]**](AuditLog.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

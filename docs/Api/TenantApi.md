@@ -4,25 +4,25 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTenant**](TenantApi.md#createTenant) | **POST** /1.0/kb/tenants | Create a tenant
-[**deletePerTenantConfiguration**](TenantApi.md#deletePerTenantConfiguration) | **DELETE** /1.0/kb/tenants/uploadPerTenantConfig | Delete a per tenant configuration (system properties)
-[**deletePluginConfiguration**](TenantApi.md#deletePluginConfiguration) | **DELETE** /1.0/kb/tenants/uploadPluginConfig/{pluginName} | Delete a per tenant configuration for a plugin
-[**deletePluginPaymentStateMachineConfig**](TenantApi.md#deletePluginPaymentStateMachineConfig) | **DELETE** /1.0/kb/tenants/uploadPluginPaymentStateMachineConfig/{pluginName} | Delete a per tenant payment state machine for a plugin
-[**deletePushNotificationCallbacks**](TenantApi.md#deletePushNotificationCallbacks) | **DELETE** /1.0/kb/tenants/registerNotificationCallback | Delete a push notification
-[**deleteUserKeyValue**](TenantApi.md#deleteUserKeyValue) | **DELETE** /1.0/kb/tenants/userKeyValue/{keyName} | Delete  a per tenant user key/value
-[**getAllPluginConfiguration**](TenantApi.md#getAllPluginConfiguration) | **GET** /1.0/kb/tenants/uploadPerTenantConfig/{keyPrefix}/search | Retrieve a per tenant key value based on key prefix
-[**getPerTenantConfiguration**](TenantApi.md#getPerTenantConfiguration) | **GET** /1.0/kb/tenants/uploadPerTenantConfig | Retrieve a per tenant configuration (system properties)
-[**getPluginConfiguration**](TenantApi.md#getPluginConfiguration) | **GET** /1.0/kb/tenants/uploadPluginConfig/{pluginName} | Retrieve a per tenant configuration for a plugin
-[**getPluginPaymentStateMachineConfig**](TenantApi.md#getPluginPaymentStateMachineConfig) | **GET** /1.0/kb/tenants/uploadPluginPaymentStateMachineConfig/{pluginName} | Retrieve a per tenant payment state machine for a plugin
-[**getPushNotificationCallbacks**](TenantApi.md#getPushNotificationCallbacks) | **GET** /1.0/kb/tenants/registerNotificationCallback | Retrieve a push notification
-[**getTenant**](TenantApi.md#getTenant) | **GET** /1.0/kb/tenants/{tenantId} | Retrieve a tenant by id
-[**getTenantByApiKey**](TenantApi.md#getTenantByApiKey) | **GET** /1.0/kb/tenants | Retrieve a tenant by its API key
-[**getUserKeyValue**](TenantApi.md#getUserKeyValue) | **GET** /1.0/kb/tenants/userKeyValue/{keyName} | Retrieve a per tenant user key/value
-[**insertUserKeyValue**](TenantApi.md#insertUserKeyValue) | **POST** /1.0/kb/tenants/userKeyValue/{keyName} | Add a per tenant user key/value
-[**registerPushNotificationCallback**](TenantApi.md#registerPushNotificationCallback) | **POST** /1.0/kb/tenants/registerNotificationCallback | Create a push notification
-[**uploadPerTenantConfiguration**](TenantApi.md#uploadPerTenantConfiguration) | **POST** /1.0/kb/tenants/uploadPerTenantConfig | Add a per tenant configuration (system properties)
-[**uploadPluginConfiguration**](TenantApi.md#uploadPluginConfiguration) | **POST** /1.0/kb/tenants/uploadPluginConfig/{pluginName} | Add a per tenant configuration for a plugin
-[**uploadPluginPaymentStateMachineConfig**](TenantApi.md#uploadPluginPaymentStateMachineConfig) | **POST** /1.0/kb/tenants/uploadPluginPaymentStateMachineConfig/{pluginName} | Add a per tenant payment state machine for a plugin
+[**createTenant**](TenantApi.md#createtenant) | **POST** /1.0/kb/tenants | Create a tenant
+[**deletePerTenantConfiguration**](TenantApi.md#deletepertenantconfiguration) | **DELETE** /1.0/kb/tenants/uploadPerTenantConfig | Delete a per tenant configuration (system properties)
+[**deletePluginConfiguration**](TenantApi.md#deletepluginconfiguration) | **DELETE** /1.0/kb/tenants/uploadPluginConfig/{pluginName} | Delete a per tenant configuration for a plugin
+[**deletePluginPaymentStateMachineConfig**](TenantApi.md#deletepluginpaymentstatemachineconfig) | **DELETE** /1.0/kb/tenants/uploadPluginPaymentStateMachineConfig/{pluginName} | Delete a per tenant payment state machine for a plugin
+[**deletePushNotificationCallbacks**](TenantApi.md#deletepushnotificationcallbacks) | **DELETE** /1.0/kb/tenants/registerNotificationCallback | Delete a push notification
+[**deleteUserKeyValue**](TenantApi.md#deleteuserkeyvalue) | **DELETE** /1.0/kb/tenants/userKeyValue/{keyName} | Delete  a per tenant user key/value
+[**getAllPluginConfiguration**](TenantApi.md#getallpluginconfiguration) | **GET** /1.0/kb/tenants/uploadPerTenantConfig/{keyPrefix}/search | Retrieve a per tenant key value based on key prefix
+[**getPerTenantConfiguration**](TenantApi.md#getpertenantconfiguration) | **GET** /1.0/kb/tenants/uploadPerTenantConfig | Retrieve a per tenant configuration (system properties)
+[**getPluginConfiguration**](TenantApi.md#getpluginconfiguration) | **GET** /1.0/kb/tenants/uploadPluginConfig/{pluginName} | Retrieve a per tenant configuration for a plugin
+[**getPluginPaymentStateMachineConfig**](TenantApi.md#getpluginpaymentstatemachineconfig) | **GET** /1.0/kb/tenants/uploadPluginPaymentStateMachineConfig/{pluginName} | Retrieve a per tenant payment state machine for a plugin
+[**getPushNotificationCallbacks**](TenantApi.md#getpushnotificationcallbacks) | **GET** /1.0/kb/tenants/registerNotificationCallback | Retrieve a push notification
+[**getTenant**](TenantApi.md#gettenant) | **GET** /1.0/kb/tenants/{tenantId} | Retrieve a tenant by id
+[**getTenantByApiKey**](TenantApi.md#gettenantbyapikey) | **GET** /1.0/kb/tenants | Retrieve a tenant by its API key
+[**getUserKeyValue**](TenantApi.md#getuserkeyvalue) | **GET** /1.0/kb/tenants/userKeyValue/{keyName} | Retrieve a per tenant user key/value
+[**insertUserKeyValue**](TenantApi.md#insertuserkeyvalue) | **POST** /1.0/kb/tenants/userKeyValue/{keyName} | Add a per tenant user key/value
+[**registerPushNotificationCallback**](TenantApi.md#registerpushnotificationcallback) | **POST** /1.0/kb/tenants/registerNotificationCallback | Create a push notification
+[**uploadPerTenantConfiguration**](TenantApi.md#uploadpertenantconfiguration) | **POST** /1.0/kb/tenants/uploadPerTenantConfig | Add a per tenant configuration (system properties)
+[**uploadPluginConfiguration**](TenantApi.md#uploadpluginconfiguration) | **POST** /1.0/kb/tenants/uploadPluginConfig/{pluginName} | Add a per tenant configuration for a plugin
+[**uploadPluginPaymentStateMachineConfig**](TenantApi.md#uploadpluginpaymentstatemachineconfig) | **POST** /1.0/kb/tenants/uploadPluginPaymentStateMachineConfig/{pluginName} | Add a per tenant payment state machine for a plugin
 
 # **createTenant**
 > \Killbill\Client\Swagger\Model\Tenant createTenant($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $useGlobalDefault)
