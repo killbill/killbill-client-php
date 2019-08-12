@@ -91,13 +91,13 @@ class InvoiceApi
      *
      * Adjust an invoice item
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $invoiceId invoiceId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -114,13 +114,13 @@ class InvoiceApi
      *
      * Adjust an invoice item
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -195,13 +195,13 @@ class InvoiceApi
      *
      * Adjust an invoice item
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -221,13 +221,13 @@ class InvoiceApi
      *
      * Adjust an invoice item
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -277,13 +277,13 @@ class InvoiceApi
     /**
      * Create request for operation 'adjustInvoiceItem'
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -322,7 +322,7 @@ class InvoiceApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -440,10 +440,10 @@ class InvoiceApi
      *
      * Perform the invoice status transition from DRAFT to COMMITTED
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -459,10 +459,10 @@ class InvoiceApi
      *
      * Perform the invoice status transition from DRAFT to COMMITTED
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -515,10 +515,10 @@ class InvoiceApi
      *
      * Perform the invoice status transition from DRAFT to COMMITTED
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -538,10 +538,10 @@ class InvoiceApi
      *
      * Perform the invoice status transition from DRAFT to COMMITTED
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -577,10 +577,10 @@ class InvoiceApi
     /**
      * Create request for operation 'commitInvoice'
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -717,14 +717,14 @@ class InvoiceApi
      *
      * Create external charge(s)
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  bool $autoCommit autoCommit (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param bool|null $autoCommit autoCommit (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -741,14 +741,14 @@ class InvoiceApi
      *
      * Create external charge(s)
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $autoCommit (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -823,14 +823,14 @@ class InvoiceApi
      *
      * Create external charge(s)
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $autoCommit (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -850,14 +850,14 @@ class InvoiceApi
      *
      * Create external charge(s)
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $autoCommit (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -907,14 +907,14 @@ class InvoiceApi
     /**
      * Create request for operation 'createExternalCharges'
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $autoCommit (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -957,7 +957,7 @@ class InvoiceApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1075,11 +1075,11 @@ class InvoiceApi
      *
      * Trigger an invoice generation
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  \DateTime $targetDate targetDate (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param \DateTime|null $targetDate targetDate (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1096,11 +1096,11 @@ class InvoiceApi
      *
      * Trigger an invoice generation
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $targetDate (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $targetDate (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1175,11 +1175,11 @@ class InvoiceApi
      *
      * Trigger an invoice generation
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $targetDate (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $targetDate (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1199,11 +1199,11 @@ class InvoiceApi
      *
      * Trigger an invoice generation
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $targetDate (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $targetDate (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1253,11 +1253,11 @@ class InvoiceApi
     /**
      * Create request for operation 'createFutureInvoice'
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $targetDate (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $targetDate (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1394,13 +1394,13 @@ class InvoiceApi
      *
      * Trigger a payment for invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoicePayment $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $externalPayment externalPayment (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoicePayment $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $invoiceId invoiceId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $externalPayment externalPayment (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1417,13 +1417,13 @@ class InvoiceApi
      *
      * Trigger a payment for invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoicePayment $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $externalPayment (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoicePayment $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $externalPayment (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1498,13 +1498,13 @@ class InvoiceApi
      *
      * Trigger a payment for invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoicePayment $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $externalPayment (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoicePayment $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $externalPayment (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1524,13 +1524,13 @@ class InvoiceApi
      *
      * Trigger a payment for invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoicePayment $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $externalPayment (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoicePayment $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $externalPayment (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1580,13 +1580,13 @@ class InvoiceApi
     /**
      * Create request for operation 'createInstantPayment'
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoicePayment $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $externalPayment (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoicePayment $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $externalPayment (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1625,7 +1625,7 @@ class InvoiceApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1743,11 +1743,11 @@ class InvoiceApi
      *
      * Add custom fields to invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $invoiceId invoiceId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1764,11 +1764,11 @@ class InvoiceApi
      *
      * Add custom fields to invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1843,11 +1843,11 @@ class InvoiceApi
      *
      * Add custom fields to invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1867,11 +1867,11 @@ class InvoiceApi
      *
      * Add custom fields to invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1921,11 +1921,11 @@ class InvoiceApi
     /**
      * Create request for operation 'createInvoiceCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2071,11 +2071,11 @@ class InvoiceApi
      *
      * Add tags to invoice
      *
-     * @param  string[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $invoiceId invoiceId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2092,11 +2092,11 @@ class InvoiceApi
      *
      * Add tags to invoice
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2171,11 +2171,11 @@ class InvoiceApi
      *
      * Add tags to invoice
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2195,11 +2195,11 @@ class InvoiceApi
      *
      * Add tags to invoice
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2249,11 +2249,11 @@ class InvoiceApi
     /**
      * Create request for operation 'createInvoiceTags'
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2399,12 +2399,12 @@ class InvoiceApi
      *
      * Create a migration invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $targetDate targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $targetDate targetDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2421,12 +2421,12 @@ class InvoiceApi
      *
      * Create a migration invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $targetDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2501,12 +2501,12 @@ class InvoiceApi
      *
      * Create a migration invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $targetDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2526,12 +2526,12 @@ class InvoiceApi
      *
      * Create a migration invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $targetDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2581,12 +2581,12 @@ class InvoiceApi
     /**
      * Create request for operation 'createMigrationInvoice'
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $targetDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2736,14 +2736,14 @@ class InvoiceApi
      *
      * Create tax items
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $autoCommit autoCommit (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $autoCommit autoCommit (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2760,14 +2760,14 @@ class InvoiceApi
      *
      * Create tax items
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $autoCommit (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2842,14 +2842,14 @@ class InvoiceApi
      *
      * Create tax items
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $autoCommit (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2869,14 +2869,14 @@ class InvoiceApi
      *
      * Create tax items
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $autoCommit (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2926,14 +2926,14 @@ class InvoiceApi
     /**
      * Create request for operation 'createTaxItems'
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceItem[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $autoCommit (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2976,7 +2976,7 @@ class InvoiceApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -3094,12 +3094,12 @@ class InvoiceApi
      *
      * Delete a CBA item
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $invoiceItemId invoiceItemId (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param string $invoiceItemId invoiceItemId (required)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3115,12 +3115,12 @@ class InvoiceApi
      *
      * Delete a CBA item
      *
-     * @param  string $invoiceId (required)
-     * @param  string $invoiceItemId (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $invoiceItemId (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3173,12 +3173,12 @@ class InvoiceApi
      *
      * Delete a CBA item
      *
-     * @param  string $invoiceId (required)
-     * @param  string $invoiceItemId (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $invoiceItemId (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3198,12 +3198,12 @@ class InvoiceApi
      *
      * Delete a CBA item
      *
-     * @param  string $invoiceId (required)
-     * @param  string $invoiceItemId (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $invoiceItemId (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3239,12 +3239,12 @@ class InvoiceApi
     /**
      * Create request for operation 'deleteCBA'
      *
-     * @param  string $invoiceId (required)
-     * @param  string $invoiceItemId (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $invoiceItemId (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3405,11 +3405,11 @@ class InvoiceApi
      *
      * Remove custom fields from invoice
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $customField customField (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $customField customField (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3425,11 +3425,11 @@ class InvoiceApi
      *
      * Remove custom fields from invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3482,11 +3482,11 @@ class InvoiceApi
      *
      * Remove custom fields from invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3506,11 +3506,11 @@ class InvoiceApi
      *
      * Remove custom fields from invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3546,11 +3546,11 @@ class InvoiceApi
     /**
      * Create request for operation 'deleteInvoiceCustomFields'
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3579,7 +3579,7 @@ class InvoiceApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'csv', true);
+            $customField = ObjectSerializer::serializeCollection($customField, /*'multi'*/'csv', true);
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -3694,11 +3694,11 @@ class InvoiceApi
      *
      * Remove tags from invoice
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $tagDef tagDef (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $tagDef tagDef (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3714,11 +3714,11 @@ class InvoiceApi
      *
      * Remove tags from invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3771,11 +3771,11 @@ class InvoiceApi
      *
      * Remove tags from invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3795,11 +3795,11 @@ class InvoiceApi
      *
      * Remove tags from invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3835,11 +3835,11 @@ class InvoiceApi
     /**
      * Create request for operation 'deleteInvoiceTags'
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3868,7 +3868,7 @@ class InvoiceApi
 
         // query params
         if (is_array($tagDef)) {
-            $tagDef = ObjectSerializer::serializeCollection($tagDef, 'csv', true);
+            $tagDef = ObjectSerializer::serializeCollection($tagDef, /*'multi'*/'csv', true);
         }
         if ($tagDef !== null) {
             $queryParams['tagDef'] = ObjectSerializer::toQueryValue($tagDef);
@@ -3983,12 +3983,12 @@ class InvoiceApi
      *
      * Generate a dryRun invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceDryRun $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $targetDate targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceDryRun $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $targetDate targetDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4005,12 +4005,12 @@ class InvoiceApi
      *
      * Generate a dryRun invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceDryRun $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceDryRun $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $targetDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4085,12 +4085,12 @@ class InvoiceApi
      *
      * Generate a dryRun invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceDryRun $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceDryRun $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $targetDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4110,12 +4110,12 @@ class InvoiceApi
      *
      * Generate a dryRun invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceDryRun $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceDryRun $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $targetDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4165,12 +4165,12 @@ class InvoiceApi
     /**
      * Create request for operation 'generateDryRunInvoice'
      *
-     * @param  \Killbill\Client\Swagger\Model\InvoiceDryRun $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $targetDate (optional)
+     * @param \Killbill\Client\Swagger\Model\InvoiceDryRun $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $targetDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4316,7 +4316,7 @@ class InvoiceApi
      *
      * Retrieves the catalog translation for the tenant
      *
-     * @param  string $locale locale (required)
+     * @param string $locale locale (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4333,7 +4333,7 @@ class InvoiceApi
      *
      * Retrieves the catalog translation for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4408,7 +4408,7 @@ class InvoiceApi
      *
      * Retrieves the catalog translation for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4428,7 +4428,7 @@ class InvoiceApi
      *
      * Retrieves the catalog translation for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4478,7 +4478,7 @@ class InvoiceApi
     /**
      * Create request for operation 'getCatalogTranslation'
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4597,10 +4597,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by id
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  bool $withItems withItems (optional)
-     * @param  bool $withChildrenItems withChildrenItems (optional)
-     * @param  string $audit audit (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param bool|null $withItems withItems (optional)
+     * @param bool|null $withChildrenItems withChildrenItems (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4617,10 +4617,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by id
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4695,10 +4695,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by id
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4718,10 +4718,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by id
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4771,10 +4771,10 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoice'
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4905,7 +4905,7 @@ class InvoiceApi
      *
      * Render an invoice as HTML
      *
-     * @param  string $invoiceId invoiceId (required)
+     * @param string $invoiceId invoiceId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4922,7 +4922,7 @@ class InvoiceApi
      *
      * Render an invoice as HTML
      *
-     * @param  string $invoiceId (required)
+     * @param string $invoiceId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4997,7 +4997,7 @@ class InvoiceApi
      *
      * Render an invoice as HTML
      *
-     * @param  string $invoiceId (required)
+     * @param string $invoiceId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5017,7 +5017,7 @@ class InvoiceApi
      *
      * Render an invoice as HTML
      *
-     * @param  string $invoiceId (required)
+     * @param string $invoiceId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5067,7 +5067,7 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoiceAsHTML'
      *
-     * @param  string $invoiceId (required)
+     * @param string $invoiceId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5186,10 +5186,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by invoice item id
      *
-     * @param  string $itemId itemId (required)
-     * @param  bool $withItems withItems (optional)
-     * @param  bool $withChildrenItems withChildrenItems (optional)
-     * @param  string $audit audit (optional)
+     * @param string $itemId itemId (required)
+     * @param bool|null $withItems withItems (optional)
+     * @param bool|null $withChildrenItems withChildrenItems (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5206,10 +5206,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by invoice item id
      *
-     * @param  string $itemId (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param string $itemId (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5284,10 +5284,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by invoice item id
      *
-     * @param  string $itemId (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param string $itemId (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5307,10 +5307,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by invoice item id
      *
-     * @param  string $itemId (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param string $itemId (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5360,10 +5360,10 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoiceByItemId'
      *
-     * @param  string $itemId (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param string $itemId (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5494,10 +5494,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by number
      *
-     * @param  int $invoiceNumber invoiceNumber (required)
-     * @param  bool $withItems withItems (optional)
-     * @param  bool $withChildrenItems withChildrenItems (optional)
-     * @param  string $audit audit (optional)
+     * @param int $invoiceNumber invoiceNumber (required)
+     * @param bool|null $withItems withItems (optional)
+     * @param bool|null $withChildrenItems withChildrenItems (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5514,10 +5514,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by number
      *
-     * @param  int $invoiceNumber (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param int $invoiceNumber (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5592,10 +5592,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by number
      *
-     * @param  int $invoiceNumber (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param int $invoiceNumber (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5615,10 +5615,10 @@ class InvoiceApi
      *
      * Retrieve an invoice by number
      *
-     * @param  int $invoiceNumber (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param int $invoiceNumber (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5668,10 +5668,10 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoiceByNumber'
      *
-     * @param  int $invoiceNumber (required)
-     * @param  bool $withItems (optional)
-     * @param  bool $withChildrenItems (optional)
-     * @param  string $audit (optional)
+     * @param int $invoiceNumber (required)
+     * @param bool $withItems (optional)
+     * @param bool $withChildrenItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5802,8 +5802,8 @@ class InvoiceApi
      *
      * Retrieve invoice custom fields
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $audit audit (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5820,8 +5820,8 @@ class InvoiceApi
      *
      * Retrieve invoice custom fields
      *
-     * @param  string $invoiceId (required)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5896,8 +5896,8 @@ class InvoiceApi
      *
      * Retrieve invoice custom fields
      *
-     * @param  string $invoiceId (required)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5917,8 +5917,8 @@ class InvoiceApi
      *
      * Retrieve invoice custom fields
      *
-     * @param  string $invoiceId (required)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5968,8 +5968,8 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoiceCustomFields'
      *
-     * @param  string $invoiceId (required)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6092,7 +6092,7 @@ class InvoiceApi
      *
      * Retrieves the manualPay invoice template for the tenant
      *
-     * @param  string $locale locale (required)
+     * @param string $locale locale (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6109,7 +6109,7 @@ class InvoiceApi
      *
      * Retrieves the manualPay invoice template for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6184,7 +6184,7 @@ class InvoiceApi
      *
      * Retrieves the manualPay invoice template for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6204,7 +6204,7 @@ class InvoiceApi
      *
      * Retrieves the manualPay invoice template for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6254,7 +6254,7 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoiceMPTemplate'
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6373,9 +6373,9 @@ class InvoiceApi
      *
      * Retrieve invoice tags
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  string $audit audit (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6392,9 +6392,9 @@ class InvoiceApi
      *
      * Retrieve invoice tags
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6469,9 +6469,9 @@ class InvoiceApi
      *
      * Retrieve invoice tags
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6491,9 +6491,9 @@ class InvoiceApi
      *
      * Retrieve invoice tags
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6543,9 +6543,9 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoiceTags'
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6934,7 +6934,7 @@ class InvoiceApi
      *
      * Retrieves the invoice translation for the tenant
      *
-     * @param  string $locale locale (required)
+     * @param string $locale locale (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6951,7 +6951,7 @@ class InvoiceApi
      *
      * Retrieves the invoice translation for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7026,7 +7026,7 @@ class InvoiceApi
      *
      * Retrieves the invoice translation for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7046,7 +7046,7 @@ class InvoiceApi
      *
      * Retrieves the invoice translation for the tenant
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7096,7 +7096,7 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoiceTranslation'
      *
-     * @param  string $locale (required)
+     * @param string $locale (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7215,10 +7215,10 @@ class InvoiceApi
      *
      * List invoices
      *
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  bool $withItems withItems (optional)
-     * @param  string $audit audit (optional)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param bool|null $withItems withItems (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7235,10 +7235,10 @@ class InvoiceApi
      *
      * List invoices
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $withItems (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $withItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7313,10 +7313,10 @@ class InvoiceApi
      *
      * List invoices
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $withItems (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $withItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7336,10 +7336,10 @@ class InvoiceApi
      *
      * List invoices
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $withItems (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $withItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7389,10 +7389,10 @@ class InvoiceApi
     /**
      * Create request for operation 'getInvoices'
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $withItems (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $withItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7513,10 +7513,10 @@ class InvoiceApi
      *
      * Retrieve payments associated with an invoice
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  bool $withPluginInfo withPluginInfo (optional)
-     * @param  bool $withAttempts withAttempts (optional)
-     * @param  string $audit audit (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param bool|null $withPluginInfo withPluginInfo (optional)
+     * @param bool|null $withAttempts withAttempts (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7533,10 +7533,10 @@ class InvoiceApi
      *
      * Retrieve payments associated with an invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $withAttempts (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $withAttempts (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7611,10 +7611,10 @@ class InvoiceApi
      *
      * Retrieve payments associated with an invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $withAttempts (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $withAttempts (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7634,10 +7634,10 @@ class InvoiceApi
      *
      * Retrieve payments associated with an invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $withAttempts (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $withAttempts (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7687,10 +7687,10 @@ class InvoiceApi
     /**
      * Create request for operation 'getPaymentsForInvoice'
      *
-     * @param  string $invoiceId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $withAttempts (optional)
-     * @param  string $audit (optional)
+     * @param string $invoiceId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $withAttempts (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7821,11 +7821,11 @@ class InvoiceApi
      *
      * Modify custom fields to invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $invoiceId invoiceId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7841,11 +7841,11 @@ class InvoiceApi
      *
      * Modify custom fields to invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7898,11 +7898,11 @@ class InvoiceApi
      *
      * Modify custom fields to invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7922,11 +7922,11 @@ class InvoiceApi
      *
      * Modify custom fields to invoice
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7962,11 +7962,11 @@ class InvoiceApi
     /**
      * Create request for operation 'modifyInvoiceCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -8112,11 +8112,11 @@ class InvoiceApi
      *
      * Search invoices
      *
-     * @param  string $searchKey searchKey (required)
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  bool $withItems withItems (optional)
-     * @param  string $audit audit (optional)
+     * @param string $searchKey searchKey (required)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param bool|null $withItems withItems (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8133,11 +8133,11 @@ class InvoiceApi
      *
      * Search invoices
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $withItems (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $withItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8212,11 +8212,11 @@ class InvoiceApi
      *
      * Search invoices
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $withItems (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $withItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8236,11 +8236,11 @@ class InvoiceApi
      *
      * Search invoices
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $withItems (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $withItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8290,11 +8290,11 @@ class InvoiceApi
     /**
      * Create request for operation 'searchInvoices'
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $withItems (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $withItems (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -8429,12 +8429,12 @@ class InvoiceApi
      *
      * Upload the catalog translation for the tenant
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $locale locale (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $deleteIfExists deleteIfExists (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $locale locale (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $deleteIfExists deleteIfExists (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8451,12 +8451,12 @@ class InvoiceApi
      *
      * Upload the catalog translation for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $locale (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $locale (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8531,12 +8531,12 @@ class InvoiceApi
      *
      * Upload the catalog translation for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $locale (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $locale (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8556,12 +8556,12 @@ class InvoiceApi
      *
      * Upload the catalog translation for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $locale (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $locale (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8611,12 +8611,12 @@ class InvoiceApi
     /**
      * Create request for operation 'uploadCatalogTranslation'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $locale (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $locale (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -8766,11 +8766,11 @@ class InvoiceApi
      *
      * Upload the manualPay invoice template for the tenant
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $deleteIfExists deleteIfExists (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $deleteIfExists deleteIfExists (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8787,11 +8787,11 @@ class InvoiceApi
      *
      * Upload the manualPay invoice template for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8866,11 +8866,11 @@ class InvoiceApi
      *
      * Upload the manualPay invoice template for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8890,11 +8890,11 @@ class InvoiceApi
      *
      * Upload the manualPay invoice template for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8944,11 +8944,11 @@ class InvoiceApi
     /**
      * Create request for operation 'uploadInvoiceMPTemplate'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -9084,11 +9084,11 @@ class InvoiceApi
      *
      * Upload the invoice template for the tenant
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $deleteIfExists deleteIfExists (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $deleteIfExists deleteIfExists (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9105,11 +9105,11 @@ class InvoiceApi
      *
      * Upload the invoice template for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9184,11 +9184,11 @@ class InvoiceApi
      *
      * Upload the invoice template for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9208,11 +9208,11 @@ class InvoiceApi
      *
      * Upload the invoice template for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9262,11 +9262,11 @@ class InvoiceApi
     /**
      * Create request for operation 'uploadInvoiceTemplate'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -9402,12 +9402,12 @@ class InvoiceApi
      *
      * Upload the invoice translation for the tenant
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $locale locale (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $deleteIfExists deleteIfExists (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $locale locale (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $deleteIfExists deleteIfExists (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9424,12 +9424,12 @@ class InvoiceApi
      *
      * Upload the invoice translation for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $locale (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $locale (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9504,12 +9504,12 @@ class InvoiceApi
      *
      * Upload the invoice translation for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $locale (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $locale (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9529,12 +9529,12 @@ class InvoiceApi
      *
      * Upload the invoice translation for the tenant
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $locale (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $locale (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9584,12 +9584,12 @@ class InvoiceApi
     /**
      * Create request for operation 'uploadInvoiceTranslation'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $locale (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $deleteIfExists (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $locale (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $deleteIfExists (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -9739,10 +9739,10 @@ class InvoiceApi
      *
      * Perform the action of voiding an invoice
      *
-     * @param  string $invoiceId invoiceId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $invoiceId invoiceId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9758,10 +9758,10 @@ class InvoiceApi
      *
      * Perform the action of voiding an invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9814,10 +9814,10 @@ class InvoiceApi
      *
      * Perform the action of voiding an invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9837,10 +9837,10 @@ class InvoiceApi
      *
      * Perform the action of voiding an invoice
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9876,10 +9876,10 @@ class InvoiceApi
     /**
      * Create request for operation 'voidInvoice'
      *
-     * @param  string $invoiceId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $invoiceId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -91,10 +91,10 @@ class TagDefinitionApi
      *
      * Create a tag definition
      *
-     * @param  \Killbill\Client\Swagger\Model\TagDefinition $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\TagDefinition $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -111,10 +111,10 @@ class TagDefinitionApi
      *
      * Create a tag definition
      *
-     * @param  \Killbill\Client\Swagger\Model\TagDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\TagDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -189,10 +189,10 @@ class TagDefinitionApi
      *
      * Create a tag definition
      *
-     * @param  \Killbill\Client\Swagger\Model\TagDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\TagDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -212,10 +212,10 @@ class TagDefinitionApi
      *
      * Create a tag definition
      *
-     * @param  \Killbill\Client\Swagger\Model\TagDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\TagDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -265,10 +265,10 @@ class TagDefinitionApi
     /**
      * Create request for operation 'createTagDefinition'
      *
-     * @param  \Killbill\Client\Swagger\Model\TagDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\TagDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -400,10 +400,10 @@ class TagDefinitionApi
      *
      * Delete a tag definition
      *
-     * @param  string $tagDefinitionId tagDefinitionId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $tagDefinitionId tagDefinitionId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -419,10 +419,10 @@ class TagDefinitionApi
      *
      * Delete a tag definition
      *
-     * @param  string $tagDefinitionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $tagDefinitionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -475,10 +475,10 @@ class TagDefinitionApi
      *
      * Delete a tag definition
      *
-     * @param  string $tagDefinitionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $tagDefinitionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -498,10 +498,10 @@ class TagDefinitionApi
      *
      * Delete a tag definition
      *
-     * @param  string $tagDefinitionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $tagDefinitionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -537,10 +537,10 @@ class TagDefinitionApi
     /**
      * Create request for operation 'deleteTagDefinition'
      *
-     * @param  string $tagDefinitionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $tagDefinitionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -677,8 +677,8 @@ class TagDefinitionApi
      *
      * Retrieve a tag definition
      *
-     * @param  string $tagDefinitionId tagDefinitionId (required)
-     * @param  string $audit audit (optional)
+     * @param string $tagDefinitionId tagDefinitionId (required)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -695,8 +695,8 @@ class TagDefinitionApi
      *
      * Retrieve a tag definition
      *
-     * @param  string $tagDefinitionId (required)
-     * @param  string $audit (optional)
+     * @param string $tagDefinitionId (required)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -771,8 +771,8 @@ class TagDefinitionApi
      *
      * Retrieve a tag definition
      *
-     * @param  string $tagDefinitionId (required)
-     * @param  string $audit (optional)
+     * @param string $tagDefinitionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -792,8 +792,8 @@ class TagDefinitionApi
      *
      * Retrieve a tag definition
      *
-     * @param  string $tagDefinitionId (required)
-     * @param  string $audit (optional)
+     * @param string $tagDefinitionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -843,8 +843,8 @@ class TagDefinitionApi
     /**
      * Create request for operation 'getTagDefinition'
      *
-     * @param  string $tagDefinitionId (required)
-     * @param  string $audit (optional)
+     * @param string $tagDefinitionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -967,7 +967,7 @@ class TagDefinitionApi
      *
      * Retrieve tag definition audit logs with history by id
      *
-     * @param  string $tagDefinitionId tagDefinitionId (required)
+     * @param string $tagDefinitionId tagDefinitionId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -984,7 +984,7 @@ class TagDefinitionApi
      *
      * Retrieve tag definition audit logs with history by id
      *
-     * @param  string $tagDefinitionId (required)
+     * @param string $tagDefinitionId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1059,7 +1059,7 @@ class TagDefinitionApi
      *
      * Retrieve tag definition audit logs with history by id
      *
-     * @param  string $tagDefinitionId (required)
+     * @param string $tagDefinitionId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1079,7 +1079,7 @@ class TagDefinitionApi
      *
      * Retrieve tag definition audit logs with history by id
      *
-     * @param  string $tagDefinitionId (required)
+     * @param string $tagDefinitionId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1129,7 +1129,7 @@ class TagDefinitionApi
     /**
      * Create request for operation 'getTagDefinitionAuditLogsWithHistory'
      *
-     * @param  string $tagDefinitionId (required)
+     * @param string $tagDefinitionId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1248,7 +1248,7 @@ class TagDefinitionApi
      *
      * List tag definitions
      *
-     * @param  string $audit audit (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1265,7 +1265,7 @@ class TagDefinitionApi
      *
      * List tag definitions
      *
-     * @param  string $audit (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1340,7 +1340,7 @@ class TagDefinitionApi
      *
      * List tag definitions
      *
-     * @param  string $audit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1360,7 +1360,7 @@ class TagDefinitionApi
      *
      * List tag definitions
      *
-     * @param  string $audit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1410,7 +1410,7 @@ class TagDefinitionApi
     /**
      * Create request for operation 'getTagDefinitions'
      *
-     * @param  string $audit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

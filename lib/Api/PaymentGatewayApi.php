@@ -91,12 +91,12 @@ class PaymentGatewayApi
      *
      * Combo API to generate form data to redirect the customer to the gateway
      *
-     * @param  \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  string[] $controlPluginName controlPluginName (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param string[]|null $controlPluginName controlPluginName (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -113,12 +113,12 @@ class PaymentGatewayApi
      *
      * Combo API to generate form data to redirect the customer to the gateway
      *
-     * @param  \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -193,12 +193,12 @@ class PaymentGatewayApi
      *
      * Combo API to generate form data to redirect the customer to the gateway
      *
-     * @param  \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -218,12 +218,12 @@ class PaymentGatewayApi
      *
      * Combo API to generate form data to redirect the customer to the gateway
      *
-     * @param  \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -273,12 +273,12 @@ class PaymentGatewayApi
     /**
      * Create request for operation 'buildComboFormDescriptor'
      *
-     * @param  \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\ComboHostedPaymentPage $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -307,14 +307,14 @@ class PaymentGatewayApi
 
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, /*'multi'*/'csv', true);
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -424,14 +424,14 @@ class PaymentGatewayApi
      *
      * Generate form data to redirect the customer to the gateway
      *
-     * @param  \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  string $paymentMethodId paymentMethodId (optional)
-     * @param  string[] $controlPluginName controlPluginName (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param string|null $paymentMethodId paymentMethodId (optional)
+     * @param string[]|null $controlPluginName controlPluginName (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -448,14 +448,14 @@ class PaymentGatewayApi
      *
      * Generate form data to redirect the customer to the gateway
      *
-     * @param  \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -530,14 +530,14 @@ class PaymentGatewayApi
      *
      * Generate form data to redirect the customer to the gateway
      *
-     * @param  \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -557,14 +557,14 @@ class PaymentGatewayApi
      *
      * Generate form data to redirect the customer to the gateway
      *
-     * @param  \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -614,14 +614,14 @@ class PaymentGatewayApi
     /**
      * Create request for operation 'buildFormDescriptor'
      *
-     * @param  \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\HostedPaymentPageFields $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -660,14 +660,14 @@ class PaymentGatewayApi
         }
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, /*'multi'*/'csv', true);
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -785,13 +785,13 @@ class PaymentGatewayApi
      *
      * Process a gateway notification
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $pluginName pluginName (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  string[] $controlPluginName controlPluginName (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $pluginName pluginName (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param string[]|null $controlPluginName controlPluginName (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -807,13 +807,13 @@ class PaymentGatewayApi
      *
      * Process a gateway notification
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -866,13 +866,13 @@ class PaymentGatewayApi
      *
      * Process a gateway notification
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -892,13 +892,13 @@ class PaymentGatewayApi
      *
      * Process a gateway notification
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -934,13 +934,13 @@ class PaymentGatewayApi
     /**
      * Create request for operation 'processNotification'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -975,14 +975,14 @@ class PaymentGatewayApi
 
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, /*'multi'*/'csv', true);
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);

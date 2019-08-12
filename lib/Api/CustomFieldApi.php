@@ -91,7 +91,7 @@ class CustomFieldApi
      *
      * Retrieve custom field audit logs with history by id
      *
-     * @param  string $customFieldId customFieldId (required)
+     * @param string $customFieldId customFieldId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -108,7 +108,7 @@ class CustomFieldApi
      *
      * Retrieve custom field audit logs with history by id
      *
-     * @param  string $customFieldId (required)
+     * @param string $customFieldId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -183,7 +183,7 @@ class CustomFieldApi
      *
      * Retrieve custom field audit logs with history by id
      *
-     * @param  string $customFieldId (required)
+     * @param string $customFieldId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -203,7 +203,7 @@ class CustomFieldApi
      *
      * Retrieve custom field audit logs with history by id
      *
-     * @param  string $customFieldId (required)
+     * @param string $customFieldId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -253,7 +253,7 @@ class CustomFieldApi
     /**
      * Create request for operation 'getCustomFieldAuditLogsWithHistory'
      *
-     * @param  string $customFieldId (required)
+     * @param string $customFieldId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -372,9 +372,9 @@ class CustomFieldApi
      *
      * List custom fields
      *
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  string $audit audit (optional)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -391,9 +391,9 @@ class CustomFieldApi
      *
      * List custom fields
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -468,9 +468,9 @@ class CustomFieldApi
      *
      * List custom fields
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -490,9 +490,9 @@ class CustomFieldApi
      *
      * List custom fields
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -542,9 +542,9 @@ class CustomFieldApi
     /**
      * Create request for operation 'getCustomFields'
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -661,10 +661,10 @@ class CustomFieldApi
      *
      * Search custom fields
      *
-     * @param  string $searchKey searchKey (required)
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  string $audit audit (optional)
+     * @param string $searchKey searchKey (required)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -681,10 +681,10 @@ class CustomFieldApi
      *
      * Search custom fields
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -759,10 +759,10 @@ class CustomFieldApi
      *
      * Search custom fields
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -782,10 +782,10 @@ class CustomFieldApi
      *
      * Search custom fields
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -835,10 +835,10 @@ class CustomFieldApi
     /**
      * Create request for operation 'searchCustomFields'
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

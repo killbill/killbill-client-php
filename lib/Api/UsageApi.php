@@ -91,9 +91,9 @@ class UsageApi
      *
      * Retrieve usage for a subscription
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  \DateTime $startDate startDate (optional)
-     * @param  \DateTime $endDate endDate (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param \DateTime|null $startDate startDate (optional)
+     * @param \DateTime|null $endDate endDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -110,9 +110,9 @@ class UsageApi
      *
      * Retrieve usage for a subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  \DateTime $endDate (optional)
+     * @param string $subscriptionId (required)
+     * @param \DateTime $startDate (optional)
+     * @param \DateTime $endDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -187,9 +187,9 @@ class UsageApi
      *
      * Retrieve usage for a subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  \DateTime $endDate (optional)
+     * @param string $subscriptionId (required)
+     * @param \DateTime $startDate (optional)
+     * @param \DateTime $endDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -209,9 +209,9 @@ class UsageApi
      *
      * Retrieve usage for a subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  \DateTime $endDate (optional)
+     * @param string $subscriptionId (required)
+     * @param \DateTime $startDate (optional)
+     * @param \DateTime $endDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -261,9 +261,9 @@ class UsageApi
     /**
      * Create request for operation 'getAllUsage'
      *
-     * @param  string $subscriptionId (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  \DateTime $endDate (optional)
+     * @param string $subscriptionId (required)
+     * @param \DateTime $startDate (optional)
+     * @param \DateTime $endDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -390,10 +390,10 @@ class UsageApi
      *
      * Retrieve usage for a subscription and unit type
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $unitType unitType (required)
-     * @param  \DateTime $startDate startDate (optional)
-     * @param  \DateTime $endDate endDate (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string $unitType unitType (required)
+     * @param \DateTime|null $startDate startDate (optional)
+     * @param \DateTime|null $endDate endDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -410,10 +410,10 @@ class UsageApi
      *
      * Retrieve usage for a subscription and unit type
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $unitType (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  \DateTime $endDate (optional)
+     * @param string $subscriptionId (required)
+     * @param string $unitType (required)
+     * @param \DateTime $startDate (optional)
+     * @param \DateTime $endDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -488,10 +488,10 @@ class UsageApi
      *
      * Retrieve usage for a subscription and unit type
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $unitType (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  \DateTime $endDate (optional)
+     * @param string $subscriptionId (required)
+     * @param string $unitType (required)
+     * @param \DateTime $startDate (optional)
+     * @param \DateTime $endDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -511,10 +511,10 @@ class UsageApi
      *
      * Retrieve usage for a subscription and unit type
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $unitType (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  \DateTime $endDate (optional)
+     * @param string $subscriptionId (required)
+     * @param string $unitType (required)
+     * @param \DateTime $startDate (optional)
+     * @param \DateTime $endDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -564,10 +564,10 @@ class UsageApi
     /**
      * Create request for operation 'getUsage'
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $unitType (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  \DateTime $endDate (optional)
+     * @param string $subscriptionId (required)
+     * @param string $unitType (required)
+     * @param \DateTime $startDate (optional)
+     * @param \DateTime $endDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -708,10 +708,10 @@ class UsageApi
      *
      * Record usage for a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -727,10 +727,10 @@ class UsageApi
      *
      * Record usage for a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -783,10 +783,10 @@ class UsageApi
      *
      * Record usage for a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -806,10 +806,10 @@ class UsageApi
      *
      * Record usage for a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -845,10 +845,10 @@ class UsageApi
     /**
      * Create request for operation 'recordUsage'
      *
-     * @param  \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SubscriptionUsageRecord $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

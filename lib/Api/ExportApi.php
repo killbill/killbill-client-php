@@ -91,10 +91,10 @@ class ExportApi
      *
      * Export account data
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -110,10 +110,10 @@ class ExportApi
      *
      * Export account data
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -166,10 +166,10 @@ class ExportApi
      *
      * Export account data
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -189,10 +189,10 @@ class ExportApi
      *
      * Export account data
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -228,10 +228,10 @@ class ExportApi
     /**
      * Create request for operation 'exportDataForAccount'
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

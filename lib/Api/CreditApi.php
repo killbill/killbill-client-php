@@ -91,12 +91,12 @@ class CreditApi
      *
      * Create a credit
      *
-     * @param  \Killbill\Client\Swagger\Model\Credit $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $autoCommit autoCommit (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Credit $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $autoCommit autoCommit (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -113,12 +113,12 @@ class CreditApi
      *
      * Create a credit
      *
-     * @param  \Killbill\Client\Swagger\Model\Credit $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Credit $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $autoCommit (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -193,12 +193,12 @@ class CreditApi
      *
      * Create a credit
      *
-     * @param  \Killbill\Client\Swagger\Model\Credit $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Credit $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $autoCommit (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -218,12 +218,12 @@ class CreditApi
      *
      * Create a credit
      *
-     * @param  \Killbill\Client\Swagger\Model\Credit $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Credit $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $autoCommit (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -273,12 +273,12 @@ class CreditApi
     /**
      * Create request for operation 'createCredit'
      *
-     * @param  \Killbill\Client\Swagger\Model\Credit $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $autoCommit (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Credit $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $autoCommit (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -311,7 +311,7 @@ class CreditApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -421,7 +421,7 @@ class CreditApi
      *
      * Retrieve a credit by id
      *
-     * @param  string $creditId creditId (required)
+     * @param string $creditId creditId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -438,7 +438,7 @@ class CreditApi
      *
      * Retrieve a credit by id
      *
-     * @param  string $creditId (required)
+     * @param string $creditId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -513,7 +513,7 @@ class CreditApi
      *
      * Retrieve a credit by id
      *
-     * @param  string $creditId (required)
+     * @param string $creditId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -533,7 +533,7 @@ class CreditApi
      *
      * Retrieve a credit by id
      *
-     * @param  string $creditId (required)
+     * @param string $creditId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -583,7 +583,7 @@ class CreditApi
     /**
      * Create request for operation 'getCredit'
      *
-     * @param  string $creditId (required)
+     * @param string $creditId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -91,10 +91,10 @@ class CatalogApi
      *
      * Add a simple plan entry in the current version of the catalog
      *
-     * @param  \Killbill\Client\Swagger\Model\SimplePlan $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SimplePlan $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -111,10 +111,10 @@ class CatalogApi
      *
      * Add a simple plan entry in the current version of the catalog
      *
-     * @param  \Killbill\Client\Swagger\Model\SimplePlan $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SimplePlan $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -189,10 +189,10 @@ class CatalogApi
      *
      * Add a simple plan entry in the current version of the catalog
      *
-     * @param  \Killbill\Client\Swagger\Model\SimplePlan $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SimplePlan $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -212,10 +212,10 @@ class CatalogApi
      *
      * Add a simple plan entry in the current version of the catalog
      *
-     * @param  \Killbill\Client\Swagger\Model\SimplePlan $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SimplePlan $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -265,10 +265,10 @@ class CatalogApi
     /**
      * Create request for operation 'addSimplePlan'
      *
-     * @param  \Killbill\Client\Swagger\Model\SimplePlan $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\SimplePlan $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -400,9 +400,9 @@ class CatalogApi
      *
      * Delete all versions for a per tenant catalog
      *
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -418,9 +418,9 @@ class CatalogApi
      *
      * Delete all versions for a per tenant catalog
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -473,9 +473,9 @@ class CatalogApi
      *
      * Delete all versions for a per tenant catalog
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -495,9 +495,9 @@ class CatalogApi
      *
      * Delete all versions for a per tenant catalog
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -533,9 +533,9 @@ class CatalogApi
     /**
      * Create request for operation 'deleteCatalog'
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -658,9 +658,9 @@ class CatalogApi
      *
      * Retrieve available add-ons for a given product
      *
-     * @param  string $baseProductName baseProductName (optional)
-     * @param  string $priceListName priceListName (optional)
-     * @param  string $accountId accountId (optional)
+     * @param string|null $baseProductName baseProductName (optional)
+     * @param string|null $priceListName priceListName (optional)
+     * @param string|null $accountId accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -677,9 +677,9 @@ class CatalogApi
      *
      * Retrieve available add-ons for a given product
      *
-     * @param  string $baseProductName (optional)
-     * @param  string $priceListName (optional)
-     * @param  string $accountId (optional)
+     * @param string $baseProductName (optional)
+     * @param string $priceListName (optional)
+     * @param string $accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -754,9 +754,9 @@ class CatalogApi
      *
      * Retrieve available add-ons for a given product
      *
-     * @param  string $baseProductName (optional)
-     * @param  string $priceListName (optional)
-     * @param  string $accountId (optional)
+     * @param string $baseProductName (optional)
+     * @param string $priceListName (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -776,9 +776,9 @@ class CatalogApi
      *
      * Retrieve available add-ons for a given product
      *
-     * @param  string $baseProductName (optional)
-     * @param  string $priceListName (optional)
-     * @param  string $accountId (optional)
+     * @param string $baseProductName (optional)
+     * @param string $priceListName (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -828,9 +828,9 @@ class CatalogApi
     /**
      * Create request for operation 'getAvailableAddons'
      *
-     * @param  string $baseProductName (optional)
-     * @param  string $priceListName (optional)
-     * @param  string $accountId (optional)
+     * @param string $baseProductName (optional)
+     * @param string $priceListName (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -947,7 +947,7 @@ class CatalogApi
      *
      * Retrieve available base plans
      *
-     * @param  string $accountId accountId (optional)
+     * @param string|null $accountId accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -964,7 +964,7 @@ class CatalogApi
      *
      * Retrieve available base plans
      *
-     * @param  string $accountId (optional)
+     * @param string $accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1039,7 +1039,7 @@ class CatalogApi
      *
      * Retrieve available base plans
      *
-     * @param  string $accountId (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1059,7 +1059,7 @@ class CatalogApi
      *
      * Retrieve available base plans
      *
-     * @param  string $accountId (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1109,7 +1109,7 @@ class CatalogApi
     /**
      * Create request for operation 'getAvailableBasePlans'
      *
-     * @param  string $accountId (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1218,8 +1218,8 @@ class CatalogApi
      *
      * Retrieve the catalog as JSON
      *
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string $accountId accountId (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string|null $accountId accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1236,8 +1236,8 @@ class CatalogApi
      *
      * Retrieve the catalog as JSON
      *
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $accountId (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1312,8 +1312,8 @@ class CatalogApi
      *
      * Retrieve the catalog as JSON
      *
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $accountId (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1333,8 +1333,8 @@ class CatalogApi
      *
      * Retrieve the catalog as JSON
      *
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $accountId (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1384,8 +1384,8 @@ class CatalogApi
     /**
      * Create request for operation 'getCatalogJson'
      *
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $accountId (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1498,7 +1498,7 @@ class CatalogApi
      *
      * Retrieve a list of catalog versions
      *
-     * @param  string $accountId accountId (optional)
+     * @param string|null $accountId accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1515,7 +1515,7 @@ class CatalogApi
      *
      * Retrieve a list of catalog versions
      *
-     * @param  string $accountId (optional)
+     * @param string $accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1590,7 +1590,7 @@ class CatalogApi
      *
      * Retrieve a list of catalog versions
      *
-     * @param  string $accountId (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1610,7 +1610,7 @@ class CatalogApi
      *
      * Retrieve a list of catalog versions
      *
-     * @param  string $accountId (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1660,7 +1660,7 @@ class CatalogApi
     /**
      * Create request for operation 'getCatalogVersions'
      *
-     * @param  string $accountId (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1769,8 +1769,8 @@ class CatalogApi
      *
      * Retrieve the full catalog as XML
      *
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string $accountId accountId (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string|null $accountId accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1787,8 +1787,8 @@ class CatalogApi
      *
      * Retrieve the full catalog as XML
      *
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $accountId (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $accountId (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1863,8 +1863,8 @@ class CatalogApi
      *
      * Retrieve the full catalog as XML
      *
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $accountId (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1884,8 +1884,8 @@ class CatalogApi
      *
      * Retrieve the full catalog as XML
      *
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $accountId (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1935,8 +1935,8 @@ class CatalogApi
     /**
      * Create request for operation 'getCatalogXml'
      *
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $accountId (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $accountId (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2049,8 +2049,8 @@ class CatalogApi
      *
      * Retrieve phase for a given subscription and date
      *
-     * @param  string $subscriptionId subscriptionId (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
+     * @param string|null $subscriptionId subscriptionId (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2067,8 +2067,8 @@ class CatalogApi
      *
      * Retrieve phase for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2143,8 +2143,8 @@ class CatalogApi
      *
      * Retrieve phase for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2164,8 +2164,8 @@ class CatalogApi
      *
      * Retrieve phase for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2215,8 +2215,8 @@ class CatalogApi
     /**
      * Create request for operation 'getPhaseForSubscriptionAndDate'
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2329,8 +2329,8 @@ class CatalogApi
      *
      * Retrieve plan for a given subscription and date
      *
-     * @param  string $subscriptionId subscriptionId (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
+     * @param string|null $subscriptionId subscriptionId (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2347,8 +2347,8 @@ class CatalogApi
      *
      * Retrieve plan for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2423,8 +2423,8 @@ class CatalogApi
      *
      * Retrieve plan for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2444,8 +2444,8 @@ class CatalogApi
      *
      * Retrieve plan for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2495,8 +2495,8 @@ class CatalogApi
     /**
      * Create request for operation 'getPlanForSubscriptionAndDate'
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2609,8 +2609,8 @@ class CatalogApi
      *
      * Retrieve priceList for a given subscription and date
      *
-     * @param  string $subscriptionId subscriptionId (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
+     * @param string|null $subscriptionId subscriptionId (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2627,8 +2627,8 @@ class CatalogApi
      *
      * Retrieve priceList for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2703,8 +2703,8 @@ class CatalogApi
      *
      * Retrieve priceList for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2724,8 +2724,8 @@ class CatalogApi
      *
      * Retrieve priceList for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2775,8 +2775,8 @@ class CatalogApi
     /**
      * Create request for operation 'getPriceListForSubscriptionAndDate'
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2889,8 +2889,8 @@ class CatalogApi
      *
      * Retrieve product for a given subscription and date
      *
-     * @param  string $subscriptionId subscriptionId (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
+     * @param string|null $subscriptionId subscriptionId (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2907,8 +2907,8 @@ class CatalogApi
      *
      * Retrieve product for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2983,8 +2983,8 @@ class CatalogApi
      *
      * Retrieve product for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3004,8 +3004,8 @@ class CatalogApi
      *
      * Retrieve product for a given subscription and date
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3055,8 +3055,8 @@ class CatalogApi
     /**
      * Create request for operation 'getProductForSubscriptionAndDate'
      *
-     * @param  string $subscriptionId (optional)
-     * @param  \DateTime $requestedDate (optional)
+     * @param string $subscriptionId (optional)
+     * @param \DateTime $requestedDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3169,10 +3169,10 @@ class CatalogApi
      *
      * Upload the full catalog as XML
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3189,10 +3189,10 @@ class CatalogApi
      *
      * Upload the full catalog as XML
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3267,10 +3267,10 @@ class CatalogApi
      *
      * Upload the full catalog as XML
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3290,10 +3290,10 @@ class CatalogApi
      *
      * Upload the full catalog as XML
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3343,10 +3343,10 @@ class CatalogApi
     /**
      * Create request for operation 'uploadCatalogXml'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

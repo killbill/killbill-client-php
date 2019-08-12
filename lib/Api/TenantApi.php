@@ -91,11 +91,11 @@ class TenantApi
      *
      * Create a tenant
      *
-     * @param  \Killbill\Client\Swagger\Model\Tenant $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $useGlobalDefault useGlobalDefault (optional)
+     * @param \Killbill\Client\Swagger\Model\Tenant $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $useGlobalDefault useGlobalDefault (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -112,11 +112,11 @@ class TenantApi
      *
      * Create a tenant
      *
-     * @param  \Killbill\Client\Swagger\Model\Tenant $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $useGlobalDefault (optional)
+     * @param \Killbill\Client\Swagger\Model\Tenant $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $useGlobalDefault (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -191,11 +191,11 @@ class TenantApi
      *
      * Create a tenant
      *
-     * @param  \Killbill\Client\Swagger\Model\Tenant $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $useGlobalDefault (optional)
+     * @param \Killbill\Client\Swagger\Model\Tenant $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $useGlobalDefault (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -215,11 +215,11 @@ class TenantApi
      *
      * Create a tenant
      *
-     * @param  \Killbill\Client\Swagger\Model\Tenant $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $useGlobalDefault (optional)
+     * @param \Killbill\Client\Swagger\Model\Tenant $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $useGlobalDefault (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -269,11 +269,11 @@ class TenantApi
     /**
      * Create request for operation 'createTenant'
      *
-     * @param  \Killbill\Client\Swagger\Model\Tenant $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $useGlobalDefault (optional)
+     * @param \Killbill\Client\Swagger\Model\Tenant $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $useGlobalDefault (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -399,9 +399,9 @@ class TenantApi
      *
      * Delete a per tenant configuration (system properties)
      *
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -417,9 +417,9 @@ class TenantApi
      *
      * Delete a per tenant configuration (system properties)
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -472,9 +472,9 @@ class TenantApi
      *
      * Delete a per tenant configuration (system properties)
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -494,9 +494,9 @@ class TenantApi
      *
      * Delete a per tenant configuration (system properties)
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -532,9 +532,9 @@ class TenantApi
     /**
      * Create request for operation 'deletePerTenantConfiguration'
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -657,10 +657,10 @@ class TenantApi
      *
      * Delete a per tenant configuration for a plugin
      *
-     * @param  string $pluginName pluginName (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $pluginName pluginName (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -676,10 +676,10 @@ class TenantApi
      *
      * Delete a per tenant configuration for a plugin
      *
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $pluginName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -732,10 +732,10 @@ class TenantApi
      *
      * Delete a per tenant configuration for a plugin
      *
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $pluginName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -755,10 +755,10 @@ class TenantApi
      *
      * Delete a per tenant configuration for a plugin
      *
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $pluginName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -794,10 +794,10 @@ class TenantApi
     /**
      * Create request for operation 'deletePluginConfiguration'
      *
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $pluginName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -934,10 +934,10 @@ class TenantApi
      *
      * Delete a per tenant payment state machine for a plugin
      *
-     * @param  string $pluginName pluginName (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $pluginName pluginName (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -953,10 +953,10 @@ class TenantApi
      *
      * Delete a per tenant payment state machine for a plugin
      *
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $pluginName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1009,10 +1009,10 @@ class TenantApi
      *
      * Delete a per tenant payment state machine for a plugin
      *
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $pluginName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1032,10 +1032,10 @@ class TenantApi
      *
      * Delete a per tenant payment state machine for a plugin
      *
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $pluginName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1071,10 +1071,10 @@ class TenantApi
     /**
      * Create request for operation 'deletePluginPaymentStateMachineConfig'
      *
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $pluginName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1211,9 +1211,9 @@ class TenantApi
      *
      * Delete a push notification
      *
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1229,9 +1229,9 @@ class TenantApi
      *
      * Delete a push notification
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1284,9 +1284,9 @@ class TenantApi
      *
      * Delete a push notification
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1306,9 +1306,9 @@ class TenantApi
      *
      * Delete a push notification
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1344,9 +1344,9 @@ class TenantApi
     /**
      * Create request for operation 'deletePushNotificationCallbacks'
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1469,10 +1469,10 @@ class TenantApi
      *
      * Delete  a per tenant user key/value
      *
-     * @param  string $keyName keyName (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $keyName keyName (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1488,10 +1488,10 @@ class TenantApi
      *
      * Delete  a per tenant user key/value
      *
-     * @param  string $keyName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $keyName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1544,10 +1544,10 @@ class TenantApi
      *
      * Delete  a per tenant user key/value
      *
-     * @param  string $keyName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $keyName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1567,10 +1567,10 @@ class TenantApi
      *
      * Delete  a per tenant user key/value
      *
-     * @param  string $keyName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $keyName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1606,10 +1606,10 @@ class TenantApi
     /**
      * Create request for operation 'deleteUserKeyValue'
      *
-     * @param  string $keyName (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $keyName (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1746,7 +1746,7 @@ class TenantApi
      *
      * Retrieve a per tenant key value based on key prefix
      *
-     * @param  string $keyPrefix keyPrefix (required)
+     * @param string $keyPrefix keyPrefix (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1763,7 +1763,7 @@ class TenantApi
      *
      * Retrieve a per tenant key value based on key prefix
      *
-     * @param  string $keyPrefix (required)
+     * @param string $keyPrefix (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1838,7 +1838,7 @@ class TenantApi
      *
      * Retrieve a per tenant key value based on key prefix
      *
-     * @param  string $keyPrefix (required)
+     * @param string $keyPrefix (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1858,7 +1858,7 @@ class TenantApi
      *
      * Retrieve a per tenant key value based on key prefix
      *
-     * @param  string $keyPrefix (required)
+     * @param string $keyPrefix (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1908,7 +1908,7 @@ class TenantApi
     /**
      * Create request for operation 'getAllPluginConfiguration'
      *
-     * @param  string $keyPrefix (required)
+     * @param string $keyPrefix (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2289,7 +2289,7 @@ class TenantApi
      *
      * Retrieve a per tenant configuration for a plugin
      *
-     * @param  string $pluginName pluginName (required)
+     * @param string $pluginName pluginName (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2306,7 +2306,7 @@ class TenantApi
      *
      * Retrieve a per tenant configuration for a plugin
      *
-     * @param  string $pluginName (required)
+     * @param string $pluginName (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2381,7 +2381,7 @@ class TenantApi
      *
      * Retrieve a per tenant configuration for a plugin
      *
-     * @param  string $pluginName (required)
+     * @param string $pluginName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2401,7 +2401,7 @@ class TenantApi
      *
      * Retrieve a per tenant configuration for a plugin
      *
-     * @param  string $pluginName (required)
+     * @param string $pluginName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2451,7 +2451,7 @@ class TenantApi
     /**
      * Create request for operation 'getPluginConfiguration'
      *
-     * @param  string $pluginName (required)
+     * @param string $pluginName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2570,7 +2570,7 @@ class TenantApi
      *
      * Retrieve a per tenant payment state machine for a plugin
      *
-     * @param  string $pluginName pluginName (required)
+     * @param string $pluginName pluginName (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2587,7 +2587,7 @@ class TenantApi
      *
      * Retrieve a per tenant payment state machine for a plugin
      *
-     * @param  string $pluginName (required)
+     * @param string $pluginName (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2662,7 +2662,7 @@ class TenantApi
      *
      * Retrieve a per tenant payment state machine for a plugin
      *
-     * @param  string $pluginName (required)
+     * @param string $pluginName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2682,7 +2682,7 @@ class TenantApi
      *
      * Retrieve a per tenant payment state machine for a plugin
      *
-     * @param  string $pluginName (required)
+     * @param string $pluginName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2732,7 +2732,7 @@ class TenantApi
     /**
      * Create request for operation 'getPluginPaymentStateMachineConfig'
      *
-     * @param  string $pluginName (required)
+     * @param string $pluginName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3113,7 +3113,7 @@ class TenantApi
      *
      * Retrieve a tenant by id
      *
-     * @param  string $tenantId tenantId (required)
+     * @param string $tenantId tenantId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3130,7 +3130,7 @@ class TenantApi
      *
      * Retrieve a tenant by id
      *
-     * @param  string $tenantId (required)
+     * @param string $tenantId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3205,7 +3205,7 @@ class TenantApi
      *
      * Retrieve a tenant by id
      *
-     * @param  string $tenantId (required)
+     * @param string $tenantId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3225,7 +3225,7 @@ class TenantApi
      *
      * Retrieve a tenant by id
      *
-     * @param  string $tenantId (required)
+     * @param string $tenantId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3275,7 +3275,7 @@ class TenantApi
     /**
      * Create request for operation 'getTenant'
      *
-     * @param  string $tenantId (required)
+     * @param string $tenantId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3394,7 +3394,7 @@ class TenantApi
      *
      * Retrieve a tenant by its API key
      *
-     * @param  string $apiKey apiKey (optional)
+     * @param string|null $apiKey apiKey (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3411,7 +3411,7 @@ class TenantApi
      *
      * Retrieve a tenant by its API key
      *
-     * @param  string $apiKey (optional)
+     * @param string $apiKey (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3486,7 +3486,7 @@ class TenantApi
      *
      * Retrieve a tenant by its API key
      *
-     * @param  string $apiKey (optional)
+     * @param string $apiKey (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3506,7 +3506,7 @@ class TenantApi
      *
      * Retrieve a tenant by its API key
      *
-     * @param  string $apiKey (optional)
+     * @param string $apiKey (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3556,7 +3556,7 @@ class TenantApi
     /**
      * Create request for operation 'getTenantByApiKey'
      *
-     * @param  string $apiKey (optional)
+     * @param string $apiKey (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3655,7 +3655,7 @@ class TenantApi
      *
      * Retrieve a per tenant user key/value
      *
-     * @param  string $keyName keyName (required)
+     * @param string $keyName keyName (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3672,7 +3672,7 @@ class TenantApi
      *
      * Retrieve a per tenant user key/value
      *
-     * @param  string $keyName (required)
+     * @param string $keyName (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3747,7 +3747,7 @@ class TenantApi
      *
      * Retrieve a per tenant user key/value
      *
-     * @param  string $keyName (required)
+     * @param string $keyName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3767,7 +3767,7 @@ class TenantApi
      *
      * Retrieve a per tenant user key/value
      *
-     * @param  string $keyName (required)
+     * @param string $keyName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3817,7 +3817,7 @@ class TenantApi
     /**
      * Create request for operation 'getUserKeyValue'
      *
-     * @param  string $keyName (required)
+     * @param string $keyName (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3936,11 +3936,11 @@ class TenantApi
      *
      * Add a per tenant user key/value
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $keyName keyName (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $keyName keyName (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3957,11 +3957,11 @@ class TenantApi
      *
      * Add a per tenant user key/value
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $keyName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $keyName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4036,11 +4036,11 @@ class TenantApi
      *
      * Add a per tenant user key/value
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $keyName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $keyName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4060,11 +4060,11 @@ class TenantApi
      *
      * Add a per tenant user key/value
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $keyName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $keyName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4114,11 +4114,11 @@ class TenantApi
     /**
      * Create request for operation 'insertUserKeyValue'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $keyName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $keyName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4264,10 +4264,10 @@ class TenantApi
      *
      * Create a push notification
      *
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $cb cb (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $cb cb (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4284,10 +4284,10 @@ class TenantApi
      *
      * Create a push notification
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $cb (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $cb (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4362,10 +4362,10 @@ class TenantApi
      *
      * Create a push notification
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $cb (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $cb (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4385,10 +4385,10 @@ class TenantApi
      *
      * Create a push notification
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $cb (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $cb (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4438,10 +4438,10 @@ class TenantApi
     /**
      * Create request for operation 'registerPushNotificationCallback'
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $cb (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $cb (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4568,10 +4568,10 @@ class TenantApi
      *
      * Add a per tenant configuration (system properties)
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4588,10 +4588,10 @@ class TenantApi
      *
      * Add a per tenant configuration (system properties)
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4666,10 +4666,10 @@ class TenantApi
      *
      * Add a per tenant configuration (system properties)
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4689,10 +4689,10 @@ class TenantApi
      *
      * Add a per tenant configuration (system properties)
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4742,10 +4742,10 @@ class TenantApi
     /**
      * Create request for operation 'uploadPerTenantConfiguration'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4877,11 +4877,11 @@ class TenantApi
      *
      * Add a per tenant configuration for a plugin
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $pluginName pluginName (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $pluginName pluginName (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4898,11 +4898,11 @@ class TenantApi
      *
      * Add a per tenant configuration for a plugin
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4977,11 +4977,11 @@ class TenantApi
      *
      * Add a per tenant configuration for a plugin
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5001,11 +5001,11 @@ class TenantApi
      *
      * Add a per tenant configuration for a plugin
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5055,11 +5055,11 @@ class TenantApi
     /**
      * Create request for operation 'uploadPluginConfiguration'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5205,11 +5205,11 @@ class TenantApi
      *
      * Add a per tenant payment state machine for a plugin
      *
-     * @param  string $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $pluginName pluginName (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $pluginName pluginName (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5226,11 +5226,11 @@ class TenantApi
      *
      * Add a per tenant payment state machine for a plugin
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5305,11 +5305,11 @@ class TenantApi
      *
      * Add a per tenant payment state machine for a plugin
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5329,11 +5329,11 @@ class TenantApi
      *
      * Add a per tenant payment state machine for a plugin
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5383,11 +5383,11 @@ class TenantApi
     /**
      * Create request for operation 'uploadPluginPaymentStateMachineConfig'
      *
-     * @param  string $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

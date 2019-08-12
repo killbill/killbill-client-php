@@ -91,10 +91,10 @@ class SecurityApi
      *
      * Add a new role definition)
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -111,10 +111,10 @@ class SecurityApi
      *
      * Add a new role definition)
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -189,10 +189,10 @@ class SecurityApi
      *
      * Add a new role definition)
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -212,10 +212,10 @@ class SecurityApi
      *
      * Add a new role definition)
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -265,10 +265,10 @@ class SecurityApi
     /**
      * Create request for operation 'addRoleDefinition'
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -390,10 +390,10 @@ class SecurityApi
      *
      * Add a new user with roles (to make api requests)
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -410,10 +410,10 @@ class SecurityApi
      *
      * Add a new user with roles (to make api requests)
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -488,10 +488,10 @@ class SecurityApi
      *
      * Add a new user with roles (to make api requests)
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -511,10 +511,10 @@ class SecurityApi
      *
      * Add a new user with roles (to make api requests)
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -564,10 +564,10 @@ class SecurityApi
     /**
      * Create request for operation 'addUserRoles'
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1193,7 +1193,7 @@ class SecurityApi
      *
      * Get role definition
      *
-     * @param  string $role role (required)
+     * @param string $role role (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1210,7 +1210,7 @@ class SecurityApi
      *
      * Get role definition
      *
-     * @param  string $role (required)
+     * @param string $role (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1285,7 +1285,7 @@ class SecurityApi
      *
      * Get role definition
      *
-     * @param  string $role (required)
+     * @param string $role (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1305,7 +1305,7 @@ class SecurityApi
      *
      * Get role definition
      *
-     * @param  string $role (required)
+     * @param string $role (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1355,7 +1355,7 @@ class SecurityApi
     /**
      * Create request for operation 'getRoleDefinition'
      *
-     * @param  string $role (required)
+     * @param string $role (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1464,7 +1464,7 @@ class SecurityApi
      *
      * Get roles associated to a user
      *
-     * @param  string $username username (required)
+     * @param string $username username (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1481,7 +1481,7 @@ class SecurityApi
      *
      * Get roles associated to a user
      *
-     * @param  string $username (required)
+     * @param string $username (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1556,7 +1556,7 @@ class SecurityApi
      *
      * Get roles associated to a user
      *
-     * @param  string $username (required)
+     * @param string $username (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1576,7 +1576,7 @@ class SecurityApi
      *
      * Get roles associated to a user
      *
-     * @param  string $username (required)
+     * @param string $username (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1626,7 +1626,7 @@ class SecurityApi
     /**
      * Create request for operation 'getUserRoles'
      *
-     * @param  string $username (required)
+     * @param string $username (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1735,10 +1735,10 @@ class SecurityApi
      *
      * Invalidate an existing user
      *
-     * @param  string $username username (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $username username (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1754,10 +1754,10 @@ class SecurityApi
      *
      * Invalidate an existing user
      *
-     * @param  string $username (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $username (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1810,10 +1810,10 @@ class SecurityApi
      *
      * Invalidate an existing user
      *
-     * @param  string $username (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $username (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1833,10 +1833,10 @@ class SecurityApi
      *
      * Invalidate an existing user
      *
-     * @param  string $username (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $username (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1872,10 +1872,10 @@ class SecurityApi
     /**
      * Create request for operation 'invalidateUser'
      *
-     * @param  string $username (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $username (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2002,10 +2002,10 @@ class SecurityApi
      *
      * Update a new role definition)
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2021,10 +2021,10 @@ class SecurityApi
      *
      * Update a new role definition)
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2077,10 +2077,10 @@ class SecurityApi
      *
      * Update a new role definition)
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2100,10 +2100,10 @@ class SecurityApi
      *
      * Update a new role definition)
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2139,10 +2139,10 @@ class SecurityApi
     /**
      * Create request for operation 'updateRoleDefinition'
      *
-     * @param  \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\RoleDefinition $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2264,11 +2264,11 @@ class SecurityApi
      *
      * Update a user password
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $username username (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $username username (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2284,11 +2284,11 @@ class SecurityApi
      *
      * Update a user password
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $username (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $username (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2341,11 +2341,11 @@ class SecurityApi
      *
      * Update a user password
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $username (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $username (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2365,11 +2365,11 @@ class SecurityApi
      *
      * Update a user password
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $username (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $username (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2405,11 +2405,11 @@ class SecurityApi
     /**
      * Create request for operation 'updateUserPassword'
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $username (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $username (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2545,11 +2545,11 @@ class SecurityApi
      *
      * Update roles associated to a user
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $username username (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $username username (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2565,11 +2565,11 @@ class SecurityApi
      *
      * Update roles associated to a user
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $username (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $username (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2622,11 +2622,11 @@ class SecurityApi
      *
      * Update roles associated to a user
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $username (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $username (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2646,11 +2646,11 @@ class SecurityApi
      *
      * Update roles associated to a user
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $username (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $username (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2686,11 +2686,11 @@ class SecurityApi
     /**
      * Create request for operation 'updateUserRoles'
      *
-     * @param  \Killbill\Client\Swagger\Model\UserRoles $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $username (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\UserRoles $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $username (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

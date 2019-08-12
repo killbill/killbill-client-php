@@ -91,15 +91,15 @@ class AdminApi
      *
      * Get queues entries
      *
-     * @param  string $accountId accountId (optional)
-     * @param  string $queueName queueName (optional)
-     * @param  string $serviceName serviceName (optional)
-     * @param  bool $withHistory withHistory (optional)
-     * @param  string $minDate minDate (optional)
-     * @param  string $maxDate maxDate (optional)
-     * @param  bool $withInProcessing withInProcessing (optional)
-     * @param  bool $withBusEvents withBusEvents (optional)
-     * @param  bool $withNotifications withNotifications (optional)
+     * @param string|null $accountId accountId (optional)
+     * @param string|null $queueName queueName (optional)
+     * @param string|null $serviceName serviceName (optional)
+     * @param bool|null $withHistory withHistory (optional)
+     * @param string|null $minDate minDate (optional)
+     * @param string|null $maxDate maxDate (optional)
+     * @param bool|null $withInProcessing withInProcessing (optional)
+     * @param bool|null $withBusEvents withBusEvents (optional)
+     * @param bool|null $withNotifications withNotifications (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -115,15 +115,15 @@ class AdminApi
      *
      * Get queues entries
      *
-     * @param  string $accountId (optional)
-     * @param  string $queueName (optional)
-     * @param  string $serviceName (optional)
-     * @param  bool $withHistory (optional)
-     * @param  string $minDate (optional)
-     * @param  string $maxDate (optional)
-     * @param  bool $withInProcessing (optional)
-     * @param  bool $withBusEvents (optional)
-     * @param  bool $withNotifications (optional)
+     * @param string $accountId (optional)
+     * @param string $queueName (optional)
+     * @param string $serviceName (optional)
+     * @param bool $withHistory (optional)
+     * @param string $minDate (optional)
+     * @param string $maxDate (optional)
+     * @param bool $withInProcessing (optional)
+     * @param bool $withBusEvents (optional)
+     * @param bool $withNotifications (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -176,15 +176,15 @@ class AdminApi
      *
      * Get queues entries
      *
-     * @param  string $accountId (optional)
-     * @param  string $queueName (optional)
-     * @param  string $serviceName (optional)
-     * @param  bool $withHistory (optional)
-     * @param  string $minDate (optional)
-     * @param  string $maxDate (optional)
-     * @param  bool $withInProcessing (optional)
-     * @param  bool $withBusEvents (optional)
-     * @param  bool $withNotifications (optional)
+     * @param string $accountId (optional)
+     * @param string $queueName (optional)
+     * @param string $serviceName (optional)
+     * @param bool $withHistory (optional)
+     * @param string $minDate (optional)
+     * @param string $maxDate (optional)
+     * @param bool $withInProcessing (optional)
+     * @param bool $withBusEvents (optional)
+     * @param bool $withNotifications (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -204,15 +204,15 @@ class AdminApi
      *
      * Get queues entries
      *
-     * @param  string $accountId (optional)
-     * @param  string $queueName (optional)
-     * @param  string $serviceName (optional)
-     * @param  bool $withHistory (optional)
-     * @param  string $minDate (optional)
-     * @param  string $maxDate (optional)
-     * @param  bool $withInProcessing (optional)
-     * @param  bool $withBusEvents (optional)
-     * @param  bool $withNotifications (optional)
+     * @param string $accountId (optional)
+     * @param string $queueName (optional)
+     * @param string $serviceName (optional)
+     * @param bool $withHistory (optional)
+     * @param string $minDate (optional)
+     * @param string $maxDate (optional)
+     * @param bool $withInProcessing (optional)
+     * @param bool $withBusEvents (optional)
+     * @param bool $withNotifications (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -248,15 +248,15 @@ class AdminApi
     /**
      * Create request for operation 'getQueueEntries'
      *
-     * @param  string $accountId (optional)
-     * @param  string $queueName (optional)
-     * @param  string $serviceName (optional)
-     * @param  bool $withHistory (optional)
-     * @param  string $minDate (optional)
-     * @param  string $maxDate (optional)
-     * @param  bool $withInProcessing (optional)
-     * @param  bool $withBusEvents (optional)
-     * @param  bool $withNotifications (optional)
+     * @param string $accountId (optional)
+     * @param string $queueName (optional)
+     * @param string $serviceName (optional)
+     * @param bool $withHistory (optional)
+     * @param string $minDate (optional)
+     * @param string $maxDate (optional)
+     * @param bool $withInProcessing (optional)
+     * @param bool $withBusEvents (optional)
+     * @param bool $withNotifications (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -397,7 +397,7 @@ class AdminApi
      *
      * Invalidates the given Cache if specified, otherwise invalidates all caches
      *
-     * @param  string $cacheName cacheName (optional)
+     * @param string|null $cacheName cacheName (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -413,7 +413,7 @@ class AdminApi
      *
      * Invalidates the given Cache if specified, otherwise invalidates all caches
      *
-     * @param  string $cacheName (optional)
+     * @param string $cacheName (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -466,7 +466,7 @@ class AdminApi
      *
      * Invalidates the given Cache if specified, otherwise invalidates all caches
      *
-     * @param  string $cacheName (optional)
+     * @param string $cacheName (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -486,7 +486,7 @@ class AdminApi
      *
      * Invalidates the given Cache if specified, otherwise invalidates all caches
      *
-     * @param  string $cacheName (optional)
+     * @param string $cacheName (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -522,7 +522,7 @@ class AdminApi
     /**
      * Create request for operation 'invalidatesCache'
      *
-     * @param  string $cacheName (optional)
+     * @param string $cacheName (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -631,7 +631,7 @@ class AdminApi
      *
      * Invalidates Caches per account level
      *
-     * @param  string $accountId accountId (required)
+     * @param string $accountId accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -647,7 +647,7 @@ class AdminApi
      *
      * Invalidates Caches per account level
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -700,7 +700,7 @@ class AdminApi
      *
      * Invalidates Caches per account level
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -720,7 +720,7 @@ class AdminApi
      *
      * Invalidates Caches per account level
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -756,7 +756,7 @@ class AdminApi
     /**
      * Create request for operation 'invalidatesCacheByAccount'
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1550,11 +1550,11 @@ class AdminApi
      *
      * Trigger an invoice generation for all parked accounts
      *
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1570,11 +1570,11 @@ class AdminApi
      *
      * Trigger an invoice generation for all parked accounts
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1627,11 +1627,11 @@ class AdminApi
      *
      * Trigger an invoice generation for all parked accounts
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1651,11 +1651,11 @@ class AdminApi
      *
      * Trigger an invoice generation for all parked accounts
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1691,11 +1691,11 @@ class AdminApi
     /**
      * Create request for operation 'triggerInvoiceGenerationForParkedAccounts'
      *
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $xKillbillCreatedBy (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1826,12 +1826,12 @@ class AdminApi
      *
      * Update existing paymentTransaction and associated payment state
      *
-     * @param  \Killbill\Client\Swagger\Model\AdminPayment $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $paymentId paymentId (required)
-     * @param  string $paymentTransactionId paymentTransactionId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AdminPayment $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $paymentId paymentId (required)
+     * @param string $paymentTransactionId paymentTransactionId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1847,12 +1847,12 @@ class AdminApi
      *
      * Update existing paymentTransaction and associated payment state
      *
-     * @param  \Killbill\Client\Swagger\Model\AdminPayment $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentId (required)
-     * @param  string $paymentTransactionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AdminPayment $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentId (required)
+     * @param string $paymentTransactionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1905,12 +1905,12 @@ class AdminApi
      *
      * Update existing paymentTransaction and associated payment state
      *
-     * @param  \Killbill\Client\Swagger\Model\AdminPayment $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentId (required)
-     * @param  string $paymentTransactionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AdminPayment $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentId (required)
+     * @param string $paymentTransactionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1930,12 +1930,12 @@ class AdminApi
      *
      * Update existing paymentTransaction and associated payment state
      *
-     * @param  \Killbill\Client\Swagger\Model\AdminPayment $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentId (required)
-     * @param  string $paymentTransactionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AdminPayment $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentId (required)
+     * @param string $paymentTransactionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1971,12 +1971,12 @@ class AdminApi
     /**
      * Create request for operation 'updatePaymentTransactionState'
      *
-     * @param  \Killbill\Client\Swagger\Model\AdminPayment $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentId (required)
-     * @param  string $paymentTransactionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AdminPayment $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentId (required)
+     * @param string $paymentTransactionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

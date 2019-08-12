@@ -343,11 +343,11 @@ class NodesInfoApi
      *
      * Trigger a node command
      *
-     * @param  \Killbill\Client\Swagger\Model\NodeCommand $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $localNodeOnly localNodeOnly (optional)
+     * @param \Killbill\Client\Swagger\Model\NodeCommand $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $localNodeOnly localNodeOnly (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -363,11 +363,11 @@ class NodesInfoApi
      *
      * Trigger a node command
      *
-     * @param  \Killbill\Client\Swagger\Model\NodeCommand $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $localNodeOnly (optional)
+     * @param \Killbill\Client\Swagger\Model\NodeCommand $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $localNodeOnly (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -420,11 +420,11 @@ class NodesInfoApi
      *
      * Trigger a node command
      *
-     * @param  \Killbill\Client\Swagger\Model\NodeCommand $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $localNodeOnly (optional)
+     * @param \Killbill\Client\Swagger\Model\NodeCommand $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $localNodeOnly (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -444,11 +444,11 @@ class NodesInfoApi
      *
      * Trigger a node command
      *
-     * @param  \Killbill\Client\Swagger\Model\NodeCommand $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $localNodeOnly (optional)
+     * @param \Killbill\Client\Swagger\Model\NodeCommand $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $localNodeOnly (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -484,11 +484,11 @@ class NodesInfoApi
     /**
      * Create request for operation 'triggerNodeCommand'
      *
-     * @param  \Killbill\Client\Swagger\Model\NodeCommand $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $localNodeOnly (optional)
+     * @param \Killbill\Client\Swagger\Model\NodeCommand $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $localNodeOnly (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

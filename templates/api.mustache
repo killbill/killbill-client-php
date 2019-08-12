@@ -91,7 +91,7 @@ use {{invokerPackage}}\ObjectSerializer;
      *
 {{/description}}
 {{#parameters}}
-     * @param  {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
+     * @param {{dataType}}{{^required}}|null{{/required}} ${{paramName}}{{#description}} {{description}}{{/description}}{{^description}} {{paramName}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
 {{/parameters}}
      *
      * @throws {{backSlash}}{{invokerPackage}}\ApiException on non-2xx response
@@ -116,7 +116,7 @@ use {{invokerPackage}}\ObjectSerializer;
      *
 {{/description}}
 {{#parameters}}
-     * @param  {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
+     * @param {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
 {{/parameters}}
      *
      * @throws {{backSlash}}{{invokerPackage}}\ApiException on non-2xx response
@@ -206,7 +206,7 @@ use {{invokerPackage}}\ObjectSerializer;
      *
 {{/description}}
 {{#parameters}}
-     * @param  {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
+     * @param {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
 {{/parameters}}
      *
      * @throws \InvalidArgumentException
@@ -232,7 +232,7 @@ use {{invokerPackage}}\ObjectSerializer;
      *
 {{/description}}
 {{#parameters}}
-     * @param  {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
+     * @param {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
 {{/parameters}}
      *
      * @throws \InvalidArgumentException
@@ -289,7 +289,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * Create request for operation '{{{operationId}}}'
      *
 {{#parameters}}
-     * @param  {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
+     * @param {{dataType}} ${{paramName}}{{#description}} {{description}}{{/description}} {{#required}}(required){{/required}}{{^required}}(optional{{#defaultValue}}, default to {{{.}}}{{/defaultValue}}){{/required}}
 {{/parameters}}
      *
      * @throws \InvalidArgumentException
@@ -357,7 +357,7 @@ use {{invokerPackage}}\ObjectSerializer;
         // query params
         {{#collectionFormat}}
         if (is_array(${{paramName}})) {
-            ${{paramName}} = ObjectSerializer::serializeCollection(${{paramName}}, '{{collectionFormat}}', true);
+            ${{paramName}} = ObjectSerializer::serializeCollection(${{paramName}}, /*'{{collectionFormat}}'*/'csv', true);
         }
         {{/collectionFormat}}
         if (${{paramName}} !== null) {
@@ -368,7 +368,7 @@ use {{invokerPackage}}\ObjectSerializer;
         // header params
         {{#collectionFormat}}
         if (is_array(${{paramName}})) {
-            ${{paramName}} = ObjectSerializer::serializeCollection(${{paramName}}, '{{collectionFormat}}');
+            ${{paramName}} = ObjectSerializer::serializeCollection(${{paramName}}, /*'{{collectionFormat}}'*/'csv');
         }
         {{/collectionFormat}}
         if (${{paramName}} !== null) {
@@ -380,7 +380,7 @@ use {{invokerPackage}}\ObjectSerializer;
         // path params
         {{#collectionFormat}}
         if (is_array(${{paramName}})) {
-            ${{paramName}} = ObjectSerializer::serializeCollection(${{paramName}}, '{{collectionFormat}}');
+            ${{paramName}} = ObjectSerializer::serializeCollection(${{paramName}}, /*'{{collectionFormat}}'*/'csv');
         }
         {{/collectionFormat}}
         if (${{paramName}} !== null) {

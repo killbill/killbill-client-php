@@ -91,11 +91,11 @@ class PaymentMethodApi
      *
      * Add custom fields to payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId paymentMethodId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $paymentMethodId paymentMethodId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -112,11 +112,11 @@ class PaymentMethodApi
      *
      * Add custom fields to payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -191,11 +191,11 @@ class PaymentMethodApi
      *
      * Add custom fields to payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -215,11 +215,11 @@ class PaymentMethodApi
      *
      * Add custom fields to payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -269,11 +269,11 @@ class PaymentMethodApi
     /**
      * Create request for operation 'createPaymentMethodCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -419,13 +419,13 @@ class PaymentMethodApi
      *
      * Delete a payment method
      *
-     * @param  string $paymentMethodId paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  bool $deleteDefaultPmWithAutoPayOff deleteDefaultPmWithAutoPayOff (optional)
-     * @param  bool $forceDefaultPmDeletion forceDefaultPmDeletion (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $paymentMethodId paymentMethodId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param bool|null $deleteDefaultPmWithAutoPayOff deleteDefaultPmWithAutoPayOff (optional)
+     * @param bool|null $forceDefaultPmDeletion forceDefaultPmDeletion (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -441,13 +441,13 @@ class PaymentMethodApi
      *
      * Delete a payment method
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $deleteDefaultPmWithAutoPayOff (optional)
-     * @param  bool $forceDefaultPmDeletion (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $deleteDefaultPmWithAutoPayOff (optional)
+     * @param bool $forceDefaultPmDeletion (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -500,13 +500,13 @@ class PaymentMethodApi
      *
      * Delete a payment method
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $deleteDefaultPmWithAutoPayOff (optional)
-     * @param  bool $forceDefaultPmDeletion (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $deleteDefaultPmWithAutoPayOff (optional)
+     * @param bool $forceDefaultPmDeletion (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -526,13 +526,13 @@ class PaymentMethodApi
      *
      * Delete a payment method
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $deleteDefaultPmWithAutoPayOff (optional)
-     * @param  bool $forceDefaultPmDeletion (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $deleteDefaultPmWithAutoPayOff (optional)
+     * @param bool $forceDefaultPmDeletion (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -568,13 +568,13 @@ class PaymentMethodApi
     /**
      * Create request for operation 'deletePaymentMethod'
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $deleteDefaultPmWithAutoPayOff (optional)
-     * @param  bool $forceDefaultPmDeletion (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $deleteDefaultPmWithAutoPayOff (optional)
+     * @param bool $forceDefaultPmDeletion (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -611,7 +611,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -726,11 +726,11 @@ class PaymentMethodApi
      *
      * Remove custom fields from payment method
      *
-     * @param  string $paymentMethodId paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $customField customField (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $paymentMethodId paymentMethodId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $customField customField (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -746,11 +746,11 @@ class PaymentMethodApi
      *
      * Remove custom fields from payment method
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -803,11 +803,11 @@ class PaymentMethodApi
      *
      * Remove custom fields from payment method
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -827,11 +827,11 @@ class PaymentMethodApi
      *
      * Remove custom fields from payment method
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -867,11 +867,11 @@ class PaymentMethodApi
     /**
      * Create request for operation 'deletePaymentMethodCustomFields'
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -900,7 +900,7 @@ class PaymentMethodApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'csv', true);
+            $customField = ObjectSerializer::serializeCollection($customField, /*'multi'*/'csv', true);
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -1015,11 +1015,11 @@ class PaymentMethodApi
      *
      * Retrieve a payment method by id
      *
-     * @param  string $paymentMethodId paymentMethodId (required)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  bool $withPluginInfo withPluginInfo (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $audit audit (optional)
+     * @param string $paymentMethodId paymentMethodId (required)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param bool|null $withPluginInfo withPluginInfo (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1036,11 +1036,11 @@ class PaymentMethodApi
      *
      * Retrieve a payment method by id
      *
-     * @param  string $paymentMethodId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $paymentMethodId (required)
+     * @param bool $includedDeleted (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1115,11 +1115,11 @@ class PaymentMethodApi
      *
      * Retrieve a payment method by id
      *
-     * @param  string $paymentMethodId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $paymentMethodId (required)
+     * @param bool $includedDeleted (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1139,11 +1139,11 @@ class PaymentMethodApi
      *
      * Retrieve a payment method by id
      *
-     * @param  string $paymentMethodId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $paymentMethodId (required)
+     * @param bool $includedDeleted (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1193,11 +1193,11 @@ class PaymentMethodApi
     /**
      * Create request for operation 'getPaymentMethod'
      *
-     * @param  string $paymentMethodId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $paymentMethodId (required)
+     * @param bool $includedDeleted (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1228,7 +1228,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1335,7 +1335,7 @@ class PaymentMethodApi
      *
      * Retrieve payment method audit logs with history by id
      *
-     * @param  string $paymentMethodId paymentMethodId (required)
+     * @param string $paymentMethodId paymentMethodId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1352,7 +1352,7 @@ class PaymentMethodApi
      *
      * Retrieve payment method audit logs with history by id
      *
-     * @param  string $paymentMethodId (required)
+     * @param string $paymentMethodId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1427,7 +1427,7 @@ class PaymentMethodApi
      *
      * Retrieve payment method audit logs with history by id
      *
-     * @param  string $paymentMethodId (required)
+     * @param string $paymentMethodId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1447,7 +1447,7 @@ class PaymentMethodApi
      *
      * Retrieve payment method audit logs with history by id
      *
-     * @param  string $paymentMethodId (required)
+     * @param string $paymentMethodId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1497,7 +1497,7 @@ class PaymentMethodApi
     /**
      * Create request for operation 'getPaymentMethodAuditLogsWithHistory'
      *
-     * @param  string $paymentMethodId (required)
+     * @param string $paymentMethodId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1616,11 +1616,11 @@ class PaymentMethodApi
      *
      * Retrieve a payment method by external key
      *
-     * @param  string $externalKey externalKey (required)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  bool $withPluginInfo withPluginInfo (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $audit audit (optional)
+     * @param string $externalKey externalKey (required)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param bool|null $withPluginInfo withPluginInfo (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1637,11 +1637,11 @@ class PaymentMethodApi
      *
      * Retrieve a payment method by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $includedDeleted (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1716,11 +1716,11 @@ class PaymentMethodApi
      *
      * Retrieve a payment method by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $includedDeleted (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1740,11 +1740,11 @@ class PaymentMethodApi
      *
      * Retrieve a payment method by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $includedDeleted (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1794,11 +1794,11 @@ class PaymentMethodApi
     /**
      * Create request for operation 'getPaymentMethodByKey'
      *
-     * @param  string $externalKey (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $includedDeleted (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1833,7 +1833,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1932,8 +1932,8 @@ class PaymentMethodApi
      *
      * Retrieve payment method custom fields
      *
-     * @param  string $paymentMethodId paymentMethodId (required)
-     * @param  string $audit audit (optional)
+     * @param string $paymentMethodId paymentMethodId (required)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1950,8 +1950,8 @@ class PaymentMethodApi
      *
      * Retrieve payment method custom fields
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $audit (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2026,8 +2026,8 @@ class PaymentMethodApi
      *
      * Retrieve payment method custom fields
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $audit (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2047,8 +2047,8 @@ class PaymentMethodApi
      *
      * Retrieve payment method custom fields
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $audit (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2098,8 +2098,8 @@ class PaymentMethodApi
     /**
      * Create request for operation 'getPaymentMethodCustomFields'
      *
-     * @param  string $paymentMethodId (required)
-     * @param  string $audit (optional)
+     * @param string $paymentMethodId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2222,12 +2222,12 @@ class PaymentMethodApi
      *
      * List payment methods
      *
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  string $pluginName pluginName (optional)
-     * @param  bool $withPluginInfo withPluginInfo (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $audit audit (optional)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param string|null $pluginName pluginName (optional)
+     * @param bool|null $withPluginInfo withPluginInfo (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2244,12 +2244,12 @@ class PaymentMethodApi
      *
      * List payment methods
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $pluginName (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $pluginName (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2324,12 +2324,12 @@ class PaymentMethodApi
      *
      * List payment methods
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $pluginName (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $pluginName (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2349,12 +2349,12 @@ class PaymentMethodApi
      *
      * List payment methods
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $pluginName (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $pluginName (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2404,12 +2404,12 @@ class PaymentMethodApi
     /**
      * Create request for operation 'getPaymentMethods'
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $pluginName (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $pluginName (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2442,7 +2442,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2541,11 +2541,11 @@ class PaymentMethodApi
      *
      * Modify custom fields to payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId paymentMethodId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $paymentMethodId paymentMethodId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2561,11 +2561,11 @@ class PaymentMethodApi
      *
      * Modify custom fields to payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2618,11 +2618,11 @@ class PaymentMethodApi
      *
      * Modify custom fields to payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2642,11 +2642,11 @@ class PaymentMethodApi
      *
      * Modify custom fields to payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2682,11 +2682,11 @@ class PaymentMethodApi
     /**
      * Create request for operation 'modifyPaymentMethodCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2832,13 +2832,13 @@ class PaymentMethodApi
      *
      * Search payment methods
      *
-     * @param  string $searchKey searchKey (required)
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  string $pluginName pluginName (optional)
-     * @param  bool $withPluginInfo withPluginInfo (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $audit audit (optional)
+     * @param string $searchKey searchKey (required)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param string|null $pluginName pluginName (optional)
+     * @param bool|null $withPluginInfo withPluginInfo (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2855,13 +2855,13 @@ class PaymentMethodApi
      *
      * Search payment methods
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $pluginName (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $pluginName (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2936,13 +2936,13 @@ class PaymentMethodApi
      *
      * Search payment methods
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $pluginName (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $pluginName (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2962,13 +2962,13 @@ class PaymentMethodApi
      *
      * Search payment methods
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $pluginName (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $pluginName (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3018,13 +3018,13 @@ class PaymentMethodApi
     /**
      * Create request for operation 'searchPaymentMethods'
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $pluginName (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $pluginName (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3063,7 +3063,7 @@ class PaymentMethodApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);

@@ -91,13 +91,13 @@ class AccountApi
      *
      * Block an account
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -114,13 +114,13 @@ class AccountApi
      *
      * Block an account
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -195,13 +195,13 @@ class AccountApi
      *
      * Block an account
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -221,13 +221,13 @@ class AccountApi
      *
      * Block an account
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -277,13 +277,13 @@ class AccountApi
     /**
      * Create request for operation 'addAccountBlockingState'
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -322,7 +322,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -440,11 +440,11 @@ class AccountApi
      *
      * Add account email
      *
-     * @param  \Killbill\Client\Swagger\Model\AccountEmail $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AccountEmail $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -461,11 +461,11 @@ class AccountApi
      *
      * Add account email
      *
-     * @param  \Killbill\Client\Swagger\Model\AccountEmail $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AccountEmail $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -540,11 +540,11 @@ class AccountApi
      *
      * Add account email
      *
-     * @param  \Killbill\Client\Swagger\Model\AccountEmail $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AccountEmail $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -564,11 +564,11 @@ class AccountApi
      *
      * Add account email
      *
-     * @param  \Killbill\Client\Swagger\Model\AccountEmail $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AccountEmail $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -618,11 +618,11 @@ class AccountApi
     /**
      * Create request for operation 'addEmail'
      *
-     * @param  \Killbill\Client\Swagger\Model\AccountEmail $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\AccountEmail $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -768,14 +768,14 @@ class AccountApi
      *
      * Close account
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  bool $cancelAllSubscriptions cancelAllSubscriptions (optional)
-     * @param  bool $writeOffUnpaidInvoices writeOffUnpaidInvoices (optional)
-     * @param  bool $itemAdjustUnpaidInvoices itemAdjustUnpaidInvoices (optional)
-     * @param  bool $removeFutureNotifications removeFutureNotifications (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param bool|null $cancelAllSubscriptions cancelAllSubscriptions (optional)
+     * @param bool|null $writeOffUnpaidInvoices writeOffUnpaidInvoices (optional)
+     * @param bool|null $itemAdjustUnpaidInvoices itemAdjustUnpaidInvoices (optional)
+     * @param bool|null $removeFutureNotifications removeFutureNotifications (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -791,14 +791,14 @@ class AccountApi
      *
      * Close account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $cancelAllSubscriptions (optional)
-     * @param  bool $writeOffUnpaidInvoices (optional)
-     * @param  bool $itemAdjustUnpaidInvoices (optional)
-     * @param  bool $removeFutureNotifications (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $cancelAllSubscriptions (optional)
+     * @param bool $writeOffUnpaidInvoices (optional)
+     * @param bool $itemAdjustUnpaidInvoices (optional)
+     * @param bool $removeFutureNotifications (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -851,14 +851,14 @@ class AccountApi
      *
      * Close account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $cancelAllSubscriptions (optional)
-     * @param  bool $writeOffUnpaidInvoices (optional)
-     * @param  bool $itemAdjustUnpaidInvoices (optional)
-     * @param  bool $removeFutureNotifications (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $cancelAllSubscriptions (optional)
+     * @param bool $writeOffUnpaidInvoices (optional)
+     * @param bool $itemAdjustUnpaidInvoices (optional)
+     * @param bool $removeFutureNotifications (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -878,14 +878,14 @@ class AccountApi
      *
      * Close account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $cancelAllSubscriptions (optional)
-     * @param  bool $writeOffUnpaidInvoices (optional)
-     * @param  bool $itemAdjustUnpaidInvoices (optional)
-     * @param  bool $removeFutureNotifications (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $cancelAllSubscriptions (optional)
+     * @param bool $writeOffUnpaidInvoices (optional)
+     * @param bool $itemAdjustUnpaidInvoices (optional)
+     * @param bool $removeFutureNotifications (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -921,14 +921,14 @@ class AccountApi
     /**
      * Create request for operation 'closeAccount'
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $cancelAllSubscriptions (optional)
-     * @param  bool $writeOffUnpaidInvoices (optional)
-     * @param  bool $itemAdjustUnpaidInvoices (optional)
-     * @param  bool $removeFutureNotifications (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $cancelAllSubscriptions (optional)
+     * @param bool $writeOffUnpaidInvoices (optional)
+     * @param bool $itemAdjustUnpaidInvoices (optional)
+     * @param bool $removeFutureNotifications (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1081,10 +1081,10 @@ class AccountApi
      *
      * Create account
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1101,10 +1101,10 @@ class AccountApi
      *
      * Create account
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1179,10 +1179,10 @@ class AccountApi
      *
      * Create account
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1202,10 +1202,10 @@ class AccountApi
      *
      * Create account
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1255,10 +1255,10 @@ class AccountApi
     /**
      * Create request for operation 'createAccount'
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1390,11 +1390,11 @@ class AccountApi
      *
      * Add custom fields to account
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1411,11 +1411,11 @@ class AccountApi
      *
      * Add custom fields to account
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1490,11 +1490,11 @@ class AccountApi
      *
      * Add custom fields to account
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1514,11 +1514,11 @@ class AccountApi
      *
      * Add custom fields to account
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1568,11 +1568,11 @@ class AccountApi
     /**
      * Create request for operation 'createAccountCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1718,11 +1718,11 @@ class AccountApi
      *
      * Add tags to account
      *
-     * @param  string[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1739,11 +1739,11 @@ class AccountApi
      *
      * Add tags to account
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1818,11 +1818,11 @@ class AccountApi
      *
      * Add tags to account
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1842,11 +1842,11 @@ class AccountApi
      *
      * Add tags to account
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1896,11 +1896,11 @@ class AccountApi
     /**
      * Create request for operation 'createAccountTags'
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2046,15 +2046,15 @@ class AccountApi
      *
      * Add a payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentMethod $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $isDefault isDefault (optional)
-     * @param  bool $payAllUnpaidInvoices payAllUnpaidInvoices (optional)
-     * @param  string[] $controlPluginName controlPluginName (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentMethod $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $isDefault isDefault (optional)
+     * @param bool|null $payAllUnpaidInvoices payAllUnpaidInvoices (optional)
+     * @param string[]|null $controlPluginName controlPluginName (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2071,15 +2071,15 @@ class AccountApi
      *
      * Add a payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentMethod $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $isDefault (optional)
-     * @param  bool $payAllUnpaidInvoices (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentMethod $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $isDefault (optional)
+     * @param bool $payAllUnpaidInvoices (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2154,15 +2154,15 @@ class AccountApi
      *
      * Add a payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentMethod $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $isDefault (optional)
-     * @param  bool $payAllUnpaidInvoices (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentMethod $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $isDefault (optional)
+     * @param bool $payAllUnpaidInvoices (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2182,15 +2182,15 @@ class AccountApi
      *
      * Add a payment method
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentMethod $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $isDefault (optional)
-     * @param  bool $payAllUnpaidInvoices (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentMethod $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $isDefault (optional)
+     * @param bool $payAllUnpaidInvoices (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2240,15 +2240,15 @@ class AccountApi
     /**
      * Create request for operation 'createPaymentMethod'
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentMethod $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $isDefault (optional)
-     * @param  bool $payAllUnpaidInvoices (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentMethod $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $isDefault (optional)
+     * @param bool $payAllUnpaidInvoices (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2291,14 +2291,14 @@ class AccountApi
         }
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, /*'multi'*/'csv', true);
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2416,11 +2416,11 @@ class AccountApi
      *
      * Remove custom fields from account
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $customField customField (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $customField customField (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2436,11 +2436,11 @@ class AccountApi
      *
      * Remove custom fields from account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2493,11 +2493,11 @@ class AccountApi
      *
      * Remove custom fields from account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2517,11 +2517,11 @@ class AccountApi
      *
      * Remove custom fields from account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2557,11 +2557,11 @@ class AccountApi
     /**
      * Create request for operation 'deleteAccountCustomFields'
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2590,7 +2590,7 @@ class AccountApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'csv', true);
+            $customField = ObjectSerializer::serializeCollection($customField, /*'multi'*/'csv', true);
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -2705,11 +2705,11 @@ class AccountApi
      *
      * Remove tags from account
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $tagDef tagDef (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $tagDef tagDef (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2725,11 +2725,11 @@ class AccountApi
      *
      * Remove tags from account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2782,11 +2782,11 @@ class AccountApi
      *
      * Remove tags from account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2806,11 +2806,11 @@ class AccountApi
      *
      * Remove tags from account
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2846,11 +2846,11 @@ class AccountApi
     /**
      * Create request for operation 'deleteAccountTags'
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2879,7 +2879,7 @@ class AccountApi
 
         // query params
         if (is_array($tagDef)) {
-            $tagDef = ObjectSerializer::serializeCollection($tagDef, 'csv', true);
+            $tagDef = ObjectSerializer::serializeCollection($tagDef, /*'multi'*/'csv', true);
         }
         if ($tagDef !== null) {
             $queryParams['tagDef'] = ObjectSerializer::toQueryValue($tagDef);
@@ -2994,10 +2994,10 @@ class AccountApi
      *
      * Retrieve an account by id
      *
-     * @param  string $accountId accountId (required)
-     * @param  bool $accountWithBalance accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param bool|null $accountWithBalance accountWithBalance (optional)
+     * @param bool|null $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3014,10 +3014,10 @@ class AccountApi
      *
      * Retrieve an account by id
      *
-     * @param  string $accountId (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3092,10 +3092,10 @@ class AccountApi
      *
      * Retrieve an account by id
      *
-     * @param  string $accountId (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3115,10 +3115,10 @@ class AccountApi
      *
      * Retrieve an account by id
      *
-     * @param  string $accountId (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3168,10 +3168,10 @@ class AccountApi
     /**
      * Create request for operation 'getAccount'
      *
-     * @param  string $accountId (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3302,7 +3302,7 @@ class AccountApi
      *
      * Retrieve audit logs by account id
      *
-     * @param  string $accountId accountId (required)
+     * @param string $accountId accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3319,7 +3319,7 @@ class AccountApi
      *
      * Retrieve audit logs by account id
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3394,7 +3394,7 @@ class AccountApi
      *
      * Retrieve audit logs by account id
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3414,7 +3414,7 @@ class AccountApi
      *
      * Retrieve audit logs by account id
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3464,7 +3464,7 @@ class AccountApi
     /**
      * Create request for operation 'getAccountAuditLogs'
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3583,7 +3583,7 @@ class AccountApi
      *
      * Retrieve account audit logs with history by account id
      *
-     * @param  string $accountId accountId (required)
+     * @param string $accountId accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3600,7 +3600,7 @@ class AccountApi
      *
      * Retrieve account audit logs with history by account id
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3675,7 +3675,7 @@ class AccountApi
      *
      * Retrieve account audit logs with history by account id
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3695,7 +3695,7 @@ class AccountApi
      *
      * Retrieve account audit logs with history by account id
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3745,7 +3745,7 @@ class AccountApi
     /**
      * Create request for operation 'getAccountAuditLogsWithHistory'
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3864,10 +3864,10 @@ class AccountApi
      *
      * Retrieve bundles for account
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $externalKey externalKey (optional)
-     * @param  string $bundlesFilter bundlesFilter (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param string|null $externalKey externalKey (optional)
+     * @param string|null $bundlesFilter bundlesFilter (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3884,10 +3884,10 @@ class AccountApi
      *
      * Retrieve bundles for account
      *
-     * @param  string $accountId (required)
-     * @param  string $externalKey (optional)
-     * @param  string $bundlesFilter (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $externalKey (optional)
+     * @param string $bundlesFilter (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3962,10 +3962,10 @@ class AccountApi
      *
      * Retrieve bundles for account
      *
-     * @param  string $accountId (required)
-     * @param  string $externalKey (optional)
-     * @param  string $bundlesFilter (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $externalKey (optional)
+     * @param string $bundlesFilter (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3985,10 +3985,10 @@ class AccountApi
      *
      * Retrieve bundles for account
      *
-     * @param  string $accountId (required)
-     * @param  string $externalKey (optional)
-     * @param  string $bundlesFilter (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $externalKey (optional)
+     * @param string $bundlesFilter (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4038,10 +4038,10 @@ class AccountApi
     /**
      * Create request for operation 'getAccountBundles'
      *
-     * @param  string $accountId (required)
-     * @param  string $externalKey (optional)
-     * @param  string $bundlesFilter (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $externalKey (optional)
+     * @param string $bundlesFilter (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4172,10 +4172,10 @@ class AccountApi
      *
      * Retrieve an account by external key
      *
-     * @param  string $externalKey externalKey (required)
-     * @param  bool $accountWithBalance accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
-     * @param  string $audit audit (optional)
+     * @param string $externalKey externalKey (required)
+     * @param bool|null $accountWithBalance accountWithBalance (optional)
+     * @param bool|null $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4192,10 +4192,10 @@ class AccountApi
      *
      * Retrieve an account by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4270,10 +4270,10 @@ class AccountApi
      *
      * Retrieve an account by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4293,10 +4293,10 @@ class AccountApi
      *
      * Retrieve an account by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4346,10 +4346,10 @@ class AccountApi
     /**
      * Create request for operation 'getAccountByKey'
      *
-     * @param  string $externalKey (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4476,8 +4476,8 @@ class AccountApi
      *
      * Retrieve account custom fields
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4494,8 +4494,8 @@ class AccountApi
      *
      * Retrieve account custom fields
      *
-     * @param  string $accountId (required)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4570,8 +4570,8 @@ class AccountApi
      *
      * Retrieve account custom fields
      *
-     * @param  string $accountId (required)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4591,8 +4591,8 @@ class AccountApi
      *
      * Retrieve account custom fields
      *
-     * @param  string $accountId (required)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4642,8 +4642,8 @@ class AccountApi
     /**
      * Create request for operation 'getAccountCustomFields'
      *
-     * @param  string $accountId (required)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4766,8 +4766,8 @@ class AccountApi
      *
      * Retrieve account email audit logs with history by id
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $accountEmailId accountEmailId (required)
+     * @param string $accountId accountId (required)
+     * @param string $accountEmailId accountEmailId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4784,8 +4784,8 @@ class AccountApi
      *
      * Retrieve account email audit logs with history by id
      *
-     * @param  string $accountId (required)
-     * @param  string $accountEmailId (required)
+     * @param string $accountId (required)
+     * @param string $accountEmailId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4860,8 +4860,8 @@ class AccountApi
      *
      * Retrieve account email audit logs with history by id
      *
-     * @param  string $accountId (required)
-     * @param  string $accountEmailId (required)
+     * @param string $accountId (required)
+     * @param string $accountEmailId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4881,8 +4881,8 @@ class AccountApi
      *
      * Retrieve account email audit logs with history by id
      *
-     * @param  string $accountId (required)
-     * @param  string $accountEmailId (required)
+     * @param string $accountId (required)
+     * @param string $accountEmailId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4932,8 +4932,8 @@ class AccountApi
     /**
      * Create request for operation 'getAccountEmailAuditLogsWithHistory'
      *
-     * @param  string $accountId (required)
-     * @param  string $accountEmailId (required)
+     * @param string $accountId (required)
+     * @param string $accountEmailId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5066,9 +5066,9 @@ class AccountApi
      *
      * Retrieve account tags
      *
-     * @param  string $accountId accountId (required)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5085,9 +5085,9 @@ class AccountApi
      *
      * Retrieve account tags
      *
-     * @param  string $accountId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5162,9 +5162,9 @@ class AccountApi
      *
      * Retrieve account tags
      *
-     * @param  string $accountId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5184,9 +5184,9 @@ class AccountApi
      *
      * Retrieve account tags
      *
-     * @param  string $accountId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5236,9 +5236,9 @@ class AccountApi
     /**
      * Create request for operation 'getAccountTags'
      *
-     * @param  string $accountId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5365,9 +5365,9 @@ class AccountApi
      *
      * Retrieve account timeline
      *
-     * @param  string $accountId accountId (required)
-     * @param  bool $parallel parallel (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param bool|null $parallel parallel (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5384,9 +5384,9 @@ class AccountApi
      *
      * Retrieve account timeline
      *
-     * @param  string $accountId (required)
-     * @param  bool $parallel (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $parallel (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5461,9 +5461,9 @@ class AccountApi
      *
      * Retrieve account timeline
      *
-     * @param  string $accountId (required)
-     * @param  bool $parallel (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $parallel (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5483,9 +5483,9 @@ class AccountApi
      *
      * Retrieve account timeline
      *
-     * @param  string $accountId (required)
-     * @param  bool $parallel (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $parallel (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5535,9 +5535,9 @@ class AccountApi
     /**
      * Create request for operation 'getAccountTimeline'
      *
-     * @param  string $accountId (required)
-     * @param  bool $parallel (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $parallel (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5664,11 +5664,11 @@ class AccountApi
      *
      * List accounts
      *
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  bool $accountWithBalance accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
-     * @param  string $audit audit (optional)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param bool|null $accountWithBalance accountWithBalance (optional)
+     * @param bool|null $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5685,11 +5685,11 @@ class AccountApi
      *
      * List accounts
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5764,11 +5764,11 @@ class AccountApi
      *
      * List accounts
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5788,11 +5788,11 @@ class AccountApi
      *
      * List accounts
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5842,11 +5842,11 @@ class AccountApi
     /**
      * Create request for operation 'getAccounts'
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5971,9 +5971,9 @@ class AccountApi
      *
      * Retrieve account customFields
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $objectType objectType (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param string|null $objectType objectType (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5990,9 +5990,9 @@ class AccountApi
      *
      * Retrieve account customFields
      *
-     * @param  string $accountId (required)
-     * @param  string $objectType (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $objectType (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6067,9 +6067,9 @@ class AccountApi
      *
      * Retrieve account customFields
      *
-     * @param  string $accountId (required)
-     * @param  string $objectType (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $objectType (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6089,9 +6089,9 @@ class AccountApi
      *
      * Retrieve account customFields
      *
-     * @param  string $accountId (required)
-     * @param  string $objectType (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $objectType (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6141,9 +6141,9 @@ class AccountApi
     /**
      * Create request for operation 'getAllCustomFields'
      *
-     * @param  string $accountId (required)
-     * @param  string $objectType (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $objectType (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6270,10 +6270,10 @@ class AccountApi
      *
      * Retrieve account tags
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $objectType objectType (optional)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param string|null $objectType objectType (optional)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6290,10 +6290,10 @@ class AccountApi
      *
      * Retrieve account tags
      *
-     * @param  string $accountId (required)
-     * @param  string $objectType (optional)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $objectType (optional)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6368,10 +6368,10 @@ class AccountApi
      *
      * Retrieve account tags
      *
-     * @param  string $accountId (required)
-     * @param  string $objectType (optional)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $objectType (optional)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6391,10 +6391,10 @@ class AccountApi
      *
      * Retrieve account tags
      *
-     * @param  string $accountId (required)
-     * @param  string $objectType (optional)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $objectType (optional)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6444,10 +6444,10 @@ class AccountApi
     /**
      * Create request for operation 'getAllTags'
      *
-     * @param  string $accountId (required)
-     * @param  string $objectType (optional)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string $objectType (optional)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6578,10 +6578,10 @@ class AccountApi
      *
      * Retrieve blocking states for account
      *
-     * @param  string $accountId accountId (required)
-     * @param  string[] $blockingStateTypes blockingStateTypes (optional)
-     * @param  string[] $blockingStateSvcs blockingStateSvcs (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param string[]|null $blockingStateTypes blockingStateTypes (optional)
+     * @param string[]|null $blockingStateSvcs blockingStateSvcs (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6598,10 +6598,10 @@ class AccountApi
      *
      * Retrieve blocking states for account
      *
-     * @param  string $accountId (required)
-     * @param  string[] $blockingStateTypes (optional)
-     * @param  string[] $blockingStateSvcs (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string[] $blockingStateTypes (optional)
+     * @param string[] $blockingStateSvcs (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6676,10 +6676,10 @@ class AccountApi
      *
      * Retrieve blocking states for account
      *
-     * @param  string $accountId (required)
-     * @param  string[] $blockingStateTypes (optional)
-     * @param  string[] $blockingStateSvcs (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string[] $blockingStateTypes (optional)
+     * @param string[] $blockingStateSvcs (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6699,10 +6699,10 @@ class AccountApi
      *
      * Retrieve blocking states for account
      *
-     * @param  string $accountId (required)
-     * @param  string[] $blockingStateTypes (optional)
-     * @param  string[] $blockingStateSvcs (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string[] $blockingStateTypes (optional)
+     * @param string[] $blockingStateSvcs (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6752,10 +6752,10 @@ class AccountApi
     /**
      * Create request for operation 'getBlockingStates'
      *
-     * @param  string $accountId (required)
-     * @param  string[] $blockingStateTypes (optional)
-     * @param  string[] $blockingStateSvcs (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param string[] $blockingStateTypes (optional)
+     * @param string[] $blockingStateSvcs (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6778,14 +6778,14 @@ class AccountApi
 
         // query params
         if (is_array($blockingStateTypes)) {
-            $blockingStateTypes = ObjectSerializer::serializeCollection($blockingStateTypes, 'csv', true);
+            $blockingStateTypes = ObjectSerializer::serializeCollection($blockingStateTypes, /*'multi'*/'csv', true);
         }
         if ($blockingStateTypes !== null) {
             $queryParams['blockingStateTypes'] = ObjectSerializer::toQueryValue($blockingStateTypes);
         }
         // query params
         if (is_array($blockingStateSvcs)) {
-            $blockingStateSvcs = ObjectSerializer::serializeCollection($blockingStateSvcs, 'csv', true);
+            $blockingStateSvcs = ObjectSerializer::serializeCollection($blockingStateSvcs, /*'multi'*/'csv', true);
         }
         if ($blockingStateSvcs !== null) {
             $queryParams['blockingStateSvcs'] = ObjectSerializer::toQueryValue($blockingStateSvcs);
@@ -6892,10 +6892,10 @@ class AccountApi
      *
      * List children accounts
      *
-     * @param  string $accountId accountId (required)
-     * @param  bool $accountWithBalance accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param bool|null $accountWithBalance accountWithBalance (optional)
+     * @param bool|null $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6912,10 +6912,10 @@ class AccountApi
      *
      * List children accounts
      *
-     * @param  string $accountId (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -6990,10 +6990,10 @@ class AccountApi
      *
      * List children accounts
      *
-     * @param  string $accountId (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7013,10 +7013,10 @@ class AccountApi
      *
      * List children accounts
      *
-     * @param  string $accountId (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7066,10 +7066,10 @@ class AccountApi
     /**
      * Create request for operation 'getChildrenAccounts'
      *
-     * @param  string $accountId (required)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7200,7 +7200,7 @@ class AccountApi
      *
      * Retrieve an account emails
      *
-     * @param  string $accountId accountId (required)
+     * @param string $accountId accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7217,7 +7217,7 @@ class AccountApi
      *
      * Retrieve an account emails
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7292,7 +7292,7 @@ class AccountApi
      *
      * Retrieve an account emails
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7312,7 +7312,7 @@ class AccountApi
      *
      * Retrieve an account emails
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7362,7 +7362,7 @@ class AccountApi
     /**
      * Create request for operation 'getEmails'
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7481,11 +7481,11 @@ class AccountApi
      *
      * Retrieve account invoice payments
      *
-     * @param  string $accountId accountId (required)
-     * @param  bool $withPluginInfo withPluginInfo (optional)
-     * @param  bool $withAttempts withAttempts (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param bool|null $withPluginInfo withPluginInfo (optional)
+     * @param bool|null $withAttempts withAttempts (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7502,11 +7502,11 @@ class AccountApi
      *
      * Retrieve account invoice payments
      *
-     * @param  string $accountId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $withAttempts (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $withAttempts (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7581,11 +7581,11 @@ class AccountApi
      *
      * Retrieve account invoice payments
      *
-     * @param  string $accountId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $withAttempts (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $withAttempts (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7605,11 +7605,11 @@ class AccountApi
      *
      * Retrieve account invoice payments
      *
-     * @param  string $accountId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $withAttempts (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $withAttempts (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7659,11 +7659,11 @@ class AccountApi
     /**
      * Create request for operation 'getInvoicePayments'
      *
-     * @param  string $accountId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $withAttempts (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $withAttempts (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -7694,7 +7694,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -7801,13 +7801,13 @@ class AccountApi
      *
      * Retrieve account invoices
      *
-     * @param  string $accountId accountId (required)
-     * @param  \DateTime $startDate startDate (optional)
-     * @param  bool $withItems withItems (optional)
-     * @param  bool $withMigrationInvoices withMigrationInvoices (optional)
-     * @param  bool $unpaidInvoicesOnly unpaidInvoicesOnly (optional)
-     * @param  bool $includeVoidedInvoices includeVoidedInvoices (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param \DateTime|null $startDate startDate (optional)
+     * @param bool|null $withItems withItems (optional)
+     * @param bool|null $withMigrationInvoices withMigrationInvoices (optional)
+     * @param bool|null $unpaidInvoicesOnly unpaidInvoicesOnly (optional)
+     * @param bool|null $includeVoidedInvoices includeVoidedInvoices (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7824,13 +7824,13 @@ class AccountApi
      *
      * Retrieve account invoices
      *
-     * @param  string $accountId (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  bool $withItems (optional)
-     * @param  bool $withMigrationInvoices (optional)
-     * @param  bool $unpaidInvoicesOnly (optional)
-     * @param  bool $includeVoidedInvoices (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param \DateTime $startDate (optional)
+     * @param bool $withItems (optional)
+     * @param bool $withMigrationInvoices (optional)
+     * @param bool $unpaidInvoicesOnly (optional)
+     * @param bool $includeVoidedInvoices (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7905,13 +7905,13 @@ class AccountApi
      *
      * Retrieve account invoices
      *
-     * @param  string $accountId (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  bool $withItems (optional)
-     * @param  bool $withMigrationInvoices (optional)
-     * @param  bool $unpaidInvoicesOnly (optional)
-     * @param  bool $includeVoidedInvoices (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param \DateTime $startDate (optional)
+     * @param bool $withItems (optional)
+     * @param bool $withMigrationInvoices (optional)
+     * @param bool $unpaidInvoicesOnly (optional)
+     * @param bool $includeVoidedInvoices (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7931,13 +7931,13 @@ class AccountApi
      *
      * Retrieve account invoices
      *
-     * @param  string $accountId (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  bool $withItems (optional)
-     * @param  bool $withMigrationInvoices (optional)
-     * @param  bool $unpaidInvoicesOnly (optional)
-     * @param  bool $includeVoidedInvoices (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param \DateTime $startDate (optional)
+     * @param bool $withItems (optional)
+     * @param bool $withMigrationInvoices (optional)
+     * @param bool $unpaidInvoicesOnly (optional)
+     * @param bool $includeVoidedInvoices (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7987,13 +7987,13 @@ class AccountApi
     /**
      * Create request for operation 'getInvoicesForAccount'
      *
-     * @param  string $accountId (required)
-     * @param  \DateTime $startDate (optional)
-     * @param  bool $withItems (optional)
-     * @param  bool $withMigrationInvoices (optional)
-     * @param  bool $unpaidInvoicesOnly (optional)
-     * @param  bool $includeVoidedInvoices (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param \DateTime $startDate (optional)
+     * @param bool $withItems (optional)
+     * @param bool $withMigrationInvoices (optional)
+     * @param bool $unpaidInvoicesOnly (optional)
+     * @param bool $includeVoidedInvoices (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -8136,7 +8136,7 @@ class AccountApi
      *
      * Retrieve overdue state for account
      *
-     * @param  string $accountId accountId (required)
+     * @param string $accountId accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8153,7 +8153,7 @@ class AccountApi
      *
      * Retrieve overdue state for account
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8228,7 +8228,7 @@ class AccountApi
      *
      * Retrieve overdue state for account
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8248,7 +8248,7 @@ class AccountApi
      *
      * Retrieve overdue state for account
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8298,7 +8298,7 @@ class AccountApi
     /**
      * Create request for operation 'getOverdueAccount'
      *
-     * @param  string $accountId (required)
+     * @param string $accountId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -8417,11 +8417,11 @@ class AccountApi
      *
      * Retrieve account payment methods
      *
-     * @param  string $accountId accountId (required)
-     * @param  bool $withPluginInfo withPluginInfo (optional)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param bool|null $withPluginInfo withPluginInfo (optional)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8438,11 +8438,11 @@ class AccountApi
      *
      * Retrieve account payment methods
      *
-     * @param  string $accountId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $includedDeleted (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $includedDeleted (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8517,11 +8517,11 @@ class AccountApi
      *
      * Retrieve account payment methods
      *
-     * @param  string $accountId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $includedDeleted (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $includedDeleted (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8541,11 +8541,11 @@ class AccountApi
      *
      * Retrieve account payment methods
      *
-     * @param  string $accountId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $includedDeleted (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $includedDeleted (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8595,11 +8595,11 @@ class AccountApi
     /**
      * Create request for operation 'getPaymentMethodsForAccount'
      *
-     * @param  string $accountId (required)
-     * @param  bool $withPluginInfo (optional)
-     * @param  bool $includedDeleted (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withPluginInfo (optional)
+     * @param bool $includedDeleted (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -8630,7 +8630,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -8737,11 +8737,11 @@ class AccountApi
      *
      * Retrieve account payments
      *
-     * @param  string $accountId accountId (required)
-     * @param  bool $withAttempts withAttempts (optional)
-     * @param  bool $withPluginInfo withPluginInfo (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $audit audit (optional)
+     * @param string $accountId accountId (required)
+     * @param bool|null $withAttempts withAttempts (optional)
+     * @param bool|null $withPluginInfo withPluginInfo (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8758,11 +8758,11 @@ class AccountApi
      *
      * Retrieve account payments
      *
-     * @param  string $accountId (required)
-     * @param  bool $withAttempts (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withAttempts (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -8837,11 +8837,11 @@ class AccountApi
      *
      * Retrieve account payments
      *
-     * @param  string $accountId (required)
-     * @param  bool $withAttempts (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withAttempts (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8861,11 +8861,11 @@ class AccountApi
      *
      * Retrieve account payments
      *
-     * @param  string $accountId (required)
-     * @param  bool $withAttempts (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withAttempts (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8915,11 +8915,11 @@ class AccountApi
     /**
      * Create request for operation 'getPaymentsForAccount'
      *
-     * @param  string $accountId (required)
-     * @param  bool $withAttempts (optional)
-     * @param  bool $withPluginInfo (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $audit (optional)
+     * @param string $accountId (required)
+     * @param bool $withAttempts (optional)
+     * @param bool $withPluginInfo (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -8950,7 +8950,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -9057,11 +9057,11 @@ class AccountApi
      *
      * Modify custom fields to account
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9077,11 +9077,11 @@ class AccountApi
      *
      * Modify custom fields to account
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9134,11 +9134,11 @@ class AccountApi
      *
      * Modify custom fields to account
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9158,11 +9158,11 @@ class AccountApi
      *
      * Modify custom fields to account
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9198,11 +9198,11 @@ class AccountApi
     /**
      * Create request for operation 'modifyAccountCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -9348,15 +9348,15 @@ class AccountApi
      *
      * Trigger a payment for all unpaid invoices
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId paymentMethodId (optional)
-     * @param  bool $externalPayment externalPayment (optional)
-     * @param  float $paymentAmount paymentAmount (optional)
-     * @param  \DateTime $targetDate targetDate (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $paymentMethodId paymentMethodId (optional)
+     * @param bool|null $externalPayment externalPayment (optional)
+     * @param float|null $paymentAmount paymentAmount (optional)
+     * @param \DateTime|null $targetDate targetDate (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9372,15 +9372,15 @@ class AccountApi
      *
      * Trigger a payment for all unpaid invoices
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (optional)
-     * @param  bool $externalPayment (optional)
-     * @param  float $paymentAmount (optional)
-     * @param  \DateTime $targetDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (optional)
+     * @param bool $externalPayment (optional)
+     * @param float $paymentAmount (optional)
+     * @param \DateTime $targetDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9433,15 +9433,15 @@ class AccountApi
      *
      * Trigger a payment for all unpaid invoices
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (optional)
-     * @param  bool $externalPayment (optional)
-     * @param  float $paymentAmount (optional)
-     * @param  \DateTime $targetDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (optional)
+     * @param bool $externalPayment (optional)
+     * @param float $paymentAmount (optional)
+     * @param \DateTime $targetDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9461,15 +9461,15 @@ class AccountApi
      *
      * Trigger a payment for all unpaid invoices
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (optional)
-     * @param  bool $externalPayment (optional)
-     * @param  float $paymentAmount (optional)
-     * @param  \DateTime $targetDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (optional)
+     * @param bool $externalPayment (optional)
+     * @param float $paymentAmount (optional)
+     * @param \DateTime $targetDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9505,15 +9505,15 @@ class AccountApi
     /**
      * Create request for operation 'payAllInvoices'
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $paymentMethodId (optional)
-     * @param  bool $externalPayment (optional)
-     * @param  float $paymentAmount (optional)
-     * @param  \DateTime $targetDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $paymentMethodId (optional)
+     * @param bool $externalPayment (optional)
+     * @param float $paymentAmount (optional)
+     * @param \DateTime $targetDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -9558,7 +9558,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -9673,14 +9673,14 @@ class AccountApi
      *
      * Trigger a payment (authorization, purchase or credit)
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  string $paymentMethodId paymentMethodId (optional)
-     * @param  string[] $controlPluginName controlPluginName (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param string|null $paymentMethodId paymentMethodId (optional)
+     * @param string[]|null $controlPluginName controlPluginName (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9697,14 +9697,14 @@ class AccountApi
      *
      * Trigger a payment (authorization, purchase or credit)
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -9779,14 +9779,14 @@ class AccountApi
      *
      * Trigger a payment (authorization, purchase or credit)
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9806,14 +9806,14 @@ class AccountApi
      *
      * Trigger a payment (authorization, purchase or credit)
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9863,14 +9863,14 @@ class AccountApi
     /**
      * Create request for operation 'processPayment'
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -9909,14 +9909,14 @@ class AccountApi
         }
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, /*'multi'*/'csv', true);
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -10034,14 +10034,14 @@ class AccountApi
      *
      * Trigger a payment using the account external key (authorization, purchase or credit)
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $externalKey externalKey (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  string $paymentMethodId paymentMethodId (optional)
-     * @param  string[] $controlPluginName controlPluginName (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $externalKey externalKey (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param string|null $paymentMethodId paymentMethodId (optional)
+     * @param string[]|null $controlPluginName controlPluginName (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -10058,14 +10058,14 @@ class AccountApi
      *
      * Trigger a payment using the account external key (authorization, purchase or credit)
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $externalKey (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $externalKey (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -10140,14 +10140,14 @@ class AccountApi
      *
      * Trigger a payment using the account external key (authorization, purchase or credit)
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $externalKey (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $externalKey (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -10167,14 +10167,14 @@ class AccountApi
      *
      * Trigger a payment using the account external key (authorization, purchase or credit)
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $externalKey (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $externalKey (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -10224,14 +10224,14 @@ class AccountApi
     /**
      * Create request for operation 'processPaymentByExternalKey'
      *
-     * @param  \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $externalKey (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  string $paymentMethodId (optional)
-     * @param  string[] $controlPluginName (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\PaymentTransaction $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $externalKey (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param string $paymentMethodId (optional)
+     * @param string[] $controlPluginName (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -10274,14 +10274,14 @@ class AccountApi
         }
         // query params
         if (is_array($controlPluginName)) {
-            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, 'csv', true);
+            $controlPluginName = ObjectSerializer::serializeCollection($controlPluginName, /*'multi'*/'csv', true);
         }
         if ($controlPluginName !== null) {
             $queryParams['controlPluginName'] = ObjectSerializer::toQueryValue($controlPluginName);
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -10391,10 +10391,10 @@ class AccountApi
      *
      * Rebalance account CBA
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -10410,10 +10410,10 @@ class AccountApi
      *
      * Rebalance account CBA
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -10466,10 +10466,10 @@ class AccountApi
      *
      * Rebalance account CBA
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -10489,10 +10489,10 @@ class AccountApi
      *
      * Rebalance account CBA
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -10528,10 +10528,10 @@ class AccountApi
     /**
      * Create request for operation 'rebalanceExistingCBAOnAccount'
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -10668,12 +10668,12 @@ class AccountApi
      *
      * Refresh account payment methods
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $pluginName pluginName (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $pluginName pluginName (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -10689,12 +10689,12 @@ class AccountApi
      *
      * Refresh account payment methods
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -10747,12 +10747,12 @@ class AccountApi
      *
      * Refresh account payment methods
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -10772,12 +10772,12 @@ class AccountApi
      *
      * Refresh account payment methods
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -10813,12 +10813,12 @@ class AccountApi
     /**
      * Create request for operation 'refreshPaymentMethods'
      *
-     * @param  string $accountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $pluginName (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $pluginName (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -10851,7 +10851,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -10966,11 +10966,11 @@ class AccountApi
      *
      * Delete email from account
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $email email (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $email email (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -10986,11 +10986,11 @@ class AccountApi
      *
      * Delete email from account
      *
-     * @param  string $accountId (required)
-     * @param  string $email (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $email (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -11043,11 +11043,11 @@ class AccountApi
      *
      * Delete email from account
      *
-     * @param  string $accountId (required)
-     * @param  string $email (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $email (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -11067,11 +11067,11 @@ class AccountApi
      *
      * Delete email from account
      *
-     * @param  string $accountId (required)
-     * @param  string $email (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $email (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -11107,11 +11107,11 @@ class AccountApi
     /**
      * Create request for operation 'removeEmail'
      *
-     * @param  string $accountId (required)
-     * @param  string $email (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $email (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -11262,12 +11262,12 @@ class AccountApi
      *
      * Search accounts
      *
-     * @param  string $searchKey searchKey (required)
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  bool $accountWithBalance accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
-     * @param  string $audit audit (optional)
+     * @param string $searchKey searchKey (required)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param bool|null $accountWithBalance accountWithBalance (optional)
+     * @param bool|null $accountWithBalanceAndCBA accountWithBalanceAndCBA (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -11284,12 +11284,12 @@ class AccountApi
      *
      * Search accounts
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -11364,12 +11364,12 @@ class AccountApi
      *
      * Search accounts
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -11389,12 +11389,12 @@ class AccountApi
      *
      * Search accounts
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -11444,12 +11444,12 @@ class AccountApi
     /**
      * Create request for operation 'searchAccounts'
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  bool $accountWithBalance (optional)
-     * @param  bool $accountWithBalanceAndCBA (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param bool $accountWithBalance (optional)
+     * @param bool $accountWithBalanceAndCBA (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -11588,13 +11588,13 @@ class AccountApi
      *
      * Set the default payment method
      *
-     * @param  string $accountId accountId (required)
-     * @param  string $paymentMethodId paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  bool $payAllUnpaidInvoices payAllUnpaidInvoices (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $accountId accountId (required)
+     * @param string $paymentMethodId paymentMethodId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param bool|null $payAllUnpaidInvoices payAllUnpaidInvoices (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -11610,13 +11610,13 @@ class AccountApi
      *
      * Set the default payment method
      *
-     * @param  string $accountId (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $payAllUnpaidInvoices (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $payAllUnpaidInvoices (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -11669,13 +11669,13 @@ class AccountApi
      *
      * Set the default payment method
      *
-     * @param  string $accountId (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $payAllUnpaidInvoices (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $payAllUnpaidInvoices (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -11695,13 +11695,13 @@ class AccountApi
      *
      * Set the default payment method
      *
-     * @param  string $accountId (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $payAllUnpaidInvoices (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $payAllUnpaidInvoices (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -11737,13 +11737,13 @@ class AccountApi
     /**
      * Create request for operation 'setDefaultPaymentMethod'
      *
-     * @param  string $accountId (required)
-     * @param  string $paymentMethodId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  bool $payAllUnpaidInvoices (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $accountId (required)
+     * @param string $paymentMethodId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param bool $payAllUnpaidInvoices (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -11782,7 +11782,7 @@ class AccountApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -11905,10 +11905,10 @@ class AccountApi
      *
      * Move a given child credit to the parent level
      *
-     * @param  string $childAccountId childAccountId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $childAccountId childAccountId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -11924,10 +11924,10 @@ class AccountApi
      *
      * Move a given child credit to the parent level
      *
-     * @param  string $childAccountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $childAccountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -11980,10 +11980,10 @@ class AccountApi
      *
      * Move a given child credit to the parent level
      *
-     * @param  string $childAccountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $childAccountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -12003,10 +12003,10 @@ class AccountApi
      *
      * Move a given child credit to the parent level
      *
-     * @param  string $childAccountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $childAccountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -12042,10 +12042,10 @@ class AccountApi
     /**
      * Create request for operation 'transferChildCreditToParent'
      *
-     * @param  string $childAccountId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $childAccountId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -12182,12 +12182,12 @@ class AccountApi
      *
      * Update account
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $accountId accountId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  bool $treatNullAsReset treatNullAsReset (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $accountId accountId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param bool|null $treatNullAsReset treatNullAsReset (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -12203,12 +12203,12 @@ class AccountApi
      *
      * Update account
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $treatNullAsReset (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $treatNullAsReset (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -12261,12 +12261,12 @@ class AccountApi
      *
      * Update account
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $treatNullAsReset (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $treatNullAsReset (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -12286,12 +12286,12 @@ class AccountApi
      *
      * Update account
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $treatNullAsReset (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $treatNullAsReset (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -12327,12 +12327,12 @@ class AccountApi
     /**
      * Create request for operation 'updateAccount'
      *
-     * @param  \Killbill\Client\Swagger\Model\Account $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $accountId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  bool $treatNullAsReset (optional)
+     * @param \Killbill\Client\Swagger\Model\Account $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $accountId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param bool $treatNullAsReset (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

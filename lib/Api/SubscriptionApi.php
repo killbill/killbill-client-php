@@ -91,13 +91,13 @@ class SubscriptionApi
      *
      * Block a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -114,13 +114,13 @@ class SubscriptionApi
      *
      * Block a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -195,13 +195,13 @@ class SubscriptionApi
      *
      * Block a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -221,13 +221,13 @@ class SubscriptionApi
      *
      * Block a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -277,13 +277,13 @@ class SubscriptionApi
     /**
      * Create request for operation 'addSubscriptionBlockingState'
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -322,7 +322,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -440,17 +440,17 @@ class SubscriptionApi
      *
      * Cancel an entitlement plan
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  bool $callCompletion callCompletion (optional)
-     * @param  int $callTimeoutSec callTimeoutSec (optional)
-     * @param  string $entitlementPolicy entitlementPolicy (optional)
-     * @param  string $billingPolicy billingPolicy (optional)
-     * @param  bool $useRequestedDateForBilling useRequestedDateForBilling (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param bool|null $callCompletion callCompletion (optional)
+     * @param int|null $callTimeoutSec callTimeoutSec (optional)
+     * @param string|null $entitlementPolicy entitlementPolicy (optional)
+     * @param string|null $billingPolicy billingPolicy (optional)
+     * @param bool|null $useRequestedDateForBilling useRequestedDateForBilling (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -466,17 +466,17 @@ class SubscriptionApi
      *
      * Cancel an entitlement plan
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string $entitlementPolicy (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  bool $useRequestedDateForBilling (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string $entitlementPolicy (optional)
+     * @param string $billingPolicy (optional)
+     * @param bool $useRequestedDateForBilling (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -529,17 +529,17 @@ class SubscriptionApi
      *
      * Cancel an entitlement plan
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string $entitlementPolicy (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  bool $useRequestedDateForBilling (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string $entitlementPolicy (optional)
+     * @param string $billingPolicy (optional)
+     * @param bool $useRequestedDateForBilling (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -559,17 +559,17 @@ class SubscriptionApi
      *
      * Cancel an entitlement plan
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string $entitlementPolicy (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  bool $useRequestedDateForBilling (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string $entitlementPolicy (optional)
+     * @param string $billingPolicy (optional)
+     * @param bool $useRequestedDateForBilling (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -605,17 +605,17 @@ class SubscriptionApi
     /**
      * Create request for operation 'cancelSubscriptionPlan'
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string $entitlementPolicy (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  bool $useRequestedDateForBilling (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string $entitlementPolicy (optional)
+     * @param string $billingPolicy (optional)
+     * @param bool $useRequestedDateForBilling (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -668,7 +668,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -783,16 +783,16 @@ class SubscriptionApi
      *
      * Change entitlement plan
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  bool $callCompletion callCompletion (optional)
-     * @param  int $callTimeoutSec callTimeoutSec (optional)
-     * @param  string $billingPolicy billingPolicy (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param bool|null $callCompletion callCompletion (optional)
+     * @param int|null $callTimeoutSec callTimeoutSec (optional)
+     * @param string|null $billingPolicy billingPolicy (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -808,16 +808,16 @@ class SubscriptionApi
      *
      * Change entitlement plan
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string $billingPolicy (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -870,16 +870,16 @@ class SubscriptionApi
      *
      * Change entitlement plan
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string $billingPolicy (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -899,16 +899,16 @@ class SubscriptionApi
      *
      * Change entitlement plan
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string $billingPolicy (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -944,16 +944,16 @@ class SubscriptionApi
     /**
      * Create request for operation 'changeSubscriptionPlan'
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string $billingPolicy (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1004,7 +1004,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1122,17 +1122,17 @@ class SubscriptionApi
      *
      * Create an subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate entitlementDate (optional)
-     * @param  \DateTime $billingDate billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated migrated (optional)
-     * @param  bool $callCompletion callCompletion (optional)
-     * @param  int $callTimeoutSec callTimeoutSec (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $entitlementDate entitlementDate (optional)
+     * @param \DateTime|null $billingDate billingDate (optional)
+     * @param bool|null $renameKeyIfExistsAndUnused renameKeyIfExistsAndUnused (optional)
+     * @param bool|null $migrated migrated (optional)
+     * @param bool|null $callCompletion callCompletion (optional)
+     * @param int|null $callTimeoutSec callTimeoutSec (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1149,17 +1149,17 @@ class SubscriptionApi
      *
      * Create an subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $migrated (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1234,17 +1234,17 @@ class SubscriptionApi
      *
      * Create an subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $migrated (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1264,17 +1264,17 @@ class SubscriptionApi
      *
      * Create an subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $migrated (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1324,17 +1324,17 @@ class SubscriptionApi
     /**
      * Create request for operation 'createSubscription'
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $migrated (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1387,7 +1387,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -1497,11 +1497,11 @@ class SubscriptionApi
      *
      * Add custom fields to subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1517,11 +1517,11 @@ class SubscriptionApi
      *
      * Add custom fields to subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1574,11 +1574,11 @@ class SubscriptionApi
      *
      * Add custom fields to subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1598,11 +1598,11 @@ class SubscriptionApi
      *
      * Add custom fields to subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1638,11 +1638,11 @@ class SubscriptionApi
     /**
      * Create request for operation 'createSubscriptionCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1786,11 +1786,11 @@ class SubscriptionApi
     /**
      * Operation createSubscriptionTags
      *
-     * @param  string[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1804,11 +1804,11 @@ class SubscriptionApi
     /**
      * Operation createSubscriptionTagsWithHttpInfo
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1861,11 +1861,11 @@ class SubscriptionApi
      *
      * 
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1885,11 +1885,11 @@ class SubscriptionApi
      *
      * 
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1925,11 +1925,11 @@ class SubscriptionApi
     /**
      * Create request for operation 'createSubscriptionTags'
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2075,17 +2075,17 @@ class SubscriptionApi
      *
      * Create an entitlement with addOn products
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate entitlementDate (optional)
-     * @param  \DateTime $billingDate billingDate (optional)
-     * @param  bool $migrated migrated (optional)
-     * @param  bool $renameKeyIfExistsAndUnused renameKeyIfExistsAndUnused (optional)
-     * @param  bool $callCompletion callCompletion (optional)
-     * @param  int $callTimeoutSec callTimeoutSec (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $entitlementDate entitlementDate (optional)
+     * @param \DateTime|null $billingDate billingDate (optional)
+     * @param bool|null $migrated migrated (optional)
+     * @param bool|null $renameKeyIfExistsAndUnused renameKeyIfExistsAndUnused (optional)
+     * @param bool|null $callCompletion callCompletion (optional)
+     * @param int|null $callTimeoutSec callTimeoutSec (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2102,17 +2102,17 @@ class SubscriptionApi
      *
      * Create an entitlement with addOn products
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $migrated (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2187,17 +2187,17 @@ class SubscriptionApi
      *
      * Create an entitlement with addOn products
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $migrated (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2217,17 +2217,17 @@ class SubscriptionApi
      *
      * Create an entitlement with addOn products
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $migrated (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2277,17 +2277,17 @@ class SubscriptionApi
     /**
      * Create request for operation 'createSubscriptionWithAddOns'
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $migrated (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2340,7 +2340,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2450,17 +2450,17 @@ class SubscriptionApi
      *
      * Create multiple entitlements with addOn products
      *
-     * @param  \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate entitlementDate (optional)
-     * @param  \DateTime $billingDate billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated migrated (optional)
-     * @param  bool $callCompletion callCompletion (optional)
-     * @param  int $callTimeoutSec callTimeoutSec (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $entitlementDate entitlementDate (optional)
+     * @param \DateTime|null $billingDate billingDate (optional)
+     * @param bool|null $renameKeyIfExistsAndUnused renameKeyIfExistsAndUnused (optional)
+     * @param bool|null $migrated migrated (optional)
+     * @param bool|null $callCompletion callCompletion (optional)
+     * @param int|null $callTimeoutSec callTimeoutSec (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2477,17 +2477,17 @@ class SubscriptionApi
      *
      * Create multiple entitlements with addOn products
      *
-     * @param  \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $migrated (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2562,17 +2562,17 @@ class SubscriptionApi
      *
      * Create multiple entitlements with addOn products
      *
-     * @param  \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $migrated (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2592,17 +2592,17 @@ class SubscriptionApi
      *
      * Create multiple entitlements with addOn products
      *
-     * @param  \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $migrated (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2652,17 +2652,17 @@ class SubscriptionApi
     /**
      * Create request for operation 'createSubscriptionsWithAddOns'
      *
-     * @param  \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $entitlementDate (optional)
-     * @param  \DateTime $billingDate (optional)
-     * @param  bool $renameKeyIfExistsAndUnused (optional)
-     * @param  bool $migrated (optional)
-     * @param  bool $callCompletion (optional)
-     * @param  int $callTimeoutSec (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BulkSubscriptionsBundle[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $entitlementDate (optional)
+     * @param \DateTime $billingDate (optional)
+     * @param bool $renameKeyIfExistsAndUnused (optional)
+     * @param bool $migrated (optional)
+     * @param bool $callCompletion (optional)
+     * @param int $callTimeoutSec (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2715,7 +2715,7 @@ class SubscriptionApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -2825,11 +2825,11 @@ class SubscriptionApi
      *
      * Remove custom fields from subscription
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $customField customField (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $customField customField (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2845,11 +2845,11 @@ class SubscriptionApi
      *
      * Remove custom fields from subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2902,11 +2902,11 @@ class SubscriptionApi
      *
      * Remove custom fields from subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2926,11 +2926,11 @@ class SubscriptionApi
      *
      * Remove custom fields from subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2966,11 +2966,11 @@ class SubscriptionApi
     /**
      * Create request for operation 'deleteSubscriptionCustomFields'
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2999,7 +2999,7 @@ class SubscriptionApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'csv', true);
+            $customField = ObjectSerializer::serializeCollection($customField, /*'multi'*/'csv', true);
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -3114,11 +3114,11 @@ class SubscriptionApi
      *
      * Remove tags from subscription
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $tagDef tagDef (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $tagDef tagDef (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3134,11 +3134,11 @@ class SubscriptionApi
      *
      * Remove tags from subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3191,11 +3191,11 @@ class SubscriptionApi
      *
      * Remove tags from subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3215,11 +3215,11 @@ class SubscriptionApi
      *
      * Remove tags from subscription
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3255,11 +3255,11 @@ class SubscriptionApi
     /**
      * Create request for operation 'deleteSubscriptionTags'
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3288,7 +3288,7 @@ class SubscriptionApi
 
         // query params
         if (is_array($tagDef)) {
-            $tagDef = ObjectSerializer::serializeCollection($tagDef, 'csv', true);
+            $tagDef = ObjectSerializer::serializeCollection($tagDef, /*'multi'*/'csv', true);
         }
         if ($tagDef !== null) {
             $queryParams['tagDef'] = ObjectSerializer::toQueryValue($tagDef);
@@ -3403,8 +3403,8 @@ class SubscriptionApi
      *
      * Retrieve a subscription by id
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $audit audit (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3421,8 +3421,8 @@ class SubscriptionApi
      *
      * Retrieve a subscription by id
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3497,8 +3497,8 @@ class SubscriptionApi
      *
      * Retrieve a subscription by id
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3518,8 +3518,8 @@ class SubscriptionApi
      *
      * Retrieve a subscription by id
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3569,8 +3569,8 @@ class SubscriptionApi
     /**
      * Create request for operation 'getSubscription'
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3693,8 +3693,8 @@ class SubscriptionApi
      *
      * Retrieve subscription custom fields
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $audit audit (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3711,8 +3711,8 @@ class SubscriptionApi
      *
      * Retrieve subscription custom fields
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3787,8 +3787,8 @@ class SubscriptionApi
      *
      * Retrieve subscription custom fields
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3808,8 +3808,8 @@ class SubscriptionApi
      *
      * Retrieve subscription custom fields
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3859,8 +3859,8 @@ class SubscriptionApi
     /**
      * Create request for operation 'getSubscriptionCustomFields'
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3983,9 +3983,9 @@ class SubscriptionApi
      *
      * Retrieve subscription tags
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  string $audit audit (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4002,9 +4002,9 @@ class SubscriptionApi
      *
      * Retrieve subscription tags
      *
-     * @param  string $subscriptionId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4079,9 +4079,9 @@ class SubscriptionApi
      *
      * Retrieve subscription tags
      *
-     * @param  string $subscriptionId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4101,9 +4101,9 @@ class SubscriptionApi
      *
      * Retrieve subscription tags
      *
-     * @param  string $subscriptionId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4153,9 +4153,9 @@ class SubscriptionApi
     /**
      * Create request for operation 'getSubscriptionTags'
      *
-     * @param  string $subscriptionId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $subscriptionId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4282,11 +4282,11 @@ class SubscriptionApi
      *
      * Modify custom fields to subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4302,11 +4302,11 @@ class SubscriptionApi
      *
      * Modify custom fields to subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4359,11 +4359,11 @@ class SubscriptionApi
      *
      * Modify custom fields to subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4383,11 +4383,11 @@ class SubscriptionApi
      *
      * Modify custom fields to subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4423,11 +4423,11 @@ class SubscriptionApi
     /**
      * Create request for operation 'modifySubscriptionCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4573,11 +4573,11 @@ class SubscriptionApi
      *
      * Un-cancel an entitlement
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4593,11 +4593,11 @@ class SubscriptionApi
      *
      * Un-cancel an entitlement
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4650,11 +4650,11 @@ class SubscriptionApi
      *
      * Un-cancel an entitlement
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4674,11 +4674,11 @@ class SubscriptionApi
      *
      * Un-cancel an entitlement
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4714,11 +4714,11 @@ class SubscriptionApi
     /**
      * Create request for operation 'uncancelSubscriptionPlan'
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4747,7 +4747,7 @@ class SubscriptionApi
 
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -4862,11 +4862,11 @@ class SubscriptionApi
      *
      * Undo a pending change plan on an entitlement
      *
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4882,11 +4882,11 @@ class SubscriptionApi
      *
      * Undo a pending change plan on an entitlement
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4939,11 +4939,11 @@ class SubscriptionApi
      *
      * Undo a pending change plan on an entitlement
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4963,11 +4963,11 @@ class SubscriptionApi
      *
      * Undo a pending change plan on an entitlement
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5003,11 +5003,11 @@ class SubscriptionApi
     /**
      * Create request for operation 'undoChangeSubscriptionPlan'
      *
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5036,7 +5036,7 @@ class SubscriptionApi
 
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -5151,13 +5151,13 @@ class SubscriptionApi
      *
      * Update the BCD associated to a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $subscriptionId subscriptionId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $effectiveFromDate effectiveFromDate (optional)
-     * @param  bool $forceNewBcdWithPastEffectiveDate forceNewBcdWithPastEffectiveDate (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $subscriptionId subscriptionId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $effectiveFromDate effectiveFromDate (optional)
+     * @param bool|null $forceNewBcdWithPastEffectiveDate forceNewBcdWithPastEffectiveDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5173,13 +5173,13 @@ class SubscriptionApi
      *
      * Update the BCD associated to a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $effectiveFromDate (optional)
-     * @param  bool $forceNewBcdWithPastEffectiveDate (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $effectiveFromDate (optional)
+     * @param bool $forceNewBcdWithPastEffectiveDate (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5232,13 +5232,13 @@ class SubscriptionApi
      *
      * Update the BCD associated to a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $effectiveFromDate (optional)
-     * @param  bool $forceNewBcdWithPastEffectiveDate (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $effectiveFromDate (optional)
+     * @param bool $forceNewBcdWithPastEffectiveDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5258,13 +5258,13 @@ class SubscriptionApi
      *
      * Update the BCD associated to a subscription
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $effectiveFromDate (optional)
-     * @param  bool $forceNewBcdWithPastEffectiveDate (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $effectiveFromDate (optional)
+     * @param bool $forceNewBcdWithPastEffectiveDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5300,13 +5300,13 @@ class SubscriptionApi
     /**
      * Create request for operation 'updateSubscriptionBCD'
      *
-     * @param  \Killbill\Client\Swagger\Model\Subscription $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $subscriptionId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $effectiveFromDate (optional)
-     * @param  bool $forceNewBcdWithPastEffectiveDate (optional)
+     * @param \Killbill\Client\Swagger\Model\Subscription $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $subscriptionId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $effectiveFromDate (optional)
+     * @param bool $forceNewBcdWithPastEffectiveDate (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -91,13 +91,13 @@ class BundleApi
      *
      * Block a bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $bundleId bundleId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -114,13 +114,13 @@ class BundleApi
      *
      * Block a bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -195,13 +195,13 @@ class BundleApi
      *
      * Block a bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -221,13 +221,13 @@ class BundleApi
      *
      * Block a bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -277,13 +277,13 @@ class BundleApi
     /**
      * Create request for operation 'addBundleBlockingState'
      *
-     * @param  \Killbill\Client\Swagger\Model\BlockingState $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\BlockingState $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -322,7 +322,7 @@ class BundleApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -440,11 +440,11 @@ class BundleApi
      *
      * Add custom fields to bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $bundleId bundleId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -461,11 +461,11 @@ class BundleApi
      *
      * Add custom fields to bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -540,11 +540,11 @@ class BundleApi
      *
      * Add custom fields to bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -564,11 +564,11 @@ class BundleApi
      *
      * Add custom fields to bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -618,11 +618,11 @@ class BundleApi
     /**
      * Create request for operation 'createBundleCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -768,11 +768,11 @@ class BundleApi
      *
      * Add tags to bundle
      *
-     * @param  string[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $bundleId bundleId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -789,11 +789,11 @@ class BundleApi
      *
      * Add tags to bundle
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -868,11 +868,11 @@ class BundleApi
      *
      * Add tags to bundle
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -892,11 +892,11 @@ class BundleApi
      *
      * Add tags to bundle
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -946,11 +946,11 @@ class BundleApi
     /**
      * Create request for operation 'createBundleTags'
      *
-     * @param  string[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1096,11 +1096,11 @@ class BundleApi
      *
      * Remove custom fields from bundle
      *
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $customField customField (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $bundleId bundleId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $customField customField (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1116,11 +1116,11 @@ class BundleApi
      *
      * Remove custom fields from bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1173,11 +1173,11 @@ class BundleApi
      *
      * Remove custom fields from bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1197,11 +1197,11 @@ class BundleApi
      *
      * Remove custom fields from bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1237,11 +1237,11 @@ class BundleApi
     /**
      * Create request for operation 'deleteBundleCustomFields'
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $customField (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $customField (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1270,7 +1270,7 @@ class BundleApi
 
         // query params
         if (is_array($customField)) {
-            $customField = ObjectSerializer::serializeCollection($customField, 'csv', true);
+            $customField = ObjectSerializer::serializeCollection($customField, /*'multi'*/'csv', true);
         }
         if ($customField !== null) {
             $queryParams['customField'] = ObjectSerializer::toQueryValue($customField);
@@ -1385,11 +1385,11 @@ class BundleApi
      *
      * Remove tags from bundle
      *
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string[] $tagDef tagDef (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $bundleId bundleId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string[]|null $tagDef tagDef (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1405,11 +1405,11 @@ class BundleApi
      *
      * Remove tags from bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1462,11 +1462,11 @@ class BundleApi
      *
      * Remove tags from bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1486,11 +1486,11 @@ class BundleApi
      *
      * Remove tags from bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1526,11 +1526,11 @@ class BundleApi
     /**
      * Create request for operation 'deleteBundleTags'
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string[] $tagDef (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string[] $tagDef (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1559,7 +1559,7 @@ class BundleApi
 
         // query params
         if (is_array($tagDef)) {
-            $tagDef = ObjectSerializer::serializeCollection($tagDef, 'csv', true);
+            $tagDef = ObjectSerializer::serializeCollection($tagDef, /*'multi'*/'csv', true);
         }
         if ($tagDef !== null) {
             $queryParams['tagDef'] = ObjectSerializer::toQueryValue($tagDef);
@@ -1674,8 +1674,8 @@ class BundleApi
      *
      * Retrieve a bundle by id
      *
-     * @param  string $bundleId bundleId (required)
-     * @param  string $audit audit (optional)
+     * @param string $bundleId bundleId (required)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1692,8 +1692,8 @@ class BundleApi
      *
      * Retrieve a bundle by id
      *
-     * @param  string $bundleId (required)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1768,8 +1768,8 @@ class BundleApi
      *
      * Retrieve a bundle by id
      *
-     * @param  string $bundleId (required)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1789,8 +1789,8 @@ class BundleApi
      *
      * Retrieve a bundle by id
      *
-     * @param  string $bundleId (required)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1840,8 +1840,8 @@ class BundleApi
     /**
      * Create request for operation 'getBundle'
      *
-     * @param  string $bundleId (required)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1964,9 +1964,9 @@ class BundleApi
      *
      * Retrieve a bundle by external key
      *
-     * @param  string $externalKey externalKey (required)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  string $audit audit (optional)
+     * @param string $externalKey externalKey (required)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1983,9 +1983,9 @@ class BundleApi
      *
      * Retrieve a bundle by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2060,9 +2060,9 @@ class BundleApi
      *
      * Retrieve a bundle by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2082,9 +2082,9 @@ class BundleApi
      *
      * Retrieve a bundle by external key
      *
-     * @param  string $externalKey (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2134,9 +2134,9 @@ class BundleApi
     /**
      * Create request for operation 'getBundleByKey'
      *
-     * @param  string $externalKey (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $externalKey (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2259,8 +2259,8 @@ class BundleApi
      *
      * Retrieve bundle custom fields
      *
-     * @param  string $bundleId bundleId (required)
-     * @param  string $audit audit (optional)
+     * @param string $bundleId bundleId (required)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2277,8 +2277,8 @@ class BundleApi
      *
      * Retrieve bundle custom fields
      *
-     * @param  string $bundleId (required)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2353,8 +2353,8 @@ class BundleApi
      *
      * Retrieve bundle custom fields
      *
-     * @param  string $bundleId (required)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2374,8 +2374,8 @@ class BundleApi
      *
      * Retrieve bundle custom fields
      *
-     * @param  string $bundleId (required)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2425,8 +2425,8 @@ class BundleApi
     /**
      * Create request for operation 'getBundleCustomFields'
      *
-     * @param  string $bundleId (required)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2549,9 +2549,9 @@ class BundleApi
      *
      * Retrieve bundle tags
      *
-     * @param  string $bundleId bundleId (required)
-     * @param  bool $includedDeleted includedDeleted (optional)
-     * @param  string $audit audit (optional)
+     * @param string $bundleId bundleId (required)
+     * @param bool|null $includedDeleted includedDeleted (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2568,9 +2568,9 @@ class BundleApi
      *
      * Retrieve bundle tags
      *
-     * @param  string $bundleId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2645,9 +2645,9 @@ class BundleApi
      *
      * Retrieve bundle tags
      *
-     * @param  string $bundleId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2667,9 +2667,9 @@ class BundleApi
      *
      * Retrieve bundle tags
      *
-     * @param  string $bundleId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2719,9 +2719,9 @@ class BundleApi
     /**
      * Create request for operation 'getBundleTags'
      *
-     * @param  string $bundleId (required)
-     * @param  bool $includedDeleted (optional)
-     * @param  string $audit (optional)
+     * @param string $bundleId (required)
+     * @param bool $includedDeleted (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2848,9 +2848,9 @@ class BundleApi
      *
      * List bundles
      *
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  string $audit audit (optional)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2867,9 +2867,9 @@ class BundleApi
      *
      * List bundles
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2944,9 +2944,9 @@ class BundleApi
      *
      * List bundles
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2966,9 +2966,9 @@ class BundleApi
      *
      * List bundles
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3018,9 +3018,9 @@ class BundleApi
     /**
      * Create request for operation 'getBundles'
      *
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3137,11 +3137,11 @@ class BundleApi
      *
      * Modify custom fields to bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $bundleId bundleId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3157,11 +3157,11 @@ class BundleApi
      *
      * Modify custom fields to bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3214,11 +3214,11 @@ class BundleApi
      *
      * Modify custom fields to bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3238,11 +3238,11 @@ class BundleApi
      *
      * Modify custom fields to bundle
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3278,11 +3278,11 @@ class BundleApi
     /**
      * Create request for operation 'modifyBundleCustomFields'
      *
-     * @param  \Killbill\Client\Swagger\Model\CustomField[] $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\CustomField[] $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3428,12 +3428,12 @@ class BundleApi
      *
      * Pause a bundle
      *
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $bundleId bundleId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3449,12 +3449,12 @@ class BundleApi
      *
      * Pause a bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3507,12 +3507,12 @@ class BundleApi
      *
      * Pause a bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3532,12 +3532,12 @@ class BundleApi
      *
      * Pause a bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3573,12 +3573,12 @@ class BundleApi
     /**
      * Create request for operation 'pauseBundle'
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3611,7 +3611,7 @@ class BundleApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -3726,11 +3726,11 @@ class BundleApi
      *
      * Update a bundle externalKey
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $bundleId bundleId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3746,11 +3746,11 @@ class BundleApi
      *
      * Update a bundle externalKey
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3803,11 +3803,11 @@ class BundleApi
      *
      * Update a bundle externalKey
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3827,11 +3827,11 @@ class BundleApi
      *
      * Update a bundle externalKey
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3867,11 +3867,11 @@ class BundleApi
     /**
      * Create request for operation 'renameExternalKey'
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4017,12 +4017,12 @@ class BundleApi
      *
      * Resume a bundle
      *
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
+     * @param string $bundleId bundleId (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4038,12 +4038,12 @@ class BundleApi
      *
      * Resume a bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4096,12 +4096,12 @@ class BundleApi
      *
      * Resume a bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4121,12 +4121,12 @@ class BundleApi
      *
      * Resume a bundle
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4162,12 +4162,12 @@ class BundleApi
     /**
      * Create request for operation 'resumeBundle'
      *
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string[] $pluginProperty (optional)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
+     * @param string $bundleId (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param \DateTime $requestedDate (optional)
+     * @param string[] $pluginProperty (optional)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4200,7 +4200,7 @@ class BundleApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
@@ -4315,10 +4315,10 @@ class BundleApi
      *
      * Search bundles
      *
-     * @param  string $searchKey searchKey (required)
-     * @param  int $offset offset (optional)
-     * @param  int $limit limit (optional)
-     * @param  string $audit audit (optional)
+     * @param string $searchKey searchKey (required)
+     * @param int|null $offset offset (optional)
+     * @param int|null $limit limit (optional)
+     * @param string|null $audit audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4335,10 +4335,10 @@ class BundleApi
      *
      * Search bundles
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4413,10 +4413,10 @@ class BundleApi
      *
      * Search bundles
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4436,10 +4436,10 @@ class BundleApi
      *
      * Search bundles
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4489,10 +4489,10 @@ class BundleApi
     /**
      * Create request for operation 'searchBundles'
      *
-     * @param  string $searchKey (required)
-     * @param  int $offset (optional)
-     * @param  int $limit (optional)
-     * @param  string $audit (optional)
+     * @param string $searchKey (required)
+     * @param int $offset (optional)
+     * @param int $limit (optional)
+     * @param string $audit (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4623,14 +4623,14 @@ class BundleApi
      *
      * Transfer a bundle to another account
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body body (required)
-     * @param  string $xKillbillCreatedBy xKillbillCreatedBy (required)
-     * @param  string $bundleId bundleId (required)
-     * @param  string $xKillbillReason xKillbillReason (optional)
-     * @param  string $xKillbillComment xKillbillComment (optional)
-     * @param  \DateTime $requestedDate requestedDate (optional)
-     * @param  string $billingPolicy billingPolicy (optional)
-     * @param  string[] $pluginProperty pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body body (required)
+     * @param string $xKillbillCreatedBy xKillbillCreatedBy (required)
+     * @param string $bundleId bundleId (required)
+     * @param string|null $xKillbillReason xKillbillReason (optional)
+     * @param string|null $xKillbillComment xKillbillComment (optional)
+     * @param \DateTime|null $requestedDate requestedDate (optional)
+     * @param string|null $billingPolicy billingPolicy (optional)
+     * @param string[]|null $pluginProperty pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4647,14 +4647,14 @@ class BundleApi
      *
      * Transfer a bundle to another account
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $billingPolicy (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \Killbill\Client\Swagger\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4729,14 +4729,14 @@ class BundleApi
      *
      * Transfer a bundle to another account
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $billingPolicy (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4756,14 +4756,14 @@ class BundleApi
      *
      * Transfer a bundle to another account
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $billingPolicy (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4813,14 +4813,14 @@ class BundleApi
     /**
      * Create request for operation 'transferBundle'
      *
-     * @param  \Killbill\Client\Swagger\Model\Bundle $body (required)
-     * @param  string $xKillbillCreatedBy (required)
-     * @param  string $bundleId (required)
-     * @param  string $xKillbillReason (optional)
-     * @param  string $xKillbillComment (optional)
-     * @param  \DateTime $requestedDate (optional)
-     * @param  string $billingPolicy (optional)
-     * @param  string[] $pluginProperty (optional)
+     * @param \Killbill\Client\Swagger\Model\Bundle $body (required)
+     * @param string $xKillbillCreatedBy (required)
+     * @param string $bundleId (required)
+     * @param string $xKillbillReason (optional)
+     * @param string $xKillbillComment (optional)
+     * @param \DateTime $requestedDate (optional)
+     * @param string $billingPolicy (optional)
+     * @param string[] $pluginProperty (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4863,7 +4863,7 @@ class BundleApi
         }
         // query params
         if (is_array($pluginProperty)) {
-            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, 'csv', true);
+            $pluginProperty = ObjectSerializer::serializeCollection($pluginProperty, /*'multi'*/'csv', true);
         }
         if ($pluginProperty !== null) {
             $queryParams['pluginProperty'] = ObjectSerializer::toQueryValue($pluginProperty);
