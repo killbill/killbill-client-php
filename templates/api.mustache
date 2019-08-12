@@ -162,7 +162,7 @@ use {{invokerPackage}}\ObjectSerializer;
                 $content = $responseBody; //stream goes to serializer
             } else {
                 $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
+                if (!in_array($returnType, ['string', 'integer', 'bool'])) {
                     $content = json_decode($content);
                 }
             }
