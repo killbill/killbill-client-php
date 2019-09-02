@@ -6,3 +6,4 @@
 composer.phar
 composer.lock
 vendor
+swagger-codegen-cli.jar

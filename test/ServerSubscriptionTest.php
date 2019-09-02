@@ -17,15 +17,21 @@
 
 namespace Killbill\Client;
 
+use Killbill\Client\Swagger\Model\Account;
+use Killbill\Client\Swagger\Model\CustomField;
+use Killbill\Client\Swagger\Model\PaymentMethod;
+use Killbill\Client\Swagger\Model\Subscription;
+use Killbill\Client\Swagger\Model\TagDefinition;
+
 /**
  * Tests for Subscription
  */
 class ServerSubscriptionTest extends KillbillTest
 {
     /** @var Account|null */
-    protected $account = null;
+    protected $account;
     /** @var string|null */
-    private $externalBundleId = null;
+    private $externalBundleId;
 
     /**
      * Set up test
@@ -38,15 +44,23 @@ class ServerSubscriptionTest extends KillbillTest
         if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
             $this->externalBundleId = md5('serverSubscriptionTest'.$this->tenant->getExternalKey());
         }
-        $this->account = $this->accountData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
 
-        $paymentMethod = new PaymentMethod($this->logger);
-        $paymentMethod->setAccountId($this->account->getAccountId());
-        $paymentMethod->setIsDefault(true);
+        $paymentMethod = new PaymentMethod();
+//        $paymentMethod->setAccountId($this->account->getAccountId());
+//        $paymentMethod->setIsDefault(true);
         $paymentMethod->setPluginName('__EXTERNAL_PAYMENT__');
-        $paymentMethod->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        //TODO: $default = 'true' must be without quotes
+        $this->client->getAccountApi()->createPaymentMethod(
+            $paymentMethod,
+            self::USER,
+            $this->account->getAccountId(),
+            self::REASON,
+            self::COMMENT,
+            $default = 'true'
+        );
 
-        $this->account = $this->account->get($this->tenant->getTenantHeaders());
+        $this->account = $this->client->getAccountApi()->getAccount($this->account->getAccountId());
         $this->assertNotEmpty($this->account->getPaymentMethodId());
     }
 
@@ -57,8 +71,7 @@ class ServerSubscriptionTest extends KillbillTest
     {
         parent::tearDown();
 
-        unset($this->externalBundleId);
-        unset($this->account);
+        unset($this->externalBundleId, $this->account);
     }
 
     /**
@@ -66,7 +79,7 @@ class ServerSubscriptionTest extends KillbillTest
      */
     public function testBasic()
     {
-        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Sports');
         $subscriptionData->setProductCategory('BASE');
@@ -74,7 +87,7 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setPriceList('DEFAULT');
         $subscriptionData->setExternalKey($this->externalBundleId);
 
-        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
         $this->assertEquals($subscription->getAccountId(), $subscriptionData->getAccountId());
         $this->assertEquals($subscription->getProductName(), $subscriptionData->getProductName());
         $this->assertEquals($subscription->getProductCategory(), $subscriptionData->getProductCategory());
@@ -82,18 +95,28 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertEquals($subscription->getExternalKey(), $subscriptionData->getExternalKey());
 
         // Move by a few days -- still in trial -- and change product
-        $this->clock->addDays(3, $this->tenant->getTenantHeaders());
+        $this->clock->addDays(3);
         $subscription->setPlanName('super-monthly');
-        $subscriptionRes = $subscription->changePlan(null, null, null, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->client->getSubscriptionApi()->changeSubscriptionPlan(
+            $subscription,
+            self::USER,
+            $subscription->getSubscriptionId(),
+            self::REASON,
+            self::COMMENT
+        );
+        $subscriptionRes = $this->client->getSubscriptionApi()->getSubscription($subscription->getSubscriptionId());
         $this->assertEquals($subscriptionRes->getProductName(), 'Super');
         $subscription = $subscriptionRes;
 
         // Move by a few days -- still in trial -- and execute a cancellation
-        $this->clock->addDays(3, $this->tenant->getTenantHeaders());
+        $this->clock->addDays(3);
         $this->assertEmpty($subscription->getCancelledDate());
-        $subscription->cancel(null, null, null, null, false, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->client->getSubscriptionApi()->cancelSubscriptionPlan(
+            $subscription->getSubscriptionId(),
+            self::USER
+        );
 
-        $subscriptionRes = $subscription->get($this->tenant->getTenantHeaders());
+        $subscriptionRes = $this->client->getSubscriptionApi()->getSubscription($subscription->getSubscriptionId());
         $this->assertNotEmpty($subscriptionRes->getCancelledDate());
     }
 
@@ -103,7 +126,7 @@ class ServerSubscriptionTest extends KillbillTest
     public function testTags()
     {
         // Creating a subscription to make an bundle
-        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Super');
         $subscriptionData->setProductCategory('BASE');
@@ -111,24 +134,38 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setPriceList('DEFAULT');
         $subscriptionData->setExternalKey($this->externalBundleId);
 
-        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
-        $tag1 = new TagDefinition($this->logger);
+        $tag1 = new TagDefinition();
         $tag1->setName('stag1-'.$this->tenant->getExternalKey());
         $tag1->setDescription('This is super tag1');
-        $tag1 = $tag1->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $tag1->setApplicableObjectTypes([TagDefinition::APPLICABLE_OBJECT_TYPES_SUBSCRIPTION]);
+        $tag1 = $this->client->getTagDefinitionApi()->createTagDefinition($tag1, self::USER, self::REASON, self::COMMENT);
 
-        $tags = $subscription->addTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
-        $this->assertEquals(1, count($tags));
 
-        $tags = $subscription->getTags($this->tenant->getTenantHeaders());
-        $this->assertEquals(1, count($tags));
+        //TODO: must be createSubscriptionTags([$tag1, $tag2], ...)
+        $this->client->getSubscriptionApi()->createSubscriptionTags(
+            json_encode([$tag1->getId()]),
+            self::USER,
+            $subscription->getSubscriptionId(),
+            self::REASON,
+            self::COMMENT
+        );
+        $tags = $this->client->getSubscriptionApi()->getSubscriptionTags($subscription->getSubscriptionId());
+        $this->assertCount(1, $tags);
         $this->assertEquals($tags[0]->getTagDefinitionId(), $tag1->getId());
 
-        $subscription->deleteTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
 
-        $tags = $subscription->getTags($this->tenant->getTenantHeaders());
-        $this->assertEquals(0, count($tags));
+        //TODO: must be deleteSubscriptionTags(.., [$tag1->getId()], ...)
+        $this->client->getSubscriptionApi()->deleteSubscriptionTags(
+            $subscription->getSubscriptionId(),
+            self::USER,
+            implode(',', [$tag1->getId()]),
+            self::REASON,
+            self::COMMENT
+        );
+        $tags = $this->client->getSubscriptionApi()->getSubscriptionTags($subscription->getSubscriptionId());
+        $this->assertCount(0, $tags);
     }
 
     /**
@@ -137,7 +174,7 @@ class ServerSubscriptionTest extends KillbillTest
     public function testCustomFields()
     {
         // Creating a subscription to make an bundle
-        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Super');
         $subscriptionData->setProductCategory('BASE');
@@ -145,34 +182,34 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setPriceList('DEFAULT');
         $subscriptionData->setExternalKey($this->externalBundleId);
 
-        $subscription = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
         /*
          * Create a custom field
          */
-        $customFields = array();
-
         $cf1 = new CustomField();
-        $cf1->setObjectType(CustomField::OBJECTTYPE_SUBSCRIPTION);
+        $cf1->setObjectType(CustomField::OBJECT_TYPE_SUBSCRIPTION);
         $cf1->setName('cf1-'.$this->tenant->getExternalKey());
         $cf1->setValue('123456');
-        $customFields[] = $cf1;
 
         $cf2 = new CustomField();
-        $cf2->setObjectType(CustomField::OBJECTTYPE_SUBSCRIPTION);
+        $cf2->setObjectType(CustomField::OBJECT_TYPE_SUBSCRIPTION);
         $cf2->setName('cf2-'.$this->tenant->getExternalKey());
         $cf2->setValue('123456');
-        $customFields[] = $cf2;
 
-        $subscription->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        //TODO: must be createSubscriptionCustomFields([$cf1, $cf2], ...)
+        $customFieldsJson = '['.implode(',', [$cf1, $cf2]).']';
+        $this->client->getSubscriptionApi()->createSubscriptionCustomFields($customFieldsJson, self::USER, $subscription->getSubscriptionId(), self::REASON, self::COMMENT);
 
         /*
          * Verify we can retrieve them
          */
-        $cfs = $subscription->getCustomFields($this->tenant->getTenantHeaders());
-        $this->assertEquals(2, count($cfs));
+        $cfs = $this->client->getSubscriptionApi()->getSubscriptionCustomFields($subscription->getSubscriptionId());
 
-        $cf = $subscription->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
+        $this->assertCount(2, $cfs);
+
+        //TODO: Swagger didn't generate method getCustomField by name
+        $cf = $cfs[0]->getName() === $cf1->getName() ? $cfs[0] : $cfs[1];
         $this->assertEquals($cf->getName(), $cf1->getName());
         $this->assertEquals($cf->getValue(), $cf1->getValue());
         $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
@@ -181,10 +218,17 @@ class ServerSubscriptionTest extends KillbillTest
         /*
          * Delete one of them
          */
-        $subscription->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        //TODO: must be deleteInvoiceCustomFields(..., [$cf->getCustomFieldId()])
+        $this->client->getSubscriptionApi()->deleteSubscriptionCustomFields(
+            $subscription->getSubscriptionId(),
+            self::USER,
+            "{$cf->getCustomFieldId()}",
+            self::REASON,
+            self::COMMENT
+        );
 
-        $cfs = $subscription->getCustomFields($this->tenant->getTenantHeaders());
-        $this->assertEquals(1, count($cfs));
+        $cfs = $this->client->getSubscriptionApi()->getSubscriptionCustomFields($subscription->getSubscriptionId());
+        $this->assertCount(1, $cfs);
         $this->assertEquals($cfs[0]->getName(), $cf2->getName());
     }
 
@@ -193,7 +237,7 @@ class ServerSubscriptionTest extends KillbillTest
      */
     public function testBundleWithAO()
     {
-        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Super');
         $subscriptionData->setProductCategory('BASE');
@@ -201,16 +245,16 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setPriceList('DEFAULT');
         $subscriptionData->setExternalKey($this->externalBundleId);
 
-        $subscriptionBase = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $subscriptionBase = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
         $this->assertEquals($subscriptionBase->getAccountId(), $subscriptionData->getAccountId());
         $this->assertEquals($subscriptionBase->getProductName(), $subscriptionData->getProductName());
         $this->assertEquals($subscriptionBase->getProductCategory(), $subscriptionData->getProductCategory());
         $this->assertEquals($subscriptionBase->getBillingPeriod(), $subscriptionData->getBillingPeriod());
         $this->assertEquals($subscriptionBase->getExternalKey(), $subscriptionData->getExternalKey());
 
-        $this->clock->addDays(3, $this->tenant->getTenantHeaders());
+        $this->clock->addDays(3);
 
-        $subscriptionData2 = new Subscription($this->logger);
+        $subscriptionData2 = new Subscription();
         $subscriptionData2->setAccountId($this->account->getAccountId());
         $subscriptionData2->setProductName('RemoteControl');
         $subscriptionData2->setProductCategory('ADD_ON');
@@ -219,7 +263,8 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData2->setExternalKey($this->externalBundleId);
         $subscriptionData2->setBundleId($subscriptionBase->getBundleId());
 
-        $subscriptionAO = $subscriptionData2->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $subscriptionAO = $this->client->getSubscriptionApi()->createSubscription($subscriptionData2, self::USER, self::REASON, self::COMMENT);
+
         $this->assertEquals($subscriptionAO->getAccountId(), $this->account->getAccountId());
         $this->assertEquals($subscriptionAO->getProductName(), $subscriptionData2->getProductName());
         $this->assertEquals($subscriptionAO->getProductCategory(), $subscriptionData2->getProductCategory());
@@ -227,24 +272,20 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertEquals($subscriptionAO->getPriceList(), $subscriptionData2->getPriceList());
         $this->assertEquals($subscriptionAO->getExternalKey(), $this->externalBundleId);
 
-        $bundle = new Bundle($this->logger);
-        $bundle->setBundleId($subscriptionBase->getBundleId());
-        $bundle = $bundle->get($this->tenant->getTenantHeaders());
+        $bundle = $this->client->getBundleApi()->getBundle($subscriptionBase->getBundleId());
         $this->assertNotEmpty($bundle);
         $this->assertEquals($bundle->getAccountId(), $this->account->getAccountId());
         $this->assertEquals($bundle->getExternalKey(), $this->externalBundleId);
         $this->assertEquals(count($bundle->getSubscriptions()), 2);
 
         unset($bundle);
-        $bundle = new Bundle($this->logger);
-        $bundle->setExternalKey($this->externalBundleId);
-        $bundles = $bundle->getByExternalKey($this->tenant->getTenantHeaders());
+        $bundles = $this->client->getBundleApi()->getBundleByKey($this->externalBundleId);
         $this->assertEquals(count($bundles), 1);
         $bundle = $bundles[0];
         $this->assertNotEmpty($bundle);
         $this->assertEquals($bundle->getAccountId(), $this->account->getAccountId());
         $this->assertEquals($bundle->getExternalKey(), $this->externalBundleId);
-        $this->assertEquals(count($bundle->getSubscriptions()), 2);
+        $this->assertCount(2, $bundle->getSubscriptions());
         $this->assertEquals($bundle->getSubscriptions()[0]->getProductCategory(), 'BASE');
         $this->assertEquals($bundle->getSubscriptions()[1]->getProductCategory(), 'ADD_ON');
     }
@@ -255,7 +296,7 @@ class ServerSubscriptionTest extends KillbillTest
     public function testBundleWithTags()
     {
         // Creating a subscription to make an bundle
-        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Super');
         $subscriptionData->setProductCategory('BASE');
@@ -263,28 +304,40 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setPriceList('DEFAULT');
         $subscriptionData->setExternalKey($this->externalBundleId);
 
-        $subscriptionBase = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $subscriptionBase = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
-        $bundle = new Bundle($this->logger);
-        $bundle->setBundleId($subscriptionBase->getBundleId());
-        $bundle = $bundle->get($this->tenant->getTenantHeaders());
+        $bundle = $this->client->getBundleApi()->getBundle($subscriptionBase->getBundleId());
 
-        $tag1 = new TagDefinition($this->logger);
+        $tag1 = new TagDefinition();
         $tag1->setName('stag1-'.$this->tenant->getExternalKey());
         $tag1->setDescription('This is super tag1');
-        $tag1 = $tag1->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $tag1->setApplicableObjectTypes([TagDefinition::APPLICABLE_OBJECT_TYPES_BUNDLE]);
+        $tag1 = $this->client->getTagDefinitionApi()->createTagDefinition($tag1, self::USER, self::REASON, self::COMMENT);
 
-        $bundleTags = $bundle->addTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
-        $this->assertEquals(1, count($bundleTags));
+        //TODO: must be createBundleTags([$tag1, $tag2], ...)
+        $bundleTags = $this->client->getBundleApi()->createBundleTags(
+            json_encode([$tag1->getId()]),
+            self::USER,
+            $bundle->getBundleId(),
+            self::REASON,
+            self::COMMENT
+        );
+        $this->assertCount(1, $bundleTags);
 
-        $bundleTags = $bundle->getTags($this->tenant->getTenantHeaders());
-        $this->assertEquals(1, count($bundleTags));
+        $bundleTags = $this->client->getBundleApi()->getBundleTags($bundle->getBundleId());
+        $this->assertCount(1, $bundleTags);
         $this->assertEquals($bundleTags[0]->getTagDefinitionId(), $tag1->getId());
 
-        $bundle->deleteTags(array($tag1->getId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $this->client->getBundleApi()->deleteBundleTags(
+            $bundle->getBundleId(),
+            self::USER,
+            implode(',', [$tag1->getId()]),
+            self::REASON,
+            self::COMMENT
+        );
 
-        $bundleTags = $bundle->getTags($this->tenant->getTenantHeaders());
-        $this->assertEquals(0, count($bundleTags));
+        $bundleTags = $this->client->getBundleApi()->getBundleTags($bundle->getBundleId());
+        $this->assertCount(0, $bundleTags);
     }
 
     /**
@@ -293,7 +346,7 @@ class ServerSubscriptionTest extends KillbillTest
     public function testBundleWithCustomFields()
     {
         // Creating a subscription to make an bundle
-        $subscriptionData = new Subscription($this->logger);
+        $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
         $subscriptionData->setProductName('Super');
         $subscriptionData->setProductCategory('BASE');
@@ -301,38 +354,36 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setPriceList('DEFAULT');
         $subscriptionData->setExternalKey($this->externalBundleId);
 
-        $subscriptionBase = $subscriptionData->create(self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        $subscriptionBase = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
-        $bundle = new Bundle($this->logger);
-        $bundle->setBundleId($subscriptionBase->getBundleId());
-        $bundle = $bundle->get($this->tenant->getTenantHeaders());
+        $bundle = $this->client->getBundleApi()->getBundle($subscriptionBase->getBundleId());
 
         /*
          * Create a custom field
          */
-        $customFields = array();
-
         $cf1 = new CustomField();
-        $cf1->setObjectType(CustomField::OBJECTTYPE_BUNDLE);
+        $cf1->setObjectType(CustomField::OBJECT_TYPE_BUNDLE);
         $cf1->setName('cf1-'.$this->tenant->getExternalKey());
         $cf1->setValue('123456');
-        $customFields[] = $cf1;
 
         $cf2 = new CustomField();
-        $cf2->setObjectType(CustomField::OBJECTTYPE_BUNDLE);
+        $cf2->setObjectType(CustomField::OBJECT_TYPE_BUNDLE);
         $cf2->setName('cf2-'.$this->tenant->getExternalKey());
         $cf2->setValue('123456');
-        $customFields[] = $cf2;
 
-        $bundle->addCustomFields($customFields, self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        //TODO: must be createInvoiceCustomFields([$cf1, $cf2], ...)
+        $customFieldsJson = '['.implode(',', [$cf1, $cf2]).']';
+        $cfs = $this->client->getBundleApi()->createBundleCustomFields($customFieldsJson, self::USER, $bundle->getBundleId(), self::REASON, self::COMMENT);
+        $this->assertCount(2, $cfs);
 
         /*
          * Verify we can retrieve them
          */
-        $cfs = $bundle->getCustomFields($this->tenant->getTenantHeaders());
-        $this->assertEquals(2, count($cfs));
+        $cfs = $this->client->getBundleApi()->getBundleCustomFields($bundle->getBundleId());
+        $this->assertCount(2, $cfs);
 
-        $cf = $bundle->getCustomField($cf1->getName(), $this->tenant->getTenantHeaders());
+        //TODO: Swagger didn't generate method getCustomField by name
+        $cf = $cfs[0]->getName() === $cf1->getName() ? $cfs[0] : $cfs[1];
         $this->assertEquals($cf->getName(), $cf1->getName());
         $this->assertEquals($cf->getValue(), $cf1->getValue());
         $this->assertEquals($cf->getObjectType(), $cf1->getObjectType());
@@ -341,10 +392,17 @@ class ServerSubscriptionTest extends KillbillTest
         /*
          * Delete one of them
          */
-        $bundle->deleteCustomFields(array($cf->getCustomFieldId()), self::USER, self::REASON, self::COMMENT, $this->tenant->getTenantHeaders());
+        //TODO: must be deleteInvoiceCustomFields(..., [$cf->getCustomFieldId()])
+        $this->client->getBundleApi()->deleteBundleCustomFields(
+            $bundle->getBundleId(),
+            self::USER,
+            "{$cf->getCustomFieldId()}",
+            self::REASON,
+            self::COMMENT
+        );
 
-        $cfs = $bundle->getCustomFields($this->tenant->getTenantHeaders());
-        $this->assertEquals(1, count($cfs));
+        $cfs = $this->client->getBundleApi()->getBundleCustomFields($bundle->getBundleId());
+        $this->assertCount(1, $cfs);
         $this->assertEquals($cfs[0]->getName(), $cf2->getName());
     }
 }
