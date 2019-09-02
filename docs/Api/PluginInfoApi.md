@@ -4,7 +4,7 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getPluginsInfo**](PluginInfoApi.md#getPluginsInfo) | **GET** /1.0/kb/pluginsInfo | Retrieve the list of registered plugins
+[**getPluginsInfo**](PluginInfoApi.md#getpluginsinfo) | **GET** /1.0/kb/pluginsInfo | Retrieve the list of registered plugins
 
 # **getPluginsInfo**
 > \Killbill\Client\Swagger\Model\PluginInfo[] getPluginsInfo()

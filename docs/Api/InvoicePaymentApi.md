@@ -4,18 +4,18 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**completeInvoicePaymentTransaction**](InvoicePaymentApi.md#completeInvoicePaymentTransaction) | **PUT** /1.0/kb/invoicePayments/{paymentId} | Complete an existing transaction
-[**createChargeback**](InvoicePaymentApi.md#createChargeback) | **POST** /1.0/kb/invoicePayments/{paymentId}/chargebacks | Record a chargeback
-[**createChargebackReversal**](InvoicePaymentApi.md#createChargebackReversal) | **POST** /1.0/kb/invoicePayments/{paymentId}/chargebackReversals | Record a chargebackReversal
-[**createInvoicePaymentCustomFields**](InvoicePaymentApi.md#createInvoicePaymentCustomFields) | **POST** /1.0/kb/invoicePayments/{paymentId}/customFields | Add custom fields to payment
-[**createInvoicePaymentTags**](InvoicePaymentApi.md#createInvoicePaymentTags) | **POST** /1.0/kb/invoicePayments/{paymentId}/tags | Add tags to payment
-[**createRefundWithAdjustments**](InvoicePaymentApi.md#createRefundWithAdjustments) | **POST** /1.0/kb/invoicePayments/{paymentId}/refunds | Refund a payment, and adjust the invoice if needed
-[**deleteInvoicePaymentCustomFields**](InvoicePaymentApi.md#deleteInvoicePaymentCustomFields) | **DELETE** /1.0/kb/invoicePayments/{paymentId}/customFields | Remove custom fields from payment
-[**deleteInvoicePaymentTags**](InvoicePaymentApi.md#deleteInvoicePaymentTags) | **DELETE** /1.0/kb/invoicePayments/{paymentId}/tags | Remove tags from payment
-[**getInvoicePayment**](InvoicePaymentApi.md#getInvoicePayment) | **GET** /1.0/kb/invoicePayments/{paymentId} | Retrieve a payment by id
-[**getInvoicePaymentCustomFields**](InvoicePaymentApi.md#getInvoicePaymentCustomFields) | **GET** /1.0/kb/invoicePayments/{paymentId}/customFields | Retrieve payment custom fields
-[**getInvoicePaymentTags**](InvoicePaymentApi.md#getInvoicePaymentTags) | **GET** /1.0/kb/invoicePayments/{paymentId}/tags | Retrieve payment tags
-[**modifyInvoicePaymentCustomFields**](InvoicePaymentApi.md#modifyInvoicePaymentCustomFields) | **PUT** /1.0/kb/invoicePayments/{paymentId}/customFields | Modify custom fields to payment
+[**completeInvoicePaymentTransaction**](InvoicePaymentApi.md#completeinvoicepaymenttransaction) | **PUT** /1.0/kb/invoicePayments/{paymentId} | Complete an existing transaction
+[**createChargeback**](InvoicePaymentApi.md#createchargeback) | **POST** /1.0/kb/invoicePayments/{paymentId}/chargebacks | Record a chargeback
+[**createChargebackReversal**](InvoicePaymentApi.md#createchargebackreversal) | **POST** /1.0/kb/invoicePayments/{paymentId}/chargebackReversals | Record a chargebackReversal
+[**createInvoicePaymentCustomFields**](InvoicePaymentApi.md#createinvoicepaymentcustomfields) | **POST** /1.0/kb/invoicePayments/{paymentId}/customFields | Add custom fields to payment
+[**createInvoicePaymentTags**](InvoicePaymentApi.md#createinvoicepaymenttags) | **POST** /1.0/kb/invoicePayments/{paymentId}/tags | Add tags to payment
+[**createRefundWithAdjustments**](InvoicePaymentApi.md#createrefundwithadjustments) | **POST** /1.0/kb/invoicePayments/{paymentId}/refunds | Refund a payment, and adjust the invoice if needed
+[**deleteInvoicePaymentCustomFields**](InvoicePaymentApi.md#deleteinvoicepaymentcustomfields) | **DELETE** /1.0/kb/invoicePayments/{paymentId}/customFields | Remove custom fields from payment
+[**deleteInvoicePaymentTags**](InvoicePaymentApi.md#deleteinvoicepaymenttags) | **DELETE** /1.0/kb/invoicePayments/{paymentId}/tags | Remove tags from payment
+[**getInvoicePayment**](InvoicePaymentApi.md#getinvoicepayment) | **GET** /1.0/kb/invoicePayments/{paymentId} | Retrieve a payment by id
+[**getInvoicePaymentCustomFields**](InvoicePaymentApi.md#getinvoicepaymentcustomfields) | **GET** /1.0/kb/invoicePayments/{paymentId}/customFields | Retrieve payment custom fields
+[**getInvoicePaymentTags**](InvoicePaymentApi.md#getinvoicepaymenttags) | **GET** /1.0/kb/invoicePayments/{paymentId}/tags | Retrieve payment tags
+[**modifyInvoicePaymentCustomFields**](InvoicePaymentApi.md#modifyinvoicepaymentcustomfields) | **PUT** /1.0/kb/invoicePayments/{paymentId}/customFields | Modify custom fields to payment
 
 # **completeInvoicePaymentTransaction**
 > completeInvoicePaymentTransaction($body, $xKillbillCreatedBy, $paymentId, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty)

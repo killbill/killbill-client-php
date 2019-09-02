@@ -4,18 +4,18 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addSimplePlan**](CatalogApi.md#addSimplePlan) | **POST** /1.0/kb/catalog/simplePlan | Add a simple plan entry in the current version of the catalog
-[**deleteCatalog**](CatalogApi.md#deleteCatalog) | **DELETE** /1.0/kb/catalog | Delete all versions for a per tenant catalog
-[**getAvailableAddons**](CatalogApi.md#getAvailableAddons) | **GET** /1.0/kb/catalog/availableAddons | Retrieve available add-ons for a given product
-[**getAvailableBasePlans**](CatalogApi.md#getAvailableBasePlans) | **GET** /1.0/kb/catalog/availableBasePlans | Retrieve available base plans
-[**getCatalogJson**](CatalogApi.md#getCatalogJson) | **GET** /1.0/kb/catalog | Retrieve the catalog as JSON
-[**getCatalogVersions**](CatalogApi.md#getCatalogVersions) | **GET** /1.0/kb/catalog/versions | Retrieve a list of catalog versions
-[**getCatalogXml**](CatalogApi.md#getCatalogXml) | **GET** /1.0/kb/catalog/xml | Retrieve the full catalog as XML
-[**getPhaseForSubscriptionAndDate**](CatalogApi.md#getPhaseForSubscriptionAndDate) | **GET** /1.0/kb/catalog/phase | Retrieve phase for a given subscription and date
-[**getPlanForSubscriptionAndDate**](CatalogApi.md#getPlanForSubscriptionAndDate) | **GET** /1.0/kb/catalog/plan | Retrieve plan for a given subscription and date
-[**getPriceListForSubscriptionAndDate**](CatalogApi.md#getPriceListForSubscriptionAndDate) | **GET** /1.0/kb/catalog/priceList | Retrieve priceList for a given subscription and date
-[**getProductForSubscriptionAndDate**](CatalogApi.md#getProductForSubscriptionAndDate) | **GET** /1.0/kb/catalog/product | Retrieve product for a given subscription and date
-[**uploadCatalogXml**](CatalogApi.md#uploadCatalogXml) | **POST** /1.0/kb/catalog/xml | Upload the full catalog as XML
+[**addSimplePlan**](CatalogApi.md#addsimpleplan) | **POST** /1.0/kb/catalog/simplePlan | Add a simple plan entry in the current version of the catalog
+[**deleteCatalog**](CatalogApi.md#deletecatalog) | **DELETE** /1.0/kb/catalog | Delete all versions for a per tenant catalog
+[**getAvailableAddons**](CatalogApi.md#getavailableaddons) | **GET** /1.0/kb/catalog/availableAddons | Retrieve available add-ons for a given product
+[**getAvailableBasePlans**](CatalogApi.md#getavailablebaseplans) | **GET** /1.0/kb/catalog/availableBasePlans | Retrieve available base plans
+[**getCatalogJson**](CatalogApi.md#getcatalogjson) | **GET** /1.0/kb/catalog | Retrieve the catalog as JSON
+[**getCatalogVersions**](CatalogApi.md#getcatalogversions) | **GET** /1.0/kb/catalog/versions | Retrieve a list of catalog versions
+[**getCatalogXml**](CatalogApi.md#getcatalogxml) | **GET** /1.0/kb/catalog/xml | Retrieve the full catalog as XML
+[**getPhaseForSubscriptionAndDate**](CatalogApi.md#getphaseforsubscriptionanddate) | **GET** /1.0/kb/catalog/phase | Retrieve phase for a given subscription and date
+[**getPlanForSubscriptionAndDate**](CatalogApi.md#getplanforsubscriptionanddate) | **GET** /1.0/kb/catalog/plan | Retrieve plan for a given subscription and date
+[**getPriceListForSubscriptionAndDate**](CatalogApi.md#getpricelistforsubscriptionanddate) | **GET** /1.0/kb/catalog/priceList | Retrieve priceList for a given subscription and date
+[**getProductForSubscriptionAndDate**](CatalogApi.md#getproductforsubscriptionanddate) | **GET** /1.0/kb/catalog/product | Retrieve product for a given subscription and date
+[**uploadCatalogXml**](CatalogApi.md#uploadcatalogxml) | **POST** /1.0/kb/catalog/xml | Upload the full catalog as XML
 
 # **addSimplePlan**
 > string addSimplePlan($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)

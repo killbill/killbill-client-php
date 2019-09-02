@@ -4,16 +4,16 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createPaymentMethodCustomFields**](PaymentMethodApi.md#createPaymentMethodCustomFields) | **POST** /1.0/kb/paymentMethods/{paymentMethodId}/customFields | Add custom fields to payment method
-[**deletePaymentMethod**](PaymentMethodApi.md#deletePaymentMethod) | **DELETE** /1.0/kb/paymentMethods/{paymentMethodId} | Delete a payment method
-[**deletePaymentMethodCustomFields**](PaymentMethodApi.md#deletePaymentMethodCustomFields) | **DELETE** /1.0/kb/paymentMethods/{paymentMethodId}/customFields | Remove custom fields from payment method
-[**getPaymentMethod**](PaymentMethodApi.md#getPaymentMethod) | **GET** /1.0/kb/paymentMethods/{paymentMethodId} | Retrieve a payment method by id
-[**getPaymentMethodAuditLogsWithHistory**](PaymentMethodApi.md#getPaymentMethodAuditLogsWithHistory) | **GET** /1.0/kb/paymentMethods/{paymentMethodId}/auditLogsWithHistory | Retrieve payment method audit logs with history by id
-[**getPaymentMethodByKey**](PaymentMethodApi.md#getPaymentMethodByKey) | **GET** /1.0/kb/paymentMethods | Retrieve a payment method by external key
-[**getPaymentMethodCustomFields**](PaymentMethodApi.md#getPaymentMethodCustomFields) | **GET** /1.0/kb/paymentMethods/{paymentMethodId}/customFields | Retrieve payment method custom fields
-[**getPaymentMethods**](PaymentMethodApi.md#getPaymentMethods) | **GET** /1.0/kb/paymentMethods/pagination | List payment methods
-[**modifyPaymentMethodCustomFields**](PaymentMethodApi.md#modifyPaymentMethodCustomFields) | **PUT** /1.0/kb/paymentMethods/{paymentMethodId}/customFields | Modify custom fields to payment method
-[**searchPaymentMethods**](PaymentMethodApi.md#searchPaymentMethods) | **GET** /1.0/kb/paymentMethods/search/{searchKey} | Search payment methods
+[**createPaymentMethodCustomFields**](PaymentMethodApi.md#createpaymentmethodcustomfields) | **POST** /1.0/kb/paymentMethods/{paymentMethodId}/customFields | Add custom fields to payment method
+[**deletePaymentMethod**](PaymentMethodApi.md#deletepaymentmethod) | **DELETE** /1.0/kb/paymentMethods/{paymentMethodId} | Delete a payment method
+[**deletePaymentMethodCustomFields**](PaymentMethodApi.md#deletepaymentmethodcustomfields) | **DELETE** /1.0/kb/paymentMethods/{paymentMethodId}/customFields | Remove custom fields from payment method
+[**getPaymentMethod**](PaymentMethodApi.md#getpaymentmethod) | **GET** /1.0/kb/paymentMethods/{paymentMethodId} | Retrieve a payment method by id
+[**getPaymentMethodAuditLogsWithHistory**](PaymentMethodApi.md#getpaymentmethodauditlogswithhistory) | **GET** /1.0/kb/paymentMethods/{paymentMethodId}/auditLogsWithHistory | Retrieve payment method audit logs with history by id
+[**getPaymentMethodByKey**](PaymentMethodApi.md#getpaymentmethodbykey) | **GET** /1.0/kb/paymentMethods | Retrieve a payment method by external key
+[**getPaymentMethodCustomFields**](PaymentMethodApi.md#getpaymentmethodcustomfields) | **GET** /1.0/kb/paymentMethods/{paymentMethodId}/customFields | Retrieve payment method custom fields
+[**getPaymentMethods**](PaymentMethodApi.md#getpaymentmethods) | **GET** /1.0/kb/paymentMethods/pagination | List payment methods
+[**modifyPaymentMethodCustomFields**](PaymentMethodApi.md#modifypaymentmethodcustomfields) | **PUT** /1.0/kb/paymentMethods/{paymentMethodId}/customFields | Modify custom fields to payment method
+[**searchPaymentMethods**](PaymentMethodApi.md#searchpaymentmethods) | **GET** /1.0/kb/paymentMethods/search/{searchKey} | Search payment methods
 
 # **createPaymentMethodCustomFields**
 > \Killbill\Client\Swagger\Model\CustomField[] createPaymentMethodCustomFields($body, $xKillbillCreatedBy, $paymentMethodId, $xKillbillReason, $xKillbillComment)

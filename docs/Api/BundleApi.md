@@ -4,22 +4,22 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addBundleBlockingState**](BundleApi.md#addBundleBlockingState) | **POST** /1.0/kb/bundles/{bundleId}/block | Block a bundle
-[**createBundleCustomFields**](BundleApi.md#createBundleCustomFields) | **POST** /1.0/kb/bundles/{bundleId}/customFields | Add custom fields to bundle
-[**createBundleTags**](BundleApi.md#createBundleTags) | **POST** /1.0/kb/bundles/{bundleId}/tags | Add tags to bundle
-[**deleteBundleCustomFields**](BundleApi.md#deleteBundleCustomFields) | **DELETE** /1.0/kb/bundles/{bundleId}/customFields | Remove custom fields from bundle
-[**deleteBundleTags**](BundleApi.md#deleteBundleTags) | **DELETE** /1.0/kb/bundles/{bundleId}/tags | Remove tags from bundle
-[**getBundle**](BundleApi.md#getBundle) | **GET** /1.0/kb/bundles/{bundleId} | Retrieve a bundle by id
-[**getBundleByKey**](BundleApi.md#getBundleByKey) | **GET** /1.0/kb/bundles | Retrieve a bundle by external key
-[**getBundleCustomFields**](BundleApi.md#getBundleCustomFields) | **GET** /1.0/kb/bundles/{bundleId}/customFields | Retrieve bundle custom fields
-[**getBundleTags**](BundleApi.md#getBundleTags) | **GET** /1.0/kb/bundles/{bundleId}/tags | Retrieve bundle tags
-[**getBundles**](BundleApi.md#getBundles) | **GET** /1.0/kb/bundles/pagination | List bundles
-[**modifyBundleCustomFields**](BundleApi.md#modifyBundleCustomFields) | **PUT** /1.0/kb/bundles/{bundleId}/customFields | Modify custom fields to bundle
-[**pauseBundle**](BundleApi.md#pauseBundle) | **PUT** /1.0/kb/bundles/{bundleId}/pause | Pause a bundle
-[**renameExternalKey**](BundleApi.md#renameExternalKey) | **PUT** /1.0/kb/bundles/{bundleId}/renameKey | Update a bundle externalKey
-[**resumeBundle**](BundleApi.md#resumeBundle) | **PUT** /1.0/kb/bundles/{bundleId}/resume | Resume a bundle
-[**searchBundles**](BundleApi.md#searchBundles) | **GET** /1.0/kb/bundles/search/{searchKey} | Search bundles
-[**transferBundle**](BundleApi.md#transferBundle) | **POST** /1.0/kb/bundles/{bundleId} | Transfer a bundle to another account
+[**addBundleBlockingState**](BundleApi.md#addbundleblockingstate) | **POST** /1.0/kb/bundles/{bundleId}/block | Block a bundle
+[**createBundleCustomFields**](BundleApi.md#createbundlecustomfields) | **POST** /1.0/kb/bundles/{bundleId}/customFields | Add custom fields to bundle
+[**createBundleTags**](BundleApi.md#createbundletags) | **POST** /1.0/kb/bundles/{bundleId}/tags | Add tags to bundle
+[**deleteBundleCustomFields**](BundleApi.md#deletebundlecustomfields) | **DELETE** /1.0/kb/bundles/{bundleId}/customFields | Remove custom fields from bundle
+[**deleteBundleTags**](BundleApi.md#deletebundletags) | **DELETE** /1.0/kb/bundles/{bundleId}/tags | Remove tags from bundle
+[**getBundle**](BundleApi.md#getbundle) | **GET** /1.0/kb/bundles/{bundleId} | Retrieve a bundle by id
+[**getBundleByKey**](BundleApi.md#getbundlebykey) | **GET** /1.0/kb/bundles | Retrieve a bundle by external key
+[**getBundleCustomFields**](BundleApi.md#getbundlecustomfields) | **GET** /1.0/kb/bundles/{bundleId}/customFields | Retrieve bundle custom fields
+[**getBundleTags**](BundleApi.md#getbundletags) | **GET** /1.0/kb/bundles/{bundleId}/tags | Retrieve bundle tags
+[**getBundles**](BundleApi.md#getbundles) | **GET** /1.0/kb/bundles/pagination | List bundles
+[**modifyBundleCustomFields**](BundleApi.md#modifybundlecustomfields) | **PUT** /1.0/kb/bundles/{bundleId}/customFields | Modify custom fields to bundle
+[**pauseBundle**](BundleApi.md#pausebundle) | **PUT** /1.0/kb/bundles/{bundleId}/pause | Pause a bundle
+[**renameExternalKey**](BundleApi.md#renameexternalkey) | **PUT** /1.0/kb/bundles/{bundleId}/renameKey | Update a bundle externalKey
+[**resumeBundle**](BundleApi.md#resumebundle) | **PUT** /1.0/kb/bundles/{bundleId}/resume | Resume a bundle
+[**searchBundles**](BundleApi.md#searchbundles) | **GET** /1.0/kb/bundles/search/{searchKey} | Search bundles
+[**transferBundle**](BundleApi.md#transferbundle) | **POST** /1.0/kb/bundles/{bundleId} | Transfer a bundle to another account
 
 # **addBundleBlockingState**
 > \Killbill\Client\Swagger\Model\BlockingState[] addBundleBlockingState($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $pluginProperty)

@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **productName** | **string** |  | [optional] 
 **productCategory** | **string** |  | [optional] 
 **currency** | **string** |  | [optional] 
-**amount** | [**BigDecimal**](BigDecimal.md) |  | [optional] 
+**amount** | **float** |  | [optional] 
 **billingPeriod** | **string** |  | [optional] 
 **trialLength** | **int** |  | [optional] 
 **trialTimeUnit** | **string** |  | [optional] 
 **availableBaseProducts** | **string[]** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

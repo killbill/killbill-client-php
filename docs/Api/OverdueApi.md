@@ -4,10 +4,10 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getOverdueConfigJson**](OverdueApi.md#getOverdueConfigJson) | **GET** /1.0/kb/overdue | Retrieve the overdue config as JSON
-[**getOverdueConfigXml**](OverdueApi.md#getOverdueConfigXml) | **GET** /1.0/kb/overdue/xml | Retrieve the overdue config as XML
-[**uploadOverdueConfigJson**](OverdueApi.md#uploadOverdueConfigJson) | **POST** /1.0/kb/overdue | Upload the full overdue config as JSON
-[**uploadOverdueConfigXml**](OverdueApi.md#uploadOverdueConfigXml) | **POST** /1.0/kb/overdue/xml | Upload the full overdue config as XML
+[**getOverdueConfigJson**](OverdueApi.md#getoverdueconfigjson) | **GET** /1.0/kb/overdue | Retrieve the overdue config as JSON
+[**getOverdueConfigXml**](OverdueApi.md#getoverdueconfigxml) | **GET** /1.0/kb/overdue/xml | Retrieve the overdue config as XML
+[**uploadOverdueConfigJson**](OverdueApi.md#uploadoverdueconfigjson) | **POST** /1.0/kb/overdue | Upload the full overdue config as JSON
+[**uploadOverdueConfigXml**](OverdueApi.md#uploadoverdueconfigxml) | **POST** /1.0/kb/overdue/xml | Upload the full overdue config as XML
 
 # **getOverdueConfigJson**
 > \Killbill\Client\Swagger\Model\Overdue getOverdueConfigJson()

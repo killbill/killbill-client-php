@@ -4,9 +4,9 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**buildComboFormDescriptor**](PaymentGatewayApi.md#buildComboFormDescriptor) | **POST** /1.0/kb/paymentGateways/hosted/form | Combo API to generate form data to redirect the customer to the gateway
-[**buildFormDescriptor**](PaymentGatewayApi.md#buildFormDescriptor) | **POST** /1.0/kb/paymentGateways/hosted/form/{accountId} | Generate form data to redirect the customer to the gateway
-[**processNotification**](PaymentGatewayApi.md#processNotification) | **POST** /1.0/kb/paymentGateways/notification/{pluginName} | Process a gateway notification
+[**buildComboFormDescriptor**](PaymentGatewayApi.md#buildcomboformdescriptor) | **POST** /1.0/kb/paymentGateways/hosted/form | Combo API to generate form data to redirect the customer to the gateway
+[**buildFormDescriptor**](PaymentGatewayApi.md#buildformdescriptor) | **POST** /1.0/kb/paymentGateways/hosted/form/{accountId} | Generate form data to redirect the customer to the gateway
+[**processNotification**](PaymentGatewayApi.md#processnotification) | **POST** /1.0/kb/paymentGateways/notification/{pluginName} | Process a gateway notification
 
 # **buildComboFormDescriptor**
 > \Killbill\Client\Swagger\Model\HostedPaymentPageFormDescriptor buildComboFormDescriptor($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $controlPluginName, $pluginProperty)

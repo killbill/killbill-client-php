@@ -4,14 +4,14 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getQueueEntries**](AdminApi.md#getQueueEntries) | **GET** /1.0/kb/admin/queues | Get queues entries
-[**invalidatesCache**](AdminApi.md#invalidatesCache) | **DELETE** /1.0/kb/admin/cache | Invalidates the given Cache if specified, otherwise invalidates all caches
-[**invalidatesCacheByAccount**](AdminApi.md#invalidatesCacheByAccount) | **DELETE** /1.0/kb/admin/cache/accounts/{accountId} | Invalidates Caches per account level
-[**invalidatesCacheByTenant**](AdminApi.md#invalidatesCacheByTenant) | **DELETE** /1.0/kb/admin/cache/tenants | Invalidates Caches per tenant level
-[**putInRotation**](AdminApi.md#putInRotation) | **PUT** /1.0/kb/admin/healthcheck | Put the host back into rotation
-[**putOutOfRotation**](AdminApi.md#putOutOfRotation) | **DELETE** /1.0/kb/admin/healthcheck | Put the host out of rotation
-[**triggerInvoiceGenerationForParkedAccounts**](AdminApi.md#triggerInvoiceGenerationForParkedAccounts) | **POST** /1.0/kb/admin/invoices | Trigger an invoice generation for all parked accounts
-[**updatePaymentTransactionState**](AdminApi.md#updatePaymentTransactionState) | **PUT** /1.0/kb/admin/payments/{paymentId}/transactions/{paymentTransactionId} | Update existing paymentTransaction and associated payment state
+[**getQueueEntries**](AdminApi.md#getqueueentries) | **GET** /1.0/kb/admin/queues | Get queues entries
+[**invalidatesCache**](AdminApi.md#invalidatescache) | **DELETE** /1.0/kb/admin/cache | Invalidates the given Cache if specified, otherwise invalidates all caches
+[**invalidatesCacheByAccount**](AdminApi.md#invalidatescachebyaccount) | **DELETE** /1.0/kb/admin/cache/accounts/{accountId} | Invalidates Caches per account level
+[**invalidatesCacheByTenant**](AdminApi.md#invalidatescachebytenant) | **DELETE** /1.0/kb/admin/cache/tenants | Invalidates Caches per tenant level
+[**putInRotation**](AdminApi.md#putinrotation) | **PUT** /1.0/kb/admin/healthcheck | Put the host back into rotation
+[**putOutOfRotation**](AdminApi.md#putoutofrotation) | **DELETE** /1.0/kb/admin/healthcheck | Put the host out of rotation
+[**triggerInvoiceGenerationForParkedAccounts**](AdminApi.md#triggerinvoicegenerationforparkedaccounts) | **POST** /1.0/kb/admin/invoices | Trigger an invoice generation for all parked accounts
+[**updatePaymentTransactionState**](AdminApi.md#updatepaymenttransactionstate) | **PUT** /1.0/kb/admin/payments/{paymentId}/transactions/{paymentTransactionId} | Update existing paymentTransaction and associated payment state
 
 # **getQueueEntries**
 > getQueueEntries($accountId, $queueName, $serviceName, $withHistory, $minDate, $maxDate, $withInProcessing, $withBusEvents, $withNotifications)

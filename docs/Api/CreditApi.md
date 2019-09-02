@@ -4,8 +4,8 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCredit**](CreditApi.md#createCredit) | **POST** /1.0/kb/credits | Create a credit
-[**getCredit**](CreditApi.md#getCredit) | **GET** /1.0/kb/credits/{creditId} | Retrieve a credit by id
+[**createCredit**](CreditApi.md#createcredit) | **POST** /1.0/kb/credits | Create a credit
+[**getCredit**](CreditApi.md#getcredit) | **GET** /1.0/kb/credits/{creditId} | Retrieve a credit by id
 
 # **createCredit**
 > \Killbill\Client\Swagger\Model\Credit createCredit($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $autoCommit, $pluginProperty)

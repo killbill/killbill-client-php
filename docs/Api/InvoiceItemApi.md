@@ -4,13 +4,13 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createInvoiceItemCustomFields**](InvoiceItemApi.md#createInvoiceItemCustomFields) | **POST** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Add custom fields to invoice item
-[**createInvoiceItemTags**](InvoiceItemApi.md#createInvoiceItemTags) | **POST** /1.0/kb/invoiceItems/{invoiceItemId}/tags | Add tags to invoice item
-[**deleteInvoiceItemCustomFields**](InvoiceItemApi.md#deleteInvoiceItemCustomFields) | **DELETE** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Remove custom fields from invoice item
-[**deleteInvoiceItemTags**](InvoiceItemApi.md#deleteInvoiceItemTags) | **DELETE** /1.0/kb/invoiceItems/{invoiceItemId}/tags | Remove tags from invoice item
-[**getInvoiceItemCustomFields**](InvoiceItemApi.md#getInvoiceItemCustomFields) | **GET** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Retrieve invoice item custom fields
-[**getInvoiceItemTags**](InvoiceItemApi.md#getInvoiceItemTags) | **GET** /1.0/kb/invoiceItems/{invoiceItemId}/tags | Retrieve invoice item tags
-[**modifyInvoiceItemCustomFields**](InvoiceItemApi.md#modifyInvoiceItemCustomFields) | **PUT** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Modify custom fields to invoice item
+[**createInvoiceItemCustomFields**](InvoiceItemApi.md#createinvoiceitemcustomfields) | **POST** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Add custom fields to invoice item
+[**createInvoiceItemTags**](InvoiceItemApi.md#createinvoiceitemtags) | **POST** /1.0/kb/invoiceItems/{invoiceItemId}/tags | Add tags to invoice item
+[**deleteInvoiceItemCustomFields**](InvoiceItemApi.md#deleteinvoiceitemcustomfields) | **DELETE** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Remove custom fields from invoice item
+[**deleteInvoiceItemTags**](InvoiceItemApi.md#deleteinvoiceitemtags) | **DELETE** /1.0/kb/invoiceItems/{invoiceItemId}/tags | Remove tags from invoice item
+[**getInvoiceItemCustomFields**](InvoiceItemApi.md#getinvoiceitemcustomfields) | **GET** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Retrieve invoice item custom fields
+[**getInvoiceItemTags**](InvoiceItemApi.md#getinvoiceitemtags) | **GET** /1.0/kb/invoiceItems/{invoiceItemId}/tags | Retrieve invoice item tags
+[**modifyInvoiceItemCustomFields**](InvoiceItemApi.md#modifyinvoiceitemcustomfields) | **PUT** /1.0/kb/invoiceItems/{invoiceItemId}/customFields | Modify custom fields to invoice item
 
 # **createInvoiceItemCustomFields**
 > \Killbill\Client\Swagger\Model\CustomField[] createInvoiceItemCustomFields($body, $xKillbillCreatedBy, $invoiceItemId, $xKillbillReason, $xKillbillComment)

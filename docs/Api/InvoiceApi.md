@@ -4,38 +4,38 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adjustInvoiceItem**](InvoiceApi.md#adjustInvoiceItem) | **POST** /1.0/kb/invoices/{invoiceId} | Adjust an invoice item
-[**commitInvoice**](InvoiceApi.md#commitInvoice) | **PUT** /1.0/kb/invoices/{invoiceId}/commitInvoice | Perform the invoice status transition from DRAFT to COMMITTED
-[**createExternalCharges**](InvoiceApi.md#createExternalCharges) | **POST** /1.0/kb/invoices/charges/{accountId} | Create external charge(s)
-[**createFutureInvoice**](InvoiceApi.md#createFutureInvoice) | **POST** /1.0/kb/invoices | Trigger an invoice generation
-[**createInstantPayment**](InvoiceApi.md#createInstantPayment) | **POST** /1.0/kb/invoices/{invoiceId}/payments | Trigger a payment for invoice
-[**createInvoiceCustomFields**](InvoiceApi.md#createInvoiceCustomFields) | **POST** /1.0/kb/invoices/{invoiceId}/customFields | Add custom fields to invoice
-[**createInvoiceTags**](InvoiceApi.md#createInvoiceTags) | **POST** /1.0/kb/invoices/{invoiceId}/tags | Add tags to invoice
-[**createMigrationInvoice**](InvoiceApi.md#createMigrationInvoice) | **POST** /1.0/kb/invoices/migration/{accountId} | Create a migration invoice
-[**createTaxItems**](InvoiceApi.md#createTaxItems) | **POST** /1.0/kb/invoices/taxes/{accountId} | Create tax items
-[**deleteCBA**](InvoiceApi.md#deleteCBA) | **DELETE** /1.0/kb/invoices/{invoiceId}/{invoiceItemId}/cba | Delete a CBA item
-[**deleteInvoiceCustomFields**](InvoiceApi.md#deleteInvoiceCustomFields) | **DELETE** /1.0/kb/invoices/{invoiceId}/customFields | Remove custom fields from invoice
-[**deleteInvoiceTags**](InvoiceApi.md#deleteInvoiceTags) | **DELETE** /1.0/kb/invoices/{invoiceId}/tags | Remove tags from invoice
-[**generateDryRunInvoice**](InvoiceApi.md#generateDryRunInvoice) | **POST** /1.0/kb/invoices/dryRun | Generate a dryRun invoice
-[**getCatalogTranslation**](InvoiceApi.md#getCatalogTranslation) | **GET** /1.0/kb/invoices/catalogTranslation/{locale} | Retrieves the catalog translation for the tenant
-[**getInvoice**](InvoiceApi.md#getInvoice) | **GET** /1.0/kb/invoices/{invoiceId} | Retrieve an invoice by id
-[**getInvoiceAsHTML**](InvoiceApi.md#getInvoiceAsHTML) | **GET** /1.0/kb/invoices/{invoiceId}/html | Render an invoice as HTML
-[**getInvoiceByItemId**](InvoiceApi.md#getInvoiceByItemId) | **GET** /1.0/kb/invoices/byItemId/{itemId} | Retrieve an invoice by invoice item id
-[**getInvoiceByNumber**](InvoiceApi.md#getInvoiceByNumber) | **GET** /1.0/kb/invoices/byNumber/{invoiceNumber} | Retrieve an invoice by number
-[**getInvoiceCustomFields**](InvoiceApi.md#getInvoiceCustomFields) | **GET** /1.0/kb/invoices/{invoiceId}/customFields | Retrieve invoice custom fields
-[**getInvoiceMPTemplate**](InvoiceApi.md#getInvoiceMPTemplate) | **GET** /1.0/kb/invoices/manualPayTemplate/{locale} | Retrieves the manualPay invoice template for the tenant
-[**getInvoiceTags**](InvoiceApi.md#getInvoiceTags) | **GET** /1.0/kb/invoices/{invoiceId}/tags | Retrieve invoice tags
-[**getInvoiceTemplate**](InvoiceApi.md#getInvoiceTemplate) | **GET** /1.0/kb/invoices/template | Retrieves the invoice template for the tenant
-[**getInvoiceTranslation**](InvoiceApi.md#getInvoiceTranslation) | **GET** /1.0/kb/invoices/translation/{locale} | Retrieves the invoice translation for the tenant
-[**getInvoices**](InvoiceApi.md#getInvoices) | **GET** /1.0/kb/invoices/pagination | List invoices
-[**getPaymentsForInvoice**](InvoiceApi.md#getPaymentsForInvoice) | **GET** /1.0/kb/invoices/{invoiceId}/payments | Retrieve payments associated with an invoice
-[**modifyInvoiceCustomFields**](InvoiceApi.md#modifyInvoiceCustomFields) | **PUT** /1.0/kb/invoices/{invoiceId}/customFields | Modify custom fields to invoice
-[**searchInvoices**](InvoiceApi.md#searchInvoices) | **GET** /1.0/kb/invoices/search/{searchKey} | Search invoices
-[**uploadCatalogTranslation**](InvoiceApi.md#uploadCatalogTranslation) | **POST** /1.0/kb/invoices/catalogTranslation/{locale} | Upload the catalog translation for the tenant
-[**uploadInvoiceMPTemplate**](InvoiceApi.md#uploadInvoiceMPTemplate) | **POST** /1.0/kb/invoices/manualPayTemplate | Upload the manualPay invoice template for the tenant
-[**uploadInvoiceTemplate**](InvoiceApi.md#uploadInvoiceTemplate) | **POST** /1.0/kb/invoices/template | Upload the invoice template for the tenant
-[**uploadInvoiceTranslation**](InvoiceApi.md#uploadInvoiceTranslation) | **POST** /1.0/kb/invoices/translation/{locale} | Upload the invoice translation for the tenant
-[**voidInvoice**](InvoiceApi.md#voidInvoice) | **PUT** /1.0/kb/invoices/{invoiceId}/voidInvoice | Perform the action of voiding an invoice
+[**adjustInvoiceItem**](InvoiceApi.md#adjustinvoiceitem) | **POST** /1.0/kb/invoices/{invoiceId} | Adjust an invoice item
+[**commitInvoice**](InvoiceApi.md#commitinvoice) | **PUT** /1.0/kb/invoices/{invoiceId}/commitInvoice | Perform the invoice status transition from DRAFT to COMMITTED
+[**createExternalCharges**](InvoiceApi.md#createexternalcharges) | **POST** /1.0/kb/invoices/charges/{accountId} | Create external charge(s)
+[**createFutureInvoice**](InvoiceApi.md#createfutureinvoice) | **POST** /1.0/kb/invoices | Trigger an invoice generation
+[**createInstantPayment**](InvoiceApi.md#createinstantpayment) | **POST** /1.0/kb/invoices/{invoiceId}/payments | Trigger a payment for invoice
+[**createInvoiceCustomFields**](InvoiceApi.md#createinvoicecustomfields) | **POST** /1.0/kb/invoices/{invoiceId}/customFields | Add custom fields to invoice
+[**createInvoiceTags**](InvoiceApi.md#createinvoicetags) | **POST** /1.0/kb/invoices/{invoiceId}/tags | Add tags to invoice
+[**createMigrationInvoice**](InvoiceApi.md#createmigrationinvoice) | **POST** /1.0/kb/invoices/migration/{accountId} | Create a migration invoice
+[**createTaxItems**](InvoiceApi.md#createtaxitems) | **POST** /1.0/kb/invoices/taxes/{accountId} | Create tax items
+[**deleteCBA**](InvoiceApi.md#deletecba) | **DELETE** /1.0/kb/invoices/{invoiceId}/{invoiceItemId}/cba | Delete a CBA item
+[**deleteInvoiceCustomFields**](InvoiceApi.md#deleteinvoicecustomfields) | **DELETE** /1.0/kb/invoices/{invoiceId}/customFields | Remove custom fields from invoice
+[**deleteInvoiceTags**](InvoiceApi.md#deleteinvoicetags) | **DELETE** /1.0/kb/invoices/{invoiceId}/tags | Remove tags from invoice
+[**generateDryRunInvoice**](InvoiceApi.md#generatedryruninvoice) | **POST** /1.0/kb/invoices/dryRun | Generate a dryRun invoice
+[**getCatalogTranslation**](InvoiceApi.md#getcatalogtranslation) | **GET** /1.0/kb/invoices/catalogTranslation/{locale} | Retrieves the catalog translation for the tenant
+[**getInvoice**](InvoiceApi.md#getinvoice) | **GET** /1.0/kb/invoices/{invoiceId} | Retrieve an invoice by id
+[**getInvoiceAsHTML**](InvoiceApi.md#getinvoiceashtml) | **GET** /1.0/kb/invoices/{invoiceId}/html | Render an invoice as HTML
+[**getInvoiceByItemId**](InvoiceApi.md#getinvoicebyitemid) | **GET** /1.0/kb/invoices/byItemId/{itemId} | Retrieve an invoice by invoice item id
+[**getInvoiceByNumber**](InvoiceApi.md#getinvoicebynumber) | **GET** /1.0/kb/invoices/byNumber/{invoiceNumber} | Retrieve an invoice by number
+[**getInvoiceCustomFields**](InvoiceApi.md#getinvoicecustomfields) | **GET** /1.0/kb/invoices/{invoiceId}/customFields | Retrieve invoice custom fields
+[**getInvoiceMPTemplate**](InvoiceApi.md#getinvoicemptemplate) | **GET** /1.0/kb/invoices/manualPayTemplate/{locale} | Retrieves the manualPay invoice template for the tenant
+[**getInvoiceTags**](InvoiceApi.md#getinvoicetags) | **GET** /1.0/kb/invoices/{invoiceId}/tags | Retrieve invoice tags
+[**getInvoiceTemplate**](InvoiceApi.md#getinvoicetemplate) | **GET** /1.0/kb/invoices/template | Retrieves the invoice template for the tenant
+[**getInvoiceTranslation**](InvoiceApi.md#getinvoicetranslation) | **GET** /1.0/kb/invoices/translation/{locale} | Retrieves the invoice translation for the tenant
+[**getInvoices**](InvoiceApi.md#getinvoices) | **GET** /1.0/kb/invoices/pagination | List invoices
+[**getPaymentsForInvoice**](InvoiceApi.md#getpaymentsforinvoice) | **GET** /1.0/kb/invoices/{invoiceId}/payments | Retrieve payments associated with an invoice
+[**modifyInvoiceCustomFields**](InvoiceApi.md#modifyinvoicecustomfields) | **PUT** /1.0/kb/invoices/{invoiceId}/customFields | Modify custom fields to invoice
+[**searchInvoices**](InvoiceApi.md#searchinvoices) | **GET** /1.0/kb/invoices/search/{searchKey} | Search invoices
+[**uploadCatalogTranslation**](InvoiceApi.md#uploadcatalogtranslation) | **POST** /1.0/kb/invoices/catalogTranslation/{locale} | Upload the catalog translation for the tenant
+[**uploadInvoiceMPTemplate**](InvoiceApi.md#uploadinvoicemptemplate) | **POST** /1.0/kb/invoices/manualPayTemplate | Upload the manualPay invoice template for the tenant
+[**uploadInvoiceTemplate**](InvoiceApi.md#uploadinvoicetemplate) | **POST** /1.0/kb/invoices/template | Upload the invoice template for the tenant
+[**uploadInvoiceTranslation**](InvoiceApi.md#uploadinvoicetranslation) | **POST** /1.0/kb/invoices/translation/{locale} | Upload the invoice translation for the tenant
+[**voidInvoice**](InvoiceApi.md#voidinvoice) | **PUT** /1.0/kb/invoices/{invoiceId}/voidInvoice | Perform the action of voiding an invoice
 
 # **adjustInvoiceItem**
 > \Killbill\Client\Swagger\Model\Invoice adjustInvoiceItem($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason, $xKillbillComment, $requestedDate, $pluginProperty)

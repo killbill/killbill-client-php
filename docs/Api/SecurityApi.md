@@ -4,16 +4,16 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addRoleDefinition**](SecurityApi.md#addRoleDefinition) | **POST** /1.0/kb/security/roles | Add a new role definition)
-[**addUserRoles**](SecurityApi.md#addUserRoles) | **POST** /1.0/kb/security/users | Add a new user with roles (to make api requests)
-[**getCurrentUserPermissions**](SecurityApi.md#getCurrentUserPermissions) | **GET** /1.0/kb/security/permissions | List user permissions
-[**getCurrentUserSubject**](SecurityApi.md#getCurrentUserSubject) | **GET** /1.0/kb/security/subject | Get user information
-[**getRoleDefinition**](SecurityApi.md#getRoleDefinition) | **GET** /1.0/kb/security/roles/{role} | Get role definition
-[**getUserRoles**](SecurityApi.md#getUserRoles) | **GET** /1.0/kb/security/users/{username}/roles | Get roles associated to a user
-[**invalidateUser**](SecurityApi.md#invalidateUser) | **DELETE** /1.0/kb/security/users/{username} | Invalidate an existing user
-[**updateRoleDefinition**](SecurityApi.md#updateRoleDefinition) | **PUT** /1.0/kb/security/roles | Update a new role definition)
-[**updateUserPassword**](SecurityApi.md#updateUserPassword) | **PUT** /1.0/kb/security/users/{username}/password | Update a user password
-[**updateUserRoles**](SecurityApi.md#updateUserRoles) | **PUT** /1.0/kb/security/users/{username}/roles | Update roles associated to a user
+[**addRoleDefinition**](SecurityApi.md#addroledefinition) | **POST** /1.0/kb/security/roles | Add a new role definition)
+[**addUserRoles**](SecurityApi.md#adduserroles) | **POST** /1.0/kb/security/users | Add a new user with roles (to make api requests)
+[**getCurrentUserPermissions**](SecurityApi.md#getcurrentuserpermissions) | **GET** /1.0/kb/security/permissions | List user permissions
+[**getCurrentUserSubject**](SecurityApi.md#getcurrentusersubject) | **GET** /1.0/kb/security/subject | Get user information
+[**getRoleDefinition**](SecurityApi.md#getroledefinition) | **GET** /1.0/kb/security/roles/{role} | Get role definition
+[**getUserRoles**](SecurityApi.md#getuserroles) | **GET** /1.0/kb/security/users/{username}/roles | Get roles associated to a user
+[**invalidateUser**](SecurityApi.md#invalidateuser) | **DELETE** /1.0/kb/security/users/{username} | Invalidate an existing user
+[**updateRoleDefinition**](SecurityApi.md#updateroledefinition) | **PUT** /1.0/kb/security/roles | Update a new role definition)
+[**updateUserPassword**](SecurityApi.md#updateuserpassword) | **PUT** /1.0/kb/security/users/{username}/password | Update a user password
+[**updateUserRoles**](SecurityApi.md#updateuserroles) | **PUT** /1.0/kb/security/users/{username}/roles | Update roles associated to a user
 
 # **addRoleDefinition**
 > \Killbill\Client\Swagger\Model\RoleDefinition addRoleDefinition($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)

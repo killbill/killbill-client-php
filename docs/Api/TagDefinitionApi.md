@@ -4,11 +4,11 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTagDefinition**](TagDefinitionApi.md#createTagDefinition) | **POST** /1.0/kb/tagDefinitions | Create a tag definition
-[**deleteTagDefinition**](TagDefinitionApi.md#deleteTagDefinition) | **DELETE** /1.0/kb/tagDefinitions/{tagDefinitionId} | Delete a tag definition
-[**getTagDefinition**](TagDefinitionApi.md#getTagDefinition) | **GET** /1.0/kb/tagDefinitions/{tagDefinitionId} | Retrieve a tag definition
-[**getTagDefinitionAuditLogsWithHistory**](TagDefinitionApi.md#getTagDefinitionAuditLogsWithHistory) | **GET** /1.0/kb/tagDefinitions/{tagDefinitionId}/auditLogsWithHistory | Retrieve tag definition audit logs with history by id
-[**getTagDefinitions**](TagDefinitionApi.md#getTagDefinitions) | **GET** /1.0/kb/tagDefinitions | List tag definitions
+[**createTagDefinition**](TagDefinitionApi.md#createtagdefinition) | **POST** /1.0/kb/tagDefinitions | Create a tag definition
+[**deleteTagDefinition**](TagDefinitionApi.md#deletetagdefinition) | **DELETE** /1.0/kb/tagDefinitions/{tagDefinitionId} | Delete a tag definition
+[**getTagDefinition**](TagDefinitionApi.md#gettagdefinition) | **GET** /1.0/kb/tagDefinitions/{tagDefinitionId} | Retrieve a tag definition
+[**getTagDefinitionAuditLogsWithHistory**](TagDefinitionApi.md#gettagdefinitionauditlogswithhistory) | **GET** /1.0/kb/tagDefinitions/{tagDefinitionId}/auditLogsWithHistory | Retrieve tag definition audit logs with history by id
+[**getTagDefinitions**](TagDefinitionApi.md#gettagdefinitions) | **GET** /1.0/kb/tagDefinitions | List tag definitions
 
 # **createTagDefinition**
 > \Killbill\Client\Swagger\Model\TagDefinition createTagDefinition($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment)
