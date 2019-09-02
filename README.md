@@ -3,7 +3,7 @@ killbill-client-php
 
 PHP client library for [Kill Bill](http://killbill.io).
 
-`master` branch is compatible with Kill Bill 0.18.x. For Kill Bill 0.20.x, use branch `work-for-release-0.20.x`.
+`master` branch is compatible with Kill Bill 0.20.x.
 
 
 ## Requirements
