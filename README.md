@@ -3,7 +3,12 @@ killbill-client-php
 
 PHP client library for [Kill Bill](http://killbill.io).
 
-`master` branch is compatible with Kill Bill 0.20.x.
+## Kill Bill compatibility
+
+| Client version | Kill Bill version |
+| -------------: | ----------------: |
+| 0.2.x          | 0.18.z            |
+| 0.3.x          | 0.20.z            |
 
 
 ## Requirements
