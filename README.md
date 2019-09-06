@@ -10,14 +10,6 @@ PHP client library for [Kill Bill](http://killbill.io).
 | 0.2.x          | 0.18.z            |
 | 0.3.x          | 0.20.z            |
 
-Kill Bill compatibility
------------------------
-
-| Plugin branch/version   | Kill Bill version  |
-| ----------------------: | -----------------: |
-| backport-0.18.x / 0.2.x | 0.18.z             |
-| master / 0.3.x          | 0.20.z             |
-
 ## Requirements
 
 PHP 5.5 and later
