@@ -31,7 +31,7 @@ jobs:
       - checkout
       - restore_cache:
           key: v1-dependencies-{{ .Branch }}-{{ checksum "composer.json" }}
-      - run: sudo apt install -y curl mysql-client
+      - run: sudo apt install -y curl mariadb-client
       - run:
           name: Setup DDL
           command: |
