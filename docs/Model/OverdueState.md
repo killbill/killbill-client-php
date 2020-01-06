@@ -5,7 +5,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional] 
 **externalMessage** | **string** |  | [optional] 
-**daysBetweenPaymentRetries** | **int[]** |  | [optional] 
 **isDisableEntitlementAndChangesBlocked** | **bool** |  | [optional] 
 **isBlockChanges** | **bool** |  | [optional] 
 **isClearState** | **bool** |  | [optional] 

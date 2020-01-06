@@ -4,11 +4,11 @@ All URIs are relative to */*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCredit**](CreditApi.md#createcredit) | **POST** /1.0/kb/credits | Create a credit
+[**createCredits**](CreditApi.md#createcredits) | **POST** /1.0/kb/credits | Create a credit
 [**getCredit**](CreditApi.md#getcredit) | **GET** /1.0/kb/credits/{creditId} | Retrieve a credit by id
 
-# **createCredit**
-> \Killbill\Client\Swagger\Model\Credit createCredit($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $autoCommit, $pluginProperty)
+# **createCredits**
+> \Killbill\Client\Swagger\Model\InvoiceItem[] createCredits($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $autoCommit, $pluginProperty)
 
 Create a credit
 
@@ -34,7 +34,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\CreditApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Killbill\Client\Swagger\Model\Credit(); // \Killbill\Client\Swagger\Model\Credit | 
+$body = array(new \Killbill\Client\Swagger\Model\InvoiceItem()); // \Killbill\Client\Swagger\Model\InvoiceItem[] | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -42,10 +42,10 @@ $autoCommit = true; // bool |
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->createCredit($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $autoCommit, $pluginProperty);
+    $result = $apiInstance->createCredits($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $autoCommit, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CreditApi->createCredit: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CreditApi->createCredits: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -54,7 +54,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Killbill\Client\Swagger\Model\Credit**](../Model/Credit.md)|  |
+ **body** | [**\Killbill\Client\Swagger\Model\InvoiceItem[]**](../Model/InvoiceItem.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Swagger\Model\Credit**](../Model/Credit.md)
+[**\Killbill\Client\Swagger\Model\InvoiceItem[]**](../Model/InvoiceItem.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCredit**
-> \Killbill\Client\Swagger\Model\Credit getCredit($creditId)
+> \Killbill\Client\Swagger\Model\InvoiceItem getCredit($creditId)
 
 Retrieve a credit by id
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Swagger\Model\Credit**](../Model/Credit.md)
+[**\Killbill\Client\Swagger\Model\InvoiceItem**](../Model/InvoiceItem.md)
 
 ### Authorization
 

@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**deleteInvoicePaymentCustomFields**](InvoicePaymentApi.md#deleteinvoicepaymentcustomfields) | **DELETE** /1.0/kb/invoicePayments/{paymentId}/customFields | Remove custom fields from payment
 [**deleteInvoicePaymentTags**](InvoicePaymentApi.md#deleteinvoicepaymenttags) | **DELETE** /1.0/kb/invoicePayments/{paymentId}/tags | Remove tags from payment
 [**getInvoicePayment**](InvoicePaymentApi.md#getinvoicepayment) | **GET** /1.0/kb/invoicePayments/{paymentId} | Retrieve a payment by id
+[**getInvoicePaymentAuditLogsWithHistory**](InvoicePaymentApi.md#getinvoicepaymentauditlogswithhistory) | **GET** /1.0/kb/invoicePayments/{invoicePaymentId}/auditLogsWithHistory | Retrieve invoice payment audit logs with history by id
 [**getInvoicePaymentCustomFields**](InvoicePaymentApi.md#getinvoicepaymentcustomfields) | **GET** /1.0/kb/invoicePayments/{paymentId}/customFields | Retrieve payment custom fields
 [**getInvoicePaymentTags**](InvoicePaymentApi.md#getinvoicepaymenttags) | **GET** /1.0/kb/invoicePayments/{paymentId}/tags | Retrieve payment tags
 [**modifyInvoicePaymentCustomFields**](InvoicePaymentApi.md#modifyinvoicepaymentcustomfields) | **PUT** /1.0/kb/invoicePayments/{paymentId}/customFields | Modify custom fields to payment
@@ -619,6 +620,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Killbill\Client\Swagger\Model\InvoicePayment**](../Model/InvoicePayment.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getInvoicePaymentAuditLogsWithHistory**
+> \Killbill\Client\Swagger\Model\AuditLog[] getInvoicePaymentAuditLogsWithHistory($invoicePaymentId)
+
+Retrieve invoice payment audit logs with history by id
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\InvoicePaymentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$invoicePaymentId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+
+try {
+    $result = $apiInstance->getInvoicePaymentAuditLogsWithHistory($invoicePaymentId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InvoicePaymentApi->getInvoicePaymentAuditLogsWithHistory: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **invoicePaymentId** | [**string**](../Model/.md)|  |
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\AuditLog[]**](../Model/AuditLog.md)
 
 ### Authorization
 

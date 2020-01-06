@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **currency** | **string** |  | [optional] 
 **quantity** | **int** |  | [optional] 
 **itemDetails** | **string** |  | [optional] 
+**catalogEffectiveDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **childItems** | [**\Killbill\Client\Swagger\Model\InvoiceItem[]**](InvoiceItem.md) |  | [optional] 
 **auditLogs** | [**\Killbill\Client\Swagger\Model\AuditLog[]**](AuditLog.md) |  | [optional] 
 

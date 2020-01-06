@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**getCatalogTranslation**](InvoiceApi.md#getcatalogtranslation) | **GET** /1.0/kb/invoices/catalogTranslation/{locale} | Retrieves the catalog translation for the tenant
 [**getInvoice**](InvoiceApi.md#getinvoice) | **GET** /1.0/kb/invoices/{invoiceId} | Retrieve an invoice by id
 [**getInvoiceAsHTML**](InvoiceApi.md#getinvoiceashtml) | **GET** /1.0/kb/invoices/{invoiceId}/html | Render an invoice as HTML
+[**getInvoiceAuditLogsWithHistory**](InvoiceApi.md#getinvoiceauditlogswithhistory) | **GET** /1.0/kb/invoices/{invoiceId}/auditLogsWithHistory | Retrieve invoice audit logs with history by id
 [**getInvoiceByItemId**](InvoiceApi.md#getinvoicebyitemid) | **GET** /1.0/kb/invoices/byItemId/{itemId} | Retrieve an invoice by invoice item id
 [**getInvoiceByNumber**](InvoiceApi.md#getinvoicebynumber) | **GET** /1.0/kb/invoices/byNumber/{invoiceNumber} | Retrieve an invoice by number
 [**getInvoiceCustomFields**](InvoiceApi.md#getinvoicecustomfields) | **GET** /1.0/kb/invoices/{invoiceId}/customFields | Retrieve invoice custom fields
@@ -988,7 +989,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoice**
-> \Killbill\Client\Swagger\Model\Invoice getInvoice($invoiceId, $withItems, $withChildrenItems, $audit)
+> \Killbill\Client\Swagger\Model\Invoice getInvoice($invoiceId, $withChildrenItems, $audit)
 
 Retrieve an invoice by id
 
@@ -1015,12 +1016,11 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $invoiceId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withItems = true; // bool | 
 $withChildrenItems = true; // bool | 
 $audit = "audit_example"; // string | 
 
 try {
-    $result = $apiInstance->getInvoice($invoiceId, $withItems, $withChildrenItems, $audit);
+    $result = $apiInstance->getInvoice($invoiceId, $withChildrenItems, $audit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoiceApi->getInvoice: ', $e->getMessage(), PHP_EOL;
@@ -1033,7 +1033,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceId** | [**string**](../Model/.md)|  |
- **withItems** | **bool**|  | [optional]
  **withChildrenItems** | **bool**|  | [optional]
  **audit** | **string**|  | [optional]
 
@@ -1111,8 +1110,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getInvoiceAuditLogsWithHistory**
+> \Killbill\Client\Swagger\Model\AuditLog[] getInvoiceAuditLogsWithHistory($invoiceId)
+
+Retrieve invoice audit logs with history by id
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$invoiceId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+
+try {
+    $result = $apiInstance->getInvoiceAuditLogsWithHistory($invoiceId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InvoiceApi->getInvoiceAuditLogsWithHistory: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **invoiceId** | [**string**](../Model/.md)|  |
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\AuditLog[]**](../Model/AuditLog.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getInvoiceByItemId**
-> \Killbill\Client\Swagger\Model\Invoice getInvoiceByItemId($itemId, $withItems, $withChildrenItems, $audit)
+> \Killbill\Client\Swagger\Model\Invoice getInvoiceByItemId($itemId, $withChildrenItems, $audit)
 
 Retrieve an invoice by invoice item id
 
@@ -1139,12 +1197,11 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $itemId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withItems = true; // bool | 
 $withChildrenItems = true; // bool | 
 $audit = "audit_example"; // string | 
 
 try {
-    $result = $apiInstance->getInvoiceByItemId($itemId, $withItems, $withChildrenItems, $audit);
+    $result = $apiInstance->getInvoiceByItemId($itemId, $withChildrenItems, $audit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoiceApi->getInvoiceByItemId: ', $e->getMessage(), PHP_EOL;
@@ -1157,7 +1214,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemId** | [**string**](../Model/.md)|  |
- **withItems** | **bool**|  | [optional]
  **withChildrenItems** | **bool**|  | [optional]
  **audit** | **string**|  | [optional]
 
@@ -1177,7 +1233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoiceByNumber**
-> \Killbill\Client\Swagger\Model\Invoice getInvoiceByNumber($invoiceNumber, $withItems, $withChildrenItems, $audit)
+> \Killbill\Client\Swagger\Model\Invoice getInvoiceByNumber($invoiceNumber, $withChildrenItems, $audit)
 
 Retrieve an invoice by number
 
@@ -1204,12 +1260,11 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $invoiceNumber = 56; // int | 
-$withItems = true; // bool | 
 $withChildrenItems = true; // bool | 
 $audit = "audit_example"; // string | 
 
 try {
-    $result = $apiInstance->getInvoiceByNumber($invoiceNumber, $withItems, $withChildrenItems, $audit);
+    $result = $apiInstance->getInvoiceByNumber($invoiceNumber, $withChildrenItems, $audit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoiceApi->getInvoiceByNumber: ', $e->getMessage(), PHP_EOL;
@@ -1222,7 +1277,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceNumber** | **int**|  |
- **withItems** | **bool**|  | [optional]
  **withChildrenItems** | **bool**|  | [optional]
  **audit** | **string**|  | [optional]
 
@@ -1539,7 +1593,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoices**
-> \Killbill\Client\Swagger\Model\Invoice[] getInvoices($offset, $limit, $withItems, $audit)
+> \Killbill\Client\Swagger\Model\Invoice[] getInvoices($offset, $limit, $audit)
 
 List invoices
 
@@ -1567,11 +1621,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
 );
 $offset = 789; // int | 
 $limit = 789; // int | 
-$withItems = true; // bool | 
 $audit = "audit_example"; // string | 
 
 try {
-    $result = $apiInstance->getInvoices($offset, $limit, $withItems, $audit);
+    $result = $apiInstance->getInvoices($offset, $limit, $audit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoiceApi->getInvoices: ', $e->getMessage(), PHP_EOL;
@@ -1585,7 +1638,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **offset** | **int**|  | [optional]
  **limit** | **int**|  | [optional]
- **withItems** | **bool**|  | [optional]
  **audit** | **string**|  | [optional]
 
 ### Return type
@@ -1735,7 +1787,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **searchInvoices**
-> \Killbill\Client\Swagger\Model\Invoice[] searchInvoices($searchKey, $offset, $limit, $withItems, $audit)
+> \Killbill\Client\Swagger\Model\Invoice[] searchInvoices($searchKey, $offset, $limit, $audit)
 
 Search invoices
 
@@ -1764,11 +1816,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
 $searchKey = "searchKey_example"; // string | 
 $offset = 789; // int | 
 $limit = 789; // int | 
-$withItems = true; // bool | 
 $audit = "audit_example"; // string | 
 
 try {
-    $result = $apiInstance->searchInvoices($searchKey, $offset, $limit, $withItems, $audit);
+    $result = $apiInstance->searchInvoices($searchKey, $offset, $limit, $audit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoiceApi->searchInvoices: ', $e->getMessage(), PHP_EOL;
@@ -1783,7 +1834,6 @@ Name | Type | Description  | Notes
  **searchKey** | **string**|  |
  **offset** | **int**|  | [optional]
  **limit** | **int**|  | [optional]
- **withItems** | **bool**|  | [optional]
  **audit** | **string**|  | [optional]
 
 ### Return type
