@@ -111,8 +111,6 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertNotEmpty($invoice->getCurrency());
         $this->assertEquals($invoice->getAmount(), 0);
         $this->assertEquals($invoice->getBalance(), 0);
-        $this->assertCount(1, $invoice->getItems());
-        $this->assertEquals(0, $invoice->getItems()[0]->getAmount());
 
         //TODO: must be $withItems = true (w/o quotes)
         $invoice = $this->client->getInvoiceApi()->getInvoice($invoices[1]->getInvoiceId(), $withItems = 'true');
@@ -123,9 +121,6 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertNotEmpty($invoice->getCurrency());
         $this->assertEquals($invoice->getAmount(), 500);
         $this->assertEquals($invoice->getBalance(), 0);
-        $this->assertNotEmpty($invoice->getItems());
-        $this->assertCount(1, $invoice->getItems());
-        $this->assertEquals(500, $invoice->getItems()[0]->getAmount());
     }
 
     /**
