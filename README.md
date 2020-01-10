@@ -19,7 +19,7 @@ PHP 5.5 and later
 
 Require the library via [composer](https://getcomposer.org):
 ```
-composer require killbill\killbill-client
+composer require killbill/killbill-client
 ```
 
 ### Manual Installation
