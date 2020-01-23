@@ -7,10 +7,15 @@ use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Psr7;
 
 /**
- * This adds X-Killbill-ApiKey headers to the whitelisted routes.
+ * This adds Killbill auth headers to the request
+ *
+ * Note: By default, credentials are added to whitelisted routes only.
+ * The other routes credentials are managed by generated swagger client.
+ * You can also specify an option, e.g: [killbill_auth_header => BASIC_AUTH | TENANT_KEY]
  */
 class AddAuthHeadersMiddleware
 {
+    const OPTION = 'killbill_auth_header';
     const BASIC_AUTH = 1;
     const TENANT_KEY = 2;
 
@@ -19,19 +24,23 @@ class AddAuthHeadersMiddleware
 
     private $configuration;
 
-    private $whitelist = [
-        ['GET|PUT', '/1.0/kb/tenants', [self::TENANT_KEY]],
-        ['POST|PUT', '/1.0/kb/test/clock', [self::BASIC_AUTH, self::TENANT_KEY]],
-        ['GET', '/1.0/kb/test/queues', [self::BASIC_AUTH, self::TENANT_KEY]],
-    ];
+    /** @var array */
+    private $whitelist;
     /**
      * @param callable      $nextHandler
      * @param Configuration $configuration
+     * @param array|null    $whitelist
      */
-    public function __construct(callable $nextHandler, Configuration $configuration)
+    public function __construct(callable $nextHandler, Configuration $configuration, array $whitelist = null)
     {
         $this->nextHandler = $nextHandler;
         $this->configuration = $configuration;
+
+        $this->whitelist = is_array($whitelist) ? $whitelist : [
+            ['GET|PUT', '/1.0/kb/tenants', self::TENANT_KEY],
+            ['POST|PUT', '/1.0/kb/test/clock', self::BASIC_AUTH | self::TENANT_KEY],
+            ['GET', '/1.0/kb/test/queues', self::BASIC_AUTH | self::TENANT_KEY],
+        ];
     }
 
     /**
@@ -52,7 +61,7 @@ class AddAuthHeadersMiddleware
      */
     public function __invoke(RequestInterface $request, array $options)
     {
-        $actions = $this->getActions($request);
+        $actions = $this->getActions($request, $options);
 
         if (!empty($actions)) {
             $request = $this->addHeaders($request, $actions);
@@ -66,11 +75,15 @@ class AddAuthHeadersMiddleware
      * @param RequestInterface $request
      * @return array
      */
-    private function getActions(RequestInterface $request)
+    private function getActions(RequestInterface $request, array $options)
     {
+        if (isset($options[self::OPTION])) {
+            return $options[self::OPTION];
+        }
         foreach ($this->whitelist as list($method, $path, $actions)) {
             if (preg_match('/'.$method.'/i', $request->getMethod())
-                && strpos($request->getUri()->getPath(), $path) !== false) {
+                && strpos($request->getUri()->getPath(), $path) !== false
+            ) {
                 return $actions;
             }
         }
@@ -80,16 +93,16 @@ class AddAuthHeadersMiddleware
 
     /**
      * @param RequestInterface $request
-     * @param array $actions
+     * @param int $actions
      * @return RequestInterface
      */
-    private function addHeaders(RequestInterface $request, array $actions)
+    private function addHeaders(RequestInterface $request, $actions)
     {
         $headers = [];
-        if (in_array(self::TENANT_KEY, $actions, true)) {
+        if ($actions & self::TENANT_KEY) {
             $headers = array_merge($headers, $this->getTenantHeader());
         }
-        if (in_array(self::BASIC_AUTH, $actions, true)) {
+        if ($actions & self::BASIC_AUTH) {
             $headers = array_merge($headers, $this->getBasicAuthHeader());
         }
 
