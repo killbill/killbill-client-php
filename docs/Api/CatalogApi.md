@@ -413,7 +413,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\CatalogApi(
     new GuzzleHttp\Client(),
     $config
 );
-$requestedDate = new \DateTime("2013-10-20"); // \DateTime | 
+$requestedDate = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 
 try {

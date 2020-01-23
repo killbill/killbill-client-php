@@ -9,6 +9,7 @@ PHP client library for [Kill Bill](http://killbill.io).
 | -------------: | ----------------: |
 | 0.2.x          | 0.18.z            |
 | 0.3.x          | 0.20.z            |
+| 0.4.x          | 0.22.z            |
 
 ## Requirements
 

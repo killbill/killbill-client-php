@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **accountId** | **string** |  | [optional] 
 **bundleId** | **string** |  | [optional] 
+**bundleExternalKey** | **string** |  | [optional] 
 **subscriptionId** | **string** |  | [optional] 
 **externalKey** | **string** |  | [optional] 
 **startDate** | [**\DateTime**](\DateTime.md) |  | [optional] 

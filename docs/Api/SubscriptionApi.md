@@ -15,7 +15,10 @@ Method | HTTP request | Description
 [**deleteSubscriptionCustomFields**](SubscriptionApi.md#deletesubscriptioncustomfields) | **DELETE** /1.0/kb/subscriptions/{subscriptionId}/customFields | Remove custom fields from subscription
 [**deleteSubscriptionTags**](SubscriptionApi.md#deletesubscriptiontags) | **DELETE** /1.0/kb/subscriptions/{subscriptionId}/tags | Remove tags from subscription
 [**getSubscription**](SubscriptionApi.md#getsubscription) | **GET** /1.0/kb/subscriptions/{subscriptionId} | Retrieve a subscription by id
+[**getSubscriptionAuditLogsWithHistory**](SubscriptionApi.md#getsubscriptionauditlogswithhistory) | **GET** /1.0/kb/subscriptions/{subscriptionId}/auditLogsWithHistory | Retrieve subscription audit logs with history by id
+[**getSubscriptionByKey**](SubscriptionApi.md#getsubscriptionbykey) | **GET** /1.0/kb/subscriptions | Retrieve a subscription by external key
 [**getSubscriptionCustomFields**](SubscriptionApi.md#getsubscriptioncustomfields) | **GET** /1.0/kb/subscriptions/{subscriptionId}/customFields | Retrieve subscription custom fields
+[**getSubscriptionEventAuditLogsWithHistory**](SubscriptionApi.md#getsubscriptioneventauditlogswithhistory) | **GET** /1.0/kb/subscriptions/events/{eventId}/auditLogsWithHistory | Retrieve subscription event audit logs with history by id
 [**getSubscriptionTags**](SubscriptionApi.md#getsubscriptiontags) | **GET** /1.0/kb/subscriptions/{subscriptionId}/tags | Retrieve subscription tags
 [**modifySubscriptionCustomFields**](SubscriptionApi.md#modifysubscriptioncustomfields) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/customFields | Modify custom fields to subscription
 [**uncancelSubscriptionPlan**](SubscriptionApi.md#uncancelsubscriptionplan) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/uncancel | Un-cancel an entitlement
@@ -809,6 +812,126 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getSubscriptionAuditLogsWithHistory**
+> \Killbill\Client\Swagger\Model\AuditLog[] getSubscriptionAuditLogsWithHistory($subscriptionId)
+
+Retrieve subscription audit logs with history by id
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+
+try {
+    $result = $apiInstance->getSubscriptionAuditLogsWithHistory($subscriptionId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SubscriptionApi->getSubscriptionAuditLogsWithHistory: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscriptionId** | [**string**](../Model/.md)|  |
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\AuditLog[]**](../Model/AuditLog.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getSubscriptionByKey**
+> \Killbill\Client\Swagger\Model\Subscription getSubscriptionByKey($externalKey, $audit)
+
+Retrieve a subscription by external key
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$externalKey = "externalKey_example"; // string | 
+$audit = "audit_example"; // string | 
+
+try {
+    $result = $apiInstance->getSubscriptionByKey($externalKey, $audit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SubscriptionApi->getSubscriptionByKey: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **externalKey** | **string**|  |
+ **audit** | **string**|  | [optional]
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\Subscription**](../Model/Subscription.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getSubscriptionCustomFields**
 > \Killbill\Client\Swagger\Model\CustomField[] getSubscriptionCustomFields($subscriptionId, $audit)
 
@@ -858,6 +981,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Killbill\Client\Swagger\Model\CustomField[]**](../Model/CustomField.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getSubscriptionEventAuditLogsWithHistory**
+> \Killbill\Client\Swagger\Model\AuditLog[] getSubscriptionEventAuditLogsWithHistory($eventId)
+
+Retrieve subscription event audit logs with history by id
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$eventId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+
+try {
+    $result = $apiInstance->getSubscriptionEventAuditLogsWithHistory($eventId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SubscriptionApi->getSubscriptionEventAuditLogsWithHistory: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventId** | [**string**](../Model/.md)|  |
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\AuditLog[]**](../Model/AuditLog.md)
 
 ### Authorization
 
