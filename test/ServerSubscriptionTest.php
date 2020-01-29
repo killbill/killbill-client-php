@@ -85,14 +85,14 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
         $this->assertEquals($subscription->getAccountId(), $subscriptionData->getAccountId());
         $this->assertEquals($subscription->getProductName(), $subscriptionData->getProductName());
         $this->assertEquals($subscription->getProductCategory(), $subscriptionData->getProductCategory());
         $this->assertEquals($subscription->getBillingPeriod(), $subscriptionData->getBillingPeriod());
-        $this->assertEquals($subscription->getExternalKey(), $subscriptionData->getExternalKey());
+        $this->assertEquals($subscription->getBundleExternalKey(), $subscriptionData->getBundleExternalKey());
 
         // Move by a few days -- still in trial -- and change product
         $this->clock->addDays(3);
@@ -132,7 +132,7 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
@@ -180,7 +180,7 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
@@ -243,14 +243,14 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscriptionBase = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
         $this->assertEquals($subscriptionBase->getAccountId(), $subscriptionData->getAccountId());
         $this->assertEquals($subscriptionBase->getProductName(), $subscriptionData->getProductName());
         $this->assertEquals($subscriptionBase->getProductCategory(), $subscriptionData->getProductCategory());
         $this->assertEquals($subscriptionBase->getBillingPeriod(), $subscriptionData->getBillingPeriod());
-        $this->assertEquals($subscriptionBase->getExternalKey(), $subscriptionData->getExternalKey());
+        $this->assertEquals($subscriptionBase->getBundleExternalKey(), $this->externalBundleId);
 
         $this->clock->addDays(3);
 
@@ -260,8 +260,7 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData2->setProductCategory('ADD_ON');
         $subscriptionData2->setBillingPeriod('MONTHLY');
         $subscriptionData2->setPriceList('DEFAULT');
-        $subscriptionData2->setExternalKey($this->externalBundleId);
-        $subscriptionData2->setBundleId($subscriptionBase->getBundleId());
+        $subscriptionData2->setBundleExternalKey($this->externalBundleId);
 
         $subscriptionAO = $this->client->getSubscriptionApi()->createSubscription($subscriptionData2, self::USER, self::REASON, self::COMMENT);
 
@@ -270,7 +269,8 @@ class ServerSubscriptionTest extends KillbillTest
         $this->assertEquals($subscriptionAO->getProductCategory(), $subscriptionData2->getProductCategory());
         $this->assertEquals($subscriptionAO->getBillingPeriod(), $subscriptionData2->getBillingPeriod());
         $this->assertEquals($subscriptionAO->getPriceList(), $subscriptionData2->getPriceList());
-        $this->assertEquals($subscriptionAO->getExternalKey(), $this->externalBundleId);
+        $this->assertEquals($subscriptionAO->getBundleExternalKey(), $this->externalBundleId);
+        $this->assertEquals($subscriptionAO->getBundleId(), $subscriptionBase->getBundleId());
 
         $bundle = $this->client->getBundleApi()->getBundle($subscriptionBase->getBundleId());
         $this->assertNotEmpty($bundle);
@@ -302,7 +302,7 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscriptionBase = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
@@ -352,7 +352,7 @@ class ServerSubscriptionTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscriptionBase = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 

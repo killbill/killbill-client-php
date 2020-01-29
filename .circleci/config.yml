@@ -21,10 +21,10 @@ jobs:
     <<: *defaults
     docker:
       - image: circleci/php:7.1-node-browsers
-      - image: killbill/killbill:0.20.10
+      - image: killbill/killbill:0.22.1
         environment:
           - KILLBILL_SERVER_TEST_MODE=true
-      - image: killbill/mariadb:0.20
+      - image: killbill/mariadb:0.22
         environment:
         - MYSQL_ROOT_PASSWORD=root
     steps:

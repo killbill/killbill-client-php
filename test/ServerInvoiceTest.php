@@ -79,7 +79,7 @@ class ServerInvoiceTest extends KillbillTest
     {
         $subscriptionData = new Subscription();
         $subscriptionData->setAccountId($this->account->getAccountId());
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
         $subscriptionData->setProductName('Sports');
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
@@ -87,7 +87,7 @@ class ServerInvoiceTest extends KillbillTest
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
         $this->assertEquals($subscriptionData->getAccountId(), $subscription->getAccountId());
-        $this->assertEquals($subscriptionData->getExternalKey(), $subscription->getExternalKey());
+        $this->assertEquals($subscriptionData->getBundleExternalKey(), $subscription->getBundleExternalKey());
 
         $this->assertEquals('Sports', $subscription->getProductName());
         $this->assertEquals('BASE', $subscription->getProductCategory());
@@ -111,6 +111,8 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertNotEmpty($invoice->getCurrency());
         $this->assertEquals($invoice->getAmount(), 0);
         $this->assertEquals($invoice->getBalance(), 0);
+        $this->assertCount(1, $invoice->getItems());
+        $this->assertEquals(0, $invoice->getItems()[0]->getAmount());
 
         //TODO: must be $withItems = true (w/o quotes)
         $invoice = $this->client->getInvoiceApi()->getInvoice($invoices[1]->getInvoiceId(), $withItems = 'true');
@@ -121,6 +123,9 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertNotEmpty($invoice->getCurrency());
         $this->assertEquals($invoice->getAmount(), 500);
         $this->assertEquals($invoice->getBalance(), 0);
+        $this->assertNotEmpty($invoice->getItems());
+        $this->assertCount(1, $invoice->getItems());
+        $this->assertEquals(500, $invoice->getItems()[0]->getAmount());
     }
 
     /**
@@ -135,7 +140,7 @@ class ServerInvoiceTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
@@ -212,7 +217,7 @@ class ServerInvoiceTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
@@ -289,22 +294,14 @@ class ServerInvoiceTest extends KillbillTest
         self::assertSame($this->account->getAccountId(), $subscriptionBase->getAccountId());
         self::assertSame('sports-monthly', $subscriptionBase->getPlanName());
 
-        $invoices = $this->client->getAccountApi()->getInvoicesForAccount(
-            $this->account->getAccountId(),
-            null,
-            $withItems = 'true'
-        );
+        $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(1, $invoices);
         $this->assertSame(0.0, $invoices[0]->getAmount());
 
         $this->clock->addDays(35);
         $this->clock->waitForExpectedClause(2, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
 
-        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount(
-            $this->account->getAccountId(),
-            null,
-            $withItems = 'true'
-        );
+        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(2, $invoicesNextMonth);
         $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
         $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
@@ -330,11 +327,7 @@ class ServerInvoiceTest extends KillbillTest
         self::assertSame($this->account->getAccountId(), $subscriptionGas->getAccountId());
         self::assertSame('gas-monthly', $subscriptionGas->getPlanName());
 
-        $invoices = $this->client->getAccountApi()->getInvoicesForAccount(
-            $this->account->getAccountId(),
-            null,
-            $withItems = 'true'
-        );
+        $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(1, $invoices);
         $this->assertSame(0.0, $invoices[0]->getAmount());
 
@@ -342,11 +335,7 @@ class ServerInvoiceTest extends KillbillTest
 
         $this->clock->waitForExpectedClause(2, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
 
-        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount(
-            $this->account->getAccountId(),
-            null,
-            $withItems = 'true'
-        );
+        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(2, $invoicesNextMonth);
         $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
         $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
