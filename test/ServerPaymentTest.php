@@ -101,14 +101,14 @@ class ServerPaymentTest extends KillbillTest
         $subscriptionData->setProductCategory('BASE');
         $subscriptionData->setBillingPeriod('MONTHLY');
         $subscriptionData->setPriceList('DEFAULT');
-        $subscriptionData->setExternalKey($this->externalBundleId);
+        $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
         $this->assertEquals($subscription->getAccountId(), $subscriptionData->getAccountId());
         $this->assertEquals($subscription->getProductName(), $subscriptionData->getProductName());
         $this->assertEquals($subscription->getProductCategory(), $subscriptionData->getProductCategory());
         $this->assertEquals($subscription->getBillingPeriod(), $subscriptionData->getBillingPeriod());
-        $this->assertEquals($subscription->getExternalKey(), $subscriptionData->getExternalKey());
+        $this->assertEquals($subscription->getBundleExternalKey(), $subscriptionData->getBundleExternalKey());
 
         // Move after trial
         $this->clock->addDays(31);
@@ -117,7 +117,7 @@ class ServerPaymentTest extends KillbillTest
         $unpaidInvoices = $this->client->getAccountApi()->getInvoicesForAccount(
             $this->account->getAccountId(),
             null,
-            $withItems = 'true',
+            null,
             null,
             $unpaidOnly = 'true'
         );
@@ -140,14 +140,14 @@ class ServerPaymentTest extends KillbillTest
         $unpaidInvoices = $this->client->getAccountApi()->getInvoicesForAccount(
             $this->account->getAccountId(),
             null,
-            $withItems = 'true',
+            null,
             null,
             $unpaidOnly = 'true'
         );
         $this->assertEmpty($unpaidInvoices);
 
         //TODO: 'true' must be w/o quotes
-        $allInvoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId(), null, $withItems = 'true');
+        $allInvoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(2, $allInvoices);
     }
 
