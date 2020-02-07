@@ -106,7 +106,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
         $catalogContents = file_get_contents(__DIR__.'/resources/SpyCarAdvanced.xml');
         $this->client->getCatalogApi()->uploadCatalogXml($catalogContents, self::USER, self::REASON, self::COMMENT);
 
-        $this->clock = new ServerClockMock($this->client->getGuzzleClient(), $this->client->getConfiguration());
+        $this->clock = new ServerClockMock($this->client->getGuzzleClient());
         // Reset clock to now
         $this->clock->setClock(null);
         $this->externalAccountId = uniqid();
