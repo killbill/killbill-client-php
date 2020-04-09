@@ -21,7 +21,7 @@ jobs:
     <<: *defaults
     docker:
       - image: circleci/php:7.1-node-browsers
-      - image: killbill/killbill:0.22.1
+      - image: killbill/killbill:0.22.6
         environment:
           - KILLBILL_SERVER_TEST_MODE=true
       - image: killbill/mariadb:0.22
@@ -31,7 +31,7 @@ jobs:
       - checkout
       - restore_cache:
           key: v1-dependencies-{{ .Branch }}-{{ checksum "composer.json" }}
-      - run: sudo apt install -y curl mariadb-client
+      - run: sudo apt-get update && sudo apt install -y curl mariadb-client
       - run:
           name: Setup DDL
           command: |

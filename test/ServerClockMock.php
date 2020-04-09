@@ -17,10 +17,8 @@
 
 namespace Killbill\Client;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Killbill\Client\Swagger\ApiException;
-use Killbill\Client\Swagger\Configuration;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -30,26 +28,14 @@ class ServerClockMock
 {
     const TIMEOUT_SEC = 120;
 
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
-
-    /**
-     * @var Configuration
-     */
-    protected $config;
+    private $client;
 
     /**
      * @param ClientInterface $client
-     * @param Configuration   $config
      */
-    public function __construct(
-        ClientInterface $client = null,
-        Configuration $config = null
-    ) {
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
+    public function __construct(ClientInterface $client)
+    {
+        $this->client = $client;
     }
 
     /**
@@ -91,7 +77,7 @@ class ServerClockMock
      */
     public function waitForKillbill()
     {
-        $response = $this->client->get('test/queues', ['query' => ['timeout_sec' => 5]]);
+        $response = $this->client->get('test/queues', ['query' => ['timeout_sec' => self::TIMEOUT_SEC]]);
         if (200 !== $response->getStatusCode()) {
             throw new ApiException(sprintf(
                 'Error calling test/queues. Status: %d, Message: %s',
