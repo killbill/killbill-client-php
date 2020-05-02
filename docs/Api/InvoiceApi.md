@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createInstantPayment**
-> \Killbill\Client\Swagger\Model\InvoicePayment createInstantPayment($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason, $xKillbillComment, $externalPayment, $pluginProperty)
+> \Killbill\Client\Swagger\Model\InvoicePayment createInstantPayment($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason, $xKillbillComment, $externalPayment, $controlPluginName, $pluginProperty)
 
 Trigger a payment for invoice
 
@@ -346,10 +346,11 @@ $invoiceId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string |
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 $externalPayment = true; // bool | 
+$controlPluginName = array("controlPluginName_example"); // string[] | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->createInstantPayment($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason, $xKillbillComment, $externalPayment, $pluginProperty);
+    $result = $apiInstance->createInstantPayment($body, $xKillbillCreatedBy, $invoiceId, $xKillbillReason, $xKillbillComment, $externalPayment, $controlPluginName, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoiceApi->createInstantPayment: ', $e->getMessage(), PHP_EOL;
@@ -367,6 +368,7 @@ Name | Type | Description  | Notes
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
  **externalPayment** | **bool**|  | [optional]
+ **controlPluginName** | [**string[]**](../Model/string.md)|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
