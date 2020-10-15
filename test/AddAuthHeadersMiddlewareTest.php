@@ -31,7 +31,7 @@ class AddAuthHeadersMiddlewareTest extends \PHPUnit\Framework\TestCase
     /**
      * prepare stuff
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->client = new KillbillClient(null, self::HOST, self::ADMIN_LOGIN, self::ADMIN_PASS);
         $this->client->setApiKey(self::TENANT_KEY);

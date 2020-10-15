@@ -44,7 +44,7 @@ class ServerPaymentTest extends KillbillTest
     /**
      * Set up test
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -73,7 +73,7 @@ class ServerPaymentTest extends KillbillTest
     /**
      * Tear down test
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         unset($this->externalBundleId, $this->account);
