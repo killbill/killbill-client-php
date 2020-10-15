@@ -500,7 +500,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId): void
+    public function setAccountId($accountId): Subscription
     {
         $this->container['accountId'] = $accountId;
 
@@ -524,7 +524,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBundleId($bundleId): void
+    public function setBundleId($bundleId): Subscription
     {
         $this->container['bundleId'] = $bundleId;
 
@@ -548,7 +548,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBundleExternalKey($bundleExternalKey): void
+    public function setBundleExternalKey($bundleExternalKey): Subscription
     {
         $this->container['bundleExternalKey'] = $bundleExternalKey;
 
@@ -572,7 +572,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setSubscriptionId($subscriptionId): void
+    public function setSubscriptionId($subscriptionId): Subscription
     {
         $this->container['subscriptionId'] = $subscriptionId;
 
@@ -596,7 +596,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setExternalKey($externalKey): void
+    public function setExternalKey($externalKey): Subscription
     {
         $this->container['externalKey'] = $externalKey;
 
@@ -620,7 +620,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setStartDate($startDate): void
+    public function setStartDate($startDate): Subscription
     {
         $this->container['startDate'] = $startDate;
 
@@ -644,7 +644,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setProductName($productName): void
+    public function setProductName($productName): Subscription
     {
         $this->container['productName'] = $productName;
 
@@ -668,7 +668,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setProductCategory($productCategory): void
+    public function setProductCategory($productCategory): Subscription
     {
         $allowedValues = $this->getProductCategoryAllowableValues();
         if (!is_null($productCategory) && !in_array($productCategory, $allowedValues, true)) {
@@ -701,7 +701,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBillingPeriod($billingPeriod): void
+    public function setBillingPeriod($billingPeriod): Subscription
     {
         $allowedValues = $this->getBillingPeriodAllowableValues();
         if (!in_array($billingPeriod, $allowedValues, true)) {
@@ -734,7 +734,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPhaseType($phaseType): void
+    public function setPhaseType($phaseType): Subscription
     {
         $allowedValues = $this->getPhaseTypeAllowableValues();
         if (!is_null($phaseType) && !in_array($phaseType, $allowedValues, true)) {
@@ -767,7 +767,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPriceList($priceList): void
+    public function setPriceList($priceList): Subscription
     {
         $this->container['priceList'] = $priceList;
 
@@ -791,7 +791,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPlanName($planName): void
+    public function setPlanName($planName): Subscription
     {
         $this->container['planName'] = $planName;
 
@@ -815,7 +815,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setState($state): void
+    public function setState($state): Subscription
     {
         $allowedValues = $this->getStateAllowableValues();
         if (!is_null($state) && !in_array($state, $allowedValues, true)) {
@@ -848,7 +848,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setSourceType($sourceType): void
+    public function setSourceType($sourceType): Subscription
     {
         $allowedValues = $this->getSourceTypeAllowableValues();
         if (!is_null($sourceType) && !in_array($sourceType, $allowedValues, true)) {
@@ -881,7 +881,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setCancelledDate($cancelledDate): void
+    public function setCancelledDate($cancelledDate): Subscription
     {
         $this->container['cancelledDate'] = $cancelledDate;
 
@@ -905,7 +905,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setChargedThroughDate($chargedThroughDate): void
+    public function setChargedThroughDate($chargedThroughDate): Subscription
     {
         $this->container['chargedThroughDate'] = $chargedThroughDate;
 
@@ -929,7 +929,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBillingStartDate($billingStartDate): void
+    public function setBillingStartDate($billingStartDate): Subscription
     {
         $this->container['billingStartDate'] = $billingStartDate;
 
@@ -953,7 +953,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBillingEndDate($billingEndDate): void
+    public function setBillingEndDate($billingEndDate): Subscription
     {
         $this->container['billingEndDate'] = $billingEndDate;
 
@@ -977,7 +977,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBillCycleDayLocal($billCycleDayLocal): void
+    public function setBillCycleDayLocal($billCycleDayLocal): Subscription
     {
         $this->container['billCycleDayLocal'] = $billCycleDayLocal;
 
@@ -1001,7 +1001,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setEvents($events): void
+    public function setEvents($events): Subscription
     {
         $this->container['events'] = $events;
 
@@ -1025,7 +1025,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPriceOverrides($priceOverrides): void
+    public function setPriceOverrides($priceOverrides): Subscription
     {
         $this->container['priceOverrides'] = $priceOverrides;
 
@@ -1049,7 +1049,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPrices($prices): void
+    public function setPrices($prices): Subscription
     {
         $this->container['prices'] = $prices;
 
@@ -1073,7 +1073,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): Subscription
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1098,7 +1098,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1111,7 +1111,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1127,7 +1127,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

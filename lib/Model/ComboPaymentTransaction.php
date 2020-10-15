@@ -243,7 +243,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAccount($account): void
+    public function setAccount($account): ComboPaymentTransaction
     {
         $this->container['account'] = $account;
 
@@ -267,7 +267,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPaymentMethod($paymentMethod): void
+    public function setPaymentMethod($paymentMethod): ComboPaymentTransaction
     {
         $this->container['paymentMethod'] = $paymentMethod;
 
@@ -291,7 +291,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setTransaction($transaction): void
+    public function setTransaction($transaction): ComboPaymentTransaction
     {
         $this->container['transaction'] = $transaction;
 
@@ -315,7 +315,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPaymentMethodPluginProperties($paymentMethodPluginProperties): void
+    public function setPaymentMethodPluginProperties($paymentMethodPluginProperties): ComboPaymentTransaction
     {
         $this->container['paymentMethodPluginProperties'] = $paymentMethodPluginProperties;
 
@@ -339,7 +339,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setTransactionPluginProperties($transactionPluginProperties): void
+    public function setTransactionPluginProperties($transactionPluginProperties): ComboPaymentTransaction
     {
         $this->container['transactionPluginProperties'] = $transactionPluginProperties;
 
@@ -363,7 +363,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): ComboPaymentTransaction
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -388,7 +388,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -401,7 +401,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -417,7 +417,7 @@ class ComboPaymentTransaction implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

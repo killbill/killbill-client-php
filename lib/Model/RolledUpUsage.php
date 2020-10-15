@@ -231,7 +231,7 @@ class RolledUpUsage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setSubscriptionId($subscriptionId): void
+    public function setSubscriptionId($subscriptionId): RolledUpUsage
     {
         $this->container['subscriptionId'] = $subscriptionId;
 
@@ -255,7 +255,7 @@ class RolledUpUsage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setStartDate($startDate): void
+    public function setStartDate($startDate): RolledUpUsage
     {
         $this->container['startDate'] = $startDate;
 
@@ -279,7 +279,7 @@ class RolledUpUsage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setEndDate($endDate): void
+    public function setEndDate($endDate): RolledUpUsage
     {
         $this->container['endDate'] = $endDate;
 
@@ -303,7 +303,7 @@ class RolledUpUsage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setRolledUpUnits($rolledUpUnits): void
+    public function setRolledUpUnits($rolledUpUnits): RolledUpUsage
     {
         $this->container['rolledUpUnits'] = $rolledUpUnits;
 
@@ -328,7 +328,7 @@ class RolledUpUsage implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -341,7 +341,7 @@ class RolledUpUsage implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -357,7 +357,7 @@ class RolledUpUsage implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

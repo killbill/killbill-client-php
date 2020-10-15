@@ -304,7 +304,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setCustomFieldId($customFieldId): void
+    public function setCustomFieldId($customFieldId): CustomField
     {
         $this->container['customFieldId'] = $customFieldId;
 
@@ -328,7 +328,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setObjectId($objectId): void
+    public function setObjectId($objectId): CustomField
     {
         $this->container['objectId'] = $objectId;
 
@@ -352,7 +352,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setObjectType($objectType): void
+    public function setObjectType($objectType): CustomField
     {
         $allowedValues = $this->getObjectTypeAllowableValues();
         if (!is_null($objectType) && !in_array($objectType, $allowedValues, true)) {
@@ -385,7 +385,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): CustomField
     {
         $this->container['name'] = $name;
 
@@ -409,7 +409,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setValue($value): void
+    public function setValue($value): CustomField
     {
         $this->container['value'] = $value;
 
@@ -433,7 +433,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): CustomField
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -458,7 +458,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -471,7 +471,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -487,7 +487,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

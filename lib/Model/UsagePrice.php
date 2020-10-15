@@ -300,7 +300,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setUsageName($usageName): void
+    public function setUsageName($usageName): UsagePrice
     {
         $this->container['usageName'] = $usageName;
 
@@ -324,7 +324,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setUsageType($usageType): void
+    public function setUsageType($usageType): UsagePrice
     {
         $allowedValues = $this->getUsageTypeAllowableValues();
         if (!is_null($usageType) && !in_array($usageType, $allowedValues, true)) {
@@ -357,7 +357,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setBillingMode($billingMode): void
+    public function setBillingMode($billingMode): UsagePrice
     {
         $allowedValues = $this->getBillingModeAllowableValues();
         if (!is_null($billingMode) && !in_array($billingMode, $allowedValues, true)) {
@@ -390,7 +390,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setTierBlockPolicy($tierBlockPolicy): void
+    public function setTierBlockPolicy($tierBlockPolicy): UsagePrice
     {
         $allowedValues = $this->getTierBlockPolicyAllowableValues();
         if (!is_null($tierBlockPolicy) && !in_array($tierBlockPolicy, $allowedValues, true)) {
@@ -423,7 +423,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setTierPrices($tierPrices): void
+    public function setTierPrices($tierPrices): UsagePrice
     {
         $this->container['tierPrices'] = $tierPrices;
 
@@ -448,7 +448,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -461,7 +461,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -477,7 +477,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

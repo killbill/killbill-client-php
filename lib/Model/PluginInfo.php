@@ -249,7 +249,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setBundleSymbolicName($bundleSymbolicName): void
+    public function setBundleSymbolicName($bundleSymbolicName): PluginInfo
     {
         $this->container['bundleSymbolicName'] = $bundleSymbolicName;
 
@@ -273,7 +273,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPluginKey($pluginKey): void
+    public function setPluginKey($pluginKey): PluginInfo
     {
         $this->container['pluginKey'] = $pluginKey;
 
@@ -297,7 +297,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPluginName($pluginName): void
+    public function setPluginName($pluginName): PluginInfo
     {
         $this->container['pluginName'] = $pluginName;
 
@@ -321,7 +321,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setVersion($version): void
+    public function setVersion($version): PluginInfo
     {
         $this->container['version'] = $version;
 
@@ -345,7 +345,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setState($state): void
+    public function setState($state): PluginInfo
     {
         $this->container['state'] = $state;
 
@@ -369,7 +369,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsSelectedForStart($isSelectedForStart): void
+    public function setIsSelectedForStart($isSelectedForStart): PluginInfo
     {
         $this->container['isSelectedForStart'] = $isSelectedForStart;
 
@@ -393,7 +393,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setServices($services): void
+    public function setServices($services): PluginInfo
     {
         $this->container['services'] = $services;
 
@@ -418,7 +418,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -431,7 +431,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -447,7 +447,7 @@ class PluginInfo implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

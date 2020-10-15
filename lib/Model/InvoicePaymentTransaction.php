@@ -1075,7 +1075,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setTransactionId($transactionId): void
+    public function setTransactionId($transactionId): InvoicePaymentTransaction
     {
         $this->container['transactionId'] = $transactionId;
 
@@ -1099,7 +1099,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setTransactionExternalKey($transactionExternalKey): void
+    public function setTransactionExternalKey($transactionExternalKey): InvoicePaymentTransaction
     {
         $this->container['transactionExternalKey'] = $transactionExternalKey;
 
@@ -1123,7 +1123,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setPaymentId($paymentId): void
+    public function setPaymentId($paymentId): InvoicePaymentTransaction
     {
         $this->container['paymentId'] = $paymentId;
 
@@ -1147,7 +1147,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setPaymentExternalKey($paymentExternalKey): void
+    public function setPaymentExternalKey($paymentExternalKey): InvoicePaymentTransaction
     {
         $this->container['paymentExternalKey'] = $paymentExternalKey;
 
@@ -1171,7 +1171,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setTransactionType($transactionType): void
+    public function setTransactionType($transactionType): InvoicePaymentTransaction
     {
         $allowedValues = $this->getTransactionTypeAllowableValues();
         if (!is_null($transactionType) && !in_array($transactionType, $allowedValues, true)) {
@@ -1204,7 +1204,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setAmount($amount): void
+    public function setAmount($amount): InvoicePaymentTransaction
     {
         $this->container['amount'] = $amount;
 
@@ -1228,7 +1228,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency): void
+    public function setCurrency($currency): InvoicePaymentTransaction
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -1261,7 +1261,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setEffectiveDate($effectiveDate): void
+    public function setEffectiveDate($effectiveDate): InvoicePaymentTransaction
     {
         $this->container['effectiveDate'] = $effectiveDate;
 
@@ -1285,7 +1285,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setProcessedAmount($processedAmount): void
+    public function setProcessedAmount($processedAmount): InvoicePaymentTransaction
     {
         $this->container['processedAmount'] = $processedAmount;
 
@@ -1309,7 +1309,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setProcessedCurrency($processedCurrency): void
+    public function setProcessedCurrency($processedCurrency): InvoicePaymentTransaction
     {
         $allowedValues = $this->getProcessedCurrencyAllowableValues();
         if (!is_null($processedCurrency) && !in_array($processedCurrency, $allowedValues, true)) {
@@ -1342,7 +1342,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setStatus($status): void
+    public function setStatus($status): InvoicePaymentTransaction
     {
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($status) && !in_array($status, $allowedValues, true)) {
@@ -1375,7 +1375,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setGatewayErrorCode($gatewayErrorCode): void
+    public function setGatewayErrorCode($gatewayErrorCode): InvoicePaymentTransaction
     {
         $this->container['gatewayErrorCode'] = $gatewayErrorCode;
 
@@ -1399,7 +1399,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setGatewayErrorMsg($gatewayErrorMsg): void
+    public function setGatewayErrorMsg($gatewayErrorMsg): InvoicePaymentTransaction
     {
         $this->container['gatewayErrorMsg'] = $gatewayErrorMsg;
 
@@ -1423,7 +1423,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setFirstPaymentReferenceId($firstPaymentReferenceId): void
+    public function setFirstPaymentReferenceId($firstPaymentReferenceId): InvoicePaymentTransaction
     {
         $this->container['firstPaymentReferenceId'] = $firstPaymentReferenceId;
 
@@ -1447,7 +1447,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setSecondPaymentReferenceId($secondPaymentReferenceId): void
+    public function setSecondPaymentReferenceId($secondPaymentReferenceId): InvoicePaymentTransaction
     {
         $this->container['secondPaymentReferenceId'] = $secondPaymentReferenceId;
 
@@ -1471,7 +1471,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setProperties($properties): void
+    public function setProperties($properties): InvoicePaymentTransaction
     {
         $this->container['properties'] = $properties;
 
@@ -1495,7 +1495,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setIsAdjusted($isAdjusted): void
+    public function setIsAdjusted($isAdjusted): InvoicePaymentTransaction
     {
         $this->container['isAdjusted'] = $isAdjusted;
 
@@ -1519,7 +1519,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setAdjustments($adjustments): void
+    public function setAdjustments($adjustments): InvoicePaymentTransaction
     {
         $this->container['adjustments'] = $adjustments;
 
@@ -1543,7 +1543,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): InvoicePaymentTransaction
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1568,7 +1568,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1581,7 +1581,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1597,7 +1597,7 @@ self::STATUS_PAYMENT_SYSTEM_OFF,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

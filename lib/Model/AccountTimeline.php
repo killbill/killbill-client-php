@@ -231,7 +231,7 @@ class AccountTimeline implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAccount($account): void
+    public function setAccount($account): AccountTimeline
     {
         $this->container['account'] = $account;
 
@@ -255,7 +255,7 @@ class AccountTimeline implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setBundles($bundles): void
+    public function setBundles($bundles): AccountTimeline
     {
         $this->container['bundles'] = $bundles;
 
@@ -279,7 +279,7 @@ class AccountTimeline implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setInvoices($invoices): void
+    public function setInvoices($invoices): AccountTimeline
     {
         $this->container['invoices'] = $invoices;
 
@@ -303,7 +303,7 @@ class AccountTimeline implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPayments($payments): void
+    public function setPayments($payments): AccountTimeline
     {
         $this->container['payments'] = $payments;
 
@@ -328,7 +328,7 @@ class AccountTimeline implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -341,7 +341,7 @@ class AccountTimeline implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -357,7 +357,7 @@ class AccountTimeline implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

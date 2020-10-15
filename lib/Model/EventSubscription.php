@@ -369,7 +369,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setEventId($eventId): void
+    public function setEventId($eventId): EventSubscription
     {
         $this->container['eventId'] = $eventId;
 
@@ -393,7 +393,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setBillingPeriod($billingPeriod): void
+    public function setBillingPeriod($billingPeriod): EventSubscription
     {
         $allowedValues = $this->getBillingPeriodAllowableValues();
         if (!is_null($billingPeriod) && !in_array($billingPeriod, $allowedValues, true)) {
@@ -426,7 +426,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setEffectiveDate($effectiveDate): void
+    public function setEffectiveDate($effectiveDate): EventSubscription
     {
         $this->container['effectiveDate'] = $effectiveDate;
 
@@ -450,7 +450,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setPlan($plan): void
+    public function setPlan($plan): EventSubscription
     {
         $this->container['plan'] = $plan;
 
@@ -474,7 +474,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setProduct($product): void
+    public function setProduct($product): EventSubscription
     {
         $this->container['product'] = $product;
 
@@ -498,7 +498,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setPriceList($priceList): void
+    public function setPriceList($priceList): EventSubscription
     {
         $this->container['priceList'] = $priceList;
 
@@ -522,7 +522,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setEventType($eventType): void
+    public function setEventType($eventType): EventSubscription
     {
         $allowedValues = $this->getEventTypeAllowableValues();
         if (!is_null($eventType) && !in_array($eventType, $allowedValues, true)) {
@@ -555,7 +555,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setIsBlockedBilling($isBlockedBilling): void
+    public function setIsBlockedBilling($isBlockedBilling): EventSubscription
     {
         $this->container['isBlockedBilling'] = $isBlockedBilling;
 
@@ -579,7 +579,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setIsBlockedEntitlement($isBlockedEntitlement): void
+    public function setIsBlockedEntitlement($isBlockedEntitlement): EventSubscription
     {
         $this->container['isBlockedEntitlement'] = $isBlockedEntitlement;
 
@@ -603,7 +603,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setServiceName($serviceName): void
+    public function setServiceName($serviceName): EventSubscription
     {
         $this->container['serviceName'] = $serviceName;
 
@@ -627,7 +627,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setServiceStateName($serviceStateName): void
+    public function setServiceStateName($serviceStateName): EventSubscription
     {
         $this->container['serviceStateName'] = $serviceStateName;
 
@@ -651,7 +651,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setPhase($phase): void
+    public function setPhase($phase): EventSubscription
     {
         $this->container['phase'] = $phase;
 
@@ -675,7 +675,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): EventSubscription
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -700,7 +700,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -713,7 +713,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -729,7 +729,7 @@ self::EVENT_TYPE_SERVICE_STATE_CHANGE,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

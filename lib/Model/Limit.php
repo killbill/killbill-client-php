@@ -225,7 +225,7 @@ class Limit implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setUnit($unit): void
+    public function setUnit($unit): Limit
     {
         $this->container['unit'] = $unit;
 
@@ -249,7 +249,7 @@ class Limit implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setMax($max): void
+    public function setMax($max): Limit
     {
         $this->container['max'] = $max;
 
@@ -273,7 +273,7 @@ class Limit implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setMin($min): void
+    public function setMin($min): Limit
     {
         $this->container['min'] = $min;
 
@@ -298,7 +298,7 @@ class Limit implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -311,7 +311,7 @@ class Limit implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -327,7 +327,7 @@ class Limit implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

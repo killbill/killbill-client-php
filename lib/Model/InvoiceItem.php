@@ -759,7 +759,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setInvoiceItemId($invoiceItemId): void
+    public function setInvoiceItemId($invoiceItemId): InvoiceItem
     {
         $this->container['invoiceItemId'] = $invoiceItemId;
 
@@ -783,7 +783,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setInvoiceId($invoiceId): void
+    public function setInvoiceId($invoiceId): InvoiceItem
     {
         $this->container['invoiceId'] = $invoiceId;
 
@@ -807,7 +807,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setLinkedInvoiceItemId($linkedInvoiceItemId): void
+    public function setLinkedInvoiceItemId($linkedInvoiceItemId): InvoiceItem
     {
         $this->container['linkedInvoiceItemId'] = $linkedInvoiceItemId;
 
@@ -831,7 +831,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId): void
+    public function setAccountId($accountId): InvoiceItem
     {
         $this->container['accountId'] = $accountId;
 
@@ -855,7 +855,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setChildAccountId($childAccountId): void
+    public function setChildAccountId($childAccountId): InvoiceItem
     {
         $this->container['childAccountId'] = $childAccountId;
 
@@ -879,7 +879,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setBundleId($bundleId): void
+    public function setBundleId($bundleId): InvoiceItem
     {
         $this->container['bundleId'] = $bundleId;
 
@@ -903,7 +903,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setSubscriptionId($subscriptionId): void
+    public function setSubscriptionId($subscriptionId): InvoiceItem
     {
         $this->container['subscriptionId'] = $subscriptionId;
 
@@ -927,7 +927,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setProductName($productName): void
+    public function setProductName($productName): InvoiceItem
     {
         $this->container['productName'] = $productName;
 
@@ -951,7 +951,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPlanName($planName): void
+    public function setPlanName($planName): InvoiceItem
     {
         $this->container['planName'] = $planName;
 
@@ -975,7 +975,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPhaseName($phaseName): void
+    public function setPhaseName($phaseName): InvoiceItem
     {
         $this->container['phaseName'] = $phaseName;
 
@@ -999,7 +999,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setUsageName($usageName): void
+    public function setUsageName($usageName): InvoiceItem
     {
         $this->container['usageName'] = $usageName;
 
@@ -1023,7 +1023,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPrettyProductName($prettyProductName): void
+    public function setPrettyProductName($prettyProductName): InvoiceItem
     {
         $this->container['prettyProductName'] = $prettyProductName;
 
@@ -1047,7 +1047,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPrettyPlanName($prettyPlanName): void
+    public function setPrettyPlanName($prettyPlanName): InvoiceItem
     {
         $this->container['prettyPlanName'] = $prettyPlanName;
 
@@ -1071,7 +1071,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPrettyPhaseName($prettyPhaseName): void
+    public function setPrettyPhaseName($prettyPhaseName): InvoiceItem
     {
         $this->container['prettyPhaseName'] = $prettyPhaseName;
 
@@ -1095,7 +1095,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPrettyUsageName($prettyUsageName): void
+    public function setPrettyUsageName($prettyUsageName): InvoiceItem
     {
         $this->container['prettyUsageName'] = $prettyUsageName;
 
@@ -1119,7 +1119,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setItemType($itemType): void
+    public function setItemType($itemType): InvoiceItem
     {
         $allowedValues = $this->getItemTypeAllowableValues();
         if (!is_null($itemType) && !in_array($itemType, $allowedValues, true)) {
@@ -1152,7 +1152,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setDescription($description): void
+    public function setDescription($description): InvoiceItem
     {
         $this->container['description'] = $description;
 
@@ -1176,7 +1176,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setStartDate($startDate): void
+    public function setStartDate($startDate): InvoiceItem
     {
         $this->container['startDate'] = $startDate;
 
@@ -1200,7 +1200,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setEndDate($endDate): void
+    public function setEndDate($endDate): InvoiceItem
     {
         $this->container['endDate'] = $endDate;
 
@@ -1224,7 +1224,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAmount($amount): void
+    public function setAmount($amount): InvoiceItem
     {
         $this->container['amount'] = $amount;
 
@@ -1248,7 +1248,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setRate($rate): void
+    public function setRate($rate): InvoiceItem
     {
         $this->container['rate'] = $rate;
 
@@ -1272,7 +1272,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency): void
+    public function setCurrency($currency): InvoiceItem
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -1305,7 +1305,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setQuantity($quantity): void
+    public function setQuantity($quantity): InvoiceItem
     {
         $this->container['quantity'] = $quantity;
 
@@ -1329,7 +1329,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setItemDetails($itemDetails): void
+    public function setItemDetails($itemDetails): InvoiceItem
     {
         $this->container['itemDetails'] = $itemDetails;
 
@@ -1353,7 +1353,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCatalogEffectiveDate($catalogEffectiveDate): void
+    public function setCatalogEffectiveDate($catalogEffectiveDate): InvoiceItem
     {
         $this->container['catalogEffectiveDate'] = $catalogEffectiveDate;
 
@@ -1377,7 +1377,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setChildItems($childItems): void
+    public function setChildItems($childItems): InvoiceItem
     {
         $this->container['childItems'] = $childItems;
 
@@ -1401,7 +1401,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): InvoiceItem
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1426,7 +1426,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1439,7 +1439,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1455,7 +1455,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

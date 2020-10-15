@@ -296,7 +296,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setId($id): void
+    public function setId($id): TagDefinition
     {
         $this->container['id'] = $id;
 
@@ -320,7 +320,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setIsControlTag($isControlTag): void
+    public function setIsControlTag($isControlTag): TagDefinition
     {
         $this->container['isControlTag'] = $isControlTag;
 
@@ -344,7 +344,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): TagDefinition
     {
         $this->container['name'] = $name;
 
@@ -368,7 +368,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setDescription($description): void
+    public function setDescription($description): TagDefinition
     {
         $this->container['description'] = $description;
 
@@ -392,7 +392,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setApplicableObjectTypes($applicableObjectTypes): void
+    public function setApplicableObjectTypes($applicableObjectTypes): TagDefinition
     {
         $allowedValues = $this->getApplicableObjectTypesAllowableValues();
         if (!is_null($applicableObjectTypes) && array_diff($applicableObjectTypes, $allowedValues)) {
@@ -425,7 +425,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): TagDefinition
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -450,7 +450,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -463,7 +463,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -479,7 +479,7 @@ self::APPLICABLE_OBJECT_TYPES_TENANT_KVS,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

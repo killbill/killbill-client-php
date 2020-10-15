@@ -243,7 +243,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setType($type): void
+    public function setType($type): Product
     {
         $this->container['type'] = $type;
 
@@ -267,7 +267,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): Product
     {
         $this->container['name'] = $name;
 
@@ -291,7 +291,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPrettyName($prettyName): void
+    public function setPrettyName($prettyName): Product
     {
         $this->container['prettyName'] = $prettyName;
 
@@ -315,7 +315,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPlans($plans): void
+    public function setPlans($plans): Product
     {
         $this->container['plans'] = $plans;
 
@@ -339,7 +339,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIncluded($included): void
+    public function setIncluded($included): Product
     {
         $this->container['included'] = $included;
 
@@ -363,7 +363,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAvailable($available): void
+    public function setAvailable($available): Product
     {
         $this->container['available'] = $available;
 
@@ -388,7 +388,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -401,7 +401,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -417,7 +417,7 @@ class Product implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

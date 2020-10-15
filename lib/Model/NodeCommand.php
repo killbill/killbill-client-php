@@ -225,7 +225,7 @@ class NodeCommand implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsSystemCommandType($isSystemCommandType): void
+    public function setIsSystemCommandType($isSystemCommandType): NodeCommand
     {
         $this->container['isSystemCommandType'] = $isSystemCommandType;
 
@@ -249,7 +249,7 @@ class NodeCommand implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setNodeCommandType($nodeCommandType): void
+    public function setNodeCommandType($nodeCommandType): NodeCommand
     {
         $this->container['nodeCommandType'] = $nodeCommandType;
 
@@ -273,7 +273,7 @@ class NodeCommand implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setNodeCommandProperties($nodeCommandProperties): void
+    public function setNodeCommandProperties($nodeCommandProperties): NodeCommand
     {
         $this->container['nodeCommandProperties'] = $nodeCommandProperties;
 
@@ -298,7 +298,7 @@ class NodeCommand implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -311,7 +311,7 @@ class NodeCommand implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -327,7 +327,7 @@ class NodeCommand implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

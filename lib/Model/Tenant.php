@@ -243,7 +243,7 @@ class Tenant implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setTenantId($tenantId): void
+    public function setTenantId($tenantId): Tenant
     {
         $this->container['tenantId'] = $tenantId;
 
@@ -267,7 +267,7 @@ class Tenant implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setExternalKey($externalKey): void
+    public function setExternalKey($externalKey): Tenant
     {
         $this->container['externalKey'] = $externalKey;
 
@@ -291,7 +291,7 @@ class Tenant implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setApiKey($apiKey): void
+    public function setApiKey($apiKey): Tenant
     {
         $this->container['apiKey'] = $apiKey;
 
@@ -315,7 +315,7 @@ class Tenant implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setApiSecret($apiSecret): void
+    public function setApiSecret($apiSecret): Tenant
     {
         $this->container['apiSecret'] = $apiSecret;
 
@@ -339,7 +339,7 @@ class Tenant implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): Tenant
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -364,7 +364,7 @@ class Tenant implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -377,7 +377,7 @@ class Tenant implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -393,7 +393,7 @@ class Tenant implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

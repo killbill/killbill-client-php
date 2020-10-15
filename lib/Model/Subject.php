@@ -231,7 +231,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPrincipal($principal): void
+    public function setPrincipal($principal): Subject
     {
         $this->container['principal'] = $principal;
 
@@ -255,7 +255,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsAuthenticated($isAuthenticated): void
+    public function setIsAuthenticated($isAuthenticated): Subject
     {
         $this->container['isAuthenticated'] = $isAuthenticated;
 
@@ -279,7 +279,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsRemembered($isRemembered): void
+    public function setIsRemembered($isRemembered): Subject
     {
         $this->container['isRemembered'] = $isRemembered;
 
@@ -303,7 +303,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setSession($session): void
+    public function setSession($session): Subject
     {
         $this->container['session'] = $session;
 
@@ -328,7 +328,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -341,7 +341,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -357,7 +357,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

@@ -276,7 +276,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): Plan
     {
         $this->container['name'] = $name;
 
@@ -300,7 +300,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setPrettyName($prettyName): void
+    public function setPrettyName($prettyName): Plan
     {
         $this->container['prettyName'] = $prettyName;
 
@@ -324,7 +324,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setBillingPeriod($billingPeriod): void
+    public function setBillingPeriod($billingPeriod): Plan
     {
         $allowedValues = $this->getBillingPeriodAllowableValues();
         if (!is_null($billingPeriod) && !in_array($billingPeriod, $allowedValues, true)) {
@@ -357,7 +357,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setPhases($phases): void
+    public function setPhases($phases): Plan
     {
         $this->container['phases'] = $phases;
 
@@ -382,7 +382,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -395,7 +395,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -411,7 +411,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

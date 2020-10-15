@@ -219,7 +219,7 @@ class PluginServiceInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setServiceTypeName($serviceTypeName): void
+    public function setServiceTypeName($serviceTypeName): PluginServiceInfo
     {
         $this->container['serviceTypeName'] = $serviceTypeName;
 
@@ -243,7 +243,7 @@ class PluginServiceInfo implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setRegistrationName($registrationName): void
+    public function setRegistrationName($registrationName): PluginServiceInfo
     {
         $this->container['registrationName'] = $registrationName;
 
@@ -268,7 +268,7 @@ class PluginServiceInfo implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -281,7 +281,7 @@ class PluginServiceInfo implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -297,7 +297,7 @@ class PluginServiceInfo implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

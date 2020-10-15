@@ -582,7 +582,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): Catalog
     {
         $this->container['name'] = $name;
 
@@ -606,7 +606,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return $this
      */
-    public function setEffectiveDate($effectiveDate): void
+    public function setEffectiveDate($effectiveDate): Catalog
     {
         $this->container['effectiveDate'] = $effectiveDate;
 
@@ -630,7 +630,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return $this
      */
-    public function setCurrencies($currencies): void
+    public function setCurrencies($currencies): Catalog
     {
         $allowedValues = $this->getCurrenciesAllowableValues();
         if (!is_null($currencies) && array_diff($currencies, $allowedValues)) {
@@ -663,7 +663,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return $this
      */
-    public function setUnits($units): void
+    public function setUnits($units): Catalog
     {
         $this->container['units'] = $units;
 
@@ -687,7 +687,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return $this
      */
-    public function setProducts($products): void
+    public function setProducts($products): Catalog
     {
         $this->container['products'] = $products;
 
@@ -711,7 +711,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return $this
      */
-    public function setPriceLists($priceLists): void
+    public function setPriceLists($priceLists): Catalog
     {
         $this->container['priceLists'] = $priceLists;
 
@@ -736,7 +736,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -749,7 +749,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -765,7 +765,7 @@ self::CURRENCIES_BTC,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

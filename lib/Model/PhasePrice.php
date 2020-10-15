@@ -243,7 +243,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPlanName($planName): void
+    public function setPlanName($planName): PhasePrice
     {
         $this->container['planName'] = $planName;
 
@@ -267,7 +267,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPhaseName($phaseName): void
+    public function setPhaseName($phaseName): PhasePrice
     {
         $this->container['phaseName'] = $phaseName;
 
@@ -291,7 +291,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPhaseType($phaseType): void
+    public function setPhaseType($phaseType): PhasePrice
     {
         $this->container['phaseType'] = $phaseType;
 
@@ -315,7 +315,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setFixedPrice($fixedPrice): void
+    public function setFixedPrice($fixedPrice): PhasePrice
     {
         $this->container['fixedPrice'] = $fixedPrice;
 
@@ -339,7 +339,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setRecurringPrice($recurringPrice): void
+    public function setRecurringPrice($recurringPrice): PhasePrice
     {
         $this->container['recurringPrice'] = $recurringPrice;
 
@@ -363,7 +363,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setUsagePrices($usagePrices): void
+    public function setUsagePrices($usagePrices): PhasePrice
     {
         $this->container['usagePrices'] = $usagePrices;
 
@@ -388,7 +388,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -401,7 +401,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -417,7 +417,7 @@ class PhasePrice implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
