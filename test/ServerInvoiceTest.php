@@ -36,7 +36,7 @@ class ServerInvoiceTest extends KillbillTest
     /**
      * Set up the test
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -65,7 +65,7 @@ class ServerInvoiceTest extends KillbillTest
     /**
      * Tear down the Test
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
 

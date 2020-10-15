@@ -24,7 +24,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Base test class
  */
-class KillbillTest extends \PHPUnit_Framework_TestCase
+class KillbillTest extends \PHPUnit\Framework\TestCase
 {
     const USER    = 'phpTester';
     const REASON  = 'test';
@@ -46,7 +46,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     /**
      * Set up the test
      */
-    public function setUp()
+    public function setUp(): void
     {
         // Enable this if you need some logs
         //$this->logger = new Logger('name');
@@ -132,7 +132,7 @@ class KillbillTest extends \PHPUnit_Framework_TestCase
     /**
      * Unset everything
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->externalAccountId, $this->accountData, $this->tenant, $this->clock);
     }

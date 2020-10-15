@@ -8,7 +8,7 @@ use Psr\Http\Message\RequestInterface;
 /**
  * Test for AddAuthHeadersMiddleware
  */
-class AddAuthHeadersMiddlewareTest extends \PHPUnit_Framework_TestCase
+class AddAuthHeadersMiddlewareTest extends \PHPUnit\Framework\TestCase
 {
     const HOST = 'http://localhost:8980';
     const ADMIN_LOGIN = 'admin';
@@ -31,7 +31,7 @@ class AddAuthHeadersMiddlewareTest extends \PHPUnit_Framework_TestCase
     /**
      * prepare stuff
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->client = new KillbillClient(null, self::HOST, self::ADMIN_LOGIN, self::ADMIN_PASS);
         $this->client->setApiKey(self::TENANT_KEY);
