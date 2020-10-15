@@ -2,7 +2,7 @@
 /**
  * Invoice
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -107,7 +107,7 @@ class Invoice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -117,7 +117,7 @@ class Invoice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -207,7 +207,7 @@ class Invoice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -217,7 +217,7 @@ class Invoice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -227,7 +227,7 @@ class Invoice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -237,7 +237,7 @@ class Invoice implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -416,7 +416,7 @@ const STATUS_VOID = 'VOID';
      *
      * @return string[]
      */
-    public function getCurrencyAllowableValues()
+    public function getCurrencyAllowableValues(): array
     {
         return [
             self::CURRENCY_AED,
@@ -590,7 +590,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return string[]
      */
-    public function getStatusAllowableValues()
+    public function getStatusAllowableValues(): array
     {
         return [
             self::STATUS_DRAFT,
@@ -639,7 +639,7 @@ self::STATUS_VOID,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -668,7 +668,7 @@ self::STATUS_VOID,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -691,7 +691,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount($amount): void
     {
         $this->container['amount'] = $amount;
 
@@ -715,7 +715,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -748,7 +748,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus($status): void
     {
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($status) && !in_array($status, $allowedValues, true)) {
@@ -781,7 +781,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setCreditAdj($creditAdj)
+    public function setCreditAdj($creditAdj): void
     {
         $this->container['creditAdj'] = $creditAdj;
 
@@ -805,7 +805,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setRefundAdj($refundAdj)
+    public function setRefundAdj($refundAdj): void
     {
         $this->container['refundAdj'] = $refundAdj;
 
@@ -829,7 +829,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setInvoiceId($invoiceId)
+    public function setInvoiceId($invoiceId): void
     {
         $this->container['invoiceId'] = $invoiceId;
 
@@ -853,7 +853,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setInvoiceDate($invoiceDate)
+    public function setInvoiceDate($invoiceDate): void
     {
         $this->container['invoiceDate'] = $invoiceDate;
 
@@ -877,7 +877,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setTargetDate($targetDate)
+    public function setTargetDate($targetDate): void
     {
         $this->container['targetDate'] = $targetDate;
 
@@ -901,7 +901,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setInvoiceNumber($invoiceNumber)
+    public function setInvoiceNumber($invoiceNumber): void
     {
         $this->container['invoiceNumber'] = $invoiceNumber;
 
@@ -925,7 +925,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setBalance($balance)
+    public function setBalance($balance): void
     {
         $this->container['balance'] = $balance;
 
@@ -949,7 +949,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId)
+    public function setAccountId($accountId): void
     {
         $this->container['accountId'] = $accountId;
 
@@ -973,7 +973,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setBundleKeys($bundleKeys)
+    public function setBundleKeys($bundleKeys): void
     {
         $this->container['bundleKeys'] = $bundleKeys;
 
@@ -997,7 +997,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setCredits($credits)
+    public function setCredits($credits): void
     {
         $this->container['credits'] = $credits;
 
@@ -1021,7 +1021,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setItems($items)
+    public function setItems($items): void
     {
         $this->container['items'] = $items;
 
@@ -1045,7 +1045,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setTrackingIds($trackingIds)
+    public function setTrackingIds($trackingIds): void
     {
         $this->container['trackingIds'] = $trackingIds;
 
@@ -1069,7 +1069,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setIsParentInvoice($isParentInvoice)
+    public function setIsParentInvoice($isParentInvoice): void
     {
         $this->container['isParentInvoice'] = $isParentInvoice;
 
@@ -1093,7 +1093,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setParentInvoiceId($parentInvoiceId)
+    public function setParentInvoiceId($parentInvoiceId): void
     {
         $this->container['parentInvoiceId'] = $parentInvoiceId;
 
@@ -1117,7 +1117,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setParentAccountId($parentAccountId)
+    public function setParentAccountId($parentAccountId): void
     {
         $this->container['parentAccountId'] = $parentAccountId;
 
@@ -1141,7 +1141,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1152,9 +1152,9 @@ self::STATUS_VOID,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -1166,7 +1166,7 @@ self::STATUS_VOID,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1179,7 +1179,7 @@ self::STATUS_VOID,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1195,7 +1195,7 @@ self::STATUS_VOID,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -1205,7 +1205,7 @@ self::STATUS_VOID,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

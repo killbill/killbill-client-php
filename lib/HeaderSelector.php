@@ -1,7 +1,7 @@
 <?php
 /**
  * ApiException
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -27,8 +27,6 @@
 
 namespace Killbill\Client\Swagger;
 
-use \Exception;
-
 /**
  * ApiException Class Doc Comment
  *
@@ -43,9 +41,10 @@ class HeaderSelector
     /**
      * @param string[] $accept
      * @param string[] $contentTypes
+     *
      * @return array
      */
-    public function selectHeaders($accept, $contentTypes)
+    public function selectHeaders(array $accept, array $contentTypes): array
     {
         $headers = [];
 
@@ -55,18 +54,21 @@ class HeaderSelector
         }
 
         $headers['Content-Type'] = $this->selectContentTypeHeader($contentTypes);
+
         return $headers;
     }
 
     /**
      * @param string[] $accept
+     *
      * @return array
      */
-    public function selectHeadersForMultipart($accept)
+    public function selectHeadersForMultipart(array $accept): array
     {
         $headers = $this->selectHeaders($accept, []);
 
         unset($headers['Content-Type']);
+
         return $headers;
     }
 
@@ -75,9 +77,9 @@ class HeaderSelector
      *
      * @param string[] $accept Array of header
      *
-     * @return string Accept (e.g. application/json)
+     * @return string|null Accept (e.g. application/json)
      */
-    private function selectAcceptHeader($accept)
+    private function selectAcceptHeader(array $accept): ?string
     {
         if (count($accept) === 0 || (count($accept) === 1 && $accept[0] === '')) {
             return null;
@@ -95,7 +97,7 @@ class HeaderSelector
      *
      * @return string Content-Type (e.g. application/json)
      */
-    private function selectContentTypeHeader($contentType)
+    private function selectContentTypeHeader(array $contentType): string
     {
         if (count($contentType) === 0 || (count($contentType) === 1 && $contentType[0] === '')) {
             return 'application/json';

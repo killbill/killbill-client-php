@@ -2,7 +2,7 @@
 /**
  * CustomField
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -81,7 +81,7 @@ class CustomField implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -91,7 +91,7 @@ class CustomField implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -142,7 +142,7 @@ class CustomField implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -152,7 +152,7 @@ class CustomField implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -162,7 +162,7 @@ class CustomField implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -172,7 +172,7 @@ class CustomField implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -202,7 +202,7 @@ const OBJECT_TYPE_TENANT_KVS = 'TENANT_KVS';
      *
      * @return string[]
      */
-    public function getObjectTypeAllowableValues()
+    public function getObjectTypeAllowableValues(): array
     {
         return [
             self::OBJECT_TYPE_ACCOUNT,
@@ -254,7 +254,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -281,7 +281,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -304,7 +304,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setCustomFieldId($customFieldId)
+    public function setCustomFieldId($customFieldId): void
     {
         $this->container['customFieldId'] = $customFieldId;
 
@@ -328,7 +328,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setObjectId($objectId)
+    public function setObjectId($objectId): void
     {
         $this->container['objectId'] = $objectId;
 
@@ -352,7 +352,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setObjectType($objectType)
+    public function setObjectType($objectType): void
     {
         $allowedValues = $this->getObjectTypeAllowableValues();
         if (!is_null($objectType) && !in_array($objectType, $allowedValues, true)) {
@@ -385,7 +385,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setName($name)
+    public function setName($name): void
     {
         $this->container['name'] = $name;
 
@@ -409,7 +409,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setValue($value)
+    public function setValue($value): void
     {
         $this->container['value'] = $value;
 
@@ -433,7 +433,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -444,9 +444,9 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -458,7 +458,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -471,7 +471,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -487,7 +487,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -497,7 +497,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

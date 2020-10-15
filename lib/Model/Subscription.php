@@ -2,7 +2,7 @@
 /**
  * Subscription
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -115,7 +115,7 @@ class Subscription implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -125,7 +125,7 @@ class Subscription implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -227,7 +227,7 @@ class Subscription implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -237,7 +237,7 @@ class Subscription implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -247,7 +247,7 @@ class Subscription implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -257,7 +257,7 @@ class Subscription implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -297,7 +297,7 @@ const SOURCE_TYPE_TRANSFERRED = 'TRANSFERRED';
      *
      * @return string[]
      */
-    public function getProductCategoryAllowableValues()
+    public function getProductCategoryAllowableValues(): array
     {
         return [
             self::PRODUCT_CATEGORY_BASE,
@@ -309,7 +309,7 @@ self::PRODUCT_CATEGORY_STANDALONE,        ];
      *
      * @return string[]
      */
-    public function getBillingPeriodAllowableValues()
+    public function getBillingPeriodAllowableValues(): array
     {
         return [
             self::BILLING_PERIOD_DAILY,
@@ -332,7 +332,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return string[]
      */
-    public function getPhaseTypeAllowableValues()
+    public function getPhaseTypeAllowableValues(): array
     {
         return [
             self::PHASE_TYPE_TRIAL,
@@ -345,7 +345,7 @@ self::PHASE_TYPE_EVERGREEN,        ];
      *
      * @return string[]
      */
-    public function getStateAllowableValues()
+    public function getStateAllowableValues(): array
     {
         return [
             self::STATE_PENDING,
@@ -359,7 +359,7 @@ self::STATE_EXPIRED,        ];
      *
      * @return string[]
      */
-    public function getSourceTypeAllowableValues()
+    public function getSourceTypeAllowableValues(): array
     {
         return [
             self::SOURCE_TYPE_NATIVE,
@@ -412,7 +412,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -477,7 +477,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -500,7 +500,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId)
+    public function setAccountId($accountId): void
     {
         $this->container['accountId'] = $accountId;
 
@@ -524,7 +524,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBundleId($bundleId)
+    public function setBundleId($bundleId): void
     {
         $this->container['bundleId'] = $bundleId;
 
@@ -548,7 +548,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBundleExternalKey($bundleExternalKey)
+    public function setBundleExternalKey($bundleExternalKey): void
     {
         $this->container['bundleExternalKey'] = $bundleExternalKey;
 
@@ -572,7 +572,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setSubscriptionId($subscriptionId)
+    public function setSubscriptionId($subscriptionId): void
     {
         $this->container['subscriptionId'] = $subscriptionId;
 
@@ -596,7 +596,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setExternalKey($externalKey)
+    public function setExternalKey($externalKey): void
     {
         $this->container['externalKey'] = $externalKey;
 
@@ -620,7 +620,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setStartDate($startDate)
+    public function setStartDate($startDate): void
     {
         $this->container['startDate'] = $startDate;
 
@@ -644,7 +644,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setProductName($productName)
+    public function setProductName($productName): void
     {
         $this->container['productName'] = $productName;
 
@@ -668,7 +668,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setProductCategory($productCategory)
+    public function setProductCategory($productCategory): void
     {
         $allowedValues = $this->getProductCategoryAllowableValues();
         if (!is_null($productCategory) && !in_array($productCategory, $allowedValues, true)) {
@@ -701,7 +701,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBillingPeriod($billingPeriod)
+    public function setBillingPeriod($billingPeriod): void
     {
         $allowedValues = $this->getBillingPeriodAllowableValues();
         if (!in_array($billingPeriod, $allowedValues, true)) {
@@ -734,7 +734,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPhaseType($phaseType)
+    public function setPhaseType($phaseType): void
     {
         $allowedValues = $this->getPhaseTypeAllowableValues();
         if (!is_null($phaseType) && !in_array($phaseType, $allowedValues, true)) {
@@ -767,7 +767,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPriceList($priceList)
+    public function setPriceList($priceList): void
     {
         $this->container['priceList'] = $priceList;
 
@@ -791,7 +791,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPlanName($planName)
+    public function setPlanName($planName): void
     {
         $this->container['planName'] = $planName;
 
@@ -815,7 +815,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setState($state)
+    public function setState($state): void
     {
         $allowedValues = $this->getStateAllowableValues();
         if (!is_null($state) && !in_array($state, $allowedValues, true)) {
@@ -848,7 +848,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setSourceType($sourceType)
+    public function setSourceType($sourceType): void
     {
         $allowedValues = $this->getSourceTypeAllowableValues();
         if (!is_null($sourceType) && !in_array($sourceType, $allowedValues, true)) {
@@ -881,7 +881,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setCancelledDate($cancelledDate)
+    public function setCancelledDate($cancelledDate): void
     {
         $this->container['cancelledDate'] = $cancelledDate;
 
@@ -905,7 +905,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setChargedThroughDate($chargedThroughDate)
+    public function setChargedThroughDate($chargedThroughDate): void
     {
         $this->container['chargedThroughDate'] = $chargedThroughDate;
 
@@ -929,7 +929,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBillingStartDate($billingStartDate)
+    public function setBillingStartDate($billingStartDate): void
     {
         $this->container['billingStartDate'] = $billingStartDate;
 
@@ -953,7 +953,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBillingEndDate($billingEndDate)
+    public function setBillingEndDate($billingEndDate): void
     {
         $this->container['billingEndDate'] = $billingEndDate;
 
@@ -977,7 +977,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setBillCycleDayLocal($billCycleDayLocal)
+    public function setBillCycleDayLocal($billCycleDayLocal): void
     {
         $this->container['billCycleDayLocal'] = $billCycleDayLocal;
 
@@ -1001,7 +1001,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setEvents($events)
+    public function setEvents($events): void
     {
         $this->container['events'] = $events;
 
@@ -1025,7 +1025,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPriceOverrides($priceOverrides)
+    public function setPriceOverrides($priceOverrides): void
     {
         $this->container['priceOverrides'] = $priceOverrides;
 
@@ -1049,7 +1049,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setPrices($prices)
+    public function setPrices($prices): void
     {
         $this->container['prices'] = $prices;
 
@@ -1073,7 +1073,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1084,9 +1084,9 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -1098,7 +1098,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1111,7 +1111,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1127,7 +1127,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -1137,7 +1137,7 @@ self::SOURCE_TYPE_TRANSFERRED,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

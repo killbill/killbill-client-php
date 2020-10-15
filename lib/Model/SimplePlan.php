@@ -2,7 +2,7 @@
 /**
  * SimplePlan
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -87,7 +87,7 @@ class SimplePlan implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -97,7 +97,7 @@ class SimplePlan implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -157,7 +157,7 @@ class SimplePlan implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -167,7 +167,7 @@ class SimplePlan implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -177,7 +177,7 @@ class SimplePlan implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -187,7 +187,7 @@ class SimplePlan implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -385,7 +385,7 @@ const TRIAL_TIME_UNIT_UNLIMITED = 'UNLIMITED';
      *
      * @return string[]
      */
-    public function getProductCategoryAllowableValues()
+    public function getProductCategoryAllowableValues(): array
     {
         return [
             self::PRODUCT_CATEGORY_BASE,
@@ -397,7 +397,7 @@ self::PRODUCT_CATEGORY_STANDALONE,        ];
      *
      * @return string[]
      */
-    public function getCurrencyAllowableValues()
+    public function getCurrencyAllowableValues(): array
     {
         return [
             self::CURRENCY_AED,
@@ -571,7 +571,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return string[]
      */
-    public function getBillingPeriodAllowableValues()
+    public function getBillingPeriodAllowableValues(): array
     {
         return [
             self::BILLING_PERIOD_DAILY,
@@ -594,7 +594,7 @@ self::BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return string[]
      */
-    public function getTrialTimeUnitAllowableValues()
+    public function getTrialTimeUnitAllowableValues(): array
     {
         return [
             self::TRIAL_TIME_UNIT_DAYS,
@@ -635,7 +635,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -680,7 +680,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -703,7 +703,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setPlanId($planId)
+    public function setPlanId($planId): void
     {
         $this->container['planId'] = $planId;
 
@@ -727,7 +727,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setProductName($productName)
+    public function setProductName($productName): void
     {
         $this->container['productName'] = $productName;
 
@@ -751,7 +751,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setProductCategory($productCategory)
+    public function setProductCategory($productCategory): void
     {
         $allowedValues = $this->getProductCategoryAllowableValues();
         if (!is_null($productCategory) && !in_array($productCategory, $allowedValues, true)) {
@@ -784,7 +784,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -817,7 +817,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount($amount): void
     {
         $this->container['amount'] = $amount;
 
@@ -841,7 +841,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setBillingPeriod($billingPeriod)
+    public function setBillingPeriod($billingPeriod): void
     {
         $allowedValues = $this->getBillingPeriodAllowableValues();
         if (!is_null($billingPeriod) && !in_array($billingPeriod, $allowedValues, true)) {
@@ -874,7 +874,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setTrialLength($trialLength)
+    public function setTrialLength($trialLength): void
     {
         $this->container['trialLength'] = $trialLength;
 
@@ -898,7 +898,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setTrialTimeUnit($trialTimeUnit)
+    public function setTrialTimeUnit($trialTimeUnit): void
     {
         $allowedValues = $this->getTrialTimeUnitAllowableValues();
         if (!is_null($trialTimeUnit) && !in_array($trialTimeUnit, $allowedValues, true)) {
@@ -931,7 +931,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setAvailableBaseProducts($availableBaseProducts)
+    public function setAvailableBaseProducts($availableBaseProducts): void
     {
         $this->container['availableBaseProducts'] = $availableBaseProducts;
 
@@ -942,9 +942,9 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -956,7 +956,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -969,7 +969,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -985,7 +985,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -995,7 +995,7 @@ self::TRIAL_TIME_UNIT_UNLIMITED,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(
