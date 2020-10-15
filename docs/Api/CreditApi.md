@@ -38,7 +38,7 @@ $body = array(new \Killbill\Client\Swagger\Model\InvoiceItem()); // \Killbill\Cl
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$autoCommit = true; // bool | 
+$autoCommit = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **autoCommit** | **bool**|  | [optional]
+ **autoCommit** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
