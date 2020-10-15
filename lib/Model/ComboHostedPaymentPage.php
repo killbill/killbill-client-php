@@ -2,7 +2,7 @@
 /**
  * ComboHostedPaymentPage
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -79,7 +79,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -89,7 +89,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -137,7 +137,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -147,7 +147,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -157,7 +157,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -167,7 +167,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -201,7 +201,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -214,7 +214,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -237,7 +237,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAccount($account)
+    public function setAccount($account): void
     {
         $this->container['account'] = $account;
 
@@ -261,7 +261,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPaymentMethod($paymentMethod)
+    public function setPaymentMethod($paymentMethod): void
     {
         $this->container['paymentMethod'] = $paymentMethod;
 
@@ -285,7 +285,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setHostedPaymentPageFields($hostedPaymentPageFields)
+    public function setHostedPaymentPageFields($hostedPaymentPageFields): void
     {
         $this->container['hostedPaymentPageFields'] = $hostedPaymentPageFields;
 
@@ -309,7 +309,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPaymentMethodPluginProperties($paymentMethodPluginProperties)
+    public function setPaymentMethodPluginProperties($paymentMethodPluginProperties): void
     {
         $this->container['paymentMethodPluginProperties'] = $paymentMethodPluginProperties;
 
@@ -333,7 +333,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -344,9 +344,9 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -358,7 +358,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -371,7 +371,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -387,7 +387,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -397,7 +397,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

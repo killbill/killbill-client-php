@@ -2,7 +2,7 @@
 /**
  * UsagePrice
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -79,7 +79,7 @@ class UsagePrice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -89,7 +89,7 @@ class UsagePrice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -137,7 +137,7 @@ class UsagePrice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -147,7 +147,7 @@ class UsagePrice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -157,7 +157,7 @@ class UsagePrice implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -167,7 +167,7 @@ class UsagePrice implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -184,7 +184,7 @@ const TIER_BLOCK_POLICY_TOP_TIER = 'TOP_TIER';
      *
      * @return string[]
      */
-    public function getUsageTypeAllowableValues()
+    public function getUsageTypeAllowableValues(): array
     {
         return [
             self::USAGE_TYPE_CAPACITY,
@@ -195,7 +195,7 @@ self::USAGE_TYPE_CONSUMABLE,        ];
      *
      * @return string[]
      */
-    public function getBillingModeAllowableValues()
+    public function getBillingModeAllowableValues(): array
     {
         return [
             self::BILLING_MODE_ADVANCE,
@@ -206,7 +206,7 @@ self::BILLING_MODE_ARREAR,        ];
      *
      * @return string[]
      */
-    public function getTierBlockPolicyAllowableValues()
+    public function getTierBlockPolicyAllowableValues(): array
     {
         return [
             self::TIER_BLOCK_POLICY_ALL_TIERS,
@@ -240,7 +240,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -277,7 +277,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -300,7 +300,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setUsageName($usageName)
+    public function setUsageName($usageName): void
     {
         $this->container['usageName'] = $usageName;
 
@@ -324,7 +324,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setUsageType($usageType)
+    public function setUsageType($usageType): void
     {
         $allowedValues = $this->getUsageTypeAllowableValues();
         if (!is_null($usageType) && !in_array($usageType, $allowedValues, true)) {
@@ -357,7 +357,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setBillingMode($billingMode)
+    public function setBillingMode($billingMode): void
     {
         $allowedValues = $this->getBillingModeAllowableValues();
         if (!is_null($billingMode) && !in_array($billingMode, $allowedValues, true)) {
@@ -390,7 +390,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setTierBlockPolicy($tierBlockPolicy)
+    public function setTierBlockPolicy($tierBlockPolicy): void
     {
         $allowedValues = $this->getTierBlockPolicyAllowableValues();
         if (!is_null($tierBlockPolicy) && !in_array($tierBlockPolicy, $allowedValues, true)) {
@@ -423,7 +423,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return $this
      */
-    public function setTierPrices($tierPrices)
+    public function setTierPrices($tierPrices): void
     {
         $this->container['tierPrices'] = $tierPrices;
 
@@ -434,9 +434,9 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -448,7 +448,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -461,7 +461,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -477,7 +477,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -487,7 +487,7 @@ self::TIER_BLOCK_POLICY_TOP_TIER,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

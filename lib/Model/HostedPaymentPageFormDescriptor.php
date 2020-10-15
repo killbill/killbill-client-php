@@ -2,7 +2,7 @@
 /**
  * HostedPaymentPageFormDescriptor
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -81,7 +81,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -91,7 +91,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -142,7 +142,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -152,7 +152,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -162,7 +162,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -172,7 +172,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -207,7 +207,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -220,7 +220,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -243,7 +243,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setKbAccountId($kbAccountId)
+    public function setKbAccountId($kbAccountId): void
     {
         $this->container['kbAccountId'] = $kbAccountId;
 
@@ -267,7 +267,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setFormMethod($formMethod)
+    public function setFormMethod($formMethod): void
     {
         $this->container['formMethod'] = $formMethod;
 
@@ -291,7 +291,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setFormUrl($formUrl)
+    public function setFormUrl($formUrl): void
     {
         $this->container['formUrl'] = $formUrl;
 
@@ -315,7 +315,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setFormFields($formFields)
+    public function setFormFields($formFields): void
     {
         $this->container['formFields'] = $formFields;
 
@@ -339,7 +339,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setProperties($properties)
+    public function setProperties($properties): void
     {
         $this->container['properties'] = $properties;
 
@@ -363,7 +363,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -374,9 +374,9 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -388,7 +388,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -401,7 +401,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -417,7 +417,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -427,7 +427,7 @@ class HostedPaymentPageFormDescriptor implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

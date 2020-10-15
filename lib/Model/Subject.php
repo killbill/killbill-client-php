@@ -2,7 +2,7 @@
 /**
  * Subject
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -77,7 +77,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -87,7 +87,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -132,7 +132,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -142,7 +142,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -152,7 +152,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -162,7 +162,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -195,7 +195,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -208,7 +208,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -231,7 +231,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPrincipal($principal)
+    public function setPrincipal($principal): void
     {
         $this->container['principal'] = $principal;
 
@@ -255,7 +255,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsAuthenticated($isAuthenticated)
+    public function setIsAuthenticated($isAuthenticated): void
     {
         $this->container['isAuthenticated'] = $isAuthenticated;
 
@@ -279,7 +279,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsRemembered($isRemembered)
+    public function setIsRemembered($isRemembered): void
     {
         $this->container['isRemembered'] = $isRemembered;
 
@@ -303,7 +303,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setSession($session)
+    public function setSession($session): void
     {
         $this->container['session'] = $session;
 
@@ -314,9 +314,9 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -328,7 +328,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -341,7 +341,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -357,7 +357,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -367,7 +367,7 @@ class Subject implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

@@ -2,7 +2,7 @@
 /**
  * BlockingState
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -87,7 +87,7 @@ class BlockingState implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -97,7 +97,7 @@ class BlockingState implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -157,7 +157,7 @@ class BlockingState implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -167,7 +167,7 @@ class BlockingState implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -177,7 +177,7 @@ class BlockingState implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -187,7 +187,7 @@ class BlockingState implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -201,7 +201,7 @@ const TYPE_ACCOUNT = 'ACCOUNT';
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getTypeAllowableValues(): array
     {
         return [
             self::TYPE_SUBSCRIPTION,
@@ -240,7 +240,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -261,7 +261,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -284,7 +284,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setBlockedId($blockedId)
+    public function setBlockedId($blockedId): void
     {
         $this->container['blockedId'] = $blockedId;
 
@@ -308,7 +308,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setStateName($stateName)
+    public function setStateName($stateName): void
     {
         $this->container['stateName'] = $stateName;
 
@@ -332,7 +332,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setService($service)
+    public function setService($service): void
     {
         $this->container['service'] = $service;
 
@@ -356,7 +356,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setIsBlockChange($isBlockChange)
+    public function setIsBlockChange($isBlockChange): void
     {
         $this->container['isBlockChange'] = $isBlockChange;
 
@@ -380,7 +380,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setIsBlockEntitlement($isBlockEntitlement)
+    public function setIsBlockEntitlement($isBlockEntitlement): void
     {
         $this->container['isBlockEntitlement'] = $isBlockEntitlement;
 
@@ -404,7 +404,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setIsBlockBilling($isBlockBilling)
+    public function setIsBlockBilling($isBlockBilling): void
     {
         $this->container['isBlockBilling'] = $isBlockBilling;
 
@@ -428,7 +428,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setEffectiveDate($effectiveDate)
+    public function setEffectiveDate($effectiveDate): void
     {
         $this->container['effectiveDate'] = $effectiveDate;
 
@@ -452,7 +452,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setType($type)
+    public function setType($type): void
     {
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($type) && !in_array($type, $allowedValues, true)) {
@@ -485,7 +485,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -496,9 +496,9 @@ self::TYPE_ACCOUNT,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -510,7 +510,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -523,7 +523,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -539,7 +539,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -549,7 +549,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

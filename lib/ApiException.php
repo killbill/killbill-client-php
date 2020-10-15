@@ -1,7 +1,7 @@
 <?php
 /**
  * ApiException
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -27,7 +27,6 @@
 
 namespace Killbill\Client\Swagger;
 
-use \Exception;
 use Psr\Http\Message\StreamInterface;
 
 /**
@@ -38,7 +37,7 @@ use Psr\Http\Message\StreamInterface;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ApiException extends Exception
+class ApiException extends \Exception
 {
 
     /**
@@ -65,12 +64,12 @@ class ApiException extends Exception
     /**
      * Constructor
      *
-     * @param string                $message         Error message
-     * @param int                   $code            HTTP status code
-     * @param string[]|null         $responseHeaders HTTP response header
-     * @param StreamInterface|null  $responseBody    HTTP decoded body of the server response
+     * @param string               $message         Error message
+     * @param int                  $code            HTTP status code
+     * @param string[]|null        $responseHeaders HTTP response header
+     * @param StreamInterface|null $responseBody    HTTP decoded body of the server response
      */
-    public function __construct($message = "", $code = 0, $responseHeaders = [], $responseBody = null)
+    public function __construct(string $message = '', int $code = 0, ?array $responseHeaders = [], ?StreamInterface $responseBody = null)
     {
         if ($responseBody instanceof StreamInterface) {
             $message .= ': '.$responseBody->getContents();
@@ -85,7 +84,7 @@ class ApiException extends Exception
      *
      * @return string[]|null HTTP response header
      */
-    public function getResponseHeaders()
+    public function getResponseHeaders(): ?array
     {
         return $this->responseHeaders;
     }
@@ -101,19 +100,19 @@ class ApiException extends Exception
     }
 
     /**
-     * Sets the deseralized response object (during deserialization)
+     * Sets the deserialized response object (during deserialization)
      *
      * @param mixed $obj Deserialized response object
      *
      * @return void
      */
-    public function setResponseObject($obj)
+    public function setResponseObject($obj): void
     {
         $this->responseObject = $obj;
     }
 
     /**
-     * Gets the deseralized response object (during deserialization)
+     * Gets the deserialized response object (during deserialization)
      *
      * @return mixed the deserialized response object
      */

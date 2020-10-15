@@ -2,7 +2,7 @@
 /**
  * InvoiceItem
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -123,7 +123,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -133,7 +133,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -247,7 +247,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -257,7 +257,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -267,7 +267,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -277,7 +277,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -463,7 +463,7 @@ const CURRENCY_BTC = 'BTC';
      *
      * @return string[]
      */
-    public function getItemTypeAllowableValues()
+    public function getItemTypeAllowableValues(): array
     {
         return [
             self::ITEM_TYPE_EXTERNAL_CHARGE,
@@ -482,7 +482,7 @@ self::ITEM_TYPE_PARENT_SUMMARY,        ];
      *
      * @return string[]
      */
-    public function getCurrencyAllowableValues()
+    public function getCurrencyAllowableValues(): array
     {
         return [
             self::CURRENCY_AED,
@@ -701,7 +701,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -736,7 +736,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -759,7 +759,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setInvoiceItemId($invoiceItemId)
+    public function setInvoiceItemId($invoiceItemId): void
     {
         $this->container['invoiceItemId'] = $invoiceItemId;
 
@@ -783,7 +783,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setInvoiceId($invoiceId)
+    public function setInvoiceId($invoiceId): void
     {
         $this->container['invoiceId'] = $invoiceId;
 
@@ -807,7 +807,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setLinkedInvoiceItemId($linkedInvoiceItemId)
+    public function setLinkedInvoiceItemId($linkedInvoiceItemId): void
     {
         $this->container['linkedInvoiceItemId'] = $linkedInvoiceItemId;
 
@@ -831,7 +831,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId)
+    public function setAccountId($accountId): void
     {
         $this->container['accountId'] = $accountId;
 
@@ -855,7 +855,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setChildAccountId($childAccountId)
+    public function setChildAccountId($childAccountId): void
     {
         $this->container['childAccountId'] = $childAccountId;
 
@@ -879,7 +879,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setBundleId($bundleId)
+    public function setBundleId($bundleId): void
     {
         $this->container['bundleId'] = $bundleId;
 
@@ -903,7 +903,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setSubscriptionId($subscriptionId)
+    public function setSubscriptionId($subscriptionId): void
     {
         $this->container['subscriptionId'] = $subscriptionId;
 
@@ -927,7 +927,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setProductName($productName)
+    public function setProductName($productName): void
     {
         $this->container['productName'] = $productName;
 
@@ -951,7 +951,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPlanName($planName)
+    public function setPlanName($planName): void
     {
         $this->container['planName'] = $planName;
 
@@ -975,7 +975,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPhaseName($phaseName)
+    public function setPhaseName($phaseName): void
     {
         $this->container['phaseName'] = $phaseName;
 
@@ -999,7 +999,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setUsageName($usageName)
+    public function setUsageName($usageName): void
     {
         $this->container['usageName'] = $usageName;
 
@@ -1023,7 +1023,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPrettyProductName($prettyProductName)
+    public function setPrettyProductName($prettyProductName): void
     {
         $this->container['prettyProductName'] = $prettyProductName;
 
@@ -1047,7 +1047,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPrettyPlanName($prettyPlanName)
+    public function setPrettyPlanName($prettyPlanName): void
     {
         $this->container['prettyPlanName'] = $prettyPlanName;
 
@@ -1071,7 +1071,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPrettyPhaseName($prettyPhaseName)
+    public function setPrettyPhaseName($prettyPhaseName): void
     {
         $this->container['prettyPhaseName'] = $prettyPhaseName;
 
@@ -1095,7 +1095,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPrettyUsageName($prettyUsageName)
+    public function setPrettyUsageName($prettyUsageName): void
     {
         $this->container['prettyUsageName'] = $prettyUsageName;
 
@@ -1119,7 +1119,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setItemType($itemType)
+    public function setItemType($itemType): void
     {
         $allowedValues = $this->getItemTypeAllowableValues();
         if (!is_null($itemType) && !in_array($itemType, $allowedValues, true)) {
@@ -1152,7 +1152,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription($description): void
     {
         $this->container['description'] = $description;
 
@@ -1176,7 +1176,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setStartDate($startDate)
+    public function setStartDate($startDate): void
     {
         $this->container['startDate'] = $startDate;
 
@@ -1200,7 +1200,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setEndDate($endDate)
+    public function setEndDate($endDate): void
     {
         $this->container['endDate'] = $endDate;
 
@@ -1224,7 +1224,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount($amount): void
     {
         $this->container['amount'] = $amount;
 
@@ -1248,7 +1248,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setRate($rate)
+    public function setRate($rate): void
     {
         $this->container['rate'] = $rate;
 
@@ -1272,7 +1272,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -1305,7 +1305,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setQuantity($quantity)
+    public function setQuantity($quantity): void
     {
         $this->container['quantity'] = $quantity;
 
@@ -1329,7 +1329,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setItemDetails($itemDetails)
+    public function setItemDetails($itemDetails): void
     {
         $this->container['itemDetails'] = $itemDetails;
 
@@ -1353,7 +1353,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCatalogEffectiveDate($catalogEffectiveDate)
+    public function setCatalogEffectiveDate($catalogEffectiveDate): void
     {
         $this->container['catalogEffectiveDate'] = $catalogEffectiveDate;
 
@@ -1377,7 +1377,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setChildItems($childItems)
+    public function setChildItems($childItems): void
     {
         $this->container['childItems'] = $childItems;
 
@@ -1401,7 +1401,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1412,9 +1412,9 @@ self::CURRENCY_BTC,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -1426,7 +1426,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1439,7 +1439,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1455,7 +1455,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -1465,7 +1465,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

@@ -2,7 +2,7 @@
 /**
  * InvoicePayment
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -99,7 +99,7 @@ class InvoicePayment implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -109,7 +109,7 @@ class InvoicePayment implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -187,7 +187,7 @@ class InvoicePayment implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -197,7 +197,7 @@ class InvoicePayment implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -207,7 +207,7 @@ class InvoicePayment implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -217,7 +217,7 @@ class InvoicePayment implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -393,7 +393,7 @@ const CURRENCY_BTC = 'BTC';
      *
      * @return string[]
      */
-    public function getCurrencyAllowableValues()
+    public function getCurrencyAllowableValues(): array
     {
         return [
             self::CURRENCY_AED,
@@ -600,7 +600,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -621,7 +621,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -644,7 +644,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setTargetInvoiceId($targetInvoiceId)
+    public function setTargetInvoiceId($targetInvoiceId): void
     {
         $this->container['targetInvoiceId'] = $targetInvoiceId;
 
@@ -668,7 +668,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId)
+    public function setAccountId($accountId): void
     {
         $this->container['accountId'] = $accountId;
 
@@ -692,7 +692,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentId($paymentId)
+    public function setPaymentId($paymentId): void
     {
         $this->container['paymentId'] = $paymentId;
 
@@ -716,7 +716,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentNumber($paymentNumber)
+    public function setPaymentNumber($paymentNumber): void
     {
         $this->container['paymentNumber'] = $paymentNumber;
 
@@ -740,7 +740,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentExternalKey($paymentExternalKey)
+    public function setPaymentExternalKey($paymentExternalKey): void
     {
         $this->container['paymentExternalKey'] = $paymentExternalKey;
 
@@ -764,7 +764,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAuthAmount($authAmount)
+    public function setAuthAmount($authAmount): void
     {
         $this->container['authAmount'] = $authAmount;
 
@@ -788,7 +788,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCapturedAmount($capturedAmount)
+    public function setCapturedAmount($capturedAmount): void
     {
         $this->container['capturedAmount'] = $capturedAmount;
 
@@ -812,7 +812,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPurchasedAmount($purchasedAmount)
+    public function setPurchasedAmount($purchasedAmount): void
     {
         $this->container['purchasedAmount'] = $purchasedAmount;
 
@@ -836,7 +836,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setRefundedAmount($refundedAmount)
+    public function setRefundedAmount($refundedAmount): void
     {
         $this->container['refundedAmount'] = $refundedAmount;
 
@@ -860,7 +860,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCreditedAmount($creditedAmount)
+    public function setCreditedAmount($creditedAmount): void
     {
         $this->container['creditedAmount'] = $creditedAmount;
 
@@ -884,7 +884,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -917,7 +917,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentMethodId($paymentMethodId)
+    public function setPaymentMethodId($paymentMethodId): void
     {
         $this->container['paymentMethodId'] = $paymentMethodId;
 
@@ -941,7 +941,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setTransactions($transactions)
+    public function setTransactions($transactions): void
     {
         $this->container['transactions'] = $transactions;
 
@@ -965,7 +965,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentAttempts($paymentAttempts)
+    public function setPaymentAttempts($paymentAttempts): void
     {
         $this->container['paymentAttempts'] = $paymentAttempts;
 
@@ -989,7 +989,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1000,9 +1000,9 @@ self::CURRENCY_BTC,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -1014,7 +1014,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1027,7 +1027,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1043,7 +1043,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -1053,7 +1053,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

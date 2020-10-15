@@ -2,7 +2,7 @@
 /**
  * OverdueCondition
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -81,7 +81,7 @@ class OverdueCondition implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -91,7 +91,7 @@ class OverdueCondition implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -142,7 +142,7 @@ class OverdueCondition implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -152,7 +152,7 @@ class OverdueCondition implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -162,7 +162,7 @@ class OverdueCondition implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -172,7 +172,7 @@ class OverdueCondition implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -211,7 +211,7 @@ const RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER = 'OTHER';
      *
      * @return string[]
      */
-    public function getControlTagInclusionAllowableValues()
+    public function getControlTagInclusionAllowableValues(): array
     {
         return [
             self::CONTROL_TAG_INCLUSION_AUTO_PAY_OFF,
@@ -229,7 +229,7 @@ self::CONTROL_TAG_INCLUSION_AUTO_INVOICING_REUSE_DRAFT,        ];
      *
      * @return string[]
      */
-    public function getControlTagExclusionAllowableValues()
+    public function getControlTagExclusionAllowableValues(): array
     {
         return [
             self::CONTROL_TAG_EXCLUSION_AUTO_PAY_OFF,
@@ -247,7 +247,7 @@ self::CONTROL_TAG_EXCLUSION_AUTO_INVOICING_REUSE_DRAFT,        ];
      *
      * @return string[]
      */
-    public function getResponseForLastFailedPaymentAllowableValues()
+    public function getResponseForLastFailedPaymentAllowableValues(): array
     {
         return [
             self::RESPONSE_FOR_LAST_FAILED_PAYMENT_INVALID_CARD,
@@ -290,7 +290,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -319,7 +319,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -342,7 +342,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setTimeSinceEarliestUnpaidInvoiceEqualsOrExceeds($timeSinceEarliestUnpaidInvoiceEqualsOrExceeds)
+    public function setTimeSinceEarliestUnpaidInvoiceEqualsOrExceeds($timeSinceEarliestUnpaidInvoiceEqualsOrExceeds): void
     {
         $this->container['timeSinceEarliestUnpaidInvoiceEqualsOrExceeds'] = $timeSinceEarliestUnpaidInvoiceEqualsOrExceeds;
 
@@ -366,7 +366,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setControlTagInclusion($controlTagInclusion)
+    public function setControlTagInclusion($controlTagInclusion): void
     {
         $allowedValues = $this->getControlTagInclusionAllowableValues();
         if (!is_null($controlTagInclusion) && !in_array($controlTagInclusion, $allowedValues, true)) {
@@ -399,7 +399,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setControlTagExclusion($controlTagExclusion)
+    public function setControlTagExclusion($controlTagExclusion): void
     {
         $allowedValues = $this->getControlTagExclusionAllowableValues();
         if (!is_null($controlTagExclusion) && !in_array($controlTagExclusion, $allowedValues, true)) {
@@ -432,7 +432,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setNumberOfUnpaidInvoicesEqualsOrExceeds($numberOfUnpaidInvoicesEqualsOrExceeds)
+    public function setNumberOfUnpaidInvoicesEqualsOrExceeds($numberOfUnpaidInvoicesEqualsOrExceeds): void
     {
         $this->container['numberOfUnpaidInvoicesEqualsOrExceeds'] = $numberOfUnpaidInvoicesEqualsOrExceeds;
 
@@ -456,7 +456,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setResponseForLastFailedPayment($responseForLastFailedPayment)
+    public function setResponseForLastFailedPayment($responseForLastFailedPayment): void
     {
         $allowedValues = $this->getResponseForLastFailedPaymentAllowableValues();
         if (!is_null($responseForLastFailedPayment) && array_diff($responseForLastFailedPayment, $allowedValues)) {
@@ -489,7 +489,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setTotalUnpaidInvoiceBalanceEqualsOrExceeds($totalUnpaidInvoiceBalanceEqualsOrExceeds)
+    public function setTotalUnpaidInvoiceBalanceEqualsOrExceeds($totalUnpaidInvoiceBalanceEqualsOrExceeds): void
     {
         $this->container['totalUnpaidInvoiceBalanceEqualsOrExceeds'] = $totalUnpaidInvoiceBalanceEqualsOrExceeds;
 
@@ -500,9 +500,9 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -514,7 +514,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -527,7 +527,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -543,7 +543,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -553,7 +553,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(

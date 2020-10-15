@@ -2,7 +2,7 @@
 /**
  * Account
  *
- * PHP version 5
+ * PHP version 7.1+
  *
  * @category Class
  * @package  Killbill\Client\Swagger
@@ -121,7 +121,7 @@ class Account implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
@@ -131,7 +131,7 @@ class Account implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -242,7 +242,7 @@ class Account implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
@@ -252,7 +252,7 @@ class Account implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
@@ -262,7 +262,7 @@ class Account implements ModelInterface, ArrayAccess
      *
      * @return array
      */
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -272,7 +272,7 @@ class Account implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getModelName()
+    public function getModelName(): string
     {
         return self::$swaggerModelName;
     }
@@ -448,7 +448,7 @@ const CURRENCY_BTC = 'BTC';
      *
      * @return string[]
      */
-    public function getCurrencyAllowableValues()
+    public function getCurrencyAllowableValues(): array
     {
         return [
             self::CURRENCY_AED,
@@ -666,7 +666,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalidProperties = [];
 
@@ -687,7 +687,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return count($this->listInvalidProperties()) === 0;
     }
@@ -710,7 +710,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId)
+    public function setAccountId($accountId): void
     {
         $this->container['accountId'] = $accountId;
 
@@ -734,7 +734,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setName($name)
+    public function setName($name): void
     {
         $this->container['name'] = $name;
 
@@ -758,7 +758,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setFirstNameLength($firstNameLength)
+    public function setFirstNameLength($firstNameLength): void
     {
         $this->container['firstNameLength'] = $firstNameLength;
 
@@ -782,7 +782,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setExternalKey($externalKey)
+    public function setExternalKey($externalKey): void
     {
         $this->container['externalKey'] = $externalKey;
 
@@ -806,7 +806,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->container['email'] = $email;
 
@@ -830,7 +830,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setBillCycleDayLocal($billCycleDayLocal)
+    public function setBillCycleDayLocal($billCycleDayLocal): void
     {
         $this->container['billCycleDayLocal'] = $billCycleDayLocal;
 
@@ -854,7 +854,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -887,7 +887,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setParentAccountId($parentAccountId)
+    public function setParentAccountId($parentAccountId): void
     {
         $this->container['parentAccountId'] = $parentAccountId;
 
@@ -911,7 +911,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setIsPaymentDelegatedToParent($isPaymentDelegatedToParent)
+    public function setIsPaymentDelegatedToParent($isPaymentDelegatedToParent): void
     {
         $this->container['isPaymentDelegatedToParent'] = $isPaymentDelegatedToParent;
 
@@ -935,7 +935,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentMethodId($paymentMethodId)
+    public function setPaymentMethodId($paymentMethodId): void
     {
         $this->container['paymentMethodId'] = $paymentMethodId;
 
@@ -959,7 +959,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setReferenceTime($referenceTime)
+    public function setReferenceTime($referenceTime): void
     {
         $this->container['referenceTime'] = $referenceTime;
 
@@ -983,7 +983,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setTimeZone($timeZone)
+    public function setTimeZone($timeZone): void
     {
         $this->container['timeZone'] = $timeZone;
 
@@ -1007,7 +1007,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAddress1($address1)
+    public function setAddress1($address1): void
     {
         $this->container['address1'] = $address1;
 
@@ -1031,7 +1031,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAddress2($address2)
+    public function setAddress2($address2): void
     {
         $this->container['address2'] = $address2;
 
@@ -1055,7 +1055,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPostalCode($postalCode)
+    public function setPostalCode($postalCode): void
     {
         $this->container['postalCode'] = $postalCode;
 
@@ -1079,7 +1079,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCompany($company)
+    public function setCompany($company): void
     {
         $this->container['company'] = $company;
 
@@ -1103,7 +1103,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCity($city)
+    public function setCity($city): void
     {
         $this->container['city'] = $city;
 
@@ -1127,7 +1127,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setState($state)
+    public function setState($state): void
     {
         $this->container['state'] = $state;
 
@@ -1151,7 +1151,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCountry($country)
+    public function setCountry($country): void
     {
         $this->container['country'] = $country;
 
@@ -1175,7 +1175,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setLocale($locale)
+    public function setLocale($locale): void
     {
         $this->container['locale'] = $locale;
 
@@ -1199,7 +1199,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPhone($phone)
+    public function setPhone($phone): void
     {
         $this->container['phone'] = $phone;
 
@@ -1223,7 +1223,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setNotes($notes)
+    public function setNotes($notes): void
     {
         $this->container['notes'] = $notes;
 
@@ -1247,7 +1247,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setIsMigrated($isMigrated)
+    public function setIsMigrated($isMigrated): void
     {
         $this->container['isMigrated'] = $isMigrated;
 
@@ -1271,7 +1271,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountBalance($accountBalance)
+    public function setAccountBalance($accountBalance): void
     {
         $this->container['accountBalance'] = $accountBalance;
 
@@ -1295,7 +1295,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountCBA($accountCBA)
+    public function setAccountCBA($accountCBA): void
     {
         $this->container['accountCBA'] = $accountCBA;
 
@@ -1319,7 +1319,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs)
+    public function setAuditLogs($auditLogs): void
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1330,9 +1330,9 @@ self::CURRENCY_BTC,        ];
      *
      * @param integer $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -1344,7 +1344,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet(int $offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1357,7 +1357,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(int $offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1373,7 +1373,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(int $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -1383,7 +1383,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(
