@@ -55,12 +55,12 @@ class ApiException extends \Exception
     /**
      * Constructor
      *
-     * @param string               $message         Error message
-     * @param int                  $code            HTTP status code
-     * @param string[]|null        $responseHeaders HTTP response header
-     * @param StreamInterface|null $responseBody    HTTP decoded body of the server response
+     * @param string        $message         Error message
+     * @param int           $code            HTTP status code
+     * @param string[]|null $responseHeaders HTTP response header
+     * @param string|null   $responseBody    HTTP decoded body of the server response
      */
-    public function __construct(string $message = '', int $code = 0, ?array $responseHeaders = [], ?StreamInterface $responseBody = null)
+    public function __construct(string $message = '', int $code = 0, ?array $responseHeaders = [], ?string $responseBody = null)
     {
         if ($responseBody instanceof StreamInterface) {
             $message .= ': '.$responseBody->getContents();
