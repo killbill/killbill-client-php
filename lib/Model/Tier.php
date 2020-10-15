@@ -231,7 +231,7 @@ class Tier implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setLimits($limits): void
+    public function setLimits($limits): Tier
     {
         $this->container['limits'] = $limits;
 
@@ -255,7 +255,7 @@ class Tier implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setFixedPrice($fixedPrice): void
+    public function setFixedPrice($fixedPrice): Tier
     {
         $this->container['fixedPrice'] = $fixedPrice;
 
@@ -279,7 +279,7 @@ class Tier implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setRecurringPrice($recurringPrice): void
+    public function setRecurringPrice($recurringPrice): Tier
     {
         $this->container['recurringPrice'] = $recurringPrice;
 
@@ -303,7 +303,7 @@ class Tier implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setBlocks($blocks): void
+    public function setBlocks($blocks): Tier
     {
         $this->container['blocks'] = $blocks;
 
@@ -328,7 +328,7 @@ class Tier implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -341,7 +341,7 @@ class Tier implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -357,7 +357,7 @@ class Tier implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

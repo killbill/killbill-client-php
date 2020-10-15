@@ -213,7 +213,7 @@ class HostedPaymentPageFields implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setFormFields($formFields): void
+    public function setFormFields($formFields): HostedPaymentPageFields
     {
         $this->container['formFields'] = $formFields;
 
@@ -238,7 +238,7 @@ class HostedPaymentPageFields implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -251,7 +251,7 @@ class HostedPaymentPageFields implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -267,7 +267,7 @@ class HostedPaymentPageFields implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

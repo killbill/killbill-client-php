@@ -234,7 +234,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setUsername($username): void
+    public function setUsername($username): UserRoles
     {
         $this->container['username'] = $username;
 
@@ -258,7 +258,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPassword($password): void
+    public function setPassword($password): UserRoles
     {
         $this->container['password'] = $password;
 
@@ -282,7 +282,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setRoles($roles): void
+    public function setRoles($roles): UserRoles
     {
         $this->container['roles'] = $roles;
 
@@ -307,7 +307,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -320,7 +320,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -336,7 +336,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

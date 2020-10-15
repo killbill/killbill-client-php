@@ -237,7 +237,7 @@ class Phase implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setType($type): void
+    public function setType($type): Phase
     {
         $this->container['type'] = $type;
 
@@ -261,7 +261,7 @@ class Phase implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPrices($prices): void
+    public function setPrices($prices): Phase
     {
         $this->container['prices'] = $prices;
 
@@ -285,7 +285,7 @@ class Phase implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setFixedPrices($fixedPrices): void
+    public function setFixedPrices($fixedPrices): Phase
     {
         $this->container['fixedPrices'] = $fixedPrices;
 
@@ -309,7 +309,7 @@ class Phase implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setDuration($duration): void
+    public function setDuration($duration): Phase
     {
         $this->container['duration'] = $duration;
 
@@ -333,7 +333,7 @@ class Phase implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setUsages($usages): void
+    public function setUsages($usages): Phase
     {
         $this->container['usages'] = $usages;
 
@@ -358,7 +358,7 @@ class Phase implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -371,7 +371,7 @@ class Phase implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -387,7 +387,7 @@ class Phase implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

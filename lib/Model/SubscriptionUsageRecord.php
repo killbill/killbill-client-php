@@ -231,7 +231,7 @@ class SubscriptionUsageRecord implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setSubscriptionId($subscriptionId): void
+    public function setSubscriptionId($subscriptionId): SubscriptionUsageRecord
     {
         $this->container['subscriptionId'] = $subscriptionId;
 
@@ -255,7 +255,7 @@ class SubscriptionUsageRecord implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setTrackingId($trackingId): void
+    public function setTrackingId($trackingId): SubscriptionUsageRecord
     {
         $this->container['trackingId'] = $trackingId;
 
@@ -279,7 +279,7 @@ class SubscriptionUsageRecord implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setUnitUsageRecords($unitUsageRecords): void
+    public function setUnitUsageRecords($unitUsageRecords): SubscriptionUsageRecord
     {
         $this->container['unitUsageRecords'] = $unitUsageRecords;
 
@@ -304,7 +304,7 @@ class SubscriptionUsageRecord implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -317,7 +317,7 @@ class SubscriptionUsageRecord implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -333,7 +333,7 @@ class SubscriptionUsageRecord implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

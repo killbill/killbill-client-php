@@ -219,7 +219,7 @@ class Unit implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): Unit
     {
         $this->container['name'] = $name;
 
@@ -243,7 +243,7 @@ class Unit implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPrettyName($prettyName): void
+    public function setPrettyName($prettyName): Unit
     {
         $this->container['prettyName'] = $prettyName;
 
@@ -268,7 +268,7 @@ class Unit implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -281,7 +281,7 @@ class Unit implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -297,7 +297,7 @@ class Unit implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

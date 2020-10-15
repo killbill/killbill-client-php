@@ -243,7 +243,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): OverdueState
     {
         $this->container['name'] = $name;
 
@@ -267,7 +267,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setExternalMessage($externalMessage): void
+    public function setExternalMessage($externalMessage): OverdueState
     {
         $this->container['externalMessage'] = $externalMessage;
 
@@ -291,7 +291,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsDisableEntitlementAndChangesBlocked($isDisableEntitlementAndChangesBlocked): void
+    public function setIsDisableEntitlementAndChangesBlocked($isDisableEntitlementAndChangesBlocked): OverdueState
     {
         $this->container['isDisableEntitlementAndChangesBlocked'] = $isDisableEntitlementAndChangesBlocked;
 
@@ -315,7 +315,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsBlockChanges($isBlockChanges): void
+    public function setIsBlockChanges($isBlockChanges): OverdueState
     {
         $this->container['isBlockChanges'] = $isBlockChanges;
 
@@ -339,7 +339,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsClearState($isClearState): void
+    public function setIsClearState($isClearState): OverdueState
     {
         $this->container['isClearState'] = $isClearState;
 
@@ -363,7 +363,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setReevaluationIntervalDays($reevaluationIntervalDays): void
+    public function setReevaluationIntervalDays($reevaluationIntervalDays): OverdueState
     {
         $this->container['reevaluationIntervalDays'] = $reevaluationIntervalDays;
 
@@ -388,7 +388,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -401,7 +401,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -417,7 +417,7 @@ class OverdueState implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

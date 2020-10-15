@@ -566,7 +566,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency): void
+    public function setCurrency($currency): Price
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -599,7 +599,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setValue($value): void
+    public function setValue($value): Price
     {
         $this->container['value'] = $value;
 
@@ -624,7 +624,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -637,7 +637,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -653,7 +653,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

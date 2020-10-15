@@ -278,7 +278,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): OverdueStateConfig
     {
         $this->container['name'] = $name;
 
@@ -302,7 +302,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return $this
      */
-    public function setIsClearState($isClearState): void
+    public function setIsClearState($isClearState): OverdueStateConfig
     {
         $this->container['isClearState'] = $isClearState;
 
@@ -326,7 +326,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return $this
      */
-    public function setCondition($condition): void
+    public function setCondition($condition): OverdueStateConfig
     {
         $this->container['condition'] = $condition;
 
@@ -350,7 +350,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return $this
      */
-    public function setExternalMessage($externalMessage): void
+    public function setExternalMessage($externalMessage): OverdueStateConfig
     {
         $this->container['externalMessage'] = $externalMessage;
 
@@ -374,7 +374,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return $this
      */
-    public function setIsBlockChanges($isBlockChanges): void
+    public function setIsBlockChanges($isBlockChanges): OverdueStateConfig
     {
         $this->container['isBlockChanges'] = $isBlockChanges;
 
@@ -398,7 +398,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return $this
      */
-    public function setIsDisableEntitlement($isDisableEntitlement): void
+    public function setIsDisableEntitlement($isDisableEntitlement): OverdueStateConfig
     {
         $this->container['isDisableEntitlement'] = $isDisableEntitlement;
 
@@ -422,7 +422,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return $this
      */
-    public function setSubscriptionCancellationPolicy($subscriptionCancellationPolicy): void
+    public function setSubscriptionCancellationPolicy($subscriptionCancellationPolicy): OverdueStateConfig
     {
         $allowedValues = $this->getSubscriptionCancellationPolicyAllowableValues();
         if (!is_null($subscriptionCancellationPolicy) && !in_array($subscriptionCancellationPolicy, $allowedValues, true)) {
@@ -455,7 +455,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return $this
      */
-    public function setAutoReevaluationIntervalDays($autoReevaluationIntervalDays): void
+    public function setAutoReevaluationIntervalDays($autoReevaluationIntervalDays): OverdueStateConfig
     {
         $this->container['autoReevaluationIntervalDays'] = $autoReevaluationIntervalDays;
 
@@ -480,7 +480,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -493,7 +493,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -509,7 +509,7 @@ self::SUBSCRIPTION_CANCELLATION_POLICY_NONE,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

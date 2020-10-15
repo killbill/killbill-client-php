@@ -663,7 +663,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId): void
+    public function setAccountId($accountId): PaymentAttempt
     {
         $this->container['accountId'] = $accountId;
 
@@ -687,7 +687,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentMethodId($paymentMethodId): void
+    public function setPaymentMethodId($paymentMethodId): PaymentAttempt
     {
         $this->container['paymentMethodId'] = $paymentMethodId;
 
@@ -711,7 +711,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentExternalKey($paymentExternalKey): void
+    public function setPaymentExternalKey($paymentExternalKey): PaymentAttempt
     {
         $this->container['paymentExternalKey'] = $paymentExternalKey;
 
@@ -735,7 +735,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setTransactionId($transactionId): void
+    public function setTransactionId($transactionId): PaymentAttempt
     {
         $this->container['transactionId'] = $transactionId;
 
@@ -759,7 +759,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setTransactionExternalKey($transactionExternalKey): void
+    public function setTransactionExternalKey($transactionExternalKey): PaymentAttempt
     {
         $this->container['transactionExternalKey'] = $transactionExternalKey;
 
@@ -783,7 +783,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setTransactionType($transactionType): void
+    public function setTransactionType($transactionType): PaymentAttempt
     {
         $allowedValues = $this->getTransactionTypeAllowableValues();
         if (!is_null($transactionType) && !in_array($transactionType, $allowedValues, true)) {
@@ -816,7 +816,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setEffectiveDate($effectiveDate): void
+    public function setEffectiveDate($effectiveDate): PaymentAttempt
     {
         $this->container['effectiveDate'] = $effectiveDate;
 
@@ -840,7 +840,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setStateName($stateName): void
+    public function setStateName($stateName): PaymentAttempt
     {
         $this->container['stateName'] = $stateName;
 
@@ -864,7 +864,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAmount($amount): void
+    public function setAmount($amount): PaymentAttempt
     {
         $this->container['amount'] = $amount;
 
@@ -888,7 +888,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency): void
+    public function setCurrency($currency): PaymentAttempt
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -921,7 +921,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPluginName($pluginName): void
+    public function setPluginName($pluginName): PaymentAttempt
     {
         $this->container['pluginName'] = $pluginName;
 
@@ -945,7 +945,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPluginProperties($pluginProperties): void
+    public function setPluginProperties($pluginProperties): PaymentAttempt
     {
         $this->container['pluginProperties'] = $pluginProperties;
 
@@ -969,7 +969,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): PaymentAttempt
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -994,7 +994,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1007,7 +1007,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1023,7 +1023,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

@@ -284,7 +284,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setBlockedId($blockedId): void
+    public function setBlockedId($blockedId): BlockingState
     {
         $this->container['blockedId'] = $blockedId;
 
@@ -308,7 +308,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setStateName($stateName): void
+    public function setStateName($stateName): BlockingState
     {
         $this->container['stateName'] = $stateName;
 
@@ -332,7 +332,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setService($service): void
+    public function setService($service): BlockingState
     {
         $this->container['service'] = $service;
 
@@ -356,7 +356,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setIsBlockChange($isBlockChange): void
+    public function setIsBlockChange($isBlockChange): BlockingState
     {
         $this->container['isBlockChange'] = $isBlockChange;
 
@@ -380,7 +380,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setIsBlockEntitlement($isBlockEntitlement): void
+    public function setIsBlockEntitlement($isBlockEntitlement): BlockingState
     {
         $this->container['isBlockEntitlement'] = $isBlockEntitlement;
 
@@ -404,7 +404,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setIsBlockBilling($isBlockBilling): void
+    public function setIsBlockBilling($isBlockBilling): BlockingState
     {
         $this->container['isBlockBilling'] = $isBlockBilling;
 
@@ -428,7 +428,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setEffectiveDate($effectiveDate): void
+    public function setEffectiveDate($effectiveDate): BlockingState
     {
         $this->container['effectiveDate'] = $effectiveDate;
 
@@ -452,7 +452,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setType($type): void
+    public function setType($type): BlockingState
     {
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($type) && !in_array($type, $allowedValues, true)) {
@@ -485,7 +485,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): BlockingState
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -510,7 +510,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -523,7 +523,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -539,7 +539,7 @@ self::TYPE_ACCOUNT,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

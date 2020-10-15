@@ -316,7 +316,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setChangeType($changeType): void
+    public function setChangeType($changeType): AuditLog
     {
         $this->container['changeType'] = $changeType;
 
@@ -340,7 +340,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setChangeDate($changeDate): void
+    public function setChangeDate($changeDate): AuditLog
     {
         $this->container['changeDate'] = $changeDate;
 
@@ -364,7 +364,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setObjectType($objectType): void
+    public function setObjectType($objectType): AuditLog
     {
         $allowedValues = $this->getObjectTypeAllowableValues();
         if (!is_null($objectType) && !in_array($objectType, $allowedValues, true)) {
@@ -397,7 +397,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setObjectId($objectId): void
+    public function setObjectId($objectId): AuditLog
     {
         $this->container['objectId'] = $objectId;
 
@@ -421,7 +421,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setChangedBy($changedBy): void
+    public function setChangedBy($changedBy): AuditLog
     {
         $this->container['changedBy'] = $changedBy;
 
@@ -445,7 +445,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setReasonCode($reasonCode): void
+    public function setReasonCode($reasonCode): AuditLog
     {
         $this->container['reasonCode'] = $reasonCode;
 
@@ -469,7 +469,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setComments($comments): void
+    public function setComments($comments): AuditLog
     {
         $this->container['comments'] = $comments;
 
@@ -493,7 +493,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setUserToken($userToken): void
+    public function setUserToken($userToken): AuditLog
     {
         $this->container['userToken'] = $userToken;
 
@@ -517,7 +517,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return $this
      */
-    public function setHistory($history): void
+    public function setHistory($history): AuditLog
     {
         $this->container['history'] = $history;
 
@@ -542,7 +542,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -555,7 +555,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -571,7 +571,7 @@ self::OBJECT_TYPE_TENANT_KVS,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

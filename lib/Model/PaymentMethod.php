@@ -249,7 +249,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPaymentMethodId($paymentMethodId): void
+    public function setPaymentMethodId($paymentMethodId): PaymentMethod
     {
         $this->container['paymentMethodId'] = $paymentMethodId;
 
@@ -273,7 +273,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setExternalKey($externalKey): void
+    public function setExternalKey($externalKey): PaymentMethod
     {
         $this->container['externalKey'] = $externalKey;
 
@@ -297,7 +297,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAccountId($accountId): void
+    public function setAccountId($accountId): PaymentMethod
     {
         $this->container['accountId'] = $accountId;
 
@@ -321,7 +321,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsDefault($isDefault): void
+    public function setIsDefault($isDefault): PaymentMethod
     {
         $this->container['isDefault'] = $isDefault;
 
@@ -345,7 +345,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPluginName($pluginName): void
+    public function setPluginName($pluginName): PaymentMethod
     {
         $this->container['pluginName'] = $pluginName;
 
@@ -369,7 +369,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPluginInfo($pluginInfo): void
+    public function setPluginInfo($pluginInfo): PaymentMethod
     {
         $this->container['pluginInfo'] = $pluginInfo;
 
@@ -393,7 +393,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): PaymentMethod
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -418,7 +418,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -431,7 +431,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -447,7 +447,7 @@ class PaymentMethod implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

@@ -342,7 +342,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setTimeSinceEarliestUnpaidInvoiceEqualsOrExceeds($timeSinceEarliestUnpaidInvoiceEqualsOrExceeds): void
+    public function setTimeSinceEarliestUnpaidInvoiceEqualsOrExceeds($timeSinceEarliestUnpaidInvoiceEqualsOrExceeds): OverdueCondition
     {
         $this->container['timeSinceEarliestUnpaidInvoiceEqualsOrExceeds'] = $timeSinceEarliestUnpaidInvoiceEqualsOrExceeds;
 
@@ -366,7 +366,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setControlTagInclusion($controlTagInclusion): void
+    public function setControlTagInclusion($controlTagInclusion): OverdueCondition
     {
         $allowedValues = $this->getControlTagInclusionAllowableValues();
         if (!is_null($controlTagInclusion) && !in_array($controlTagInclusion, $allowedValues, true)) {
@@ -399,7 +399,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setControlTagExclusion($controlTagExclusion): void
+    public function setControlTagExclusion($controlTagExclusion): OverdueCondition
     {
         $allowedValues = $this->getControlTagExclusionAllowableValues();
         if (!is_null($controlTagExclusion) && !in_array($controlTagExclusion, $allowedValues, true)) {
@@ -432,7 +432,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setNumberOfUnpaidInvoicesEqualsOrExceeds($numberOfUnpaidInvoicesEqualsOrExceeds): void
+    public function setNumberOfUnpaidInvoicesEqualsOrExceeds($numberOfUnpaidInvoicesEqualsOrExceeds): OverdueCondition
     {
         $this->container['numberOfUnpaidInvoicesEqualsOrExceeds'] = $numberOfUnpaidInvoicesEqualsOrExceeds;
 
@@ -456,7 +456,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setResponseForLastFailedPayment($responseForLastFailedPayment): void
+    public function setResponseForLastFailedPayment($responseForLastFailedPayment): OverdueCondition
     {
         $allowedValues = $this->getResponseForLastFailedPaymentAllowableValues();
         if (!is_null($responseForLastFailedPayment) && array_diff($responseForLastFailedPayment, $allowedValues)) {
@@ -489,7 +489,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return $this
      */
-    public function setTotalUnpaidInvoiceBalanceEqualsOrExceeds($totalUnpaidInvoiceBalanceEqualsOrExceeds): void
+    public function setTotalUnpaidInvoiceBalanceEqualsOrExceeds($totalUnpaidInvoiceBalanceEqualsOrExceeds): OverdueCondition
     {
         $this->container['totalUnpaidInvoiceBalanceEqualsOrExceeds'] = $totalUnpaidInvoiceBalanceEqualsOrExceeds;
 
@@ -514,7 +514,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -527,7 +527,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -543,7 +543,7 @@ self::RESPONSE_FOR_LAST_FAILED_PAYMENT_OTHER,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

@@ -246,7 +246,7 @@ self::UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setUnit($unit): void
+    public function setUnit($unit): Duration
     {
         $allowedValues = $this->getUnitAllowableValues();
         if (!is_null($unit) && !in_array($unit, $allowedValues, true)) {
@@ -279,7 +279,7 @@ self::UNIT_UNLIMITED,        ];
      *
      * @return $this
      */
-    public function setNumber($number): void
+    public function setNumber($number): Duration
     {
         $this->container['number'] = $number;
 
@@ -304,7 +304,7 @@ self::UNIT_UNLIMITED,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -317,7 +317,7 @@ self::UNIT_UNLIMITED,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -333,7 +333,7 @@ self::UNIT_UNLIMITED,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

@@ -228,7 +228,7 @@ class AccountEmail implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAccountId($accountId): void
+    public function setAccountId($accountId): AccountEmail
     {
         $this->container['accountId'] = $accountId;
 
@@ -252,7 +252,7 @@ class AccountEmail implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setEmail($email): void
+    public function setEmail($email): AccountEmail
     {
         $this->container['email'] = $email;
 
@@ -276,7 +276,7 @@ class AccountEmail implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): AccountEmail
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -301,7 +301,7 @@ class AccountEmail implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -314,7 +314,7 @@ class AccountEmail implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -330,7 +330,7 @@ class AccountEmail implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

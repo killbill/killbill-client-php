@@ -246,7 +246,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAccountId($accountId): void
+    public function setAccountId($accountId): Bundle
     {
         $this->container['accountId'] = $accountId;
 
@@ -270,7 +270,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setBundleId($bundleId): void
+    public function setBundleId($bundleId): Bundle
     {
         $this->container['bundleId'] = $bundleId;
 
@@ -294,7 +294,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setExternalKey($externalKey): void
+    public function setExternalKey($externalKey): Bundle
     {
         $this->container['externalKey'] = $externalKey;
 
@@ -318,7 +318,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setSubscriptions($subscriptions): void
+    public function setSubscriptions($subscriptions): Bundle
     {
         $this->container['subscriptions'] = $subscriptions;
 
@@ -342,7 +342,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setTimeline($timeline): void
+    public function setTimeline($timeline): Bundle
     {
         $this->container['timeline'] = $timeline;
 
@@ -366,7 +366,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): Bundle
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -391,7 +391,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -404,7 +404,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -420,7 +420,7 @@ class Bundle implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

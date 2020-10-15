@@ -691,7 +691,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setAmount($amount): void
+    public function setAmount($amount): Invoice
     {
         $this->container['amount'] = $amount;
 
@@ -715,7 +715,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency): void
+    public function setCurrency($currency): Invoice
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -748,7 +748,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setStatus($status): void
+    public function setStatus($status): Invoice
     {
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($status) && !in_array($status, $allowedValues, true)) {
@@ -781,7 +781,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setCreditAdj($creditAdj): void
+    public function setCreditAdj($creditAdj): Invoice
     {
         $this->container['creditAdj'] = $creditAdj;
 
@@ -805,7 +805,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setRefundAdj($refundAdj): void
+    public function setRefundAdj($refundAdj): Invoice
     {
         $this->container['refundAdj'] = $refundAdj;
 
@@ -829,7 +829,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setInvoiceId($invoiceId): void
+    public function setInvoiceId($invoiceId): Invoice
     {
         $this->container['invoiceId'] = $invoiceId;
 
@@ -853,7 +853,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setInvoiceDate($invoiceDate): void
+    public function setInvoiceDate($invoiceDate): Invoice
     {
         $this->container['invoiceDate'] = $invoiceDate;
 
@@ -877,7 +877,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setTargetDate($targetDate): void
+    public function setTargetDate($targetDate): Invoice
     {
         $this->container['targetDate'] = $targetDate;
 
@@ -901,7 +901,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setInvoiceNumber($invoiceNumber): void
+    public function setInvoiceNumber($invoiceNumber): Invoice
     {
         $this->container['invoiceNumber'] = $invoiceNumber;
 
@@ -925,7 +925,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setBalance($balance): void
+    public function setBalance($balance): Invoice
     {
         $this->container['balance'] = $balance;
 
@@ -949,7 +949,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId): void
+    public function setAccountId($accountId): Invoice
     {
         $this->container['accountId'] = $accountId;
 
@@ -973,7 +973,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setBundleKeys($bundleKeys): void
+    public function setBundleKeys($bundleKeys): Invoice
     {
         $this->container['bundleKeys'] = $bundleKeys;
 
@@ -997,7 +997,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setCredits($credits): void
+    public function setCredits($credits): Invoice
     {
         $this->container['credits'] = $credits;
 
@@ -1021,7 +1021,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setItems($items): void
+    public function setItems($items): Invoice
     {
         $this->container['items'] = $items;
 
@@ -1045,7 +1045,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setTrackingIds($trackingIds): void
+    public function setTrackingIds($trackingIds): Invoice
     {
         $this->container['trackingIds'] = $trackingIds;
 
@@ -1069,7 +1069,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setIsParentInvoice($isParentInvoice): void
+    public function setIsParentInvoice($isParentInvoice): Invoice
     {
         $this->container['isParentInvoice'] = $isParentInvoice;
 
@@ -1093,7 +1093,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setParentInvoiceId($parentInvoiceId): void
+    public function setParentInvoiceId($parentInvoiceId): Invoice
     {
         $this->container['parentInvoiceId'] = $parentInvoiceId;
 
@@ -1117,7 +1117,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setParentAccountId($parentAccountId): void
+    public function setParentAccountId($parentAccountId): Invoice
     {
         $this->container['parentAccountId'] = $parentAccountId;
 
@@ -1141,7 +1141,7 @@ self::STATUS_VOID,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): Invoice
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1166,7 +1166,7 @@ self::STATUS_VOID,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1179,7 +1179,7 @@ self::STATUS_VOID,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1195,7 +1195,7 @@ self::STATUS_VOID,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

@@ -231,7 +231,7 @@ class TieredBlock implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setUnit($unit): void
+    public function setUnit($unit): TieredBlock
     {
         $this->container['unit'] = $unit;
 
@@ -255,7 +255,7 @@ class TieredBlock implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setSize($size): void
+    public function setSize($size): TieredBlock
     {
         $this->container['size'] = $size;
 
@@ -279,7 +279,7 @@ class TieredBlock implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setMax($max): void
+    public function setMax($max): TieredBlock
     {
         $this->container['max'] = $max;
 
@@ -303,7 +303,7 @@ class TieredBlock implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPrices($prices): void
+    public function setPrices($prices): TieredBlock
     {
         $this->container['prices'] = $prices;
 
@@ -328,7 +328,7 @@ class TieredBlock implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -341,7 +341,7 @@ class TieredBlock implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -357,7 +357,7 @@ class TieredBlock implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

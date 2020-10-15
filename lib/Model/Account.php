@@ -710,7 +710,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountId($accountId): void
+    public function setAccountId($accountId): Account
     {
         $this->container['accountId'] = $accountId;
 
@@ -734,7 +734,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setName($name): void
+    public function setName($name): Account
     {
         $this->container['name'] = $name;
 
@@ -758,7 +758,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setFirstNameLength($firstNameLength): void
+    public function setFirstNameLength($firstNameLength): Account
     {
         $this->container['firstNameLength'] = $firstNameLength;
 
@@ -782,7 +782,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setExternalKey($externalKey): void
+    public function setExternalKey($externalKey): Account
     {
         $this->container['externalKey'] = $externalKey;
 
@@ -806,7 +806,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setEmail($email): void
+    public function setEmail($email): Account
     {
         $this->container['email'] = $email;
 
@@ -830,7 +830,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setBillCycleDayLocal($billCycleDayLocal): void
+    public function setBillCycleDayLocal($billCycleDayLocal): Account
     {
         $this->container['billCycleDayLocal'] = $billCycleDayLocal;
 
@@ -854,7 +854,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCurrency($currency): void
+    public function setCurrency($currency): Account
     {
         $allowedValues = $this->getCurrencyAllowableValues();
         if (!is_null($currency) && !in_array($currency, $allowedValues, true)) {
@@ -887,7 +887,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setParentAccountId($parentAccountId): void
+    public function setParentAccountId($parentAccountId): Account
     {
         $this->container['parentAccountId'] = $parentAccountId;
 
@@ -911,7 +911,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setIsPaymentDelegatedToParent($isPaymentDelegatedToParent): void
+    public function setIsPaymentDelegatedToParent($isPaymentDelegatedToParent): Account
     {
         $this->container['isPaymentDelegatedToParent'] = $isPaymentDelegatedToParent;
 
@@ -935,7 +935,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPaymentMethodId($paymentMethodId): void
+    public function setPaymentMethodId($paymentMethodId): Account
     {
         $this->container['paymentMethodId'] = $paymentMethodId;
 
@@ -959,7 +959,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setReferenceTime($referenceTime): void
+    public function setReferenceTime($referenceTime): Account
     {
         $this->container['referenceTime'] = $referenceTime;
 
@@ -983,7 +983,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setTimeZone($timeZone): void
+    public function setTimeZone($timeZone): Account
     {
         $this->container['timeZone'] = $timeZone;
 
@@ -1007,7 +1007,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAddress1($address1): void
+    public function setAddress1($address1): Account
     {
         $this->container['address1'] = $address1;
 
@@ -1031,7 +1031,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAddress2($address2): void
+    public function setAddress2($address2): Account
     {
         $this->container['address2'] = $address2;
 
@@ -1055,7 +1055,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPostalCode($postalCode): void
+    public function setPostalCode($postalCode): Account
     {
         $this->container['postalCode'] = $postalCode;
 
@@ -1079,7 +1079,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCompany($company): void
+    public function setCompany($company): Account
     {
         $this->container['company'] = $company;
 
@@ -1103,7 +1103,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCity($city): void
+    public function setCity($city): Account
     {
         $this->container['city'] = $city;
 
@@ -1127,7 +1127,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setState($state): void
+    public function setState($state): Account
     {
         $this->container['state'] = $state;
 
@@ -1151,7 +1151,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setCountry($country): void
+    public function setCountry($country): Account
     {
         $this->container['country'] = $country;
 
@@ -1175,7 +1175,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setLocale($locale): void
+    public function setLocale($locale): Account
     {
         $this->container['locale'] = $locale;
 
@@ -1199,7 +1199,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setPhone($phone): void
+    public function setPhone($phone): Account
     {
         $this->container['phone'] = $phone;
 
@@ -1223,7 +1223,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setNotes($notes): void
+    public function setNotes($notes): Account
     {
         $this->container['notes'] = $notes;
 
@@ -1247,7 +1247,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setIsMigrated($isMigrated): void
+    public function setIsMigrated($isMigrated): Account
     {
         $this->container['isMigrated'] = $isMigrated;
 
@@ -1271,7 +1271,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountBalance($accountBalance): void
+    public function setAccountBalance($accountBalance): Account
     {
         $this->container['accountBalance'] = $accountBalance;
 
@@ -1295,7 +1295,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAccountCBA($accountCBA): void
+    public function setAccountCBA($accountCBA): Account
     {
         $this->container['accountCBA'] = $accountCBA;
 
@@ -1319,7 +1319,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): Account
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -1344,7 +1344,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -1357,7 +1357,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -1373,7 +1373,7 @@ self::CURRENCY_BTC,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

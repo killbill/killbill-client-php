@@ -459,7 +459,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setDryRunType($dryRunType): void
+    public function setDryRunType($dryRunType): InvoiceDryRun
     {
         $allowedValues = $this->getDryRunTypeAllowableValues();
         if (!is_null($dryRunType) && !in_array($dryRunType, $allowedValues, true)) {
@@ -492,7 +492,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setDryRunAction($dryRunAction): void
+    public function setDryRunAction($dryRunAction): InvoiceDryRun
     {
         $allowedValues = $this->getDryRunActionAllowableValues();
         if (!is_null($dryRunAction) && !in_array($dryRunAction, $allowedValues, true)) {
@@ -525,7 +525,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setPhaseType($phaseType): void
+    public function setPhaseType($phaseType): InvoiceDryRun
     {
         $allowedValues = $this->getPhaseTypeAllowableValues();
         if (!is_null($phaseType) && !in_array($phaseType, $allowedValues, true)) {
@@ -558,7 +558,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setProductName($productName): void
+    public function setProductName($productName): InvoiceDryRun
     {
         $this->container['productName'] = $productName;
 
@@ -582,7 +582,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setProductCategory($productCategory): void
+    public function setProductCategory($productCategory): InvoiceDryRun
     {
         $allowedValues = $this->getProductCategoryAllowableValues();
         if (!is_null($productCategory) && !in_array($productCategory, $allowedValues, true)) {
@@ -615,7 +615,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setBillingPeriod($billingPeriod): void
+    public function setBillingPeriod($billingPeriod): InvoiceDryRun
     {
         $allowedValues = $this->getBillingPeriodAllowableValues();
         if (!is_null($billingPeriod) && !in_array($billingPeriod, $allowedValues, true)) {
@@ -648,7 +648,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setPriceListName($priceListName): void
+    public function setPriceListName($priceListName): InvoiceDryRun
     {
         $this->container['priceListName'] = $priceListName;
 
@@ -672,7 +672,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setSubscriptionId($subscriptionId): void
+    public function setSubscriptionId($subscriptionId): InvoiceDryRun
     {
         $this->container['subscriptionId'] = $subscriptionId;
 
@@ -696,7 +696,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setBundleId($bundleId): void
+    public function setBundleId($bundleId): InvoiceDryRun
     {
         $this->container['bundleId'] = $bundleId;
 
@@ -720,7 +720,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setEffectiveDate($effectiveDate): void
+    public function setEffectiveDate($effectiveDate): InvoiceDryRun
     {
         $this->container['effectiveDate'] = $effectiveDate;
 
@@ -744,7 +744,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setBillingPolicy($billingPolicy): void
+    public function setBillingPolicy($billingPolicy): InvoiceDryRun
     {
         $allowedValues = $this->getBillingPolicyAllowableValues();
         if (!is_null($billingPolicy) && !in_array($billingPolicy, $allowedValues, true)) {
@@ -777,7 +777,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return $this
      */
-    public function setPriceOverrides($priceOverrides): void
+    public function setPriceOverrides($priceOverrides): InvoiceDryRun
     {
         $this->container['priceOverrides'] = $priceOverrides;
 
@@ -802,7 +802,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -815,7 +815,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -831,7 +831,7 @@ self::BILLING_POLICY_ILLEGAL,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

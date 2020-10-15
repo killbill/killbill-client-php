@@ -237,7 +237,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAccount($account): void
+    public function setAccount($account): ComboHostedPaymentPage
     {
         $this->container['account'] = $account;
 
@@ -261,7 +261,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPaymentMethod($paymentMethod): void
+    public function setPaymentMethod($paymentMethod): ComboHostedPaymentPage
     {
         $this->container['paymentMethod'] = $paymentMethod;
 
@@ -285,7 +285,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setHostedPaymentPageFields($hostedPaymentPageFields): void
+    public function setHostedPaymentPageFields($hostedPaymentPageFields): ComboHostedPaymentPage
     {
         $this->container['hostedPaymentPageFields'] = $hostedPaymentPageFields;
 
@@ -309,7 +309,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setPaymentMethodPluginProperties($paymentMethodPluginProperties): void
+    public function setPaymentMethodPluginProperties($paymentMethodPluginProperties): ComboHostedPaymentPage
     {
         $this->container['paymentMethodPluginProperties'] = $paymentMethodPluginProperties;
 
@@ -333,7 +333,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setAuditLogs($auditLogs): void
+    public function setAuditLogs($auditLogs): ComboHostedPaymentPage
     {
         $this->container['auditLogs'] = $auditLogs;
 
@@ -358,7 +358,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -371,7 +371,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -387,7 +387,7 @@ class ComboHostedPaymentPage implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

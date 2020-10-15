@@ -225,7 +225,7 @@ class PaymentMethodPluginDetail implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setExternalPaymentMethodId($externalPaymentMethodId): void
+    public function setExternalPaymentMethodId($externalPaymentMethodId): PaymentMethodPluginDetail
     {
         $this->container['externalPaymentMethodId'] = $externalPaymentMethodId;
 
@@ -249,7 +249,7 @@ class PaymentMethodPluginDetail implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setIsDefaultPaymentMethod($isDefaultPaymentMethod): void
+    public function setIsDefaultPaymentMethod($isDefaultPaymentMethod): PaymentMethodPluginDetail
     {
         $this->container['isDefaultPaymentMethod'] = $isDefaultPaymentMethod;
 
@@ -273,7 +273,7 @@ class PaymentMethodPluginDetail implements ModelInterface, ArrayAccess
      *
      * @return $this
      */
-    public function setProperties($properties): void
+    public function setProperties($properties): PaymentMethodPluginDetail
     {
         $this->container['properties'] = $properties;
 
@@ -298,7 +298,7 @@ class PaymentMethodPluginDetail implements ModelInterface, ArrayAccess
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -311,7 +311,7 @@ class PaymentMethodPluginDetail implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -327,7 +327,7 @@ class PaymentMethodPluginDetail implements ModelInterface, ArrayAccess
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }

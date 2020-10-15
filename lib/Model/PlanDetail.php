@@ -282,7 +282,7 @@ self::FINAL_PHASE_BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setProduct($product): void
+    public function setProduct($product): PlanDetail
     {
         $this->container['product'] = $product;
 
@@ -306,7 +306,7 @@ self::FINAL_PHASE_BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setPlan($plan): void
+    public function setPlan($plan): PlanDetail
     {
         $this->container['plan'] = $plan;
 
@@ -330,7 +330,7 @@ self::FINAL_PHASE_BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setPriceList($priceList): void
+    public function setPriceList($priceList): PlanDetail
     {
         $this->container['priceList'] = $priceList;
 
@@ -354,7 +354,7 @@ self::FINAL_PHASE_BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setFinalPhaseBillingPeriod($finalPhaseBillingPeriod): void
+    public function setFinalPhaseBillingPeriod($finalPhaseBillingPeriod): PlanDetail
     {
         $allowedValues = $this->getFinalPhaseBillingPeriodAllowableValues();
         if (!is_null($finalPhaseBillingPeriod) && !in_array($finalPhaseBillingPeriod, $allowedValues, true)) {
@@ -387,7 +387,7 @@ self::FINAL_PHASE_BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return $this
      */
-    public function setFinalPhaseRecurringPrice($finalPhaseRecurringPrice): void
+    public function setFinalPhaseRecurringPrice($finalPhaseRecurringPrice): PlanDetail
     {
         $this->container['finalPhaseRecurringPrice'] = $finalPhaseRecurringPrice;
 
@@ -412,7 +412,7 @@ self::FINAL_PHASE_BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return mixed
      */
-    public function offsetGet(int $offset)
+    public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
@@ -425,7 +425,7 @@ self::FINAL_PHASE_BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return void
      */
-    public function offsetSet(int $offset, $value): void
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -441,7 +441,7 @@ self::FINAL_PHASE_BILLING_PERIOD_NO_BILLING_PERIOD,        ];
      *
      * @return void
      */
-    public function offsetUnset(int $offset): void
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
