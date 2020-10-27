@@ -206,7 +206,7 @@ $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string |
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 $requestedDate = new \DateTime("2013-10-20"); // \DateTime | 
-$autoCommit = true; // bool | 
+$autoCommit = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
  **requestedDate** | **\DateTime**|  | [optional]
- **autoCommit** | **bool**|  | [optional]
+ **autoCommit** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
@@ -345,7 +345,7 @@ $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string |
 $invoiceId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$externalPayment = true; // bool | 
+$externalPayment = false; // bool | 
 $controlPluginName = array("controlPluginName_example"); // string[] | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
  **invoiceId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **externalPayment** | **bool**|  | [optional]
+ **externalPayment** | **bool**|  | [optional] [default to false]
  **controlPluginName** | [**string[]**](../Model/string.md)|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
@@ -621,7 +621,7 @@ $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string |
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$autoCommit = true; // bool | 
+$autoCommit = false; // bool | 
 $requestedDate = new \DateTime("2013-10-20"); // \DateTime | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
@@ -643,7 +643,7 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **autoCommit** | **bool**|  | [optional]
+ **autoCommit** | **bool**|  | [optional] [default to false]
  **requestedDate** | **\DateTime**|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
@@ -1018,8 +1018,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $invoiceId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withChildrenItems = true; // bool | 
-$audit = "audit_example"; // string | 
+$withChildrenItems = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoice($invoiceId, $withChildrenItems, $audit);
@@ -1035,8 +1035,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceId** | [**string**](../Model/.md)|  |
- **withChildrenItems** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **withChildrenItems** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1199,8 +1199,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $itemId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withChildrenItems = true; // bool | 
-$audit = "audit_example"; // string | 
+$withChildrenItems = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoiceByItemId($itemId, $withChildrenItems, $audit);
@@ -1216,8 +1216,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemId** | [**string**](../Model/.md)|  |
- **withChildrenItems** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **withChildrenItems** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1262,8 +1262,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $invoiceNumber = 56; // int | 
-$withChildrenItems = true; // bool | 
-$audit = "audit_example"; // string | 
+$withChildrenItems = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoiceByNumber($invoiceNumber, $withChildrenItems, $audit);
@@ -1279,8 +1279,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceNumber** | **int**|  |
- **withChildrenItems** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **withChildrenItems** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1325,7 +1325,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $invoiceId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoiceCustomFields($invoiceId, $audit);
@@ -1341,7 +1341,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1445,8 +1445,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $invoiceId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoiceTags($invoiceId, $includedDeleted, $audit);
@@ -1462,8 +1462,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceId** | [**string**](../Model/.md)|  |
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1621,9 +1621,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoices($offset, $limit, $audit);
@@ -1638,9 +1638,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1685,9 +1685,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $invoiceId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
-$audit = "audit_example"; // string | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPaymentsForInvoice($invoiceId, $withPluginInfo, $withAttempts, $audit);
@@ -1703,9 +1703,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceId** | [**string**](../Model/.md)|  |
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1816,9 +1816,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     $config
 );
 $searchKey = "searchKey_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->searchInvoices($searchKey, $offset, $limit, $audit);
@@ -1834,9 +1834,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchKey** | **string**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1885,7 +1885,7 @@ $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string |
 $locale = "locale_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$deleteIfExists = true; // bool | 
+$deleteIfExists = false; // bool | 
 
 try {
     $result = $apiInstance->uploadCatalogTranslation($body, $xKillbillCreatedBy, $locale, $xKillbillReason, $xKillbillComment, $deleteIfExists);
@@ -1905,7 +1905,7 @@ Name | Type | Description  | Notes
  **locale** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **deleteIfExists** | **bool**|  | [optional]
+ **deleteIfExists** | **bool**|  | [optional] [default to false]
 
 ### Return type
 
@@ -1953,7 +1953,7 @@ $body = "body_example"; // string |
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$deleteIfExists = true; // bool | 
+$deleteIfExists = false; // bool | 
 
 try {
     $result = $apiInstance->uploadInvoiceMPTemplate($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $deleteIfExists);
@@ -1972,7 +1972,7 @@ Name | Type | Description  | Notes
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **deleteIfExists** | **bool**|  | [optional]
+ **deleteIfExists** | **bool**|  | [optional] [default to false]
 
 ### Return type
 
@@ -2020,7 +2020,7 @@ $body = "body_example"; // string |
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$deleteIfExists = true; // bool | 
+$deleteIfExists = false; // bool | 
 
 try {
     $result = $apiInstance->uploadInvoiceTemplate($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $deleteIfExists);
@@ -2039,7 +2039,7 @@ Name | Type | Description  | Notes
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **deleteIfExists** | **bool**|  | [optional]
+ **deleteIfExists** | **bool**|  | [optional] [default to false]
 
 ### Return type
 
@@ -2088,7 +2088,7 @@ $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string |
 $locale = "locale_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$deleteIfExists = true; // bool | 
+$deleteIfExists = false; // bool | 
 
 try {
     $result = $apiInstance->uploadInvoiceTranslation($body, $xKillbillCreatedBy, $locale, $xKillbillReason, $xKillbillComment, $deleteIfExists);
@@ -2108,7 +2108,7 @@ Name | Type | Description  | Notes
  **locale** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **deleteIfExists** | **bool**|  | [optional]
+ **deleteIfExists** | **bool**|  | [optional] [default to false]
 
 ### Return type
 

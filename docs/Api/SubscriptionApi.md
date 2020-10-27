@@ -126,11 +126,11 @@ $apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
 $subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $requestedDate = new \DateTime("2013-10-20"); // \DateTime | 
-$callCompletion = true; // bool | 
-$callTimeoutSec = 789; // int | 
+$callCompletion = false; // bool | 
+$callTimeoutSec = 5; // int | 
 $entitlementPolicy = "entitlementPolicy_example"; // string | 
 $billingPolicy = "billingPolicy_example"; // string | 
-$useRequestedDateForBilling = true; // bool | 
+$useRequestedDateForBilling = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -150,11 +150,11 @@ Name | Type | Description  | Notes
  **subscriptionId** | [**string**](../Model/.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **requestedDate** | **\DateTime**|  | [optional]
- **callCompletion** | **bool**|  | [optional]
- **callTimeoutSec** | **int**|  | [optional]
+ **callCompletion** | **bool**|  | [optional] [default to false]
+ **callTimeoutSec** | **int**|  | [optional] [default to 5]
  **entitlementPolicy** | **string**|  | [optional]
  **billingPolicy** | **string**|  | [optional]
- **useRequestedDateForBilling** | **bool**|  | [optional]
+ **useRequestedDateForBilling** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
@@ -207,8 +207,8 @@ $subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string |
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 $requestedDate = new \DateTime("2013-10-20"); // \DateTime | 
-$callCompletion = true; // bool | 
-$callTimeoutSec = 789; // int | 
+$callCompletion = false; // bool | 
+$callTimeoutSec = 3; // int | 
 $billingPolicy = "billingPolicy_example"; // string | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
@@ -230,8 +230,8 @@ Name | Type | Description  | Notes
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
  **requestedDate** | **\DateTime**|  | [optional]
- **callCompletion** | **bool**|  | [optional]
- **callTimeoutSec** | **int**|  | [optional]
+ **callCompletion** | **bool**|  | [optional] [default to false]
+ **callTimeoutSec** | **int**|  | [optional] [default to 3]
  **billingPolicy** | **string**|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
@@ -284,9 +284,9 @@ $xKillbillComment = "xKillbillComment_example"; // string |
 $entitlementDate = new \DateTime("2013-10-20"); // \DateTime | 
 $billingDate = new \DateTime("2013-10-20"); // \DateTime | 
 $renameKeyIfExistsAndUnused = true; // bool | 
-$migrated = true; // bool | 
-$callCompletion = true; // bool | 
-$callTimeoutSec = 789; // int | 
+$migrated = false; // bool | 
+$callCompletion = false; // bool | 
+$callTimeoutSec = 3; // int | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
@@ -308,10 +308,10 @@ Name | Type | Description  | Notes
  **xKillbillComment** | **string**|  | [optional]
  **entitlementDate** | **\DateTime**|  | [optional]
  **billingDate** | **\DateTime**|  | [optional]
- **renameKeyIfExistsAndUnused** | **bool**|  | [optional]
- **migrated** | **bool**|  | [optional]
- **callCompletion** | **bool**|  | [optional]
- **callTimeoutSec** | **int**|  | [optional]
+ **renameKeyIfExistsAndUnused** | **bool**|  | [optional] [default to true]
+ **migrated** | **bool**|  | [optional] [default to false]
+ **callCompletion** | **bool**|  | [optional] [default to false]
+ **callTimeoutSec** | **int**|  | [optional] [default to 3]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
@@ -494,10 +494,10 @@ $xKillbillReason = "xKillbillReason_example"; // string |
 $xKillbillComment = "xKillbillComment_example"; // string | 
 $entitlementDate = new \DateTime("2013-10-20"); // \DateTime | 
 $billingDate = new \DateTime("2013-10-20"); // \DateTime | 
-$migrated = true; // bool | 
+$migrated = false; // bool | 
 $renameKeyIfExistsAndUnused = true; // bool | 
-$callCompletion = true; // bool | 
-$callTimeoutSec = 789; // int | 
+$callCompletion = false; // bool | 
+$callTimeoutSec = 3; // int | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
@@ -519,10 +519,10 @@ Name | Type | Description  | Notes
  **xKillbillComment** | **string**|  | [optional]
  **entitlementDate** | **\DateTime**|  | [optional]
  **billingDate** | **\DateTime**|  | [optional]
- **migrated** | **bool**|  | [optional]
- **renameKeyIfExistsAndUnused** | **bool**|  | [optional]
- **callCompletion** | **bool**|  | [optional]
- **callTimeoutSec** | **int**|  | [optional]
+ **migrated** | **bool**|  | [optional] [default to false]
+ **renameKeyIfExistsAndUnused** | **bool**|  | [optional] [default to true]
+ **callCompletion** | **bool**|  | [optional] [default to false]
+ **callTimeoutSec** | **int**|  | [optional] [default to 3]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
@@ -574,9 +574,9 @@ $xKillbillComment = "xKillbillComment_example"; // string |
 $entitlementDate = new \DateTime("2013-10-20"); // \DateTime | 
 $billingDate = new \DateTime("2013-10-20"); // \DateTime | 
 $renameKeyIfExistsAndUnused = true; // bool | 
-$migrated = true; // bool | 
-$callCompletion = true; // bool | 
-$callTimeoutSec = 789; // int | 
+$migrated = false; // bool | 
+$callCompletion = false; // bool | 
+$callTimeoutSec = 3; // int | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
@@ -598,10 +598,10 @@ Name | Type | Description  | Notes
  **xKillbillComment** | **string**|  | [optional]
  **entitlementDate** | **\DateTime**|  | [optional]
  **billingDate** | **\DateTime**|  | [optional]
- **renameKeyIfExistsAndUnused** | **bool**|  | [optional]
- **migrated** | **bool**|  | [optional]
- **callCompletion** | **bool**|  | [optional]
- **callTimeoutSec** | **int**|  | [optional]
+ **renameKeyIfExistsAndUnused** | **bool**|  | [optional] [default to true]
+ **migrated** | **bool**|  | [optional] [default to false]
+ **callCompletion** | **bool**|  | [optional] [default to false]
+ **callTimeoutSec** | **int**|  | [optional] [default to 3]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
@@ -779,7 +779,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
     $config
 );
 $subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getSubscription($subscriptionId, $audit);
@@ -795,7 +795,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscriptionId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -899,7 +899,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
     $config
 );
 $externalKey = "externalKey_example"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getSubscriptionByKey($externalKey, $audit);
@@ -915,7 +915,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalKey** | **string**|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -960,7 +960,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
     $config
 );
 $subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getSubscriptionCustomFields($subscriptionId, $audit);
@@ -976,7 +976,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscriptionId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1080,8 +1080,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
     $config
 );
 $subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getSubscriptionTags($subscriptionId, $includedDeleted, $audit);
@@ -1097,8 +1097,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subscriptionId** | [**string**](../Model/.md)|  |
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1346,7 +1346,7 @@ $subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string |
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 $effectiveFromDate = new \DateTime("2013-10-20"); // \DateTime | 
-$forceNewBcdWithPastEffectiveDate = true; // bool | 
+$forceNewBcdWithPastEffectiveDate = false; // bool | 
 
 try {
     $apiInstance->updateSubscriptionBCD($body, $xKillbillCreatedBy, $subscriptionId, $xKillbillReason, $xKillbillComment, $effectiveFromDate, $forceNewBcdWithPastEffectiveDate);
@@ -1366,7 +1366,7 @@ Name | Type | Description  | Notes
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
  **effectiveFromDate** | **\DateTime**|  | [optional]
- **forceNewBcdWithPastEffectiveDate** | **bool**|  | [optional]
+ **forceNewBcdWithPastEffectiveDate** | **bool**|  | [optional] [default to false]
 
 ### Return type
 

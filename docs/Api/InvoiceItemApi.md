@@ -366,7 +366,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
     $config
 );
 $invoiceItemId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoiceItemCustomFields($invoiceItemId, $audit);
@@ -382,7 +382,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceItemId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -428,8 +428,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceItemApi(
 );
 $invoiceItemId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoiceItemTags($invoiceItemId, $accountId, $includedDeleted, $audit);
@@ -446,8 +446,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **invoiceItemId** | [**string**](../Model/.md)|  |
  **accountId** | [**string**](../Model/.md)|  |
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 

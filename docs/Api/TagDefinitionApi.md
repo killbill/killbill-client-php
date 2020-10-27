@@ -167,7 +167,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\TagDefinitionApi(
     $config
 );
 $tagDefinitionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getTagDefinition($tagDefinitionId, $audit);
@@ -183,7 +183,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tagDefinitionId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -286,7 +286,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\TagDefinitionApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getTagDefinitions($audit);
@@ -301,7 +301,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 

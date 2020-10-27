@@ -6,4 +6,9 @@
 composer.phar
 composer.lock
 vendor
+
+# Swagger
 swagger-codegen-cli.jar
+
+# PHPUnit
+.phpunit.result.cache

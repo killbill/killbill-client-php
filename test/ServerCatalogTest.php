@@ -28,7 +28,7 @@ class ServerCatalogTest extends KillbillTest
     /**
      * Tear down test
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         unset($this->externalBundleId);

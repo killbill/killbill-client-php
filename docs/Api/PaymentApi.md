@@ -1080,10 +1080,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
     $config
 );
 $paymentId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPayment($paymentId, $withPluginInfo, $withAttempts, $pluginProperty, $audit);
@@ -1099,10 +1099,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | [**string**](../Model/.md)|  |
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1265,10 +1265,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
     $config
 );
 $externalKey = "externalKey_example"; // string | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPaymentByExternalKey($externalKey, $withPluginInfo, $withAttempts, $pluginProperty, $audit);
@@ -1284,10 +1284,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalKey** | **string**|  |
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1332,7 +1332,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
     $config
 );
 $paymentId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPaymentCustomFields($paymentId, $audit);
@@ -1348,7 +1348,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1393,8 +1393,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
     $config
 );
 $paymentId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPaymentTags($paymentId, $includedDeleted, $audit);
@@ -1410,8 +1410,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | [**string**](../Model/.md)|  |
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1455,13 +1455,13 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 789; // int | 
-$limit = 789; // int | 
+$offset = 0; // int | 
+$limit = 100; // int | 
 $pluginName = "pluginName_example"; // string | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPayments($offset, $limit, $pluginName, $withPluginInfo, $withAttempts, $pluginProperty, $audit);
@@ -1476,13 +1476,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
  **pluginName** | **string**|  | [optional]
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1733,13 +1733,13 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
     $config
 );
 $searchKey = "searchKey_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
 $pluginName = "pluginName_example"; // string | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->searchPayments($searchKey, $offset, $limit, $withPluginInfo, $withAttempts, $pluginName, $pluginProperty, $audit);
@@ -1755,13 +1755,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchKey** | **string**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
  **pluginName** | **string**|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 

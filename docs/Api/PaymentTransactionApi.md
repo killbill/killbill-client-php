@@ -310,10 +310,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentTransactionApi(
     $config
 );
 $transactionExternalKey = "transactionExternalKey_example"; // string | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPaymentByTransactionExternalKey($transactionExternalKey, $withPluginInfo, $withAttempts, $pluginProperty, $audit);
@@ -329,10 +329,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **transactionExternalKey** | **string**|  |
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -377,10 +377,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentTransactionApi(
     $config
 );
 $transactionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPaymentByTransactionId($transactionId, $withPluginInfo, $withAttempts, $pluginProperty, $audit);
@@ -396,10 +396,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **transactionId** | [**string**](../Model/.md)|  |
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -503,7 +503,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentTransactionApi(
     $config
 );
 $transactionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getTransactionCustomFields($transactionId, $audit);
@@ -519,7 +519,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **transactionId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -564,8 +564,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\PaymentTransactionApi(
     $config
 );
 $transactionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getTransactionTags($transactionId, $includedDeleted, $audit);
@@ -581,8 +581,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **transactionId** | [**string**](../Model/.md)|  |
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 

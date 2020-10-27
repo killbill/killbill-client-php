@@ -49,7 +49,7 @@ $body = new \Killbill\Client\Swagger\Model\Tenant(); // \Killbill\Client\Swagger
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$useGlobalDefault = true; // bool | 
+$useGlobalDefault = false; // bool | 
 
 try {
     $result = $apiInstance->createTenant($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $useGlobalDefault);
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **useGlobalDefault** | **bool**|  | [optional]
+ **useGlobalDefault** | **bool**|  | [optional] [default to false]
 
 ### Return type
 

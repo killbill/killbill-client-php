@@ -387,7 +387,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     $config
 );
 $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getBundle($bundleId, $audit);
@@ -403,7 +403,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bundleId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -507,8 +507,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     $config
 );
 $externalKey = "externalKey_example"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getBundleByKey($externalKey, $includedDeleted, $audit);
@@ -524,8 +524,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalKey** | **string**|  |
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -570,7 +570,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     $config
 );
 $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getBundleCustomFields($bundleId, $audit);
@@ -586,7 +586,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bundleId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -631,8 +631,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     $config
 );
 $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getBundleTags($bundleId, $includedDeleted, $audit);
@@ -648,8 +648,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **bundleId** | [**string**](../Model/.md)|  |
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -693,9 +693,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getBundles($offset, $limit, $audit);
@@ -710,9 +710,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1025,9 +1025,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\BundleApi(
     $config
 );
 $searchKey = "searchKey_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->searchBundles($searchKey, $offset, $limit, $audit);
@@ -1043,9 +1043,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchKey** | **string**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1095,7 +1095,7 @@ $bundleId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string |
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 $requestedDate = new \DateTime("2013-10-20"); // \DateTime | 
-$billingPolicy = "billingPolicy_example"; // string | 
+$billingPolicy = "END_OF_TERM"; // string | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
@@ -1117,7 +1117,7 @@ Name | Type | Description  | Notes
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
  **requestedDate** | **\DateTime**|  | [optional]
- **billingPolicy** | **string**|  | [optional]
+ **billingPolicy** | **string**|  | [optional] [default to END_OF_TERM]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type

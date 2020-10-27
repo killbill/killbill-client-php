@@ -2,9 +2,9 @@
 
 namespace Killbill\Client;
 
+use GuzzleHttp\Psr7\Utils;
 use Killbill\Client\Swagger\Configuration;
 use Psr\Http\Message\RequestInterface;
-use GuzzleHttp\Psr7;
 
 /**
  * This adds Killbill auth headers to the request
@@ -26,6 +26,7 @@ class AddAuthHeadersMiddleware
 
     /** @var array */
     private $whitelist;
+
     /**
      * @param callable      $nextHandler
      * @param Configuration $configuration
@@ -45,9 +46,10 @@ class AddAuthHeadersMiddleware
 
     /**
      * @param Configuration $configuration
+     *
      * @return \Closure
      */
-    public static function get(Configuration $configuration)
+    public static function get(Configuration $configuration): \Closure
     {
         return function (callable $handler) use ($configuration) {
             return new AddAuthHeadersMiddleware($handler, $configuration);
@@ -57,6 +59,7 @@ class AddAuthHeadersMiddleware
     /**
      * @param RequestInterface $request
      * @param array            $options
+     *
      * @return mixed
      */
     public function __invoke(RequestInterface $request, array $options)
@@ -73,6 +76,8 @@ class AddAuthHeadersMiddleware
 
     /**
      * @param RequestInterface $request
+     * @param array            $options
+     *
      * @return array
      */
     private function getActions(RequestInterface $request, array $options)
@@ -80,6 +85,7 @@ class AddAuthHeadersMiddleware
         if (isset($options[self::OPTION])) {
             return $options[self::OPTION];
         }
+
         foreach ($this->whitelist as list($method, $path, $actions)) {
             if (preg_match('/'.$method.'/i', $request->getMethod())
                 && strpos($request->getUri()->getPath(), $path) !== false
@@ -94,6 +100,7 @@ class AddAuthHeadersMiddleware
     /**
      * @param RequestInterface $request
      * @param int $actions
+
      * @return RequestInterface
      */
     private function addHeaders(RequestInterface $request, $actions)
@@ -108,13 +115,13 @@ class AddAuthHeadersMiddleware
 
         $modify['set_headers'] = $headers;
 
-        return Psr7\modify_request($request, $modify);
+        return Utils::modifyRequest($request, $modify);
     }
 
     /**
      * @return array
      */
-    private function getTenantHeader()
+    private function getTenantHeader(): array
     {
         $headers = [];
 
@@ -133,7 +140,7 @@ class AddAuthHeadersMiddleware
     /**
      * @return array
      */
-    private function getBasicAuthHeader()
+    private function getBasicAuthHeader(): array
     {
         $headers = [];
 

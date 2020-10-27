@@ -36,7 +36,7 @@ class ServerSubscriptionTest extends KillbillTest
     /**
      * Set up test
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -67,7 +67,7 @@ class ServerSubscriptionTest extends KillbillTest
     /**
      * Tear down test
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
 

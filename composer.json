@@ -21,22 +21,23 @@
         "test": "ENV=local phpunit",
         "test-integration": "phpunit",
         "record-mocks": "composer run test-integration && RECORD_REQUESTS=1 phpunit",
-        "phpcs": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php -d memory_limit=1024M",
-        "phpcbf": "phpcbf --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php -d memory_limit=1024M",
-        "phpcs-checkstyle": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 ./src/ ./test/ --extensions=php -d memory_limit=1024M --report=checkstyle"
+        "phpcs": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony/ ./src/ ./test/ --extensions=php -d memory_limit=1024M",
+        "phpcbf": "phpcbf --standard=vendor/escapestudios/symfony2-coding-standard/Symfony/ ./src/ ./test/ --extensions=php -d memory_limit=1024M",
+        "phpcs-checkstyle": "phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony/ ./src/ ./test/ --extensions=php -d memory_limit=1024M --report=checkstyle"
     },
     "license": "Apache-2.0",
     "require": {
-        "php": "^5.5 || ^7.0",
+        "php": "^7.1",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8",
-        "squizlabs/php_codesniffer": "~2.6",
-        "friendsofphp/php-cs-fixer": "~2.12",
-        "escapestudios/symfony2-coding-standard": "^2.0"
+        "ext-dom": "*",
+        "phpunit/phpunit": "^9.4",
+        "squizlabs/php_codesniffer": "^3.5",
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "escapestudios/symfony2-coding-standard": "^3.0"
     }
 }

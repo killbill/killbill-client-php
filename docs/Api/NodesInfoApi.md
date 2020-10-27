@@ -81,7 +81,7 @@ $body = new \Killbill\Client\Swagger\Model\NodeCommand(); // \Killbill\Client\Sw
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$localNodeOnly = true; // bool | 
+$localNodeOnly = false; // bool | 
 
 try {
     $apiInstance->triggerNodeCommand($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $localNodeOnly);
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **localNodeOnly** | **bool**|  | [optional]
+ **localNodeOnly** | **bool**|  | [optional] [default to false]
 
 ### Return type
 
