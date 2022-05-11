@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - php-version: '7.2'
+          - php-version: '7.3'
             docker-compose-file: 'docker-compose.ci.mysql.yml'
     steps:
       - name: Checkout code
