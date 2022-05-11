@@ -110,8 +110,15 @@ class ServerPaymentTest extends KillbillTest
         $this->assertEquals($subscription->getBillingPeriod(), $subscriptionData->getBillingPeriod());
         $this->assertEquals($subscription->getBundleExternalKey(), $subscriptionData->getBundleExternalKey());
 
+        usleep(3000000);
+
+        $allInvoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
+        $this->assertCount(1, $allInvoices);
+
         // Move after trial
         $this->clock->addDays(31);
+
+        usleep(3000000);
 
         //TODO: 'true' must be w/o quotes
         $unpaidInvoices = $this->client->getAccountApi()->getInvoicesForAccount(

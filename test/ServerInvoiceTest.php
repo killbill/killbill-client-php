@@ -144,6 +144,8 @@ class ServerInvoiceTest extends KillbillTest
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
+        usleep(3000000);
+
         // Should see 2 invoices for account
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $invoice = $invoices[0];
@@ -221,6 +223,8 @@ class ServerInvoiceTest extends KillbillTest
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
+        usleep(3000000);
+
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $invoice = $invoices[0];
 
@@ -294,6 +298,8 @@ class ServerInvoiceTest extends KillbillTest
         self::assertSame($this->account->getAccountId(), $subscriptionBase->getAccountId());
         self::assertSame('sports-monthly', $subscriptionBase->getPlanName());
 
+        usleep(3000000);
+
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(1, $invoices);
         $this->assertSame(0.0, $invoices[0]->getAmount());
@@ -326,6 +332,8 @@ class ServerInvoiceTest extends KillbillTest
         $subscriptionGas = $this->client->getSubscriptionApi()->createSubscription($subscriptionGas, self::USER, self::REASON, self::COMMENT);
         self::assertSame($this->account->getAccountId(), $subscriptionGas->getAccountId());
         self::assertSame('gas-monthly', $subscriptionGas->getPlanName());
+
+        usleep(3000000);
 
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(1, $invoices);
