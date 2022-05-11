@@ -8,7 +8,7 @@ use Psr\Http\Message\RequestInterface;
 /**
  * Test for AddAuthHeadersMiddleware
  */
-class AddAuthHeadersMiddlewareTest extends \PHPUnit_Framework_TestCase
+class AddAuthHeadersMiddlewareTest extends \PHPUnit\Framework\TestCase
 {
     const HOST = 'http://localhost:8980';
     const ADMIN_LOGIN = 'admin';

@@ -24,7 +24,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Base test class
  */
-class KillbillTest extends \PHPUnit_Framework_TestCase
+class KillbillTest extends \PHPUnit\Framework\TestCase
 {
     const USER    = 'phpTester';
     const REASON  = 'test';
