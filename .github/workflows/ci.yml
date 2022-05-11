@@ -98,7 +98,8 @@ jobs:
                "http://${KB_ADDRESS}:${KB_PORT}/1.0/kb/tenants"
       - name: Run tests
         run: |
-          composer phpcs
+          # TODO
+          #composer phpcs
           composer test
       - name: Debugging after failure
         if: failure()
