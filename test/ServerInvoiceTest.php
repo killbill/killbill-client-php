@@ -94,8 +94,15 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertEquals('MONTHLY', $subscription->getBillingPeriod());
         $this->assertEquals('TRIAL', $subscription->getPhaseType());
 
+        usleep(3000000);
+
+        $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
+        $this->assertCount(1, $invoices);
+
         // Move clock after trials
         $this->clock->addDays(31);
+
+        usleep(3000000);
 
         // Should see 2 invoices for account
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
