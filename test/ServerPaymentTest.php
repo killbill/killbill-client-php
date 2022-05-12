@@ -1,9 +1,9 @@
 <?php
-
 /*
- * Copyright 2011-2017 Ning, Inc.
- * Copyright 2014 Groupon, Inc.
- * Copyright 2014 The Billing Project, LLC
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2020 Groupon, Inc
+ * Copyright 2020-2022 Equinix, Inc
+ * Copyright 2014-2022 The Billing Project, LLC
  *
  * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
@@ -303,7 +303,7 @@ class ServerPaymentTest extends KillbillTest
          */
         $tags = $this->client->getPaymentApi()->getPaymentTags($payment->getPaymentId());
         $this->assertCount(2, $tags);
-        if (strcmp($tags[0]->getTagDefinitionName(), $tag1->getName()) == 0) {
+        if (strcmp($tags[0]->getTagDefinitionName(), $tag1->getName()) === 0) {
             $this->assertEquals($tags[0]->getTagDefinitionId(), $tag1->getId());
             $this->assertEquals($tags[1]->getTagDefinitionId(), $tag2->getId());
         } else {

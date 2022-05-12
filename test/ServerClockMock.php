@@ -1,8 +1,11 @@
 <?php
 /*
- * Copyright 2011-2013 Ning, Inc.
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2020 Groupon, Inc
+ * Copyright 2020-2022 Equinix, Inc
+ * Copyright 2014-2022 The Billing Project, LLC
  *
- * Ning licenses this file to you under the Apache License, version 2.0
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
  * License.  You may obtain a copy of the License at:
  *
@@ -42,6 +45,7 @@ class ServerClockMock
      * Set the clock to a specific date
      *
      * @param string|null $requestedDate Date as a string
+     *
      * @throws ApiException
      */
     public function setClock($requestedDate)
@@ -115,11 +119,11 @@ class ServerClockMock
     /**
      * Increment the clock
      *
-     * @param int|null    $days     Days to add
-     * @param int|null    $weeks    Weeks to add
-     * @param int|null    $months   Months to add
-     * @param int|null    $years    Years to add
-     * @param string      $timeZone Timezone as a string
+     * @param int|null $days     Days to add
+     * @param int|null $weeks    Weeks to add
+     * @param int|null $months   Months to add
+     * @param int|null $years    Years to add
+     * @param string   $timeZone Timezone as a string
      *
      * @throws ApiException
      */
@@ -144,6 +148,7 @@ class ServerClockMock
 
     /**
      * @param ResponseInterface $response
+     *
      * @throws ApiException
      */
     private function assertResponse(ResponseInterface $response)
