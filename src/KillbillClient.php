@@ -1,10 +1,29 @@
 <?php
+/*
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2020 Groupon, Inc
+ * Copyright 2020-2022 Equinix, Inc
+ * Copyright 2014-2022 The Billing Project, LLC
+ *
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
+ * (the "License"); you may not use this file except in compliance with the
+ * License.  You may obtain a copy of the License at:
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
 
 namespace Killbill\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
 use GuzzleHttp\Middleware;
 use Killbill\Client\Swagger\Api;
 use Killbill\Client\Swagger\Configuration;
@@ -55,12 +74,8 @@ class KillbillClient
      * @param string               $username
      * @param string               $password
      */
-    public function __construct(
-        LoggerInterface $logger = null,
-        $host = 'http://localhost:8080',
-        $username = 'admin',
-        $password = 'password'
-    ) {
+    public function __construct(LoggerInterface $logger = null, string $host = 'http://localhost:8080', string $username = 'admin', string $password = 'password')
+    {
         $this->logger = $logger ?: new NullLogger();
         $this->configuration = (new Configuration())
             ->setHost($host)
@@ -71,7 +86,7 @@ class KillbillClient
     /**
      * @param string $value
      */
-    public function setApiKey($value)
+    public function setApiKey(string $value): void
     {
         $this->configuration->setApiKey('X-Killbill-ApiKey', $value);
     }
@@ -79,7 +94,7 @@ class KillbillClient
     /**
      * @param string $value
      */
-    public function setApiSecret($value)
+    public function setApiSecret(string $value): void
     {
         $this->configuration->setApiKey('X-Killbill-ApiSecret', $value);
     }
@@ -87,9 +102,10 @@ class KillbillClient
     /**
      * @param string $name
      * @param array  $args
+     *
      * @return mixed
      */
-    public function __call($name, array $args)
+    public function __call(string $name, array $args)
     {
         if (strpos($name, 'get') !== 0) {
             throw new \RuntimeException(sprintf('Method "%s" not found', $name));
@@ -103,14 +119,14 @@ class KillbillClient
     /**
      * @return Client
      */
-    public function getGuzzleClient()
+    public function getGuzzleClient(): Client
     {
         if (!$this->guzzleClient) {
             $stack = new HandlerStack();
             $stack->setHandler(new CurlHandler());
             $stack->push(RedirectOnPostMiddleware::get());
             $stack->push(AddAuthHeadersMiddleware::get($this->configuration));
-            $stack->push(Middleware::log($this->logger, new \GuzzleHttp\MessageFormatter(), LogLevel::ERROR));
+            $stack->push(Middleware::log($this->logger, new MessageFormatter(), LogLevel::ERROR));
             $this->guzzleClient = new Client([
                 'handler' => $stack,
                 'base_uri' => $this->configuration->getHost().'/1.0/kb/',
@@ -126,7 +142,7 @@ class KillbillClient
     /**
      * @return Configuration
      */
-    public function getConfiguration()
+    public function getConfiguration(): Configuration
     {
         return $this->configuration;
     }

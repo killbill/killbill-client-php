@@ -392,7 +392,7 @@ $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string |
 $paymentId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$externalPayment = true; // bool | 
+$externalPayment = false; // bool | 
 $paymentMethodId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
@@ -414,7 +414,7 @@ Name | Type | Description  | Notes
  **paymentId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **externalPayment** | **bool**|  | [optional]
+ **externalPayment** | **bool**|  | [optional] [default to false]
  **paymentMethodId** | [**string**](../Model/.md)|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
@@ -593,10 +593,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoicePaymentApi(
     $config
 );
 $paymentId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoicePayment($paymentId, $withPluginInfo, $withAttempts, $pluginProperty, $audit);
@@ -612,10 +612,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | [**string**](../Model/.md)|  |
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -719,7 +719,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoicePaymentApi(
     $config
 );
 $paymentId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoicePaymentCustomFields($paymentId, $audit);
@@ -735,7 +735,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -780,9 +780,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoicePaymentApi(
     $config
 );
 $paymentId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$includedDeleted = true; // bool | 
+$includedDeleted = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoicePaymentTags($paymentId, $includedDeleted, $pluginProperty, $audit);
@@ -798,9 +798,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | [**string**](../Model/.md)|  |
- **includedDeleted** | **bool**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 

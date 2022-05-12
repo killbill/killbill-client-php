@@ -95,9 +95,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\CustomFieldApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getCustomFields($offset, $limit, $audit);
@@ -112,9 +112,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -159,9 +159,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\CustomFieldApi(
     $config
 );
 $searchKey = "searchKey_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->searchCustomFields($searchKey, $offset, $limit, $audit);
@@ -177,9 +177,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchKey** | **string**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -226,9 +226,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\CustomFieldApi(
 $objectType = "objectType_example"; // string | 
 $fieldName = "fieldName_example"; // string | 
 $fieldValue = "fieldValue_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->searchCustomFieldsByTypeName($objectType, $fieldName, $fieldValue, $offset, $limit, $audit);
@@ -246,9 +246,9 @@ Name | Type | Description  | Notes
  **objectType** | **string**|  | [optional]
  **fieldName** | **string**|  | [optional]
  **fieldValue** | **string**|  | [optional]
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 

@@ -65,12 +65,12 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  | [optional]
  **queueName** | **string**|  | [optional]
  **serviceName** | **string**|  | [optional]
- **withHistory** | **bool**|  | [optional]
+ **withHistory** | **bool**|  | [optional] [default to true]
  **minDate** | **string**|  | [optional]
  **maxDate** | **string**|  | [optional]
- **withInProcessing** | **bool**|  | [optional]
- **withBusEvents** | **bool**|  | [optional]
- **withNotifications** | **bool**|  | [optional]
+ **withInProcessing** | **bool**|  | [optional] [default to true]
+ **withBusEvents** | **bool**|  | [optional] [default to true]
+ **withNotifications** | **bool**|  | [optional] [default to true]
 
 ### Return type
 
@@ -393,8 +393,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     $config
 );
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
+$offset = 0; // int | 
+$limit = 100; // int | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 
@@ -411,8 +411,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xKillbillCreatedBy** | **string**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
 
