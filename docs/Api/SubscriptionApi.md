@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**uncancelSubscriptionPlan**](SubscriptionApi.md#uncancelsubscriptionplan) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/uncancel | Un-cancel an entitlement
 [**undoChangeSubscriptionPlan**](SubscriptionApi.md#undochangesubscriptionplan) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/undoChangePlan | Undo a pending change plan on an entitlement
 [**updateSubscriptionBCD**](SubscriptionApi.md#updatesubscriptionbcd) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/bcd | Update the BCD associated to a subscription
+[**updateSubscriptionQuantity**](SubscriptionApi.md#updatesubscriptionquantity) | **PUT** /1.0/kb/subscriptions/{subscriptionId}/quantity | Update the quantity associated to a subscription
 
 # **addSubscriptionBlockingState**
 > \Killbill\Client\Swagger\Model\BlockingState[] addSubscriptionBlockingState($body, $xKillbillCreatedBy, $subscriptionId, $xKillbillReason, $xKillbillComment, $requestedDate, $pluginProperty)
@@ -251,7 +252,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createSubscription**
-> \Killbill\Client\Swagger\Model\Subscription createSubscription($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $callCompletion, $callTimeoutSec, $pluginProperty)
+> \Killbill\Client\Swagger\Model\Subscription createSubscription($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $skipResponse, $callCompletion, $callTimeoutSec, $pluginProperty)
 
 Create an subscription
 
@@ -285,12 +286,13 @@ $entitlementDate = new \DateTime("2013-10-20"); // \DateTime |
 $billingDate = new \DateTime("2013-10-20"); // \DateTime | 
 $renameKeyIfExistsAndUnused = true; // bool | 
 $migrated = false; // bool | 
+$skipResponse = false; // bool | 
 $callCompletion = false; // bool | 
 $callTimeoutSec = 3; // int | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->createSubscription($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $callCompletion, $callTimeoutSec, $pluginProperty);
+    $result = $apiInstance->createSubscription($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $skipResponse, $callCompletion, $callTimeoutSec, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->createSubscription: ', $e->getMessage(), PHP_EOL;
@@ -310,6 +312,7 @@ Name | Type | Description  | Notes
  **billingDate** | **\DateTime**|  | [optional]
  **renameKeyIfExistsAndUnused** | **bool**|  | [optional] [default to true]
  **migrated** | **bool**|  | [optional] [default to false]
+ **skipResponse** | **bool**|  | [optional] [default to false]
  **callCompletion** | **bool**|  | [optional] [default to false]
  **callTimeoutSec** | **int**|  | [optional] [default to 3]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
@@ -462,7 +465,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createSubscriptionWithAddOns**
-> \Killbill\Client\Swagger\Model\Bundle createSubscriptionWithAddOns($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $migrated, $renameKeyIfExistsAndUnused, $callCompletion, $callTimeoutSec, $pluginProperty)
+> \Killbill\Client\Swagger\Model\Bundle createSubscriptionWithAddOns($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $migrated, $skipResponse, $renameKeyIfExistsAndUnused, $callCompletion, $callTimeoutSec, $pluginProperty)
 
 Create an entitlement with addOn products
 
@@ -495,13 +498,14 @@ $xKillbillComment = "xKillbillComment_example"; // string |
 $entitlementDate = new \DateTime("2013-10-20"); // \DateTime | 
 $billingDate = new \DateTime("2013-10-20"); // \DateTime | 
 $migrated = false; // bool | 
+$skipResponse = false; // bool | 
 $renameKeyIfExistsAndUnused = true; // bool | 
 $callCompletion = false; // bool | 
 $callTimeoutSec = 3; // int | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->createSubscriptionWithAddOns($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $migrated, $renameKeyIfExistsAndUnused, $callCompletion, $callTimeoutSec, $pluginProperty);
+    $result = $apiInstance->createSubscriptionWithAddOns($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $migrated, $skipResponse, $renameKeyIfExistsAndUnused, $callCompletion, $callTimeoutSec, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->createSubscriptionWithAddOns: ', $e->getMessage(), PHP_EOL;
@@ -520,6 +524,7 @@ Name | Type | Description  | Notes
  **entitlementDate** | **\DateTime**|  | [optional]
  **billingDate** | **\DateTime**|  | [optional]
  **migrated** | **bool**|  | [optional] [default to false]
+ **skipResponse** | **bool**|  | [optional] [default to false]
  **renameKeyIfExistsAndUnused** | **bool**|  | [optional] [default to true]
  **callCompletion** | **bool**|  | [optional] [default to false]
  **callTimeoutSec** | **int**|  | [optional] [default to 3]
@@ -541,7 +546,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createSubscriptionsWithAddOns**
-> \Killbill\Client\Swagger\Model\Bundle[] createSubscriptionsWithAddOns($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $callCompletion, $callTimeoutSec, $pluginProperty)
+> \Killbill\Client\Swagger\Model\Bundle[] createSubscriptionsWithAddOns($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $skipResponse, $callCompletion, $callTimeoutSec, $pluginProperty)
 
 Create multiple entitlements with addOn products
 
@@ -575,12 +580,13 @@ $entitlementDate = new \DateTime("2013-10-20"); // \DateTime |
 $billingDate = new \DateTime("2013-10-20"); // \DateTime | 
 $renameKeyIfExistsAndUnused = true; // bool | 
 $migrated = false; // bool | 
+$skipResponse = false; // bool | 
 $callCompletion = false; // bool | 
 $callTimeoutSec = 3; // int | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->createSubscriptionsWithAddOns($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $callCompletion, $callTimeoutSec, $pluginProperty);
+    $result = $apiInstance->createSubscriptionsWithAddOns($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $skipResponse, $callCompletion, $callTimeoutSec, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SubscriptionApi->createSubscriptionsWithAddOns: ', $e->getMessage(), PHP_EOL;
@@ -600,6 +606,7 @@ Name | Type | Description  | Notes
  **billingDate** | **\DateTime**|  | [optional]
  **renameKeyIfExistsAndUnused** | **bool**|  | [optional] [default to true]
  **migrated** | **bool**|  | [optional] [default to false]
+ **skipResponse** | **bool**|  | [optional] [default to false]
  **callCompletion** | **bool**|  | [optional] [default to false]
  **callTimeoutSec** | **int**|  | [optional] [default to 3]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
@@ -1367,6 +1374,76 @@ Name | Type | Description  | Notes
  **xKillbillComment** | **string**|  | [optional]
  **effectiveFromDate** | **\DateTime**|  | [optional]
  **forceNewBcdWithPastEffectiveDate** | **bool**|  | [optional] [default to false]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **updateSubscriptionQuantity**
+> updateSubscriptionQuantity($body, $xKillbillCreatedBy, $subscriptionId, $xKillbillReason, $xKillbillComment, $effectiveFromDate, $forceNewQuantityWithPastEffectiveDate)
+
+Update the quantity associated to a subscription
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$body = new \Killbill\Client\Swagger\Model\Subscription(); // \Killbill\Client\Swagger\Model\Subscription | 
+$xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
+$subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+$xKillbillReason = "xKillbillReason_example"; // string | 
+$xKillbillComment = "xKillbillComment_example"; // string | 
+$effectiveFromDate = new \DateTime("2013-10-20"); // \DateTime | 
+$forceNewQuantityWithPastEffectiveDate = false; // bool | 
+
+try {
+    $apiInstance->updateSubscriptionQuantity($body, $xKillbillCreatedBy, $subscriptionId, $xKillbillReason, $xKillbillComment, $effectiveFromDate, $forceNewQuantityWithPastEffectiveDate);
+} catch (Exception $e) {
+    echo 'Exception when calling SubscriptionApi->updateSubscriptionQuantity: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\Killbill\Client\Swagger\Model\Subscription**](../Model/Subscription.md)|  |
+ **xKillbillCreatedBy** | **string**|  |
+ **subscriptionId** | [**string**](../Model/.md)|  |
+ **xKillbillReason** | **string**|  | [optional]
+ **xKillbillComment** | **string**|  | [optional]
+ **effectiveFromDate** | **\DateTime**|  | [optional]
+ **forceNewQuantityWithPastEffectiveDate** | **bool**|  | [optional] [default to false]
 
 ### Return type
 

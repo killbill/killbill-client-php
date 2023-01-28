@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **effectiveDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **billingPolicy** | **string** |  | [optional] 
 **priceOverrides** | [**\Killbill\Client\Swagger\Model\PhasePrice[]**](PhasePrice.md) |  | [optional] 
+**planName** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**triggerNodeCommand**](NodesInfoApi.md#triggernodecommand) | **POST** /1.0/kb/nodesInfo | Trigger a node command
 
 # **getNodesInfo**
-> \Killbill\Client\Swagger\Model\PluginInfo[] getNodesInfo()
+> \Killbill\Client\Swagger\Model\NodeInfo[] getNodesInfo()
 
 Retrieve all the nodes infos
 
@@ -43,7 +43,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Killbill\Client\Swagger\Model\PluginInfo[]**](../Model/PluginInfo.md)
+[**\Killbill\Client\Swagger\Model\NodeInfo[]**](../Model/NodeInfo.md)
 
 ### Authorization
 

@@ -402,7 +402,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAllPluginConfiguration**
-> \Killbill\Client\Swagger\Model\TenantKeyValue getAllPluginConfiguration($keyPrefix)
+> \Killbill\Client\Swagger\Model\TenantKeyValue[] getAllPluginConfiguration($keyPrefix)
 
 Retrieve a per tenant key value based on key prefix
 
@@ -447,7 +447,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Swagger\Model\TenantKeyValue**](../Model/TenantKeyValue.md)
+[**\Killbill\Client\Swagger\Model\TenantKeyValue[]**](../Model/TenantKeyValue.md)
 
 ### Authorization
 

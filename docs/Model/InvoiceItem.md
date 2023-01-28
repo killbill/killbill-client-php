@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **amount** | **float** |  | [optional] 
 **rate** | **float** |  | [optional] 
 **currency** | **string** |  | [optional] 
-**quantity** | **int** |  | [optional] 
+**quantity** | **float** |  | [optional] 
 **itemDetails** | **string** |  | [optional] 
 **catalogEffectiveDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **childItems** | [**\Killbill\Client\Swagger\Model\InvoiceItem[]**](InvoiceItem.md) |  | [optional] 
