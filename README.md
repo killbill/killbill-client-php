@@ -10,10 +10,11 @@ PHP client library for [Kill Bill](http://killbill.io).
 | 0.2.x          | 0.18.z            |
 | 0.3.x          | 0.20.z            |
 | 0.4.x          | 0.22.z            |
+| 0.5.x          | 0.24.z            |
 
 ## Requirements
 
-PHP 7.1 and later
+PHP 8.1 and later
 
 ## Installation & Usage
 ### Composer
