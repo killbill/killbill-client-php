@@ -17,7 +17,7 @@ PHP client library for [Kill Bill](http://killbill.io).
 PHP 8.1 and later
 
 ## Installation & Usage
-### Composer
+## Composer
 
 Require the library via [composer](https://getcomposer.org):
 ```
