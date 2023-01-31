@@ -56,9 +56,9 @@ class Entity implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-'createdDate' => '\DateTime',
-'updatedDate' => '\DateTime'    ];
+        'createdDate' => '\DateTime',
+'updatedDate' => '\DateTime',
+'id' => 'string'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -66,9 +66,9 @@ class Entity implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'uuid',
-'createdDate' => 'date-time',
-'updatedDate' => 'date-time'    ];
+        'createdDate' => 'date-time',
+'updatedDate' => 'date-time',
+'id' => 'uuid'    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,9 +97,9 @@ class Entity implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-'createdDate' => 'createdDate',
-'updatedDate' => 'updatedDate'    ];
+        'createdDate' => 'createdDate',
+'updatedDate' => 'updatedDate',
+'id' => 'id'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -107,9 +107,9 @@ class Entity implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-'createdDate' => 'setCreatedDate',
-'updatedDate' => 'setUpdatedDate'    ];
+        'createdDate' => 'setCreatedDate',
+'updatedDate' => 'setUpdatedDate',
+'id' => 'setId'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -117,9 +117,9 @@ class Entity implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-'createdDate' => 'getCreatedDate',
-'updatedDate' => 'getUpdatedDate'    ];
+        'createdDate' => 'getCreatedDate',
+'updatedDate' => 'getUpdatedDate',
+'id' => 'getId'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -179,9 +179,9 @@ class Entity implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['createdDate'] = isset($data['createdDate']) ? $data['createdDate'] : null;
         $this->container['updatedDate'] = isset($data['updatedDate']) ? $data['updatedDate'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     }
 
     /**
@@ -207,30 +207,6 @@ class Entity implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return $this
-     */
-    public function setId($id): Entity
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets createdDate
@@ -276,6 +252,30 @@ class Entity implements ModelInterface, ArrayAccess
     public function setUpdatedDate($updatedDate): Entity
     {
         $this->container['updatedDate'] = $updatedDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id id
+     *
+     * @return $this
+     */
+    public function setId($id): Entity
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }
