@@ -1,6 +1,6 @@
 <?php
 /**
- * UserRoles
+ * CatalogValidation
  *
  * PHP version 7.1+
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Killbill\Client\Swagger\ObjectSerializer;
 
 /**
- * UserRoles Class Doc Comment
+ * CatalogValidation Class Doc Comment
  *
  * @category Class
  * @package  Killbill\Client\Swagger
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UserRoles implements ModelInterface, ArrayAccess
+class CatalogValidation implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class UserRoles implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'UserRoles';
+    protected static $swaggerModelName = 'CatalogValidation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,9 +56,7 @@ class UserRoles implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'username' => 'string',
-'password' => 'string',
-'roles' => 'string[]'    ];
+        'catalogValidationErrors' => '\Killbill\Client\Swagger\Model\CatalogValidationError[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -66,9 +64,7 @@ class UserRoles implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'username' => null,
-'password' => null,
-'roles' => null    ];
+        'catalogValidationErrors' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -97,9 +93,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'username' => 'username',
-'password' => 'password',
-'roles' => 'roles'    ];
+        'catalogValidationErrors' => 'catalogValidationErrors'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -107,9 +101,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'username' => 'setUsername',
-'password' => 'setPassword',
-'roles' => 'setRoles'    ];
+        'catalogValidationErrors' => 'setCatalogValidationErrors'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -117,9 +109,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'username' => 'getUsername',
-'password' => 'getPassword',
-'roles' => 'getRoles'    ];
+        'catalogValidationErrors' => 'getCatalogValidationErrors'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -179,9 +169,7 @@ class UserRoles implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['username'] = isset($data['username']) ? $data['username'] : null;
-        $this->container['password'] = isset($data['password']) ? $data['password'] : null;
-        $this->container['roles'] = isset($data['roles']) ? $data['roles'] : null;
+        $this->container['catalogValidationErrors'] = isset($data['catalogValidationErrors']) ? $data['catalogValidationErrors'] : null;
     }
 
     /**
@@ -193,15 +181,6 @@ class UserRoles implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['username'] === null) {
-            $invalidProperties[] = "'username' can't be null";
-        }
-        if ($this->container['password'] === null) {
-            $invalidProperties[] = "'password' can't be null";
-        }
-        if ($this->container['roles'] === null) {
-            $invalidProperties[] = "'roles' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -218,73 +197,25 @@ class UserRoles implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets username
+     * Gets catalogValidationErrors
      *
-     * @return string
+     * @return \Killbill\Client\Swagger\Model\CatalogValidationError[]
      */
-    public function getUsername()
+    public function getCatalogValidationErrors()
     {
-        return $this->container['username'];
+        return $this->container['catalogValidationErrors'];
     }
 
     /**
-     * Sets username
+     * Sets catalogValidationErrors
      *
-     * @param string $username username
+     * @param \Killbill\Client\Swagger\Model\CatalogValidationError[] $catalogValidationErrors catalogValidationErrors
      *
      * @return $this
      */
-    public function setUsername($username): UserRoles
+    public function setCatalogValidationErrors($catalogValidationErrors): CatalogValidation
     {
-        $this->container['username'] = $username;
-
-        return $this;
-    }
-
-    /**
-     * Gets password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->container['password'];
-    }
-
-    /**
-     * Sets password
-     *
-     * @param string $password password
-     *
-     * @return $this
-     */
-    public function setPassword($password): UserRoles
-    {
-        $this->container['password'] = $password;
-
-        return $this;
-    }
-
-    /**
-     * Gets roles
-     *
-     * @return string[]
-     */
-    public function getRoles()
-    {
-        return $this->container['roles'];
-    }
-
-    /**
-     * Sets roles
-     *
-     * @param string[] $roles roles
-     *
-     * @return $this
-     */
-    public function setRoles($roles): UserRoles
-    {
-        $this->container['roles'] = $roles;
+        $this->container['catalogValidationErrors'] = $catalogValidationErrors;
 
         return $this;
     }

@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **billingStartDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **billingEndDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **billCycleDayLocal** | **int** |  | [optional] 
+**quantity** | **int** |  | [optional] 
 **events** | [**\Killbill\Client\Swagger\Model\EventSubscription[]**](EventSubscription.md) |  | [optional] 
 **priceOverrides** | [**\Killbill\Client\Swagger\Model\PhasePrice[]**](PhasePrice.md) |  | [optional] 
 **prices** | [**\Killbill\Client\Swagger\Model\PhasePrice[]**](PhasePrice.md) |  | [optional] 

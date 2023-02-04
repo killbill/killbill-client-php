@@ -1063,7 +1063,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **transferBundle**
-> \Killbill\Client\Swagger\Model\Bundle transferBundle($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $billingPolicy, $pluginProperty)
+> \Killbill\Client\Swagger\Model\Bundle transferBundle($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $billingPolicy, $bcdTransfer, $pluginProperty)
 
 Transfer a bundle to another account
 
@@ -1096,10 +1096,11 @@ $xKillbillReason = "xKillbillReason_example"; // string |
 $xKillbillComment = "xKillbillComment_example"; // string | 
 $requestedDate = new \DateTime("2013-10-20"); // \DateTime | 
 $billingPolicy = "END_OF_TERM"; // string | 
+$bcdTransfer = "USE_EXISTING"; // string | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->transferBundle($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $billingPolicy, $pluginProperty);
+    $result = $apiInstance->transferBundle($body, $xKillbillCreatedBy, $bundleId, $xKillbillReason, $xKillbillComment, $requestedDate, $billingPolicy, $bcdTransfer, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BundleApi->transferBundle: ', $e->getMessage(), PHP_EOL;
@@ -1118,6 +1119,7 @@ Name | Type | Description  | Notes
  **xKillbillComment** | **string**|  | [optional]
  **requestedDate** | **\DateTime**|  | [optional]
  **billingPolicy** | **string**|  | [optional] [default to END_OF_TERM]
+ **bcdTransfer** | **string**|  | [optional] [default to USE_EXISTING]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type

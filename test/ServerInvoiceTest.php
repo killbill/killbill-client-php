@@ -317,7 +317,7 @@ class ServerInvoiceTest extends KillbillTest
         $this->clock->addDays(35);
         $this->clock->waitForExpectedClause(2, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
 
-        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
+        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId(), $startDate = null, $endDate = null, $withMigrationInvoices = 'false', $unpaidInvoicesOnly = 'false', $includeVoidedInvoices = 'false', $includeInvoiceComponents = 'true');
         $this->assertCount(2, $invoicesNextMonth);
         $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
         $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
@@ -351,12 +351,13 @@ class ServerInvoiceTest extends KillbillTest
 
         $this->clock->addDays(35);
 
-        $this->clock->waitForExpectedClause(2, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
+        $this->clock->waitForExpectedClause(3, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
 
-        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
-        $this->assertCount(2, $invoicesNextMonth);
+        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId(), $startDate = null, $endDate = null, $withMigrationInvoices = 'false', $unpaidInvoicesOnly = 'false', $includeVoidedInvoices = 'false', $includeInvoiceComponents = 'true');
+        $this->assertCount(3, $invoicesNextMonth);
         $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
-        $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
+        $this->assertSame(0.0, $invoicesNextMonth[1]->getAmount());
+        $this->assertSame(500.0, $invoicesNextMonth[2]->getAmount());
     }
 
     /**

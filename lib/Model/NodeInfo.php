@@ -1,6 +1,6 @@
 <?php
 /**
- * OverdueState
+ * NodeInfo
  *
  * PHP version 7.1+
  *
@@ -32,14 +32,14 @@ use \ArrayAccess;
 use \Killbill\Client\Swagger\ObjectSerializer;
 
 /**
- * OverdueState Class Doc Comment
+ * NodeInfo Class Doc Comment
  *
  * @category Class
  * @package  Killbill\Client\Swagger
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class OverdueState implements ModelInterface, ArrayAccess
+class NodeInfo implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -48,7 +48,7 @@ class OverdueState implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'OverdueState';
+    protected static $swaggerModelName = 'NodeInfo';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -56,12 +56,15 @@ class OverdueState implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-'externalMessage' => 'string',
-'isDisableEntitlementAndChangesBlocked' => 'bool',
-'isBlockChanges' => 'bool',
-'isClearState' => 'bool',
-'reevaluationIntervalDays' => 'int'    ];
+        'nodeName' => 'string',
+'bootTime' => '\DateTime',
+'lastUpdatedDate' => '\DateTime',
+'kbVersion' => 'string',
+'apiVersion' => 'string',
+'pluginApiVersion' => 'string',
+'commonVersion' => 'string',
+'platformVersion' => 'string',
+'pluginsInfo' => '\Killbill\Client\Swagger\Model\PluginInfo[]'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -69,12 +72,15 @@ class OverdueState implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'name' => null,
-'externalMessage' => null,
-'isDisableEntitlementAndChangesBlocked' => null,
-'isBlockChanges' => null,
-'isClearState' => null,
-'reevaluationIntervalDays' => 'int32'    ];
+        'nodeName' => null,
+'bootTime' => 'date-time',
+'lastUpdatedDate' => 'date-time',
+'kbVersion' => null,
+'apiVersion' => null,
+'pluginApiVersion' => null,
+'commonVersion' => null,
+'platformVersion' => null,
+'pluginsInfo' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -103,12 +109,15 @@ class OverdueState implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-'externalMessage' => 'externalMessage',
-'isDisableEntitlementAndChangesBlocked' => 'isDisableEntitlementAndChangesBlocked',
-'isBlockChanges' => 'isBlockChanges',
-'isClearState' => 'isClearState',
-'reevaluationIntervalDays' => 'reevaluationIntervalDays'    ];
+        'nodeName' => 'nodeName',
+'bootTime' => 'bootTime',
+'lastUpdatedDate' => 'lastUpdatedDate',
+'kbVersion' => 'kbVersion',
+'apiVersion' => 'apiVersion',
+'pluginApiVersion' => 'pluginApiVersion',
+'commonVersion' => 'commonVersion',
+'platformVersion' => 'platformVersion',
+'pluginsInfo' => 'pluginsInfo'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -116,12 +125,15 @@ class OverdueState implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-'externalMessage' => 'setExternalMessage',
-'isDisableEntitlementAndChangesBlocked' => 'setIsDisableEntitlementAndChangesBlocked',
-'isBlockChanges' => 'setIsBlockChanges',
-'isClearState' => 'setIsClearState',
-'reevaluationIntervalDays' => 'setReevaluationIntervalDays'    ];
+        'nodeName' => 'setNodeName',
+'bootTime' => 'setBootTime',
+'lastUpdatedDate' => 'setLastUpdatedDate',
+'kbVersion' => 'setKbVersion',
+'apiVersion' => 'setApiVersion',
+'pluginApiVersion' => 'setPluginApiVersion',
+'commonVersion' => 'setCommonVersion',
+'platformVersion' => 'setPlatformVersion',
+'pluginsInfo' => 'setPluginsInfo'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -129,12 +141,15 @@ class OverdueState implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-'externalMessage' => 'getExternalMessage',
-'isDisableEntitlementAndChangesBlocked' => 'getIsDisableEntitlementAndChangesBlocked',
-'isBlockChanges' => 'getIsBlockChanges',
-'isClearState' => 'getIsClearState',
-'reevaluationIntervalDays' => 'getReevaluationIntervalDays'    ];
+        'nodeName' => 'getNodeName',
+'bootTime' => 'getBootTime',
+'lastUpdatedDate' => 'getLastUpdatedDate',
+'kbVersion' => 'getKbVersion',
+'apiVersion' => 'getApiVersion',
+'pluginApiVersion' => 'getPluginApiVersion',
+'commonVersion' => 'getCommonVersion',
+'platformVersion' => 'getPlatformVersion',
+'pluginsInfo' => 'getPluginsInfo'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -194,12 +209,15 @@ class OverdueState implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['externalMessage'] = isset($data['externalMessage']) ? $data['externalMessage'] : null;
-        $this->container['isDisableEntitlementAndChangesBlocked'] = isset($data['isDisableEntitlementAndChangesBlocked']) ? $data['isDisableEntitlementAndChangesBlocked'] : null;
-        $this->container['isBlockChanges'] = isset($data['isBlockChanges']) ? $data['isBlockChanges'] : null;
-        $this->container['isClearState'] = isset($data['isClearState']) ? $data['isClearState'] : null;
-        $this->container['reevaluationIntervalDays'] = isset($data['reevaluationIntervalDays']) ? $data['reevaluationIntervalDays'] : null;
+        $this->container['nodeName'] = isset($data['nodeName']) ? $data['nodeName'] : null;
+        $this->container['bootTime'] = isset($data['bootTime']) ? $data['bootTime'] : null;
+        $this->container['lastUpdatedDate'] = isset($data['lastUpdatedDate']) ? $data['lastUpdatedDate'] : null;
+        $this->container['kbVersion'] = isset($data['kbVersion']) ? $data['kbVersion'] : null;
+        $this->container['apiVersion'] = isset($data['apiVersion']) ? $data['apiVersion'] : null;
+        $this->container['pluginApiVersion'] = isset($data['pluginApiVersion']) ? $data['pluginApiVersion'] : null;
+        $this->container['commonVersion'] = isset($data['commonVersion']) ? $data['commonVersion'] : null;
+        $this->container['platformVersion'] = isset($data['platformVersion']) ? $data['platformVersion'] : null;
+        $this->container['pluginsInfo'] = isset($data['pluginsInfo']) ? $data['pluginsInfo'] : null;
     }
 
     /**
@@ -227,145 +245,217 @@ class OverdueState implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets name
+     * Gets nodeName
      *
      * @return string
      */
-    public function getName()
+    public function getNodeName()
     {
-        return $this->container['name'];
+        return $this->container['nodeName'];
     }
 
     /**
-     * Sets name
+     * Sets nodeName
      *
-     * @param string $name name
+     * @param string $nodeName nodeName
      *
      * @return $this
      */
-    public function setName($name): OverdueState
+    public function setNodeName($nodeName): NodeInfo
     {
-        $this->container['name'] = $name;
+        $this->container['nodeName'] = $nodeName;
 
         return $this;
     }
 
     /**
-     * Gets externalMessage
+     * Gets bootTime
+     *
+     * @return \DateTime
+     */
+    public function getBootTime()
+    {
+        return $this->container['bootTime'];
+    }
+
+    /**
+     * Sets bootTime
+     *
+     * @param \DateTime $bootTime bootTime
+     *
+     * @return $this
+     */
+    public function setBootTime($bootTime): NodeInfo
+    {
+        $this->container['bootTime'] = $bootTime;
+
+        return $this;
+    }
+
+    /**
+     * Gets lastUpdatedDate
+     *
+     * @return \DateTime
+     */
+    public function getLastUpdatedDate()
+    {
+        return $this->container['lastUpdatedDate'];
+    }
+
+    /**
+     * Sets lastUpdatedDate
+     *
+     * @param \DateTime $lastUpdatedDate lastUpdatedDate
+     *
+     * @return $this
+     */
+    public function setLastUpdatedDate($lastUpdatedDate): NodeInfo
+    {
+        $this->container['lastUpdatedDate'] = $lastUpdatedDate;
+
+        return $this;
+    }
+
+    /**
+     * Gets kbVersion
      *
      * @return string
      */
-    public function getExternalMessage()
+    public function getKbVersion()
     {
-        return $this->container['externalMessage'];
+        return $this->container['kbVersion'];
     }
 
     /**
-     * Sets externalMessage
+     * Sets kbVersion
      *
-     * @param string $externalMessage externalMessage
+     * @param string $kbVersion kbVersion
      *
      * @return $this
      */
-    public function setExternalMessage($externalMessage): OverdueState
+    public function setKbVersion($kbVersion): NodeInfo
     {
-        $this->container['externalMessage'] = $externalMessage;
+        $this->container['kbVersion'] = $kbVersion;
 
         return $this;
     }
 
     /**
-     * Gets isDisableEntitlementAndChangesBlocked
+     * Gets apiVersion
      *
-     * @return bool
+     * @return string
      */
-    public function getIsDisableEntitlementAndChangesBlocked()
+    public function getApiVersion()
     {
-        return $this->container['isDisableEntitlementAndChangesBlocked'];
+        return $this->container['apiVersion'];
     }
 
     /**
-     * Sets isDisableEntitlementAndChangesBlocked
+     * Sets apiVersion
      *
-     * @param bool $isDisableEntitlementAndChangesBlocked isDisableEntitlementAndChangesBlocked
+     * @param string $apiVersion apiVersion
      *
      * @return $this
      */
-    public function setIsDisableEntitlementAndChangesBlocked($isDisableEntitlementAndChangesBlocked): OverdueState
+    public function setApiVersion($apiVersion): NodeInfo
     {
-        $this->container['isDisableEntitlementAndChangesBlocked'] = $isDisableEntitlementAndChangesBlocked;
+        $this->container['apiVersion'] = $apiVersion;
 
         return $this;
     }
 
     /**
-     * Gets isBlockChanges
+     * Gets pluginApiVersion
      *
-     * @return bool
+     * @return string
      */
-    public function getIsBlockChanges()
+    public function getPluginApiVersion()
     {
-        return $this->container['isBlockChanges'];
+        return $this->container['pluginApiVersion'];
     }
 
     /**
-     * Sets isBlockChanges
+     * Sets pluginApiVersion
      *
-     * @param bool $isBlockChanges isBlockChanges
+     * @param string $pluginApiVersion pluginApiVersion
      *
      * @return $this
      */
-    public function setIsBlockChanges($isBlockChanges): OverdueState
+    public function setPluginApiVersion($pluginApiVersion): NodeInfo
     {
-        $this->container['isBlockChanges'] = $isBlockChanges;
+        $this->container['pluginApiVersion'] = $pluginApiVersion;
 
         return $this;
     }
 
     /**
-     * Gets isClearState
+     * Gets commonVersion
      *
-     * @return bool
+     * @return string
      */
-    public function getIsClearState()
+    public function getCommonVersion()
     {
-        return $this->container['isClearState'];
+        return $this->container['commonVersion'];
     }
 
     /**
-     * Sets isClearState
+     * Sets commonVersion
      *
-     * @param bool $isClearState isClearState
+     * @param string $commonVersion commonVersion
      *
      * @return $this
      */
-    public function setIsClearState($isClearState): OverdueState
+    public function setCommonVersion($commonVersion): NodeInfo
     {
-        $this->container['isClearState'] = $isClearState;
+        $this->container['commonVersion'] = $commonVersion;
 
         return $this;
     }
 
     /**
-     * Gets reevaluationIntervalDays
+     * Gets platformVersion
      *
-     * @return int
+     * @return string
      */
-    public function getReevaluationIntervalDays()
+    public function getPlatformVersion()
     {
-        return $this->container['reevaluationIntervalDays'];
+        return $this->container['platformVersion'];
     }
 
     /**
-     * Sets reevaluationIntervalDays
+     * Sets platformVersion
      *
-     * @param int $reevaluationIntervalDays reevaluationIntervalDays
+     * @param string $platformVersion platformVersion
      *
      * @return $this
      */
-    public function setReevaluationIntervalDays($reevaluationIntervalDays): OverdueState
+    public function setPlatformVersion($platformVersion): NodeInfo
     {
-        $this->container['reevaluationIntervalDays'] = $reevaluationIntervalDays;
+        $this->container['platformVersion'] = $platformVersion;
+
+        return $this;
+    }
+
+    /**
+     * Gets pluginsInfo
+     *
+     * @return \Killbill\Client\Swagger\Model\PluginInfo[]
+     */
+    public function getPluginsInfo()
+    {
+        return $this->container['pluginsInfo'];
+    }
+
+    /**
+     * Sets pluginsInfo
+     *
+     * @param \Killbill\Client\Swagger\Model\PluginInfo[] $pluginsInfo pluginsInfo
+     *
+     * @return $this
+     */
+    public function setPluginsInfo($pluginsInfo): NodeInfo
+    {
+        $this->container['pluginsInfo'] = $pluginsInfo;
 
         return $this;
     }

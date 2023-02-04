@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**commitInvoice**](InvoiceApi.md#commitinvoice) | **PUT** /1.0/kb/invoices/{invoiceId}/commitInvoice | Perform the invoice status transition from DRAFT to COMMITTED
 [**createExternalCharges**](InvoiceApi.md#createexternalcharges) | **POST** /1.0/kb/invoices/charges/{accountId} | Create external charge(s)
 [**createFutureInvoice**](InvoiceApi.md#createfutureinvoice) | **POST** /1.0/kb/invoices | Trigger an invoice generation
+[**createFutureInvoiceGroup**](InvoiceApi.md#createfutureinvoicegroup) | **POST** /1.0/kb/invoices/group | Trigger an invoice generation
 [**createInstantPayment**](InvoiceApi.md#createinstantpayment) | **POST** /1.0/kb/invoices/{invoiceId}/payments | Trigger a payment for invoice
 [**createInvoiceCustomFields**](InvoiceApi.md#createinvoicecustomfields) | **POST** /1.0/kb/invoices/{invoiceId}/customFields | Add custom fields to invoice
 [**createInvoiceTags**](InvoiceApi.md#createinvoicetags) | **POST** /1.0/kb/invoices/{invoiceId}/tags | Add tags to invoice
@@ -29,6 +30,7 @@ Method | HTTP request | Description
 [**getInvoiceTemplate**](InvoiceApi.md#getinvoicetemplate) | **GET** /1.0/kb/invoices/template | Retrieves the invoice template for the tenant
 [**getInvoiceTranslation**](InvoiceApi.md#getinvoicetranslation) | **GET** /1.0/kb/invoices/translation/{locale} | Retrieves the invoice translation for the tenant
 [**getInvoices**](InvoiceApi.md#getinvoices) | **GET** /1.0/kb/invoices/pagination | List invoices
+[**getInvoicesGroup**](InvoiceApi.md#getinvoicesgroup) | **GET** /1.0/kb/invoices/{groupId}/group | Retrieve a set of invoices by group id
 [**getPaymentsForInvoice**](InvoiceApi.md#getpaymentsforinvoice) | **GET** /1.0/kb/invoices/{invoiceId}/payments | Retrieve payments associated with an invoice
 [**modifyInvoiceCustomFields**](InvoiceApi.md#modifyinvoicecustomfields) | **PUT** /1.0/kb/invoices/{invoiceId}/customFields | Modify custom fields to invoice
 [**searchInvoices**](InvoiceApi.md#searchinvoices) | **GET** /1.0/kb/invoices/search/{searchKey} | Search invoices
@@ -247,7 +249,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createFutureInvoice**
-> \Killbill\Client\Swagger\Model\Invoice createFutureInvoice($accountId, $xKillbillCreatedBy, $targetDate, $xKillbillReason, $xKillbillComment)
+> \Killbill\Client\Swagger\Model\Invoice createFutureInvoice($accountId, $xKillbillCreatedBy, $targetDate, $pluginProperty, $xKillbillReason, $xKillbillComment)
 
 Trigger an invoice generation
 
@@ -276,11 +278,12 @@ $apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $targetDate = new \DateTime("2013-10-20"); // \DateTime | 
+$pluginProperty = array("pluginProperty_example"); // string[] | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 
 try {
-    $result = $apiInstance->createFutureInvoice($accountId, $xKillbillCreatedBy, $targetDate, $xKillbillReason, $xKillbillComment);
+    $result = $apiInstance->createFutureInvoice($accountId, $xKillbillCreatedBy, $targetDate, $pluginProperty, $xKillbillReason, $xKillbillComment);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoiceApi->createFutureInvoice: ', $e->getMessage(), PHP_EOL;
@@ -295,12 +298,82 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **targetDate** | **\DateTime**|  | [optional]
+ **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
 
 ### Return type
 
 [**\Killbill\Client\Swagger\Model\Invoice**](../Model/Invoice.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **createFutureInvoiceGroup**
+> \Killbill\Client\Swagger\Model\Invoice[] createFutureInvoiceGroup($accountId, $xKillbillCreatedBy, $targetDate, $pluginProperty, $xKillbillReason, $xKillbillComment)
+
+Trigger an invoice generation
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+$xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
+$targetDate = new \DateTime("2013-10-20"); // \DateTime | 
+$pluginProperty = array("pluginProperty_example"); // string[] | 
+$xKillbillReason = "xKillbillReason_example"; // string | 
+$xKillbillComment = "xKillbillComment_example"; // string | 
+
+try {
+    $result = $apiInstance->createFutureInvoiceGroup($accountId, $xKillbillCreatedBy, $targetDate, $pluginProperty, $xKillbillReason, $xKillbillComment);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InvoiceApi->createFutureInvoiceGroup: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountId** | [**string**](../Model/.md)|  |
+ **xKillbillCreatedBy** | **string**|  |
+ **targetDate** | **\DateTime**|  | [optional]
+ **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
+ **xKillbillReason** | **string**|  | [optional]
+ **xKillbillComment** | **string**|  | [optional]
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\Invoice[]**](../Model/Invoice.md)
 
 ### Authorization
 
@@ -863,7 +936,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **generateDryRunInvoice**
-> \Killbill\Client\Swagger\Model\Invoice generateDryRunInvoice($body, $xKillbillCreatedBy, $accountId, $xKillbillReason, $xKillbillComment, $targetDate)
+> \Killbill\Client\Swagger\Model\Invoice generateDryRunInvoice($body, $xKillbillCreatedBy, $accountId, $xKillbillReason, $xKillbillComment, $targetDate, $pluginProperty)
 
 Generate a dryRun invoice
 
@@ -895,9 +968,10 @@ $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string |
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 $targetDate = new \DateTime("2013-10-20"); // \DateTime | 
+$pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->generateDryRunInvoice($body, $xKillbillCreatedBy, $accountId, $xKillbillReason, $xKillbillComment, $targetDate);
+    $result = $apiInstance->generateDryRunInvoice($body, $xKillbillCreatedBy, $accountId, $xKillbillReason, $xKillbillComment, $targetDate, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling InvoiceApi->generateDryRunInvoice: ', $e->getMessage(), PHP_EOL;
@@ -915,6 +989,7 @@ Name | Type | Description  | Notes
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
  **targetDate** | **\DateTime**|  | [optional]
+ **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
 
@@ -1640,6 +1715,71 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **offset** | **int**|  | [optional] [default to 0]
  **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\Invoice[]**](../Model/Invoice.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getInvoicesGroup**
+> \Killbill\Client\Swagger\Model\Invoice[] getInvoicesGroup($groupId, $accountId, $withChildrenItems, $audit)
+
+Retrieve a set of invoices by group id
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$groupId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+$accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+$withChildrenItems = false; // bool | 
+$audit = "NONE"; // string | 
+
+try {
+    $result = $apiInstance->getInvoicesGroup($groupId, $accountId, $withChildrenItems, $audit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling InvoiceApi->getInvoicesGroup: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupId** | [**string**](../Model/.md)|  |
+ **accountId** | [**string**](../Model/.md)|  |
+ **withChildrenItems** | **bool**|  | [optional] [default to false]
  **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
