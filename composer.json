@@ -35,7 +35,7 @@
     },
     "require-dev": {
         "ext-dom": "*",
-        "phpunit/phpunit": "^9.4",
+        "phpunit/phpunit": "^9.4 || ^10.0",
         "squizlabs/php_codesniffer": "^3.5",
         "friendsofphp/php-cs-fixer": "^2.15 || ^3.0",
         "escapestudios/symfony2-coding-standard": "^3.0"
