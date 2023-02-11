@@ -1,4 +1,22 @@
 <?php
+/*
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2020 Groupon, Inc
+ * Copyright 2020-2022 Equinix, Inc
+ * Copyright 2014-2022 The Billing Project, LLC
+ *
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
+ * (the "License"); you may not use this file except in compliance with the
+ * License.  You may obtain a copy of the License at:
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
 
 namespace Killbill\Client;
 
@@ -8,7 +26,7 @@ use Psr\Http\Message\RequestInterface;
 /**
  * Test for AddAuthHeadersMiddleware
  */
-class AddAuthHeadersMiddlewareTest extends \PHPUnit_Framework_TestCase
+class AddAuthHeadersMiddlewareTest extends \PHPUnit\Framework\TestCase
 {
     const HOST = 'http://localhost:8980';
     const ADMIN_LOGIN = 'admin';
@@ -31,7 +49,7 @@ class AddAuthHeadersMiddlewareTest extends \PHPUnit_Framework_TestCase
     /**
      * prepare stuff
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->client = new KillbillClient(null, self::HOST, self::ADMIN_LOGIN, self::ADMIN_PASS);
         $this->client->setApiKey(self::TENANT_KEY);
@@ -97,6 +115,9 @@ class AddAuthHeadersMiddlewareTest extends \PHPUnit_Framework_TestCase
         $this->assertHeaders(['X-Killbill-ApiKey' => true, 'X-Killbill-ApiSecret' => true, 'Authorization' => true]);
     }
 
+    /**
+     * @param array $options
+     */
     private function assertHeaders(array $options = [])
     {
         $headers = $this->request->getHeaders();

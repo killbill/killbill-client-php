@@ -7,5 +7,5 @@
     "gitRepoId" : "killbill-client",
     "variableNamingConvention": "camelCase",
     "srcBasePath": "lib",
-    "httpUserAgent": "Killbill-Client/0.22.1/php"
+    "httpUserAgent": "Killbill-Client/0.24.0/php"
 }

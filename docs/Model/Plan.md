@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional] 
 **prettyName** | **string** |  | [optional] 
+**recurringBillingMode** | **string** |  | [optional] 
 **billingPeriod** | **string** |  | [optional] 
 **phases** | [**\Killbill\Client\Swagger\Model\Phase[]**](Phase.md) |  | [optional] 
 

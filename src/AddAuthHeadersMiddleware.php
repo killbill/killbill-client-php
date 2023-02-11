@@ -1,10 +1,28 @@
 <?php
+/*
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2020 Groupon, Inc
+ * Copyright 2020-2022 Equinix, Inc
+ * Copyright 2014-2022 The Billing Project, LLC
+ *
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
+ * (the "License"); you may not use this file except in compliance with the
+ * License.  You may obtain a copy of the License at:
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
 
 namespace Killbill\Client;
 
+use GuzzleHttp\Psr7\Utils;
 use Killbill\Client\Swagger\Configuration;
 use Psr\Http\Message\RequestInterface;
-use GuzzleHttp\Psr7;
 
 /**
  * This adds Killbill auth headers to the request
@@ -26,6 +44,7 @@ class AddAuthHeadersMiddleware
 
     /** @var array */
     private $whitelist;
+
     /**
      * @param callable      $nextHandler
      * @param Configuration $configuration
@@ -45,9 +64,10 @@ class AddAuthHeadersMiddleware
 
     /**
      * @param Configuration $configuration
+     *
      * @return \Closure
      */
-    public static function get(Configuration $configuration)
+    public static function get(Configuration $configuration): \Closure
     {
         return function (callable $handler) use ($configuration) {
             return new AddAuthHeadersMiddleware($handler, $configuration);
@@ -57,6 +77,7 @@ class AddAuthHeadersMiddleware
     /**
      * @param RequestInterface $request
      * @param array            $options
+     *
      * @return mixed
      */
     public function __invoke(RequestInterface $request, array $options)
@@ -73,6 +94,8 @@ class AddAuthHeadersMiddleware
 
     /**
      * @param RequestInterface $request
+     * @param array            $options
+     *
      * @return array
      */
     private function getActions(RequestInterface $request, array $options)
@@ -80,6 +103,7 @@ class AddAuthHeadersMiddleware
         if (isset($options[self::OPTION])) {
             return $options[self::OPTION];
         }
+
         foreach ($this->whitelist as list($method, $path, $actions)) {
             if (preg_match('/'.$method.'/i', $request->getMethod())
                 && strpos($request->getUri()->getPath(), $path) !== false
@@ -93,7 +117,8 @@ class AddAuthHeadersMiddleware
 
     /**
      * @param RequestInterface $request
-     * @param int $actions
+     * @param int              $actions
+     *
      * @return RequestInterface
      */
     private function addHeaders(RequestInterface $request, $actions)
@@ -108,22 +133,22 @@ class AddAuthHeadersMiddleware
 
         $modify['set_headers'] = $headers;
 
-        return Psr7\modify_request($request, $modify);
+        return Utils::modifyRequest($request, $modify);
     }
 
     /**
      * @return array
      */
-    private function getTenantHeader()
+    private function getTenantHeader(): array
     {
         $headers = [];
 
         $apiKey = $this->configuration->getApiKeyWithPrefix('X-Killbill-ApiKey');
-        if ($apiKey !== null) {
+        if (null !== $apiKey) {
             $headers['X-Killbill-ApiKey'] = $apiKey;
         }
         $apiKey = $this->configuration->getApiKeyWithPrefix('X-Killbill-ApiSecret');
-        if ($apiKey !== null) {
+        if (null !== $apiKey) {
             $headers['X-Killbill-ApiSecret'] = $apiKey;
         }
 
@@ -133,7 +158,7 @@ class AddAuthHeadersMiddleware
     /**
      * @return array
      */
-    private function getBasicAuthHeader()
+    private function getBasicAuthHeader(): array
     {
         $headers = [];
 

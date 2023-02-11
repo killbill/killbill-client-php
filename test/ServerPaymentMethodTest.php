@@ -1,8 +1,11 @@
 <?php
 /*
- * Copyright 2011-2017 Ning, Inc.
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2020 Groupon, Inc
+ * Copyright 2020-2022 Equinix, Inc
+ * Copyright 2014-2022 The Billing Project, LLC
  *
- * Ning licenses this file to you under the Apache License, version 2.0
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
  * License.  You may obtain a copy of the License at:
  *
@@ -33,12 +36,12 @@ class ServerPaymentMethodTest extends KillbillTest
     /**
      * Set up test
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->externalBundleId = uniqid();
-        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') === '1') {
             $this->externalBundleId = md5('serverPaymentMethodTest'.$this->tenant->getExternalKey());
         }
         $this->account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
@@ -47,7 +50,7 @@ class ServerPaymentMethodTest extends KillbillTest
     /**
      * Tear down test
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
 

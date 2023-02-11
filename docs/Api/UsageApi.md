@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**recordUsage**](UsageApi.md#recordusage) | **POST** /1.0/kb/usages | Record usage for a subscription
 
 # **getAllUsage**
-> \Killbill\Client\Swagger\Model\RolledUpUsage getAllUsage($subscriptionId, $startDate, $endDate)
+> \Killbill\Client\Swagger\Model\RolledUpUsage getAllUsage($subscriptionId, $startDate, $endDate, $pluginProperty)
 
 Retrieve usage for a subscription
 
@@ -38,9 +38,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\UsageApi(
 $subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $startDate = new \DateTime("2013-10-20"); // \DateTime | 
 $endDate = new \DateTime("2013-10-20"); // \DateTime | 
+$pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->getAllUsage($subscriptionId, $startDate, $endDate);
+    $result = $apiInstance->getAllUsage($subscriptionId, $startDate, $endDate, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UsageApi->getAllUsage: ', $e->getMessage(), PHP_EOL;
@@ -55,6 +56,7 @@ Name | Type | Description  | Notes
  **subscriptionId** | [**string**](../Model/.md)|  |
  **startDate** | **\DateTime**|  | [optional]
  **endDate** | **\DateTime**|  | [optional]
+ **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
 
@@ -72,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getUsage**
-> \Killbill\Client\Swagger\Model\RolledUpUsage getUsage($subscriptionId, $unitType, $startDate, $endDate)
+> \Killbill\Client\Swagger\Model\RolledUpUsage getUsage($subscriptionId, $unitType, $startDate, $endDate, $pluginProperty)
 
 Retrieve usage for a subscription and unit type
 
@@ -102,9 +104,10 @@ $subscriptionId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string |
 $unitType = "unitType_example"; // string | 
 $startDate = new \DateTime("2013-10-20"); // \DateTime | 
 $endDate = new \DateTime("2013-10-20"); // \DateTime | 
+$pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->getUsage($subscriptionId, $unitType, $startDate, $endDate);
+    $result = $apiInstance->getUsage($subscriptionId, $unitType, $startDate, $endDate, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UsageApi->getUsage: ', $e->getMessage(), PHP_EOL;
@@ -120,6 +123,7 @@ Name | Type | Description  | Notes
  **unitType** | **string**|  |
  **startDate** | **\DateTime**|  | [optional]
  **endDate** | **\DateTime**|  | [optional]
+ **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
 ### Return type
 

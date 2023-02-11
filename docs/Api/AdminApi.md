@@ -65,12 +65,12 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  | [optional]
  **queueName** | **string**|  | [optional]
  **serviceName** | **string**|  | [optional]
- **withHistory** | **bool**|  | [optional]
+ **withHistory** | **bool**|  | [optional] [default to true]
  **minDate** | **string**|  | [optional]
  **maxDate** | **string**|  | [optional]
- **withInProcessing** | **bool**|  | [optional]
- **withBusEvents** | **bool**|  | [optional]
- **withNotifications** | **bool**|  | [optional]
+ **withInProcessing** | **bool**|  | [optional] [default to true]
+ **withBusEvents** | **bool**|  | [optional] [default to true]
+ **withNotifications** | **bool**|  | [optional] [default to true]
 
 ### Return type
 
@@ -366,7 +366,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **triggerInvoiceGenerationForParkedAccounts**
-> triggerInvoiceGenerationForParkedAccounts($xKillbillCreatedBy, $offset, $limit, $xKillbillReason, $xKillbillComment)
+> triggerInvoiceGenerationForParkedAccounts($xKillbillCreatedBy, $offset, $limit, $pluginProperty, $xKillbillReason, $xKillbillComment)
 
 Trigger an invoice generation for all parked accounts
 
@@ -393,13 +393,14 @@ $apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     $config
 );
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$pluginProperty = array("pluginProperty_example"); // string[] | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
 
 try {
-    $apiInstance->triggerInvoiceGenerationForParkedAccounts($xKillbillCreatedBy, $offset, $limit, $xKillbillReason, $xKillbillComment);
+    $apiInstance->triggerInvoiceGenerationForParkedAccounts($xKillbillCreatedBy, $offset, $limit, $pluginProperty, $xKillbillReason, $xKillbillComment);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->triggerInvoiceGenerationForParkedAccounts: ', $e->getMessage(), PHP_EOL;
 }
@@ -411,8 +412,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xKillbillCreatedBy** | **string**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
 

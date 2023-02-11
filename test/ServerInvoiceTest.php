@@ -1,8 +1,11 @@
 <?php
 /*
- * Copyright 2011-2017 Ning, Inc.
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2020 Groupon, Inc
+ * Copyright 2020-2022 Equinix, Inc
+ * Copyright 2014-2022 The Billing Project, LLC
  *
- * Ning licenses this file to you under the Apache License, version 2.0
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
  * License.  You may obtain a copy of the License at:
  *
@@ -36,12 +39,12 @@ class ServerInvoiceTest extends KillbillTest
     /**
      * Set up the test
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->externalBundleId = uniqid();
-        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') == '1') {
+        if (getenv('ENV') === 'local' || getenv('RECORD_REQUESTS') === '1') {
             $this->externalBundleId = md5('serverInvoiceTest'.$this->tenant->getExternalKey());
         }
         $this->account = $this->client->getAccountApi()->createAccount($this->accountData, self::USER, self::REASON, self::COMMENT);
@@ -65,7 +68,7 @@ class ServerInvoiceTest extends KillbillTest
     /**
      * Tear down the Test
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
 
@@ -94,8 +97,15 @@ class ServerInvoiceTest extends KillbillTest
         $this->assertEquals('MONTHLY', $subscription->getBillingPeriod());
         $this->assertEquals('TRIAL', $subscription->getPhaseType());
 
+        usleep(3000000);
+
+        $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
+        $this->assertCount(1, $invoices);
+
         // Move clock after trials
         $this->clock->addDays(31);
+
+        usleep(3000000);
 
         // Should see 2 invoices for account
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
@@ -144,6 +154,8 @@ class ServerInvoiceTest extends KillbillTest
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
 
+        usleep(3000000);
+
         // Should see 2 invoices for account
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $invoice = $invoices[0];
@@ -181,7 +193,7 @@ class ServerInvoiceTest extends KillbillTest
          */
         $tags = $this->client->getInvoiceApi()->getInvoiceTags($invoice->getInvoiceId());
         $this->assertCount(2, $tags);
-        if (strcmp($tags[0]->getTagDefinitionName(), $tag1->getName()) == 0) {
+        if (strcmp($tags[0]->getTagDefinitionName(), $tag1->getName()) === 0) {
             $this->assertEquals($tags[0]->getTagDefinitionId(), $tag1->getId());
             $this->assertEquals($tags[1]->getTagDefinitionId(), $tag2->getId());
         } else {
@@ -220,6 +232,8 @@ class ServerInvoiceTest extends KillbillTest
         $subscriptionData->setBundleExternalKey($this->externalBundleId);
 
         $subscription = $this->client->getSubscriptionApi()->createSubscription($subscriptionData, self::USER, self::REASON, self::COMMENT);
+
+        usleep(3000000);
 
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $invoice = $invoices[0];
@@ -294,6 +308,8 @@ class ServerInvoiceTest extends KillbillTest
         self::assertSame($this->account->getAccountId(), $subscriptionBase->getAccountId());
         self::assertSame('sports-monthly', $subscriptionBase->getPlanName());
 
+        usleep(3000000);
+
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(1, $invoices);
         $this->assertSame(0.0, $invoices[0]->getAmount());
@@ -301,7 +317,7 @@ class ServerInvoiceTest extends KillbillTest
         $this->clock->addDays(35);
         $this->clock->waitForExpectedClause(2, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
 
-        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
+        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId(), $startDate = null, $endDate = null, $withMigrationInvoices = 'false', $unpaidInvoicesOnly = 'false', $includeVoidedInvoices = 'false', $includeInvoiceComponents = 'true');
         $this->assertCount(2, $invoicesNextMonth);
         $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
         $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
@@ -327,22 +343,26 @@ class ServerInvoiceTest extends KillbillTest
         self::assertSame($this->account->getAccountId(), $subscriptionGas->getAccountId());
         self::assertSame('gas-monthly', $subscriptionGas->getPlanName());
 
+        usleep(3000000);
+
         $invoices = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
         $this->assertCount(1, $invoices);
         $this->assertSame(0.0, $invoices[0]->getAmount());
 
         $this->clock->addDays(35);
 
-        $this->clock->waitForExpectedClause(2, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
+        $this->clock->waitForExpectedClause(3, [$this, 'getAccountInvoicesNumber'], [$this->account->getAccountId()]);
 
-        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId());
-        $this->assertCount(2, $invoicesNextMonth);
+        $invoicesNextMonth = $this->client->getAccountApi()->getInvoicesForAccount($this->account->getAccountId(), $startDate = null, $endDate = null, $withMigrationInvoices = 'false', $unpaidInvoicesOnly = 'false', $includeVoidedInvoices = 'false', $includeInvoiceComponents = 'true');
+        $this->assertCount(3, $invoicesNextMonth);
         $this->assertSame(0.0, $invoicesNextMonth[0]->getAmount());
-        $this->assertSame(500.0, $invoicesNextMonth[1]->getAmount());
+        $this->assertSame(0.0, $invoicesNextMonth[1]->getAmount());
+        $this->assertSame(500.0, $invoicesNextMonth[2]->getAmount());
     }
 
     /**
      * @param string $accountId
+     *
      * @return int
      */
     public function getAccountInvoicesNumber($accountId)

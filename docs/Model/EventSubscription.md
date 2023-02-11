@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **eventId** | **string** |  | [optional] 
 **billingPeriod** | **string** |  | [optional] 
 **effectiveDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
+**catalogEffectiveDate** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **plan** | **string** |  | [optional] 
 **product** | **string** |  | [optional] 
 **priceList** | **string** |  | [optional] 

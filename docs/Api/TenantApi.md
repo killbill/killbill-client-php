@@ -49,7 +49,7 @@ $body = new \Killbill\Client\Swagger\Model\Tenant(); // \Killbill\Client\Swagger
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$useGlobalDefault = true; // bool | 
+$useGlobalDefault = false; // bool | 
 
 try {
     $result = $apiInstance->createTenant($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $useGlobalDefault);
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **useGlobalDefault** | **bool**|  | [optional]
+ **useGlobalDefault** | **bool**|  | [optional] [default to false]
 
 ### Return type
 
@@ -402,7 +402,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAllPluginConfiguration**
-> \Killbill\Client\Swagger\Model\TenantKeyValue getAllPluginConfiguration($keyPrefix)
+> \Killbill\Client\Swagger\Model\TenantKeyValue[] getAllPluginConfiguration($keyPrefix)
 
 Retrieve a per tenant key value based on key prefix
 
@@ -447,7 +447,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Killbill\Client\Swagger\Model\TenantKeyValue**](../Model/TenantKeyValue.md)
+[**\Killbill\Client\Swagger\Model\TenantKeyValue[]**](../Model/TenantKeyValue.md)
 
 ### Authorization
 

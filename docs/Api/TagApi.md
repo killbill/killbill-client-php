@@ -94,9 +94,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\TagApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getTags($offset, $limit, $audit);
@@ -111,9 +111,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -158,9 +158,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\TagApi(
     $config
 );
 $searchKey = "searchKey_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->searchTags($searchKey, $offset, $limit, $audit);
@@ -176,9 +176,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchKey** | **string**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 

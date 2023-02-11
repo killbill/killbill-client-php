@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**getAccountAuditLogs**](AccountApi.md#getaccountauditlogs) | **GET** /1.0/kb/accounts/{accountId}/auditLogs | Retrieve audit logs by account id
 [**getAccountAuditLogsWithHistory**](AccountApi.md#getaccountauditlogswithhistory) | **GET** /1.0/kb/accounts/{accountId}/auditLogsWithHistory | Retrieve account audit logs with history by account id
 [**getAccountBundles**](AccountApi.md#getaccountbundles) | **GET** /1.0/kb/accounts/{accountId}/bundles | Retrieve bundles for account
+[**getAccountBundlesPaginated**](AccountApi.md#getaccountbundlespaginated) | **GET** /1.0/kb/accounts/{accountId}/bundles/pagination | Retrieve paginated bundles for account
 [**getAccountByKey**](AccountApi.md#getaccountbykey) | **GET** /1.0/kb/accounts | Retrieve an account by external key
 [**getAccountCustomFields**](AccountApi.md#getaccountcustomfields) | **GET** /1.0/kb/accounts/{accountId}/customFields | Retrieve account custom fields
 [**getAccountEmailAuditLogsWithHistory**](AccountApi.md#getaccountemailauditlogswithhistory) | **GET** /1.0/kb/accounts/{accountId}/emails/{accountEmailId}/auditLogsWithHistory | Retrieve account email audit logs with history by id
@@ -31,6 +32,7 @@ Method | HTTP request | Description
 [**getEmails**](AccountApi.md#getemails) | **GET** /1.0/kb/accounts/{accountId}/emails | Retrieve an account emails
 [**getInvoicePayments**](AccountApi.md#getinvoicepayments) | **GET** /1.0/kb/accounts/{accountId}/invoicePayments | Retrieve account invoice payments
 [**getInvoicesForAccount**](AccountApi.md#getinvoicesforaccount) | **GET** /1.0/kb/accounts/{accountId}/invoices | Retrieve account invoices
+[**getInvoicesForAccountPaginated**](AccountApi.md#getinvoicesforaccountpaginated) | **GET** /1.0/kb/accounts/{accountId}/invoices/pagination | Retrieve paginated invoices for account
 [**getOverdueAccount**](AccountApi.md#getoverdueaccount) | **GET** /1.0/kb/accounts/{accountId}/overdue | Retrieve overdue state for account
 [**getPaymentMethodsForAccount**](AccountApi.md#getpaymentmethodsforaccount) | **GET** /1.0/kb/accounts/{accountId}/paymentMethods | Retrieve account payment methods
 [**getPaymentsForAccount**](AccountApi.md#getpaymentsforaccount) | **GET** /1.0/kb/accounts/{accountId}/payments | Retrieve account payments
@@ -213,9 +215,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
-$cancelAllSubscriptions = true; // bool | 
-$writeOffUnpaidInvoices = true; // bool | 
-$itemAdjustUnpaidInvoices = true; // bool | 
+$cancelAllSubscriptions = false; // bool | 
+$writeOffUnpaidInvoices = false; // bool | 
+$itemAdjustUnpaidInvoices = false; // bool | 
 $removeFutureNotifications = true; // bool | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -234,10 +236,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
  **xKillbillCreatedBy** | **string**|  |
- **cancelAllSubscriptions** | **bool**|  | [optional]
- **writeOffUnpaidInvoices** | **bool**|  | [optional]
- **itemAdjustUnpaidInvoices** | **bool**|  | [optional]
- **removeFutureNotifications** | **bool**|  | [optional]
+ **cancelAllSubscriptions** | **bool**|  | [optional] [default to false]
+ **writeOffUnpaidInvoices** | **bool**|  | [optional] [default to false]
+ **itemAdjustUnpaidInvoices** | **bool**|  | [optional] [default to false]
+ **removeFutureNotifications** | **bool**|  | [optional] [default to true]
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
 
@@ -487,8 +489,8 @@ $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string |
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$isDefault = true; // bool | 
-$payAllUnpaidInvoices = true; // bool | 
+$isDefault = false; // bool | 
+$payAllUnpaidInvoices = false; // bool | 
 $controlPluginName = array("controlPluginName_example"); // string[] | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
@@ -510,8 +512,8 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **isDefault** | **bool**|  | [optional]
- **payAllUnpaidInvoices** | **bool**|  | [optional]
+ **isDefault** | **bool**|  | [optional] [default to false]
+ **payAllUnpaidInvoices** | **bool**|  | [optional] [default to false]
  **controlPluginName** | [**string[]**](../Model/string.md)|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
@@ -690,9 +692,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$accountWithBalance = true; // bool | 
-$accountWithBalanceAndCBA = true; // bool | 
-$audit = "audit_example"; // string | 
+$accountWithBalance = false; // bool | 
+$accountWithBalanceAndCBA = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAccount($accountId, $accountWithBalance, $accountWithBalanceAndCBA, $audit);
@@ -708,9 +710,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
- **accountWithBalance** | **bool**|  | [optional]
- **accountWithBalanceAndCBA** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **accountWithBalance** | **bool**|  | [optional] [default to false]
+ **accountWithBalanceAndCBA** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -875,7 +877,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $externalKey = "externalKey_example"; // string | 
 $bundlesFilter = "bundlesFilter_example"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAccountBundles($accountId, $externalKey, $bundlesFilter, $audit);
@@ -893,7 +895,72 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **externalKey** | **string**|  | [optional]
  **bundlesFilter** | **string**|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\Bundle[]**](../Model/Bundle.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getAccountBundlesPaginated**
+> \Killbill\Client\Swagger\Model\Bundle[] getAccountBundlesPaginated($accountId, $offset, $limit, $audit)
+
+Retrieve paginated bundles for account
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
+
+try {
+    $result = $apiInstance->getAccountBundlesPaginated($accountId, $offset, $limit, $audit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->getAccountBundlesPaginated: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountId** | [**string**](../Model/.md)|  |
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -938,9 +1005,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $externalKey = "externalKey_example"; // string | 
-$accountWithBalance = true; // bool | 
-$accountWithBalanceAndCBA = true; // bool | 
-$audit = "audit_example"; // string | 
+$accountWithBalance = false; // bool | 
+$accountWithBalanceAndCBA = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAccountByKey($externalKey, $accountWithBalance, $accountWithBalanceAndCBA, $audit);
@@ -956,9 +1023,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalKey** | **string**|  |
- **accountWithBalance** | **bool**|  | [optional]
- **accountWithBalanceAndCBA** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **accountWithBalance** | **bool**|  | [optional] [default to false]
+ **accountWithBalanceAndCBA** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1003,7 +1070,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAccountCustomFields($accountId, $audit);
@@ -1019,7 +1086,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1125,8 +1192,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAccountTags($accountId, $includedDeleted, $audit);
@@ -1142,8 +1209,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1188,8 +1255,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$parallel = true; // bool | 
-$audit = "audit_example"; // string | 
+$parallel = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAccountTimeline($accountId, $parallel, $audit);
@@ -1205,8 +1272,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
- **parallel** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **parallel** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1250,11 +1317,11 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 789; // int | 
-$limit = 789; // int | 
-$accountWithBalance = true; // bool | 
-$accountWithBalanceAndCBA = true; // bool | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$accountWithBalance = false; // bool | 
+$accountWithBalanceAndCBA = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAccounts($offset, $limit, $accountWithBalance, $accountWithBalanceAndCBA, $audit);
@@ -1269,11 +1336,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **accountWithBalance** | **bool**|  | [optional]
- **accountWithBalanceAndCBA** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **accountWithBalance** | **bool**|  | [optional] [default to false]
+ **accountWithBalanceAndCBA** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1319,7 +1386,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $objectType = "objectType_example"; // string | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAllCustomFields($accountId, $objectType, $audit);
@@ -1336,7 +1403,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
  **objectType** | **string**|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1382,8 +1449,8 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $objectType = "objectType_example"; // string | 
-$includedDeleted = true; // bool | 
-$audit = "audit_example"; // string | 
+$includedDeleted = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getAllTags($accountId, $objectType, $includedDeleted, $audit);
@@ -1400,8 +1467,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
  **objectType** | **string**|  | [optional]
- **includedDeleted** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1507,7 +1574,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $blockingStateTypes = array("blockingStateTypes_example"); // string[] | 
 $blockingStateSvcs = array("blockingStateSvcs_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getBlockingStates($accountId, $blockingStateTypes, $blockingStateSvcs, $audit);
@@ -1525,7 +1592,7 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **blockingStateTypes** | [**string[]**](../Model/string.md)|  | [optional]
  **blockingStateSvcs** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1570,9 +1637,9 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$accountWithBalance = true; // bool | 
-$accountWithBalanceAndCBA = true; // bool | 
-$audit = "audit_example"; // string | 
+$accountWithBalance = false; // bool | 
+$accountWithBalanceAndCBA = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getChildrenAccounts($accountId, $accountWithBalance, $accountWithBalanceAndCBA, $audit);
@@ -1588,9 +1655,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
- **accountWithBalance** | **bool**|  | [optional]
- **accountWithBalanceAndCBA** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **accountWithBalance** | **bool**|  | [optional] [default to false]
+ **accountWithBalanceAndCBA** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1694,10 +1761,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withPluginInfo = true; // bool | 
-$withAttempts = true; // bool | 
+$withPluginInfo = false; // bool | 
+$withAttempts = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getInvoicePayments($accountId, $withPluginInfo, $withAttempts, $pluginProperty, $audit);
@@ -1713,10 +1780,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
- **withPluginInfo** | **bool**|  | [optional]
- **withAttempts** | **bool**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **withAttempts** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1734,7 +1801,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getInvoicesForAccount**
-> \Killbill\Client\Swagger\Model\Invoice[] getInvoicesForAccount($accountId, $startDate, $endDate, $withMigrationInvoices, $unpaidInvoicesOnly, $includeVoidedInvoices, $audit)
+> \Killbill\Client\Swagger\Model\Invoice[] getInvoicesForAccount($accountId, $startDate, $endDate, $withMigrationInvoices, $unpaidInvoicesOnly, $includeVoidedInvoices, $includeInvoiceComponents, $invoicesFilter, $audit)
 
 Retrieve account invoices
 
@@ -1763,13 +1830,15 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $startDate = new \DateTime("2013-10-20"); // \DateTime | 
 $endDate = new \DateTime("2013-10-20"); // \DateTime | 
-$withMigrationInvoices = true; // bool | 
-$unpaidInvoicesOnly = true; // bool | 
-$includeVoidedInvoices = true; // bool | 
-$audit = "audit_example"; // string | 
+$withMigrationInvoices = false; // bool | 
+$unpaidInvoicesOnly = false; // bool | 
+$includeVoidedInvoices = false; // bool | 
+$includeInvoiceComponents = false; // bool | 
+$invoicesFilter = "invoicesFilter_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
-    $result = $apiInstance->getInvoicesForAccount($accountId, $startDate, $endDate, $withMigrationInvoices, $unpaidInvoicesOnly, $includeVoidedInvoices, $audit);
+    $result = $apiInstance->getInvoicesForAccount($accountId, $startDate, $endDate, $withMigrationInvoices, $unpaidInvoicesOnly, $includeVoidedInvoices, $includeInvoiceComponents, $invoicesFilter, $audit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->getInvoicesForAccount: ', $e->getMessage(), PHP_EOL;
@@ -1784,10 +1853,77 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **startDate** | **\DateTime**|  | [optional]
  **endDate** | **\DateTime**|  | [optional]
- **withMigrationInvoices** | **bool**|  | [optional]
- **unpaidInvoicesOnly** | **bool**|  | [optional]
- **includeVoidedInvoices** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **withMigrationInvoices** | **bool**|  | [optional] [default to false]
+ **unpaidInvoicesOnly** | **bool**|  | [optional] [default to false]
+ **includeVoidedInvoices** | **bool**|  | [optional] [default to false]
+ **includeInvoiceComponents** | **bool**|  | [optional] [default to false]
+ **invoicesFilter** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\Invoice[]**](../Model/Invoice.md)
+
+### Authorization
+
+[Killbill Api Key](../../README.md#Killbill Api Key), [Killbill Api Secret](../../README.md#Killbill Api Secret), [basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getInvoicesForAccountPaginated**
+> \Killbill\Client\Swagger\Model\Invoice[] getInvoicesForAccountPaginated($accountId, $offset, $limit, $audit)
+
+Retrieve paginated invoices for account
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: Killbill Api Key
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiKey', 'Bearer');// Configure API key authorization: Killbill Api Secret
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKey('X-Killbill-ApiSecret', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Killbill-ApiSecret', 'Bearer');// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$audit = "NONE"; // string | 
+
+try {
+    $result = $apiInstance->getInvoicesForAccountPaginated($accountId, $offset, $limit, $audit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountApi->getInvoicesForAccountPaginated: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountId** | [**string**](../Model/.md)|  |
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1891,10 +2027,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withPluginInfo = true; // bool | 
-$includedDeleted = true; // bool | 
+$withPluginInfo = false; // bool | 
+$includedDeleted = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPaymentMethodsForAccount($accountId, $withPluginInfo, $includedDeleted, $pluginProperty, $audit);
@@ -1910,10 +2046,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
- **withPluginInfo** | **bool**|  | [optional]
- **includedDeleted** | **bool**|  | [optional]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
+ **includedDeleted** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -1958,10 +2094,10 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$withAttempts = true; // bool | 
-$withPluginInfo = true; // bool | 
+$withAttempts = false; // bool | 
+$withPluginInfo = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
-$audit = "audit_example"; // string | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->getPaymentsForAccount($accountId, $withAttempts, $withPluginInfo, $pluginProperty, $audit);
@@ -1977,10 +2113,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accountId** | [**string**](../Model/.md)|  |
- **withAttempts** | **bool**|  | [optional]
- **withPluginInfo** | **bool**|  | [optional]
+ **withAttempts** | **bool**|  | [optional] [default to false]
+ **withPluginInfo** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
- **audit** | **string**|  | [optional]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -2064,7 +2200,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **payAllInvoices**
-> payAllInvoices($accountId, $xKillbillCreatedBy, $paymentMethodId, $externalPayment, $paymentAmount, $targetDate, $pluginProperty, $xKillbillReason, $xKillbillComment)
+> \Killbill\Client\Swagger\Model\Invoice[] payAllInvoices($accountId, $xKillbillCreatedBy, $paymentMethodId, $externalPayment, $paymentAmount, $targetDate, $pluginProperty, $xKillbillReason, $xKillbillComment)
 
 Trigger a payment for all unpaid invoices
 
@@ -2093,7 +2229,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $paymentMethodId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
-$externalPayment = true; // bool | 
+$externalPayment = false; // bool | 
 $paymentAmount = 1.2; // float | 
 $targetDate = new \DateTime("2013-10-20"); // \DateTime | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
@@ -2101,7 +2237,8 @@ $xKillbillReason = "xKillbillReason_example"; // string |
 $xKillbillComment = "xKillbillComment_example"; // string | 
 
 try {
-    $apiInstance->payAllInvoices($accountId, $xKillbillCreatedBy, $paymentMethodId, $externalPayment, $paymentAmount, $targetDate, $pluginProperty, $xKillbillReason, $xKillbillComment);
+    $result = $apiInstance->payAllInvoices($accountId, $xKillbillCreatedBy, $paymentMethodId, $externalPayment, $paymentAmount, $targetDate, $pluginProperty, $xKillbillReason, $xKillbillComment);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->payAllInvoices: ', $e->getMessage(), PHP_EOL;
 }
@@ -2115,7 +2252,7 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **xKillbillCreatedBy** | **string**|  |
  **paymentMethodId** | [**string**](../Model/.md)|  | [optional]
- **externalPayment** | **bool**|  | [optional]
+ **externalPayment** | **bool**|  | [optional] [default to false]
  **paymentAmount** | **float**|  | [optional]
  **targetDate** | **\DateTime**|  | [optional]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
@@ -2124,7 +2261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Killbill\Client\Swagger\Model\Invoice[]**](../Model/Invoice.md)
 
 ### Authorization
 
@@ -2133,7 +2270,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -2509,11 +2646,11 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
     $config
 );
 $searchKey = "searchKey_example"; // string | 
-$offset = 789; // int | 
-$limit = 789; // int | 
-$accountWithBalance = true; // bool | 
-$accountWithBalanceAndCBA = true; // bool | 
-$audit = "audit_example"; // string | 
+$offset = 0; // int | 
+$limit = 100; // int | 
+$accountWithBalance = false; // bool | 
+$accountWithBalanceAndCBA = false; // bool | 
+$audit = "NONE"; // string | 
 
 try {
     $result = $apiInstance->searchAccounts($searchKey, $offset, $limit, $accountWithBalance, $accountWithBalanceAndCBA, $audit);
@@ -2529,11 +2666,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchKey** | **string**|  |
- **offset** | **int**|  | [optional]
- **limit** | **int**|  | [optional]
- **accountWithBalance** | **bool**|  | [optional]
- **accountWithBalanceAndCBA** | **bool**|  | [optional]
- **audit** | **string**|  | [optional]
+ **offset** | **int**|  | [optional] [default to 0]
+ **limit** | **int**|  | [optional] [default to 100]
+ **accountWithBalance** | **bool**|  | [optional] [default to false]
+ **accountWithBalanceAndCBA** | **bool**|  | [optional] [default to false]
+ **audit** | **string**|  | [optional] [default to NONE]
 
 ### Return type
 
@@ -2580,7 +2717,7 @@ $apiInstance = new Killbill\Client\Swagger\Api\AccountApi(
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $paymentMethodId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
-$payAllUnpaidInvoices = true; // bool | 
+$payAllUnpaidInvoices = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
@@ -2600,7 +2737,7 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **paymentMethodId** | [**string**](../Model/.md)|  |
  **xKillbillCreatedBy** | **string**|  |
- **payAllUnpaidInvoices** | **bool**|  | [optional]
+ **payAllUnpaidInvoices** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
@@ -2716,7 +2853,7 @@ $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string |
 $accountId = "38400000-8cf0-11bd-b23e-10b96e4ef00d"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
-$treatNullAsReset = true; // bool | 
+$treatNullAsReset = false; // bool | 
 
 try {
     $apiInstance->updateAccount($body, $xKillbillCreatedBy, $accountId, $xKillbillReason, $xKillbillComment, $treatNullAsReset);
@@ -2735,7 +2872,7 @@ Name | Type | Description  | Notes
  **accountId** | [**string**](../Model/.md)|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
- **treatNullAsReset** | **bool**|  | [optional]
+ **treatNullAsReset** | **bool**|  | [optional] [default to false]
 
 ### Return type
 
