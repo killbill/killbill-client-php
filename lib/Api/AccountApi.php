@@ -2568,9 +2568,8 @@ class AccountApi
 
         // query params
         if (is_array($tagDef)) {
-            $tagDef = ObjectSerializer::serializeCollection($tagDef, /*'multi'*/'csv', true);
-        }
-        if ($tagDef !== null) {
+            $queryParams['tagDef'] = $tagDef;
+        } elseif ($tagDef !== null) {
             $queryParams['tagDef'] = ObjectSerializer::toQueryValue($tagDef);
         }
         // header params
