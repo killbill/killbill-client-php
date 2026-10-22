@@ -1,4 +1,4 @@
-# AdminApi
+# Killbill\Client\Swagger\AdminApi
 
 All URIs are relative to */*
 
@@ -34,8 +34,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// AdminApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new AdminApi(
+$apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -109,8 +108,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// AdminApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new AdminApi(
+$apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -168,8 +166,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// AdminApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new AdminApi(
+$apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -227,8 +224,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// AdminApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new AdminApi(
+$apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -282,8 +278,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// AdminApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new AdminApi(
+$apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -337,8 +332,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// AdminApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new AdminApi(
+$apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -392,8 +386,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// AdminApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new AdminApi(
+$apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -461,8 +454,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// AdminApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new AdminApi(
+$apiInstance = new Killbill\Client\Swagger\Api\AdminApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),

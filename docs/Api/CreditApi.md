@@ -1,4 +1,4 @@
-# CreditApi
+# Killbill\Client\Swagger\CreditApi
 
 All URIs are relative to */*
 
@@ -28,8 +28,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// CreditApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new CreditApi(
+$apiInstance = new Killbill\Client\Swagger\Api\CreditApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -100,8 +99,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// CreditApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new CreditApi(
+$apiInstance = new Killbill\Client\Swagger\Api\CreditApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),

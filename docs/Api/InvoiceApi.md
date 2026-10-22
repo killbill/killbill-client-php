@@ -1,4 +1,4 @@
-# InvoiceApi
+# Killbill\Client\Swagger\InvoiceApi
 
 All URIs are relative to */*
 
@@ -61,8 +61,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -133,8 +132,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -198,8 +196,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -272,8 +269,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -342,8 +338,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -412,8 +407,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -486,8 +480,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -554,8 +547,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -622,8 +614,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -692,8 +683,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -766,8 +756,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -835,8 +824,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -902,8 +890,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -969,8 +956,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1041,8 +1027,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1101,8 +1086,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1165,8 +1149,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1225,8 +1208,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1285,8 +1267,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1349,8 +1330,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1413,8 +1393,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1475,8 +1454,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1535,8 +1513,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1599,8 +1576,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1655,8 +1631,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1715,8 +1690,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1779,8 +1753,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1845,8 +1818,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1911,8 +1883,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1978,8 +1949,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2044,8 +2014,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2114,8 +2083,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2182,8 +2150,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2250,8 +2217,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2320,8 +2286,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// InvoiceApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new InvoiceApi(
+$apiInstance = new Killbill\Client\Swagger\Api\InvoiceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),

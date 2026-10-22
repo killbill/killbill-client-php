@@ -1,4 +1,4 @@
-# TagApi
+# Killbill\Client\Swagger\TagApi
 
 All URIs are relative to */*
 
@@ -29,8 +29,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// TagApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new TagApi(
+$apiInstance = new Killbill\Client\Swagger\Api\TagApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -89,8 +88,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// TagApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new TagApi(
+$apiInstance = new Killbill\Client\Swagger\Api\TagApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -153,8 +151,7 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-// TagApi lives in the Killbill\Client\Swagger\Api namespace
-$apiInstance = new TagApi(
+$apiInstance = new Killbill\Client\Swagger\Api\TagApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
