@@ -155,8 +155,6 @@ Name | Type | Description  | Notes
 
 Process a gateway notification
 
-The response is built by the appropriate plugin
-
 ### Example
 ```php
 <?php

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**getCredit**](CreditApi.md#getcredit) | **GET** /1.0/kb/credits/{creditId} | Retrieve a credit by id
 
 # **createCredits**
-> \Killbill\Client\Swagger\Model\InvoiceItem[] createCredits($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $autoCommit, $pluginProperty)
+> \Killbill\Client\Swagger\Model\InvoiceItem[] createCredits($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $requestedDate, $autoCommit, $pluginProperty)
 
 Create a credit
 
@@ -38,11 +38,12 @@ $body = array(new \Killbill\Client\Swagger\Model\InvoiceItem()); // \Killbill\Cl
 $xKillbillCreatedBy = "xKillbillCreatedBy_example"; // string | 
 $xKillbillReason = "xKillbillReason_example"; // string | 
 $xKillbillComment = "xKillbillComment_example"; // string | 
+$requestedDate = new \DateTime("2013-10-20"); // \DateTime | 
 $autoCommit = false; // bool | 
 $pluginProperty = array("pluginProperty_example"); // string[] | 
 
 try {
-    $result = $apiInstance->createCredits($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $autoCommit, $pluginProperty);
+    $result = $apiInstance->createCredits($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $requestedDate, $autoCommit, $pluginProperty);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CreditApi->createCredits: ', $e->getMessage(), PHP_EOL;
@@ -58,6 +59,7 @@ Name | Type | Description  | Notes
  **xKillbillCreatedBy** | **string**|  |
  **xKillbillReason** | **string**|  | [optional]
  **xKillbillComment** | **string**|  | [optional]
+ **requestedDate** | **\DateTime**|  | [optional]
  **autoCommit** | **bool**|  | [optional] [default to false]
  **pluginProperty** | [**string[]**](../Model/string.md)|  | [optional]
 
