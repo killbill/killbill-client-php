@@ -1,4 +1,4 @@
-# Killbill\Client\Swagger\SecurityApi
+# SecurityApi
 
 All URIs are relative to */*
 
@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addRoleDefinition**](SecurityApi.md#addroledefinition) | **POST** /1.0/kb/security/roles | Add a new role definition)
 [**addUserRoles**](SecurityApi.md#adduserroles) | **POST** /1.0/kb/security/users | Add a new user with roles (to make api requests)
+[**getAvailableRoles**](SecurityApi.md#getavailableroles) | **GET** /1.0/kb/security/roles | List all active role definitions
 [**getCurrentUserPermissions**](SecurityApi.md#getcurrentuserpermissions) | **GET** /1.0/kb/security/permissions | List user permissions
 [**getCurrentUserSubject**](SecurityApi.md#getcurrentusersubject) | **GET** /1.0/kb/security/subject | Get user information
 [**getRoleDefinition**](SecurityApi.md#getroledefinition) | **GET** /1.0/kb/security/roles/{role} | Get role definition
@@ -30,7 +31,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -89,7 +91,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -133,6 +136,56 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getAvailableRoles**
+> \Killbill\Client\Swagger\Model\RoleDefinition[] getAvailableRoles()
+
+List all active role definitions
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure HTTP basic authorization: basicAuth
+$config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getAvailableRoles();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SecurityApi->getAvailableRoles: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Killbill\Client\Swagger\Model\RoleDefinition[]**](../Model/RoleDefinition.md)
+
+### Authorization
+
+[basicAuth](../../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getCurrentUserPermissions**
 > string[] getCurrentUserPermissions()
 
@@ -148,7 +201,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -197,7 +251,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -246,7 +301,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -299,7 +355,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -352,7 +409,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -410,7 +468,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -468,7 +527,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -528,7 +588,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SecurityApi(
+// SecurityApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SecurityApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),

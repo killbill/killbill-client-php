@@ -1,4 +1,4 @@
-# Killbill\Client\Swagger\SubscriptionApi
+# SubscriptionApi
 
 All URIs are relative to */*
 
@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**addSubscriptionBlockingState**](SubscriptionApi.md#addsubscriptionblockingstate) | **POST** /1.0/kb/subscriptions/{subscriptionId}/block | Block a subscription
 [**cancelSubscriptionPlan**](SubscriptionApi.md#cancelsubscriptionplan) | **DELETE** /1.0/kb/subscriptions/{subscriptionId} | Cancel an entitlement plan
 [**changeSubscriptionPlan**](SubscriptionApi.md#changesubscriptionplan) | **PUT** /1.0/kb/subscriptions/{subscriptionId} | Change entitlement plan
-[**createSubscription**](SubscriptionApi.md#createsubscription) | **POST** /1.0/kb/subscriptions | Create an subscription
+[**createSubscription**](SubscriptionApi.md#createsubscription) | **POST** /1.0/kb/subscriptions | Create a subscription
 [**createSubscriptionCustomFields**](SubscriptionApi.md#createsubscriptioncustomfields) | **POST** /1.0/kb/subscriptions/{subscriptionId}/customFields | Add custom fields to subscription
 [**createSubscriptionTags**](SubscriptionApi.md#createsubscriptiontags) | **POST** /1.0/kb/subscriptions/{subscriptionId}/tags | 
 [**createSubscriptionWithAddOns**](SubscriptionApi.md#createsubscriptionwithaddons) | **POST** /1.0/kb/subscriptions/createSubscriptionWithAddOns | Create an entitlement with addOn products
@@ -47,7 +47,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -118,7 +119,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -196,7 +198,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -254,7 +257,7 @@ void (empty response body)
 # **createSubscription**
 > \Killbill\Client\Swagger\Model\Subscription createSubscription($body, $xKillbillCreatedBy, $xKillbillReason, $xKillbillComment, $entitlementDate, $billingDate, $renameKeyIfExistsAndUnused, $migrated, $skipResponse, $callCompletion, $callTimeoutSec, $pluginProperty)
 
-Create an subscription
+Create a subscription
 
 ### Example
 ```php
@@ -272,7 +275,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -353,7 +357,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -419,7 +424,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -485,7 +491,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -566,7 +573,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -647,7 +655,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -713,7 +722,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -779,7 +789,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -840,7 +851,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -899,7 +911,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -960,7 +973,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1021,7 +1035,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1080,7 +1095,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1143,7 +1159,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1209,7 +1226,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1275,7 +1293,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1341,7 +1360,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1411,7 +1431,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\SubscriptionApi(
+// SubscriptionApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new SubscriptionApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),

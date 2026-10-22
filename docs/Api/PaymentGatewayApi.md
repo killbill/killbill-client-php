@@ -1,4 +1,4 @@
-# Killbill\Client\Swagger\PaymentGatewayApi
+# PaymentGatewayApi
 
 All URIs are relative to */*
 
@@ -29,7 +29,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentGatewayApi(
+// PaymentGatewayApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentGatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -98,7 +99,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentGatewayApi(
+// PaymentGatewayApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentGatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -155,8 +157,6 @@ Name | Type | Description  | Notes
 
 Process a gateway notification
 
-The response is built by the appropriate plugin
-
 ### Example
 ```php
 <?php
@@ -173,7 +173,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentGatewayApi(
+// PaymentGatewayApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentGatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),

@@ -1,4 +1,4 @@
-# Killbill\Client\Swagger\PaymentApi
+# PaymentApi
 
 All URIs are relative to */*
 
@@ -54,7 +54,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -118,7 +119,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -182,7 +184,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -253,7 +256,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -322,7 +326,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -393,7 +398,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -462,7 +468,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -533,7 +540,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -602,7 +610,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -672,7 +681,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -740,7 +750,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -807,7 +818,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -874,7 +886,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -941,7 +954,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1007,7 +1021,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1073,7 +1088,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1140,7 +1156,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1199,7 +1216,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1258,7 +1276,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1325,7 +1344,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1386,7 +1406,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1449,7 +1470,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1520,7 +1542,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1586,7 +1609,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1657,7 +1681,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1726,7 +1751,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1799,7 +1825,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1869,7 +1896,8 @@ $config = Killbill\Client\Swagger\Configuration::getDefaultConfiguration()
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new Killbill\Client\Swagger\Api\PaymentApi(
+// PaymentApi lives in the Killbill\Client\Swagger\Api namespace
+$apiInstance = new PaymentApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
